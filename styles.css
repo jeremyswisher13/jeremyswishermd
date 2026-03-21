@@ -817,6 +817,29 @@ ul {
     color: var(--color-accent);
 }
 
+.pub-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.pub-link:hover .pub-title {
+    color: var(--color-primary);
+}
+
+.link-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 6px;
+    opacity: 0.4;
+    transition: 0.3s ease;
+}
+
+.pub-link:hover .link-icon {
+    opacity: 1;
+    color: var(--color-primary);
+}
+
 /* ===== Coverage Gallery ===== */
 .coverage-gallery {
     margin-bottom: 48px;
