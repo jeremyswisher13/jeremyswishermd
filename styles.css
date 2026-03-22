@@ -687,6 +687,16 @@ ul {
     margin-bottom: 16px;
 }
 
+.pub-toggle-btn {
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+}
+
+.pub-toggle-btn:hover {
+    background: var(--color-primary-dark);
+}
+
 .pub-full-list {
     margin-top: 32px;
 }
