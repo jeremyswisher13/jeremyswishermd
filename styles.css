@@ -887,15 +887,21 @@ ul {
 .coverage-photos {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
     gap: 10px;
 }
 
 .coverage-photos img {
     width: 100%;
-    height: 220px;
+    height: 260px;
     object-fit: cover;
     border-radius: var(--radius-sm);
     transition: var(--transition);
+}
+
+.coverage-photos img:first-child {
+    grid-column: span 2;
+    height: 300px;
 }
 
 .coverage-photos img:hover {
