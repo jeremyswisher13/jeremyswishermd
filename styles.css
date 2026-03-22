@@ -895,7 +895,7 @@ ul {
     width: 100%;
     height: 260px;
     object-fit: cover;
-    object-position: center 20%;
+    object-position: center 35%;
     border-radius: var(--radius-sm);
     transition: var(--transition);
 }
