@@ -50,7 +50,7 @@ window.addEventListener('scroll', highlightNav);
 
 // Intersection Observer for fade-in animations (only larger elements, not individual cards)
 const fadeElements = document.querySelectorAll(
-    '.about-text, .about-sidebar, .expertise-card, .media-card, .coverage-category, .contact-card, .contact-links'
+    '.about-text, .about-sidebar, .expertise-card, .treat-card, .procedure-card, .media-card, .coverage-category, .contact-card, .contact-links'
 );
 
 const fadeObserver = new IntersectionObserver((entries) => {
@@ -73,6 +73,21 @@ fadeElements.forEach(el => {
     el.classList.add('fade-in');
     fadeObserver.observe(el);
 });
+
+// Publication "View All" toggle
+const pubToggleBtn = document.getElementById('pubToggleBtn');
+const pubFullList = document.getElementById('pubFullList');
+
+if (pubToggleBtn && pubFullList) {
+    pubToggleBtn.addEventListener('click', () => {
+        pubFullList.classList.toggle('hidden');
+        if (pubFullList.classList.contains('hidden')) {
+            pubToggleBtn.textContent = 'View All 34 Publications';
+        } else {
+            pubToggleBtn.textContent = 'Show Less';
+        }
+    });
+}
 
 // Publication filter tabs
 const filterButtons = document.querySelectorAll('.pub-filter');
