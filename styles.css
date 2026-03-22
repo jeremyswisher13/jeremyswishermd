@@ -177,7 +177,7 @@ ul {
     align-items: center;
     background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-muted) 50%, #1a3a5c 100%);
     background-size: cover;
-    background-position: center 30%;
+    background-position: center 25%;
     overflow: hidden;
     padding-top: 72px;
 }
@@ -895,7 +895,7 @@ ul {
     width: 100%;
     height: 260px;
     object-fit: cover;
-    object-position: center 35%;
+    object-position: center 25%;
     border-radius: var(--radius-sm);
     transition: var(--transition);
 }
