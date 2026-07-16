@@ -6,7 +6,7 @@
     <title>Jeremy Swisher, MD | UCLA Sports Medicine Physician</title>
     <meta name="description" content="Meet Jeremy Swisher, MD, a UCLA primary care sports medicine physician offering non-operative care, MSK ultrasound, and appointments in Westwood and West Hills.">
     <meta name="author" content="Jeremy Swisher, MD">
-    <meta name="theme-color" content="#2774AE">
+    <meta name="theme-color" content="#F4F0E8">
     <link rel="canonical" href="https://jeremyswisher13.github.io/jeremyswishermd/">
     <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
@@ -26,8 +26,9 @@
     <link rel="preload" as="image" href="images/lakers-courtside.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260716">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300,0,0" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260716-premium9">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -90,11 +91,9 @@
                 <span></span><span></span><span></span>
             </button>
             <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#expertise" class="nav-link">Clinical Care</a>
+                <a href="#expertise" class="nav-link">Care</a>
                 <a href="#publications" class="nav-link">Research</a>
-                <a href="#media" class="nav-link">Media</a>
-                <a href="#coverage" class="nav-link">Team Experience</a>
+                <a href="#coverage" class="nav-link">Experience</a>
                 <a href="#contact" class="nav-link">Locations</a>
                 <a href="https://cloud.h.uclahealth.org/appointment-request?utm_campaign=enterprise_aq_request-appointment&amp;utm_content=make-an-appointment&amp;utm_medium=landing-page&amp;utm_source=uclah_organic" target="_blank" rel="noopener noreferrer" class="nav-appointment">Request Appointment</a>
             </nav>
@@ -103,70 +102,71 @@
 
     <main id="main-content">
     <!-- Hero Section -->
-    <section class="hero" id="home" style="background-image: url('images/lakers-courtside.jpg');">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+        <div class="hero-surface">
             <div class="hero-text">
-                <div class="hero-badge">UCLA Sports Medicine &middot; Accepting New Patients</div>
-                <h1 class="hero-title">Jeremy Swisher, MD</h1>
-                <p class="hero-subtitle">Primary Care Sports Medicine Physician</p>
-                <p class="hero-description">Non-operative care for athletes and active people of all ages, with expertise in point-of-care musculoskeletal ultrasound, ultrasound-guided procedures, osteoarthritis, chronic tendon pain, and return-to-play planning.</p>
-                <div class="hero-specialties">
-                    <span class="specialty-tag">Sports Injuries</span>
-                    <span class="specialty-tag">MSK Ultrasound</span>
-                    <span class="specialty-tag">Orthobiologics</span>
-                    <span class="specialty-tag">Return to Play</span>
-                </div>
+                <p class="hero-kicker">UCLA Sports Medicine</p>
+                <p class="hero-status">Accepting New Patients</p>
+                <h1 class="hero-title" id="hero-title"><span class="sr-only">Jeremy Swisher, MD &mdash; </span><span class="hero-title-line">Sports medicine</span><br>for the way<br><em>you move.</em></h1>
+                <p class="hero-description">Non-operative care for athletes and active people of all ages.</p>
                 <div class="hero-actions">
                     <a href="https://cloud.h.uclahealth.org/appointment-request?utm_campaign=enterprise_aq_request-appointment&amp;utm_content=make-an-appointment&amp;utm_medium=landing-page&amp;utm_source=uclah_organic" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Request an Appointment</a>
-                    <a href="#referrals" class="btn btn-secondary">For PTs &amp; Referring Clinicians</a>
+                    <a href="#referrals" class="hero-referral-link">For PTs &amp; Referring Clinicians <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="hero-card">
-                    <div class="hero-card-icon">
-                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a7 7 0 0 1 7 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-                    </div>
-                    <div class="hero-card-label">Clinic Locations</div>
-                    <div class="hero-card-value">Westwood + West Hills</div>
-                </div>
-                <div class="hero-card">
-                    <div class="hero-card-icon">
-                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422A12.083 12.083 0 0 1 21 12.5c0 4.142-4.03 7.5-9 7.5s-9-3.358-9-7.5c0-1.045.283-2.04.84-2.922L12 14z"/></svg>
-                    </div>
-                    <div class="hero-card-label">Board Certification</div>
-                    <div class="hero-card-value">Sports Medicine + Family Medicine</div>
-                </div>
-                <div class="hero-card">
-                    <div class="hero-card-icon">
-                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-3-3v6m-7 4h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>
-                    </div>
-                    <div class="hero-card-label">Publications</div>
-                    <div class="hero-card-value">18 Peer-Reviewed</div>
-                </div>
-            </div>
+            <figure class="hero-image-wrap">
+                <img src="images/lakers-courtside.jpg" alt="Jeremy Swisher, MD, courtside while providing sports medicine coverage" width="1200" height="1609" fetchpriority="high" decoding="async">
+            </figure>
         </div>
+        <ul class="hero-proof" aria-label="Professional overview">
+            <li class="proof-item">
+                <span class="material-symbols-outlined" aria-hidden="true">school</span>
+                <span>UCLA Sports Medicine</span>
+            </li>
+            <li class="proof-item">
+                <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
+                <span>Board-Certified</span>
+            </li>
+            <li class="proof-item">
+                <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
+                <span>Westwood + West Hills</span>
+            </li>
+            <li class="proof-item">
+                <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
+                <span>18 Peer-Reviewed Publications</span>
+            </li>
+        </ul>
     </section>
 
     <!-- Audience Paths -->
     <section class="audience-section" id="referrals" aria-labelledby="audience-title">
-        <div class="container">
+        <div class="container audience-layout">
             <div class="audience-header">
                 <span class="section-label">Start Here</span>
-                <h2 class="section-title" id="audience-title">Sports medicine care, with a clear next step</h2>
+                <h2 class="section-title" id="audience-title">Care for athletes.<br>Guidance for clinicians.</h2>
             </div>
             <div class="audience-grid">
                 <article class="audience-card patient-card">
-                    <span class="audience-kicker">For patients &amp; active people</span>
-                    <h3>Understand the injury. Build a plan to move forward.</h3>
-                    <p>Get a focused sports medicine evaluation, a non-operative treatment plan, and practical guidance for returning to the activities that matter to you. Appointments with Dr. Swisher are available in Westwood and West Hills.</p>
-                    <a href="https://cloud.h.uclahealth.org/appointment-request?utm_campaign=enterprise_aq_request-appointment&amp;utm_content=make-an-appointment&amp;utm_medium=landing-page&amp;utm_source=uclah_organic" target="_blank" rel="noopener noreferrer" class="text-link">Request an appointment on UCLA Health <span aria-hidden="true">&rarr;</span></a>
+                    <div class="audience-card-heading">
+                        <span class="material-symbols-outlined" aria-hidden="true">groups</span>
+                        <div>
+                            <span class="audience-kicker">Patients</span>
+                            <h3>Understand the injury. Build a plan to move forward.</h3>
+                        </div>
+                    </div>
+                    <p>Get a focused evaluation, a non-operative treatment plan, and practical guidance for returning to the activities that matter to you.</p>
+                    <a href="https://cloud.h.uclahealth.org/appointment-request?utm_campaign=enterprise_aq_request-appointment&amp;utm_content=make-an-appointment&amp;utm_medium=landing-page&amp;utm_source=uclah_organic" target="_blank" rel="noopener noreferrer" class="text-link">Request an appointment on UCLA Health <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
                 </article>
                 <article class="audience-card clinician-card">
-                    <span class="audience-kicker">For PTs &amp; referring clinicians</span>
-                    <h3>A collaborative resource for complex or persistent MSK cases.</h3>
+                    <div class="audience-card-heading">
+                        <span class="material-symbols-outlined" aria-hidden="true">clinical_notes</span>
+                        <div>
+                            <span class="audience-kicker">Referring Clinicians</span>
+                            <h3>A collaborative resource for complex or persistent MSK cases.</h3>
+                        </div>
+                    </div>
                     <p>Refer for diagnostic clarification, point-of-care ultrasound, image-guided procedures, persistent tendon or joint pain, and coordinated return-to-sport planning.</p>
-                    <a href="#contact" class="text-link">Locations &amp; referral information <span aria-hidden="true">&rarr;</span></a>
+                    <a href="#contact" class="text-link">Locations &amp; referral information <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
                 </article>
             </div>
         </div>
@@ -289,58 +289,42 @@
             </div>
             <div class="procedures-grid">
                 <div class="procedure-card">
-                    <div class="procedure-icon">
-                        <svg aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="6" width="32" height="36" rx="4"/><line x1="16" y1="18" x2="32" y2="18"/><line x1="16" y1="24" x2="32" y2="24"/><line x1="16" y1="30" x2="26" y2="30"/><circle cx="24" cy="12" r="2"/></svg>
-                    </div>
+                    <div class="procedure-icon"><span class="material-symbols-outlined" aria-hidden="true">monitor_heart</span></div>
                     <h3>Diagnostic MSK Ultrasound</h3>
                     <p>Real-time imaging of tendons, ligaments, muscles, and joints to help evaluate injuries without radiation.</p>
                 </div>
                 <div class="procedure-card">
-                    <div class="procedure-icon">
-                        <svg aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 4v8m0 24v8M4 24h8m24 0h8"/><circle cx="24" cy="24" r="8"/><circle cx="24" cy="24" r="3"/></svg>
-                    </div>
+                    <div class="procedure-icon"><span class="material-symbols-outlined" aria-hidden="true">my_location</span></div>
                     <h3>Ultrasound-Guided Joint Injections</h3>
                     <p>Image-guided injections designed to improve placement at the knee, hip, shoulder, wrist, elbow, and ankle.</p>
                 </div>
                 <div class="procedure-card">
-                    <div class="procedure-icon">
-                        <svg aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 36V16l16-8 16 8v20l-16 8-16-8z"/><path d="M8 16l16 8 16-8"/><line x1="24" y1="24" x2="24" y2="44"/></svg>
-                    </div>
+                    <div class="procedure-icon"><span class="material-symbols-outlined" aria-hidden="true">bloodtype</span></div>
                     <h3>PRP Injections</h3>
                     <p>A biologic treatment option used for selected chronic tendon and joint conditions.</p>
                 </div>
                 <div class="procedure-card">
-                    <div class="procedure-icon">
-                        <svg aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="16"/><path d="M16 24c0-4.4 3.6-8 8-8s8 3.6 8 8"/><line x1="24" y1="16" x2="24" y2="8"/><line x1="24" y1="32" x2="24" y2="40"/></svg>
-                    </div>
+                    <div class="procedure-icon"><span class="material-symbols-outlined" aria-hidden="true">water_drop</span></div>
                     <h3>Hyaluronic Acid Injections</h3>
                     <p>Viscosupplementation used in selected patients with osteoarthritis.</p>
                 </div>
                 <div class="procedure-card">
-                    <div class="procedure-icon">
-                        <svg aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 34c-4-4-4-12 2-16s14-2 16 4"/><path d="M34 14c4 4 4 12-2 16s-14 2-16-4"/><circle cx="24" cy="24" r="4"/></svg>
-                    </div>
+                    <div class="procedure-icon"><span class="material-symbols-outlined" aria-hidden="true">vaccines</span></div>
                     <h3>Corticosteroid Injections</h3>
                     <p>Anti-inflammatory injections used selectively to help manage joint pain and inflammation.</p>
                 </div>
                 <div class="procedure-card">
-                    <div class="procedure-icon">
-                        <svg aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="14" r="6"/><path d="M12 40v-4a12 12 0 0 1 24 0v4"/><path d="M32 20l6-6m-2 0h-4v4"/></svg>
-                    </div>
+                    <div class="procedure-icon"><span class="material-symbols-outlined" aria-hidden="true">healing</span></div>
                     <h3>Percutaneous Needle Tenotomy</h3>
                     <p>A minimally invasive option used in selected cases of chronic tendinopathy.</p>
                 </div>
                 <div class="procedure-card">
-                    <div class="procedure-icon">
-                        <svg aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 4v8m0 24v8M4 24h8m24 0h8"/><circle cx="24" cy="24" r="8"/><circle cx="24" cy="24" r="3"/></svg>
-                    </div>
+                    <div class="procedure-icon"><span class="material-symbols-outlined" aria-hidden="true">science</span></div>
                     <h3>Needle Barbotage</h3>
                     <p>Ultrasound-guided calcium deposit lavage used in selected cases of calcific tendinitis.</p>
                 </div>
                 <div class="procedure-card">
-                    <div class="procedure-icon">
-                        <svg aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 34c-4-4-4-12 2-16s14-2 16 4"/><path d="M34 14c4 4 4 12-2 16s-14 2-16-4"/><circle cx="24" cy="24" r="4"/></svg>
-                    </div>
+                    <div class="procedure-icon"><span class="material-symbols-outlined" aria-hidden="true">medical_services</span></div>
                     <h3>Non-Operative Orthopedic Care</h3>
                     <p>Comprehensive non-surgical management including rehabilitation and return-to-play protocols.</p>
                 </div>
@@ -363,7 +347,7 @@
                     <div class="pub-number">18</div>
                     <div class="pub-content">
                         <div class="pub-venue">Sports Medicine <span class="pub-year">2026</span> <span class="pub-status">Open Access</span></div>
-                        <a href="https://link.springer.com/article/10.1007/s40279-026-02455-y" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Optimizing Athlete Travel for Performance: A Scientific Blueprint for Athletes, Coaches, and Sports Medicine Staff <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://link.springer.com/article/10.1007/s40279-026-02455-y" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Optimizing Athlete Travel for Performance: A Scientific Blueprint for Athletes, Coaches, and Sports Medicine Staff</h3></a>
                         <p class="pub-authors">Hatamiya N, Holmes KE, Grosicki GJ, Swisher J, et al.</p>
                     </div>
                 </article>
@@ -371,7 +355,7 @@
                     <div class="pub-number">14</div>
                     <div class="pub-content">
                         <div class="pub-venue">Clin J Sport Med <span class="pub-year">2026</span> <span class="pub-status">Epub Ahead of Print</span></div>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/41975560/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Injuries and Return to Play in Elite Pickleball Players: A Review of the Professional Pickleball Association Tour <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/41975560/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Injuries and Return to Play in Elite Pickleball Players: A Review of the Professional Pickleball Association Tour</h3></a>
                         <p class="pub-authors">Swisher J, Burbank K</p>
                     </div>
                 </article>
@@ -395,7 +379,7 @@
                     <div class="pub-number">13</div>
                     <div class="pub-content">
                         <div class="pub-venue">Am Fam Physician <span class="pub-year">2025</span> <span class="pub-status highlight">AFP Top 20</span></div>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/40531148/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Acute Monoarthritis: Diagnosis in Adults <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/40531148/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Acute Monoarthritis: Diagnosis in Adults</h3></a>
                         <p class="pub-authors">Swisher J, Sitton Z, Burbank K, Nelson C</p>
                     </div>
                 </article>
@@ -417,7 +401,7 @@
             </div>
 
             <!-- Peer-Reviewed Publications -->
-            <div class="pub-list" id="peer-reviewed" aria-labelledby="filter-peer-reviewed">
+            <div class="pub-list" id="peer-reviewed" role="region" aria-labelledby="filter-peer-reviewed">
                 <div class="pub-card">
                     <div class="pub-number">18</div>
                     <div class="pub-content">
@@ -464,7 +448,7 @@
                     <div class="pub-number">13</div>
                     <div class="pub-content">
                         <div class="pub-venue">Am Fam Physician <span class="pub-year">2025</span> <span class="pub-status highlight">AFP Top 20</span></div>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/40531148/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Acute Monoarthritis: Diagnosis in Adults <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/40531148/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Acute Monoarthritis: Diagnosis in Adults</h3></a>
                         <p class="pub-authors">Swisher J, Sitton Z, Burbank K, Nelson C</p>
                         <span class="pub-id">PMID: 40531148</span>
                     </div>
@@ -473,7 +457,7 @@
                     <div class="pub-number">12</div>
                     <div class="pub-content">
                         <div class="pub-venue">Clin J Sport Med <span class="pub-year">2025</span></div>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/39964240/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Epidemiology of Golf-Related Injuries: A 10-Year Analysis of the National Electronic Injury Surveillance System Database and the Impact of Alcohol Consumption <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/39964240/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Epidemiology of Golf-Related Injuries: A 10-Year Analysis of the National Electronic Injury Surveillance System Database and the Impact of Alcohol Consumption</h3></a>
                         <p class="pub-authors">Swisher J, Waldrop M, Sitton Z, Miles C</p>
                         <span class="pub-id">PMID: 39964240</span>
                     </div>
@@ -482,7 +466,7 @@
                     <div class="pub-number">11</div>
                     <div class="pub-content">
                         <div class="pub-venue">Clin J Sport Med <span class="pub-year">2024</span></div>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/39292010/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Give It a Rest: The Impact of Rest Days on Musculoskeletal Injuries Among Starting Pitchers in Major League Baseball <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/39292010/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Give It a Rest: The Impact of Rest Days on Musculoskeletal Injuries Among Starting Pitchers in Major League Baseball</h3></a>
                         <p class="pub-authors">Waldrop M, Sitton Z, Swisher J, Mullur K, Davis S</p>
                         <span class="pub-id">PMID: 39292010</span>
                     </div>
@@ -491,7 +475,7 @@
                     <div class="pub-number">10</div>
                     <div class="pub-content">
                         <div class="pub-venue">Clin J Sport Med <span class="pub-year">2024</span></div>
-                        <a href="https://journals.lww.com/cjsportsmed/toc/2024/03000" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">A Comparison of Diagnostic Accuracy Between ChatGPT and Fellowship-Trained Sports Medicine Faculty <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://journals.lww.com/cjsportsmed/toc/2024/03000" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">A Comparison of Diagnostic Accuracy Between ChatGPT and Fellowship-Trained Sports Medicine Faculty</h3></a>
                         <p class="pub-authors">Burbank K, Sitton Z, Swisher J, Davis S, Mullur K, Waldrop M</p>
                     </div>
                 </div>
@@ -499,7 +483,7 @@
                     <div class="pub-number">9</div>
                     <div class="pub-content">
                         <div class="pub-venue">Clin J Sport Med <span class="pub-year">2024</span></div>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/38436935/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Sleep Consistency as a Predictor for Increased Risk of Injuries in Division I Athletes <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/38436935/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Sleep Consistency as a Predictor for Increased Risk of Injuries in Division I Athletes</h3></a>
                         <p class="pub-authors">Swisher J, Burbank K, Sitton Z, Miles C</p>
                         <span class="pub-id">PMID: 38436935</span>
                     </div>
@@ -508,7 +492,7 @@
                     <div class="pub-number">8</div>
                     <div class="pub-content">
                         <div class="pub-venue">Clin J Sport Med <span class="pub-year">2024</span></div>
-                        <a href="https://journals.lww.com/cjsportsmed/toc/2024/03000" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">NFL Concussion Rates Across Helmet Types <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://journals.lww.com/cjsportsmed/toc/2024/03000" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">NFL Concussion Rates Across Helmet Types</h3></a>
                         <p class="pub-authors">Keely J, Sitton Z, Swisher J, Kang P, Lintner L</p>
                     </div>
                 </div>
@@ -516,7 +500,7 @@
                     <div class="pub-number">7</div>
                     <div class="pub-content">
                         <div class="pub-venue">Clin J Sport Med <span class="pub-year">2024</span></div>
-                        <a href="https://journals.lww.com/cjsportsmed/toc/2024/03000" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Sleep Consistency as a Risk Factor for Lower Extremity Injuries in Division I Soccer Athletes <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://journals.lww.com/cjsportsmed/toc/2024/03000" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Sleep Consistency as a Risk Factor for Lower Extremity Injuries in Division I Soccer Athletes</h3></a>
                         <p class="pub-authors">Burbank K, Swisher J, Sitton Z, Miles C</p>
                     </div>
                 </div>
@@ -524,7 +508,7 @@
                     <div class="pub-number">6</div>
                     <div class="pub-content">
                         <div class="pub-venue">Am Fam Physician <span class="pub-year">2023</span> <span class="pub-status highlight">AFP Top 20</span></div>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/38215415/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Childhood and Adolescent Sports-Related Overuse Injuries <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/38215415/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Childhood and Adolescent Sports-Related Overuse Injuries</h3></a>
                         <p class="pub-authors">Lintner LJ, Swisher J, Sitton ZE</p>
                         <span class="pub-id">PMID: 38215415</span>
                     </div>
@@ -533,7 +517,7 @@
                     <div class="pub-number">5</div>
                     <div class="pub-content">
                         <div class="pub-venue">Clin J Sport Med <span class="pub-year">2024</span></div>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/38133560/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">A Retrospective Analysis of Major League Baseball Hit-by-Pitch Rates before and after the Crackdown on Foreign Substance Use <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/38133560/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">A Retrospective Analysis of Major League Baseball Hit-by-Pitch Rates before and after the Crackdown on Foreign Substance Use</h3></a>
                         <p class="pub-authors">Sitton Z, Swisher J, Davis S, Thornton H</p>
                         <span class="pub-id">PMID: 38133560</span>
                     </div>
@@ -542,7 +526,7 @@
                     <div class="pub-number">4</div>
                     <div class="pub-content">
                         <div class="pub-venue">Clin J Sport Med <span class="pub-year">2023</span></div>
-                        <a href="https://journals.lww.com/cjsportsmed/fulltext/2023/05000/2023_amssm_case_podium_presentations.18.aspx" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Hanging in There: A Unique Case of Shoulder Pain in a Young Female Soccer Player <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://journals.lww.com/cjsportsmed/fulltext/2023/05000/2023_amssm_case_podium_presentations.18.aspx" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Hanging in There: A Unique Case of Shoulder Pain in a Young Female Soccer Player</h3></a>
                         <p class="pub-authors">Swisher J, Sitton Z, Miles C</p>
                     </div>
                 </div>
@@ -558,7 +542,7 @@
                     <div class="pub-number">2</div>
                     <div class="pub-content">
                         <div class="pub-venue">Clin J Sport Med <span class="pub-year">2022</span></div>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/35234745/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Analyzing MLB Hit-By-Pitch Rates Following the Crackdown on Foreign Substance Use by Pitchers <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/35234745/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Analyzing MLB Hit-By-Pitch Rates Following the Crackdown on Foreign Substance Use by Pitchers</h3></a>
                         <p class="pub-authors">Sitton Z, Swisher J, Davis S, Thornton H</p>
                         <span class="pub-id">PMID: 35234745</span>
                     </div>
@@ -567,7 +551,7 @@
                     <div class="pub-number">1</div>
                     <div class="pub-content">
                         <div class="pub-venue">Am J Ophthalmol <span class="pub-year">2020</span></div>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/32209344/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Loss to Follow-Up Among Patients with Proliferative Diabetic Retinopathy in Clinical Practice <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/32209344/" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Loss to Follow-Up Among Patients with Proliferative Diabetic Retinopathy in Clinical Practice</h3></a>
                         <p class="pub-authors">Suresh R, Yu H, Thoveson A, Swisher J, Apolinario M, Zhou B, Shah A, Fish R, Wykoff C</p>
                         <span class="pub-id">PMID: 32209344</span>
                     </div>
@@ -575,12 +559,12 @@
             </div>
 
             <!-- Book Chapters -->
-            <div class="pub-list hidden" id="book-chapters" aria-labelledby="filter-book-chapters">
+            <div class="pub-list hidden" id="book-chapters" role="region" aria-labelledby="filter-book-chapters">
                 <div class="pub-card">
                     <div class="pub-number">7</div>
                     <div class="pub-content">
                         <div class="pub-venue">5-Minute Sports Medicine Consult, 4th ed. <span class="pub-year">2026</span></div>
-                        <a href="https://shop.lww.com/5-Minute-Sports-Medicine-Consult--Print---eBook-with-Multimedia/p/9781975237943" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Fracture, Rib <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://shop.lww.com/5-Minute-Sports-Medicine-Consult--Print---eBook-with-Multimedia/p/9781975237943" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Fracture, Rib</h3></a>
                         <p class="pub-authors">Goldman J, Swisher J</p>
                     </div>
                 </div>
@@ -588,7 +572,7 @@
                     <div class="pub-number">6</div>
                     <div class="pub-content">
                         <div class="pub-venue">5-Minute Sports Medicine Consult, 4th ed. <span class="pub-year">2026</span></div>
-                        <a href="https://shop.lww.com/5-Minute-Sports-Medicine-Consult--Print---eBook-with-Multimedia/p/9781975237943" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Concussion, Pediatric <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://shop.lww.com/5-Minute-Sports-Medicine-Consult--Print---eBook-with-Multimedia/p/9781975237943" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Concussion, Pediatric</h3></a>
                         <p class="pub-authors">Swisher J, Waldrop M, Rosenbaum D</p>
                     </div>
                 </div>
@@ -596,7 +580,7 @@
                     <div class="pub-number">5</div>
                     <div class="pub-content">
                         <div class="pub-venue">5-Minute Sports Medicine Consult, 4th ed. <span class="pub-year">2026</span></div>
-                        <a href="https://shop.lww.com/5-Minute-Sports-Medicine-Consult--Print---eBook-with-Multimedia/p/9781975237943" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Talon Noir <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://shop.lww.com/5-Minute-Sports-Medicine-Consult--Print---eBook-with-Multimedia/p/9781975237943" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Talon Noir</h3></a>
                         <p class="pub-authors">Nelson C, Waldrop M, Swisher J</p>
                     </div>
                 </div>
@@ -604,7 +588,7 @@
                     <div class="pub-number">4</div>
                     <div class="pub-content">
                         <div class="pub-venue">5-Minute Sports Medicine Consult, 4th ed. <span class="pub-year">2026</span></div>
-                        <a href="https://shop.lww.com/5-Minute-Sports-Medicine-Consult--Print---eBook-with-Multimedia/p/9781975237943" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Gymnast's Wrist/Distal Radial Epiphysitis <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://shop.lww.com/5-Minute-Sports-Medicine-Consult--Print---eBook-with-Multimedia/p/9781975237943" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Gymnast's Wrist/Distal Radial Epiphysitis</h3></a>
                         <p class="pub-authors">Swisher J, Sparks N, Burbank K</p>
                     </div>
                 </div>
@@ -612,7 +596,7 @@
                     <div class="pub-number">3</div>
                     <div class="pub-content">
                         <div class="pub-venue">Clinical Considerations in School-based Health. Springer <span class="pub-year">2025</span></div>
-                        <a href="https://link.springer.com/book/10.1007/978-3-031-85765-2" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">The Acutely Injured Hip, Knee, and Ankle <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://link.springer.com/book/10.1007/978-3-031-85765-2" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">The Acutely Injured Hip, Knee, and Ankle</h3></a>
                         <p class="pub-authors">Swisher J, Burbank K</p>
                     </div>
                 </div>
@@ -620,7 +604,7 @@
                     <div class="pub-number">2</div>
                     <div class="pub-content">
                         <div class="pub-venue">Clinical Considerations in School-based Health. Springer <span class="pub-year">2025</span></div>
-                        <a href="https://link.springer.com/book/10.1007/978-3-031-85765-2" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">General Concepts in Nutrition and Exercise <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://link.springer.com/book/10.1007/978-3-031-85765-2" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">General Concepts in Nutrition and Exercise</h3></a>
                         <p class="pub-authors">Swisher J, Lintner L</p>
                     </div>
                 </div>
@@ -628,14 +612,14 @@
                     <div class="pub-number">1</div>
                     <div class="pub-content">
                         <div class="pub-venue">Urgent Care Medicine Secrets, 2nd ed. Elsevier <span class="pub-year">2024</span></div>
-                        <a href="https://shop.elsevier.com/books/urgent-care-medicine-secrets/olympia/978-0-443-10752-8" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">When to Image for Sports-Related Complaints <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://shop.elsevier.com/books/urgent-care-medicine-secrets/olympia/978-0-443-10752-8" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">When to Image for Sports-Related Complaints</h3></a>
                         <p class="pub-authors">Thornton H, Swisher J</p>
                     </div>
                 </div>
             </div>
 
             <!-- Other Publications -->
-            <div class="pub-list hidden" id="other" aria-labelledby="filter-other">
+            <div class="pub-list hidden" id="other" role="region" aria-labelledby="filter-other">
                 <div class="pub-card">
                     <div class="pub-number">13</div>
                     <div class="pub-content">
@@ -664,7 +648,7 @@
                     <div class="pub-number">10</div>
                     <div class="pub-content">
                         <div class="pub-venue">Ortho EM Pearls <span class="pub-year">2024</span></div>
-                        <a href="https://www.orthoempearls.com/articles/where-d-that-tree-come-from" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Where'd that Tree Come From? (Scapular Fracture) <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://www.orthoempearls.com/articles/where-d-that-tree-come-from" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Where'd that Tree Come From? (Scapular Fracture)</h3></a>
                         <p class="pub-authors">Tomesch A, Swisher J, Denq W</p>
                     </div>
                 </div>
@@ -672,7 +656,7 @@
                     <div class="pub-number">9</div>
                     <div class="pub-content">
                         <div class="pub-venue">Ortho EM Pearls <span class="pub-year">2024</span></div>
-                        <a href="https://www.orthoempearls.com/articles/kitchen-nightmares" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Kitchen Nightmares (Flexor Tendon Injury) <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://www.orthoempearls.com/articles/kitchen-nightmares" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Kitchen Nightmares (Flexor Tendon Injury)</h3></a>
                         <p class="pub-authors">Rajaram S, Swisher J, Tomesch A</p>
                     </div>
                 </div>
@@ -712,7 +696,7 @@
                     <div class="pub-number">4</div>
                     <div class="pub-content">
                         <div class="pub-venue">Ortho EM Pearls <span class="pub-year">2023</span></div>
-                        <a href="https://www.orthoempearls.com/articles/metatarsal-madness" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Metatarsal Madness <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://www.orthoempearls.com/articles/metatarsal-madness" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Metatarsal Madness</h3></a>
                         <p class="pub-authors">Swisher J, Ko J, Tomesch A</p>
                     </div>
                 </div>
@@ -720,7 +704,7 @@
                     <div class="pub-number">3</div>
                     <div class="pub-content">
                         <div class="pub-venue">Ortho EM Pearls <span class="pub-year">2023</span></div>
-                        <a href="https://www.orthoempearls.com/articles/so-swole" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">So Swole <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://www.orthoempearls.com/articles/so-swole" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">So Swole</h3></a>
                         <p class="pub-authors">Swisher J, Dolbec K, Tomesch A</p>
                     </div>
                 </div>
@@ -728,7 +712,7 @@
                     <div class="pub-number">2</div>
                     <div class="pub-content">
                         <div class="pub-venue">AAO EyeWiki <span class="pub-year">2018</span></div>
-                        <a href="https://eyewiki.org/Internuclear_Ophthalmoplegia" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Internuclear Ophthalmoplegia <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://eyewiki.org/Internuclear_Ophthalmoplegia" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Internuclear Ophthalmoplegia</h3></a>
                         <p class="pub-authors">Swisher J, Kini A, Lee A</p>
                     </div>
                 </div>
@@ -736,7 +720,7 @@
                     <div class="pub-number">1</div>
                     <div class="pub-content">
                         <div class="pub-venue">AAO EyeWiki <span class="pub-year">2018</span></div>
-                        <a href="https://eyewiki.org/Arteritic_Anterior_Ischemic_Optic_Neuropathy_(AAION)" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Arteritic Anterior Ischemic Optic Neuropathy (AAION) <svg aria-hidden="true" class="link-icon" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M3.75 2a.75.75 0 0 0 0 1.5h6.69L2.72 11.22a.75.75 0 1 0 1.06 1.06L11.5 4.56v6.69a.75.75 0 0 0 1.5 0V2.75a.75.75 0 0 0-.75-.75H3.75z"/></svg></h3></a>
+                        <a href="https://eyewiki.org/Arteritic_Anterior_Ischemic_Optic_Neuropathy_(AAION)" target="_blank" rel="noopener noreferrer" class="pub-link"><h3 class="pub-title">Arteritic Anterior Ischemic Optic Neuropathy (AAION)</h3></a>
                         <p class="pub-authors">Rodriguez De Los Reyes R, Swisher J, Lee A, Vickers A</p>
                     </div>
                 </div>
@@ -757,31 +741,31 @@
                     <div class="media-source">Health.com</div>
                     <div class="media-date">July 2025</div>
                     <h3 class="media-title">How Many Sets Does It Take to Build Muscle? The Answer May Surprise You</h3>
-                    <p class="media-role">Featured Expert <span class="media-arrow">→</span></p>
+                    <p class="media-role">Featured Expert <span class="material-symbols-outlined media-arrow" aria-hidden="true">arrow_forward</span></p>
                 </a>
                 <a href="https://www.latimes.com/california/newsletter/2025-06-27/fireworks-are-out-of-control-in-l-a-here-are-5-things-experts-wish-you-knew" target="_blank" rel="noopener noreferrer" class="media-card media-link">
                     <div class="media-source">The Los Angeles Times</div>
                     <div class="media-date">June 2025</div>
                     <h3 class="media-title">Fireworks are out of control in L.A. Here are 5 things experts wish you knew</h3>
-                    <p class="media-role">Featured Expert <span class="media-arrow">→</span></p>
+                    <p class="media-role">Featured Expert <span class="material-symbols-outlined media-arrow" aria-hidden="true">arrow_forward</span></p>
                 </a>
                 <a href="https://www.latimes.com/lifestyle/story/2025-06-16/professional-stretching-flexologist-in-los-angeles" target="_blank" rel="noopener noreferrer" class="media-card media-link">
                     <div class="media-source">The Los Angeles Times</div>
                     <div class="media-date">June 2025</div>
                     <h3 class="media-title">What is a 'flexologist' &mdash; and do you need to see one?</h3>
-                    <p class="media-role">Featured Expert <span class="media-arrow">→</span></p>
+                    <p class="media-role">Featured Expert <span class="material-symbols-outlined media-arrow" aria-hidden="true">arrow_forward</span></p>
                 </a>
                 <a href="https://www.latimes.com/lifestyle/story/2025-06-02/deathracers-skateboarding-for-longevity" target="_blank" rel="noopener noreferrer" class="media-card media-link">
                     <div class="media-source">The Los Angeles Times</div>
                     <div class="media-date">June 2025</div>
                     <h3 class="media-title">The 'Deathracers' key to staying young? Skateboarding into your 60s and beyond</h3>
-                    <p class="media-role">Featured Expert <span class="media-arrow">→</span></p>
+                    <p class="media-role">Featured Expert <span class="material-symbols-outlined media-arrow" aria-hidden="true">arrow_forward</span></p>
                 </a>
                 <a href="https://www.nytimes.com/2025/01/21/well/move/international-fitness-lessons.html" target="_blank" rel="noopener noreferrer" class="media-card media-link featured">
                     <div class="media-source">The New York Times</div>
                     <div class="media-date">January 2025</div>
                     <h3 class="media-title">Are Americans Doing Fitness Wrong?</h3>
-                    <p class="media-role">Featured Expert <span class="media-arrow">→</span></p>
+                    <p class="media-role">Featured Expert <span class="material-symbols-outlined media-arrow" aria-hidden="true">arrow_forward</span></p>
                 </a>
             </div>
         </div>
@@ -955,6 +939,10 @@
                         <div class="availability-badge">Accepting new patients</div>
                         <h3>UCLA Orthopedics &amp; Sports Medicine</h3>
                         <p>Appointments with Dr. Swisher are available at both UCLA clinic locations below.</p>
+                        <div class="contact-actions">
+                            <a href="https://cloud.h.uclahealth.org/appointment-request?utm_campaign=enterprise_aq_request-appointment&amp;utm_content=make-an-appointment&amp;utm_medium=landing-page&amp;utm_source=uclah_organic" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Request an Appointment</a>
+                            <a href="tel:310-319-1234" class="btn btn-outline btn-sm">Call 310-319-1234</a>
+                        </div>
                         <div class="clinic-locations">
                             <address class="clinic-location">
                                 <strong>Westwood Orthopedics &amp; Sports Medicine</strong>
@@ -969,35 +957,31 @@
                                 <a href="https://www.google.com/maps/search/?api=1&amp;query=UCLA+Health+West+Hills+Orthopedic+Surgery%2C+7230+Medical+Center+Drive%2C+Suite+604%2C+West+Hills%2C+CA+91307" target="_blank" rel="noopener noreferrer" class="clinic-map-link">Directions</a>
                             </address>
                         </div>
-                        <div class="contact-actions">
-                            <a href="https://cloud.h.uclahealth.org/appointment-request?utm_campaign=enterprise_aq_request-appointment&amp;utm_content=make-an-appointment&amp;utm_medium=landing-page&amp;utm_source=uclah_organic" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Request an Appointment</a>
-                            <a href="tel:310-319-1234" class="btn btn-outline btn-sm">Call 310-319-1234</a>
-                        </div>
                     </div>
                     <div class="contact-card referral-card">
                         <h3>For Physical Therapists &amp; Referring Clinicians</h3>
                         <p>Dr. Swisher welcomes referrals for diagnostic clarification, persistent tendon or joint pain, point-of-care ultrasound, ultrasound-guided procedures, and return-to-sport planning.</p>
                         <p class="contact-detail">For referral help, call the clinic line below or use UCLA Health's official referral instructions. UCLA's physician referral fax is 310-301-5391.</p>
                         <div class="referral-links">
-                            <a href="tel:310-319-1234" class="text-link">Call 310-319-1234 <span aria-hidden="true">&rarr;</span></a>
-                            <a href="https://www.uclahealth.org/discover/healthcare-professionals" target="_blank" rel="noopener noreferrer" class="text-link">UCLA referral instructions <span aria-hidden="true">&rarr;</span></a>
+                            <a href="tel:310-319-1234" class="text-link">Call 310-319-1234 <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+                            <a href="https://www.uclahealth.org/discover/healthcare-professionals" target="_blank" rel="noopener noreferrer" class="text-link">UCLA referral instructions <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
                         </div>
                     </div>
                 </div>
                 <aside class="contact-links" aria-label="Professional links">
                     <h3>Learn More</h3>
                     <a href="https://www.uclahealth.org/providers/jeremy-swisher" target="_blank" rel="noopener noreferrer" class="social-link social-link-text">
-                        <span>UCLA Health Profile</span><span aria-hidden="true">&rarr;</span>
+                        <span>UCLA Health Profile</span><span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
                     </a>
                     <a href="https://jeremyswisherkneemri.com" target="_blank" rel="noopener noreferrer" class="social-link social-link-text">
-                        <span>UCLA MRI Mastery</span><span aria-hidden="true">&rarr;</span>
+                        <span>UCLA MRI Mastery</span><span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
                     </a>
                     <a href="https://www.instagram.com/jeremyswishermd/" target="_blank" rel="noopener noreferrer" class="social-link">
-                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        <span class="material-symbols-outlined" aria-hidden="true">photo_camera</span>
                         <span>@jeremyswishermd</span>
                     </a>
                     <a href="https://linktr.ee/swishersportsmedicine" target="_blank" rel="noopener noreferrer" class="social-link">
-                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M7.953 15.066l-.038-2.888 4.064-3.691-4.064-3.69.038-2.888L12 5.6l4.047-3.691-.038 2.888-4.064 3.69 4.064 3.691.038 2.888L12 11.376l-4.047 3.69zM11.022 14.017h1.957v8.074h-1.957z"/></svg>
+                        <span class="material-symbols-outlined" aria-hidden="true">link</span>
                         <span>Linktree</span>
                     </a>
                 </aside>
@@ -1020,6 +1004,6 @@
         </div>
     </footer>
 
-    <script src="script.js?v=20260716"></script>
+    <script src="script.js?v=20260716-premium5"></script>
 </body>
 </html>

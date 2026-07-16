@@ -1,7 +1,7 @@
 // Mobile Navigation Toggle
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
-const MOBILE_NAV_BREAKPOINT = 1024;
+const MOBILE_NAV_BREAKPOINT = 1120;
 const mobileNavMedia = typeof window.matchMedia === 'function'
     ? window.matchMedia(`(max-width: ${MOBILE_NAV_BREAKPOINT}px)`)
     : null;
@@ -39,7 +39,29 @@ if (navToggle && navLinks) {
 
     // Close mobile navigation after any navigation link is selected.
     navLinks.querySelectorAll('a[href]').forEach(link => {
-        link.addEventListener('click', () => setMobileNavOpen(false));
+        link.addEventListener('click', () => {
+            const targetId = getInPageTargetId(link);
+            const target = targetId ? document.getElementById(targetId) : null;
+
+            setMobileNavOpen(false);
+
+            if (target) {
+                window.requestAnimationFrame(() => {
+                    const focusTarget = target.querySelector('h1, h2') || target;
+                    const hadTabindex = focusTarget.hasAttribute('tabindex');
+                    focusTarget.classList.add('in-page-focus-target');
+                    focusTarget.setAttribute('tabindex', '-1');
+                    focusTarget.focus({ preventScroll: true });
+
+                    if (!hadTabindex) {
+                        focusTarget.addEventListener('blur', () => {
+                            focusTarget.removeAttribute('tabindex');
+                            focusTarget.classList.remove('in-page-focus-target');
+                        }, { once: true });
+                    }
+                });
+            }
+        });
     });
 
     document.addEventListener('keydown', event => {
