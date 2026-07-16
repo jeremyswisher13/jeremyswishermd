@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jeremyswisher13.github.io/jeremyswishermd/sitemap.xml
