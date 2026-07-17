@@ -2621,6 +2621,22 @@ body {
     color: var(--color-text-light);
 }
 
+.media-card.featured {
+    padding-right: 24px;
+    padding-left: 24px;
+    border-top: 2px solid var(--color-accent);
+    background: rgba(184, 145, 67, 0.07);
+}
+
+.media-card.featured .media-source {
+    color: var(--color-primary-dark);
+    font-size: 0.82rem;
+}
+
+.media-card.featured .media-title {
+    font-size: 1.7rem;
+}
+
 .media-source {
     color: var(--color-accent-dark);
     letter-spacing: 0.12em;
