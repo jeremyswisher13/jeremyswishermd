@@ -1621,6 +1621,18 @@
     font-size: 20px;
 }
 
+.landing-page .print-program-button:disabled {
+    cursor: wait;
+    opacity: 0.72;
+}
+
+.landing-page .print-helper {
+    margin: 12px 0 0;
+    color: var(--color-text-light);
+    font-size: 0.76rem;
+    line-height: 1.5;
+}
+
 .landing-page .program-summary {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2245,7 +2257,7 @@
 
 @media print {
     @page {
-        margin: 13mm;
+        margin: 11mm 12mm 13mm;
     }
 
     body.landing-page.hep-page {
@@ -2253,7 +2265,10 @@
         overflow: visible;
         background: #ffffff;
         color: #111111;
-        font-size: 10pt;
+        font-size: 9pt;
+        line-height: 1.4;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
     }
 
     .hep-page .navbar,
@@ -2261,6 +2276,7 @@
     .hep-page .landing-shell > .landing-hero,
     .hep-page .landing-shell > .landing-proof,
     .hep-page .landing-shell > .page-jump,
+    .hep-page .skip-link,
     .hep-page .no-print,
     .hep-page .print-secondary {
         display: none !important;
@@ -2289,54 +2305,164 @@
     }
 
     .hep-page .print-program-header {
-        margin-bottom: 9mm;
-        padding-bottom: 6mm;
+        margin-bottom: 5mm;
+        padding-bottom: 4mm;
         border-bottom: 2px solid #0f1923;
     }
 
-    .hep-page .print-program-header p {
-        margin: 0 0 3mm;
-        font-size: 9pt;
+    .hep-page .print-program-brand,
+    .hep-page .print-program-fields {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5mm;
+    }
+
+    .hep-page .print-program-brand p,
+    .hep-page .print-program-fields p {
+        margin: 0;
+        font-size: 8.5pt;
+    }
+
+    .hep-page .print-program-brand p:first-child {
+        font-weight: 700;
     }
 
     .hep-page .print-program-header h2 {
-        margin: 0 0 4mm;
+        margin: 3mm 0 4mm;
         font-family: Georgia, serif;
-        font-size: 24pt;
-        line-height: 1.05;
+        font-size: 21pt;
+        line-height: 1.08;
+    }
+
+    .hep-page .print-program-fields {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2mm 10mm;
+        margin-bottom: 4mm;
+    }
+
+    .hep-page .print-program-fields p:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .hep-page .print-program-brief {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 3mm 6mm;
+        margin: 0 0 5mm;
+        padding: 4mm 0;
+        border-bottom: 1px solid #a9a9a9;
+    }
+
+    .hep-page .print-program-brief > div {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .hep-page .print-program-brief h3 {
+        margin: 0 0 1.5mm;
+        font-family: Arial, sans-serif;
+        font-size: 9pt;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    .hep-page .print-program-brief p {
+        margin: 0;
+        font-size: 9pt;
+        line-height: 1.38;
+    }
+
+    .hep-page .print-program-stop,
+    .hep-page .print-program-rule {
+        padding: 3mm;
+        border-left: 2px solid #555555;
+        background: #f2f2f2;
+    }
+
+    .hep-page .print-program-stop {
+        border-left-color: #762f23;
     }
 
     .hep-page .content-section,
     .hep-page .content-section + .content-section {
-        padding: 7mm 0;
+        padding: 4mm 0;
     }
 
     .hep-page .content-section h2 {
-        font-size: 22pt;
+        margin-bottom: 3mm;
+        font-size: 18pt;
+    }
+
+    .hep-page .content-section > .section-label,
+    .hep-page .content-section > h2,
+    .hep-page .content-section > h3 {
+        break-after: avoid;
+        page-break-after: avoid;
+    }
+
+    .hep-page p,
+    .hep-page li {
+        orphans: 3;
+        widows: 3;
     }
 
     .hep-page .content-section h3 {
-        font-size: 14pt;
+        font-size: 12pt;
+    }
+
+    .hep-page .content-section .section-intro {
+        margin-bottom: 3mm;
+        font-size: 9pt;
+        line-height: 1.45;
     }
 
     .hep-page .topic-grid,
     .hep-page .program-summary,
-    .hep-page .symptom-grid,
     .hep-page .option-list,
     .hep-page .exercise-cues {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .hep-page .program-summary {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        gap: 0 6mm;
+        margin: 4mm 0 1mm;
+    }
+
+    .hep-page .program-summary > div {
+        padding: 3mm 0;
+    }
+
+    .hep-page .program-summary dt {
+        margin-bottom: 1mm;
+        font-size: 8pt;
+    }
+
+    .hep-page .program-summary dd {
+        font-size: 11pt;
+        line-height: 1.2;
+    }
+
+    .hep-page .exercise-list {
+        margin-top: 4mm;
+    }
+
     .hep-page .exercise-item {
         break-inside: avoid;
-        grid-template-columns: 11mm minmax(0, 1fr);
-        gap: 4mm;
-        padding: 5mm 0;
+        page-break-inside: avoid;
+        grid-template-columns: 8mm minmax(0, 1fr);
+        gap: 3mm;
+        padding: 4mm 0;
     }
 
     .hep-page .exercise-number {
-        width: 9mm;
-        height: 9mm;
+        width: 7mm;
+        height: 7mm;
+        font-size: 8pt;
     }
 
     .hep-page .exercise-heading {
@@ -2345,16 +2471,144 @@
 
     .hep-page .exercise-heading h3,
     .hep-page .content-section .exercise-heading h3 {
-        font-size: 16pt;
+        font-size: 13pt;
+    }
+
+    .hep-page .exercise-frequency {
+        max-width: 38mm;
+        padding: 1.5mm 2mm;
+        font-size: 8pt;
     }
 
     .hep-page .exercise-dose {
-        margin-bottom: 2mm;
-        padding: 2mm 3mm;
+        margin-bottom: 1.5mm;
+        padding: 1.5mm 2mm;
+        font-size: 9pt;
+    }
+
+    .hep-page .exercise-content > p:not(.exercise-dose) {
+        font-size: 9.25pt;
+        line-height: 1.42;
     }
 
     .hep-page .exercise-cues {
+        gap: 0 5mm;
+        margin-top: 2mm;
+    }
+
+    .hep-page .exercise-cues > div {
+        padding-top: 2mm;
+    }
+
+    .hep-page .exercise-cues strong {
+        font-size: 8pt;
+    }
+
+    .hep-page .exercise-cues p {
+        font-size: 9pt;
+        line-height: 1.4;
+    }
+
+    .hep-page .print-exercise-prescription {
+        display: flex;
+        align-items: baseline;
+        gap: 3mm;
+        margin: 2.5mm 0 0 !important;
+        padding-top: 2mm;
+        border-top: 1px dashed #777777;
+        color: #111111 !important;
+        font-size: 8.5pt !important;
+        line-height: 1.3 !important;
+    }
+
+    .hep-page .print-exercise-prescription strong {
+        flex: 0 0 auto;
+        font-size: 8pt;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    .hep-page .print-exercise-prescription span {
+        flex: 1 1 auto;
+        min-width: 28mm;
+        border-bottom: 1px solid #777777;
+    }
+
+    .hep-page #response {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .hep-page .symptom-grid {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 3mm;
+        margin-top: 4mm;
+    }
+
+    .hep-page .symptom-card {
+        padding: 3mm;
+    }
+
+    .hep-page .symptom-card > span {
+        margin-bottom: 1mm;
+        font-size: 8pt;
+    }
+
+    .hep-page .symptom-card h3,
+    .hep-page .content-section .symptom-card h3 {
+        margin-bottom: 1.5mm;
+        font-size: 11pt;
+    }
+
+    .hep-page .symptom-card p {
+        font-size: 9pt;
+        line-height: 1.4;
+    }
+
+    .hep-page .care-steps {
+        margin-top: 4mm;
+    }
+
+    .hep-page .care-step {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        grid-template-columns: 8mm minmax(0, 1fr);
+        gap: 3mm;
+        padding: 3mm 0;
+    }
+
+    .hep-page .care-step::before {
+        width: 7mm;
+        height: 7mm;
+        font-size: 7.5pt;
+    }
+
+    .hep-page .care-step h3 {
+        margin-bottom: 1mm;
+        font-size: 11pt;
+    }
+
+    .hep-page .care-step p,
+    .hep-page .option-list li {
+        font-size: 9pt;
+        line-height: 1.42;
+    }
+
+    .hep-page .option-list {
+        gap: 0 6mm;
         margin-top: 3mm;
+    }
+
+    .hep-page .option-list li {
+        padding: 2.5mm 0 2.5mm 5mm;
+    }
+
+    .hep-page .option-list li::before {
+        top: 4.2mm;
+        width: 1.5mm;
+        height: 1.5mm;
     }
 
     .hep-page .symptom-card,
@@ -2362,7 +2616,102 @@
     .hep-page .urgent-panel,
     .hep-page .clinician-panel {
         break-inside: avoid;
+        page-break-inside: avoid;
         background: #ffffff;
+    }
+
+    .hep-page .note-panel,
+    .hep-page .urgent-panel,
+    .hep-page .clinician-panel {
+        display: block;
+        margin: 4mm 0;
+        padding: 3mm 4mm;
+    }
+
+    .hep-page :where(.note-panel, .urgent-panel, .clinician-panel) h3,
+    .hep-page .content-section :is(.note-panel, .urgent-panel, .clinician-panel) h3 {
+        margin-bottom: 1.5mm;
+        font-size: 11pt;
+    }
+
+    .hep-page :where(.note-panel, .urgent-panel, .clinician-panel) p {
+        margin-bottom: 1.5mm;
+        font-size: 9pt;
+        line-height: 1.42;
+    }
+
+    .hep-page .material-symbols-outlined {
+        display: none !important;
+    }
+
+    .hep-page .print-progress-tracker {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-top: 5mm;
+        padding-top: 4mm;
+        border-top: 2px solid #0f1923;
+    }
+
+    .hep-page .print-progress-tracker h3 {
+        margin: 0 0 1.5mm;
+        font-family: Georgia, serif;
+        font-size: 14pt;
+    }
+
+    .hep-page .print-progress-tracker > p {
+        margin: 0 0 3mm;
+        font-size: 8.5pt;
+    }
+
+    .hep-page .print-progress-tracker table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+        font-size: 8.5pt;
+    }
+
+    .hep-page .print-progress-tracker th,
+    .hep-page .print-progress-tracker td {
+        height: 7mm;
+        padding: 1mm 2mm;
+        border: 1px solid #888888;
+        text-align: center;
+    }
+
+    .hep-page .print-progress-tracker th:first-child {
+        width: 12mm;
+    }
+
+    .hep-page .print-progress-tracker :is(th, td):nth-child(2),
+    .hep-page .print-progress-tracker :is(th, td):nth-child(3),
+    .hep-page .print-progress-tracker :is(th, td):nth-child(4) {
+        width: 11mm;
+    }
+
+    .hep-page .print-progress-tracker th:last-child,
+    .hep-page .print-progress-tracker td:last-child {
+        text-align: left;
+    }
+
+    .hep-page .print-progress-tracker input {
+        width: 3.5mm;
+        height: 3.5mm;
+        margin: 0;
+    }
+
+    .hep-page .print-program-footer {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-top: 5mm;
+        padding-top: 4mm;
+        border-top: 2px solid #0f1923;
+        font-size: 8pt;
+        line-height: 1.4;
+    }
+
+    .hep-page .print-program-footer p {
+        margin: 0 0 1.5mm;
+        overflow-wrap: anywhere;
     }
 
     .hep-page a {

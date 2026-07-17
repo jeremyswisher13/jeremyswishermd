@@ -29,8 +29,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300,0,0" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css?v=20260717-hep2">
-    <link rel="stylesheet" href="../landing-pages.css?v=20260717-hep2">
+    <link rel="stylesheet" href="../styles.css?v=20260717-hep3">
+    <link rel="stylesheet" href="../landing-pages.css?v=20260717-hep3">
 
     <script type="application/ld+json">
     {
@@ -140,9 +140,10 @@
                         <h1 id="page-title">Reduce compression, then build hip capacity.</h1>
                         <p class="landing-summary">Education plus progressive exercise is first-line care for gluteal tendinopathy. This plan pairs practical position changes with hip and lower-limb strengthening.</p>
                         <div class="landing-actions">
-                            <button class="btn btn-primary print-program-button" type="button" data-print-program><span class="material-symbols-outlined" aria-hidden="true">print</span>Print this program</button>
+                            <button class="btn btn-primary print-program-button" type="button" data-print-program aria-label="Print this program or save it as a PDF"><span class="material-symbols-outlined" aria-hidden="true">print</span><span data-print-label>Print this program</span></button>
                             <a href="tel:310-319-1234" class="btn btn-outline">Call 310-319-1234</a>
                         </div>
+                        <p class="sr-only" id="printStatus" role="status" aria-live="polite"></p>
                         <p class="page-update">Clinically reviewed July 2026</p>
                     </div>
                     <aside class="landing-authority" aria-label="Program overview">
@@ -186,12 +187,19 @@
             <div class="landing-shell landing-layout">
                 <article class="landing-article">
                     <div class="print-only print-program-header">
-                        <p>Jeremy Swisher, MD</p>
+                        <div class="print-program-brand"><p>Jeremy Swisher, MD</p><p>Evidence-based home exercise program</p></div>
                         <h2>Gluteal Tendinopathy Home Exercise Program</h2>
-                        <p>Name: ______________________________ Date: __________________</p>
+                        <div class="print-program-fields"><p>Name: __________________________________</p><p>Affected side: ______________</p><p>Start date: __________________</p><p>Review date: _________________</p><p>Clinician or PT: ______________________________</p></div>
                     </div>
 
-                    <section class="content-section" id="fit">
+                    <section class="print-only print-program-brief" aria-label="Program fit and safety summary">
+                        <div><h3>This program may fit</h3><p>Pain and tenderness around the greater trochanter, often aggravated by side-lying, prolonged walking, stairs, or standing on one leg.</p></div>
+                        <div><h3>Get assessed first</h3><p>Groin-dominant pain, major hip stiffness, rapidly progressive weakness, a substantial limp, recent trauma, lumbar nerve symptoms, or a diagnosis that remains uncertain.</p></div>
+                        <div class="print-program-stop"><h3>Stop signs</h3><p>Acute trauma with inability to bear weight, rapidly progressive hip weakness, a marked Trendelenburg gait, fever, deep groin pain with major motion loss, neurologic symptoms, or unexplained systemic or night pain.</p></div>
+                        <div class="print-program-rule"><h3>Use the next morning</h3><p>Some discomfort can be acceptable when it does not increase night pain or next-day symptoms. Night pain is a useful signal that total walking, standing, and exercise load may be too high.</p></div>
+                    </section>
+
+                    <section class="content-section print-secondary" id="fit">
                         <p class="section-label">Fit and safety</p>
                         <h2>Start with the right problem.</h2>
                         <p class="section-intro">This starter program is intended for adults who have already been evaluated and told gluteal tendinopathy is the likely diagnosis. It is not a self-diagnosis tool, a postoperative protocol, or a substitute for individualized care.</p>
@@ -227,6 +235,7 @@
                                         <div><strong>Make it easier</strong><p>Use less pressure or a shorter hold.</p></div>
                                         <div><strong>Progress it</strong><p>Increase the hold or band resistance without increasing night pain.</p></div>
                                     </div>
+                                    <p class="print-only print-exercise-prescription"><strong>My starting dose or notes</strong><span aria-hidden="true"></span></p>
                                 </div>
                             </li>
                             <li class="exercise-item">
@@ -242,6 +251,7 @@
                                         <div><strong>Make it easier</strong><p>Use a smaller range.</p></div>
                                         <div><strong>Progress it</strong><p>Add a band, use a staggered stance, or progress toward an offset bridge.</p></div>
                                     </div>
+                                    <p class="print-only print-exercise-prescription"><strong>My starting dose or notes</strong><span aria-hidden="true"></span></p>
                                 </div>
                             </li>
                             <li class="exercise-item">
@@ -257,6 +267,7 @@
                                         <div><strong>Make it easier</strong><p>Use a higher chair or push lightly from the armrests.</p></div>
                                         <div><strong>Progress it</strong><p>Lower the chair or hold light external weight.</p></div>
                                     </div>
+                                    <p class="print-only print-exercise-prescription"><strong>My starting dose or notes</strong><span aria-hidden="true"></span></p>
                                 </div>
                             </li>
                             <li class="exercise-item">
@@ -272,6 +283,7 @@
                                         <div><strong>Make it easier</strong><p>Move the band above the knees or take smaller steps.</p></div>
                                         <div><strong>Progress it</strong><p>Use a stronger band or place it closer to the ankles.</p></div>
                                     </div>
+                                    <p class="print-only print-exercise-prescription"><strong>My starting dose or notes</strong><span aria-hidden="true"></span></p>
                                 </div>
                             </li>
                             <li class="exercise-item">
@@ -287,6 +299,7 @@
                                         <div><strong>Make it easier</strong><p>Use no band and a smaller range.</p></div>
                                         <div><strong>Progress it</strong><p>Increase band resistance or pause at the end range.</p></div>
                                     </div>
+                                    <p class="print-only print-exercise-prescription"><strong>My starting dose or notes</strong><span aria-hidden="true"></span></p>
                                 </div>
                             </li>
                         </ol>
@@ -328,6 +341,30 @@
                         <div class="clinician-panel"><span class="material-symbols-outlined" aria-hidden="true">medical_services</span><div><h3>When to schedule an evaluation</h3><p>Schedule a visit if groin pain or major stiffness suggests hip-joint disease, weakness or limping is progressing, neurologic symptoms are present, or an eight-week education and loading program is not improving function.</p><a href="tel:310-319-1234" class="text-link">Call UCLA Orthopedics at 310-319-1234 <span class="material-symbols-outlined" aria-hidden="true">call</span></a></div></div>
                     </section>
 
+                    <section class="print-only print-progress-tracker" aria-labelledby="print-tracker-title">
+                        <h3 id="print-tracker-title">Six-week check-in</h3>
+                        <p>Mark up to three key strength or loading sessions each week. Use the notes column for symptoms, resistance, walking time, or a functional win.</p>
+                        <table>
+                            <thead><tr><th>Week</th><th>1</th><th>2</th><th>3</th><th>Notes</th></tr></thead>
+                            <tbody>
+                                <tr><th scope="row">1</th><td><input type="checkbox" aria-label="Week 1 session 1"></td><td><input type="checkbox" aria-label="Week 1 session 2"></td><td><input type="checkbox" aria-label="Week 1 session 3"></td><td></td></tr>
+                                <tr><th scope="row">2</th><td><input type="checkbox" aria-label="Week 2 session 1"></td><td><input type="checkbox" aria-label="Week 2 session 2"></td><td><input type="checkbox" aria-label="Week 2 session 3"></td><td></td></tr>
+                                <tr><th scope="row">3</th><td><input type="checkbox" aria-label="Week 3 session 1"></td><td><input type="checkbox" aria-label="Week 3 session 2"></td><td><input type="checkbox" aria-label="Week 3 session 3"></td><td></td></tr>
+                                <tr><th scope="row">4</th><td><input type="checkbox" aria-label="Week 4 session 1"></td><td><input type="checkbox" aria-label="Week 4 session 2"></td><td><input type="checkbox" aria-label="Week 4 session 3"></td><td></td></tr>
+                                <tr><th scope="row">5</th><td><input type="checkbox" aria-label="Week 5 session 1"></td><td><input type="checkbox" aria-label="Week 5 session 2"></td><td><input type="checkbox" aria-label="Week 5 session 3"></td><td></td></tr>
+                                <tr><th scope="row">6</th><td><input type="checkbox" aria-label="Week 6 session 1"></td><td><input type="checkbox" aria-label="Week 6 session 2"></td><td><input type="checkbox" aria-label="Week 6 session 3"></td><td></td></tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <div class="print-only print-program-footer">
+                        <p><strong>Questions or need an evaluation?</strong> Call UCLA Orthopedics at 310-319-1234.</p>
+                        <p><strong>Full guide, references, and updates:</strong> https://jeremyswisher13.github.io/jeremyswishermd/gluteal-tendinopathy-exercises/</p>
+                        <p><strong>Clinically reviewed:</strong> July 17, 2026.</p>
+                        <p>This is the independent professional website of Jeremy Swisher, MD, not an official UCLA Health website. UCLA Health manages appointments and clinical communication.</p>
+                        <p>For general educational information only, not individualized medical advice. If you have a medical emergency, call 911.</p>
+                    </div>
+
                     <section class="content-section print-secondary" aria-labelledby="faq-title">
                         <p class="section-label">Common questions</p>
                         <h2 id="faq-title">Gluteal tendinopathy exercises FAQs</h2>
@@ -355,7 +392,8 @@
                         <p class="section-label">Use this at home</p>
                         <h2>Print the plan</h2>
                         <p>Keep the exercise dose, symptom rules, and progression markers together.</p>
-                        <button class="btn btn-primary print-program-button" type="button" data-print-program><span class="material-symbols-outlined" aria-hidden="true">print</span>Print this program</button>
+                        <button class="btn btn-primary print-program-button" type="button" data-print-program aria-label="Print this program or save it as a PDF"><span class="material-symbols-outlined" aria-hidden="true">print</span><span data-print-label>Print this program</span></button>
+                        <p class="print-helper">The print dialog also lets you save a PDF.</p>
                     </div>
                     <div class="sidebar-panel sidebar-panel-light">
                         <p class="section-label">Not sure of the diagnosis?</p>
@@ -400,6 +438,6 @@
     </main>
 
     <footer class="footer no-print"><div class="landing-shell"><div class="footer-content"><div class="footer-brand"><span class="footer-name">Jeremy Swisher, MD</span><span class="footer-title">UCLA Sports Medicine</span></div><nav class="landing-footer-nav" aria-label="Care pages"><a href="../tendon-pain/">Tendon Pain</a><a href="../knee-hip-shoulder-pain/">Joint Pain</a><a href="../sports-injuries/">Sports Injuries</a><a href="../osteoarthritis-care/">Osteoarthritis</a><a href="../home-exercise-programs/">Exercise Programs</a><a href="../prp-knee-osteoarthritis/">PRP for Knee OA</a><a href="../hyaluronic-acid-knee-osteoarthritis/">Hyaluronic Acid</a><a href="../msk-ultrasound-guided-procedures/">MSK Ultrasound</a><a href="../locations/">Locations</a></nav><p class="footer-copy">&copy; 2026 Jeremy Swisher, MD.</p></div><p class="footer-professional-disclosure"><strong>This is the independent professional website of Jeremy Swisher, MD.</strong> References to UCLA Health describe his current employment and clinical practice. This is not an official UCLA Health website. The views and educational content are his own and do not necessarily represent UCLA Health or the University of California. UCLA Health manages appointments, medical records, billing, and clinical communication.</p><p class="footer-disclaimer">For general educational information only; not individualized medical advice. If you have a medical emergency, call 911.</p></div></footer>
-    <script src="../script.js?v=20260717-hep2"></script>
+    <script src="../script.js?v=20260717-hep3"></script>
 </body>
 </html>

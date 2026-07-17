@@ -47,6 +47,7 @@ function renderExercises(items) {
         '                                        <div><strong>Make it easier</strong><p>' + escapeHtml(item.easier) + '</p></div>',
         '                                        <div><strong>Progress it</strong><p>' + escapeHtml(item.harder) + '</p></div>',
         '                                    </div>',
+        '                                    <p class="print-only print-exercise-prescription"><strong>My starting dose or notes</strong><span aria-hidden="true"></span></p>',
         '                                </div>',
         '                            </li>'
     ].join('\n')).join('\n');

@@ -304,7 +304,63 @@ const initialPublicationFilter = publicationFilters.find(filter => (
 
 if (initialPublicationFilter) selectPublicationFilter(initialPublicationFilter);
 
-// Print patient home exercise programs without site navigation or conversion elements.
-document.querySelectorAll('[data-print-program]').forEach(button => {
-    button.addEventListener('click', () => window.print());
+// Open the native print dialog for patient home exercise programs.
+const printProgramButtons = Array.from(document.querySelectorAll('[data-print-program]'));
+const printProgramStatus = document.getElementById('printStatus');
+
+let printProgramResetTimer = null;
+
+function resetPrintProgramState(announce = false) {
+    if (printProgramResetTimer) {
+        window.clearTimeout(printProgramResetTimer);
+        printProgramResetTimer = null;
+    }
+
+    document.body.classList.remove('is-printing');
+    printProgramButtons.forEach(button => {
+        button.disabled = false;
+        button.removeAttribute('aria-busy');
+    });
+
+    if (announce && printProgramStatus) {
+        printProgramStatus.textContent = 'Print dialog closed. Your program is ready on the page.';
+    }
+}
+
+function openPrintProgram(button) {
+    if (typeof window.print !== 'function') {
+        if (printProgramStatus) {
+            printProgramStatus.textContent = 'Printing is unavailable in this browser. Use the browser menu and choose Print.';
+        }
+        return;
+    }
+
+    document.body.classList.add('is-printing');
+    printProgramButtons.forEach(printButton => {
+        printButton.disabled = true;
+        printButton.setAttribute('aria-busy', 'true');
+    });
+
+    if (printProgramStatus) {
+        printProgramStatus.textContent = 'Print dialog opened. Choose a printer or Save as PDF.';
+    }
+
+    try {
+        const printRequest = new CustomEvent('hep:print-request', { cancelable: true });
+        if (!document.dispatchEvent(printRequest)) return;
+        window.print();
+    } catch {
+        if (printProgramStatus) {
+            printProgramStatus.textContent = 'The print dialog could not open. Use the browser menu and choose Print.';
+        }
+    } finally {
+        printProgramResetTimer = window.setTimeout(() => resetPrintProgramState(false), 500);
+    }
+}
+
+printProgramButtons.forEach(button => {
+    button.addEventListener('click', () => openPrintProgram(button));
 });
+
+window.addEventListener('beforeprint', () => document.body.classList.add('is-printing'));
+window.addEventListener('afterprint', () => resetPrintProgramState(true));
