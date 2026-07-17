@@ -2816,7 +2816,7 @@ body {
     }
 }
 
-@media (max-width: 1120px) {
+@media (max-width: 1180px) {
     .nav-links {
         top: 78px;
         background: var(--color-bg);

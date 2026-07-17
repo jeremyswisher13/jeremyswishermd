@@ -1,7 +1,7 @@
 // Mobile Navigation Toggle
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
-const MOBILE_NAV_BREAKPOINT = 1120;
+const MOBILE_NAV_BREAKPOINT = 1180;
 const mobileNavMedia = typeof window.matchMedia === 'function'
     ? window.matchMedia(`(max-width: ${MOBILE_NAV_BREAKPOINT}px)`)
     : null;
@@ -134,7 +134,9 @@ const inPageTargetIds = new Set(inPageNavLinks.map(item => item.targetId));
 allNavLinkElements.forEach(link => {
     if (!inPageNavLinks.some(item => item.link === link)) {
         link.classList.remove('active');
-        link.removeAttribute('aria-current');
+        if (link.getAttribute('aria-current') !== 'page') {
+            link.removeAttribute('aria-current');
+        }
     }
 });
 
