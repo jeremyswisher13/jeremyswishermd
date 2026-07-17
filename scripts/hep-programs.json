@@ -1,15 +1,16 @@
 [
   {
     "slug": "knee-osteoarthritis-exercises",
-    "title": "Knee Osteoarthritis Home Exercise Program",
-    "shortTitle": "Knee osteoarthritis exercises",
+    "title": "Beginner Knee Osteoarthritis Home Exercise Program",
+    "shortTitle": "Beginner knee osteoarthritis exercises",
     "conditionName": "Knee osteoarthritis",
-    "metaDescription": "A printable, evidence-based starter exercise program for knee osteoarthritis with strength, aerobic activity, symptom rules, progression, and safety guidance.",
-    "breadcrumb": "Knee osteoarthritis",
-    "kicker": "Knee osteoarthritis · Home exercise plan",
-    "h1": "Build a knee that can do more.",
-    "summary": "A progressive strength and aerobic program is foundational treatment for knee osteoarthritis. This starter plan gives you a practical dose, clear progression, and a next-day symptom rule.",
-    "authorityTitle": "Strength. Movement. Consistency.",
+    "metaDescription": "A printable, evidence-based beginner exercise program for knee osteoarthritis with supported strength, aerobic activity, symptom rules, and clear progression.",
+    "breadcrumb": "Beginner knee osteoarthritis",
+    "kicker": "Knee osteoarthritis · Beginner home exercise plan",
+    "h1": "Start with strength you can repeat.",
+    "summary": "Exercise is foundational treatment for knee osteoarthritis. This lower-complexity plan builds strength for walking, stairs, and chair transfers with a practical dose and a next-morning symptom rule.",
+    "programLevel": "Beginner program",
+    "authorityTitle": "Start. Adapt. Build.",
     "authorityItems": [
       { "icon": "chair", "text": "Five practical movements for daily function" },
       { "icon": "directions_walk", "text": "Strength plus walking or cycling" },
@@ -20,12 +21,12 @@
       { "strong": "2 to 3 days", "span": "of strength work each week" },
       { "strong": "6 weeks", "span": "to look for a functional trend" }
     ],
-    "fitIntro": "This starter program is intended for adults who have already been evaluated and told knee osteoarthritis is the likely diagnosis. It is not a self-diagnosis tool, a postoperative protocol, or a substitute for individualized care.",
+    "fitIntro": "This beginner program is intended for adults who have already been evaluated and told knee osteoarthritis is the likely diagnosis. It is not a self-diagnosis tool, a postoperative protocol, or a substitute for individualized care.",
     "fit": "Activity-related knee pain and stiffness, often in adults over 45, with difficulty during walking, stairs, rising from a chair, or prolonged activity.",
     "assessFirst": "Recent major injury, a diagnosis that is uncertain, substantial instability, inflammatory arthritis, recent surgery, or pain that is mainly coming from the hip, back, or nerves.",
     "redFlags": "A hot red swollen joint, fever, inability to bear weight after trauma, true locking or loss of extension, rapid deformity, marked calf swelling, shortness of breath, or unexplained persistent rest or night pain.",
-    "programHeading": "Train the tasks your knee needs.",
-    "programIntro": "Exercise selection has stronger evidence than any single sets-and-repetitions formula. Begin with a dose that keeps movement controlled, then build repetitions, resistance, range, or time gradually.",
+    "programHeading": "Build a base for daily life.",
+    "programIntro": "No single exercise mode or dose is best for everyone. Start with one set if needed, use a range that keeps movement controlled, then build repetitions, sets, resistance, range, or time gradually.",
     "frequency": "Strength 2 to 3 days per week; aerobic activity on most days",
     "equipment": "Stable chair, low step, optional band or backpack",
     "checkpoint": "Reassess function after 6 weeks",
@@ -33,7 +34,7 @@
     "exercises": [
       {
         "name": "Sit to stand",
-        "dose": "2 to 3 sets of 6 to 12 repetitions",
+        "dose": "1 to 3 sets of 5 to 10 repetitions",
         "frequency": "2 to 3 days per week",
         "how": "Sit near the front of a stable chair. Lean your chest slightly forward, press through both feet, stand tall, then lower with control.",
         "easier": "Use a higher chair or push lightly from the armrests.",
@@ -41,7 +42,7 @@
       },
       {
         "name": "Low step-up",
-        "dose": "2 to 3 sets of 6 to 12 repetitions per side",
+        "dose": "1 to 3 sets of 5 to 10 repetitions per side",
         "frequency": "2 to 3 days per week",
         "how": "Place one foot on a low step. Keep the knee tracking over the middle toes, rise onto the step, then lower slowly. Use a rail for balance.",
         "easier": "Use a shorter step and more hand support.",
@@ -49,7 +50,7 @@
       },
       {
         "name": "Bridge",
-        "dose": "2 to 3 sets of 8 to 15 repetitions",
+        "dose": "1 to 3 sets of 8 to 15 repetitions",
         "frequency": "2 to 3 days per week",
         "how": "Lie on your back with knees bent. Tighten your trunk, press through the heels, lift the hips until the body forms a comfortable line, then lower slowly.",
         "easier": "Lift through a smaller range.",
@@ -57,7 +58,7 @@
       },
       {
         "name": "Seated knee extension",
-        "dose": "2 to 3 sets of 8 to 15 repetitions per side",
+        "dose": "1 to 3 sets of 8 to 15 repetitions per side",
         "frequency": "2 to 3 days per week",
         "how": "Sit tall. Slowly straighten one knee, pause with the thigh supported, then lower with control. Keep the movement smooth rather than snapping the knee straight.",
         "easier": "Use a smaller range or fewer repetitions.",
@@ -65,7 +66,7 @@
       },
       {
         "name": "Walking or cycling base",
-        "dose": "Start with 10 to 20 minutes",
+        "dose": "Start with 5 to 10 minutes",
         "frequency": "Most days",
         "how": "Choose walking, stationary cycling, swimming, or another rhythmic activity that you can repeat consistently. A shorter session still counts.",
         "easier": "Use two shorter sessions or choose a lower-impact option.",
@@ -79,31 +80,149 @@
     "progression": [
       { "title": "Stage 1: establish tolerance", "text": "Use a comfortable range and the lower end of each repetition range. Prioritize smooth movement and a stable next-day response." },
       { "title": "Stage 2: build strength", "text": "Reach the top of the repetition range, then lower the chair, raise the step, add a band or backpack, or slow the lowering phase." },
-      { "title": "Stage 3: build real-world capacity", "text": "Increase walking or cycling time, add stairs or hills gradually, and practice the specific activities you want to regain." }
+      { "title": "Stage 3: decide whether to advance", "text": "Increase walking or cycling time and practice the activities you want to regain. Consider the advanced program when the full beginner dose is controlled and your goals require more strength for stairs, hills, carrying, or recreation." }
     ],
     "readyItems": [
       "The current dose feels controlled for several sessions.",
       "Symptoms return to baseline by the next morning.",
-      "Walking and chair transfers are becoming easier.",
-      "You can add one variable without losing movement quality."
+      "You can complete the upper repetition range with controlled movement.",
+      "Your goals require more strength for stairs, hills, carrying, or recreation."
     ],
     "evaluation": "Schedule a visit if symptoms are worsening, function is not trending better after about six weeks, swelling repeatedly limits exercise, or you need help distinguishing arthritis from another knee problem.",
     "faqs": [
       { "q": "Should I avoid exercise because the knee is worn down?", "a": "No. Exercise does not wear out the joint. Progressive strength and aerobic activity are core treatments for knee osteoarthritis and can improve pain, function, and confidence." },
       { "q": "Which exercise is best for knee arthritis?", "a": "No single mode is universally superior. Strength, aerobic activity, and mobility can all help. The best plan is one you can perform consistently and progress without a sustained symptom flare." },
       { "q": "Can I exercise when the knee hurts?", "a": "Some discomfort can be acceptable. Use the next-day response: if pain, swelling, or limping remains meaningfully worse the following morning, reduce the dose." },
-      { "q": "How long should I continue?", "a": "Use six to twelve weeks to build the habit and assess the trend, then continue the useful elements long term. Benefits are maintained through ongoing activity." }
+      { "q": "How long should I continue?", "a": "Use six to twelve weeks to build the habit and assess the trend, then continue the useful elements long term. Benefits are maintained through ongoing activity." },
+      { "q": "When should I move to the advanced program?", "a": "Consider advancing when you can complete this program at the intended dose with controlled movement, your knee returns to its usual baseline by the next morning, and your goals require greater strength or endurance. Advanced refers to exercise complexity, not arthritis severity." }
     ],
     "sources": [
-      { "href": "https://www.healthquality.va.gov/guidelines/cd/oa/index.asp", "label": "VA/DoD Clinical Practice Guideline for Non-Surgical Management of Hip and Knee Osteoarthritis, 2026" },
+      { "href": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/CD/OA/Osteoarthritis-CPG_2026-Guideline_final_20260618.pdf", "label": "VA/DoD Clinical Practice Guideline for Non-Surgical Management of Hip and Knee Osteoarthritis, 2026" },
       { "href": "https://www.nice.org.uk/guidance/ng226/chapter/recommendations", "label": "NICE: Osteoarthritis in Over 16s, Diagnosis and Management" },
       { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11488261/", "label": "American College of Rheumatology and Arthritis Foundation Guideline for Osteoarthritis" },
-      { "href": "https://www.bmj.com/content/391/bmj-2025-085242", "label": "BMJ: Exercise Treatments for Knee and Hip Osteoarthritis Network Meta-analysis, 2025" }
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/41093618/", "label": "BMJ: Comparative Efficacy and Safety of Exercise Modalities in Knee Osteoarthritis, 2025" }
     ],
     "related": [
+      { "href": "../knee-osteoarthritis-advanced-exercises/", "eyebrow": "Ready to progress?", "title": "Knee osteoarthritis advanced exercises" },
       { "href": "../osteoarthritis-care/", "eyebrow": "Whole-person plan", "title": "Osteoarthritis care beyond exercise" },
-      { "href": "../prp-knee-osteoarthritis/", "eyebrow": "Procedure evidence", "title": "PRP for knee osteoarthritis" },
-      { "href": "../hyaluronic-acid-knee-osteoarthritis/", "eyebrow": "Compare options", "title": "Hyaluronic acid for knee OA" }
+      { "href": "../osteoarthritis-care/#injections", "eyebrow": "Compare options", "title": "Where injections may fit" }
+    ]
+  },
+  {
+    "slug": "knee-osteoarthritis-advanced-exercises",
+    "title": "Knee Osteoarthritis Advanced Home Exercise Program",
+    "shortTitle": "Knee osteoarthritis advanced exercises",
+    "conditionName": "Knee osteoarthritis",
+    "metaDescription": "A printable, evidence-based advanced exercise program for knee osteoarthritis with loaded strength, single-leg control, aerobic progression, and safety guidance.",
+    "breadcrumb": "Knee osteoarthritis advanced exercises",
+    "kicker": "Knee osteoarthritis · Advanced home exercise plan",
+    "h1": "Build strength for stairs, hills, and more.",
+    "summary": "This progression is for people who tolerate the beginner program and want greater strength, single-leg control, and aerobic capacity for higher-demand daily or recreational activity.",
+    "programLevel": "Advanced program",
+    "authorityTitle": "Load. Control. Capacity.",
+    "authorityItems": [
+      { "icon": "fitness_center", "text": "Progressive resistance for larger strength demands" },
+      { "icon": "balance", "text": "Single-leg control for stairs, hills, and uneven ground" },
+      { "icon": "monitoring", "text": "A next-morning rule that keeps progression understandable" }
+    ],
+    "proof": [
+      { "strong": "6 movements", "span": "strength, control, and aerobic capacity" },
+      { "strong": "2 to 3 days", "span": "of strength work each week" },
+      { "strong": "6 to 8 weeks", "span": "to assess a functional trend" }
+    ],
+    "fitIntro": "This advanced exercise program is intended for adults with an established knee osteoarthritis diagnosis who tolerate the beginner program and want more capacity for demanding daily or recreational activity. Advanced describes exercise complexity, not X-ray severity.",
+    "fit": "Stable next-day symptoms with the beginner program and goals such as stronger stairs, hills, carrying, hiking, travel, or recreation.",
+    "assessFirst": "Frequent swelling, repeated giving way or falls, inability to tolerate the beginner plan, a recent major injury or surgery, an uncertain diagnosis, or medical conditions that may require an individualized exercise prescription.",
+    "redFlags": "A hot red swollen joint, fever, inability to bear weight after trauma, true locking or loss of extension, rapid deformity, marked calf swelling, shortness of breath, or unexplained persistent rest or night pain.",
+    "programHeading": "Progress the demand, not the flare.",
+    "programIntro": "No exercise intensity or mode is proven best for every person with knee osteoarthritis. Advanced does not mean maximal effort. Choose loads that preserve control with two or three good repetitions still available, progress one variable at a time, and use the next-morning response to judge the total dose.",
+    "frequency": "Strength 2 to 3 nonconsecutive days per week; aerobic activity 3 to 5 days per week",
+    "equipment": "Stable chair, step, resistance band, and dumbbell or loaded backpack",
+    "checkpoint": "Reassess strength and function after 6 to 8 weeks",
+    "goal": "Greater capacity for stairs, hills, carrying, hiking, and recreation",
+    "exercises": [
+      {
+        "name": "Loaded squat to a chair",
+        "dose": "3 sets of 6 to 12 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Hold a dumbbell or loaded backpack close to your chest. Sit the hips back toward a stable chair, keep both feet grounded, then stand tall with controlled knee alignment.",
+        "easier": "Use a higher chair, lighter load, or smaller range.",
+        "harder": "Add a small amount of weight or lower the chair after the upper repetition range feels controlled."
+      },
+      {
+        "name": "Supported split squat",
+        "dose": "2 to 3 sets of 6 to 10 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Stand in a staggered stance beside a stable support. Lower both knees through a comfortable range while keeping the front foot planted, then push through the front leg to rise.",
+        "easier": "Use more hand support, a shorter stance, or a smaller range.",
+        "harder": "Use less support, increase the range, or hold light weight."
+      },
+      {
+        "name": "Step-up with controlled step-down",
+        "dose": "2 to 3 sets of 6 to 10 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Step onto a stable step, stand fully, then lower over three seconds without dropping the pelvis or letting the knee collapse inward. Keep a rail within reach.",
+        "easier": "Use a shorter step, fingertip support, or a slower unweighted version.",
+        "harder": "Add light weight or increase step height one level at a time."
+      },
+      {
+        "name": "Resisted knee extension",
+        "dose": "2 to 4 sets of 8 to 15 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Anchor a resistance band behind the chair or use an ankle weight. Straighten one knee smoothly, pause, then lower over two to three seconds while the thigh stays supported.",
+        "easier": "Use lighter resistance or a smaller comfortable range.",
+        "harder": "Increase resistance gradually after 15 controlled repetitions."
+      },
+      {
+        "name": "Supported single-leg hip hinge",
+        "dose": "2 to 3 sets of 6 to 10 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Stand beside a stable support with most of your weight on one leg. Keep a soft knee, hinge the trunk forward from the hip, then squeeze the hip to return upright without twisting.",
+        "easier": "Keep the back toes on the floor as a kickstand and use hand support.",
+        "harder": "Lift the back foot, reduce hand support, or hold a light weight."
+      },
+      {
+        "name": "Aerobic capacity progression",
+        "dose": "Build toward 20 to 40 minutes",
+        "frequency": "3 to 5 days per week",
+        "how": "Choose walking, cycling, swimming, or another repeatable activity. Build total time first. When the next-morning response is stable, one session can include short brisk intervals or gentle hills.",
+        "easier": "Use 10 to 20 continuous minutes, split the session, or choose cycling or pool exercise.",
+        "harder": "Add one interval, a small hill, or 2 to 5 minutes, but not all three at once."
+      }
+    ],
+    "responseIntro": "Mild to moderate discomfort can be acceptable when technique remains controlled and pain, swelling, limping, and function return to your usual baseline by the next morning.",
+    "green": "Mild discomfort, steady movement quality, no new limp, and the knee is back to its usual baseline by the following morning.",
+    "yellow": "Pain, swelling, limping, or stair function is meaningfully worse later that day or remains worse the next morning. Reduce load, range, repetitions, step height, or aerobic time.",
+    "red": "Sharp pain, true locking, repeated giving way, a rapidly enlarging swelling, a hot red joint, or inability to bear weight. Stop and seek assessment.",
+    "progression": [
+      { "title": "Stage 1: own the movements", "text": "Start at the lower dose with support and a comfortable range. Keep two or three good repetitions available rather than training to failure." },
+      { "title": "Stage 2: add one strength variable", "text": "First reach the upper repetition range. Then add a small amount of resistance, range, step height, or single-leg demand while the next-morning response stays stable." },
+      { "title": "Stage 3: train the goal", "text": "Build the stairs, hills, carrying, walking duration, or recreational task you want. Increase only one demand at a time so you can interpret the response." }
+    ],
+    "readyItems": [
+      "The current load and range feel controlled for several sessions.",
+      "Symptoms return to baseline by the next morning.",
+      "The right and left sides complete the task without a new limp or loss of balance.",
+      "You can increase one variable without swelling or a meaningful loss of next-day function."
+    ],
+    "evaluation": "Schedule a visit if symptoms are worsening, swelling repeatedly limits progression, the knee locks or gives way, function is not trending better after six to eight weeks, or you need an individualized plan for a higher-risk medical condition or sport goal.",
+    "faqs": [
+      { "q": "Does advanced mean my arthritis is severe?", "a": "No. Advanced describes the exercise challenge, not X-ray grade or disease severity. A person with substantial X-ray changes may need a beginner plan, while someone with milder changes may tolerate more complex loading." },
+      { "q": "Is heavier exercise better for knee pain?", "a": "Not necessarily. High-intensity strength training has not shown better knee-pain outcomes than lower-intensity training. Use enough resistance to build capacity while preserving control and a stable next-day response." },
+      { "q": "Should I train through swelling?", "a": "No. A small, brief symptom increase may be acceptable, but meaningful or persistent swelling is a sign to reduce the dose and consider an evaluation if it keeps returning." },
+      { "q": "Do I need to do all six exercises every session?", "a": "No. Two or three strength sessions can divide the movements across the week. Consistency and progressive exposure matter more than completing every exercise in one session." },
+      { "q": "Do I need jumping or running in an advanced arthritis program?", "a": "No. Impact exercise is optional and should match your goals, examination, history, and tolerance. Strong walking, stairs, cycling, hiking, and resistance training are meaningful advanced goals without jumping." }
+    ],
+    "sources": [
+      { "href": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/CD/OA/Osteoarthritis-CPG_2026-Guideline_final_20260618.pdf", "label": "VA/DoD Clinical Practice Guideline for Non-Surgical Management of Hip and Knee Osteoarthritis, 2026" },
+      { "href": "https://www.aaos.org/globalassets/quality-and-practice-resources/osteoarthritis-of-the-knee/oak3cpg.pdf", "label": "AAOS Clinical Practice Guideline: Management of Osteoarthritis of the Knee" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7887656/", "label": "START Randomized Clinical Trial: High-Intensity Versus Low-Intensity Strength Training" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/41093618/", "label": "BMJ: Comparative Efficacy and Safety of Exercise Modalities in Knee Osteoarthritis, 2025" }
+    ],
+    "related": [
+      { "href": "../knee-osteoarthritis-exercises/", "eyebrow": "Start with the basics", "title": "Beginner knee osteoarthritis exercises" },
+      { "href": "../osteoarthritis-care/", "eyebrow": "Whole-person plan", "title": "Osteoarthritis care beyond exercise" },
+      { "href": "../osteoarthritis-care/#injections", "eyebrow": "Compare options", "title": "Where injections may fit" }
     ]
   },
   {
@@ -520,7 +639,7 @@
     "related": [
       { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Hip evaluation", "title": "Knee, hip, and shoulder pain" },
       { "href": "../tendon-pain/", "eyebrow": "Tendon principles", "title": "Evidence-based tendon care" },
-      { "href": "../knee-osteoarthritis-exercises/", "eyebrow": "Lower-limb plan", "title": "Knee osteoarthritis exercises" }
+      { "href": "../knee-osteoarthritis-exercises/", "eyebrow": "Lower-limb plan", "title": "Beginner knee osteoarthritis exercises" }
     ]
   },
   {

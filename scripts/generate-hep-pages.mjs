@@ -145,6 +145,7 @@ for (const program of programs) {
         KICKER: program.kicker,
         H1: program.h1,
         SUMMARY: program.summary,
+        PROGRAM_LEVEL: program.programLevel || 'Starter program',
         AUTHORITY_TITLE: program.authorityTitle,
         AUTHORITY_ITEMS: renderAuthorityItems(program.authorityItems),
         PROOF_ITEMS: renderProofItems(program.proof),
