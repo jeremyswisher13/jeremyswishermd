@@ -2853,12 +2853,12 @@ body {
         background: var(--color-bg);
     }
 
-    .nav-toggle {
+    .nav-ready .nav-toggle {
         display: flex;
     }
 
     .nav-links {
-        display: none;
+        display: flex;
         position: absolute;
         right: 0;
         left: 0;
@@ -2872,7 +2872,11 @@ body {
         box-shadow: var(--shadow-md);
     }
 
-    .nav-links.open {
+    .nav-ready .nav-links {
+        display: none;
+    }
+
+    .nav-ready .nav-links.open {
         display: flex;
     }
 

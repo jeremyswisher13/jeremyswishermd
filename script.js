@@ -1,4 +1,7 @@
 // Mobile Navigation Toggle
+// The navigation remains visible if this script does not load. Once JavaScript is
+// ready, the mobile menu becomes a compact toggle.
+document.documentElement.classList.add('nav-ready');
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
 const MOBILE_NAV_BREAKPOINT = 1180;
@@ -252,7 +255,7 @@ function syncPublicationDisclosure() {
     pubToggleBtn.setAttribute('aria-expanded', String(isExpanded));
     pubToggleBtn.textContent = isExpanded
         ? 'Show Less'
-        : `Browse All ${TOTAL_PUBLICATIONS} Publications`;
+        : `Browse All ${TOTAL_PUBLICATIONS} Scholarly Works`;
 }
 
 if (pubToggleBtn && pubFullList) {

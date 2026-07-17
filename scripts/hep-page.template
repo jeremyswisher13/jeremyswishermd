@@ -29,8 +29,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300,0,0" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css?v=20260717-hep3">
-    <link rel="stylesheet" href="../landing-pages.css?v=20260717-hep3">
+    <link rel="stylesheet" href="../styles.css?v=20260717-audit1">
+    <link rel="stylesheet" href="../landing-pages.css?v=20260717-audit1">
 
     <script type="application/ld+json">
 {{SCHEMA}}
@@ -114,7 +114,7 @@
 
                     <section class="content-section print-secondary" id="fit">
                         <p class="section-label">Fit and safety</p>
-                        <h2>Start with the right problem.</h2>
+                        <h2>Confirm this is the right diagnosis.</h2>
                         <p class="section-intro">{{FIT_INTRO}}</p>
                         <div class="topic-grid">
                             <div class="topic-card"><span class="material-symbols-outlined" aria-hidden="true">check_circle</span><h3>This program may fit</h3><p>{{FIT}}</p></div>
@@ -166,7 +166,7 @@
 
                     <section class="print-only print-progress-tracker" aria-labelledby="print-tracker-title">
                         <h3 id="print-tracker-title">Six-week check-in</h3>
-                        <p>Mark up to three key strength or loading sessions each week. Use the notes column for symptoms, resistance, walking time, or a functional win.</p>
+                        <p>Mark up to three key program sessions each week. Use the notes column for symptoms, resistance, exercise duration, or an activity that became easier.</p>
                         <table>
                             <thead><tr><th>Week</th><th>1</th><th>2</th><th>3</th><th>Notes</th></tr></thead>
                             <tbody>
@@ -190,7 +190,7 @@
 
                     <section class="content-section print-secondary" aria-labelledby="faq-title">
                         <p class="section-label">Common questions</p>
-                        <h2 id="faq-title">{{SHORT_TITLE}} FAQs</h2>
+                        <h2 id="faq-title">Questions about this program</h2>
 {{FAQS}}
                     </section>
 
@@ -245,6 +245,6 @@
     </main>
 
     <footer class="footer no-print"><div class="landing-shell"><div class="footer-content"><div class="footer-brand"><span class="footer-name">Jeremy Swisher, MD</span><span class="footer-title">UCLA Sports Medicine</span></div><nav class="landing-footer-nav" aria-label="Care pages"><a href="../tendon-pain/">Tendon Pain</a><a href="../knee-hip-shoulder-pain/">Joint Pain</a><a href="../sports-injuries/">Sports Injuries</a><a href="../osteoarthritis-care/">Osteoarthritis</a><a href="../home-exercise-programs/">Exercise Programs</a><a href="../prp-knee-osteoarthritis/">PRP for Knee OA</a><a href="../hyaluronic-acid-knee-osteoarthritis/">Hyaluronic Acid</a><a href="../msk-ultrasound-guided-procedures/">MSK Ultrasound</a><a href="../locations/">Locations</a></nav><p class="footer-copy">&copy; 2026 Jeremy Swisher, MD.</p></div><p class="footer-professional-disclosure"><strong>This is the independent professional website of Jeremy Swisher, MD.</strong> References to UCLA Health describe his current employment and clinical practice. This is not an official UCLA Health website. The views and educational content are his own and do not necessarily represent UCLA Health or the University of California. UCLA Health manages appointments, medical records, billing, and clinical communication.</p><p class="footer-disclaimer">For general educational information only; not individualized medical advice. If you have a medical emergency, call 911.</p></div></footer>
-    <script src="../script.js?v=20260717-hep3"></script>
+    <script src="../script.js?v=20260717-audit1"></script>
 </body>
 </html>

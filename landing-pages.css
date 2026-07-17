@@ -1648,7 +1648,7 @@
 .landing-page .program-summary dt {
     margin-bottom: 7px;
     color: var(--color-accent-dark);
-    font-size: 0.66rem;
+    font-size: 0.72rem;
     font-weight: 750;
     letter-spacing: 0.14em;
     line-height: 1.4;
@@ -1706,7 +1706,7 @@
     display: block;
     margin-bottom: 4px;
     color: var(--color-accent-dark);
-    font-size: 0.63rem;
+    font-size: 0.72rem;
     font-weight: 750;
     letter-spacing: 0.14em;
     line-height: 1.4;
@@ -1729,7 +1729,7 @@
     padding: 7px 9px;
     border: 1px solid var(--color-border);
     color: var(--color-primary-dark);
-    font-size: 0.67rem;
+    font-size: 0.75rem;
     font-weight: 700;
     line-height: 1.35;
     text-align: center;
@@ -1750,7 +1750,7 @@
 
 .landing-page .exercise-dose strong {
     color: var(--color-accent-dark);
-    font-size: 0.65rem;
+    font-size: 0.72rem;
     letter-spacing: 0.13em;
     text-transform: uppercase;
 }
@@ -1778,7 +1778,7 @@
     display: block;
     margin-bottom: 4px;
     color: var(--color-dark);
-    font-size: 0.71rem;
+    font-size: 0.75rem;
     letter-spacing: 0.05em;
     line-height: 1.4;
     text-transform: uppercase;
@@ -1809,7 +1809,7 @@
     display: block;
     margin-bottom: 9px;
     color: var(--color-text-light);
-    font-size: 0.61rem;
+    font-size: 0.72rem;
     font-weight: 750;
     letter-spacing: 0.14em;
     line-height: 1.4;
