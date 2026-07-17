@@ -2631,6 +2631,10 @@ body {
     border-radius: 2px;
 }
 
+.coverage-photos img.coverage-photo--usa {
+    object-position: 50% 18%;
+}
+
 .coverage-photos img:hover {
     box-shadow: none;
     transform: none;
