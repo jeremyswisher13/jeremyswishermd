@@ -44,7 +44,10 @@
           "@id": "https://jeremyswishermd.com/#website",
           "url": "https://jeremyswishermd.com/",
           "name": "Jeremy Swisher, MD",
-          "alternateName": "Jeremy Swisher Sports Medicine"
+          "alternateName": "Jeremy Swisher Sports Medicine",
+          "publisher": {
+            "@id": "https://jeremyswishermd.com/#jeremy-swisher"
+          }
         },
         {
           "@type": "ProfilePage",
@@ -63,8 +66,16 @@
           "@type": "Person",
           "@id": "https://jeremyswishermd.com/#jeremy-swisher",
           "name": "Jeremy R. Swisher",
+          "alternateName": [
+            "Jeremy Swisher, MD",
+            "Jeremy R. Swisher, MD",
+            "Dr. Jeremy Swisher"
+          ],
           "honorificSuffix": "MD",
           "url": "https://jeremyswishermd.com/",
+          "mainEntityOfPage": {
+            "@id": "https://jeremyswishermd.com/#profile-page"
+          },
           "image": "https://jeremyswishermd.com/images/jeremy-swisher-headshot.png",
           "jobTitle": "Health Sciences Assistant Clinical Professor and Primary Care Sports Medicine Physician",
           "description": "UCLA primary care sports medicine physician specializing in nonsurgical orthopedic care, musculoskeletal ultrasound, ultrasound-guided procedures, and return-to-play planning.",
@@ -118,7 +129,7 @@
     <!-- Navigation -->
     <header class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#home" class="nav-logo">
+            <a href="/" class="nav-logo" aria-label="Jeremy Swisher, MD home">
                 <span class="logo-name">Jeremy Swisher</span><span class="logo-suffix">, MD</span>
             </a>
             <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation" aria-controls="navLinks" aria-expanded="false">
@@ -1137,6 +1148,7 @@
                 <p class="footer-copy">&copy; 2026 Jeremy Swisher, MD. All rights reserved.</p>
             </div>
             <nav class="footer-care-nav" aria-label="Patient education pages">
+                <a href="/">Home</a>
                 <a href="tendon-pain/">Tendon Pain</a>
                 <a href="knee-hip-shoulder-pain/">Joint Pain</a>
                 <a href="sports-injuries/">Sports Injuries</a>
