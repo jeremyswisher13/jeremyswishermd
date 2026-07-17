@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jeremyswisher13.github.io/jeremyswishermd/sitemap.xml
+Sitemap: https://jeremyswishermd.com/sitemap.xml

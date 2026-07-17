@@ -16,14 +16,14 @@
     <meta property="og:title" content="{{TITLE}} | Jeremy Swisher, MD">
     <meta property="og:description" content="{{META_DESCRIPTION}}">
     <meta property="og:url" content="{{CANONICAL}}">
-    <meta property="og:image" content="https://jeremyswisher13.github.io/jeremyswishermd/images/lakers-courtside.jpg">
+    <meta property="og:image" content="https://jeremyswishermd.com/images/lakers-courtside.jpg">
     <meta property="og:image:alt" content="Jeremy Swisher, MD, providing sports medicine coverage courtside">
     <meta property="og:site_name" content="Jeremy Swisher, MD">
     <meta property="article:modified_time" content="2026-07-17">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{TITLE}} | Jeremy Swisher, MD">
     <meta name="twitter:description" content="{{META_DESCRIPTION}}">
-    <meta name="twitter:image" content="https://jeremyswisher13.github.io/jeremyswishermd/images/lakers-courtside.jpg">
+    <meta name="twitter:image" content="https://jeremyswishermd.com/images/lakers-courtside.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

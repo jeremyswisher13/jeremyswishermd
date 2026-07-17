@@ -6,7 +6,7 @@ const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const root = resolve(scriptDirectory, '..');
 const template = readFileSync(join(scriptDirectory, 'hep-page.template'), 'utf8');
 const programs = JSON.parse(readFileSync(join(scriptDirectory, 'hep-programs.json'), 'utf8'));
-const siteRoot = 'https://jeremyswisher13.github.io/jeremyswishermd';
+const siteRoot = 'https://jeremyswishermd.com';
 
 function escapeHtml(value) {
     return String(value)
