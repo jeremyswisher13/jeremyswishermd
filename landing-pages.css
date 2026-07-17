@@ -1605,6 +1605,312 @@
     min-height: 44px;
 }
 
+/* Home exercise program library */
+.landing-page .print-only {
+    display: none;
+}
+
+.landing-page .print-program-button {
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+}
+
+.landing-page .print-program-button .material-symbols-outlined {
+    font-size: 20px;
+}
+
+.landing-page .program-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 34px;
+    margin: 34px 0 8px;
+}
+
+.landing-page .program-summary > div {
+    padding: 20px 0 22px;
+    border-top: 1px solid var(--color-border);
+}
+
+.landing-page .program-summary dt {
+    margin-bottom: 7px;
+    color: var(--color-accent-dark);
+    font-size: 0.66rem;
+    font-weight: 750;
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.landing-page .program-summary dd {
+    margin: 0;
+    color: var(--color-dark);
+    font-family: var(--font-display);
+    font-size: 1.18rem;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.landing-page .exercise-list {
+    margin: 32px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.landing-page .exercise-item {
+    display: grid;
+    grid-template-columns: 54px minmax(0, 1fr);
+    gap: 22px;
+    padding: 34px 0 38px;
+    border-top: 1px solid var(--color-border);
+}
+
+.landing-page .exercise-number {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(31, 108, 164, 0.42);
+    border-radius: 50%;
+    color: var(--color-primary-dark);
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+}
+
+.landing-page .exercise-content {
+    min-width: 0;
+}
+
+.landing-page .exercise-heading {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 14px;
+}
+
+.landing-page .exercise-label {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--color-accent-dark);
+    font-size: 0.63rem;
+    font-weight: 750;
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.landing-page .exercise-heading h3,
+.landing-page .content-section .exercise-heading h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.55rem, 2.4vw, 2rem);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+}
+
+.landing-page .exercise-frequency {
+    flex: 0 0 auto;
+    max-width: 150px;
+    padding: 7px 9px;
+    border: 1px solid var(--color-border);
+    color: var(--color-primary-dark);
+    font-size: 0.67rem;
+    font-weight: 700;
+    line-height: 1.35;
+    text-align: center;
+}
+
+.landing-page .exercise-dose {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    margin: 0 0 13px;
+    padding: 12px 14px;
+    background: var(--color-bg-alt);
+    color: var(--color-dark);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.landing-page .exercise-dose strong {
+    color: var(--color-accent-dark);
+    font-size: 0.65rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.landing-page .exercise-content > p:not(.exercise-dose) {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 0.91rem;
+    line-height: 1.7;
+}
+
+.landing-page .exercise-cues {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 28px;
+    margin-top: 19px;
+}
+
+.landing-page .exercise-cues > div {
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+}
+
+.landing-page .exercise-cues strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--color-dark);
+    font-size: 0.71rem;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.landing-page .exercise-cues p {
+    margin: 0;
+    color: var(--color-text-light);
+    font-size: 0.78rem;
+    line-height: 1.58;
+}
+
+.landing-page .symptom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 34px;
+}
+
+.landing-page .symptom-card {
+    min-width: 0;
+    padding: 22px 20px 23px;
+    border-top: 3px solid var(--color-primary);
+    background: var(--color-bg-alt);
+}
+
+.landing-page .symptom-card > span {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--color-text-light);
+    font-size: 0.61rem;
+    font-weight: 750;
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.landing-page .symptom-card h3,
+.landing-page .content-section .symptom-card h3 {
+    margin: 0 0 8px;
+    font-family: var(--font-display);
+    font-size: 1.32rem;
+    font-weight: 500;
+    line-height: 1.14;
+}
+
+.landing-page .symptom-card p {
+    margin: 0;
+    color: var(--color-text-light);
+    font-size: 0.8rem;
+    line-height: 1.58;
+}
+
+.landing-page .symptom-green {
+    border-top-color: #3f755b;
+}
+
+.landing-page .symptom-yellow {
+    border-top-color: #b88418;
+}
+
+.landing-page .symptom-red {
+    border-top-color: #9a4938;
+}
+
+.landing-page .program-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+}
+
+.landing-page .program-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    padding: 28px 28px 25px;
+    border: 1px solid var(--color-border);
+    background: rgba(255, 255, 255, 0.28);
+    transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.landing-page .program-card:hover {
+    border-color: rgba(31, 108, 164, 0.5);
+    background: rgba(255, 255, 255, 0.55);
+    transform: translateY(-2px);
+}
+
+.landing-page .program-card-icon {
+    margin-bottom: 28px;
+    color: var(--color-primary);
+    font-size: 28px;
+}
+
+.landing-page .program-card-label {
+    margin-bottom: 7px;
+    color: var(--color-accent-dark);
+    font-size: 0.64rem;
+    font-weight: 750;
+    letter-spacing: 0.15em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.landing-page .program-card h3 {
+    max-width: 290px;
+    margin: 0 0 11px;
+    color: var(--color-dark);
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+}
+
+.landing-page .program-card p {
+    margin: 0;
+    color: var(--color-text-light);
+    font-size: 0.82rem;
+    line-height: 1.62;
+}
+
+.landing-page .program-card-meta {
+    margin-top: auto;
+    padding-top: 24px;
+    color: var(--color-primary-dark);
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.landing-page .program-card-arrow {
+    position: absolute;
+    right: 24px;
+    bottom: 21px;
+    color: var(--color-primary);
+    font-size: 22px;
+    transition: transform 180ms ease;
+}
+
+.landing-page .program-card:hover .program-card-arrow {
+    transform: translateX(3px);
+}
+
 /* Responsive */
 @media (max-width: 1180px) {
     .landing-page {
@@ -1687,6 +1993,10 @@
     .landing-page .related-grid {
         grid-template-columns: 1fr;
         gap: 0;
+    }
+
+    .landing-page .symptom-grid {
+        grid-template-columns: 1fr;
     }
 
     .landing-page.locations-page .related-grid,
@@ -1804,10 +2114,42 @@
     .landing-page .body-region-grid,
     .landing-page .option-list,
     .landing-page .expect-list,
+    .landing-page .program-summary,
+    .landing-page .program-card-grid,
     .landing-page .location-grid,
     .landing-page .landing-sidebar {
         grid-template-columns: 1fr;
         gap: 0;
+    }
+
+    .landing-page .program-card + .program-card {
+        margin-top: 14px;
+    }
+
+    .landing-page .exercise-item {
+        grid-template-columns: 40px minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .landing-page .exercise-number {
+        width: 36px;
+        height: 36px;
+        font-size: 0.76rem;
+    }
+
+    .landing-page .exercise-heading {
+        display: block;
+    }
+
+    .landing-page .exercise-frequency {
+        display: inline-block;
+        max-width: none;
+        margin-top: 12px;
+    }
+
+    .landing-page .exercise-cues {
+        grid-template-columns: 1fr;
+        gap: 14px;
     }
 
     .landing-page .sidebar-panel + .sidebar-panel {
@@ -1895,5 +2237,133 @@
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
+    }
+}
+
+@media print {
+    @page {
+        margin: 13mm;
+    }
+
+    body.landing-page.hep-page {
+        min-width: 0;
+        overflow: visible;
+        background: #ffffff;
+        color: #111111;
+        font-size: 10pt;
+    }
+
+    .hep-page .navbar,
+    .hep-page .landing-shell > .breadcrumb,
+    .hep-page .landing-shell > .landing-hero,
+    .hep-page .landing-shell > .landing-proof,
+    .hep-page .landing-shell > .page-jump,
+    .hep-page .no-print,
+    .hep-page .print-secondary {
+        display: none !important;
+    }
+
+    .hep-page .print-only {
+        display: block;
+    }
+
+    .hep-page main {
+        padding-top: 0;
+    }
+
+    .hep-page .landing-body {
+        width: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .hep-page .landing-layout {
+        display: block;
+    }
+
+    .hep-page .landing-article {
+        max-width: none;
+    }
+
+    .hep-page .print-program-header {
+        margin-bottom: 9mm;
+        padding-bottom: 6mm;
+        border-bottom: 2px solid #0f1923;
+    }
+
+    .hep-page .print-program-header p {
+        margin: 0 0 3mm;
+        font-size: 9pt;
+    }
+
+    .hep-page .print-program-header h2 {
+        margin: 0 0 4mm;
+        font-family: Georgia, serif;
+        font-size: 24pt;
+        line-height: 1.05;
+    }
+
+    .hep-page .content-section,
+    .hep-page .content-section + .content-section {
+        padding: 7mm 0;
+    }
+
+    .hep-page .content-section h2 {
+        font-size: 22pt;
+    }
+
+    .hep-page .content-section h3 {
+        font-size: 14pt;
+    }
+
+    .hep-page .topic-grid,
+    .hep-page .program-summary,
+    .hep-page .symptom-grid,
+    .hep-page .option-list,
+    .hep-page .exercise-cues {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hep-page .exercise-item {
+        break-inside: avoid;
+        grid-template-columns: 11mm minmax(0, 1fr);
+        gap: 4mm;
+        padding: 5mm 0;
+    }
+
+    .hep-page .exercise-number {
+        width: 9mm;
+        height: 9mm;
+    }
+
+    .hep-page .exercise-heading {
+        margin-bottom: 2mm;
+    }
+
+    .hep-page .exercise-heading h3,
+    .hep-page .content-section .exercise-heading h3 {
+        font-size: 16pt;
+    }
+
+    .hep-page .exercise-dose {
+        margin-bottom: 2mm;
+        padding: 2mm 3mm;
+    }
+
+    .hep-page .exercise-cues {
+        margin-top: 3mm;
+    }
+
+    .hep-page .symptom-card,
+    .hep-page .note-panel,
+    .hep-page .urgent-panel,
+    .hep-page .clinician-panel {
+        break-inside: avoid;
+        background: #ffffff;
+    }
+
+    .hep-page a {
+        color: #111111;
+        text-decoration: none;
     }
 }

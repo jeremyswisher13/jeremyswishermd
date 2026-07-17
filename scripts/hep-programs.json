@@ -1,0 +1,631 @@
+[
+  {
+    "slug": "knee-osteoarthritis-exercises",
+    "title": "Knee Osteoarthritis Home Exercise Program",
+    "shortTitle": "Knee osteoarthritis exercises",
+    "conditionName": "Knee osteoarthritis",
+    "metaDescription": "A printable, evidence-based starter exercise program for knee osteoarthritis with strength, aerobic activity, symptom rules, progression, and safety guidance.",
+    "breadcrumb": "Knee osteoarthritis",
+    "kicker": "Knee osteoarthritis · Home exercise plan",
+    "h1": "Build a knee that can do more.",
+    "summary": "A progressive strength and aerobic program is foundational treatment for knee osteoarthritis. This starter plan gives you a practical dose, clear progression, and a next-day symptom rule.",
+    "authorityTitle": "Strength. Movement. Consistency.",
+    "authorityItems": [
+      { "icon": "chair", "text": "Five practical movements for daily function" },
+      { "icon": "directions_walk", "text": "Strength plus walking or cycling" },
+      { "icon": "monitoring", "text": "A six-week checkpoint, then long-term maintenance" }
+    ],
+    "proof": [
+      { "strong": "5 movements", "span": "strength and aerobic capacity" },
+      { "strong": "2 to 3 days", "span": "of strength work each week" },
+      { "strong": "6 weeks", "span": "to look for a functional trend" }
+    ],
+    "fitIntro": "This starter program is intended for adults who have already been evaluated and told knee osteoarthritis is the likely diagnosis. It is not a self-diagnosis tool, a postoperative protocol, or a substitute for individualized care.",
+    "fit": "Activity-related knee pain and stiffness, often in adults over 45, with difficulty during walking, stairs, rising from a chair, or prolonged activity.",
+    "assessFirst": "Recent major injury, a diagnosis that is uncertain, substantial instability, inflammatory arthritis, recent surgery, or pain that is mainly coming from the hip, back, or nerves.",
+    "redFlags": "A hot red swollen joint, fever, inability to bear weight after trauma, true locking or loss of extension, rapid deformity, marked calf swelling, shortness of breath, or unexplained persistent rest or night pain.",
+    "programHeading": "Train the tasks your knee needs.",
+    "programIntro": "Exercise selection has stronger evidence than any single sets-and-repetitions formula. Begin with a dose that keeps movement controlled, then build repetitions, resistance, range, or time gradually.",
+    "frequency": "Strength 2 to 3 days per week; aerobic activity on most days",
+    "equipment": "Stable chair, low step, optional band or backpack",
+    "checkpoint": "Reassess function after 6 weeks",
+    "goal": "Easier walking, stairs, and chair transfers",
+    "exercises": [
+      {
+        "name": "Sit to stand",
+        "dose": "2 to 3 sets of 6 to 12 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Sit near the front of a stable chair. Lean your chest slightly forward, press through both feet, stand tall, then lower with control.",
+        "easier": "Use a higher chair or push lightly from the armrests.",
+        "harder": "Lower the chair or hold a light backpack at your chest."
+      },
+      {
+        "name": "Low step-up",
+        "dose": "2 to 3 sets of 6 to 12 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Place one foot on a low step. Keep the knee tracking over the middle toes, rise onto the step, then lower slowly. Use a rail for balance.",
+        "easier": "Use a shorter step and more hand support.",
+        "harder": "Use a taller step or add light external weight."
+      },
+      {
+        "name": "Bridge",
+        "dose": "2 to 3 sets of 8 to 15 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Lie on your back with knees bent. Tighten your trunk, press through the heels, lift the hips until the body forms a comfortable line, then lower slowly.",
+        "easier": "Lift through a smaller range.",
+        "harder": "Add a band above the knees or use a staggered foot position."
+      },
+      {
+        "name": "Seated knee extension",
+        "dose": "2 to 3 sets of 8 to 15 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Sit tall. Slowly straighten one knee, pause with the thigh supported, then lower with control. Keep the movement smooth rather than snapping the knee straight.",
+        "easier": "Use a smaller range or fewer repetitions.",
+        "harder": "Add a light ankle weight or resistance band."
+      },
+      {
+        "name": "Walking or cycling base",
+        "dose": "Start with 10 to 20 minutes",
+        "frequency": "Most days",
+        "how": "Choose walking, stationary cycling, swimming, or another rhythmic activity that you can repeat consistently. A shorter session still counts.",
+        "easier": "Use two shorter sessions or choose a lower-impact option.",
+        "harder": "Add 2 to 5 minutes per week before adding speed or hills."
+      }
+    ],
+    "responseIntro": "Mild to moderate discomfort can be acceptable when movement stays controlled and symptoms return to your usual baseline by the next day.",
+    "green": "Mild discomfort, no new limp, and the knee is back to its usual baseline by the following morning.",
+    "yellow": "Pain, swelling, or limping is meaningfully worse later that day or remains worse the next morning. Reduce depth, load, repetitions, or aerobic time.",
+    "red": "Sharp pain, true locking, giving way, a rapidly enlarging swelling, a hot red joint, or inability to bear weight. Stop and seek assessment.",
+    "progression": [
+      { "title": "Stage 1: establish tolerance", "text": "Use a comfortable range and the lower end of each repetition range. Prioritize smooth movement and a stable next-day response." },
+      { "title": "Stage 2: build strength", "text": "Reach the top of the repetition range, then lower the chair, raise the step, add a band or backpack, or slow the lowering phase." },
+      { "title": "Stage 3: build real-world capacity", "text": "Increase walking or cycling time, add stairs or hills gradually, and practice the specific activities you want to regain." }
+    ],
+    "readyItems": [
+      "The current dose feels controlled for several sessions.",
+      "Symptoms return to baseline by the next morning.",
+      "Walking and chair transfers are becoming easier.",
+      "You can add one variable without losing movement quality."
+    ],
+    "evaluation": "Schedule a visit if symptoms are worsening, function is not trending better after about six weeks, swelling repeatedly limits exercise, or you need help distinguishing arthritis from another knee problem.",
+    "faqs": [
+      { "q": "Should I avoid exercise because the knee is worn down?", "a": "No. Exercise does not wear out the joint. Progressive strength and aerobic activity are core treatments for knee osteoarthritis and can improve pain, function, and confidence." },
+      { "q": "Which exercise is best for knee arthritis?", "a": "No single mode is universally superior. Strength, aerobic activity, and mobility can all help. The best plan is one you can perform consistently and progress without a sustained symptom flare." },
+      { "q": "Can I exercise when the knee hurts?", "a": "Some discomfort can be acceptable. Use the next-day response: if pain, swelling, or limping remains meaningfully worse the following morning, reduce the dose." },
+      { "q": "How long should I continue?", "a": "Use six to twelve weeks to build the habit and assess the trend, then continue the useful elements long term. Benefits are maintained through ongoing activity." }
+    ],
+    "sources": [
+      { "href": "https://www.healthquality.va.gov/guidelines/cd/oa/index.asp", "label": "VA/DoD Clinical Practice Guideline for Non-Surgical Management of Hip and Knee Osteoarthritis, 2026" },
+      { "href": "https://www.nice.org.uk/guidance/ng226/chapter/recommendations", "label": "NICE: Osteoarthritis in Over 16s, Diagnosis and Management" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11488261/", "label": "American College of Rheumatology and Arthritis Foundation Guideline for Osteoarthritis" },
+      { "href": "https://www.bmj.com/content/391/bmj-2025-085242", "label": "BMJ: Exercise Treatments for Knee and Hip Osteoarthritis Network Meta-analysis, 2025" }
+    ],
+    "related": [
+      { "href": "../osteoarthritis-care/", "eyebrow": "Whole-person plan", "title": "Osteoarthritis care beyond exercise" },
+      { "href": "../prp-knee-osteoarthritis/", "eyebrow": "Procedure evidence", "title": "PRP for knee osteoarthritis" },
+      { "href": "../hyaluronic-acid-knee-osteoarthritis/", "eyebrow": "Compare options", "title": "Hyaluronic acid for knee OA" }
+    ]
+  },
+  {
+    "slug": "patellofemoral-pain-exercises",
+    "title": "Patellofemoral Pain Home Exercise Program",
+    "shortTitle": "Patellofemoral pain exercises",
+    "conditionName": "Patellofemoral pain",
+    "metaDescription": "A printable, evidence-based starter exercise program for patellofemoral knee pain with combined knee and hip strengthening, symptom rules, and progression.",
+    "breadcrumb": "Patellofemoral pain",
+    "kicker": "Front-of-knee pain · Home exercise plan",
+    "h1": "Reload the kneecap with control.",
+    "summary": "Patellofemoral pain usually responds best to education plus progressive knee and hip strengthening. This plan starts with four movements and a simple next-morning response rule.",
+    "authorityTitle": "Knee strength. Hip strength. Load control.",
+    "authorityItems": [
+      { "icon": "exercise", "text": "Combined knee and hip strengthening" },
+      { "icon": "stairs", "text": "Progressive exposure to squatting and stairs" },
+      { "icon": "speed", "text": "Workload changes that match your irritability" }
+    ],
+    "proof": [
+      { "strong": "4 movements", "span": "knee and hip focused" },
+      { "strong": "3 days", "span": "of strengthening each week" },
+      { "strong": "6 to 8 weeks", "span": "to confirm a positive trend" }
+    ],
+    "fitIntro": "This starter program is intended for adults who have already been evaluated and told patellofemoral pain is the likely diagnosis. It is not a self-diagnosis tool, a postoperative protocol, or a substitute for individualized care.",
+    "fit": "Pain around or behind the kneecap that is reproduced by squatting, stairs, running, jumping, or prolonged sitting.",
+    "assessFirst": "A recent traumatic injury, major swelling, recurrent kneecap dislocation, pain focused at the patellar tendon or tibial tubercle, or pain that is not reproduced by loaded knee bending.",
+    "redFlags": "Traumatic swelling, inability to bear weight, true locking, loss of knee extension, recurrent kneecap dislocation, a hot red joint, fever, or rapidly worsening pain.",
+    "programHeading": "Share the work across the knee and hip.",
+    "programIntro": "Begin with more hip-focused work when loaded knee bending is highly irritable. As tolerance improves, gradually restore knee range, repetitions, step height, and resistance.",
+    "frequency": "3 nonconsecutive strength days per week",
+    "equipment": "Stable chair, low step, optional loop band",
+    "checkpoint": "Look for a trend by 6 to 8 weeks",
+    "goal": "More comfortable squatting, stairs, running, and sitting",
+    "exercises": [
+      {
+        "name": "Sit to stand or shallow squat",
+        "dose": "3 sets of 8 to 15 repetitions",
+        "frequency": "3 days per week",
+        "how": "Use a chair as a target. Keep the feet grounded, knees tracking over the middle toes, and lower only as far as you can control.",
+        "easier": "Use a higher chair or a shallower squat.",
+        "harder": "Lower the chair, deepen the squat gradually, or hold light weight."
+      },
+      {
+        "name": "Low step-down",
+        "dose": "3 sets of 6 to 12 repetitions per side",
+        "frequency": "3 days per week",
+        "how": "Stand on a low step with support nearby. Bend the standing knee slowly as the opposite heel reaches toward the floor, then return without the knee collapsing inward.",
+        "easier": "Use a shorter step, smaller range, or fingertip support.",
+        "harder": "Increase the step height or add a slow three-second lowering phase."
+      },
+      {
+        "name": "Band lateral walk",
+        "dose": "2 to 3 sets of 8 to 12 steps each direction",
+        "frequency": "3 days per week",
+        "how": "Place a loop band above the knees or at the ankles. Keep a small bend in the hips and knees, then step sideways without letting the feet snap together.",
+        "easier": "Move the band above the knees or take smaller steps.",
+        "harder": "Use a stronger band or place it closer to the ankles."
+      },
+      {
+        "name": "Bridge",
+        "dose": "3 sets of 12 to 20 repetitions",
+        "frequency": "3 days per week",
+        "how": "Lie on your back with knees bent. Press through the heels and lift the hips while keeping the pelvis level, then lower with control.",
+        "easier": "Use a smaller lift or fewer repetitions.",
+        "harder": "Add a loop band or progress toward a staggered bridge."
+      }
+    ],
+    "responseIntro": "Keep discomfort mild, approximately 3 out of 10 or less, without limping or changing how you move. Symptoms should not be meaningfully worse the following morning.",
+    "green": "Mild front-of-knee discomfort, normal movement quality, and no meaningful increase the next morning.",
+    "yellow": "Pain rises above mild, mechanics change, or stairs and squatting are worse the next day. Reduce knee depth, step height, resistance, or total repetitions.",
+    "red": "Sharp pain, a kneecap dislocation, true locking, rapid swelling, inability to bear weight, or a hot red joint. Stop and seek assessment.",
+    "progression": [
+      { "title": "Stage 1: calm the workload", "text": "Temporarily reduce provocative running, jumping, deep squatting, or hill volume while keeping general activity within tolerance." },
+      { "title": "Stage 2: build repetitions", "text": "Work toward the upper repetition range with controlled knee alignment before increasing depth, step height, band resistance, or weight." },
+      { "title": "Stage 3: restore the activity", "text": "Reintroduce running, jumping, stairs, or sport-specific loads in small steps while the next-morning response remains stable." }
+    ],
+    "readyItems": [
+      "Squats and stairs are becoming less sensitive.",
+      "The knee is not meaningfully worse the next morning.",
+      "Hip and knee exercises remain controlled at the top repetition range.",
+      "You can add one workload variable without a new limp or movement compensation."
+    ],
+    "evaluation": "Schedule a visit if the diagnosis is uncertain, the kneecap repeatedly feels unstable, swelling or locking is present, or there is no improvement trend after six to eight weeks of a consistent program.",
+    "faqs": [
+      { "q": "Should all knee bending be avoided?", "a": "No. The goal is to find a tolerable starting range and reload it progressively. Avoiding all knee bending can reduce capacity and delay return to the activities you value." },
+      { "q": "Should I strengthen the hip or the knee?", "a": "Usually both. Combined knee and hip strengthening is strongly supported. A more hip-focused start can be useful when loaded knee flexion is highly irritable." },
+      { "q": "Do I need a knee brace or taping?", "a": "Exercise and education are primary. Taping or a prefabricated foot orthosis can help selected patients in the short term when matched to the examination, but they do not replace progressive loading." },
+      { "q": "When can I run again?", "a": "Return gradually when walking, stairs, and starter strengthening are controlled and the next-morning response is stable. Increase only one running variable at a time." }
+    ],
+    "sources": [
+      { "href": "https://www.orthopt.org/content/s/patellofemoral-pain-2019", "label": "JOSPT Clinical Practice Guideline: Patellofemoral Pain, 2019" },
+      { "href": "https://www.aafp.org/pubs/afp/issues/2020/1001/p442.html", "label": "American Family Physician: Patellofemoral Pain Guideline Summary" },
+      { "href": "https://bjsm.bmj.com/content/58/24/1486", "label": "British Journal of Sports Medicine: Best Practice Guide for Patellofemoral Pain, 2024" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/39401870/", "label": "Winters et al.: Best Practice Guide for Patellofemoral Pain, PubMed Record, 2024" }
+    ],
+    "related": [
+      { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Joint pain guide", "title": "Knee, hip, and shoulder pain" },
+      { "href": "../sports-injuries/", "eyebrow": "Training decisions", "title": "Sports injury evaluation" },
+      { "href": "../knee-osteoarthritis-exercises/", "eyebrow": "Different knee pattern", "title": "Knee osteoarthritis exercises" }
+    ]
+  },
+  {
+    "slug": "rotator-cuff-pain-exercises",
+    "title": "Rotator Cuff Related Shoulder Pain Home Exercise Program",
+    "shortTitle": "Rotator cuff related shoulder exercises",
+    "conditionName": "Rotator cuff related shoulder pain",
+    "metaDescription": "A printable, evidence-based starter exercise program for rotator cuff related shoulder pain with range, resistance, symptom rules, and progression.",
+    "breadcrumb": "Rotator cuff related shoulder pain",
+    "kicker": "Shoulder pain · Home exercise plan",
+    "h1": "Restore the shoulder through active loading.",
+    "summary": "Active motor-control and resistance exercise are first-line care for rotator cuff related shoulder pain. Start with two or three movements when the shoulder is irritable, then progress range and resistance.",
+    "authorityTitle": "Range. Control. Strength.",
+    "authorityItems": [
+      { "icon": "accessibility_new", "text": "Comfortable motion before heavier loading" },
+      { "icon": "fitness_center", "text": "Progressive rotator cuff and shoulder blade strength" },
+      { "icon": "bedtime", "text": "Night pain and next-morning response guide the dose" }
+    ],
+    "proof": [
+      { "strong": "5 movements", "span": "range and resistance options" },
+      { "strong": "3 days", "span": "of strengthening each week" },
+      { "strong": "6 to 12 weeks", "span": "for an active rehabilitation trial" }
+    ],
+    "fitIntro": "This starter program is intended for adults who have already been evaluated and told rotator cuff related shoulder pain is the likely diagnosis. It is not a self-diagnosis tool, a postoperative protocol, or a substitute for individualized care.",
+    "fit": "Nontraumatic pain with lifting, reaching, or lying on the shoulder, including many presentations labeled rotator cuff tendinopathy, calcific tendinopathy, or partial-thickness tearing.",
+    "assessFirst": "A fall or sudden pull followed by major weakness, suspected full-thickness tear, dislocation, fracture, recent surgery, or symptoms mainly driven by the neck or nerves.",
+    "redFlags": "Trauma followed by immediate weakness or inability to raise the arm, deformity, rapidly progressive weakness, dense numbness, fever or chills, a red swollen shoulder, chest pain, shortness of breath, or systemic illness concerns.",
+    "programHeading": "Start small, then earn range and resistance.",
+    "programIntro": "If the shoulder is highly irritable, begin with the wall slide plus one resistance exercise. Add the remaining movements as the next-morning response becomes predictable.",
+    "frequency": "Motion daily; strength 3 days per week",
+    "equipment": "Wall, light resistance band, optional light dumbbell",
+    "checkpoint": "Reassess after 6 weeks; full trial 6 to 12 weeks",
+    "goal": "More comfortable reaching, lifting, sleep, and sport",
+    "exercises": [
+      {
+        "name": "Wall slide",
+        "dose": "2 sets of 8 to 12 repetitions",
+        "frequency": "Daily",
+        "how": "Place the forearms on a wall. Gently slide upward while keeping the neck relaxed and ribs controlled, then return slowly through a comfortable range.",
+        "easier": "Use a smaller range or assist more with the other arm.",
+        "harder": "Reach higher or add gentle pressure into a loop band."
+      },
+      {
+        "name": "Band external rotation",
+        "dose": "2 to 3 sets of 8 to 15 repetitions",
+        "frequency": "3 days per week",
+        "how": "Keep the elbow at your side with a small towel between the arm and body. Rotate the forearm outward without twisting the trunk, then return slowly.",
+        "easier": "Use a lighter band or a shorter range.",
+        "harder": "Use a stronger band or slow the return for three seconds."
+      },
+      {
+        "name": "Band row",
+        "dose": "2 to 3 sets of 8 to 15 repetitions",
+        "frequency": "3 days per week",
+        "how": "Anchor the band in front of you. Pull the elbows back while keeping the shoulders away from the ears, pause, then return with control.",
+        "easier": "Stand closer to the anchor or use a lighter band.",
+        "harder": "Increase band resistance or use a staggered stance."
+      },
+      {
+        "name": "Scaption raise",
+        "dose": "2 to 3 sets of 6 to 12 repetitions",
+        "frequency": "3 days per week",
+        "how": "Raise the arm about 30 degrees forward from the side with the thumb pointing up. Stop at a tolerated height, then lower slowly.",
+        "easier": "Use no weight and a smaller range.",
+        "harder": "Add a light dumbbell or gradually increase the height."
+      },
+      {
+        "name": "Wall push-up plus",
+        "dose": "2 to 3 sets of 8 to 12 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Perform a wall push-up. At the top, gently push the wall away so the shoulder blades move around the ribs, without shrugging.",
+        "easier": "Stand closer to the wall.",
+        "harder": "Move to a counter, then a higher incline push-up."
+      }
+    ],
+    "responseIntro": "Manageable discomfort is acceptable when it settles within a few hours and the shoulder is not worse the next morning.",
+    "green": "Mild discomfort that settles within a few hours, with stable sleep and daily function the next morning.",
+    "yellow": "Night pain, reaching, or daily function is worse the next day. Reduce range, resistance, repetitions, or the number of exercises.",
+    "red": "Sudden loss of strength, inability to raise the arm, deformity, new dense numbness, fever, chest pain, or shortness of breath. Stop and seek assessment.",
+    "progression": [
+      { "title": "Stage 1: restore comfortable motion", "text": "Use assisted motion and low resistance. Avoid repeatedly testing the most painful range during the day." },
+      { "title": "Stage 2: build cuff and shoulder blade strength", "text": "Reach the top repetition range, then progress range first when appropriate, followed by band resistance or light external weight." },
+      { "title": "Stage 3: restore overhead and task-specific load", "text": "Progress incline pushing, carrying, reaching, throwing, or racquet work in small steps while the next-day response remains stable." }
+    ],
+    "readyItems": [
+      "Daily reaching is easier and sleep is not worsening.",
+      "The exercise dose settles within a few hours.",
+      "You can control the full current range without shrugging or trunk compensation.",
+      "You can add range or resistance without a next-morning flare."
+    ],
+    "evaluation": "Schedule a visit for traumatic weakness, progressive loss of function, persistent night pain, or substantial pain and disability that have not improved after an appropriate six- to twelve-week active rehabilitation trial.",
+    "faqs": [
+      { "q": "Do I need an MRI before starting?", "a": "Usually not for a typical nontraumatic presentation. Imaging becomes more useful when trauma, major weakness, another diagnosis, or failure to improve would change management." },
+      { "q": "Should exercise be completely pain-free?", "a": "Not necessarily. Manageable discomfort can be acceptable if it settles within a few hours and the shoulder is not worse the next morning." },
+      { "q": "Is a supervised program always better than home exercise?", "a": "Not always. The GRASP trial found that a supported home program performed similarly to a more intensive supervised progressive program over twelve months. Individual supervision remains valuable when the diagnosis, technique, progression, or adherence is difficult." },
+      { "q": "When should I consider an injection?", "a": "Exercise and education are first-line care. An injection may be discussed selectively when pain prevents rehabilitation or when the diagnosis and expected benefit are clear, but it should not replace progressive loading." }
+    ],
+    "sources": [
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/40165544/", "label": "JOSPT Clinical Practice Guideline: Rotator Cuff Tendinopathy, 2025" },
+      { "href": "https://www.orthopt.org/uploads/content_files/files/Rotator_Cuff_CPG.pdf", "label": "Academy of Orthopaedic Physical Therapy: Full Rotator Cuff Tendinopathy Guideline" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8343092/", "label": "GRASP Trial: Progressive Exercise Compared With Best-Practice Advice, 2021" }
+    ],
+    "related": [
+      { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Shoulder evaluation", "title": "Knee, hip, and shoulder pain" },
+      { "href": "../tendon-pain/", "eyebrow": "Tendon principles", "title": "Evidence-based tendon care" },
+      { "href": "../msk-ultrasound-guided-procedures/", "eyebrow": "When imaging matters", "title": "Musculoskeletal ultrasound" }
+    ]
+  },
+  {
+    "slug": "achilles-tendinopathy-exercises",
+    "title": "Midportion Achilles Tendinopathy Home Exercise Program",
+    "shortTitle": "Midportion Achilles exercises",
+    "conditionName": "Midportion Achilles tendinopathy",
+    "metaDescription": "A printable, evidence-based starter loading program for midportion Achilles tendinopathy with calf strengthening, symptom monitoring, and progression.",
+    "breadcrumb": "Midportion Achilles tendinopathy",
+    "kicker": "Achilles tendon · Home exercise plan",
+    "h1": "Make the tendon stronger than the demand.",
+    "summary": "Progressive tendon loading is first-line care for midportion Achilles tendinopathy. This plan uses straight-knee and bent-knee calf work, gradual resistance, and morning stiffness as a load signal.",
+    "authorityTitle": "Load. Recover. Progress.",
+    "authorityItems": [
+      { "icon": "fitness_center", "text": "High-tolerance calf loading at least three days per week" },
+      { "icon": "wb_sunny", "text": "Next-morning pain and stiffness guide progression" },
+      { "icon": "directions_run", "text": "Running and jumping return after strength foundations" }
+    ],
+    "proof": [
+      { "strong": "3 loading patterns", "span": "straight knee, bent knee, and progression" },
+      { "strong": "3 days", "span": "or more of tendon loading each week" },
+      { "strong": "12 weeks", "span": "for a meaningful loading trial" }
+    ],
+    "fitIntro": "This starter program is intended for adults who have already been evaluated and told midportion Achilles tendinopathy is the likely diagnosis. It is not for postoperative recovery, a suspected rupture, or insertional pain without modification.",
+    "fit": "Gradual-onset, load-related pain and thickening located about 2 to 6 centimeters above the heel attachment, often with morning stiffness or pain during running and jumping.",
+    "assessFirst": "Pain directly at the heel attachment, a sudden injury, substantial swelling, inability to perform a heel raise, recent surgery, inflammatory disease, or uncertainty about rupture.",
+    "redFlags": "A sudden pop, bruising, a palpable gap, inability to push off or perform a heel raise, acute major swelling, calf warmth or swelling, shortness of breath, or acute symptoms with suspected tendon frailty.",
+    "programHeading": "Use two calf angles and one clear progression.",
+    "programIntro": "Perform the straight-knee and bent-knee loading exercises on the same day. Use the isometric hold as an entry option on irritable days, not as mandatory extra volume. Keep all work on a flat floor for this midportion starter plan.",
+    "frequency": "Loading at least 3 days per week",
+    "equipment": "Wall or counter, chair, optional backpack or dumbbell",
+    "checkpoint": "Commit to at least 12 weeks",
+    "goal": "Stronger push-off, walking, stairs, running, and jumping",
+    "exercises": [
+      {
+        "name": "Optional calf-raise isometric hold",
+        "dose": "4 holds of 20 to 30 seconds",
+        "frequency": "On irritable days",
+        "how": "Rise onto both forefeet on a flat floor and hold at a comfortable height while using a counter for balance. Keep pressure even across the forefoot.",
+        "easier": "Hold lower or shift more weight to the less painful side.",
+        "harder": "Shift more weight toward the involved side."
+      },
+      {
+        "name": "Slow straight-knee heel raise",
+        "dose": "3 sets of 8 to 15 repetitions",
+        "frequency": "At least 3 days per week",
+        "how": "With knees straight and support nearby, rise for two to three seconds and lower for two to three seconds. Start with both legs.",
+        "easier": "Use more hand support or a smaller range.",
+        "harder": "Progress to one leg, then add a backpack or dumbbell."
+      },
+      {
+        "name": "Slow bent-knee heel raise",
+        "dose": "3 sets of 8 to 15 repetitions",
+        "frequency": "At least 3 days per week",
+        "how": "Keep a small, steady bend in both knees while lifting and lowering the heels slowly. Keep the knees over the middle toes.",
+        "easier": "Use a wall sit position with a smaller heel lift.",
+        "harder": "Shift toward one leg or add external load."
+      },
+      {
+        "name": "Single-leg heel raise progression",
+        "dose": "3 sets of 6 to 12 repetitions",
+        "frequency": "3 days per week when ready",
+        "how": "Rise and lower on one leg with a slow tempo, stable ankle, and similar heel height across repetitions.",
+        "easier": "Use the other foot lightly for assistance.",
+        "harder": "Add load while preserving height and control."
+      },
+      {
+        "name": "Later-stage pogo or hop",
+        "dose": "2 to 3 sets of 15 to 20 contacts",
+        "frequency": "2 to 3 days per week when ready",
+        "how": "Begin with small two-leg springing contacts. Keep the rhythm quiet and controlled. Add this only after walking, stairs, and repeated single-leg heel raises are tolerated.",
+        "easier": "Use brisk marching or quick heel raises without leaving the floor.",
+        "harder": "Progress toward single-leg or activity-specific hopping."
+      }
+    ],
+    "responseIntro": "Some tendon discomfort during loading can be acceptable when mechanics remain controlled and next-morning pain or stiffness does not increase. Complete rest is usually unnecessary.",
+    "green": "Tolerable discomfort, good heel-raise control, and morning pain or stiffness is unchanged or improving.",
+    "yellow": "Next-morning pain or stiffness increases, the heel-raise height falls, or running and strengthening together create a cumulative flare. Reduce load or total contacts.",
+    "red": "A sudden pop, new bruising, a gap, inability to push off, marked calf swelling, or shortness of breath. Stop and seek urgent assessment.",
+    "progression": [
+      { "title": "Stage 1: establish a tolerable load", "text": "Use two-leg slow raises and optional isometric holds. Continue general activity within pain tolerance rather than resting completely." },
+      { "title": "Stage 2: increase tendon strength", "text": "Progress from two legs to one leg, then add external load. Choose a resistance that makes the final repetitions challenging while controlled." },
+      { "title": "Stage 3: restore spring and sport", "text": "Add fast calf work, pogo contacts, hopping, and running volume only after slow strength and daily activities are stable." }
+    ],
+    "readyItems": [
+      "Morning pain and stiffness are stable or improving.",
+      "Repeated single-leg heel raises have good height and control.",
+      "Walking and stairs do not produce a sustained flare.",
+      "You can add load without losing the slow tempo."
+    ],
+    "evaluation": "Schedule a visit if the pain is at the heel attachment, the diagnosis is uncertain, symptoms are worsening, a rupture is possible, or a consistent twelve-week loading trial does not improve function.",
+    "faqs": [
+      { "q": "Should I stretch the tendon over the edge of a step?", "a": "Not automatically. This midportion starter plan uses a flat floor. Heel drops below a step can aggravate insertional Achilles pain and should be matched to the diagnosis." },
+      { "q": "Do I need eccentric heel drops specifically?", "a": "No. Eccentric, concentric, heavy slow resistance, and combined loading can all work. The important principle is progressive tendon loading at a challenging, tolerated intensity." },
+      { "q": "Must I stop running completely?", "a": "Usually not. Continue activity within pain tolerance when the next-morning response is stable. Reduce running volume or intensity if it repeatedly drives a flare." },
+      { "q": "How long does recovery take?", "a": "Commit to at least a twelve-week loading trial. Recovery commonly takes three to six months, and return to higher-demand sport may take longer." }
+    ],
+    "sources": [
+      { "href": "https://www.orthopt.org/content/s/achilles-pain-stiffness-and-muscle-power-deficits-midportion-achilles-tendinopathy-revision-2024", "label": "JOSPT Clinical Practice Guideline: Midportion Achilles Tendinopathy, 2024" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/26018970/", "label": "Beyer et al.: Heavy Slow Resistance Versus Eccentric Training, 2015" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/17307888/", "label": "Silbernagel et al.: Pain-Monitoring Model and Continued Activity, 2007" }
+    ],
+    "related": [
+      { "href": "../tendon-pain/", "eyebrow": "Tendon guide", "title": "Evidence-based tendon care" },
+      { "href": "../sports-injuries/", "eyebrow": "Return to sport", "title": "Sports injury evaluation" },
+      { "href": "../lateral-ankle-sprain-exercises/", "eyebrow": "Ankle program", "title": "Lateral ankle sprain exercises" }
+    ]
+  },
+  {
+    "slug": "gluteal-tendinopathy-exercises",
+    "title": "Gluteal Tendinopathy Home Exercise Program",
+    "shortTitle": "Gluteal tendinopathy exercises",
+    "conditionName": "Gluteal tendinopathy and lateral hip pain",
+    "metaDescription": "A printable, evidence-based starter exercise program for gluteal tendinopathy and lateral hip pain with load management, strengthening, and symptom rules.",
+    "breadcrumb": "Gluteal tendinopathy",
+    "kicker": "Lateral hip pain · Home exercise plan",
+    "h1": "Reduce compression, then build hip capacity.",
+    "summary": "Education plus progressive exercise is first-line care for gluteal tendinopathy. This plan pairs practical position changes with hip and lower-limb strengthening.",
+    "authorityTitle": "Position. Load. Hip strength.",
+    "authorityItems": [
+      { "icon": "airline_seat_flat", "text": "Reduce sustained compression at the side of the hip" },
+      { "icon": "exercise", "text": "Three progressive hip-strength days each week" },
+      { "icon": "bedtime", "text": "Use night pain as a load-management signal" }
+    ],
+    "proof": [
+      { "strong": "5 movements", "span": "isometric and progressive strength" },
+      { "strong": "3 days", "span": "of loading each week" },
+      { "strong": "8 weeks", "span": "for an initial structured trial" }
+    ],
+    "fitIntro": "This starter program is intended for adults who have already been evaluated and told gluteal tendinopathy is the likely diagnosis. It is not a self-diagnosis tool, a postoperative protocol, or a substitute for individualized care.",
+    "fit": "Pain and tenderness around the greater trochanter, often aggravated by side-lying, prolonged walking, stairs, or standing on one leg.",
+    "assessFirst": "Groin-dominant pain, major hip stiffness, rapidly progressive weakness, a substantial limp, recent trauma, lumbar nerve symptoms, or a diagnosis that remains uncertain.",
+    "redFlags": "Acute trauma with inability to bear weight, rapidly progressive hip weakness, a marked Trendelenburg gait, fever, deep groin pain with major motion loss, neurologic symptoms, or unexplained systemic or night pain.",
+    "programHeading": "Change the positions, then train the hip.",
+    "programIntro": "Temporarily reduce compressive positions such as lying on the painful side, crossing the legs, hanging on one hip, and forceful hip-adduction stretching. Use the isometric on lighter days and the strength movements on nonconsecutive loading days.",
+    "frequency": "Isometric most days; strength 3 nonconsecutive days per week",
+    "equipment": "Stable chair, wall, optional loop band or belt",
+    "checkpoint": "Initial trial of 8 weeks",
+    "goal": "More comfortable sleep, walking, stairs, and single-leg tasks",
+    "exercises": [
+      {
+        "name": "Hip abduction isometric",
+        "dose": "5 holds of 10 to 20 seconds",
+        "frequency": "Most days",
+        "how": "Sit with a loop band or belt around the thighs. Press the knees gently outward without moving, hold, then relax. Keep the feet grounded.",
+        "easier": "Use less pressure or a shorter hold.",
+        "harder": "Increase the hold or band resistance without increasing night pain."
+      },
+      {
+        "name": "Bridge",
+        "dose": "2 sets of 8 to 12 repetitions",
+        "frequency": "3 nonconsecutive days per week",
+        "how": "Lie on your back with knees bent. Press through the heels, lift the hips while keeping the pelvis level, then lower slowly.",
+        "easier": "Use a smaller range.",
+        "harder": "Add a band, use a staggered stance, or progress toward an offset bridge."
+      },
+      {
+        "name": "Sit to stand or shallow squat",
+        "dose": "2 sets of 8 to 12 repetitions",
+        "frequency": "3 nonconsecutive days per week",
+        "how": "Keep the feet grounded and knees tracking over the middle toes as you stand from a chair or perform a shallow squat.",
+        "easier": "Use a higher chair or push lightly from the armrests.",
+        "harder": "Lower the chair or hold light external weight."
+      },
+      {
+        "name": "Band sidestep",
+        "dose": "2 sets of 8 to 12 steps each direction",
+        "frequency": "3 nonconsecutive days per week",
+        "how": "Place a loop band above the knees or at the ankles. Take controlled side steps while keeping the pelvis level and feet facing forward.",
+        "easier": "Move the band above the knees or take smaller steps.",
+        "harder": "Use a stronger band or place it closer to the ankles."
+      },
+      {
+        "name": "Standing band hip abduction",
+        "dose": "2 sets of 8 to 12 repetitions per side",
+        "frequency": "3 nonconsecutive days per week",
+        "how": "Hold a counter. Move one leg slightly out to the side without leaning the trunk or turning the toes outward, then return slowly.",
+        "easier": "Use no band and a smaller range.",
+        "harder": "Increase band resistance or pause at the end range."
+      }
+    ],
+    "responseIntro": "Some discomfort can be acceptable when it does not increase night pain or next-day symptoms. Night pain is a useful signal that total walking, standing, and exercise load may be too high.",
+    "green": "Mild, controlled discomfort with stable sleep and no meaningful increase in next-day lateral hip pain.",
+    "yellow": "Night pain or next-day walking pain increases. Reduce resistance, range, repetitions, long walks, hills, or sustained single-leg positions.",
+    "red": "New inability to bear weight, rapidly progressive weakness, deep groin pain with major stiffness, fever, or neurologic symptoms. Stop and seek assessment.",
+    "progression": [
+      { "title": "Stage 1: reduce compression", "text": "Avoid lying directly on the painful side, crossing the legs, and hanging on one hip. Use a pillow between the knees when lying on the other side." },
+      { "title": "Stage 2: build lower-limb strength", "text": "Progress bridge, sit-to-stand, sidestep, and standing abduction by repetitions, band resistance, chair height, or external load." },
+      { "title": "Stage 3: restore single-leg demand", "text": "Add step-ups, longer walks, hills, and activity-specific single-leg tasks in small increments while night pain remains stable." }
+    ],
+    "readyItems": [
+      "Night pain is stable or improving.",
+      "Walking and stairs are becoming easier.",
+      "The pelvis stays level during the current exercises.",
+      "You can add resistance without a next-day lateral hip flare."
+    ],
+    "evaluation": "Schedule a visit if groin pain or major stiffness suggests hip-joint disease, weakness or limping is progressing, neurologic symptoms are present, or an eight-week education and loading program is not improving function.",
+    "faqs": [
+      { "q": "Should I stretch the outside of the hip?", "a": "Forceful hip-adduction stretching can compress the gluteal tendons and may aggravate symptoms. Early care usually emphasizes reducing compression and progressively strengthening instead." },
+      { "q": "How should I sleep?", "a": "Avoid lying directly on the painful side. When lying on the other side, place a pillow between the knees to reduce hip adduction and compression." },
+      { "q": "Is a corticosteroid injection the best first step?", "a": "Not usually. In the LEAP randomized trial, education plus exercise produced better global improvement than injection at eight weeks and maintained an advantage at longer follow-up." },
+      { "q": "Can I keep walking?", "a": "Usually yes, but adjust total distance, hills, and consecutive long days if night pain or next-day symptoms increase. Keep general activity while the strength program builds capacity." }
+    ],
+    "sources": [
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/29720374/", "label": "Mellor et al.: Education Plus Exercise Versus Corticosteroid Injection for Gluteal Tendinopathy, 2018" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4852446/", "label": "LEAP Trial Protocol: Exercise and Load-Management Program" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11263908/", "label": "Graduated Exercise Program for Gluteal Tendinopathy, 2024" }
+    ],
+    "related": [
+      { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Hip evaluation", "title": "Knee, hip, and shoulder pain" },
+      { "href": "../tendon-pain/", "eyebrow": "Tendon principles", "title": "Evidence-based tendon care" },
+      { "href": "../knee-osteoarthritis-exercises/", "eyebrow": "Lower-limb plan", "title": "Knee osteoarthritis exercises" }
+    ]
+  },
+  {
+    "slug": "lateral-ankle-sprain-exercises",
+    "title": "Lateral Ankle Sprain Home Exercise Program",
+    "shortTitle": "Lateral ankle sprain exercises",
+    "conditionName": "Lateral ankle sprain",
+    "metaDescription": "A printable, evidence-based starter rehabilitation program for lateral ankle sprain with motion, strength, balance, brace guidance, and return-to-activity progression.",
+    "breadcrumb": "Lateral ankle sprain",
+    "kicker": "Ankle sprain · Home exercise plan",
+    "h1": "Restore motion, strength, and balance.",
+    "summary": "Early protected weight bearing, range of motion, strength, and balance training support recovery after an uncomplicated lateral ankle sprain. This plan progresses from basic motion to controlled hopping.",
+    "authorityTitle": "Protect. Move. Rebuild balance.",
+    "authorityItems": [
+      { "icon": "orthopedics", "text": "Brace or tape when appropriate during early loading" },
+      { "icon": "balance", "text": "Daily balance work to rebuild control" },
+      { "icon": "directions_run", "text": "Function-based progression back to sport" }
+    ],
+    "proof": [
+      { "strong": "5 movements", "span": "motion, strength, and balance" },
+      { "strong": "Daily early work", "span": "with strength three days per week" },
+      { "strong": "Function first", "span": "progress by ability, not only the calendar" }
+    ],
+    "fitIntro": "This starter program is intended for adults who have already been evaluated and told an uncomplicated lateral ankle sprain is the likely diagnosis. Fracture, syndesmotic injury, Achilles rupture, and major midfoot injury should be reasonably excluded.",
+    "fit": "Pain and swelling mainly at the outer ankle after a rolling injury, with improving ability to bear weight and no concerning fracture or high-ankle features.",
+    "assessFirst": "Inability to take four steps, focal bony tenderness, pain above the ankle, major midfoot pain, recurrent instability, a suspected Achilles injury, or a severe injury that may need short immobilization.",
+    "redFlags": "Inability to take four steps, focal bony tenderness, deformity, a numb or cold foot, pain above the ankle, worsening swelling or bruising, Achilles rupture signs, locking, or repeated giving way.",
+    "programHeading": "Move early, then make the ankle trustworthy.",
+    "programIntro": "Progressive weight bearing with an appropriate brace or tape is supported for many uncomplicated sprains. Severe sprains may need clinician-directed immobilization for a short period before this progression.",
+    "frequency": "Motion and balance daily; strength 3 days per week",
+    "equipment": "Chair or counter, resistance band, optional brace",
+    "checkpoint": "Reassess by function over 2 to 6 weeks",
+    "goal": "Normal walking, stairs, balance, running, and cutting",
+    "exercises": [
+      {
+        "name": "Ankle pumps or alphabet",
+        "dose": "1 to 2 minutes",
+        "frequency": "3 to 5 times per day early",
+        "how": "Move the ankle gently up, down, in, and out, or trace the alphabet with the toes. Stay within a comfortable range without forcing the injured direction.",
+        "easier": "Use smaller motions with the leg supported.",
+        "harder": "Increase the range as swelling and pain settle."
+      },
+      {
+        "name": "Band-resisted eversion",
+        "dose": "2 to 3 sets of 12 to 20 repetitions",
+        "frequency": "3 days per week when tolerated",
+        "how": "Anchor a band to the inside. Move the forefoot outward against the band without rotating the entire leg, then return slowly.",
+        "easier": "Use a lighter band or shorter range.",
+        "harder": "Use a stronger band or slower return."
+      },
+      {
+        "name": "Heel raise",
+        "dose": "2 to 3 sets of 8 to 15 repetitions",
+        "frequency": "3 days per week",
+        "how": "Rise onto both forefeet with support nearby, keep the ankle centered, then lower slowly.",
+        "easier": "Use more hand support or a smaller range.",
+        "harder": "Progress to one leg or add external load."
+      },
+      {
+        "name": "Single-leg balance",
+        "dose": "3 rounds of 30 to 60 seconds",
+        "frequency": "Daily",
+        "how": "Stand on the injured leg near a counter. Keep the foot tripod grounded and the knee soft while maintaining a steady posture.",
+        "easier": "Use fingertip support or a shorter interval.",
+        "harder": "Add head turns, reaches, or a less stable surface."
+      },
+      {
+        "name": "Later-stage hop and stick",
+        "dose": "2 sets of 6 to 10 repetitions",
+        "frequency": "2 to 3 days per week when ready",
+        "how": "Make a small forward or side hop and land quietly on the injured leg. Hold the landing for two seconds before the next repetition.",
+        "easier": "Use a step-and-hold without leaving the floor.",
+        "harder": "Increase direction, distance, or sport-specific speed gradually."
+      }
+    ],
+    "responseIntro": "Mild discomfort is acceptable, but not sharp pain, giving way, increased limping, or increased swelling later that day or the following morning.",
+    "green": "Mild discomfort, improving walking, and swelling that is stable or decreasing by the next morning.",
+    "yellow": "Limping, swelling, or pain is worse later that day or the next morning. Reduce walking volume, exercise range, resistance, or balance difficulty.",
+    "red": "Sharp bony pain, repeated giving way, a numb or cold foot, deformity, inability to take four steps, or pain above the ankle. Stop and seek assessment.",
+    "progression": [
+      { "title": "Stage 1: protect and restore motion", "text": "Use an appropriate brace or tape, progressive weight bearing, and frequent comfortable motion. Avoid prolonged immobilization unless directed for a severe sprain." },
+      { "title": "Stage 2: rebuild strength and balance", "text": "Progress eversion, heel raises, and single-leg balance. Increase challenge only when walking and next-day swelling remain stable." },
+      { "title": "Stage 3: restore speed and direction", "text": "Add hopping, landing, running, cutting, and sport-specific tasks after normal walking, stairs, and basic single-leg control return." }
+    ],
+    "readyItems": [
+      "Walking and stairs are nearly normal without a growing limp.",
+      "Swelling does not increase the next morning.",
+      "Single-leg balance is controlled near support.",
+      "Small hops land quietly without pain or giving way."
+    ],
+    "evaluation": "Schedule a visit if Ottawa ankle-rule findings suggest radiographs, pain is above the ankle, the foot is numb or cold, instability keeps recurring, or walking and swelling are not improving as expected.",
+    "faqs": [
+      { "q": "Should I rest until all pain is gone?", "a": "Usually not. Early protected weight bearing and structured exercise are recommended for many uncomplicated sprains. The amount of protection depends on severity." },
+      { "q": "Do I need a brace?", "a": "A brace or tape can support early weight bearing and reduce recurrence risk, especially during higher-risk activity. The choice should match injury severity, comfort, and sport demands." },
+      { "q": "Is ice required?", "a": "Ice can be used briefly for comfort, but it should be an adjunct to exercise and progressive loading rather than the main treatment." },
+      { "q": "When can I return to sport?", "a": "Use function rather than the calendar alone. Walking, stairs, strength, balance, hopping, and sport-specific changes of direction should return without giving way or a next-day swelling flare." }
+    ],
+    "sources": [
+      { "href": "https://www.orthopt.org/uploads/content_files/files/jospt.2021.0302.pdf", "label": "JOSPT Clinical Practice Guideline: Lateral Ankle Ligament Sprains, 2021" },
+      { "href": "https://www.bmj.com/content/339/bmj.b2684", "label": "BMJ: Home-Based Proprioceptive Training to Prevent Ankle-Sprain Recurrence" }
+    ],
+    "related": [
+      { "href": "../sports-injuries/", "eyebrow": "Injury guide", "title": "Sports injury evaluation" },
+      { "href": "../achilles-tendinopathy-exercises/", "eyebrow": "Tendon program", "title": "Midportion Achilles exercises" },
+      { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Joint pain guide", "title": "Knee, hip, and shoulder pain" }
+    ]
+  }
+]

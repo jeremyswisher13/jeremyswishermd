@@ -303,3 +303,8 @@ const initialPublicationFilter = publicationFilters.find(filter => (
     || publicationFilters.find(filter => filter.panel);
 
 if (initialPublicationFilter) selectPublicationFilter(initialPublicationFilter);
+
+// Print patient home exercise programs without site navigation or conversion elements.
+document.querySelectorAll('[data-print-program]').forEach(button => {
+    button.addEventListener('click', () => window.print());
+});
