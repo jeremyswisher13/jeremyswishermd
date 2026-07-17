@@ -27,9 +27,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300,0,0" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css?v=20260717-media1">
-    <link rel="stylesheet" href="../landing-pages.css?v=20260717-media1">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300,0,0&amp;icon_names=accessibility,accessibility_new,airline_seat_flat,arrow_forward,badge,balance,bedtime,block,bloodtype,calculate,calendar_month,call,chair,check_circle,chevron_right,clinical_notes,diagnosis,directions_run,directions_walk,emergency,event_note,event_repeat,exercise,fact_check,fitness_center,flag,footprint,front_hand,groups,handshake,healing,history,hourglass_top,image_search,info,jump_to_element,link,location_on,medical_services,medication,menu_book,monitor_heart,monitoring,motion_photos_on,my_location,open_in_full,open_in_new,orthopedics,pause_circle,person_check,photo_camera,print,query_stats,radiology,receipt_long,route,schedule,school,science,speed,sports_baseball,sports_basketball,sports_golf,stairs,target,traffic,tune,vaccines,verified,verified_user,warning,water_drop,wb_sunny,work&amp;display=block" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css?v=20260717-seo1">
+    <link rel="stylesheet" href="../landing-pages.css?v=20260717-seo1">
 
     <script type="application/ld+json">
     {
@@ -38,17 +38,17 @@
         {
           "@type": "Person",
           "@id": "https://jeremyswishermd.com/#jeremy-swisher",
-          "name": "Jeremy R. Swisher, MD",
+          "name": "Jeremy R. Swisher",
           "honorificSuffix": "MD",
           "url": "https://jeremyswishermd.com/",
           "image": "https://jeremyswishermd.com/images/jeremy-swisher-headshot.png",
           "jobTitle": "Health Sciences Assistant Clinical Professor and Primary Care Sports Medicine Physician",
-          "telephone": "+1-310-319-1234",
           "worksFor": {
             "@type": "Organization",
-            "name": "UCLA Department of Orthopaedic Surgery, Division of Sports Medicine",
-            "url": "https://www.uclahealth.org/providers/jeremy-swisher"
-          }
+            "name": "UCLA Health",
+            "url": "https://www.uclahealth.org/"
+          },
+          "sameAs": ["https://www.uclahealth.org/providers/jeremy-swisher"]
         },
         {
           "@type": "MedicalWebPage",
@@ -57,7 +57,7 @@
           "name": "Knee, Hip and Shoulder Pain Care",
           "description": "Patient education about evaluation and non-operative care for knee, hip, and shoulder pain.",
           "inLanguage": "en-US",
-          "dateModified": "2026-07-16",
+          "dateModified": "2026-07-17",
           "author": { "@id": "https://jeremyswishermd.com/#jeremy-swisher" },
           "medicalAudience": { "@type": "MedicalAudience", "audienceType": "Patient" },
           "about": [
@@ -110,8 +110,8 @@
             <div class="landing-hero-inner">
                 <div class="landing-hero-copy">
                     <p class="landing-kicker">Joint care</p>
-                    <h1 id="page-title">Move from “where it hurts” to <em>what will help.</em></h1>
-                    <p class="landing-summary">Knee, hip, and shoulder symptoms can come from the joint, surrounding muscles and tendons, or another nearby structure. The first step is a focused evaluation that connects the diagnosis to the movements you want back.</p>
+                    <h1 id="page-title">Knee, hip, and shoulder pain care in Los Angeles.</h1>
+                    <p class="landing-summary">Move from where it hurts to what will help. A focused evaluation connects the diagnosis to the movements you want back, whether symptoms come from a joint, surrounding muscles and tendons, or another nearby structure.</p>
                     <div class="landing-actions">
                         <a class="btn btn-primary" href="tel:310-319-1234">Call 310-319-1234</a>
                         <a class="btn btn-outline" href="https://cloud.h.uclahealth.org/appointment-request?utm_campaign=enterprise_aq_request-appointment&amp;utm_content=make-an-appointment&amp;utm_medium=landing-page&amp;utm_source=uclah_organic" target="_blank" rel="noopener noreferrer">Online Request Form</a>
@@ -130,7 +130,7 @@
             </div>
         </section>
 
-        <div class="landing-proof" aria-label="Practice overview">
+        <div class="landing-proof" role="group" aria-label="Practice overview">
             <div class="proof-stat"><strong>Board-certified</strong><span>Primary care sports medicine</span></div>
             <div class="proof-stat"><strong>Whole-person care</strong><span>Function, activity, and goals</span></div>
             <div class="proof-stat"><strong>Two UCLA locations</strong><span>Westwood and West Hills</span></div>
@@ -148,6 +148,13 @@
         <div class="landing-body">
             <div class="landing-layout">
                 <article class="landing-article">
+                    <div class="clinician-panel" role="group" aria-labelledby="reviewed-by-title">
+                        <span class="material-symbols-outlined" aria-hidden="true">verified</span>
+                        <div>
+                            <h2 id="reviewed-by-title">Written and clinically reviewed by Jeremy Swisher, MD</h2>
+                            <p><a href="../#about">About Dr. Swisher</a> <span aria-hidden="true">&middot;</span> <a href="https://www.uclahealth.org/providers/jeremy-swisher" target="_blank" rel="noopener noreferrer">Official UCLA Health profile</a></p>
+                        </div>
+                    </div>
                     <section class="content-section" id="symptom-patterns">
                         <p class="section-eyebrow">Understanding symptoms</p>
                         <h2>The location is a clue, not a complete diagnosis</h2>
@@ -192,6 +199,7 @@
                             <li class="care-step"><div><h3>Restore motion, strength, and control</h3><p>Physical therapy or a home program can be matched to specific impairments and functional goals.</p></div></li>
                             <li class="care-step"><div><h3>Reassess the response</h3><p>Progress, persistent limitations, or new findings may change whether imaging, an injection, or another specialist’s input is useful.</p></div></li>
                         </ol>
+                        <p>For a diagnosed condition, explore printable programs for <a href="../knee-osteoarthritis-exercises/">beginner knee osteoarthritis</a>, <a href="../knee-osteoarthritis-advanced-exercises/">advanced knee osteoarthritis</a>, <a href="../patellofemoral-pain-exercises/">patellofemoral pain</a>, <a href="../rotator-cuff-pain-exercises/">rotator cuff pain</a>, <a href="../adhesive-capsulitis-exercises/">frozen shoulder</a>, and <a href="../gluteal-tendinopathy-exercises/">gluteal tendinopathy</a>. These programs are educational starting points and should be matched to the diagnosis and current capacity.</p>
                         <p>Braces, taping, canes, and medication can help selected people. Medication decisions should account for medical history, other medicines, and potential adverse effects. For certain diagnoses, a corticosteroid, hyaluronic acid, platelet-rich plasma, or another image-guided procedure may be discussed. Evidence, indications, cost, risks, and expected role differ by treatment and body region.</p>
 
                         <div class="note-panel">
@@ -357,6 +365,6 @@
         </div>
     </footer>
 
-    <script src="../script.js?v=20260717-media1"></script>
+    <script src="../script.js?v=20260717-seo1"></script>
 </body>
 </html>

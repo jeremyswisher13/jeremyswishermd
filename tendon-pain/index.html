@@ -27,9 +27,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300,0,0" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css?v=20260717-media1">
-    <link rel="stylesheet" href="../landing-pages.css?v=20260717-media1">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300,0,0&amp;icon_names=accessibility,accessibility_new,airline_seat_flat,arrow_forward,badge,balance,bedtime,block,bloodtype,calculate,calendar_month,call,chair,check_circle,chevron_right,clinical_notes,diagnosis,directions_run,directions_walk,emergency,event_note,event_repeat,exercise,fact_check,fitness_center,flag,footprint,front_hand,groups,handshake,healing,history,hourglass_top,image_search,info,jump_to_element,link,location_on,medical_services,medication,menu_book,monitor_heart,monitoring,motion_photos_on,my_location,open_in_full,open_in_new,orthopedics,pause_circle,person_check,photo_camera,print,query_stats,radiology,receipt_long,route,schedule,school,science,speed,sports_baseball,sports_basketball,sports_golf,stairs,target,traffic,tune,vaccines,verified,verified_user,warning,water_drop,wb_sunny,work&amp;display=block" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css?v=20260717-seo1">
+    <link rel="stylesheet" href="../landing-pages.css?v=20260717-seo1">
 
     <script type="application/ld+json">
     {
@@ -38,17 +38,17 @@
         {
           "@type": "Person",
           "@id": "https://jeremyswishermd.com/#jeremy-swisher",
-          "name": "Jeremy R. Swisher, MD",
+          "name": "Jeremy R. Swisher",
           "honorificSuffix": "MD",
           "url": "https://jeremyswishermd.com/",
           "image": "https://jeremyswishermd.com/images/jeremy-swisher-headshot.png",
           "jobTitle": "Health Sciences Assistant Clinical Professor and Primary Care Sports Medicine Physician",
-          "telephone": "+1-310-319-1234",
           "worksFor": {
             "@type": "Organization",
-            "name": "UCLA Department of Orthopaedic Surgery, Division of Sports Medicine",
-            "url": "https://www.uclahealth.org/providers/jeremy-swisher"
-          }
+            "name": "UCLA Health",
+            "url": "https://www.uclahealth.org/"
+          },
+          "sameAs": ["https://www.uclahealth.org/providers/jeremy-swisher"]
         },
         {
           "@type": "MedicalWebPage",
@@ -57,7 +57,7 @@
           "name": "Tendon Pain and Tendinopathy Care",
           "description": "Patient education about the evaluation and non-operative care of tendon pain and tendinopathy.",
           "inLanguage": "en-US",
-          "dateModified": "2026-07-16",
+          "dateModified": "2026-07-17",
           "author": { "@id": "https://jeremyswishermd.com/#jeremy-swisher" },
           "medicalAudience": { "@type": "MedicalAudience", "audienceType": "Patient" },
           "mainEntity": {
@@ -109,8 +109,8 @@
             <div class="landing-hero-inner">
                 <div class="landing-hero-copy">
                     <p class="landing-kicker">Tendon care</p>
-                    <h1 id="page-title">Tendon pain needs a plan for <em>returning to activity.</em></h1>
-                    <p class="landing-summary">Persistent Achilles, knee, shoulder, elbow, or hip tendon pain can make work, training, and everyday movement feel unpredictable. A careful diagnosis and progressive rehabilitation plan can help clarify what to do next.</p>
+                    <h1 id="page-title">Tendon pain and tendinopathy care in Los Angeles.</h1>
+                    <p class="landing-summary">Tendon pain needs a plan for returning to activity. A careful diagnosis and progressive rehabilitation plan can help with persistent Achilles, knee, shoulder, elbow, or hip tendon pain.</p>
                     <div class="landing-actions">
                         <a class="btn btn-primary" href="tel:310-319-1234">Call 310-319-1234</a>
                         <a class="btn btn-outline" href="https://cloud.h.uclahealth.org/appointment-request?utm_campaign=enterprise_aq_request-appointment&amp;utm_content=make-an-appointment&amp;utm_medium=landing-page&amp;utm_source=uclah_organic" target="_blank" rel="noopener noreferrer">Online Request Form</a>
@@ -129,7 +129,7 @@
             </div>
         </section>
 
-        <div class="landing-proof" aria-label="Practice overview">
+        <div class="landing-proof" role="group" aria-label="Practice overview">
             <div class="proof-stat"><strong>Board-certified</strong><span>Primary care sports medicine</span></div>
             <div class="proof-stat"><strong>Non-operative</strong><span>Rehabilitation-centered care</span></div>
             <div class="proof-stat"><strong>Two UCLA locations</strong><span>Westwood and West Hills</span></div>
@@ -147,6 +147,13 @@
         <div class="landing-body">
             <div class="landing-layout">
                 <article class="landing-article">
+                    <div class="clinician-panel" role="group" aria-labelledby="reviewed-by-title">
+                        <span class="material-symbols-outlined" aria-hidden="true">verified</span>
+                        <div>
+                            <h2 id="reviewed-by-title">Written and clinically reviewed by Jeremy Swisher, MD</h2>
+                            <p><a href="../#about">About Dr. Swisher</a> <span aria-hidden="true">&middot;</span> <a href="https://www.uclahealth.org/providers/jeremy-swisher" target="_blank" rel="noopener noreferrer">Official UCLA Health profile</a></p>
+                        </div>
+                    </div>
                     <section class="content-section" id="understanding">
                         <p class="section-eyebrow">Start with the right question</p>
                         <h2>Not every painful tendon has the same problem</h2>
@@ -175,6 +182,7 @@
                             <li class="care-step"><div><h3>Restore speed and sport demands</h3><p>Running, jumping, changing direction, throwing, or faster loading is added progressively when appropriate.</p></div></li>
                             <li class="care-step"><div><h3>Plan the return</h3><p>Decisions are based on symptoms, strength, function, confidence, and the demands of the activity, not a universal calendar date.</p></div></li>
                         </ol>
+                        <p>Diagnosis-specific starting points include programs for <a href="../achilles-tendinopathy-exercises/">Achilles tendinopathy</a>, <a href="../patellar-tendinopathy-exercises/">patellar tendinopathy in athletes</a>, <a href="../rotator-cuff-pain-exercises/">rotator cuff related shoulder pain</a>, <a href="../lateral-elbow-tendinopathy-exercises/">tennis elbow</a>, <a href="../medial-elbow-tendinopathy-exercises/">golfer's elbow</a>, and <a href="../gluteal-tendinopathy-exercises/">gluteal tendinopathy</a>. Use them only after the working diagnosis and safe loading level are clear.</p>
                         <p>Physical therapy can be central to this process. Bracing, taping, footwear changes, or medication may help selected patients, but each has tradeoffs. A plan should account for health history and the demands you actually need to meet.</p>
 
                         <div class="note-panel">
@@ -347,6 +355,6 @@
         </div>
     </footer>
 
-    <script src="../script.js?v=20260717-media1"></script>
+    <script src="../script.js?v=20260717-seo1"></script>
 </body>
 </html>

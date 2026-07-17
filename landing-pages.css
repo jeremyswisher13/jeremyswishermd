@@ -395,6 +395,52 @@
     line-height: 1.5;
 }
 
+.landing-page .clinical-review-box {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr) auto;
+    gap: 14px 18px;
+    align-items: center;
+    width: min(100%, 1240px);
+    margin: 22px auto 0;
+    padding: 17px 20px;
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent-dark);
+    background: rgba(255, 255, 255, 0.58);
+}
+
+.landing-page .clinical-review-box > .material-symbols-outlined {
+    color: var(--color-accent-dark);
+    font-size: 25px;
+}
+
+.landing-page .clinical-review-box p {
+    margin: 0;
+    color: var(--color-text-light);
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+
+.landing-page .clinical-review-box p:first-child {
+    color: var(--color-dark);
+    font-size: 0.84rem;
+}
+
+.landing-page .clinical-review-box a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--color-primary-dark);
+    font-size: 0.78rem;
+    font-weight: 650;
+    text-decoration: underline;
+    text-decoration-color: rgba(22, 79, 121, 0.25);
+    text-underline-offset: 4px;
+}
+
+.landing-page .clinical-review-box a:hover {
+    text-decoration-color: currentColor;
+}
+
 /* In-page navigation */
 .landing-page .page-jump {
     display: flex;
@@ -1965,6 +2011,15 @@
         width: min(100%, 590px);
         min-width: 0;
         max-width: 100%;
+    }
+
+    .landing-page .clinical-review-box {
+        grid-template-columns: 28px minmax(0, 1fr);
+    }
+
+    .landing-page .clinical-review-box a {
+        grid-column: 2;
+        width: fit-content;
     }
 
     .landing-page .landing-layout {

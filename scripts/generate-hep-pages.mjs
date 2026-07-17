@@ -8,6 +8,24 @@ const template = readFileSync(join(scriptDirectory, 'hep-page.template'), 'utf8'
 const programs = JSON.parse(readFileSync(join(scriptDirectory, 'hep-programs.json'), 'utf8'));
 const siteRoot = 'https://jeremyswishermd.com';
 
+function formatReviewedDate(value, slug) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+        throw new Error('Invalid reviewedDate for ' + slug + ': expected YYYY-MM-DD');
+    }
+
+    const date = new Date(value + 'T00:00:00Z');
+    if (Number.isNaN(date.getTime()) || date.toISOString().slice(0, 10) !== value) {
+        throw new Error('Invalid reviewedDate for ' + slug + ': ' + value);
+    }
+
+    return new Intl.DateTimeFormat('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+        timeZone: 'UTC'
+    }).format(date);
+}
+
 function escapeHtml(value) {
     return String(value)
         .replaceAll('&', '&amp;')
@@ -95,16 +113,27 @@ function buildSchema(program) {
                 '@type': 'MedicalWebPage',
                 '@id': canonical + '#webpage',
                 url: canonical,
-                name: program.title + ' | Jeremy Swisher, MD',
+                name: program.seoTitle + ' | Jeremy Swisher, MD',
                 description: program.metaDescription,
                 inLanguage: 'en-US',
                 datePublished: '2026-07-17',
-                dateModified: '2026-07-17',
+                dateModified: program.reviewedDate,
+                lastReviewed: program.reviewedDate,
                 author: { '@id': siteRoot + '/#jeremy-swisher' },
+                reviewedBy: { '@id': siteRoot + '/#jeremy-swisher' },
                 medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
                 about: { '@id': canonical + '#condition' },
-                mainEntity: { '@id': canonical + '#condition' },
+                mainEntity: { '@id': canonical + '#exercise-plan' },
                 breadcrumb: { '@id': canonical + '#breadcrumb' }
+            },
+            {
+                '@type': 'ExercisePlan',
+                '@id': canonical + '#exercise-plan',
+                name: program.title,
+                description: program.summary,
+                url: canonical,
+                about: { '@id': canonical + '#condition' },
+                activityFrequency: program.frequency
             },
             {
                 '@type': 'MedicalCondition',
@@ -123,11 +152,15 @@ function buildSchema(program) {
             {
                 '@type': 'Person',
                 '@id': siteRoot + '/#jeremy-swisher',
-                name: 'Jeremy R. Swisher, MD',
+                name: 'Jeremy R. Swisher',
                 honorificSuffix: 'MD',
                 jobTitle: 'Primary Care Sports Medicine Physician',
                 url: siteRoot + '/',
-                worksFor: { '@type': 'Organization', name: 'UCLA Health' },
+                worksFor: {
+                    '@type': 'Organization',
+                    name: 'UCLA Health',
+                    url: 'https://www.uclahealth.org/'
+                },
                 sameAs: ['https://www.uclahealth.org/providers/jeremy-swisher']
             }
         ]
@@ -136,11 +169,15 @@ function buildSchema(program) {
 
 for (const program of programs) {
     const canonical = siteRoot + '/' + program.slug + '/';
+    const reviewedDate = formatReviewedDate(program.reviewedDate, program.slug);
     const replacements = {
         TITLE: program.title,
+        SEO_TITLE: program.seoTitle,
         SHORT_TITLE: program.shortTitle,
         META_DESCRIPTION: program.metaDescription,
         CANONICAL: canonical,
+        REVIEWED_DATE_ISO: program.reviewedDate,
+        REVIEWED_DATE: reviewedDate,
         SCHEMA: JSON.stringify(buildSchema(program), null, 2).split('\n').map((line) => '    ' + line).join('\n'),
         BREADCRUMB: program.breadcrumb,
         KICKER: program.kicker,

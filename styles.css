@@ -2322,6 +2322,10 @@ body {
     background: transparent;
 }
 
+.profile-card picture {
+    display: block;
+}
+
 .profile-card img {
     height: 430px;
     border-radius: 2px;
@@ -2673,9 +2677,24 @@ body {
     gap: 12px;
 }
 
+.coverage-photos > picture {
+    display: block;
+    min-width: 0;
+}
+
 .coverage-photos img,
 .coverage-photos img:first-child {
+    grid-column: auto;
+    height: 260px;
     border-radius: 2px;
+}
+
+.coverage-photos > :first-child {
+    grid-column: span 2;
+}
+
+.coverage-photos > :first-child img {
+    height: 300px;
 }
 
 .coverage-photos img.coverage-photo--usa {
@@ -3128,6 +3147,14 @@ body {
     .coverage-photos img,
     .coverage-photos img:first-child {
         grid-column: auto;
+        height: 220px;
+    }
+
+    .coverage-photos > :first-child {
+        grid-column: auto;
+    }
+
+    .coverage-photos > :first-child img {
         height: 220px;
     }
 
