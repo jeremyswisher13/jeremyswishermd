@@ -202,7 +202,7 @@
     "related": [
       { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Joint pain guide", "title": "Knee, hip, and shoulder pain" },
       { "href": "../sports-injuries/", "eyebrow": "Training decisions", "title": "Sports injury evaluation" },
-      { "href": "../knee-osteoarthritis-exercises/", "eyebrow": "Different knee pattern", "title": "Knee osteoarthritis exercises" }
+      { "href": "../patellar-tendinopathy-exercises/", "eyebrow": "Athlete tendon loading", "title": "Patellar tendinopathy exercises" }
     ]
   },
   {
@@ -308,7 +308,7 @@
     "related": [
       { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Shoulder evaluation", "title": "Knee, hip, and shoulder pain" },
       { "href": "../tendon-pain/", "eyebrow": "Tendon principles", "title": "Evidence-based tendon care" },
-      { "href": "../msk-ultrasound-guided-procedures/", "eyebrow": "When imaging matters", "title": "Musculoskeletal ultrasound" }
+      { "href": "../adhesive-capsulitis-exercises/", "eyebrow": "Different shoulder pattern", "title": "Adhesive capsulitis exercises" }
     ]
   },
   {
@@ -626,6 +626,447 @@
       { "href": "../sports-injuries/", "eyebrow": "Injury guide", "title": "Sports injury evaluation" },
       { "href": "../achilles-tendinopathy-exercises/", "eyebrow": "Tendon program", "title": "Midportion Achilles exercises" },
       { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Joint pain guide", "title": "Knee, hip, and shoulder pain" }
+    ]
+  },
+  {
+    "slug": "lateral-elbow-tendinopathy-exercises",
+    "title": "Common Extensor Tendinopathy Home Exercise Program",
+    "shortTitle": "Common extensor tendinopathy exercises",
+    "conditionName": "Lateral elbow tendinopathy and common extensor tendinopathy",
+    "metaDescription": "A printable, evidence-based starter exercise program for common extensor and lateral elbow tendinopathy with progressive wrist loading, grip work, symptom rules, and return guidance.",
+    "breadcrumb": "Common extensor tendinopathy",
+    "kicker": "Lateral elbow pain · Home exercise plan",
+    "h1": "Rebuild grip without chasing pain.",
+    "summary": "Common extensor tendinopathy usually improves through activity adjustment and progressive wrist-extensor loading. This plan moves from comfortable isometrics to slow strength, grip, and task-specific demand.",
+    "authorityTitle": "Settle. Strengthen. Regrip.",
+    "authorityItems": [
+      { "icon": "front_hand", "text": "Progressive wrist-extensor loading" },
+      { "icon": "fitness_center", "text": "Grip and forearm capacity for daily tasks" },
+      { "icon": "work", "text": "A staged return to work, lifting, or sport" }
+    ],
+    "proof": [
+      { "strong": "5 movements", "span": "forearm, grip, and shoulder support" },
+      { "strong": "3 days", "span": "of progressive strength each week" },
+      { "strong": "4 to 6 weeks", "span": "to confirm an early functional trend" }
+    ],
+    "fitIntro": "This starter program is intended for adults who have already been evaluated and told common extensor or lateral elbow tendinopathy is the likely diagnosis. It is not a self-diagnosis tool, a postoperative protocol, or a substitute for individualized care.",
+    "fit": "Gradual pain and tenderness at or just below the outside elbow, aggravated by gripping, carrying, palm-down lifting, resisted wrist or finger extension, or stretching the wrist extensors.",
+    "assessFirst": "A sudden injury, major swelling or weakness, inability to fully move the elbow, locking or instability, neck pain with radiating symptoms, numbness or tingling, or pain located farther down the forearm that may reflect radial nerve involvement.",
+    "redFlags": "A sudden pop, bruising, deformity, rapidly increasing pain, marked weakness, a hot red swollen elbow, fever, new numbness or progressive weakness, persistent rest or night pain, or unexplained systemic symptoms.",
+    "programHeading": "Load the wrist extensors, then restore the task.",
+    "programIntro": "Guidelines support isometric, concentric, and eccentric resisted wrist-extensor exercise, but no single dose is proven best. Use the isometric as the main load when the elbow is highly irritable. As slow wrist extension becomes tolerable, use the isometric as a warm-up rather than stacking two hard sessions.",
+    "frequency": "Isometric daily when irritable; strength about 3 days per week",
+    "equipment": "Table, light dumbbell or water bottle, towel or putty, optional band",
+    "checkpoint": "Look for a trend by 4 to 6 weeks",
+    "goal": "Comfortable grip, carrying, lifting, work, and sport",
+    "exercises": [
+      {
+        "name": "Isometric wrist extension",
+        "dose": "5 holds of 30 seconds with about 60 seconds of rest",
+        "frequency": "Daily during the irritable phase",
+        "how": "Support the forearm palm down with the wrist near neutral. Press the back of the hand into the opposite hand or a fixed surface without allowing movement. Use approximately 30 to 50 percent effort.",
+        "easier": "Use 3 holds of 20 seconds at lighter effort.",
+        "harder": "Build to 5 holds of 45 seconds, then increase resistance gradually."
+      },
+      {
+        "name": "Slow wrist extension",
+        "dose": "3 sets of 12, progressing toward 15 repetitions",
+        "frequency": "Every other day, usually 3 days per week",
+        "how": "Support the forearm palm down with the hand over a table edge. Raise the wrist for 2 seconds and lower for 3 to 4 seconds. Keep the fingers relaxed.",
+        "easier": "Use 2 sets of 10 with less weight or assist the lifting phase with the other hand.",
+        "harder": "After two stable sessions, add the smallest available weight while keeping the slow tempo."
+      },
+      {
+        "name": "Forearm pronation and supination",
+        "dose": "2 sets of 12 repetitions in each direction",
+        "frequency": "3 days per week",
+        "how": "Keep the elbow at 90 degrees against the side. Slowly rotate a light hammer or dumbbell from palm up to palm down without moving the upper arm.",
+        "easier": "Use no weight or hold closer to the weighted end.",
+        "harder": "Hold farther from the weighted end, then add load."
+      },
+      {
+        "name": "Controlled grip",
+        "dose": "3 sets of 8 squeezes with a 5-second hold",
+        "frequency": "3 days per week",
+        "how": "Squeeze a rolled towel or soft putty at submaximal effort. Keep the wrist straight rather than bending it back during the squeeze.",
+        "easier": "Use a lighter squeeze or a 3-second hold.",
+        "harder": "Use firmer putty, then progress to short loaded carries with a neutral wrist."
+      },
+      {
+        "name": "Band row with a neutral wrist",
+        "dose": "2 to 3 sets of 12 repetitions",
+        "frequency": "3 days per week",
+        "how": "Use a relaxed grip, keep the wrist straight, and draw the shoulder blade gently back without shrugging or clenching the band.",
+        "easier": "Use a lighter band or 2 sets of 10.",
+        "harder": "Use a stronger band or progress to a controlled single-arm row."
+      }
+    ],
+    "responseIntro": "A small amount of familiar discomfort can be acceptable when it stays controlled, does not increase across repetitions, and returns to baseline by the next morning.",
+    "green": "Pain stays between 0 and 3 out of 10, grip remains steady, and symptoms return to baseline by the following morning.",
+    "yellow": "Pain reaches 4 to 5 out of 10, grip feels weaker afterward, or the elbow remains worse the next morning. Reduce weight, range, or repetitions by 25 to 50 percent and add recovery time.",
+    "red": "Sharp, electric, or rapidly increasing pain, new numbness or weakness, swelling, loss of motion, or symptoms that worsen week to week. Stop and seek assessment.",
+    "progression": [
+      { "title": "Stage 1: settle irritability", "text": "Reduce repetitive hard gripping and palm-down lifting. Use a neutral grip or palm-up lifting when practical and begin comfortable isometrics." },
+      { "title": "Stage 2: build forearm capacity", "text": "Add slow wrist extension, rotation, and controlled grip every other day. Progress repetitions before adding weight." },
+      { "title": "Stage 3: restore real demand", "text": "Progress lever length, loaded carries, work tools, racquet handling, or lifting. Begin near half of usual volume and increase only with a stable next-day response." }
+    ],
+    "readyItems": [
+      "Elbow and wrist motion are full or nearly full.",
+      "Daily tasks stay at 0 to 2 out of 10 without a next-day flare.",
+      "Resisted wrist extension and gripping stay controlled.",
+      "Two to three loading sessions and two graded task sessions do not escalate symptoms."
+    ],
+    "evaluation": "Schedule a visit if neurologic or mechanical symptoms are present, pain is worsening, grip strength is progressively declining, or a correctly dosed program does not produce a meaningful trend after about four to six weeks.",
+    "faqs": [
+      { "q": "Do I need complete rest?", "a": "Usually not. Reduce the most provocative gripping and lifting dose while keeping tolerable movement and progressive loading." },
+      { "q": "Should I stretch the forearm?", "a": "Gentle stretching is optional and should not provoke a sustained flare. Stretching alone has not shown durable superiority over a loading-based plan." },
+      { "q": "Will a counterforce strap help?", "a": "A strap or wrist support may improve pain during an activity for some people, but long-term benefit is uncertain and it should not replace progressive loading." },
+      { "q": "Do I need imaging?", "a": "Imaging is not routinely required for a typical presentation. It becomes more useful after trauma, with mechanical or neurologic findings, or when appropriate care has not worked." }
+    ],
+    "sources": [
+      { "href": "https://www.orthopt.org/uploads/content_files/files/lucado_et_al_2022_lateral_elbow_pain_and_muscle_function_impairments.pdf", "label": "JOSPT Clinical Practice Guideline: Lateral Elbow Pain and Muscle Function Impairments, 2022" },
+      { "href": "https://www.cochrane.org/evidence/CD013042_manual-therapy-and-exercise-treating-tennis-elbow", "label": "Cochrane Review: Manual Therapy and Exercise for Lateral Elbow Pain, 2024" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/34501416/", "label": "Eccentric Exercise for Lateral Elbow Tendinopathy, Systematic Review and Meta-analysis, 2021" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/31425384/", "label": "Unsupervised Isometric Exercise for Lateral Elbow Tendinopathy, Randomized Trial" }
+    ],
+    "related": [
+      { "href": "../tendon-pain/", "eyebrow": "Tendon guide", "title": "Evidence-based tendon care" },
+      { "href": "../medial-elbow-tendinopathy-exercises/", "eyebrow": "Inside elbow", "title": "Common flexor tendinopathy exercises" },
+      { "href": "../rotator-cuff-pain-exercises/", "eyebrow": "Shoulder program", "title": "Rotator cuff related pain exercises" }
+    ]
+  },
+  {
+    "slug": "medial-elbow-tendinopathy-exercises",
+    "title": "Common Flexor Tendinopathy Home Exercise Program",
+    "shortTitle": "Common flexor tendinopathy exercises",
+    "conditionName": "Medial elbow tendinopathy and common flexor tendinopathy",
+    "metaDescription": "A printable starter exercise program for common flexor and medial elbow tendinopathy with progressive wrist-flexor and pronator loading, grip work, symptom rules, and safety guidance.",
+    "breadcrumb": "Common flexor tendinopathy",
+    "kicker": "Medial elbow pain · Home exercise plan",
+    "h1": "Build the flexor-pronator system back up.",
+    "summary": "Common flexor tendinopathy can improve with activity adjustment and progressive loading of the wrist flexors and pronators. Because medial-elbow exercise research is limited, this plan uses a conservative dose and clear reasons to seek assessment.",
+    "authorityTitle": "Flex. Rotate. Rebuild grip.",
+    "authorityItems": [
+      { "icon": "front_hand", "text": "Progressive wrist-flexor and pronator loading" },
+      { "icon": "sports_baseball", "text": "Clear throwing and ulnar-nerve safety limits" },
+      { "icon": "fitness_center", "text": "A gradual return to grip and task demand" }
+    ],
+    "proof": [
+      { "strong": "5 movements", "span": "flexor-pronator, grip, and shoulder support" },
+      { "strong": "3 days", "span": "of progressive strength each week" },
+      { "strong": "Lower certainty", "span": "with transparent pragmatic dosing" }
+    ],
+    "fitIntro": "This starter program is intended for adults who have already been evaluated and told common flexor or medial elbow tendinopathy is the likely diagnosis. It is not appropriate for a suspected ulnar collateral ligament injury or ulnar neuropathy.",
+    "fit": "Gradual focal pain and tenderness at or just below the inside elbow, aggravated by gripping, resisted wrist flexion, forearm pronation, or stretching into wrist extension.",
+    "assessFirst": "A sudden throwing injury, loss of throwing velocity, valgus instability, numbness or tingling into the ring and small fingers, hand weakness, snapping at the medial elbow, major swelling, locking, or neck symptoms radiating into the arm.",
+    "redFlags": "A sudden pop, bruising, deformity, marked weakness, a hot red swollen elbow, fever, progressive hand weakness, persistent ring-finger or small-finger numbness, acute throwing-related instability, unexplained rest or night pain, weight loss, or other systemic symptoms.",
+    "programHeading": "Load the flexor-pronator system without missing the nerve or ligament.",
+    "programIntro": "Direct exercise evidence for medial elbow tendinopathy is much thinner than it is for lateral elbow pain. Slow wrist-flexor loading has the best condition-specific support, while the exact dose, grip work, rotation, and shoulder exercise are pragmatic starting points.",
+    "frequency": "Isometric daily when irritable; strength about 3 days per week",
+    "equipment": "Table, light dumbbell or hammer, towel or putty, optional band",
+    "checkpoint": "Look for a trend by 4 to 6 weeks",
+    "goal": "Comfortable grip, pulling, lifting, work, racquet, or golf demand",
+    "exercises": [
+      {
+        "name": "Isometric wrist flexion",
+        "dose": "5 holds of 30 seconds with about 60 seconds of rest",
+        "frequency": "Daily during the irritable phase",
+        "how": "Support the forearm palm up with the wrist near neutral. Press the palm into the opposite hand without allowing movement. Use approximately 30 to 50 percent effort.",
+        "easier": "Use 3 holds of 20 seconds at lighter effort.",
+        "harder": "Build to 5 holds of 45 seconds, then increase resistance gradually."
+      },
+      {
+        "name": "Slow wrist flexion",
+        "dose": "3 sets of 12, progressing toward 15 repetitions",
+        "frequency": "Every other day, usually 3 days per week",
+        "how": "Support the forearm palm up with the hand over a table edge. Curl upward for 2 seconds and lower for 3 to 4 seconds.",
+        "easier": "Use 2 sets of 10 with less weight or assist the upward phase with the other hand.",
+        "harder": "After two stable sessions, add the smallest available weight while preserving the slow tempo."
+      },
+      {
+        "name": "Slow forearm pronation",
+        "dose": "2 sets of 12 repetitions",
+        "frequency": "3 days per week",
+        "how": "Keep the elbow at 90 degrees. Start palm up and slowly turn palm down against a light hammer or band, then return with control.",
+        "easier": "Use no weight or hold closer to the weighted end.",
+        "harder": "Increase the lever length, then add load."
+      },
+      {
+        "name": "Controlled grip",
+        "dose": "3 sets of 8 squeezes with a 5-second hold",
+        "frequency": "3 days per week",
+        "how": "Squeeze a rolled towel or soft putty at submaximal effort. Keep the wrist straight and avoid maximal gripping.",
+        "easier": "Use a lighter squeeze or a 3-second hold.",
+        "harder": "Use firmer putty, then progress to short neutral-wrist carries."
+      },
+      {
+        "name": "Band row with a neutral wrist",
+        "dose": "2 to 3 sets of 12 repetitions",
+        "frequency": "3 days per week",
+        "how": "Use a relaxed grip, keep the wrist straight, and draw the shoulder blade back without shrugging.",
+        "easier": "Use a lighter band or 2 sets of 10.",
+        "harder": "Use a stronger band or progress to a controlled single-arm row."
+      }
+    ],
+    "responseIntro": "A small amount of familiar tendon discomfort can be acceptable when it stays controlled and returns to baseline by the next morning. Neurologic symptoms or throwing-related instability are not acceptable loading symptoms.",
+    "green": "Pain stays between 0 and 3 out of 10, grip remains steady, and the elbow returns to baseline by the following morning.",
+    "yellow": "Pain reaches 4 to 5 out of 10 or remains worse the next morning. Reduce weight, range, or repetitions by 25 to 50 percent and allow more recovery.",
+    "red": "Ring-finger or small-finger numbness, hand weakness, snapping, sharp pain, major swelling, or throwing-related valgus pain or instability. Stop and seek assessment.",
+    "progression": [
+      { "title": "Stage 1: settle irritability", "text": "Reduce hard gripping, repeated wrist flexion and pronation, and provocative throwing. Begin comfortable isometric loading." },
+      { "title": "Stage 2: build flexor-pronator capacity", "text": "Add slow wrist flexion, pronation, and controlled grip every other day. Progress repetitions before adding load." },
+      { "title": "Stage 3: restore the task", "text": "Progress neutral-wrist carries, pulling, work tools, racquet or golf demand. Throwing athletes need ligament and nerve assessment plus a separate interval throwing plan." }
+    ],
+    "readyItems": [
+      "Elbow, forearm, and wrist motion are full and comfortable.",
+      "Daily activity stays at 0 to 2 out of 10 without a next-day flare.",
+      "Resisted wrist flexion, pronation, and gripping remain controlled.",
+      "Two to three loading sessions and two graded task sessions do not escalate symptoms."
+    ],
+    "evaluation": "Schedule a visit for any nerve symptoms, snapping, throwing-related medial pain, instability, progressive weakness, or a flat response after about four to six weeks. Overhead athletes should be assessed before beginning an interval throwing program.",
+    "faqs": [
+      { "q": "Is this only golfer's elbow?", "a": "No. Common flexor tendinopathy also occurs with work, lifting, climbing, racquet sports, and other repeated gripping or forearm tasks." },
+      { "q": "Can I keep using the arm?", "a": "Usually yes, with the most provocative gripping, pronation, or throwing dose reduced. Mild stable discomfort can be acceptable when the next-day response remains controlled." },
+      { "q": "Will a brace fix it?", "a": "A brace can be tried for short-term activity tolerance, but it should not replace progressive loading and task modification." },
+      { "q": "Why do throwers need an assessment first?", "a": "Pain on the inside elbow during throwing may reflect the ulnar collateral ligament, ulnar nerve, or other structures rather than an isolated tendon problem." }
+    ],
+    "sources": [
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/41887339/", "label": "Eccentric Exercise for Medial Epicondylitis, Systematic Review, 2026" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/24944855/", "label": "Tyler et al.: Eccentric Wrist-Flexor Exercise for Chronic Medial Epicondylosis" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/37701778/", "label": "Current Concepts of Natural Course and in Management of Medial Epicondylitis: A Clinical Overview" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4986646/", "label": "Review: Medial Elbow Tendinopathy and Differential Diagnosis" }
+    ],
+    "related": [
+      { "href": "../tendon-pain/", "eyebrow": "Tendon guide", "title": "Evidence-based tendon care" },
+      { "href": "../lateral-elbow-tendinopathy-exercises/", "eyebrow": "Outside elbow", "title": "Common extensor tendinopathy exercises" },
+      { "href": "../sports-injuries/", "eyebrow": "Athlete evaluation", "title": "Sports injury assessment" }
+    ]
+  },
+  {
+    "slug": "adhesive-capsulitis-exercises",
+    "title": "Adhesive Capsulitis Home Exercise Program",
+    "shortTitle": "Adhesive capsulitis exercises",
+    "conditionName": "Adhesive capsulitis and frozen shoulder",
+    "metaDescription": "A printable, evidence-based starter exercise program for adhesive capsulitis and frozen shoulder with irritability-matched mobility, progression, symptom rules, and safety guidance.",
+    "breadcrumb": "Adhesive capsulitis",
+    "kicker": "Frozen shoulder · Irritability-matched mobility",
+    "h1": "Restore motion without fighting the shoulder.",
+    "summary": "Frozen shoulder needs a different dose at different stages. Begin with brief, comfortable motion while pain and night symptoms dominate, then increase stretching time, active range, and strength as irritability falls.",
+    "authorityTitle": "Calm pain. Restore motion. Rebuild function.",
+    "authorityItems": [
+      { "icon": "bedtime", "text": "Use night pain to judge shoulder irritability" },
+      { "icon": "open_in_full", "text": "Progress from assisted motion to longer end-range time" },
+      { "icon": "accessibility_new", "text": "Add active motion and strength as pain settles" }
+    ],
+    "proof": [
+      { "strong": "5 movements", "span": "assisted mobility through active strength" },
+      { "strong": "1 to 2 sessions", "span": "of short mobility work each day" },
+      { "strong": "4 to 6 weeks", "span": "to reassess pain, sleep, and motion" }
+    ],
+    "fitIntro": "This starter program is intended for adults who have already been evaluated and told adhesive capsulitis or frozen shoulder is the likely diagnosis. It is not a postoperative protocol and should not be used to explain every painful or stiff shoulder.",
+    "fit": "Gradual, often atraumatic shoulder pain followed by progressive loss of both active and passive motion. External rotation is often particularly limited, with night pain and difficulty dressing, grooming, or reaching.",
+    "assessFirst": "Sudden weakness after trauma, passive motion that is relatively preserved, prior shoulder surgery, substantial shoulder arthritis, cervical or neurologic symptoms, recurrent instability, or a pattern that does not include progressive loss of passive motion.",
+    "redFlags": "Recent trauma with deformity or inability to raise the arm, rapidly progressive weakness, dense numbness, fever, a hot red swollen shoulder, chest pain, shortness of breath, unexplained weight loss, or known cancer with new persistent pain.",
+    "programHeading": "Match the mobility dose to irritability.",
+    "programIntro": "Use only the first two exercises when rest pain and night pain are high. Aggressive stretching beyond the pain threshold can be counterproductive during a highly irritable phase. Add longer holds, active motion, and strength as pain settles and stiffness becomes the dominant limitation.",
+    "frequency": "Short mobility sessions 1 to 2 times daily; strength 2 to 3 days per week when tolerated",
+    "equipment": "Table, wall, cane or broom handle, optional light band",
+    "checkpoint": "Reassess pain, sleep, function, and motion after 4 to 6 weeks",
+    "goal": "Easier sleep, dressing, grooming, reaching, and lifting",
+    "exercises": [
+      {
+        "name": "Supported table slide",
+        "dose": "1 to 2 sets of 5 to 10 repetitions",
+        "frequency": "Daily",
+        "how": "Sit facing a table with the hand supported on a towel. Slide the hand forward as the trunk inclines, then return before the shoulder guards or pain escalates.",
+        "easier": "Use a shorter range and pause only 1 to 5 seconds in a comfortable position.",
+        "harder": "Gradually hold 10 to 30 seconds near a tolerable end range before adding force."
+      },
+      {
+        "name": "Cane-assisted external rotation",
+        "dose": "1 to 2 sets of 5 to 10 repetitions",
+        "frequency": "Daily",
+        "how": "Lie on the back or sit supported with both elbows near the sides. Use the unaffected arm and cane to rotate the involved forearm outward without letting the elbow drift away.",
+        "easier": "Use a smaller range with the arm fully supported and only a brief pause.",
+        "harder": "Increase the hold toward 10 to 30 seconds, then increase range without forcing the arm."
+      },
+      {
+        "name": "Supine assisted elevation",
+        "dose": "1 to 2 sets of 5 to 10 repetitions",
+        "frequency": "Daily when tolerated",
+        "how": "Lie on the back, clasp the hands or hold a cane, and let the unaffected arm assist the involved arm overhead through a comfortable range.",
+        "easier": "Stop well before pain or support the arm on a pillow.",
+        "harder": "Increase elevation gradually, then use less help from the other arm."
+      },
+      {
+        "name": "Active wall slide",
+        "dose": "2 sets of 6 to 10 repetitions",
+        "frequency": "Daily when rest pain is settling",
+        "how": "Place the hand or forearm on a wall and slide upward while keeping the neck relaxed. Lower slowly without shrugging or twisting the trunk.",
+        "easier": "Use the other hand to assist or shorten the range.",
+        "harder": "Reach higher or add a brief comfortable end-range pause."
+      },
+      {
+        "name": "Light band row",
+        "dose": "2 sets of 8 to 12 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Use a comfortable range and light resistance. Draw the shoulder blades gently back while keeping the neck relaxed and avoiding trunk compensation.",
+        "easier": "Use a 5 to 10 second isometric hold or a lighter band.",
+        "harder": "Add repetitions, then resistance, only when the next-day response remains stable."
+      }
+    ],
+    "responseIntro": "Gentle pulling or mild discomfort can be acceptable when it settles promptly and does not meaningfully increase rest pain, night pain, or next-morning stiffness.",
+    "green": "The mobility dose settles promptly, sleep is not worse, and the shoulder is no stiffer the next morning.",
+    "yellow": "Pain stays elevated later that day, sleep worsens, or motion is worse the next morning. Reduce range, hold time, repetitions, or session frequency.",
+    "red": "Sharp pain, sudden weakness, new numbness, traumatic loss of function, fever, or a hot red shoulder. Stop and seek assessment.",
+    "progression": [
+      { "title": "Stage 1: high irritability", "text": "When rest pain and night pain dominate, use brief comfortable table slides and assisted external rotation. Avoid prolonged or forceful capsular stretching." },
+      { "title": "Stage 2: moderate irritability", "text": "As pain becomes more movement-dependent, increase hold duration gradually and add assisted elevation and active wall slides." },
+      { "title": "Stage 3: stiffness-dominant or thawing", "text": "Build total end-range time, active motion, light resistance, and task-specific reaching while the next-day response remains stable." },
+      { "title": "Stage 4: restore function", "text": "Progress lifting, overhead work, dressing, grooming, and sport demands rather than measuring success by motion alone." }
+    ],
+    "readyItems": [
+      "Night pain is stable or improving.",
+      "The current mobility dose settles without a prolonged flare.",
+      "Range or daily function is trending better.",
+      "One variable can increase without worse next-day stiffness."
+    ],
+    "evaluation": "Schedule a review if the diagnosis is uncertain, symptoms escalate, or pain, sleep, function, and motion are not trending better after four to six weeks. When early pain prevents meaningful exercise, discuss whether a glenohumeral corticosteroid injection is appropriate for your health history.",
+    "faqs": [
+      { "q": "Should I force the shoulder to regain motion?", "a": "No. Stretch intensity should match irritability. Brief pain-limited motion is safer early, while longer end-range stretching is more appropriate once pain settles." },
+      { "q": "How long does frozen shoulder last?", "a": "Recovery commonly takes many months. Some people retain mild pain or motion loss at twelve to eighteen months even when disability is much better." },
+      { "q": "Do I need an MRI?", "a": "Usually not for a typical clinical pattern. Imaging is an adjunct when the presentation is atypical, trauma occurred, or another condition must be excluded." },
+      { "q": "Can an injection help?", "a": "A glenohumeral corticosteroid injection can improve short-term pain and function, particularly earlier in the course, but it does not replace a staged mobility plan." }
+    ],
+    "sources": [
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12231400/", "label": "Clinical Practice Guidelines for Diagnosis and Non-Surgical Treatment of Primary Frozen Shoulder, 2025" },
+      { "href": "https://www.orthopt.org/uploads/content_files/ICF/2014/3._Shoulder_Pain_and_Mobility_Deficits_Adhesive_Capsulitis___May_2013.pdf", "label": "JOSPT Clinical Practice Guideline: Adhesive Capsulitis" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/36861780/", "label": "Manual Therapy and Exercise for Adhesive Capsulitis, Systematic Review and Meta-analysis, 2023" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/33292924/", "label": "UK FROST Randomized Trial for Primary Frozen Shoulder" }
+    ],
+    "related": [
+      { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Shoulder evaluation", "title": "Knee, hip, and shoulder pain" },
+      { "href": "../rotator-cuff-pain-exercises/", "eyebrow": "Different shoulder pattern", "title": "Rotator cuff related pain exercises" },
+      { "href": "../msk-ultrasound-guided-procedures/", "eyebrow": "Procedure guidance", "title": "Ultrasound-guided procedures" }
+    ]
+  },
+  {
+    "slug": "patellar-tendinopathy-exercises",
+    "title": "Patellar Tendinopathy Exercise Program for Athletes",
+    "shortTitle": "Patellar tendinopathy exercises",
+    "conditionName": "Patellar tendinopathy in athletes",
+    "metaDescription": "A printable, evidence-based patellar tendinopathy program for athletes with progressive strength, jumping, sprinting, symptom monitoring, and return-to-sport guidance.",
+    "breadcrumb": "Patellar tendinopathy for athletes",
+    "kicker": "Jumper's knee · Progressive tendon loading",
+    "h1": "Build the tendon from strength to speed.",
+    "summary": "Slow strength is necessary, but it is not the finish line. Athletes must progress through strength, energy-storage loading, jumping, sprinting, and repeated sport exposure while monitoring the next-day tendon response.",
+    "authorityTitle": "Strength. Spring. Sport capacity.",
+    "authorityItems": [
+      { "icon": "fitness_center", "text": "Progressive quadriceps and tendon strength" },
+      { "icon": "jump_to_element", "text": "Planned landing and jump contacts" },
+      { "icon": "sports_basketball", "text": "A function-based return to full training" }
+    ],
+    "proof": [
+      { "strong": "6 movements", "span": "from isometric loading to sport exposure" },
+      { "strong": "48 hours", "span": "between early high tendon-load sessions" },
+      { "strong": "12 weeks", "span": "for a meaningful progressive strength trial" }
+    ],
+    "fitIntro": "This starter program is intended for athletes who have already been evaluated and told patellar tendinopathy is the likely diagnosis. It is not intended for an acute tendon tear, a swollen or locked knee, or skeletally immature athletes with growth-center pain.",
+    "fit": "Localized pain at the lower pole of the patella or along the patellar tendon, reproduced by jumping, landing, acceleration, deceleration, deep squatting, or resisted knee extension.",
+    "assessFirst": "Diffuse pain around or behind the kneecap, substantial joint swelling, locking, instability, acute trauma, pain at the tibial tubercle or growth center, fat-pad pain, or symptoms suggesting inflammatory disease.",
+    "redFlags": "A sudden pop with inability to perform a straight-leg raise, a palpable tendon defect, rapid traumatic swelling, inability to bear weight, a locked knee, fever, a hot red joint, marked calf swelling, or shortness of breath.",
+    "programHeading": "Earn jumping through progressive tendon load.",
+    "programIntro": "Do not begin every exercise at full volume. Start with the isometric plus two slow strength movements. Add low-level jumping only after slow loading is controlled, baseline symptoms are stable, and there is at least forty-eight hours between early high tendon-load sessions.",
+    "frequency": "Strength 3 days per week; jumping initially 2 days per week",
+    "equipment": "Strong strap or wall, chair, backpack or weights, optional band or gym equipment",
+    "checkpoint": "Adjust at 4 to 6 weeks; judge the strength trial near 12 weeks",
+    "goal": "Jumping, landing, sprinting, deceleration, and full training capacity",
+    "exercises": [
+      {
+        "name": "Spanish squat or wall-sit isometric",
+        "dose": "5 holds of 30 to 45 seconds with 1 to 2 minutes of rest",
+        "frequency": "Daily when useful or before training",
+        "how": "Sit back against a strong strap behind the knees or use a wall sit. Keep the trunk tall and hold at a tolerable knee angle.",
+        "easier": "Use a shorter hold, shallower knee angle, or bilateral wall sit.",
+        "harder": "Increase hold time, knee angle, or resistance without worsening the next-morning tendon test."
+      },
+      {
+        "name": "Slow squat or leg press",
+        "dose": "Start with 3 sets of 12 to 15 repetitions",
+        "frequency": "3 nonconsecutive days per week",
+        "how": "Lower for about 3 seconds and rise for about 3 seconds through a tolerable range. Keep the knee tracking over the middle toes.",
+        "easier": "Use a bilateral box squat, shallower range, or lighter load.",
+        "harder": "Increase load while moving gradually toward 4 sets of 6 to 8 repetitions."
+      },
+      {
+        "name": "Slow split squat",
+        "dose": "3 sets of 6 to 12 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Keep the front foot grounded and lower slowly with the knee tracking over the middle toes. Use support if needed for balance.",
+        "easier": "Use a shorter depth, hand support, or more assistance from the back leg.",
+        "harder": "Add range, backpack or dumbbell load, then emphasize the front leg."
+      },
+      {
+        "name": "Resisted knee extension",
+        "dose": "3 sets of 8 to 15 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Use a band, ankle weight, or machine. Straighten and lower the knee slowly without snapping into extension.",
+        "easier": "Use lighter resistance or a shorter tolerable arc.",
+        "harder": "Increase resistance and work gradually toward a heavier 6 to 8 repetition range."
+      },
+      {
+        "name": "Snap-down to low pogo series",
+        "dose": "Begin with 2 to 3 sets of 10 controlled contacts",
+        "frequency": "2 days per week with at least 48 hours between sessions",
+        "how": "Start with a quiet landing and hold. Progress to small, quick bilateral pogo jumps while maintaining alignment and a spring-like ankle and knee strategy.",
+        "easier": "Practice a landing without a rebound jump.",
+        "harder": "Add rebound speed, then height, then single-leg or multidirectional contacts. Change only one variable per session."
+      },
+      {
+        "name": "Sport-specific jump and acceleration exposure",
+        "dose": "Begin with 3 to 5 sets of 3 to 5 high-quality efforts",
+        "frequency": "1 to 2 days per week after low-level jumping is tolerated",
+        "how": "Select a jump, landing, sprint, or deceleration pattern required by the sport. Track the number, intensity, surface, and next-morning response.",
+        "easier": "Reduce speed, height, approach distance, or total efforts.",
+        "harder": "Increase either intensity or volume, one variable at a time, then build repeated efforts and practice density."
+      }
+    ],
+    "responseIntro": "A repeatable load test, such as a decline squat, can help track the tendon. Mild pain can be acceptable when movement stays normal and the tendon returns to its usual baseline by the next morning.",
+    "green": "Pain stays near 3 out of 10 or less, movement remains normal, and the tendon is back to its usual baseline the next morning.",
+    "yellow": "Pain rises across sets, landing strategy changes, or the standard load test is meaningfully worse the next morning. Reduce weight, range, jump intensity, or contact count.",
+    "red": "A sudden sharp pain or pop, new knee-extension weakness, rapid swelling, or inability to perform a straight-leg raise. Stop and seek urgent assessment.",
+    "progression": [
+      { "title": "Stage 1: control the load spike", "text": "Reduce the most provocative jump, sprint, or competition volume while maintaining tolerable conditioning and skill work." },
+      { "title": "Stage 2: build slow strength", "text": "Progress from isometrics to slow isotonic loading. Over time the strength exercises should become meaningfully heavy while the next-day response remains stable." },
+      { "title": "Stage 3: restore energy storage", "text": "Add landings, pogos, hops, accelerations, and decelerations with planned contact counts and recovery days." },
+      { "title": "Stage 4: return to sport and performance", "text": "Progress from individual drills to partial training, full training, competition, and then the workload needed for performance." }
+    ],
+    "readyItems": [
+      "The repeatable tendon load test stays near 2 to 3 out of 10 or less.",
+      "High-intensity loading returns to baseline by the next morning.",
+      "The knee has full motion without an effusion or altered gait.",
+      "Quadriceps strength and hop or jump capacity are approaching the other side and relevant sport benchmarks, often using 90 percent as one part of the decision, with acceptable movement quality. Symmetry alone can be misleading when both sides are deconditioned.",
+      "Repeated full training sessions are tolerated without a protective strategy."
+    ],
+    "evaluation": "No single validated return-to-sport test exists for patellar tendinopathy. Review loading and technique at four to six weeks. Reassess the diagnosis and program when there is no trend after eight to twelve weeks of consistent progressive loading, or when jump volume, strength deficits, or return-to-sport demands require individualized testing.",
+    "faqs": [
+      { "q": "Should I stop sport completely?", "a": "Usually not. Relative load reduction is preferred when training does not worsen the next-day response. Remove large jump-volume spikes and count strength, jumping, practice, and competition as tendon load." },
+      { "q": "Are isometrics the best treatment?", "a": "No. They may provide temporary pain relief for some athletes, but progressive isotonic strength and later energy-storage loading are essential." },
+      { "q": "Must I perform decline squats?", "a": "No. A decline squat is useful as a load test and can be an exercise, but progressive loading can also use squats, split squats, leg press, and knee extension." },
+      { "q": "When can jumping begin?", "a": "Begin after slow strength is controlled and baseline symptoms are stable. Start with low contacts, preserve recovery days, and check the tendon the next morning." },
+      { "q": "Do imaging findings determine readiness?", "a": "No. Diagnosis and progression are primarily clinical because tendon changes can be present in athletes without pain and structural change does not consistently track recovery." }
+    ],
+    "sources": [
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/39045713/", "label": "Dutch Multidisciplinary Guideline for Patellofemoral Pain and Patellar Tendinopathy, 2024" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8070614/", "label": "Breda et al.: Progressive Tendon-Loading Exercise Versus Eccentric Exercise, Randomized Trial" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9528703/", "label": "Clinical Management of Patellar Tendinopathy" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/26390269/", "label": "Malliaras et al.: Patellar Tendinopathy Diagnosis, Load Management, and Advice for Challenging Cases" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10925836/", "label": "Patellar Tendon Load Progression During Rehabilitation Exercises, 2024" }
+    ],
+    "related": [
+      { "href": "../tendon-pain/", "eyebrow": "Tendon principles", "title": "Evidence-based tendon care" },
+      { "href": "../patellofemoral-pain-exercises/", "eyebrow": "Different front-knee pattern", "title": "Patellofemoral pain exercises" },
+      { "href": "../sports-injuries/", "eyebrow": "Return to sport", "title": "Sports injury evaluation" }
     ]
   }
 ]

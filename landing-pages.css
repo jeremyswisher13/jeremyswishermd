@@ -136,6 +136,7 @@
 
 .landing-page .landing-hero-copy {
     align-self: center;
+    min-width: 0;
     max-width: 790px;
 }
 
@@ -1938,7 +1939,7 @@
     }
 
     .landing-page .landing-hero-inner {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 48px;
         padding-top: 68px;
     }
@@ -1950,6 +1951,8 @@
 
     .landing-page .landing-authority {
         width: min(100%, 590px);
+        min-width: 0;
+        max-width: 100%;
     }
 
     .landing-page .landing-layout {
