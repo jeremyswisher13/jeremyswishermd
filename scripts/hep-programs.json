@@ -26,7 +26,7 @@
     "fitIntro": "This beginner program is intended for adults who have already been evaluated and told knee osteoarthritis is the likely diagnosis. It is not a self-diagnosis tool, a postoperative protocol, or a substitute for individualized care.",
     "fit": "Activity-related knee pain and stiffness, often in adults over 45, with difficulty during walking, stairs, rising from a chair, or prolonged activity.",
     "assessFirst": "Recent major injury, a diagnosis that is uncertain, substantial instability, inflammatory arthritis, recent surgery, or pain that is mainly coming from the hip, back, or nerves.",
-    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a hot, red, swollen joint with fever, new one-sided calf swelling, inability to bear weight after trauma, true locking, or rapid deformity. Arrange a prompt evaluation for unexplained persistent rest or night pain.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a new or rapidly worsening painful, hot, red, or swollen joint with or without fever, new one-sided calf swelling, inability to bear weight after trauma, true locking, or rapid deformity. Arrange a prompt evaluation for unexplained persistent rest or night pain.",
     "programHeading": "Build a base for daily life.",
     "programIntro": "No single exercise mode or dose is best for everyone. Start with one set if needed, use a range that keeps movement controlled, then build repetitions, sets, resistance, range, or time gradually.",
     "frequency": "Strength 2 to 3 days per week; aerobic activity on most days",
@@ -78,7 +78,7 @@
     "responseIntro": "Mild to moderate discomfort can be acceptable when movement stays controlled and symptoms return to your usual baseline by the next day.",
     "green": "Mild discomfort, no new limp, and the knee is back to its usual baseline by the following morning.",
     "yellow": "Pain, swelling, or limping is meaningfully worse later that day or remains worse the next morning. Reduce depth, load, repetitions, or aerobic time.",
-    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a hot, red, swollen joint with fever, new one-sided calf swelling, true locking, rapidly increasing swelling, or inability to bear weight after trauma.",
+    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a new or rapidly worsening painful, hot, red, or swollen joint with or without fever, new one-sided calf swelling, true locking, rapidly increasing swelling, or inability to bear weight after trauma.",
     "progression": [
       { "title": "Stage 1: establish tolerance", "text": "Use a comfortable range and the lower end of each repetition range. Prioritize smooth movement and symptoms that return to baseline by the next day." },
       { "title": "Stage 2: build strength", "text": "Reach the top of the repetition range, then lower the chair, raise the step, add a band or backpack, or slow the lowering phase." },
@@ -137,7 +137,7 @@
     "fitIntro": "This advanced exercise program is intended for adults with an established knee osteoarthritis diagnosis who tolerate the beginner program and want more capacity for demanding daily or recreational activity. Advanced describes exercise complexity, not X-ray severity.",
     "fit": "Stable next-day symptoms with the beginner program and goals such as climbing stairs and hills more easily, carrying, hiking, travel, or recreation.",
     "assessFirst": "Frequent swelling, repeated giving way or falls, inability to tolerate the beginner plan, a recent major injury or surgery, an uncertain diagnosis, or medical conditions that may require an individualized exercise prescription.",
-    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a hot, red, swollen joint with fever, new one-sided calf swelling, inability to bear weight after trauma, true locking, or rapid deformity. Arrange a prompt evaluation for unexplained persistent rest or night pain.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a new or rapidly worsening painful, hot, red, or swollen joint with or without fever, new one-sided calf swelling, inability to bear weight after trauma, true locking, or rapid deformity. Arrange a prompt evaluation for unexplained persistent rest or night pain.",
     "programHeading": "Progress the demand, not the flare.",
     "programIntro": "No exercise intensity or mode is proven best for every person with knee osteoarthritis. Advanced does not mean maximal effort. Stop each set while you could still complete two or three controlled repetitions, progress one variable at a time, and use the next-morning response to judge the total dose.",
     "frequency": "Strength 2 to 3 nonconsecutive days per week; aerobic activity 3 to 5 days per week",
@@ -197,7 +197,7 @@
     "responseIntro": "Mild to moderate discomfort can be acceptable when technique remains controlled and pain, swelling, limping, and function return to your usual baseline by the next morning.",
     "green": "Mild discomfort, steady movement quality, no new limp, and the knee is back to its usual baseline by the following morning.",
     "yellow": "Pain, swelling, limping, or stair function is meaningfully worse later that day or remains worse the next morning. Reduce load, range, repetitions, step height, or aerobic time.",
-    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a hot, red, swollen joint with fever, new one-sided calf swelling, true locking, rapidly increasing swelling, or inability to bear weight after trauma.",
+    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a new or rapidly worsening painful, hot, red, or swollen joint with or without fever, new one-sided calf swelling, true locking, rapidly increasing swelling, or inability to bear weight after trauma.",
     "progression": [
       { "title": "Stage 1: practice the movements with control", "text": "Start at the lower dose with support and a comfortable range. Stop each set while you could still complete two or three controlled repetitions rather than training to failure." },
       { "title": "Stage 2: add one strength variable", "text": "First reach the upper repetition range. Then add a small amount of resistance, range, step height, or single-leg demand while the next-morning response stays stable." },
@@ -255,7 +255,7 @@
     "fitIntro": "This starter program is intended for adults who have already been evaluated and told patellofemoral pain is the likely diagnosis. It is not a self-diagnosis tool, a postoperative protocol, or a substitute for individualized care.",
     "fit": "Pain around or behind the kneecap that is reproduced by squatting, stairs, running, jumping, or prolonged sitting.",
     "assessFirst": "A recent traumatic injury, major swelling, recurrent kneecap dislocation, pain focused at the patellar tendon or tibial tubercle, or pain that is not reproduced by loaded knee bending.",
-    "redFlags": "Seek same-day urgent assessment for traumatic swelling, inability to bear weight, true locking, loss of knee extension, a kneecap dislocation, a hot, red, swollen joint with fever, or rapidly worsening pain.",
+    "redFlags": "Seek same-day urgent assessment for traumatic swelling, inability to bear weight, true locking, loss of knee extension, a kneecap dislocation, rapidly worsening pain, or a new painful, hot, red, or swollen joint with or without fever.",
     "programHeading": "Share the work across the knee and hip.",
     "programIntro": "Begin with more hip-focused work when loaded knee bending is especially painful. As tolerance improves, gradually restore knee range, repetitions, step height, and resistance.",
     "frequency": "3 nonconsecutive strength days per week",
@@ -299,7 +299,7 @@
     "responseIntro": "Keep discomfort mild, approximately 3 out of 10 or less, without limping or changing how you move. Symptoms should not be meaningfully worse the following morning.",
     "green": "Mild front-of-knee discomfort, normal movement quality, and no meaningful increase the next morning.",
     "yellow": "Pain rises above mild, mechanics change, or stairs and squatting are worse the next day. Reduce knee depth, step height, resistance, or total repetitions.",
-    "red": "Stop and seek same-day urgent assessment for a kneecap dislocation, true locking, rapid swelling, inability to bear weight, or a hot, red, swollen joint with fever.",
+    "red": "Stop and seek same-day urgent assessment for a kneecap dislocation, true locking, rapid swelling, inability to bear weight, or a new painful, hot, red, or swollen joint with or without fever.",
     "progression": [
       { "title": "Stage 1: calm the workload", "text": "Temporarily reduce provocative running, jumping, deep squatting, or hill volume while keeping general activity within tolerance." },
       { "title": "Stage 2: build repetitions", "text": "Work toward the upper repetition range with controlled knee alignment before increasing depth, step height, band resistance, or weight." },
@@ -321,8 +321,7 @@
     "sources": [
       { "href": "https://www.orthopt.org/content/s/patellofemoral-pain-2019", "label": "JOSPT Clinical Practice Guideline: Patellofemoral Pain, 2019" },
       { "href": "https://www.aafp.org/pubs/afp/issues/2020/1001/p442.html", "label": "American Family Physician: Patellofemoral Pain Guideline Summary" },
-      { "href": "https://bjsm.bmj.com/content/58/24/1486", "label": "British Journal of Sports Medicine: Best Practice Guide for Patellofemoral Pain, 2024" },
-      { "href": "https://pubmed.ncbi.nlm.nih.gov/39401870/", "label": "Winters et al.: Best Practice Guide for Patellofemoral Pain, PubMed Record, 2024" }
+      { "href": "https://bjsm.bmj.com/content/58/24/1486", "label": "British Journal of Sports Medicine: Best Practice Guide for Patellofemoral Pain, 2024" }
     ],
     "related": [
       { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Joint pain guide", "title": "Knee, hip, and shoulder pain" },
@@ -356,7 +355,7 @@
     "fitIntro": "This starter program is intended for adults who have already been evaluated and told rotator cuff-related shoulder pain is the likely diagnosis. It is not a self-diagnosis tool, a postoperative protocol, or a substitute for individualized care.",
     "fit": "Nontraumatic pain with lifting, reaching, or lying on the shoulder, including many presentations labeled rotator cuff tendinopathy, calcific tendinopathy, or partial-thickness tearing.",
     "assessFirst": "A fall or sudden pull followed by major weakness, suspected full-thickness tear, dislocation, fracture, recent surgery, or symptoms mainly driven by the neck or nerves.",
-    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment after trauma with immediate weakness, inability to raise the arm, deformity, rapidly progressive weakness, new or worsening numbness, fever or chills, a red, swollen shoulder, or feeling seriously unwell.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment after trauma with immediate weakness, inability to raise the arm, deformity, rapidly progressive weakness, new or worsening numbness, feeling seriously unwell, or a new painful, hot, red, or swollen shoulder with or without fever or chills.",
     "programHeading": "Start with a manageable range, then add resistance.",
     "programIntro": "If the shoulder is especially painful, begin with the wall slide plus one resistance exercise. Add the remaining movements as the shoulder tolerates the program without a next-day flare.",
     "frequency": "Motion daily; strength 3 days per week",
@@ -402,13 +401,13 @@
         "frequency": "2 to 3 days per week",
         "how": "Perform a wall push-up. At the top, gently push the wall away so the shoulder blades move around the ribs, without shrugging.",
         "easier": "Stand closer to the wall.",
-        "harder": "Move to a counter, then a higher incline push-up."
+        "harder": "Move from the wall to a sturdy counter, then gradually to a lower stable surface as strength improves."
       }
     ],
     "responseIntro": "Manageable discomfort is acceptable when it settles within a few hours and the shoulder is not worse the next morning.",
     "green": "Mild discomfort that settles within a few hours, with stable sleep and daily function the next morning.",
     "yellow": "Night pain, reaching, or daily function is worse the next day. Reduce range, resistance, repetitions, or the number of exercises.",
-    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for sudden loss of strength, inability to raise the arm after trauma, deformity, new or worsening numbness, fever, or a red, swollen shoulder.",
+    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for sudden loss of strength, inability to raise the arm after trauma, deformity, new or worsening numbness, or a new painful, hot, red, or swollen shoulder with or without fever.",
     "progression": [
       { "title": "Stage 1: restore comfortable motion", "text": "Use assisted motion and low resistance. Avoid repeatedly testing the most painful range during the day." },
       { "title": "Stage 2: build cuff and shoulder blade strength", "text": "Reach the top repetition range, then progress range first when appropriate, followed by band resistance or light external weight." },
@@ -462,8 +461,8 @@
       { "strong": "12 weeks", "span": "for a meaningful loading trial" }
     ],
     "fitIntro": "This starter program is intended for adults who have already been evaluated and told midportion Achilles tendinopathy is the likely diagnosis. It is not for postoperative recovery, a suspected rupture, or insertional pain without modification.",
-    "fit": "Gradual-onset, load-related pain and thickening located about 2 to 6 centimeters above the heel attachment, often with morning stiffness or pain during running and jumping.",
-    "assessFirst": "Pain directly at the heel attachment, a sudden injury, substantial swelling, inability to perform a heel raise, recent surgery, inflammatory disease, or uncertainty about rupture.",
+    "fit": "Gradual-onset, load-related pain about 2 to 6 centimeters above the heel attachment, often with morning stiffness and sometimes with localized thickening.",
+    "assessFirst": "Pain directly at the heel attachment, a sudden injury, substantial swelling, inability to perform a heel raise, recent surgery, uncertainty about rupture, or a known inflammatory, endocrine, or metabolic disorder. Stop tendon-loading exercise and contact the prescribing clinician immediately for new Achilles pain, swelling, or weakness during fluoroquinolone treatment. FDA-approved fluoroquinolone medication guides direct patients to stop the medicine at the first tendon symptoms and obtain prompt medical guidance. If symptoms begin after the course has ended, seek prompt assessment. Age over 60, systemic corticosteroid treatment, or a kidney, heart, or lung transplant increases concern.",
     "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for new one-sided calf warmth or swelling, or for a sudden pop, bruising, a palpable gap, inability to push off or perform a heel raise, acute major swelling, or other signs of tendon rupture.",
     "programHeading": "Use two calf angles and one clear progression.",
     "programIntro": "Perform the straight-knee and bent-knee loading exercises on the same day. Use the isometric hold as an entry option on more painful days, not as mandatory extra volume. Keep all work on a flat floor for this midportion starter plan.",
@@ -523,10 +522,10 @@
       { "title": "Stage 3: restore spring and sport", "text": "Add fast calf work, pogo contacts, hopping, and running volume only after slow strength and daily activities are stable." }
     ],
     "readyItems": [
-      "Morning pain and stiffness are stable or improving.",
-      "Repeated single-leg heel raises have good height and control.",
-      "Walking and stairs do not produce a sustained flare.",
-      "You can add load without losing the slow tempo."
+      "You have completed the progressive loading stage needed for the activity you plan to resume.",
+      "Pain stays at 5 out of 10 or less during activity and returns to baseline by the next morning.",
+      "Pain and stiffness are not increasing from week to week.",
+      "Walking, stairs, and repeated heel raises are controlled without a sustained flare."
     ],
     "evaluation": "Schedule a visit if the pain is at the heel attachment, the diagnosis is uncertain, symptoms are worsening, a rupture is possible, or a consistent twelve-week loading trial does not improve function.",
     "faqs": [
@@ -538,7 +537,10 @@
     "sources": [
       { "href": "https://www.orthopt.org/content/s/achilles-pain-stiffness-and-muscle-power-deficits-midportion-achilles-tendinopathy-revision-2024", "label": "JOSPT Clinical Practice Guideline: Midportion Achilles Tendinopathy, 2024" },
       { "href": "https://pubmed.ncbi.nlm.nih.gov/26018970/", "label": "Beyer et al.: Heavy Slow Resistance Versus Eccentric Training, 2015" },
-      { "href": "https://pubmed.ncbi.nlm.nih.gov/17307888/", "label": "Silbernagel et al.: Pain-Monitoring Model and Continued Activity, 2007" }
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/17307888/", "label": "Silbernagel et al.: Pain-Monitoring Model and Continued Activity, 2007" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/27226389/", "label": "Bern Consensus Statement on Return to Sport, 2016" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/40240126/", "label": "Achilles Tendinopathy Diagnostic and Medical-Attention Delphi Consensus, 2025" },
+      { "href": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/019537s092lbl.pdf", "label": "FDA-Approved Ciprofloxacin Label and Medication Guide, 2021" }
     ],
     "related": [
       { "href": "../tendon-pain/", "eyebrow": "Tendon guide", "title": "Evidence-based tendon care" },
@@ -646,7 +648,7 @@
     "sources": [
       { "href": "https://pubmed.ncbi.nlm.nih.gov/29720374/", "label": "Mellor et al.: Education Plus Exercise Versus Corticosteroid Injection for Gluteal Tendinopathy, 2018" },
       { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4852446/", "label": "LEAP Trial Protocol: Exercise and Load-Management Program" },
-      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11263908/", "label": "Graduated Exercise Program for Gluteal Tendinopathy, 2024" }
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11263908/", "label": "LEAP-Ireland Feasibility Trial Protocol, 2024" }
     ],
     "related": [
       { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Hip evaluation", "title": "Knee, hip, and shoulder pain" },
@@ -679,8 +681,8 @@
     ],
     "fitIntro": "This starter program is intended for adults who have already been evaluated and told an uncomplicated lateral ankle sprain is the likely diagnosis. Fracture, syndesmotic injury, Achilles rupture, and major midfoot injury should be reasonably excluded.",
     "fit": "Pain and swelling mainly at the outer ankle after a rolling injury, with improving ability to bear weight and no concerning fracture or signs of a high ankle sprain.",
-    "assessFirst": "Inability to take four steps, focal bony tenderness, pain above the ankle, major midfoot pain, recurrent instability, a suspected Achilles injury, or a severe injury that may need short immobilization.",
-    "redFlags": "A newly cold, pale, blue, or numb foot after injury requires immediate emergency evaluation. Seek same-day urgent assessment for deformity, signs of Achilles rupture, inability to take four steps, focal bony tenderness, or pain above the ankle. Arrange a prompt assessment for worsening swelling or bruising, locking, or repeated giving way.",
+    "assessFirst": "Inability to take four steps, tenderness at the posterior edge or tip of either ankle bone, tenderness at the base of the fifth metatarsal or navicular in the midfoot, pain above the ankle, recurrent instability, a suspected Achilles injury, or a severe injury that may need short immobilization.",
+    "redFlags": "A newly cold, pale, blue, or numb foot after injury requires immediate emergency evaluation. Seek same-day urgent assessment for deformity, signs of Achilles rupture, inability to take four steps, tenderness at the posterior edge or tip of either ankle bone, tenderness at the base of the fifth metatarsal or navicular, or pain above the ankle. Arrange a prompt assessment for worsening swelling or bruising, locking, or repeated giving way.",
     "programHeading": "Move early, then rebuild ankle control and confidence.",
     "programIntro": "Progressive weight bearing with an appropriate brace or tape is supported for many uncomplicated sprains. Severe sprains may need clinician-directed immobilization for a short period before this progression.",
     "frequency": "Motion and balance daily; strength 3 days per week",
@@ -718,7 +720,7 @@
         "frequency": "Daily",
         "how": "Stand on the injured leg near a counter. Keep the heel and the bases of the big and little toes in contact with the floor while maintaining a steady posture with a soft knee.",
         "easier": "Use fingertip support or a shorter interval.",
-        "harder": "Add head turns, reaches, or a less stable surface."
+        "harder": "Add head turns, reaches, or a less stable surface while keeping a stable support within reach. Do not use an unstable surface if you have meaningful fall risk."
       },
       {
         "name": "Later-stage hop and hold",
@@ -749,11 +751,12 @@
       { "q": "Should I rest until all pain is gone?", "a": "Usually not. Early protected weight bearing and structured exercise are recommended for many uncomplicated sprains. The amount of protection depends on severity." },
       { "q": "Do I need a brace?", "a": "A brace or tape can support early weight bearing and reduce recurrence risk, especially during higher-risk activity. The choice should match injury severity, comfort, and sport demands." },
       { "q": "Is ice required?", "a": "Ice can be used briefly for comfort, but it should be an adjunct to exercise and progressive loading rather than the main treatment." },
-      { "q": "When can I return to sport?", "a": "Use function rather than the calendar alone. Walking, stairs, strength, balance, hopping, and sport-specific changes of direction should return without giving way or a next-day swelling flare." }
+      { "q": "When can I return to sport?", "a": "Use function rather than the calendar alone. The decision should include pain during sport and over the prior 24 hours, ankle motion, strength, endurance and power, dynamic balance, confidence and perceived stability, psychological readiness, hopping and agility, sport-specific tasks, and tolerance of a full training session. No single cutoff guarantees readiness." }
     ],
     "sources": [
       { "href": "https://www.orthopt.org/uploads/content_files/files/jospt.2021.0302.pdf", "label": "JOSPT Clinical Practice Guideline: Lateral Ankle Ligament Sprains, 2021" },
-      { "href": "https://www.bmj.com/content/339/bmj.b2684", "label": "BMJ: Home-Based Proprioceptive Training to Prevent Ankle-Sprain Recurrence" }
+      { "href": "https://www.bmj.com/content/339/bmj.b2684", "label": "BMJ: Home-Based Proprioceptive Training to Prevent Ankle-Sprain Recurrence" },
+      { "href": "https://bjsm.bmj.com/content/55/22/1270", "label": "PAASS Return-to-Sport Consensus for Acute Lateral Ankle Sprain, 2021" }
     ],
     "related": [
       { "href": "../sports-injuries/", "eyebrow": "Injury guide", "title": "Sports injury evaluation" },
@@ -772,7 +775,7 @@
     "breadcrumb": "Common extensor tendinopathy",
     "kicker": "Lateral elbow pain · Home exercise plan",
     "h1": "Tennis Elbow Exercises for Common Extensor Tendinopathy",
-    "summary": "Common extensor tendinopathy usually improves through activity adjustment and progressive wrist-extensor loading. This plan moves from comfortable isometrics to slow strength, grip, and task-specific demand.",
+    "summary": "Activity adjustment and progressive wrist-extensor loading are commonly used first-line strategies. Average exercise benefits are modest and evidence certainty is low, so recovery and response vary.",
     "authorityTitle": "Settle symptoms. Build strength. Restore grip.",
     "authorityItems": [
       { "icon": "front_hand", "text": "Progressive wrist-extensor loading" },
@@ -787,7 +790,7 @@
     "fitIntro": "This starter program is intended for adults who have already been evaluated and told common extensor or lateral elbow tendinopathy is the likely diagnosis. It is not a self-diagnosis tool, a postoperative protocol, or a substitute for individualized care.",
     "fit": "Gradual pain and tenderness at or just below the outside elbow, aggravated by gripping, carrying, palm-down lifting, resisted wrist or finger extension, or stretching the wrist extensors.",
     "assessFirst": "A sudden injury, major swelling or weakness, inability to fully move the elbow, locking or instability, neck pain with radiating symptoms, numbness or tingling, or pain located farther down the forearm that may reflect radial nerve involvement.",
-    "redFlags": "Seek same-day urgent assessment for a sudden pop with bruising or deformity, rapidly increasing pain, marked weakness, a hot, red, swollen elbow with fever, new numbness, or progressive weakness. Arrange a prompt evaluation for persistent rest or night pain or unexplained systemic symptoms.",
+    "redFlags": "Seek same-day urgent assessment for a sudden pop with bruising or deformity, rapidly increasing pain, marked or progressive weakness, or a new painful, hot, red, or swollen elbow with or without fever. Arrange a prompt evaluation for new numbness, persistent rest or night pain, or unexplained systemic symptoms.",
     "programHeading": "Load the wrist extensors, then restore the task.",
     "programIntro": "Guidelines support isometric, concentric, and eccentric resisted wrist-extensor exercise, but no single dose is proven best. Use the isometric as the main load when the elbow is especially painful. As slow wrist extension becomes tolerable, use the isometric as a warm-up rather than treating both exercises as full sessions on the same day.",
     "frequency": "Isometric daily when symptoms are sensitive; strength about 3 days per week",
@@ -839,7 +842,7 @@
     "responseIntro": "A small amount of familiar discomfort can be acceptable when it stays controlled, does not increase across repetitions, and returns to baseline by the next morning.",
     "green": "Pain stays between 0 and 3 out of 10, grip remains steady, and symptoms return to baseline by the following morning.",
     "yellow": "Pain reaches 4 to 5 out of 10, grip feels weaker afterward, or the elbow remains worse the next morning. Reduce weight, range, or repetitions by 25 to 50 percent and add recovery time.",
-    "red": "Stop and seek prompt assessment for sharp, electric, or rapidly increasing pain, new numbness or weakness, major swelling, loss of motion, or symptoms that worsen week to week. Use same-day urgent care for rapidly progressive weakness or a hot, red, swollen elbow with fever.",
+    "red": "Stop and seek prompt assessment for sharp, electric, or rapidly increasing pain, new numbness or weakness, major swelling, loss of motion, or symptoms that worsen week to week. Use same-day urgent care for rapidly progressive weakness or a new painful, hot, red, or swollen elbow with or without fever.",
     "progression": [
       { "title": "Stage 1: settle symptoms", "text": "Reduce repetitive hard gripping and palm-down lifting. Use a neutral grip or palm-up lifting when practical and begin comfortable isometrics." },
       { "title": "Stage 2: build forearm capacity", "text": "Add slow wrist extension, rotation, and controlled grip every other day. Progress repetitions before adding weight." },
@@ -896,7 +899,7 @@
     "fitIntro": "This starter program is intended for adults who have already been evaluated and told common flexor or medial elbow tendinopathy is the likely diagnosis. It is not appropriate for a suspected ulnar collateral ligament injury or ulnar neuropathy.",
     "fit": "Gradual focal pain and tenderness at or just below the inside elbow, aggravated by gripping, resisted wrist flexion, forearm pronation, or stretching into wrist extension.",
     "assessFirst": "A sudden throwing injury, loss of throwing velocity, a feeling that the inner elbow is unstable during throwing, numbness or tingling into the ring and small fingers, hand weakness, snapping at the medial elbow, major swelling, locking, or neck symptoms radiating into the arm.",
-    "redFlags": "Seek same-day urgent assessment for a sudden pop with bruising or deformity, marked weakness, a hot, red, swollen elbow with fever, progressive hand weakness, persistent ring-finger or small-finger numbness, or acute throwing-related instability. Arrange a prompt evaluation for unexplained rest or night pain, weight loss, or other systemic symptoms.",
+    "redFlags": "Seek same-day urgent assessment for a sudden pop with bruising or deformity, marked or progressive hand weakness, acute throwing-related instability, or a new painful, hot, red, or swollen elbow with or without fever. Arrange a prompt evaluation for persistent ring-finger or small-finger numbness, unexplained rest or night pain, weight loss, or other systemic symptoms.",
     "programHeading": "Strengthen the forearm while watching for signs of nerve or ligament injury.",
     "programIntro": "Direct exercise evidence for medial elbow tendinopathy is more limited than it is for lateral elbow pain. Slow wrist-flexor loading has the best condition-specific support, while the exact dose, grip work, rotation, and shoulder exercise are reasonable starting points.",
     "frequency": "Isometric daily when symptoms are sensitive; strength about 3 days per week",
@@ -948,7 +951,7 @@
     "responseIntro": "A small amount of familiar tendon discomfort can be acceptable when it stays controlled and returns to baseline by the next morning. Neurologic symptoms or throwing-related instability are not acceptable loading symptoms.",
     "green": "Pain stays between 0 and 3 out of 10, grip remains steady, and the elbow returns to baseline by the following morning.",
     "yellow": "Pain reaches 4 to 5 out of 10 or remains worse the next morning. Reduce weight, range, or repetitions by 25 to 50 percent and allow more recovery.",
-    "red": "Stop and seek prompt assessment for ring-finger or small-finger numbness, hand weakness, snapping, sharp pain, major swelling, or pain or a feeling of instability during throwing. Use same-day urgent care for progressive weakness or a hot, red, swollen elbow with fever.",
+    "red": "Stop and seek prompt assessment for ring-finger or small-finger numbness, hand weakness, snapping, sharp pain, major swelling, or pain or a feeling of instability during throwing. Use same-day urgent care for progressive weakness or a new painful, hot, red, or swollen elbow with or without fever.",
     "progression": [
       { "title": "Stage 1: settle symptoms", "text": "Reduce hard gripping, repeated wrist flexion and palm-down rotation, and painful throwing. Begin comfortable isometric loading." },
       { "title": "Stage 2: build forearm capacity", "text": "Add slow wrist flexion, palm-down rotation, and controlled grip every other day. Progress repetitions before adding load." },
@@ -1005,7 +1008,7 @@
     "fitIntro": "This starter program is intended for adults who have already been evaluated and told adhesive capsulitis or frozen shoulder is the likely diagnosis. It is not a postoperative protocol and should not be used to explain every painful or stiff shoulder.",
     "fit": "Gradual, often atraumatic shoulder pain followed by loss of motion both when you move the shoulder yourself and when someone else moves it. Turning the arm outward is often especially limited, with night pain and difficulty dressing, grooming, or reaching.",
     "assessFirst": "Sudden weakness after trauma, passive motion that is relatively preserved, prior shoulder surgery, substantial shoulder arthritis, cervical or neurologic symptoms, recurrent instability, or a pattern that does not include progressive loss of passive motion.",
-    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment after trauma with deformity or inability to raise the arm, rapidly progressive weakness, new or worsening numbness, fever, or a hot, red, swollen shoulder. Arrange a prompt evaluation for unexplained weight loss or known cancer with new persistent pain.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment after trauma with deformity or inability to raise the arm, rapidly progressive weakness, new or worsening numbness, or a new painful, hot, red, or swollen shoulder with or without fever. Arrange a prompt evaluation for unexplained weight loss or known cancer with new persistent pain.",
     "programHeading": "Match the exercises to how painful and sensitive the shoulder is.",
     "programIntro": "Use only the first two exercises when rest pain and night pain are high. Aggressive stretching beyond the pain threshold can be counterproductive during a more painful phase. Add longer holds, active motion, and strength as pain settles and stiffness becomes the dominant limitation.",
     "frequency": "Short mobility sessions 1 to 2 times daily; strength 2 to 3 days per week when tolerated",
@@ -1057,7 +1060,7 @@
     "responseIntro": "Gentle pulling or mild discomfort can be acceptable when it settles promptly and does not meaningfully increase rest pain, night pain, or next-morning stiffness.",
     "green": "The mobility dose settles promptly, sleep is not worse, and the shoulder is no stiffer the next morning.",
     "yellow": "Pain stays elevated later that day, sleep worsens, or motion is worse the next morning. Reduce range, hold time, repetitions, or session frequency.",
-    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for sudden weakness, new numbness, traumatic loss of function, fever, or a hot, red, swollen shoulder.",
+    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for sudden weakness, new numbness, traumatic loss of function, or a new painful, hot, red, or swollen shoulder with or without fever.",
     "progression": [
       { "title": "Stage 1: when rest and night pain are high", "text": "Use brief, comfortable table slides and assisted outward rotation. Avoid prolonged or forceful stretching." },
       { "title": "Stage 2: as pain becomes less constant", "text": "Increase hold duration gradually and add assisted elevation and active wall slides." },
@@ -1100,7 +1103,7 @@
     "breadcrumb": "Patellar tendinopathy for athletes",
     "kicker": "Jumper's knee · Progressive tendon loading",
     "h1": "Patellar Tendinopathy Exercises for Athletes",
-    "summary": "Slow strength is necessary, but it is not the finish line. Athletes must progress through strength, faster spring-like loading, jumping, sprinting, and repeated sport exposure while monitoring the next-day tendon response.",
+    "summary": "Progressive loading is commonly recommended, and slow resistance is a practical strength foundation. Trial certainty remains limited, and no single loading program is proven best. Athletes whose sports require jumping, sprinting, or repeated fast loading should add those demands gradually.",
     "authorityTitle": "Strength. Spring. Sport capacity.",
     "authorityItems": [
       { "icon": "fitness_center", "text": "Progressive quadriceps and tendon strength" },
@@ -1115,11 +1118,11 @@
     "fitIntro": "This starter program is intended for athletes who have already been evaluated and told patellar tendinopathy is the likely diagnosis. It is not intended for an acute tendon tear, a swollen or locked knee, or younger athletes with growth-center pain.",
     "fit": "Localized pain at the lower pole of the patella or along the patellar tendon, reproduced by jumping, landing, acceleration, deceleration, deep squatting, or resisted knee extension.",
     "assessFirst": "Diffuse pain around or behind the kneecap, substantial joint swelling, locking, instability, acute trauma, pain at the tibial tubercle or growth center, fat-pad pain, or symptoms suggesting inflammatory disease.",
-    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for new one-sided calf swelling, a sudden pop with inability to perform a straight-leg raise, a palpable tendon defect, rapid traumatic swelling, inability to bear weight, a locked knee, fever, or a hot, red, swollen joint.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for new one-sided calf swelling, a sudden pop with inability to perform a straight-leg raise, a palpable tendon defect, rapid traumatic swelling, inability to bear weight, a locked knee, or a new painful, hot, red, or swollen joint with or without fever.",
     "programHeading": "Build strength before progressing to jumping.",
     "programIntro": "Do not begin every exercise at full volume. Start with the isometric plus two slow strength movements. Add low-level jumping only after slow loading is controlled, baseline symptoms are stable, and there is at least forty-eight hours between early high tendon-load sessions.",
     "frequency": "Strength 3 days per week; jumping initially 2 days per week",
-    "equipment": "Strong strap or wall, chair, backpack or weights, optional band or gym equipment",
+    "equipment": "Wall, chair, backpack or weights, optional band or gym equipment; use a Spanish-squat strap only with a fixed, load-rated anchor",
     "checkpoint": "Adjust at 4 to 6 weeks; judge the strength trial near 12 weeks",
     "goal": "Jumping, landing, sprinting, deceleration, and full training capacity",
     "exercises": [
@@ -1127,7 +1130,7 @@
         "name": "Spanish squat or wall-sit isometric",
         "dose": "5 holds of 30 to 45 seconds with 1 to 2 minutes of rest",
         "frequency": "Daily when useful or before training",
-        "how": "Sit back against a strong strap behind the knees or use a wall sit. Keep the trunk tall and hold at a tolerable knee angle.",
+        "how": "Use a wall sit unless a clinician has shown you a secure Spanish-squat setup using a purpose-built strap attached to a fixed, load-rated anchor. Do not attach an improvised strap to furniture or a door handle. Keep the trunk tall and hold at a tolerable knee angle.",
         "easier": "Use a shorter hold, shallower knee angle, or bilateral wall sit.",
         "harder": "Increase hold time, knee angle, or resistance without worsening the next-morning tendon test."
       },
@@ -1192,17 +1195,19 @@
     "evaluation": "No single validated return-to-sport test exists for patellar tendinopathy. Review loading and technique at four to six weeks. Reassess the diagnosis and program when there is no meaningful improvement after eight to twelve weeks of consistent progressive loading, or when jump volume, strength deficits, or return-to-sport demands require individualized testing.",
     "faqs": [
       { "q": "Should I stop sport completely?", "a": "Usually not. Relative load reduction is preferred when training does not worsen the next-day response. Avoid sudden increases in jumping volume and count strength, jumping, practice, and competition as tendon load." },
-      { "q": "Are isometrics the best treatment?", "a": "No. They may provide temporary pain relief for some athletes, but progressive slow strength and later jumping and other fast loading are essential." },
+      { "q": "Are isometrics the best treatment?", "a": "Isometrics may temporarily reduce pain for some athletes. Progressive loading is commonly recommended, but the best contraction type and dose remain uncertain." },
       { "q": "Must I perform decline squats?", "a": "No. A decline squat is useful as a load test and can be an exercise, but progressive loading can also use squats, split squats, leg press, and knee extension." },
       { "q": "When can jumping begin?", "a": "Begin after slow strength is controlled and baseline symptoms are stable. Start with low contacts, preserve recovery days, and check the tendon the next morning." },
       { "q": "Do imaging findings determine readiness?", "a": "No. Diagnosis and progression are primarily clinical because tendon changes can be present in athletes without pain and structural change does not consistently track recovery." }
     ],
     "sources": [
-      { "href": "https://pubmed.ncbi.nlm.nih.gov/39045713/", "label": "Dutch Multidisciplinary Guideline for Patellofemoral Pain and Patellar Tendinopathy, 2024" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/39045713/", "label": "Dutch Multidisciplinary Guideline for Patellofemoral Pain and Patellar Tendinopathy, 2025 (published online 2024)" },
       { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8070614/", "label": "Breda et al.: Progressive Tendon-Loading Exercise Versus Eccentric Exercise, Randomized Trial" },
       { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9528703/", "label": "Clinical Management of Patellar Tendinopathy" },
       { "href": "https://pubmed.ncbi.nlm.nih.gov/26390269/", "label": "Malliaras et al.: Patellar Tendinopathy Diagnosis, Load Management, and Advice for Challenging Cases" },
-      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10925836/", "label": "Patellar Tendon Load Progression During Rehabilitation Exercises, 2024" }
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10925836/", "label": "Patellar Tendon Load Progression During Rehabilitation Exercises, 2024" },
+      { "href": "https://www.cochrane.org/evidence/CD013078_do-strengthening-exercises-help-treatment-people-patellar-tendinopathy-jumpers-knee", "label": "Cochrane Review: Exercise for Patellar Tendinopathy, 2025" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/42192475/", "label": "Network Meta-analysis of Exercise for Patellar Tendinopathy, 2026" }
     ],
     "related": [
       { "href": "../tendon-pain/", "eyebrow": "Tendon principles", "title": "Evidence-based tendon care" },

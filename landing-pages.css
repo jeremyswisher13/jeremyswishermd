@@ -2106,6 +2106,10 @@
         line-height: 0.94;
     }
 
+    .landing-page.ultrasound-page .landing-hero h1 {
+        font-size: clamp(2.55rem, 13vw, 4rem);
+    }
+
     .landing-page .landing-summary {
         margin-top: 22px;
         font-size: 1rem;
@@ -2757,15 +2761,15 @@
     .hep-page .print-program-footer {
         break-inside: avoid;
         page-break-inside: avoid;
-        margin-top: 5mm;
-        padding-top: 4mm;
+        margin-top: 2mm;
+        padding-top: 2.5mm;
         border-top: 2px solid #0f1923;
-        font-size: 8pt;
-        line-height: 1.4;
+        font-size: 7.75pt;
+        line-height: 1.32;
     }
 
     .hep-page .print-program-footer p {
-        margin: 0 0 1.5mm;
+        margin: 0 0 0.8mm;
         overflow-wrap: anywhere;
     }
 
