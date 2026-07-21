@@ -367,3 +367,135 @@ printProgramButtons.forEach(button => {
 
 window.addEventListener('beforeprint', () => document.body.classList.add('is-printing'));
 window.addEventListener('afterprint', () => resetPrintProgramState(true));
+
+// Privacy-safe scheduling measurement
+//
+// This site records only two scheduling actions: selecting a phone link or
+// selecting UCLA Health's appointment-request link. Events include the public
+// page path and a broad CTA placement. They never include the phone number,
+// destination URL, link text, query string, referrer, or page contents.
+const ANALYTICS_PRODUCTION_HOSTS = new Set([
+    'jeremyswishermd.com',
+    'www.jeremyswishermd.com'
+]);
+const ANALYTICS_LOCATIONS = new Set([
+    'navigation',
+    'hero',
+    'patient',
+    'final_cta',
+    'sidebar',
+    'contact',
+    'referral',
+    'footer',
+    'content'
+]);
+const ANALYTICS_IGNORED_METRICS = [
+    'referrer',
+    'utm',
+    'country',
+    'session',
+    'timeonpage',
+    'scrolled',
+    'useragent',
+    'screensize',
+    'viewportsize',
+    'language'
+].join(',');
+
+function hasAnalyticsPrivacySignal() {
+    if (navigator.globalPrivacyControl === true) return true;
+
+    const doNotTrackSignals = [
+        navigator.doNotTrack,
+        window.doNotTrack,
+        navigator.msDoNotTrack
+    ];
+
+    return doNotTrackSignals.some(value => (
+        value === '1' || value === 1 || value === 'yes'
+    ));
+}
+
+function analyticsPagePath() {
+    const path = window.location.pathname.replace(/\/{2,}/g, '/');
+    return path.startsWith('/') ? path : '/';
+}
+
+function analyticsLocationForLink(link) {
+    const explicitLocation = link.dataset.analyticsLocation;
+    if (ANALYTICS_LOCATIONS.has(explicitLocation)) return explicitLocation;
+
+    if (link.closest('#navbar')) return 'navigation';
+    if (link.closest('.landing-hero, .hero')) return 'hero';
+    if (link.closest('.patient-card')) return 'patient';
+    if (link.closest('.conversion-band')) return 'final_cta';
+    if (link.closest('.landing-sidebar, aside')) return 'sidebar';
+    if (link.closest('.contact-card, #contact')) return 'contact';
+    if (link.closest('.referral-card, section#referrals .clinician-panel')) return 'referral';
+    if (link.closest('footer')) return 'footer';
+    return 'content';
+}
+
+function schedulingEventName(link) {
+    const rawHref = link.getAttribute('href')?.trim();
+    if (!rawHref) return null;
+    if (rawHref.toLowerCase().startsWith('tel:')) return 'call_click';
+
+    try {
+        const destination = new URL(rawHref, window.location.href);
+        const isUclaAppointmentRequest = destination.hostname === 'cloud.h.uclahealth.org'
+            && destination.pathname === '/appointment-request';
+        return isUclaAppointmentRequest ? 'appointment_request_click' : null;
+    } catch {
+        return null;
+    }
+}
+
+function loadSchedulingAnalytics() {
+    if (!ANALYTICS_PRODUCTION_HOSTS.has(window.location.hostname)) return false;
+    if (hasAnalyticsPrivacySignal()) return false;
+    if (document.querySelector('script[data-scheduling-analytics]')) return true;
+
+    window.sa_event = window.sa_event || function queueSimpleAnalyticsEvent(...args) {
+        window.sa_event.q = window.sa_event.q || [];
+        window.sa_event.q.push(args);
+    };
+
+    const analyticsScript = document.createElement('script');
+    analyticsScript.async = true;
+    analyticsScript.src = 'https://scripts.simpleanalyticscdn.com/sri/v11.js';
+    analyticsScript.integrity = 'sha384-rfv15RJy1bBYZ1Mf4xizO26jorXb2myipCvHXy4rkG0SuEET96S+m0sTzu5vfbSI';
+    analyticsScript.crossOrigin = 'anonymous';
+    analyticsScript.referrerPolicy = 'no-referrer';
+    analyticsScript.dataset.schedulingAnalytics = 'true';
+    analyticsScript.dataset.autoCollect = 'false';
+    analyticsScript.dataset.hostname = 'jeremyswishermd.com';
+    analyticsScript.dataset.ignoreMetrics = ANALYTICS_IGNORED_METRICS;
+    document.head.appendChild(analyticsScript);
+    return true;
+}
+
+function measureSchedulingAction(event) {
+    if (!(event.target instanceof Element)) return;
+    if (event.type === 'auxclick' && event.button !== 1) return;
+
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+
+    const eventName = schedulingEventName(link);
+    if (!eventName || typeof window.sa_event !== 'function') return;
+
+    try {
+        window.sa_event(eventName, {
+            page: analyticsPagePath(),
+            cta_location: analyticsLocationForLink(link)
+        });
+    } catch {
+        // Measurement must never interrupt a call or UCLA appointment link.
+    }
+}
+
+if (loadSchedulingAnalytics()) {
+    document.addEventListener('click', measureSchedulingAction, { capture: true });
+    document.addEventListener('auxclick', measureSchedulingAction, { capture: true });
+}

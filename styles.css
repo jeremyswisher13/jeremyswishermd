@@ -1526,6 +1526,25 @@ ul {
     font-weight: 700;
 }
 
+.footer-privacy-link {
+    margin-top: 12px;
+    font-size: 0.74rem;
+    line-height: 1.6;
+}
+
+.footer-privacy-link a {
+    color: rgba(255, 255, 255, 0.78);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.34);
+    text-underline-offset: 4px;
+}
+
+.footer-privacy-link a:hover,
+.footer-privacy-link a:focus-visible {
+    color: var(--color-text-inverse);
+    text-decoration-color: currentColor;
+}
+
 .footer-disclaimer {
     max-width: 760px;
     margin-top: 12px;
