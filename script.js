@@ -1,7 +1,6 @@
 // Mobile Navigation Toggle
 // The navigation remains visible if this script does not load. Once JavaScript is
 // ready, the mobile menu becomes a compact toggle.
-document.documentElement.classList.add('nav-ready');
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
 const MOBILE_NAV_BREAKPOINT = 1180;
@@ -100,6 +99,10 @@ if (navToggle && navLinks) {
     } else {
         window.addEventListener('resize', closeNavAboveMobile);
     }
+
+    // Only switch to the collapsed mobile-menu presentation after every
+    // navigation handler has been installed successfully.
+    document.documentElement.classList.add('nav-ready');
 }
 
 // Navbar scroll effect
