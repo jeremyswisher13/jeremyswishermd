@@ -371,6 +371,66 @@ printProgramButtons.forEach(button => {
 window.addEventListener('beforeprint', () => document.body.classList.add('is-printing'));
 window.addEventListener('afterprint', () => resetPrintProgramState(true));
 
+// Privacy-conscious video companions for home exercise programs.
+//
+// YouTube is contacted only after a visitor explicitly loads a player.
+const videoResources = Array.from(document.querySelectorAll('[data-video-resource]'));
+const youtubeVideoIdPattern = /^[A-Za-z0-9_-]{11}$/;
+
+function loadVideoResource(resource) {
+    const videoId = resource.dataset.videoId;
+    const videoTitle = resource.dataset.videoTitle;
+    const stage = resource.querySelector('[data-video-stage]');
+    const status = resource.querySelector('[data-video-status]');
+
+    if (!youtubeVideoIdPattern.test(videoId || '') || !videoTitle || !stage) {
+        if (status) status.textContent = 'The embedded player is unavailable. Use the Watch on YouTube link below.';
+        return;
+    }
+
+    const parameters = new URLSearchParams({
+        cc_load_policy: '1',
+        cc_lang_pref: 'en',
+        hl: 'en',
+        playsinline: '1',
+        rel: '0'
+    });
+    const startSeconds = Number.parseInt(resource.dataset.videoStart || '', 10);
+    const endSeconds = Number.parseInt(resource.dataset.videoEnd || '', 10);
+
+    if (
+        Number.isInteger(startSeconds)
+        && Number.isInteger(endSeconds)
+        && startSeconds >= 0
+        && endSeconds > startSeconds
+    ) {
+        parameters.set('start', String(startSeconds));
+        parameters.set('end', String(endSeconds));
+    }
+
+    const iframe = document.createElement('iframe');
+    iframe.className = 'video-frame';
+    iframe.width = '560';
+    iframe.height = '315';
+    iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?${parameters.toString()}`;
+    iframe.title = `${videoTitle} | E3 Rehab`;
+    iframe.loading = 'lazy';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.allow = 'encrypted-media; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+
+    stage.replaceChildren(iframe);
+    resource.classList.add('is-loaded');
+    if (status) status.textContent = 'YouTube video player loaded.';
+    window.requestAnimationFrame(() => iframe.focus());
+}
+
+videoResources.forEach(resource => {
+    const loadButton = resource.querySelector('[data-load-video]');
+    if (!loadButton) return;
+    loadButton.addEventListener('click', () => loadVideoResource(resource), { once: true });
+});
+
 // Privacy-safe scheduling measurement
 //
 // This site records only two scheduling actions: selecting a phone link or

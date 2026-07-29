@@ -7,6 +7,7 @@ const root = resolve(scriptDirectory, '..');
 const template = readFileSync(join(scriptDirectory, 'hep-page.template'), 'utf8');
 const programs = JSON.parse(readFileSync(join(scriptDirectory, 'hep-programs.json'), 'utf8'));
 const siteRoot = 'https://jeremyswishermd.com';
+const youtubeIdPattern = /^[A-Za-z0-9_-]{11}$/;
 
 function formatReviewedDate(value, slug) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
@@ -104,6 +105,97 @@ function renderRelated(items) {
     ].join('\n')).join('\n');
 }
 
+function validateVideo(video, slug) {
+    if (!video) return;
+
+    for (const field of ['id', 'title', 'description', 'caution']) {
+        if (typeof video[field] !== 'string' || !video[field].trim()) {
+            throw new Error('Invalid video.' + field + ' for ' + slug);
+        }
+    }
+
+    if (!youtubeIdPattern.test(video.id)) {
+        throw new Error('Invalid YouTube video ID for ' + slug + ': ' + video.id);
+    }
+
+    if (video.startSeconds !== undefined || video.endSeconds !== undefined) {
+        if (
+            !Number.isInteger(video.startSeconds)
+            || !Number.isInteger(video.endSeconds)
+            || video.startSeconds < 0
+            || video.endSeconds <= video.startSeconds
+        ) {
+            throw new Error('Invalid YouTube chapter timing for ' + slug);
+        }
+    }
+
+    if (video.related) {
+        if (
+            typeof video.related.href !== 'string'
+            || !/^\.\.\/[a-z0-9-]+\/$/.test(video.related.href)
+            || typeof video.related.label !== 'string'
+            || !video.related.label.trim()
+        ) {
+            throw new Error('Invalid related video link for ' + slug);
+        }
+    }
+}
+
+function renderVideoJump(video) {
+    return video ? '                <a href="#video">Video</a>' : '';
+}
+
+function renderVideoSection(video) {
+    if (!video) return '';
+
+    const chapterQuery = Number.isInteger(video.startSeconds) ? '&t=' + video.startSeconds + 's' : '';
+    const watchUrl = 'https://www.youtube.com/watch?v=' + video.id + chapterQuery;
+    const timingAttributes = Number.isInteger(video.startSeconds)
+        ? ' data-video-start="' + video.startSeconds + '" data-video-end="' + video.endSeconds + '"'
+        : '';
+    const relatedLink = video.related
+        ? '                            <a class="text-link video-evidence-link" href="' + escapeHtml(video.related.href) + '">' + escapeHtml(video.related.label) + '</a>'
+        : '';
+
+    return [
+        '                    <section class="content-section no-print video-section" id="video" aria-labelledby="video-section-title">',
+        '                        <p class="section-label">Optional video companion</p>',
+        '                        <h2 id="video-section-title">See the movement principles in context.</h2>',
+        '                        <p class="section-intro">The written program above remains the prescription. This independent third-party video adds a visual explanation of the condition and common exercise options.</p>',
+        '                        <figure class="video-resource" data-video-resource data-video-id="' + escapeHtml(video.id) + '" data-video-title="' + escapeHtml(video.title) + '"' + timingAttributes + '>',
+        '                            <div class="video-stage" data-video-stage>',
+        '                                <div class="video-facade">',
+        '                                    <p class="video-facade-label">E3 Rehab video</p>',
+        '                                    <h3>' + escapeHtml(video.title) + '</h3>',
+        '                                    <p class="video-facade-byline">Third-party educational resource</p>',
+        '                                    <button class="video-load-button" type="button" data-load-video>',
+        '                                        <span class="video-play-mark" aria-hidden="true"></span>',
+        '                                        <span>Load video player</span>',
+        '                                    </button>',
+        '                                    <p class="video-privacy-note">YouTube content does not load until you choose this button.</p>',
+        '                                </div>',
+        '                            </div>',
+        '                            <figcaption class="video-caption">',
+        '                                <p>' + escapeHtml(video.description) + '</p>',
+        '                                <a class="text-link" href="' + escapeHtml(watchUrl) + '" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>',
+        '                            </figcaption>',
+        '                            <p class="sr-only" data-video-status role="status" aria-live="polite"></p>',
+        '                        </figure>',
+        '                        <div class="video-use-note">',
+        '                            <strong>Use with this program</strong>',
+        '                            <p>Use this video for education and technique, not as a second exercise program. Follow the exercises, dose, progression, and symptom rules on this page. Video examples are options, not additions. Links or promotions inside the video are provided by E3 Rehab and are not part of this program. ' + escapeHtml(video.caution) + '</p>',
+        relatedLink,
+        '                        </div>',
+        '                    </section>'
+    ].filter(Boolean).join('\n');
+}
+
+function renderVideoPrintNote(video) {
+    if (!video) return '';
+
+    return '                        <p><strong>Optional video:</strong> E3 Rehab, &ldquo;' + escapeHtml(video.title) + '&rdquo; Available in the full online guide listed above.</p>';
+}
+
 function buildSchema(program) {
     const canonical = siteRoot + '/' + program.slug + '/';
     return {
@@ -117,7 +209,7 @@ function buildSchema(program) {
                 description: program.metaDescription,
                 inLanguage: 'en-US',
                 datePublished: '2026-07-17',
-                dateModified: program.reviewedDate,
+                dateModified: program.modifiedDate || program.reviewedDate,
                 lastReviewed: program.reviewedDate,
                 author: { '@id': siteRoot + '/#jeremy-swisher' },
                 reviewedBy: { '@id': siteRoot + '/#jeremy-swisher' },
@@ -170,6 +262,9 @@ function buildSchema(program) {
 for (const program of programs) {
     const canonical = siteRoot + '/' + program.slug + '/';
     const reviewedDate = formatReviewedDate(program.reviewedDate, program.slug);
+    const modifiedDate = program.modifiedDate || program.reviewedDate;
+    formatReviewedDate(modifiedDate, program.slug);
+    validateVideo(program.video, program.slug);
     const replacements = {
         TITLE: program.title,
         SEO_TITLE: program.seoTitle,
@@ -177,6 +272,7 @@ for (const program of programs) {
         META_DESCRIPTION: program.metaDescription,
         CANONICAL: canonical,
         REVIEWED_DATE_ISO: program.reviewedDate,
+        MODIFIED_DATE_ISO: modifiedDate,
         REVIEWED_DATE: reviewedDate,
         SCHEMA: JSON.stringify(buildSchema(program), null, 2).split('\n').map((line) => '    ' + line).join('\n'),
         BREADCRUMB: program.breadcrumb,
@@ -198,6 +294,9 @@ for (const program of programs) {
         CHECKPOINT: program.checkpoint,
         GOAL: program.goal,
         EXERCISES: renderExercises(program.exercises),
+        VIDEO_JUMP: renderVideoJump(program.video),
+        VIDEO_SECTION: renderVideoSection(program.video),
+        VIDEO_PRINT_NOTE: renderVideoPrintNote(program.video),
         RESPONSE_INTRO: program.responseIntro,
         GREEN: program.green,
         YELLOW: program.yellow,
@@ -220,6 +319,9 @@ for (const program of programs) {
         'AUTHORITY_ITEMS',
         'PROOF_ITEMS',
         'EXERCISES',
+        'VIDEO_JUMP',
+        'VIDEO_SECTION',
+        'VIDEO_PRINT_NOTE',
         'PROGRESSION',
         'READY_ITEMS',
         'FAQS',

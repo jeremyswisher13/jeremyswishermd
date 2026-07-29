@@ -6,6 +6,19 @@
     "shortTitle": "Beginner knee arthritis exercises",
     "conditionName": "Knee osteoarthritis",
     "reviewedDate": "2026-07-17",
+    "modifiedDate": "2026-07-29",
+    "video": {
+      "id": "sLCahUJl8jk",
+      "title": "Knee Osteoarthritis (OA) Rehab (Education | Myths | Stretching & Strengthening Exercises)",
+      "description": "The embedded chapter focuses on a visual overview of mobility and scalable strengthening options for knee osteoarthritis.",
+      "caution": "Use the supported and lower-load options that match this beginner plan. The full video also includes an injection discussion based on guidance available when it was recorded. Injection recommendations vary and continue to evolve.",
+      "startSeconds": 253,
+      "endSeconds": 773,
+      "related": {
+        "href": "../prp-knee-osteoarthritis/",
+        "label": "Read the current PRP evidence review"
+      }
+    },
     "metaDescription": "Printable beginner knee osteoarthritis exercises, also called knee arthritis exercises, with strength, walking, symptom rules, and clear progression.",
     "breadcrumb": "Beginner knee osteoarthritis",
     "kicker": "Knee osteoarthritis · Beginner home exercise plan",
@@ -117,6 +130,19 @@
     "shortTitle": "Advanced knee arthritis exercises",
     "conditionName": "Knee osteoarthritis",
     "reviewedDate": "2026-07-17",
+    "modifiedDate": "2026-07-29",
+    "video": {
+      "id": "sLCahUJl8jk",
+      "title": "Knee Osteoarthritis (OA) Rehab (Education | Myths | Stretching & Strengthening Exercises)",
+      "description": "The embedded chapter shows knee osteoarthritis exercises that can be scaled from supported basics to loaded progressions.",
+      "caution": "This is a broad exercise overview, not a separate advanced protocol. Use this page only after the beginner plan is well tolerated. The full video also includes an injection discussion based on guidance available when it was recorded. Injection recommendations vary and continue to evolve.",
+      "startSeconds": 253,
+      "endSeconds": 773,
+      "related": {
+        "href": "../prp-knee-osteoarthritis/",
+        "label": "Read the current PRP evidence review"
+      }
+    },
     "metaDescription": "Printable advanced knee osteoarthritis exercises for strength, stairs, hills, balance, aerobic conditioning, symptom rules, and progression.",
     "breadcrumb": "Advanced knee osteoarthritis exercises",
     "kicker": "Knee osteoarthritis · Advanced home exercise plan",
@@ -236,6 +262,13 @@
     "shortTitle": "Patellofemoral pain exercises",
     "conditionName": "Patellofemoral pain",
     "reviewedDate": "2026-07-17",
+    "modifiedDate": "2026-07-29",
+    "video": {
+      "id": "K3HxB6rAeDo",
+      "title": "Patellofemoral Pain | Chondromalacia Patellae | Runner’s Knee (Education | Myths | Exercises)",
+      "description": "A visual overview of patellofemoral pain, load management, and common hip and knee exercise progressions.",
+      "caution": "The examples include later, higher-stress options. Do not add them all or jump directly to deeper or higher-volume versions. Follow this page’s pain limit, next-morning rule, and three-day strength dose."
+    },
     "metaDescription": "Printable patellofemoral pain exercises for front-of-knee pain, with hip and knee strengthening, symptom rules, and clear progression.",
     "breadcrumb": "Patellofemoral pain",
     "kicker": "Front-of-knee pain · Home exercise plan",
@@ -336,6 +369,13 @@
     "shortTitle": "Rotator cuff-related shoulder exercises",
     "conditionName": "Rotator cuff-related shoulder pain",
     "reviewedDate": "2026-07-17",
+    "modifiedDate": "2026-07-29",
+    "video": {
+      "id": "1Wy8jh4QQH8",
+      "title": "Rotator Cuff Tear Rehab & Exercises (Shoulder Pain, Tendinitis, Impingement)",
+      "description": "A visual overview of rotator cuff-related shoulder pain, symptom monitoring, and progressive shoulder exercise options.",
+      "caution": "Despite the title, rotator cuff-related pain does not necessarily mean a tendon tear, and an imaging finding does not automatically explain symptoms or require surgery. This is not a postoperative repair protocol. Seek assessment after a sudden injury with marked weakness or inability to raise the arm."
+    },
     "metaDescription": "Printable rotator cuff pain exercises for shoulder mobility and strength, with symptom rules, progression, and guidance on when to seek care.",
     "breadcrumb": "Rotator cuff-related shoulder pain",
     "kicker": "Shoulder pain · Home exercise plan",
@@ -444,6 +484,13 @@
     "shortTitle": "Midportion Achilles exercises",
     "conditionName": "Midportion Achilles tendinopathy",
     "reviewedDate": "2026-07-17",
+    "modifiedDate": "2026-07-29",
+    "video": {
+      "id": "DnxahqgsAEw",
+      "title": "Achilles Tendinopathy / Tendinitis / Tendinosis | Heel Pain Rehab (Education, Myths, Exercises)",
+      "description": "A visual overview of Achilles tendinopathy, load monitoring, calf strengthening, and staged return to faster activity.",
+      "caution": "The video discusses both midportion and insertional Achilles tendinopathy. This page is specifically for midportion pain. Keep early loading on a flat floor, and do not add step-deficit raises or hopping before slow strength and daily activity are stable."
+    },
     "metaDescription": "Printable Achilles tendinopathy exercises for progressive calf loading, symptom monitoring, return to activity, and guidance on when to seek care.",
     "breadcrumb": "Midportion Achilles tendinopathy",
     "kicker": "Achilles tendon · Home exercise plan",
@@ -555,6 +602,13 @@
     "shortTitle": "Gluteal tendinopathy exercises",
     "conditionName": "Gluteal tendinopathy and lateral hip pain",
     "reviewedDate": "2026-07-17",
+    "modifiedDate": "2026-07-29",
+    "video": {
+      "id": "e_Kk-XqPWZo",
+      "title": "Gluteal Tendinopathy / Greater Trochanteric Hip Bursitis (Education | Myths | Exercises)",
+      "description": "A visual overview of lateral hip pain, compressive positions, load management, and progressive hip strengthening.",
+      "caution": "The title includes bursitis, but this page is written for a diagnosed gluteal tendinopathy pattern rather than assuming isolated bursal inflammation. Treat the exercise examples as a menu, not extra volume. Delay step-ups, prolonged single-leg work, hills, running, or advanced options if night pain or next-day walking pain worsens."
+    },
     "metaDescription": "Printable gluteal tendinopathy exercises for lateral hip pain, with load management, hip strengthening, symptom rules, and clear progression.",
     "breadcrumb": "Gluteal tendinopathy",
     "kicker": "Lateral hip pain · Home exercise plan",
@@ -663,6 +717,13 @@
     "shortTitle": "Lateral ankle sprain exercises",
     "conditionName": "Lateral ankle sprain",
     "reviewedDate": "2026-07-17",
+    "modifiedDate": "2026-07-29",
+    "video": {
+      "id": "ga_OAPf6IOI",
+      "title": "How to Rehab a Sprained Ankle (Start to Finish)",
+      "description": "A visual overview of ankle-sprain rehabilitation from early motion and strength through balance, hopping, and return to sport.",
+      "caution": "Use this only after fracture, high-ankle sprain, and Achilles concerns have been excluded. Do not force inversion early or progress to hopping, eyes-closed balance, or unstable surfaces before walking, stairs, swelling, and basic control have normalized."
+    },
     "metaDescription": "Printable ankle sprain exercises for motion, strength, balance, brace use, symptom monitoring, and return-to-activity progression.",
     "breadcrumb": "Lateral ankle sprain",
     "kicker": "Ankle sprain · Home exercise plan",
@@ -771,6 +832,13 @@
     "shortTitle": "Tennis elbow and common extensor exercises",
     "conditionName": "Lateral elbow tendinopathy and common extensor tendinopathy",
     "reviewedDate": "2026-07-17",
+    "modifiedDate": "2026-07-29",
+    "video": {
+      "id": "aOueY1l_X0U",
+      "title": "Tennis Elbow Rehab (Education | Myths | Stretching & Strengthening Exercises)",
+      "description": "A visual overview of lateral elbow tendinopathy, activity modification, and progressive wrist and grip loading.",
+      "caution": "Static holds and slow wrist-extension loading are options within a progression, not two full daily programs to stack together. The video also discusses injections and surgery. Those decisions require individualized evaluation and are not part of this home program. Radiating pain, neck symptoms, or neurologic symptoms need an evaluation."
+    },
     "metaDescription": "Printable tennis elbow exercises for common extensor tendinopathy, with progressive wrist loading, grip work, symptom rules, and return guidance.",
     "breadcrumb": "Common extensor tendinopathy",
     "kicker": "Lateral elbow pain · Home exercise plan",
@@ -880,6 +948,13 @@
     "shortTitle": "Golfer's elbow and common flexor exercises",
     "conditionName": "Medial elbow tendinopathy and common flexor tendinopathy",
     "reviewedDate": "2026-07-17",
+    "modifiedDate": "2026-07-29",
+    "video": {
+      "id": "3CJMz0HoGXk",
+      "title": "Golfer’s Elbow Rehab (Education | Myths | Stretching & Strengthening Exercises)",
+      "description": "A visual overview of medial elbow tendinopathy, activity modification, and progressive wrist, grip, and upper-limb loading.",
+      "caution": "Do not stack the video’s full exercise menu onto this page’s dose. Acute throwing pain, lost velocity or instability, snapping, or ring- and small-finger symptoms need ligament or nerve assessment. Throwers also need a separate interval throwing plan."
+    },
     "metaDescription": "Printable golfer's elbow exercises for common flexor tendinopathy, with wrist-flexor and pronator loading, grip work, and symptom guidance.",
     "breadcrumb": "Common flexor tendinopathy",
     "kicker": "Medial elbow pain · Home exercise plan",
@@ -989,6 +1064,13 @@
     "shortTitle": "Frozen shoulder and adhesive capsulitis exercises",
     "conditionName": "Adhesive capsulitis and frozen shoulder",
     "reviewedDate": "2026-07-17",
+    "modifiedDate": "2026-07-29",
+    "video": {
+      "id": "SV7exHYLVHU",
+      "title": "BEST Exercises for Frozen Shoulder | Adhesive Capsulitis (Mobility, Stretches, Strength)",
+      "description": "A visual overview of adhesive capsulitis, irritability-based mobility, stretching, and later strengthening options.",
+      "caution": "Frozen shoulder is not the explanation for every painful or stiff shoulder. When rest or night pain is high, use brief comfortable motion and only the early exercises on this page. More aggressive stretching is not necessarily better."
+    },
     "metaDescription": "Printable frozen shoulder exercises for adhesive capsulitis, with mobility matched to pain and stiffness, symptom rules, and safe progression.",
     "breadcrumb": "Adhesive capsulitis",
     "kicker": "Frozen shoulder · Mobility matched to pain and stiffness",
@@ -1099,6 +1181,13 @@
     "shortTitle": "Patellar tendinopathy exercises",
     "conditionName": "Patellar tendinopathy in athletes",
     "reviewedDate": "2026-07-17",
+    "modifiedDate": "2026-07-29",
+    "video": {
+      "id": "e7oGNVUQi2I",
+      "title": "Patellar Tendinopathy / Tendinitis / Tendinosis | Jumper’s Knee Rehab (Education, Myths, Exercises)",
+      "description": "A visual overview of patellar tendinopathy, load monitoring, slow resistance, jumping progressions, and return to sport.",
+      "caution": "The exercises are stage choices, not one workout. Start with the isometric and only two slow-strength movements. Never improvise a Spanish-squat anchor, and delay jumping or sprinting until slow loading is stable with at least 48 hours between early high-load sessions."
+    },
     "metaDescription": "Printable patellar tendinopathy exercises for athletes, with strength, jumping, sprinting, symptom monitoring, and return-to-sport guidance.",
     "breadcrumb": "Patellar tendinopathy for athletes",
     "kicker": "Jumper's knee · Progressive tendon loading",
