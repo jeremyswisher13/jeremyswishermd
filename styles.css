@@ -175,7 +175,8 @@ ul {
 }
 
 .nav-link:hover,
-.nav-link.active {
+.nav-link.active,
+.nav-link[aria-current="page"] {
     color: var(--color-primary);
     background: rgba(39, 116, 174, 0.06);
 }
@@ -1919,7 +1920,8 @@ body {
 }
 
 .nav-link:hover,
-.nav-link.active {
+.nav-link.active,
+.nav-link[aria-current="page"] {
     color: var(--color-primary-dark);
     background: transparent;
 }
@@ -1938,7 +1940,8 @@ body {
 }
 
 .nav-link:hover::after,
-.nav-link.active::after {
+.nav-link.active::after,
+.nav-link[aria-current="page"]::after {
     transform: scaleX(1);
 }
 
