@@ -1303,5 +1303,538 @@
       { "href": "../patellofemoral-pain-exercises/", "eyebrow": "Different front-knee pattern", "title": "Patellofemoral pain exercises" },
       { "href": "../sports-injuries/", "eyebrow": "Return to sport", "title": "Sports injury evaluation" }
     ]
+  },
+  {
+    "slug": "low-back-pain-exercises",
+    "title": "Persistent or Recurrent Low Back Pain Home Exercise Program",
+    "seoTitle": "Low Back Pain Exercises",
+    "shortTitle": "Low back pain exercises",
+    "conditionName": "Persistent or recurrent nonspecific low back pain",
+    "publishedDate": "2026-07-29",
+    "reviewedDate": "2026-07-29",
+    "modifiedDate": "2026-07-29",
+    "video": {
+      "id": "x71Y5ijW4DU",
+      "title": "Lower Back Pain Rehab (Exercises | Education | Myths | Prevention)",
+      "description": "The embedded chapter covers activity modification, load management, graded loading, exercise options, lifestyle factors, and recurrence prevention.",
+      "caution": "This page is specifically for persistent or recurrent nonspecific low back pain after concerning causes and progressive neurologic problems have been excluded. No single exercise, posture, imaging finding, or theory about core weakness explains every case. Do not force a movement that progressively spreads pain, numbness, or tingling farther down a leg.",
+      "startSeconds": 495,
+      "endSeconds": 1168
+    },
+    "metaDescription": "Printable exercises for persistent or recurrent nonspecific low back pain, with walking, strength, symptom rules, progression, and safety guidance.",
+    "breadcrumb": "Persistent low back pain",
+    "kicker": "Low back pain · Home exercise plan",
+    "h1": "Exercises for Persistent or Recurrent Low Back Pain",
+    "summary": "For persistent or recurrent nonspecific low back pain, exercise and continued activity can improve pain and function on average, although results vary and no single exercise is best. This plan combines aerobic activity, comfortable movement, and whole-body strength.",
+    "programLevel": "Starter program",
+    "authorityTitle": "Move. Build. Resume life.",
+    "authorityItems": [
+      { "icon": "directions_walk", "text": "Regular activity instead of prolonged bed rest" },
+      { "icon": "fitness_center", "text": "Trunk, hip, and whole-body strengthening" },
+      { "icon": "tune", "text": "Exercise choice matched to comfort, goals, and response" }
+    ],
+    "proof": [
+      { "strong": "6 movements", "span": "aerobic activity, motion, and strength" },
+      { "strong": "3 days", "span": "of strength work each week" },
+      { "strong": "6 weeks", "span": "to compare function and consistency" }
+    ],
+    "fitIntro": "This starter program is intended for adults who have already been evaluated and told persistent or recurrent nonspecific low back pain is the likely diagnosis. It is not for a new unexplained episode with warning signs, a postoperative protocol, pregnancy-specific pain, or a known fracture, infection, cancer, inflammatory disorder, or progressive neurologic condition.",
+    "fit": "Pain felt mainly across the low back, sometimes extending into the buttocks, that has persisted for about three months or recurs over time and is affected by positions, movement, lifting, or activity. Leg symptoms, if present, should not be the dominant or progressively worsening problem.",
+    "assessFirst": "A first severe or unexplained episode, recent major trauma, known osteoporosis or prolonged corticosteroid use, recent serious infection or spinal procedure, immunosuppression or injection drug use, pain traveling below the knee with new numbness or weakness, progressive difficulty walking, symptoms suggesting spinal stenosis or inflammatory back pain, pregnancy, recent spine surgery, or a diagnosis that remains uncertain.",
+    "redFlags": "Seek emergency care now for new loss of bladder or bowel control, inability to urinate, numbness in the saddle area, severe or rapidly progressive leg weakness, or a newly cold, pale, blue, or profoundly numb leg. Call 911 for chest pain, trouble breathing, fainting, severe abdominal or chest pain, or another medical emergency. Seek same-day urgent assessment for major trauma with severe pain or inability to walk, fever or recent serious infection with severe back pain, or severe back pain in someone who is immunosuppressed or uses injected drugs. Arrange prompt evaluation for a history of cancer with new back pain, unexplained weight loss, persistent unexplained rest or night pain, or steadily worsening symptoms.",
+    "programHeading": "Choose tolerable movement, then build whole-body capacity.",
+    "programIntro": "No single exercise type is superior for everyone. Begin with the lower dose and a range that feels acceptable. The aim is not to hold one perfect posture or brace the abdomen all day. Build the movements and activities that help you function with confidence.",
+    "frequency": "Strength 2 to 3 nonconsecutive days per week; aerobic activity on most days",
+    "equipment": "Stable chair or counter, floor or firm bed, optional backpack or weights",
+    "checkpoint": "Compare function and symptoms after 6 weeks",
+    "goal": "More confident walking, lifting, sitting, work, exercise, and daily activity",
+    "exercises": [
+      {
+        "name": "Walking or another tolerable aerobic activity",
+        "dose": "Start with 10 to 20 minutes total",
+        "frequency": "Most days",
+        "how": "Choose walking, cycling, swimming, or another rhythmic activity that you can repeat. Use a pace that allows relaxed breathing and normal movement.",
+        "easier": "Divide the total into two to four shorter bouts.",
+        "harder": "Add 2 to 5 minutes per week before adding speed, hills, or resistance."
+      },
+      {
+        "name": "Comfortable lower-back motion",
+        "dose": "1 to 2 sets of 8 to 10 repetitions",
+        "frequency": "Daily or as useful",
+        "how": "Choose a gentle movement that feels acceptable, such as pelvic tilts, lower-trunk rotations, or a supported backward or forward movement. Move smoothly without forcing the end range.",
+        "easier": "Use a smaller range or perform the movement lying down with support.",
+        "harder": "Use the preferred movement during brief breaks from a position that tends to stiffen the back."
+      },
+      {
+        "name": "Bridge",
+        "dose": "2 to 3 sets of 6 to 12 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Lie with the knees bent. Press through the feet, lift the hips through a comfortable range, pause briefly, then lower with control.",
+        "easier": "Use a smaller lift or begin with repeated five-second holds.",
+        "harder": "Add a backpack, band, longer hold, or staggered foot position."
+      },
+      {
+        "name": "Quadruped reach",
+        "dose": "2 to 3 sets of 5 to 10 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "From hands and knees, reach one arm or one leg while keeping the trunk comfortable and steady. Progress to the opposite arm and leg together only when the simpler version is controlled.",
+        "easier": "Slide one foot backward or lift one hand at a time.",
+        "harder": "Use the opposite arm and leg, pause for three seconds, or add repetitions."
+      },
+      {
+        "name": "Sit to stand or squat to a chair",
+        "dose": "2 to 3 sets of 6 to 12 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Sit near the front of a stable chair. Lean forward comfortably, press through both feet, stand tall, then lower with control.",
+        "easier": "Use a higher chair or light assistance from the armrests.",
+        "harder": "Lower the chair or hold a backpack at the chest."
+      },
+      {
+        "name": "Hip hinge and carry progression",
+        "dose": "2 to 3 sets of 6 to 10 hinges, then 2 to 4 carries of 20 to 40 seconds",
+        "frequency": "2 to 3 days per week",
+        "how": "Practice pushing the hips backward while keeping a comfortable trunk position, then stand by driving through the feet. When controlled, carry a light object close to the body while walking normally.",
+        "easier": "Hinge to a wall without weight and omit the carry.",
+        "harder": "Increase the hinge range or carried load gradually while preserving comfortable, confident movement."
+      }
+    ],
+    "responseIntro": "Temporary back discomfort or muscle soreness can occur with exercise. Continue when movement remains controlled and symptoms settle to the usual baseline by the next morning. There is no universal pain cutoff. New or progressively spreading leg symptoms matter more than a brief, familiar back ache.",
+    "green": "Mild, familiar discomfort, normal movement, and symptoms that settle during recovery and return to the usual baseline by the next morning.",
+    "yellow": "Pain steadily rises across sets, sleep or function is meaningfully worse, or the flare remains worse the next morning. Reduce one variable such as range, load, repetitions, time, or frequency.",
+    "red": "Stop and seek emergency care for new loss of bladder or bowel control, inability to urinate, saddle numbness, severe or rapidly progressive leg weakness, or a newly cold, pale, blue, or profoundly numb leg. Seek same-day urgent assessment for fever with severe back pain or major trauma with inability to walk. Stop the current exercise and arrange assessment for new or progressively worsening pain, numbness, or tingling traveling down a leg.",
+    "progression": [
+      { "title": "Stage 1: restore regular movement", "text": "Use short aerobic bouts, a comfortable movement option, and the easiest strength variations. Avoid prolonged bed rest and change positions as needed." },
+      { "title": "Stage 2: build general strength and endurance", "text": "Reach the upper repetition range, then add a set, resistance, range, or aerobic time. No special core exercise is required if another form of strength work is more comfortable and sustainable." },
+      { "title": "Stage 3: practice the goal", "text": "Progress the lifting, carrying, sitting, walking, work, gym, or sport tasks you want to regain. Increase one demand at a time and keep the next-day response stable." }
+    ],
+    "readyItems": [
+      "The current dose has been controlled for two to three sessions.",
+      "Symptoms return to the usual baseline by the next morning.",
+      "The upper repetition range is completed with steady movement and two or three repetitions still possible.",
+      "The next progression matches a meaningful daily, work, exercise, or sport goal.",
+      "There is no new or progressively worsening leg pain, numbness, or weakness."
+    ],
+    "evaluation": "Schedule an evaluation if symptoms are worsening, leg symptoms appear or progress, the diagnosis is uncertain, or there is no meaningful improvement in function after about six weeks of consistent activity and exercise. Persistent low back pain may need a broader plan that also addresses sleep, stress, work, health conditions, and barriers to activity.",
+    "faqs": [
+      { "q": "Which exercise is best for low back pain?", "a": "No single exercise is best for everyone. Strength, aerobic activity, mobility, motor-control exercise, Pilates, aquatic exercise, and other structured approaches can help. Choose movements you can perform consistently and progress toward your goals." },
+      { "q": "Do I need an MRI before I exercise?", "a": "Usually not for typical nonspecific low back pain without warning signs or progressive neurologic deficits. Imaging is more useful when the history or examination suggests a serious cause or when the result would change management." },
+      { "q": "Does back pain mean my spine is damaged?", "a": "Not necessarily. Pain is real, but its intensity does not map directly to tissue damage. Common imaging changes can be present in people without pain, and recovery can occur without correcting every scan finding." },
+      { "q": "Should I keep my core tight or use perfect posture all day?", "a": "No single posture is required, and constant bracing is unnecessary. Use a variety of comfortable positions and build tolerance for the positions and loads your life requires." },
+      { "q": "What if this is a new acute episode?", "a": "Stay as active as is reasonably possible, but do not assume this structured program will speed acute recovery. A 2023 Cochrane review found very uncertain evidence and no clinically important short-term advantage for exercise therapy in acute nonspecific low back pain." }
+    ],
+    "sources": [
+      { "href": "https://www.who.int/publications/i/item/9789240081789", "label": "World Health Organization Guideline for Chronic Primary Low Back Pain, 2023" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/34719942/", "label": "JOSPT Clinical Practice Guideline: Acute and Chronic Low Back Pain, Revision 2021" },
+      { "href": "https://www.cochrane.org/evidence/CD009790_exercise-treatment-chronic-low-back-pain", "label": "Cochrane Review: Exercise for Chronic Low Back Pain, 2021" },
+      { "href": "https://healthquality.va.gov/HEALTHQUALITY/guidelines/Pain/lbp/index.asp", "label": "VA/DoD Clinical Practice Guideline for Low Back Pain, 2022" },
+      { "href": "https://www.cochrane.org/evidence/CD009365_exercise-therapy-treating-acute-non-specific-low-back-pain", "label": "Cochrane Review: Exercise for Acute Nonspecific Low Back Pain, 2023" }
+    ],
+    "related": [
+      { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Regional pain guide", "title": "Knee, hip, and shoulder pain evaluation" },
+      { "href": "../home-exercise-programs/", "eyebrow": "All programs", "title": "Home exercise library" },
+      { "href": "../locations/", "eyebrow": "Need an evaluation?", "title": "Westwood and West Hills clinic locations" }
+    ]
+  },
+  {
+    "slug": "hip-osteoarthritis-exercises",
+    "title": "Beginner Hip Osteoarthritis Home Exercise Program",
+    "seoTitle": "Hip Osteoarthritis Exercises",
+    "shortTitle": "Hip arthritis exercises",
+    "conditionName": "Hip osteoarthritis",
+    "publishedDate": "2026-07-29",
+    "reviewedDate": "2026-07-29",
+    "modifiedDate": "2026-07-29",
+    "video": {
+      "id": "x-O-m_WCtWw",
+      "title": "Doctor of Physical Therapy Answers Your 10 Most Common Questions About Hip Osteoarthritis",
+      "description": "The embedded chapter explains why activity is usually appropriate and demonstrates scalable mobility, strength, and aerobic exercise options for hip osteoarthritis.",
+      "caution": "The selected chapter ends before the video's supplement and injection discussion. Average hip-specific pain and function gains from exercise are modest and variable, so use this plan to build capacity rather than expecting a cure. Do not force a sharp groin pinch or exercise through a new limp.",
+      "startSeconds": 299,
+      "endSeconds": 594,
+      "related": {
+        "href": "../osteoarthritis-care/",
+        "label": "Read the full osteoarthritis care guide"
+      }
+    },
+    "metaDescription": "Printable beginner hip osteoarthritis exercises for mobility, strength, walking, symptom monitoring, progression, and guidance on when to seek care.",
+    "breadcrumb": "Hip osteoarthritis",
+    "kicker": "Hip osteoarthritis · Beginner home exercise plan",
+    "h1": "Beginner Hip Osteoarthritis Exercises",
+    "summary": "Exercise produces small average hip-specific benefits, but it can still build strength, mobility, aerobic capacity, and confidence for daily life. This beginner plan uses comfortable motion and progressive lower-limb loading without promising that one routine will work for everyone.",
+    "programLevel": "Beginner program",
+    "authorityTitle": "Move. Strengthen. Stay active.",
+    "authorityItems": [
+      { "icon": "chair", "text": "Functional strength for chair transfers and stairs" },
+      { "icon": "directions_walk", "text": "Walking, cycling, or pool activity matched to tolerance" },
+      { "icon": "monitoring", "text": "A six-week function checkpoint with flexible progression" }
+    ],
+    "proof": [
+      { "strong": "6 movements", "span": "mobility, strength, and aerobic activity" },
+      { "strong": "2 to 3 days", "span": "of strength work each week" },
+      { "strong": "Small average effects", "span": "with meaningful individual variation" }
+    ],
+    "fitIntro": "This beginner program is intended for adults who have already been evaluated and told hip osteoarthritis is the likely diagnosis. In adults with a typical presentation, hip osteoarthritis can often be diagnosed clinically and does not always require imaging. This is not a self-diagnosis tool, a postoperative hip-replacement protocol, or a substitute for individualized care.",
+    "fit": "Gradually developing, activity-related pain most often felt in the groin or front of the thigh, sometimes the buttock, side of the hip, or knee, with brief stiffness after rest and difficulty walking, climbing stairs, rising from a chair, squatting, or putting on shoes and socks.",
+    "assessFirst": "A diagnosis that remains uncertain, recent injury, rapid worsening, prolonged morning stiffness, a hot or markedly swollen joint, frequent falls or progressive limping, prominent back pain with numbness, tingling, or weakness, painful catching after injury, inflammatory arthritis, suspected fracture, infection, osteonecrosis, or cancer, recent hip surgery or replacement, or medical and balance conditions requiring an individualized prescription.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment after trauma with inability to bear weight or visible deformity; for sudden severe hip or groin pain with inability to bear weight even without trauma; for a new hot, red, or markedly swollen joint, with or without fever or feeling acutely unwell; for new one-sided leg swelling; or for rapidly progressive weakness or new neurologic symptoms. Arrange prompt evaluation for rapid deformity or worsening, persistent unexplained rest or night pain, unexplained fever or weight loss, prolonged morning stiffness, or multiple swollen joints.",
+    "programHeading": "Restore comfortable motion, then build strength for daily life.",
+    "programIntro": "No single exercise or exact dose is best for everyone with hip osteoarthritis. Begin with one set and a comfortable range, use a stable support, and build repetitions, sets, resistance, step height, or aerobic time gradually. Progress only one variable at a time.",
+    "frequency": "Strength 2 to 3 nonconsecutive days per week; comfortable mobility and aerobic activity on most days",
+    "equipment": "Stable chair and counter or rail, optional low step, loop band, or light backpack",
+    "checkpoint": "Compare walking, chair transfers, stairs, and symptom response after 6 weeks",
+    "goal": "Easier walking, stairs, chair transfers, dressing, and daily activity",
+    "exercises": [
+      {
+        "name": "Supine heel slide",
+        "dose": "1 to 2 sets of 8 to 15 repetitions per side",
+        "frequency": "Most days",
+        "how": "Lie on your back and slide one heel toward the buttock until you feel comfortable movement or a mild stretch, not a sharp groin pinch, then slide it back out.",
+        "easier": "Use a smaller range or assist the leg with a towel or strap.",
+        "harder": "Pause for two seconds at a comfortable end range without forcing the hip."
+      },
+      {
+        "name": "Sit to stand",
+        "dose": "1 to 3 sets of 5 to 12 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Sit near the front of a stable chair. Lean the chest slightly forward, press through both feet, stand tall, then lower with control.",
+        "easier": "Use a higher chair or light assistance from the armrests.",
+        "harder": "Lower the chair slightly or hold a light backpack after 12 controlled repetitions."
+      },
+      {
+        "name": "Bridge",
+        "dose": "1 to 3 sets of 8 to 12 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Lie with the knees bent. Press through the feet, lift the hips through a comfortable range, pause briefly, then lower slowly.",
+        "easier": "Use a smaller lift on a firm bed. If getting down is unsafe, use supported standing hip extension instead.",
+        "harder": "Add a loop above the knees, a two-second hold, or a staggered foot position."
+      },
+      {
+        "name": "Supported standing hip abduction",
+        "dose": "1 to 3 sets of 8 to 15 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Hold a counter, keep the toes and kneecap forward, and move one leg a short distance sideways without leaning the trunk.",
+        "easier": "Slide the toes sideways along the floor.",
+        "harder": "Add a loop band above the knees, then progress the band toward the ankles while keeping the pelvis level."
+      },
+      {
+        "name": "Low step-up",
+        "dose": "1 to 3 sets of 5 to 10 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Place the full foot on a stable low step. Use a rail, rise with control, then lower slowly without a new limp or sharp groin pain.",
+        "easier": "Use a very low step, more hand support, or supported weight shifts.",
+        "harder": "Increase repetitions first, then step height or light external load."
+      },
+      {
+        "name": "Walking, cycling, or pool activity",
+        "dose": "Start with 5 to 10 minutes total",
+        "frequency": "Most days",
+        "how": "Choose the aerobic option that allows steady movement without a growing limp. Accumulate shorter bouts if continuous walking is poorly tolerated.",
+        "easier": "Divide the total into two shorter bouts or choose cycling or pool exercise.",
+        "harder": "Add 2 to 5 minutes per week before adding speed, hills, or resistance."
+      }
+    ],
+    "responseIntro": "Some temporary discomfort can occur when beginning exercise. Mild, controlled aching may be acceptable when movement remains steady and symptoms return to the usual baseline by the following morning. A sharp or catching groin pain is a reason to reduce the range or stop that movement.",
+    "green": "Mild discomfort or muscle effort, no new limp or loss of balance, and pain, sleep, and daily function are back to the usual baseline by the next morning.",
+    "yellow": "Pain, limping, sleep, or walking is meaningfully worse later that day or remains worse the next morning. Reduce the most recently changed variable, such as range, resistance, repetitions, step height, or aerobic time, then retry the easier dose.",
+    "red": "Stop and seek urgent assessment for sudden severe groin or hip pain with inability to bear weight; a new hot, red, or markedly swollen joint, with or without fever or feeling acutely unwell; rapidly progressive weakness or neurologic symptoms; or inability to bear weight after trauma.",
+    "progression": [
+      { "title": "Stage 1: establish tolerance", "text": "Use comfortable motion, one strength set, substantial hand support, and 5 to 10 minutes of aerobic activity. Focus on steady movement without a new limp." },
+      { "title": "Stage 2: build strength", "text": "Reach the upper repetition range, then add a second or third set. After that, change one variable such as chair height, band resistance, step height, or aerobic duration." },
+      { "title": "Stage 3: train the goal", "text": "Add resistance and practice the stairs, hills, carrying, longer walks, travel, or recreation you want to regain. Build aerobic activity toward 20 to 30 minutes on most days when tolerated." }
+    ],
+    "readyItems": [
+      "The current dose has been controlled for two to three sessions.",
+      "Symptoms return to the usual baseline by the next morning.",
+      "The upper repetition target is completed with steady technique and two or three controlled repetitions still possible.",
+      "Sit-to-stand and step-up do not cause a new limp, balance loss, or sharp groin pain.",
+      "The next progression matches a meaningful functional goal."
+    ],
+    "evaluation": "Compare walking duration, stair difficulty, chair transfers, sleep, and shoe or sock dressing after about six weeks. Schedule an evaluation sooner for worsening symptoms or recurrent flares. If there is no meaningful functional improvement after six to eight weeks, reassess the diagnosis, dose, adherence barriers, gait-aid needs, and other options. Discuss joint-replacement referral when symptoms substantially affect quality of life and appropriate nonsurgical care has been ineffective or unsuitable.",
+    "faqs": [
+      { "q": "Will exercise wear out my hip faster?", "a": "Appropriately selected exercise is not simply adding wear and tear. Strength, mobility, and aerobic activity remain recommended components of care. Average hip-specific pain relief is modest, however, so exercise should be viewed as a capacity-building option rather than a cure." },
+      { "q": "Which exercise is best?", "a": "No single mode is reliably superior. Land, aquatic, resistance, aerobic, home, supervised, and digital programs can all be reasonable when matched to the person." },
+      { "q": "Can I walk with hip arthritis?", "a": "Usually yes. Begin with a duration that does not cause a sustained limp or next-day flare. Cycling, swimming, pool exercise, or several shorter walks are reasonable alternatives." },
+      { "q": "Do I need an X-ray or MRI first?", "a": "Not always. Typical osteoarthritis can often be diagnosed from the history and examination. Imaging is more useful when symptoms are atypical, the diagnosis is uncertain, or surgery is being planned." },
+      { "q": "Should I stretch through a groin pinch?", "a": "No. Use comfortable active motion rather than forcing the hip into a sharp pinch or rigid end point." },
+      { "q": "When should I discuss hip replacement?", "a": "Discuss referral when symptoms substantially limit quality of life and an appropriate nonsurgical plan is ineffective or unsuitable. The decision should be based on symptoms, function, goals, health, and shared decision-making, not X-ray appearance alone." }
+    ],
+    "sources": [
+      { "href": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/CD/OA/Osteoarthritis-CPG_2026-Guideline_final_20260618.pdf", "label": "VA/DoD Clinical Practice Guideline for Hip and Knee Osteoarthritis, 2026" },
+      { "href": "https://www.orthopt.org/content/publications/pub-cpg/hip-pain-and-mobility-deficits-hip-osteoarthritis-revision-2025", "label": "APTA Clinical Practice Guideline: Hip Osteoarthritis, Revision 2025" },
+      { "href": "https://www.nice.org.uk/guidance/ng226/chapter/recommendations", "label": "NICE: Osteoarthritis in Over 16s, Diagnosis and Management" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/42486497/", "label": "Cochrane Review: Exercise for Hip Osteoarthritis, 2026" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/38588540/", "label": "Progressive Resistance Versus Neuromuscular Exercise for Hip Osteoarthritis, 2024" }
+    ],
+    "related": [
+      { "href": "../osteoarthritis-care/", "eyebrow": "Whole-person plan", "title": "Osteoarthritis care beyond exercise" },
+      { "href": "../gluteal-tendinopathy-exercises/", "eyebrow": "Different hip pattern", "title": "Gluteal tendinopathy exercises" },
+      { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Hip evaluation", "title": "Knee, hip, and shoulder pain" }
+    ]
+  },
+  {
+    "slug": "hamstring-strain-exercises",
+    "title": "Hamstring Strain Exercise Program for Athletes",
+    "seoTitle": "Hamstring Strain Exercises",
+    "shortTitle": "Hamstring strain exercises",
+    "conditionName": "Acute grade I or II hamstring muscle strain in athletes",
+    "publishedDate": "2026-07-29",
+    "reviewedDate": "2026-07-29",
+    "modifiedDate": "2026-07-29",
+    "video": {
+      "id": "7D50I7sdlXg",
+      "title": "Hamstring Strain Rehab & Exercises (Strength | Running | Return to Sport)",
+      "description": "A visual overview of criteria-based hamstring rehabilitation, progressive strength, running exposure, and return-to-sport planning.",
+      "caution": "This program is only for an already-evaluated, uncomplicated grade I or II muscle or myotendinous strain. It does not cover a complete tear, tendon avulsion, proximal hamstring tendinopathy, an adolescent apophyseal avulsion, or postoperative rehabilitation. Sprinting and high-speed sport work should be pain-free.",
+      "startSeconds": 75,
+      "endSeconds": 808,
+      "related": {
+        "href": "../sports-injuries/",
+        "label": "Read the sports injury evaluation guide"
+      }
+    },
+    "metaDescription": "Printable hamstring strain rehab for athletes, with progressive strength, graded running, sprinting, symptom rules, and return-to-sport criteria.",
+    "breadcrumb": "Hamstring strain",
+    "kicker": "Hamstring strain · Athlete exercise plan",
+    "h1": "Hamstring Strain Rehab Exercises for Athletes",
+    "summary": "Progressive strength, trunk control, and graded running are foundations of recovery after an uncomplicated hamstring strain. Build from low-load contractions to longer-length strength, sprinting, and full training rather than returning when everyday pain simply disappears.",
+    "programLevel": "Athlete progression",
+    "authorityTitle": "Strength. Sprint. Return ready.",
+    "authorityItems": [
+      { "icon": "fitness_center", "text": "Progressive eccentric and longer-length hamstring loading" },
+      { "icon": "directions_run", "text": "Running treated as a graded rehabilitation exercise" },
+      { "icon": "fact_check", "text": "Return based on function, speed, workload, and confidence" }
+    ],
+    "proof": [
+      { "strong": "6 elements", "span": "strength, trunk control, and running" },
+      { "strong": "2 to 3 days", "span": "of nonconsecutive strength work" },
+      { "strong": "Pain-free sprinting", "span": "before unrestricted sport" }
+    ],
+    "fitIntro": "This program is intended for athletes who have already been evaluated and told a grade I or II hamstring muscle or myotendinous strain is the likely diagnosis. It is not a self-diagnosis tool and does not cover proximal hamstring tendinopathy, a tendon avulsion, a complete tear, or postoperative rehabilitation.",
+    "fit": "Sudden, localized posterior-thigh pain while sprinting, accelerating, kicking, jumping, or being forced into hip flexion with the knee extended, with pain during resisted knee flexion, hip extension, or gentle hamstring lengthening and temporary loss of running or sport function.",
+    "assessFirst": "A loud pop with immediate disabling buttock or thigh pain; extensive or rapidly spreading bruising; marked weakness, buckling, a palpable defect, or inability to walk; pain centered at the sit bone with sciatic-type symptoms; an adolescent with focal sit-bone pain after sprinting, kicking, or forced stretching; gradual deep-buttock pain worsened by sitting; back pain or radiating symptoms below the knee; direct-impact injury; recurrent strain; anticoagulant use; or failure to improve.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, coughing blood, fainting, or a newly cold, pale, or numb leg. Seek emergency assessment for rapidly escalating thigh pain with tense swelling, numbness, or weakness. Seek same-day sports medicine or orthopedic assessment for a pop followed by inability to walk or use the leg, major weakness or buckling, a palpable gap, extensive rapidly increasing bruising or swelling, proximal buttock pain with sciatic symptoms, or focal sit-bone pain in an adolescent. New one-sided calf or whole-leg swelling, warmth, or redness also requires urgent assessment.",
+    "programHeading": "Restore strength through range, then rebuild speed and sport workload.",
+    "programIntro": "The exact sequence and dose should be individualized. Start with controlled contractions and normal walking, then progress resistance and range before high-speed work. Mild discomfort may be acceptable during selected strength exercises, but sprinting and return-to-sport testing should be pain-free.",
+    "frequency": "Strength 2 to 3 nonconsecutive days per week; low-load isometrics may be used daily early; running on nonconsecutive days initially",
+    "equipment": "Mat, stable chair or counter, smooth floor with sliders or towels, optional backpack or weights, safe flat running area",
+    "checkpoint": "Review walking and loading at 1 to 2 weeks; reassess before running above 80 percent effort",
+    "goal": "Pain-free maximal running and sport-specific workload with restored longer-length strength",
+    "exercises": [
+      {
+        "name": "Heel-dig isometric",
+        "dose": "3 sets of 6 to 10 repetitions with a 5-second hold",
+        "frequency": "Daily early if useful",
+        "how": "Lie with both knees bent. Press the injured heel down and slightly toward the body without letting it slide. Begin around 30 to 50 percent effort.",
+        "easier": "Use both heels, place the heel closer to the hips, or reduce effort.",
+        "harder": "Move the heel farther away, increase effort, then use the injured leg alone at several knee angles."
+      },
+      {
+        "name": "Short- to long-lever bridge",
+        "dose": "2 to 3 sets of 6 to 12 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Press through both heels, lift the hips without forcing the back, pause briefly, and lower slowly.",
+        "easier": "Use a smaller lift, place the heels closer to the hips, or use an isometric hold.",
+        "harder": "Move the heels farther away, use a staggered stance, then progress to a controlled single-leg bridge."
+      },
+      {
+        "name": "Eccentric slider curl",
+        "dose": "2 to 3 sets of 6 to 12 repetitions with a 3- to 4-second lowering phase",
+        "frequency": "2 to 3 days per week",
+        "how": "Bridge on both legs with the heels on sliders or towels. Slowly slide the heels away, lower the hips, reset the heels, and repeat.",
+        "easier": "Use a shorter slide or move one heel at a time.",
+        "harder": "Keep the hips up through a full bilateral curl, then use a single-leg lowering phase. An assisted Nordic is a later alternative only with a secure setup."
+      },
+      {
+        "name": "Supported hip hinge or kickstand Romanian deadlift",
+        "dose": "2 to 3 sets of 6 to 10 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Hold a counter, keep a soft knee, push the hips backward, and stop before pain or loss of pelvic control.",
+        "easier": "Use both legs, a smaller range, and no external load.",
+        "harder": "Increase range, add a backpack or dumbbell, then use a kickstand or single-leg position."
+      },
+      {
+        "name": "Side plank with controlled trunk work",
+        "dose": "2 to 3 holds of 15 to 30 seconds per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Keep the ribs and pelvis stacked without rotating or sagging. The goal is controlled trunk and pelvic endurance, not maximal fatigue.",
+        "easier": "Bend the knees and support from the forearm and lower knee.",
+        "harder": "Use straight legs, extend the hold, or add 6 to 10 slow trunk rotations."
+      },
+      {
+        "name": "Graded running exposure",
+        "dose": "Example starting exposure: 2 to 3 sets of 4 controlled 30-meter runs with full walking recovery",
+        "frequency": "Nonconsecutive days initially",
+        "how": "After walking and easy jogging are pain-free and basic strength is controlled, begin near 50 to 60 percent of perceived maximum speed. Treat each run as rehabilitation rather than a test.",
+        "easier": "Use walk-jog intervals or shorter strides at a lower speed.",
+        "harder": "Increase either speed or total running volume at a later session, not both. Use smaller increases as speed approaches maximum and retain full recovery."
+      }
+    ],
+    "responseIntro": "A home program should be conservative. Familiar discomfort up to about 3 out of 10 can be acceptable during strength work when there is no sharp or tearing sensation, limp, or compensation and symptoms return to baseline by the next morning. This is a practical rule, not a validated universal threshold. Sprinting should be pain-free.",
+    "green": "Discomfort stays near 0 to 3 out of 10 during strength work, movement remains normal, and symptoms are no worse later that day or the next morning.",
+    "yellow": "Pain rises across repetitions, exceeds 3 out of 10, alters movement, or remains meaningfully worse the next morning. Reduce range, load, repetitions, or running speed or volume and repeat the prior successful level after symptoms settle.",
+    "red": "Stop for a new pop or tearing sensation, rapidly increasing bruising or swelling, a palpable defect, marked weakness, buckling, inability to walk, or new neurologic symptoms. Stop sprinting with any hamstring pain and reassess before returning to high-speed progression.",
+    "progression": [
+      { "title": "Stage 1: restore comfortable movement and activation", "text": "Normalize walking and use heel digs, bilateral bridge, low-load trunk work, and tolerable cycling or other conditioning." },
+      { "title": "Stage 2: build range and strength", "text": "Add sliders and hip hinges. Increase range, repetitions, and then resistance while monitoring the next-day response." },
+      { "title": "Stage 3: restore speed and eccentric capacity", "text": "Advance to unilateral and longer-length work, pain-free running above 70 to 80 percent, acceleration, and later change of direction." },
+      { "title": "Stage 4: rebuild sport workload", "text": "Reach pain-free maximal speed, repeated sprint or endurance demands, sport-specific skills, and unrestricted training before competition." }
+    ],
+    "readyItems": [
+      "Walking and daily function are normal without a limp.",
+      "There is no meaningful pain with palpation, resisted contraction, or longer-length loading.",
+      "Strength and active range are approaching baseline and the demands of the sport.",
+      "Maximal sprinting, acceleration, deceleration, and required direction changes are pain-free.",
+      "High-speed volume and intensity approximate usual training or competition demands.",
+      "A full unrestricted practice is completed without symptoms during or over the following 24 hours, and the athlete feels confident."
+    ],
+    "evaluation": "Review gait, bruising, range, and exercise response after 7 to 14 days. Obtain formal review before exceeding about 70 to 80 percent running speed when testing is unavailable, if there is no clear week-to-week improvement after two to three weeks, if running cannot be progressed by about four to six weeks, or if setbacks recur. Competitive sprinters and field-sport athletes should have clinician-supervised return-to-sport testing; no single home test clears competition.",
+    "faqs": [
+      { "q": "Should I rest until there is no pain?", "a": "No. Temporarily remove sprinting, forceful stretching, and other provocative loads, but begin controlled movement and progressive strengthening once the diagnosis is established and the load is tolerated." },
+      { "q": "Should I stretch the hamstring right away?", "a": "Avoid forceful end-range stretching early. Gentle active range is reasonable, and later strength through increasing muscle length restores usable range. Stretching alone is not an adequate rehabilitation program." },
+      { "q": "Can rehabilitation exercises hurt?", "a": "Mild discomfort can be acceptable. A small trial of 43 men allowed pain up to 4 out of 10 and found similar return-to-play times; it was not large enough to establish reinjury safety. This home plan uses a more conservative 3 out of 10 rule and requires symptoms to return to baseline by the next morning. Sprinting should be pain-free." },
+      { "q": "Do I need an MRI?", "a": "Usually not for a clinically diagnosed grade I or II strain. MRI or ultrasound is useful when a complete tear, tendon avulsion, atypical diagnosis, or unexpectedly poor course is suspected. Imaging does not independently determine readiness." },
+      { "q": "Are Nordic exercises required?", "a": "No. They are a useful later eccentric option and have prevention evidence, but they are not an appropriate first exercise. Full-range slider and hinge progressions can build capacity, and a Nordic requires a secure setup." },
+      { "q": "When can I compete again?", "a": "Not when everyday pain first disappears. Return after pain-free maximal speed, required sport actions and volume, restored strength and range, confidence, and tolerance of unrestricted practice." }
+    ],
+    "sources": [
+      { "href": "https://www.orthopt.org/uploads/content_files/files/Hamstring_Strain_Injury_in_Athletes_2022.pdf", "label": "APTA/JOSPT Clinical Practice Guideline: Hamstring Strain Injury in Athletes, 2022" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/36650032/", "label": "London International Consensus: Hamstring Rehabilitation, Running, and Return to Sport, 2023" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/36622557/", "label": "Living Systematic Review of Conservative Interventions for Hamstring Injury" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/32005093/", "label": "Pain-Free Versus Pain-Threshold Hamstring Rehabilitation Trial" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9252858/", "label": "Early Versus Delayed Lengthening Exercise After Hamstring Injury" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/15089024/", "label": "Progressive Agility and Trunk Stabilization Trial" }
+    ],
+    "related": [
+      { "href": "../sports-injuries/", "eyebrow": "Diagnosis and return", "title": "Sports injury evaluation" },
+      { "href": "../patellar-tendinopathy-exercises/", "eyebrow": "Athlete loading", "title": "Patellar tendinopathy exercises" },
+      { "href": "../home-exercise-programs/", "eyebrow": "All programs", "title": "Home exercise library" }
+    ]
+  },
+  {
+    "slug": "plantar-fasciitis-exercises",
+    "title": "Plantar Heel Pain Home Exercise Program",
+    "seoTitle": "Plantar Fasciitis Exercises",
+    "shortTitle": "Plantar heel pain exercises",
+    "conditionName": "Plantar fasciopathy, commonly called plantar fasciitis, a common cause of plantar heel pain",
+    "publishedDate": "2026-07-29",
+    "reviewedDate": "2026-07-29",
+    "modifiedDate": "2026-07-29",
+    "video": {
+      "id": "5D86b45yJzU",
+      "title": "Plantar Fasciitis (Education | Myths | Stretching & Strengthening Exercises)",
+      "description": "The embedded chapter reviews activity modification, symptom monitoring, footwear, plantar-fascia stretching, and progressive strength options.",
+      "caution": "Use a manageable stretch-led or strength-led plan rather than assuming every exercise is required. Heavy heel raises are not uniquely proven to be superior. Remove the rolled towel, reduce range, or use seated or bilateral loading if the toe position aggravates the fascia, great toe, or Achilles tendon.",
+      "startSeconds": 203,
+      "endSeconds": 669
+    },
+    "metaDescription": "Printable plantar fasciitis exercises for first-step heel pain, with stretching, progressive heel raises, load guidance, symptom rules, and safety.",
+    "breadcrumb": "Plantar heel pain",
+    "kicker": "Plantar heel pain · Home exercise plan",
+    "h1": "Plantar Fasciitis and Plantar Heel Pain Exercises",
+    "summary": "Daily stretching and progressive foot-and-ankle strengthening are reasonable parts of care for plantar fasciopathy, a common cause of plantar heel pain. This plan emphasizes a manageable sustained trial, gradual loading, and first-step pain the next morning rather than one supposedly perfect exercise.",
+    "programLevel": "Starter program",
+    "authorityTitle": "Stretch or strengthen. Stay consistent.",
+    "authorityItems": [
+      { "icon": "wb_sunny", "text": "First-step pain helps monitor the previous day's load" },
+      { "icon": "fitness_center", "text": "Progressive foot and calf loading every other day" },
+      { "icon": "schedule", "text": "Expect gradual improvement over weeks to months" }
+    ],
+    "proof": [
+      { "strong": "5 movements", "span": "plantar fascia, calf, and foot capacity" },
+      { "strong": "Daily stretch", "span": "or strength every other day" },
+      { "strong": "8 to 12 weeks", "span": "to judge an adherent exercise trial" }
+    ],
+    "fitIntro": "This program is intended for adults who have already been evaluated and told plantar fasciopathy, commonly called plantar fasciitis, is the likely cause of their plantar heel pain. It is not a self-diagnosis tool and does not cover a suspected rupture, fracture, nerve disorder, infection, inflammatory condition, or postoperative recovery.",
+    "fit": "Gradual pain at the inner bottom of the heel, often worst with the first steps after sleep or rest. It may ease after warming up and return with prolonged standing, walking, or running, especially after an increase in weight-bearing or impact load.",
+    "assessFirst": "A child or adolescent with heel pain; central or posterior bruised-heel pain; pain with heel squeeze or impact; posterior Achilles or bursal pain; burning, tingling, numbness, radiation, or weakness; an arch lump; a hot or red swollen foot; a wound; diabetes with neuropathy or vascular disease; prolonged morning stiffness or multiple painful joints; persistent unexplained rest or night pain; inability to bear weight; or a sudden pop with bruising or a change in arch shape.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, coughing blood, or fainting. Seek emergency care now for a cold, pale, blue, or newly numb foot. Seek same-day urgent assessment for a new hot, red, or markedly swollen foot, with or without fever or systemic illness; an open wound or suspected infection, especially with diabetes; a sudden tearing sensation or pop with bruising, weakness, or a change in arch shape; inability to bear weight after trauma; rapidly worsening neurologic symptoms; or new one-sided calf swelling.",
+    "programHeading": "Use a simple stretch and strength plan you can sustain.",
+    "programIntro": "Begin with the plantar-fascia stretch and one calf-stretch angle daily plus one strength exercise every other day. Add another movement only when adherence and the next-morning response remain stable. More exercises are not necessarily better.",
+    "frequency": "Stretch daily; strength every other day; continue for at least 12 weeks",
+    "equipment": "Stable chair or counter, wall, optional rolled towel and backpack",
+    "checkpoint": "Review the trend at 4 to 6 weeks and the full trial at 8 to 12 weeks",
+    "goal": "Less first-step pain and greater tolerance for standing, walking, running, and sport",
+    "exercises": [
+      {
+        "name": "Seated plantar-fascia stretch",
+        "dose": "10 repetitions with a 10-second hold",
+        "frequency": "3 times per day, especially before first steps and after prolonged rest",
+        "how": "Cross the affected ankle over the other leg. Gently pull the toes, especially the big toe, toward the shin until the arch feels taut.",
+        "easier": "Use 5 repetitions with less toe pull.",
+        "harder": "Use a comfortable weight-bearing toe-on-wall or rolled-towel stretch for 2 to 3 holds of 20 to 30 seconds."
+      },
+      {
+        "name": "Straight-knee calf stretch",
+        "dose": "2 holds of 30 seconds",
+        "frequency": "1 to 2 times per day",
+        "how": "Place the involved leg behind you with the heel down, toes forward, and knee straight. Lean toward the wall until the upper calf feels a gentle stretch.",
+        "easier": "Use a shorter stance or 15- to 20-second holds.",
+        "harder": "Use 3 holds of 30 seconds or a slightly deeper controlled lean."
+      },
+      {
+        "name": "Bent-knee calf stretch",
+        "dose": "2 holds of 30 seconds",
+        "frequency": "1 to 2 times per day",
+        "how": "Keep the involved heel down and toes forward while bending the back knee until the lower calf feels a gentle stretch.",
+        "easier": "Use a smaller knee bend or 15- to 20-second holds.",
+        "harder": "Use 3 holds of 30 seconds or a slightly deeper controlled range."
+      },
+      {
+        "name": "Slow supported heel raise",
+        "dose": "Start with 2 sets of 8 repetitions using both legs",
+        "frequency": "Every other day",
+        "how": "From a flat floor, rise for about three seconds, pause for two seconds, then lower for about three seconds while using a counter for support.",
+        "easier": "Use a seated heel raise, smaller range, or more hand support.",
+        "harder": "Build toward 3 sets of 8 to 12, then change one variable such as less hand support, a rolled towel beneath the toes, assisted single-leg work, or backpack load. Remove the towel if it aggravates the toe, fascia, or Achilles."
+      },
+      {
+        "name": "Seated short-foot or arch set",
+        "dose": "2 sets of 8 repetitions with a 5-second hold",
+        "frequency": "Daily or every other day",
+        "how": "Keep the heel and the bases of the big and little toes on the floor. Gently shorten the foot by drawing the forefoot toward the heel without curling the toes.",
+        "easier": "Use 1 set of 8 while seated with light effort.",
+        "harder": "Progress to 2 sets of 10 while standing, then to controlled single-leg work."
+      }
+    ],
+    "responseIntro": "Pain monitoring is useful, but no validated universal numeric cutoff exists. Mild, tolerable discomfort can be acceptable when form remains normal, symptoms settle, and first-step pain the next morning is unchanged or better. Stretching should feel gentle and firm, never forced.",
+    "green": "Discomfort stays mild, approximately 0 to 3 out of 10, without a limp and settles within several hours. First-step pain the next morning is unchanged or improving.",
+    "yellow": "Pain reaches roughly 4 to 5 out of 10, changes gait, persists through the day, or first-step pain is meaningfully worse the next morning. Reduce strength load, repetitions, range, or complexity and return to bilateral or seated work.",
+    "red": "Stop for sharp, tearing, electric, or rapidly escalating pain; new bruising, swelling, weakness, numbness, inability to bear weight, or a red-flag feature. Seek emergency care now for a cold, pale, blue, or newly numb foot. Seek same-day urgent assessment for a new hot, red, or markedly swollen foot, with or without fever; an infected wound; a sudden pop with arch change; rapidly worsening neurologic symptoms; or new one-sided calf swelling.",
+    "progression": [
+      { "title": "Stage 1: settle the load spike", "text": "Reduce abrupt running, jumping, and prolonged-standing spikes, break up standing, and use comfortable footwear. Complete rest is usually unnecessary." },
+      { "title": "Stage 2: build foot and calf capacity", "text": "Progress heel raises toward 3 sets of 8 to 12 every other day. Increase load before complexity and require a stable next-morning response." },
+      { "title": "Stage 3: restore impact", "text": "Progress from brisk walking to quick calf raises or marching, two-leg pogo jumps, single-leg hops, and then running or sport-specific jumping on alternate days. Change one variable at a time." }
+    ],
+    "readyItems": [
+      "First-step pain has been stable or improving for at least one week.",
+      "Daily walking and standing are normal without a limp or next-day flare.",
+      "A brisk 30-minute walk returns to baseline by the following morning.",
+      "About 3 sets of 10 controlled single-leg heel raises can be completed at a consistent height.",
+      "For impact goals, two sets of 20 quiet two-leg pogo jumps, then two sets of 10 single-leg hops, do not worsen the next morning.",
+      "These are practical progression markers, not a validated return-to-sport test."
+    ],
+    "evaluation": "Review the diagnosis, activity load, technique, dose, footwear, and adherence at four to six weeks if there is no improving trend. Schedule a clinician reassessment after eight to twelve weeks when an adherent program has not helped, or earlier for worsening, atypical, or neurologic symptoms. Full recovery often takes longer than twelve weeks, and symptoms may continue improving over several months.",
+    "faqs": [
+      { "q": "Do I need every exercise?", "a": "No. Guidelines support plantar-fascia and calf stretching and foot-and-ankle resistance exercise, but evidence about the best combination and dose remains limited. Start with the smallest plan you can follow consistently and add only what is useful." },
+      { "q": "Must exercise be pain-free?", "a": "No. Tolerable discomfort can be acceptable when it settles and the next morning is not worse. Sharp, tearing, or neurologic pain is not acceptable." },
+      { "q": "Do I need an X-ray or MRI?", "a": "Usually not for a classic presentation. Heel spurs and plantar-fascia changes can occur without pain. Imaging is more useful when symptoms are atypical, the diagnosis remains uncertain, or the result would change management." },
+      { "q": "Should I stop walking or running?", "a": "Usually reduce sudden spikes rather than stop everything. Rebuild standing, walking, running, and impact according to symptoms and the next-morning response." },
+      { "q": "What shoes should I wear?", "a": "Use comfortable footwear that reduces symptoms and avoid abrupt transitions. Evidence does not support one universal shoe style." },
+      { "q": "Do orthotics cure plantar fasciitis?", "a": "No. Orthoses may help as an adjunct for some people, but they should not be the only treatment." },
+      { "q": "Would a night splint help?", "a": "A one- to three-month trial can be considered when first-step morning pain remains prominent despite the exercise and load-management plan." }
+    ],
+    "sources": [
+      { "href": "https://www.orthopt.org/content/s/heel-pain-plantar-fasciitis-revision-2023", "label": "APTA Clinical Practice Guideline: Heel Pain and Plantar Fasciitis, Revision 2023" },
+      { "href": "https://richtlijnendatabase.nl/richtlijn/fasciopathie_plantaris/oefentherapie_-_fasciopathie_plantaris.html", "label": "Dutch Multidisciplinary Guideline: Exercise for Plantar Fasciopathy, 2026" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8458083/", "label": "Best Practice Guide for Plantar Heel Pain, 2021" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/12851352/", "label": "Plantar-Fascia-Specific Stretching Randomized Trial" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11347971/", "label": "Standardized Exercise Add-On Randomized Trial, 2024" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/25145882/", "label": "High-Load Strength Training Versus Stretching Randomized Trial, 2015" }
+    ],
+    "related": [
+      { "href": "../achilles-tendinopathy-exercises/", "eyebrow": "Different heel pattern", "title": "Midportion Achilles tendinopathy exercises" },
+      { "href": "../sports-injuries/", "eyebrow": "Activity and diagnosis", "title": "Sports injury evaluation" },
+      { "href": "../home-exercise-programs/", "eyebrow": "All programs", "title": "Home exercise library" }
+    ]
   }
 ]

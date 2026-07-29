@@ -9,14 +9,14 @@ const programs = JSON.parse(readFileSync(join(scriptDirectory, 'hep-programs.jso
 const siteRoot = 'https://jeremyswishermd.com';
 const youtubeIdPattern = /^[A-Za-z0-9_-]{11}$/;
 
-function formatReviewedDate(value, slug) {
+function formatDate(value, slug, fieldName) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
-        throw new Error('Invalid reviewedDate for ' + slug + ': expected YYYY-MM-DD');
+        throw new Error('Invalid ' + fieldName + ' for ' + slug + ': expected YYYY-MM-DD');
     }
 
     const date = new Date(value + 'T00:00:00Z');
     if (Number.isNaN(date.getTime()) || date.toISOString().slice(0, 10) !== value) {
-        throw new Error('Invalid reviewedDate for ' + slug + ': ' + value);
+        throw new Error('Invalid ' + fieldName + ' for ' + slug + ': ' + value);
     }
 
     return new Intl.DateTimeFormat('en-US', {
@@ -208,7 +208,7 @@ function buildSchema(program) {
                 name: program.seoTitle + ' | Jeremy Swisher, MD',
                 description: program.metaDescription,
                 inLanguage: 'en-US',
-                datePublished: '2026-07-17',
+                datePublished: program.publishedDate || '2026-07-17',
                 dateModified: program.modifiedDate || program.reviewedDate,
                 lastReviewed: program.reviewedDate,
                 author: { '@id': siteRoot + '/#jeremy-swisher' },
@@ -261,9 +261,10 @@ function buildSchema(program) {
 
 for (const program of programs) {
     const canonical = siteRoot + '/' + program.slug + '/';
-    const reviewedDate = formatReviewedDate(program.reviewedDate, program.slug);
+    const reviewedDate = formatDate(program.reviewedDate, program.slug, 'reviewedDate');
     const modifiedDate = program.modifiedDate || program.reviewedDate;
-    formatReviewedDate(modifiedDate, program.slug);
+    formatDate(modifiedDate, program.slug, 'modifiedDate');
+    formatDate(program.publishedDate || '2026-07-17', program.slug, 'publishedDate');
     validateVideo(program.video, program.slug);
     const replacements = {
         TITLE: program.title,
