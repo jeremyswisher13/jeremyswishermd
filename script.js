@@ -564,6 +564,7 @@ const programRegionLabels = new Map([
     ['elbow', 'elbow'],
     ['hip', 'hip'],
     ['foot-ankle', 'foot and ankle'],
+    ['hand-wrist', 'hand and wrist'],
     ['back', 'low back']
 ]);
 const expectedProgramRegions = new Set(programRegionLabels.keys());

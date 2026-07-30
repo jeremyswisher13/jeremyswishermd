@@ -205,11 +205,12 @@ if (!/<meta name="robots" content="noindex, follow">/.test(notFoundPage)) {
 }
 
 const expectedProgramRegionCounts = new Map([
-    ['knee-thigh', 5],
+    ['knee-thigh', 7],
     ['shoulder', 2],
     ['elbow', 2],
     ['hip', 2],
-    ['foot-ankle', 3],
+    ['foot-ankle', 5],
+    ['hand-wrist', 2],
     ['back', 1]
 ]);
 const exerciseHubRegions = [...exerciseHubPage.matchAll(/\sdata-program-region="([^"]+)"/g)]
@@ -219,8 +220,8 @@ const exerciseHubFilters = [...exerciseHubPage.matchAll(/name="program-region"\s
 const exerciseHubFilterBadges = [...exerciseHubPage.matchAll(/<label for="hep-filter-([^"]+)">[^<]+<span>(\d+)<\/span><\/label>/g)]
     .map((match) => [match[1], Number.parseInt(match[2], 10)]);
 
-if (exerciseHubRegions.length !== 15) {
-    errors.push('Exercise library must contain exactly 15 filterable program cards');
+if (exerciseHubRegions.length !== 21) {
+    errors.push('Exercise library must contain exactly 21 filterable program cards');
 }
 for (const [region, expectedCount] of expectedProgramRegionCounts) {
     const actualCount = exerciseHubRegions.filter(value => value === region).length;
@@ -229,6 +230,9 @@ for (const [region, expectedCount] of expectedProgramRegionCounts) {
     }
     if (!exerciseHubFilters.includes(region)) {
         errors.push('Exercise library is missing the ' + region + ' filter');
+    }
+    if (!sharedScript.includes("['" + region + "',")) {
+        errors.push('Shared script is missing the ' + region + ' filter label');
     }
 }
 if (!exerciseHubFilters.includes('all')) {

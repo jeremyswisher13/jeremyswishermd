@@ -50,6 +50,15 @@ function count(value, pattern) {
     return (value.match(pattern) || []).length;
 }
 
+function escapeHtml(value) {
+    return String(value)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+}
+
 function validateDate(value, field, slug) {
     assert(typeof value === 'string' && isoDatePattern.test(value), `${slug}: invalid ${field}`);
     if (typeof value !== 'string' || !isoDatePattern.test(value)) return;
@@ -143,12 +152,60 @@ for (const program of programs) {
     const page = readFileSync(pagePath, 'utf8');
     const canonical = `https://jeremyswishermd.com/${slug}/`;
     assert(count(page, /<h1\b/g) === 1, `${slug}: expected one h1`);
+    assert(page.includes(`class="landing-page hep-page hep-program-${slug}"`), `${slug}: program body class is incorrect`);
     assert(page.includes(`<link rel="canonical" href="${canonical}">`), `${slug}: canonical is incorrect`);
     assert(page.includes(`"datePublished": "${publishedDate}"`), `${slug}: schema published date is incorrect`);
     assert(page.includes(`"dateModified": "${modifiedDate}"`), `${slug}: schema modified date is incorrect`);
     assert(page.includes(`"lastReviewed": "${program.reviewedDate}"`), `${slug}: schema reviewed date is incorrect`);
     assert(!page.includes('{{'), `${slug}: unresolved template token`);
     assert(!page.includes('\u2014'), `${slug}: contains an em dash`);
+
+    const renderedProgramFields = [
+        'metaDescription',
+        'breadcrumb',
+        'kicker',
+        'h1',
+        'summary',
+        'authorityTitle',
+        'fitIntro',
+        'fit',
+        'assessFirst',
+        'redFlags',
+        'programHeading',
+        'programIntro',
+        'frequency',
+        'equipment',
+        'checkpoint',
+        'goal',
+        'responseIntro',
+        'green',
+        'yellow',
+        'red',
+        'evaluation'
+    ];
+    for (const field of renderedProgramFields) {
+        assert(page.includes(escapeHtml(program[field])), `${slug}: generated page is stale for ${field}`);
+    }
+
+    const renderedGroups = [
+        ['authorityItems', ['text']],
+        ['proof', ['strong', 'span']],
+        ['exercises', requiredExerciseFields],
+        ['progression', ['title', 'text']],
+        ['faqs', ['q', 'a']],
+        ['sources', ['href', 'label']],
+        ['related', ['href', 'eyebrow', 'title']]
+    ];
+    for (const [groupName, fields] of renderedGroups) {
+        for (const item of program[groupName] || []) {
+            for (const field of fields) {
+                assert(page.includes(escapeHtml(item[field])), `${slug}: generated page is stale for ${groupName}.${field}`);
+            }
+        }
+    }
+    for (const item of program.readyItems || []) {
+        assert(page.includes(escapeHtml(item)), `${slug}: generated page is stale for readyItems`);
+    }
 
     const idMatches = [...page.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
     const duplicateIds = idMatches.filter((id, index) => idMatches.indexOf(id) !== index);

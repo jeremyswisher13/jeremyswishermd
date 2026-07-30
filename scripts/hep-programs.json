@@ -1838,5 +1838,749 @@
       { "href": "../sports-injuries/", "eyebrow": "Activity and diagnosis", "title": "Sports injury evaluation" },
       { "href": "../home-exercise-programs/", "eyebrow": "All programs", "title": "Home exercise library" }
     ]
+  },
+  {
+    "slug": "meniscus-tear-rehabilitation-exercises",
+    "title": "Nonoperative Meniscus Tear Home Exercise Program",
+    "seoTitle": "Nonoperative Meniscus Tear Exercises",
+    "shortTitle": "Meniscus tear exercises",
+    "conditionName": "Meniscus tear",
+    "publishedDate": "2026-07-30",
+    "reviewedDate": "2026-07-30",
+    "modifiedDate": "2026-07-30",
+    "video": {
+      "id": "Rr0g_b8Neq4",
+      "title": "Meniscus Tear Rehab & Exercises (Stretching | Strength | Plyometrics)",
+      "description": "The exercise chapter shows a broad progression from motion and strength to balance and later impact options for nonoperative meniscus rehabilitation.",
+      "caution": "This is not a postoperative protocol. Later jumping options are not part of this starter plan and should not override tear-specific restrictions, surgical advice, or clinician clearance.",
+      "startSeconds": 285,
+      "endSeconds": 1093
+    },
+    "metaDescription": "Printable nonoperative meniscus tear exercises after diagnosis, with knee motion, strength, balance, symptom rules, and return-to-activity guidance.",
+    "breadcrumb": "Nonoperative meniscus tear exercises",
+    "kicker": "Meniscus tear · Starter home exercise plan",
+    "h1": "Nonoperative Meniscus Tear Exercises",
+    "summary": "Exercise is first-line care for degenerative meniscal lesions and can be appropriate for selected stable acute tears. This starter plan restores comfortable motion, strength, and single-leg control after a clinician has confirmed the diagnosis and recommended nonoperative rehabilitation.",
+    "programLevel": "After diagnosis",
+    "authorityTitle": "Motion. Strength. Function.",
+    "authorityItems": [
+      { "icon": "diagnosis", "text": "For a diagnosed tear selected for nonoperative care" },
+      { "icon": "fitness_center", "text": "Six scalable movements for knee and hip capacity" },
+      { "icon": "schedule", "text": "A 6- to 8-week checkpoint within a longer exercise trial" }
+    ],
+    "proof": [
+      { "strong": "6 movements", "span": "motion, strength, and balance" },
+      { "strong": "3 to 4 days", "span": "of strength work each week" },
+      { "strong": "8 to 12 weeks", "span": "for a meaningful rehabilitation trial" }
+    ],
+    "fitIntro": "This program is for adults who have been evaluated, told a symptomatic meniscus tear or degenerative meniscal lesion is the likely diagnosis, and advised to begin nonoperative rehabilitation. It is not a self-diagnosis tool, a postoperative protocol, or a substitute for tear-specific surgical instructions.",
+    "fit": "A diagnosed degenerative meniscal lesion or selected stable acute tear with pain during walking, stairs, squatting, or recreation, while the knee still reaches its usual range and does not truly lock.",
+    "assessFirst": "An unevaluated twist or impact, inability to fully straighten the knee, true locking, rapid substantial swelling, recurrent giving way, inability to bear weight, suspected fracture or ligament injury, or a report describing a displaced bucket-handle, complete radial, root, or extended ramp tear. After surgery, follow the surgeon and therapist's protocol.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a newly locked knee, inability to bear weight after trauma, a new or rapidly worsening hot, red, or markedly swollen joint with or without fever, or new unexplained one-sided calf swelling.",
+    "programHeading": "Restore function without forcing the knee.",
+    "programIntro": "Start with one or two sets when the knee is irritable. Comfortable daily motion and easy walking or cycling can accompany strength work. Reach the top of a repetition range before adding a small amount of resistance, and do not force through a hard mechanical block.",
+    "frequency": "Strength 3 to 4 days per week; comfortable mobility daily; easy aerobic activity most days",
+    "equipment": "Stable chair, low step, counter, towel roll, and optional ankle weight",
+    "checkpoint": "Review motion, swelling, and function after 6 to 8 weeks",
+    "goal": "Comfortable walking, stairs, squatting, and return to meaningful activity",
+    "exercises": [
+      {
+        "name": "Heel prop with quadriceps set",
+        "dose": "1 to 2 sets of 8 to 12 contractions, holding 5 seconds",
+        "frequency": "Daily",
+        "how": "Rest the heel on a small towel roll with the knee unsupported. Gently tighten the front thigh and allow the knee to straighten without forceful pushing. Stop if you meet a hard mechanical block.",
+        "easier": "Support more of the lower leg or shorten the hold.",
+        "harder": "Progress to a standing banded terminal knee extension once full extension is comfortable."
+      },
+      {
+        "name": "Seated knee extension",
+        "dose": "2 to 3 sets of 8 to 12 repetitions",
+        "frequency": "3 to 4 days per week",
+        "how": "Sit tall with the thigh supported. Smoothly straighten the knee, pause briefly, then lower over two to three seconds.",
+        "easier": "Use a smaller comfortable range or fewer repetitions.",
+        "harder": "Add a light ankle weight after 3 sets of 12 remain controlled without a next-day flare."
+      },
+      {
+        "name": "Bridge",
+        "dose": "2 to 3 sets of 8 to 12 repetitions",
+        "frequency": "3 to 4 days per week",
+        "how": "Lie on your back with both knees bent. Press through both feet, lift the hips, pause, then lower slowly without arching the back.",
+        "easier": "Use a smaller lift.",
+        "harder": "Add a band above the knees, stagger the feet, or progress to a controlled single-leg version."
+      },
+      {
+        "name": "Sit to stand",
+        "dose": "2 to 3 sets of 8 to 12 repetitions",
+        "frequency": "3 to 4 days per week",
+        "how": "Rise from a stable chair with both feet planted, then lower slowly. Begin with a comfortable, relatively shallow knee bend rather than forcing deep flexion.",
+        "easier": "Use a higher chair or light arm support.",
+        "harder": "Lower the chair, hold a light weight, or use a staggered stance."
+      },
+      {
+        "name": "Low step-up with controlled lowering",
+        "dose": "2 to 3 sets of 6 to 10 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Step onto a low stable step, stand tall, then lower over two to three seconds. Keep a rail within reach.",
+        "easier": "Use a shorter step and more hand support.",
+        "harder": "Increase step height slightly, add light weight, or progress to a small step-down."
+      },
+      {
+        "name": "Supported single-leg balance",
+        "dose": "2 to 3 holds of 20 to 45 seconds per side",
+        "frequency": "3 to 5 days per week",
+        "how": "Stand beside a counter with a soft knee and level pelvis. Use fingertip support as needed and keep a stable surface beneath you.",
+        "easier": "Keep one toe lightly on the floor.",
+        "harder": "Reduce hand support or add slow reaching while preserving knee control."
+      }
+    ],
+    "responseIntro": "Mild discomfort can be acceptable when movement stays controlled, there is no new limp, locking, or swelling, and the knee returns to its usual baseline by the next morning.",
+    "green": "Mild discomfort, no new limp or catching, no increase in swelling, and the knee returns to its usual baseline by the following morning.",
+    "yellow": "Pain, swelling, limping, catching, or loss of motion is meaningfully worse later that day or the next morning. Reduce range, resistance, repetitions, step height, or walking time.",
+    "red": "Stop and obtain assessment for true locking, rapidly increasing swelling, recurrent giving way, inability to bear weight, a hot red joint, or new numbness or weakness.",
+    "progression": [
+      { "title": "Stage 1: restore motion and settle irritability", "text": "Use the lower exercise dose. Prioritize comfortable full extension, a nonlimping gait, and no accumulating swelling. Add 5 to 10 minutes of flat walking or easy cycling when tolerated." },
+      { "title": "Stage 2: build strength and control", "text": "Reach the upper repetition range with controlled movement, then add a small amount of resistance, squat depth, or step height. Change one variable at a time." },
+      { "title": "Stage 3: rebuild meaningful activity", "text": "Progress walking, cycling, stairs, chair height, carrying, and other personal goals. Add shallow single-leg strength only when the knee remains quiet the next morning." },
+      { "title": "Stage 4: return to running, jumping, or pivoting", "text": "Higher-demand sport should be criterion based. Confirm full motion, minimal swelling, adequate strength, controlled landing or hopping, and confidence. Acute tears need clinician clearance before cutting or pivoting." }
+    ],
+    "readyItems": [
+      "Full comfortable knee extension without a mechanical block.",
+      "No more than trace swelling and no recurrent effusion after exercise.",
+      "Normal walking without a new limp.",
+      "The upper exercise dose is controlled and symptoms return to baseline by the following morning.",
+      "Ten controlled step-ups or step-downs per side without giving way.",
+      "Running or pivoting goals have been reviewed when the tear was acute or may be repairable."
+    ],
+    "evaluation": "Schedule a reassessment if symptoms worsen, the knee locks or repeatedly gives way, swelling keeps returning, function has not begun to improve by six to eight weeks, or meaningful progress is absent after an eight- to twelve-week exercise trial.",
+    "faqs": [
+      { "q": "Does a meniscus tear on MRI mean I need surgery?", "a": "No. Degenerative meniscal findings are common, and exercise is first-line care. Selected acute tears also improve with rehabilitation. A displaced tear, true locked knee, root tear, complete radial tear, or substantial associated injury deserves earlier surgical review." },
+      { "q": "Will these exercises heal the tear?", "a": "Exercise can improve pain, strength, confidence, and function, but it cannot promise that a tear will structurally heal or disappear on MRI. Clinical improvement does not require a normal MRI." },
+      { "q": "Are clicking and catching dangerous?", "a": "Painless clicking is common and does not by itself prove ongoing damage. A true mechanical block, loss of extension, recurrent swelling, or repeated functional catching should be assessed." },
+      { "q": "How long should I try rehabilitation?", "a": "Trials commonly use eight to twelve weeks. Look for improving walking, stairs, swelling, and strength by six to eight weeks. Reassess earlier for worsening or if key milestones cannot be reached." }
+    ],
+    "sources": [
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/40519541/", "label": "2024 Formal EU-US Meniscus Rehabilitation Consensus, Part II" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/41160820/", "label": "Home Exercise and Physical Therapy Randomized Trial, 2025" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9270699/", "label": "ESCAPE Trial: Five-Year Physical Therapy Versus Partial Meniscectomy Follow-Up" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/38319181/", "label": "DREAM Trial in Young Adults With Meniscal Tears" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6830005/", "label": "TeMPO Evidence-Based Home Exercise Program and Progression" }
+    ],
+    "related": [
+      { "href": "../patellofemoral-pain-exercises/", "eyebrow": "Different knee pattern", "title": "Patellofemoral pain exercises" },
+      { "href": "../knee-osteoarthritis-exercises/", "eyebrow": "Arthritis support", "title": "Beginner knee osteoarthritis exercises" },
+      { "href": "../sports-injuries/", "eyebrow": "Evaluation and return", "title": "Sports injury care" }
+    ]
+  },
+  {
+    "slug": "iliotibial-band-syndrome-exercises",
+    "title": "Iliotibial Band Syndrome Home Exercise Program for Runners",
+    "seoTitle": "Iliotibial Band Syndrome Exercises for Runners",
+    "shortTitle": "IT band syndrome exercises",
+    "conditionName": "Iliotibial band syndrome",
+    "publishedDate": "2026-07-30",
+    "reviewedDate": "2026-07-30",
+    "modifiedDate": "2026-07-30",
+    "video": {
+      "id": "qJ1mrNXXjSo",
+      "title": "IT Band Pain / Iliotibial Band Friction Syndrome (Myth Busting | Exercises | Rehab)",
+      "description": "The embedded chapter explains load management, optional running adjustments, and several progressive strength choices for lateral knee pain in runners.",
+      "caution": "Gait changes are optional and should be individualized. The video does not establish the diagnosis or exclude other causes of lateral knee pain.",
+      "startSeconds": 335,
+      "endSeconds": 839
+    },
+    "metaDescription": "Printable iliotibial band syndrome exercises for runners, with hip strength, step control, symptom rules, load management, and a graded run-walk plan.",
+    "breadcrumb": "Iliotibial band syndrome for runners",
+    "kicker": "Lateral knee pain · Runner home exercise plan",
+    "h1": "Iliotibial Band Syndrome Exercises for Runners",
+    "summary": "Iliotibial band syndrome usually improves by adjusting the provoking running load and building hip and single-leg capacity. This plan is for runners who have been evaluated and told IT band syndrome is the likely cause of their lateral knee pain.",
+    "programLevel": "Runner program",
+    "authorityTitle": "Manage. Strengthen. Rebuild.",
+    "authorityItems": [
+      { "icon": "route", "text": "Running load changes before complete rest" },
+      { "icon": "fitness_center", "text": "Five progressive hip and single-leg exercises" },
+      { "icon": "directions_run", "text": "A flat-ground run-walk progression when ready" }
+    ],
+    "proof": [
+      { "strong": "5 movements", "span": "hip, trunk, and single-leg strength" },
+      { "strong": "2 to 3 days", "span": "of strength work each week" },
+      { "strong": "6 to 8 weeks", "span": "to assess an improving trend" }
+    ],
+    "fitIntro": "This program is for adult runners who have been evaluated and told iliotibial band syndrome is the likely cause of pain near the outside of the knee. Lateral knee pain has several possible sources, so the page is not a self-diagnosis tool.",
+    "fit": "Localized pain near the outside of the knee that builds predictably during running, often after a mileage increase or with longer, faster, downhill, or consecutive-day running, then eases after stopping without joint swelling, true locking, or instability.",
+    "assessFirst": "An uncertain diagnosis, acute trauma, difficulty bearing weight, substantial swelling, locking, giving way, loss of motion, rest or night pain, focal bone tenderness, impact pain that begins progressively earlier, radiating symptoms, numbness, tingling, or foot weakness.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment after major trauma, for inability to bear weight, or for a new or rapidly worsening hot, red, or markedly swollen joint with or without fever. Promptly evaluate focal bone pain or progressive neurologic symptoms.",
+    "programHeading": "Build capacity around a tolerable running dose.",
+    "programIntro": "The current evidence does not identify one perfect protocol. Progressive hip strengthening is the most consistent active component, while gait retraining may help selected runners but is not universally required. Stretching or foam rolling may provide temporary comfort but has not been shown to meaningfully lengthen the IT band or to be the main driver of recovery.",
+    "frequency": "Strength 2 to 3 nonconsecutive days per week; run-walk every other day when ready",
+    "equipment": "Stable chair or counter, low step, mat, and optional resistance band",
+    "checkpoint": "Reassess running tolerance after 6 to 8 weeks",
+    "goal": "Return to continuous running without escalating lateral knee pain",
+    "exercises": [
+      {
+        "name": "Side-lying hip abduction to lateral band walk",
+        "dose": "2 to 3 sets of 10 to 15 repetitions, or 8 to 15 steps each direction",
+        "frequency": "2 to 3 days per week",
+        "how": "Begin on your side with the top leg straight and slightly behind the trunk. Lift without rolling the pelvis backward. When controlled, progress to lateral steps with a band above the knees.",
+        "easier": "Use no band and a smaller range.",
+        "harder": "Move the band toward the ankles or increase resistance while keeping the trunk quiet."
+      },
+      {
+        "name": "Modified side plank",
+        "dose": "2 to 3 holds of 15 to 30 seconds per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Support the body on the forearm and bent knees while keeping the trunk and hips in a straight line.",
+        "easier": "Shorten the hold or place the upper hand on the floor.",
+        "harder": "Use straight legs, then add controlled top-leg abduction."
+      },
+      {
+        "name": "Bridge",
+        "dose": "2 to 3 sets of 8 to 15 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Press through both feet, lift the hips, pause, and lower slowly without arching the lower back.",
+        "easier": "Use a smaller lift.",
+        "harder": "Add a band, stagger the feet, or progress to a controlled single-leg march."
+      },
+      {
+        "name": "Supported split squat",
+        "dose": "Begin with 2 to 3 holds of 20 to 45 seconds, then progress to 2 to 3 sets of 6 to 12 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Use a stable support and lower through a comfortable range in a staggered stance. Keep the front foot planted and the movement controlled.",
+        "easier": "Use more hand support, a shorter stance, or a smaller range.",
+        "harder": "Increase range, add light weight, or elevate the rear foot only after the standard version is controlled."
+      },
+      {
+        "name": "Controlled step-down",
+        "dose": "2 to 3 sets of 6 to 10 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Stand on a low step and slowly tap the opposite heel to the floor. Keep the pelvis level and the stance knee controlled without forcing one supposedly perfect alignment.",
+        "easier": "Use a shorter step and more hand support.",
+        "harder": "Increase step height slightly, add a reach, or hold a light weight."
+      }
+    ],
+    "responseIntro": "Strength work may cause mild localized discomfort. Running should stop before sharp lateral pain builds or changes your stride. Use the later response and the next morning, not pain tolerance alone, to decide the dose.",
+    "green": "No more than mild localized discomfort, running form remains normal, and symptoms return to baseline by the next morning.",
+    "yellow": "Pain builds during the session, begins earlier than usual, changes running form, or remains worse the next morning. Shorten the run, reduce hills or speed, and decrease exercise range or load.",
+    "red": "Stop and seek assessment for joint swelling, locking, instability, inability to bear weight, focal bone pain, numbness, weakness, or symptoms that worsen despite substantial load reduction.",
+    "progression": [
+      { "title": "Stage 1: find a tolerable training level", "text": "Reduce the most provocative variable, such as run duration, downhill running, speed, consecutive days, or cambered surfaces. Keep running below the symptom threshold when possible, or use tolerable cycling, swimming, or elliptical work." },
+      { "title": "Stage 2: build multiplanar strength", "text": "Complete strength work two to three days weekly for at least four to eight weeks. Reach the upper repetition or hold range, then add resistance or single-leg demand while the next-morning response remains stable." },
+      { "title": "Stage 3: begin flat run-walk intervals", "text": "Try 30 seconds of easy running followed by 4.5 minutes of walking for four to six rounds on flat ground. On a stable next session, add 30 seconds to each run interval and remove 30 seconds from each walk interval." },
+      { "title": "Stage 4: restore continuous running", "text": "Build easy flat duration first, then frequency. Add hills and speed later, one variable at a time, while continuing strength work twice weekly." }
+    ],
+    "readyItems": [
+      "Brisk flat walking for 30 minutes without more than mild symptoms or next-day worsening.",
+      "Full knee motion and no joint swelling, locking, or instability.",
+      "The strength session is controlled and symptoms return to baseline the next morning.",
+      "Ten controlled low step-downs per side without escalating lateral pain.",
+      "You understand how to stop before pain changes your stride."
+    ],
+    "evaluation": "Schedule a reassessment when the diagnosis is uncertain, symptoms worsen, impact pain begins progressively earlier, or there is no meaningful improvement after six to eight weeks of consistent load adjustment and strength work.",
+    "faqs": [
+      { "q": "Should I stretch or foam roll the IT band?", "a": "Stretching or rolling may provide temporary comfort, but it has not been shown to meaningfully lengthen the IT band and should not be the main treatment. Avoid forceful rolling directly over a painful lateral knee or sensitive lateral hip." },
+      { "q": "Can I keep running during rehabilitation?", "a": "Often yes, when a shorter flat run stays below the point where pain builds, does not change gait, and leaves symptoms at baseline the next morning. Use run-walk intervals or cross-training when continuous running is not tolerated." },
+      { "q": "Should I change cadence or foot strike?", "a": "Gait retraining is not universally required, and the evidence is limited. A clinician-guided trial of a modest cadence increase may help selected runners, but do not force a new foot strike or several form changes at once." },
+      { "q": "How long does recovery take?", "a": "Research protocols commonly last four to eight weeks, but rebuilding full running capacity can take longer. Reassess the diagnosis, strength plan, and running load when improvement is absent or symptoms worsen." }
+    ],
+    "sources": [
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11377285/", "label": "Systematic Review of Conservative IT Band Treatments in Runners, 2024" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/32448384/", "label": "Pilot Randomized Trial of Hip Strengthening and Run-Walk Rehabilitation" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/36758425/", "label": "Systematic Review and Meta-Analysis of Strength and Running Mechanics" },
+      { "href": "https://www.massgeneral.org/assets/mgh/pdf/orthopaedics/sports-medicine/physical-therapy/rehabilitation-protocol-for-iliotibial-band-syndrome.pdf", "label": "Mass General Brigham Criterion-Based IT Band Rehabilitation Protocol" }
+    ],
+    "related": [
+      { "href": "../gluteal-tendinopathy-exercises/", "eyebrow": "Different lateral pain", "title": "Gluteal tendinopathy exercises" },
+      { "href": "../hamstring-strain-exercises/", "eyebrow": "Runner strength", "title": "Hamstring strain exercises" },
+      { "href": "../sports-injuries/", "eyebrow": "Running evaluation", "title": "Sports injury care" }
+    ]
+  },
+  {
+    "slug": "peroneal-tendinopathy-exercises",
+    "title": "Peroneal Tendinopathy Home Exercise Program",
+    "seoTitle": "Peroneal Tendinopathy Exercises",
+    "shortTitle": "Peroneal tendon exercises",
+    "conditionName": "Peroneal tendinopathy",
+    "publishedDate": "2026-07-30",
+    "reviewedDate": "2026-07-30",
+    "modifiedDate": "2026-07-30",
+    "video": {
+      "id": "0fsR5-oqcVU",
+      "title": "Peroneal Tendinopathy / Tendinitis: Causes & Treatment (Education | Strengthening | Stretching)",
+      "description": "The embedded chapter explains load modification and progressive ankle, calf, balance, and whole-leg strengthening for nontraumatic peroneal tendon pain.",
+      "caution": "This video addresses nontraumatic peroneal tendinopathy. It does not replace evaluation after an acute injury or when there is snapping, tendon displacement, repeated giving way, marked weakness, or focal bone pain.",
+      "startSeconds": 234,
+      "endSeconds": 728
+    },
+    "metaDescription": "Printable peroneal tendinopathy exercises for outer ankle pain, with eversion strength, heel raises, balance, symptom rules, and graded activity.",
+    "breadcrumb": "Peroneal tendinopathy exercises",
+    "kicker": "Outer ankle tendon pain · Starter home exercise plan",
+    "h1": "Peroneal Tendinopathy Exercises",
+    "summary": "This evidence-informed program is for clinician-evaluated, nontraumatic peroneal tendon pain along the outer ankle or foot. It builds eversion strength, calf capacity, balance, and tolerance for walking or sport.",
+    "programLevel": "After evaluation",
+    "authorityTitle": "Evert. Balance. Rebuild.",
+    "authorityItems": [
+      { "icon": "diagnosis", "text": "Not for a fracture, acute tear, or snapping tendon" },
+      { "icon": "footprint", "text": "Five progressive foot, ankle, and leg movements" },
+      { "icon": "route", "text": "Level activity before hills, trails, and cutting" }
+    ],
+    "proof": [
+      { "strong": "5 movements", "span": "eversion, calf, balance, and leg control" },
+      { "strong": "2 to 3 days", "span": "of strength work each week" },
+      { "strong": "6 weeks", "span": "to look for an improving trend" }
+    ],
+    "fitIntro": "Use this plan only when peroneal tendinopathy is the established or strongly suspected diagnosis. Lateral ankle pain can also come from bone, cartilage, ligaments, nerves, the subtalar joint, a tendon tear, or tendon instability.",
+    "fit": "Gradual outer ankle or lateral foot pain linked to walking, running, hills, uneven ground, or a recent training increase, with tenderness along the tendons behind the outer ankle and symptoms reproduced by turning the foot outward against resistance.",
+    "assessFirst": "A recent inversion injury or high-force event, inability to take four steps, focal bone tenderness at the outer ankle or base of the fifth metatarsal, marked bruising or swelling, a pop followed by weakness, snapping behind the outer ankle, recurrent giving way, a slow-to-recover ankle sprain, burning, numbness, foot drop, or unexplained rest or night pain.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for inability to bear weight after trauma, visible deformity, rapidly increasing swelling, a hot red swollen ankle or foot with or without fever, a wound with spreading redness, or severe unrelenting pain. Arrange prompt assessment for a new pop with weakness, repeated snapping or tendon displacement, recurrent giving way, new numbness or foot drop, focal bone pain, or progressive rest or night pain.",
+    "programHeading": "Build outer ankle capacity without instability.",
+    "programIntro": "Condition-specific exercise trials are sparse, so the exact dose is a practical starting point based on consensus, tendon-loading principles, and function. Use flat, predictable surfaces first. A snapping or displaced tendon, acute tear, fracture, or unstable ankle needs assessment rather than unsupervised loading.",
+    "frequency": "Strength 2 to 3 nonconsecutive days per week; balance 3 to 5 days per week",
+    "equipment": "Resistance band, stable chair or rail, low step, and optional weight",
+    "checkpoint": "Review the trend at 6 weeks; continue loading for 8 to 12 weeks or longer",
+    "goal": "Comfortable walking, hills, uneven ground, running, or sport",
+    "exercises": [
+      {
+        "name": "Banded ankle eversion",
+        "dose": "3 sets of 12 to 20 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Sit with a band around the forefoot and anchored toward the opposite side. Keep the knee and thigh still, turn the sole gently outward through a comfortable range, then return over about three seconds.",
+        "easier": "Use a lighter band or four holds of 20 to 30 seconds without movement.",
+        "harder": "Use a heavier band, slow the return, or perform side-lying eversion with a light ankle weight."
+      },
+      {
+        "name": "Heel raise",
+        "dose": "3 sets of 8 to 15 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Rise as high as you can control and lower slowly while keeping pressure through both the big-toe and little-toe sides of the forefoot rather than rolling outward.",
+        "easier": "Use both legs and hand support.",
+        "harder": "Progress to one leg, then add weight or use a step."
+      },
+      {
+        "name": "Supported single-leg balance",
+        "dose": "3 rounds of 30 to 60 seconds per side",
+        "frequency": "3 to 5 days per week",
+        "how": "Stand near a stable support with the whole forefoot grounded and the knee softly bent.",
+        "easier": "Use fingertip support or keep the other toes on the floor.",
+        "harder": "Add a three-way reach, small trunk rotations, or a controlled single-leg hip hinge."
+      },
+      {
+        "name": "Low step-up to controlled step-down",
+        "dose": "2 to 3 sets of 8 to 12 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Step onto a low stable step without pushing from the back leg, stand tall, then lower slowly with the foot and knee controlled.",
+        "easier": "Use a lower step and a rail.",
+        "harder": "Use a lateral or forward step-down, a slightly taller step, or light weight."
+      },
+      {
+        "name": "Level walking or cycling base",
+        "dose": "Start with a repeatable 10 to 20 minutes",
+        "frequency": "Most days",
+        "how": "Choose flat walking or cycling that does not cause a sustained flare. Keep terrain and effort predictable while you establish a repeatable baseline.",
+        "easier": "Split the time into two shorter sessions.",
+        "harder": "Add two to five minutes first, then speed, hills, uneven ground, or trail exposure one variable at a time."
+      }
+    ],
+    "responseIntro": "Mild discomfort can be acceptable when technique remains stable, there is no snapping or giving way, and symptoms return to their usual baseline by the next morning.",
+    "green": "Mild discomfort, stable technique, no snapping or giving way, and symptoms return to their usual baseline by the next morning.",
+    "yellow": "Pain, swelling, limping, or instability is meaningfully worse later that day or the next morning. Reduce range, resistance, repetitions, steps, or terrain by about 25 to 50 percent and rebuild.",
+    "red": "Stop for sharp pain, a pop, tendon snapping or displacement, new weakness, giving way, numbness, marked swelling, or inability to bear weight. Obtain an assessment.",
+    "progression": [
+      { "title": "Stage 1: settle and reload", "text": "Reduce hills, cambered roads, trail running, and cutting. Use isometric or light eversion, double-leg heel raises, supported balance, and level activity." },
+      { "title": "Stage 2: build capacity", "text": "Progress to moving eversion, single-leg heel raises, step-downs, and dynamic balance. Add one variable only after several stable sessions." },
+      { "title": "Stage 3: restore the goal", "text": "Add weighted heel raises, heavier eversion, three-way reaches or hip hinges, brisk level walking, then graded walk-jog or terrain exposure." },
+      { "title": "Stage 4: add energy storage when sport requires it", "text": "Progress from double-leg to single-leg pogos, then forward and lateral line hops and controlled cutting. This stage is optional and should not begin when snapping or instability is present." }
+    ],
+    "readyItems": [
+      "Thirty minutes of brisk level walking and normal stairs do not worsen the next morning.",
+      "Twenty controlled single-leg heel raises can be completed without rolling outward or snapping.",
+      "Single-leg balance can be held for 45 to 60 seconds.",
+      "Ten controlled step-downs can be completed without giving way.",
+      "For impact goals, 20 small double-leg and then single-leg pogos do not cause sharp pain or instability.",
+      "These are practical progression guides, not validated return-to-sport cutoffs."
+    ],
+    "evaluation": "Schedule a reassessment for worsening symptoms, recurrent swelling, snapping, repeated sprains or giving way, inability to progress heel raises, inability to resume normal walking, or no improving trend after about six weeks.",
+    "faqs": [
+      { "q": "Is this just an ankle sprain?", "a": "They can coexist. Persistent pain behind the outer ankle, weakness, or snapping after a sprain needs reassessment because tendon injury or instability may be present." },
+      { "q": "Should I rest completely?", "a": "Usually use relative load reduction rather than prolonged complete rest, unless a clinician suspects a fracture, rupture, or instability or recommends temporary immobilization." },
+      { "q": "Can I run?", "a": "Begin flat walk-jog intervals only after level walking and the strength guideposts are tolerated. Reintroduce speed, hills, cambered roads, and trails separately." },
+      { "q": "What shoes or orthotics help?", "a": "Choose a stable, comfortable shoe. Avoid an insert that forces the foot farther outward or increases instability. Posting or bracing should be individualized after alignment and ankle stability are assessed." },
+      { "q": "Do I need imaging?", "a": "Not routinely when the examination is clear and recovery is progressing. Ultrasound or MRI may be useful when snapping, a tear, instability, bony pathology, or an atypical course is suspected." }
+    ],
+    "sources": [
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/29767272/", "label": "ESSKA-AFAS International Consensus on Peroneal Tendon Pathology" },
+      { "href": "https://www.aafp.org/pubs/afp/issues/2022/0500/p479.html", "label": "AAFP: Tendinopathies of the Foot and Ankle, 2022" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5257307/", "label": "Dynamic Ultrasound of Peroneal Tendon Instability" },
+      { "href": "https://doi.org/10.1016/j.mporth.2022.11.010", "label": "Peroneal Tendon Disorders: Diagnosis and Management Review" }
+    ],
+    "related": [
+      { "href": "../lateral-ankle-sprain-exercises/", "eyebrow": "After an ankle sprain", "title": "Lateral ankle sprain exercises" },
+      { "href": "../achilles-tendinopathy-exercises/", "eyebrow": "Different tendon", "title": "Midportion Achilles exercises" },
+      { "href": "../sports-injuries/", "eyebrow": "Foot and ankle assessment", "title": "Sports injury care" }
+    ]
+  },
+  {
+    "slug": "tibialis-posterior-tendinopathy-exercises",
+    "title": "Tibialis Posterior Tendinopathy Home Exercise Program",
+    "seoTitle": "Posterior Tibial Tendon Pain Exercises",
+    "shortTitle": "Posterior tibial tendon exercises",
+    "conditionName": "Tibialis posterior tendinopathy",
+    "publishedDate": "2026-07-30",
+    "reviewedDate": "2026-07-30",
+    "modifiedDate": "2026-07-30",
+    "video": {
+      "id": "NKeQHV85QLc",
+      "title": "Tibialis Posterior Tendinopathy | Tendinitis | Dysfunction | Pain (Exercises, Rehab, Strengthening)",
+      "description": "The embedded chapter explains activity adjustment, supportive options, and progressive foot, calf, balance, and whole-leg exercise for tibialis posterior tendon pain.",
+      "caution": "New arch collapse, inability to perform a heel raise, acute trauma, marked swelling, or suspected progressive collapsing foot deformity requires examination rather than unsupervised progression.",
+      "startSeconds": 236,
+      "endSeconds": 1037
+    },
+    "metaDescription": "Printable posterior tibial tendon pain exercises, with arch support guidance, heel raises, balance, symptom rules, and warnings for progressive foot collapse.",
+    "breadcrumb": "Tibialis posterior tendinopathy exercises",
+    "kicker": "Inner ankle and arch tendon pain · Starter home exercise plan",
+    "h1": "Posterior Tibial Tendon Pain Exercises",
+    "summary": "This progressive program is for clinician-evaluated pain of the tibialis posterior tendon along the inner ankle or arch, without a new rupture or progressive foot collapse. Supportive footwear or an orthosis may be an important companion to exercise.",
+    "programLevel": "Early-stage program",
+    "authorityTitle": "Support. Strengthen. Monitor.",
+    "authorityItems": [
+      { "icon": "warning", "text": "New arch collapse or heel-raise weakness needs assessment" },
+      { "icon": "footprint", "text": "Five tendon, calf, balance, and leg movements" },
+      { "icon": "orthopedics", "text": "Footwear or an orthosis may be part of treatment" }
+    ],
+    "proof": [
+      { "strong": "5 movements", "span": "tendon, calf, balance, and leg capacity" },
+      { "strong": "2 to 3 days", "span": "of strength work each week" },
+      { "strong": "8 to 12 weeks", "span": "for a progressive loading trial" }
+    ],
+    "fitIntro": "This is an early-stage starter plan, not a self-diagnosis tool and not stand-alone treatment for progressive collapsing foot deformity. A new change in arch shape or heel alignment, inability to perform a single-leg heel raise, or increasing weakness should be assessed before exercise is advanced.",
+    "fit": "Load-related pain or tenderness behind the inner ankle bone and into the arch, often worse with prolonged walking, running, hills, stairs, or heel raises, with preserved or only mildly reduced push-off and no progressive deformity.",
+    "assessFirst": "Recent trauma or a pop, inability to perform a single-leg heel raise, clear loss of heel-rise height or endurance, new or increasing arch flattening, the heel drifting outward, the forefoot turning outward, rigid deformity, lateral ankle impingement pain, marked swelling, inability to walk normally, focal navicular bone tenderness, pain with hopping after a training increase, burning, numbness, or a hot swollen foot in diabetes or neuropathy.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for inability to bear weight after trauma, visible or rapidly progressive deformity, a hot red markedly swollen foot with or without fever, especially with diabetes or reduced sensation, a wound with spreading redness, or severe unrelenting pain. Arrange prompt evaluation for a pop with sudden loss of push-off, new arch collapse, inability to perform a heel raise, rapidly increasing weakness, focal navicular bone pain, new numbness, or progressive rest or night pain.",
+    "programHeading": "Load the tendon while watching the shape and function of the foot.",
+    "programIntro": "The best exercise dose is uncertain. Small trials mainly studied strengthening together with foot orthoses and stretching, not exercise in isolation. A supportive shoe, arch support, brace, or temporary immobilization may be appropriate based on walking tolerance and deformity and should be individualized.",
+    "frequency": "Strength 2 to 3 nonconsecutive days per week; balance 2 to 3 days per week",
+    "equipment": "Resistance band, supportive shoe, stable support, optional small ball and weight",
+    "checkpoint": "Review the trend at 6 weeks; build for 8 to 12 weeks or longer",
+    "goal": "Restore push-off, walking, stairs, hills, and appropriate return to running",
+    "exercises": [
+      {
+        "name": "Banded foot adduction",
+        "dose": "3 to 4 sets of 12 to 15 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Sit with both knees bent and the foot in a supportive shoe. Anchor a band outside the forefoot at about 45 degrees to the floor. Keep the heel and leg quiet, slide the forefoot inward, then return over three seconds without clawing the toes.",
+        "easier": "Use no band, a shorter range, or four low-effort isometric holds of 20 seconds.",
+        "harder": "Use a stronger band or a four-second return."
+      },
+      {
+        "name": "Heel raise with controlled heel direction",
+        "dose": "3 sets of 8 to 15 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Keep the base of the big toe grounded, rise as high as controlled, allow the heels to turn slightly toward each other, then lower over three seconds. A small ball between the heels can guide the motion, but do not force an arch position.",
+        "easier": "Use a seated or double-leg version with hand support.",
+        "harder": "Progress to one leg, then add weight or use a step after 15 controlled repetitions."
+      },
+      {
+        "name": "Supported single-leg balance",
+        "dose": "3 rounds of 30 to 60 seconds per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Stand near a stable support and let the foot move naturally within a tolerable range while the knee and pelvis remain controlled.",
+        "easier": "Use fingertip support or keep the opposite toes on the floor.",
+        "harder": "Add three-way reaches or slow trunk rotations."
+      },
+      {
+        "name": "Squat to chair or supported split squat",
+        "dose": "2 to 3 sets of 8 to 15 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Keep the whole foot grounded and move through a comfortable range with a stable chair or rail nearby.",
+        "easier": "Use a higher chair, shallower range, or more support.",
+        "harder": "Use a lower chair, split squat or reverse lunge, then add light weight."
+      },
+      {
+        "name": "Supported single-leg hip hinge",
+        "dose": "2 to 3 sets of 6 to 12 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Stand on one leg near a stable support, soften the knee, hinge at the hip without twisting, then return upright with controlled foot pressure.",
+        "easier": "Use kickstand toes and hand support.",
+        "harder": "Progress to a single-leg deadlift, add a knee drive, or hold weight in the opposite hand."
+      }
+    ],
+    "responseIntro": "Establish a repeatable daily step baseline. If walking is provocative, temporarily use cycling or swimming. Increase steps, pace, hills, or running one variable at a time while monitoring gait, push-off, swelling, and foot shape.",
+    "green": "Mild discomfort, normal gait and push-off, no visible worsening of arch or heel position, and symptoms return to baseline by the next morning.",
+    "yellow": "Medial ankle swelling, limping, walking tolerance, or next-morning pain is meaningfully worse. Reduce resistance, heel-raise range, repetitions, or daily steps by about 25 to 50 percent.",
+    "red": "Stop for a pop, sudden weakness, inability to perform a heel raise, new or progressive arch collapse, focal bone pain, numbness, hot red swelling, or inability to bear weight. Obtain an assessment.",
+    "progression": [
+      { "title": "Stage 1: reduce overload and establish support", "text": "Track daily steps. Consider supportive footwear or clinician-directed arch support. Use banded adduction, seated or double-leg heel raises, and supported balance." },
+      { "title": "Stage 2: build tendon and calf capacity", "text": "Progress adduction resistance, double-leg to single-leg heel raises, and squat, split-squat, or hip-hinge strength. Advance only after several stable next mornings." },
+      { "title": "Stage 3: restore walking and stairs", "text": "Add weighted heel raises, dynamic balance, step and lunge demands, then brisk walking and hills one variable at a time." },
+      { "title": "Stage 4: return to running or sport when appropriate", "text": "Use a graded walk-jog progression, then optional pogos, hops, and cutting only when there is no progressive deformity or instability and the examination supports impact loading." }
+    ],
+    "readyItems": [
+      "Thirty minutes of level walking and normal stairs do not worsen the next morning.",
+      "Twenty controlled single-leg heel raises can be completed with useful height and the base of the big toe grounded.",
+      "The arch and heel position do not show progressive change during loading.",
+      "Single-leg balance can be held for 45 to 60 seconds.",
+      "Ten controlled step-downs can be completed without a sustained flare.",
+      "Impact begins only after 20 small pogos are tolerated and after clinician review when foot collapse was ever suspected."
+    ],
+    "evaluation": "Schedule a reassessment for any new arch change, worsening push-off, recurrent swelling, inability to progress heel raises, no improving trend after six weeks, or persistent limits after eight to twelve weeks.",
+    "faqs": [
+      { "q": "Do flat feet mean this tendon is diseased?", "a": "No. Flat or pronated feet can be pain free. A new painful change, progressive flattening, and loss of function matter more than appearance alone." },
+      { "q": "Will exercise rebuild a collapsed arch?", "a": "Exercise may improve pain and capacity, but it is not proven to reverse structural progressive collapsing foot deformity. New or progressive deformity needs assessment." },
+      { "q": "Do I need an orthotic?", "a": "Orthoses or braces can reduce tendon and arch demand, and most trials combined them with exercise. The device and duration should fit symptoms and deformity rather than foot appearance alone." },
+      { "q": "Can I run?", "a": "First restore level walking, heel-rise capacity, and next-day stability. Then use walk-jog intervals on flat ground and change one training variable at a time." },
+      { "q": "Should I stretch the calf?", "a": "Gentle calf mobility can be used when ankle motion is clearly limited and it does not increase inner ankle or arch pain. Do not force an aggressive stretch through the painful tendon." }
+    ],
+    "sources": [
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/30271611/", "label": "Exercise for Posterior Tibial Tendon Dysfunction: Systematic Review" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/19022863/", "label": "Orthosis and Progressive Resistive Exercise Randomized Trial" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/25857939/", "label": "Orthosis, Stretching, and Home Strengthening Randomized Trial" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/32856474/", "label": "Progressive Collapsing Foot Deformity Nomenclature and Classification Consensus" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/33040609/", "label": "Orthotic Treatment for Early-Stage Posterior Tibial Tendon Dysfunction: Systematic Review" },
+      { "href": "https://www.aafp.org/pubs/afp/issues/2022/0500/p479.html", "label": "AAFP: Tendinopathies of the Foot and Ankle, 2022" }
+    ],
+    "related": [
+      { "href": "../peroneal-tendinopathy-exercises/", "eyebrow": "Different ankle tendon", "title": "Peroneal tendinopathy exercises" },
+      { "href": "../plantar-fasciitis-exercises/", "eyebrow": "Different arch or heel pain", "title": "Plantar heel pain exercises" },
+      { "href": "../sports-injuries/", "eyebrow": "Foot and ankle assessment", "title": "Sports injury care" }
+    ]
+  },
+  {
+    "slug": "thumb-cmc-osteoarthritis-exercises",
+    "title": "Thumb CMC Osteoarthritis Home Exercise Program",
+    "seoTitle": "Thumb CMC Osteoarthritis Exercises and Brace Guide",
+    "shortTitle": "Thumb CMC arthritis exercises",
+    "conditionName": "Thumb carpometacarpal osteoarthritis",
+    "publishedDate": "2026-07-30",
+    "reviewedDate": "2026-07-30",
+    "modifiedDate": "2026-07-30",
+    "video": null,
+    "metaDescription": "Printable thumb CMC osteoarthritis exercises and brace guidance, with joint protection, gentle strength, symptom rules, and clear progression.",
+    "breadcrumb": "Thumb CMC osteoarthritis",
+    "kicker": "Thumb-base arthritis · Home exercise and orthosis guide",
+    "h1": "Thumb CMC Osteoarthritis Exercises",
+    "summary": "Thumb carpometacarpal osteoarthritis affects the joint at the base of the thumb. A well-fitting thumb orthosis, practical changes to painful gripping and pinching, and progressive hand exercise can help function. Exercise benefits are usually modest, and no program can reverse the arthritis or rebuild cartilage.",
+    "programLevel": "Starter to progressive",
+    "authorityTitle": "Support. Control. Function.",
+    "authorityItems": [
+      { "icon": "front_hand", "text": "Five low-load mobility and strength movements" },
+      { "icon": "orthopedics", "text": "A thumb-base orthosis is a core treatment option" },
+      { "icon": "handshake", "text": "Joint protection for gripping, pinching, and carrying" }
+    ],
+    "proof": [
+      { "strong": "5 movements", "span": "mobility, thumb control, and useful pinch" },
+      { "strong": "3 days", "span": "of light strength work each week" },
+      { "strong": "6 to 8 weeks", "span": "to assess function and symptom change" }
+    ],
+    "fitIntro": "This program is for adults who have been evaluated and told that thumb CMC osteoarthritis is the likely source of their symptoms. It is not a self-diagnosis tool or a postoperative protocol.",
+    "fit": "Pain at the base of the thumb during opening jars, turning keys, writing, pinching, gripping, carrying, or prolonged phone use, sometimes with stiffness or reduced pinch strength.",
+    "assessFirst": "An uncertain diagnosis, symptoms after a fall or collision, a thumb that catches, locks, dislocates, or repeatedly gives way, numbness, tingling, progressive weakness, pain mainly along the thumb side of the wrist rather than at the thumb base, several persistently swollen joints, prolonged morning stiffness, recent hand surgery, injection, or fracture, or severe unexplained rest or night pain.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day care for a rapidly worsening hot, red, or markedly swollen joint, fever, a wound near the joint, new deformity after trauma, or inability to use the hand after injury. Arrange prompt assessment for new numbness, color change, or sudden loss of thumb strength.",
+    "programHeading": "Support the joint. Train the hand. Protect function.",
+    "programIntro": "First-CMC orthoses are strongly recommended in the American College of Rheumatology guideline. Exercise evidence is more mixed and benefits are generally modest, so this plan combines comfortable movement and low-load strength with joint protection and an optional orthosis rather than presenting exercise as a cure.",
+    "frequency": "Mobility most days; strengthening 2 to 3 days per week",
+    "equipment": "Table, optional light elastic loop, soft sponge or putty, and a well-fitting thumb CMC orthosis if helpful",
+    "checkpoint": "Review function and symptoms after 6 to 8 weeks",
+    "goal": "Easier gripping, pinching, writing, opening, carrying, and daily hand use",
+    "exercises": [
+      {
+        "name": "Rounded thumb opposition",
+        "dose": "1 to 2 sets of 5 to 10 repetitions",
+        "frequency": "Daily",
+        "how": "Support the forearm and keep the wrist straight. Bring the thumb pad toward the index fingertip to form a relaxed letter C. Keep the thumb joints softly bent and avoid squeezing. Hold for two to three seconds, then relax.",
+        "easier": "Move only toward the index finger through a smaller range.",
+        "harder": "Touch each fingertip in sequence. Reach toward the base of the small finger only when comfortable."
+      },
+      {
+        "name": "Gentle first web-space opening",
+        "dose": "2 holds of 20 to 30 seconds",
+        "frequency": "Daily",
+        "how": "Support the affected hand with the palm facing up. Use the other hand to gently guide the thumb away from the palm until a mild stretch is felt in the web space. Do not force the base joint or push into sharp pain.",
+        "easier": "Use a smaller range and a 10-second hold.",
+        "harder": "Progress toward a 30-second hold without increasing the force."
+      },
+      {
+        "name": "First dorsal interosseous index slide",
+        "dose": "2 sets of 8 to 12 repetitions",
+        "frequency": "3 days per week",
+        "how": "Place the hand flat on a table with the palm down. Keep the other fingers relaxed. Slide the index finger sideways away from the middle finger, then return slowly without hard pinching.",
+        "easier": "Use no resistance and a shorter slide.",
+        "harder": "Add a very light elastic loop around the fingers."
+      },
+      {
+        "name": "Thumb palmar-abduction isometric",
+        "dose": "5 holds of 5 to 10 seconds",
+        "frequency": "3 days per week",
+        "how": "Hold the thumb in a relaxed C position in front of the palm. Place a finger from the opposite hand against the outside of the thumb. Gently press outward without allowing movement and keep the thumb knuckle from collapsing backward.",
+        "easier": "Perform three five-second holds.",
+        "harder": "Build to 10-second holds, then use a light elastic loop. Do not use maximal effort."
+      },
+      {
+        "name": "Controlled three-point pinch",
+        "dose": "1 to 2 sets of 6 to 10 repetitions",
+        "frequency": "2 to 3 days per week, beginning in Stage 3",
+        "how": "Use very soft therapy putty, a folded sponge, or a light clothespin. Pinch between the thumb pad and the pads of the index and middle fingers. Maintain a rounded C shape and avoid a forceful side or key pinch.",
+        "easier": "Practice the position without resistance.",
+        "harder": "Increase resistance slightly or practice the same alignment during a meaningful daily task."
+      }
+    ],
+    "responseIntro": "Begin with one set when the thumb is irritable. Mild discomfort can be acceptable when movement remains controlled and symptoms return to their usual baseline by the next morning.",
+    "green": "Mild discomfort up to about 3 out of 10, controlled movement, and symptoms return to their usual baseline by the next morning.",
+    "yellow": "Pain is sharper, technique changes, aching or swelling is meaningfully worse later in the day, or symptoms remain worse the following morning. Reduce resistance, range, repetitions, or pinch practice.",
+    "red": "Stop and seek assessment for rapidly increasing swelling, redness, heat, fever, new numbness, new deformity, sudden loss of strength, or severe pain after trauma.",
+    "progression": [
+      { "title": "Stage 1: protect and move", "text": "Use joint-protection strategies and a comfortable orthosis during aggravating tasks when helpful. Perform rounded opposition and gentle web-space opening." },
+      { "title": "Stage 2: build control", "text": "Add first dorsal interosseous work and light palmar-abduction isometrics. Reach the upper repetition range before adding resistance." },
+      { "title": "Stage 3: restore useful pinch", "text": "Add controlled three-point pinch and progressively practice buttons, utensils, writing, keys, food preparation, or another relevant task." },
+      { "title": "Stage 4: maintain capacity", "text": "Continue useful strength exercises twice weekly. Use the orthosis and adaptive equipment selectively rather than assuming they must be worn for every activity." }
+    ],
+    "readyItems": [
+      "Resting symptoms are stable.",
+      "Rounded opposition does not produce sharp pain.",
+      "The current dose has been tolerated for several sessions.",
+      "Symptoms return to baseline by the following morning.",
+      "The thumb maintains a rounded position without the knuckle collapsing backward.",
+      "Daily tasks are becoming easier or can be performed for longer."
+    ],
+    "evaluation": "Schedule a hand or sports medicine evaluation if symptoms worsen, the orthosis causes pressure or numbness, function has not improved after six to eight weeks, deformity or instability is progressing, or the diagnosis remains uncertain.",
+    "faqs": [
+      { "q": "Will these exercises reverse the arthritis?", "a": "No. Exercise does not regrow cartilage or remove arthritic changes. The goals are improved strength, movement control, function, and confidence." },
+      { "q": "What type of brace is best?", "a": "No single orthosis is clearly superior for every patient. A rigid CMC support may provide more stability, while neoprene may be more comfortable. Fit and usefulness during painful tasks matter more than a particular brand." },
+      { "q": "How should I use a thumb CMC brace?", "a": "A practical trial is to wear a comfortable, well-fitting orthosis during painful gripping or pinching and, if helpful, at night. It should support the thumb base without causing numbness, color change, skin injury, or increased pain. Research has not established one universal wearing schedule." },
+      { "q": "Should I squeeze a ball?", "a": "Hard repetitive squeezing can aggravate the thumb base. Begin with the low-load exercises in this program and add soft, controlled pinch only after symptoms are stable." },
+      { "q": "How can I protect the joint during daily tasks?", "a": "Use larger handles and jar-opening aids, use the whole hand instead of forceful key pinch, carry with two hands, slide objects when possible, keep the wrist relatively neutral, and break prolonged gripping into shorter periods." },
+      { "q": "When would a hand therapist help?", "a": "A hand therapist can fit or fabricate an orthosis, distinguish thumb CMC pain from nearby tendon or nerve problems, and adapt the program for deformity, instability, work, music, sport, or high-demand hand use." }
+    ],
+    "sources": [
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11488261/", "label": "ACR and Arthritis Foundation Osteoarthritis Guideline" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/30154087/", "label": "2018 EULAR Hand Osteoarthritis Recommendations" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/41138847/", "label": "Exercise Therapy Plus Orthosis Versus Orthosis Alone Randomized Trial, 2026" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11049805/", "label": "Exercise-Based Interventions for Thumb CMC Osteoarthritis: Systematic Review, 2024" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/34312043/", "label": "Dynamic Stabilization Home Exercise Trial" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7941246/", "label": "COMBO Conservative Treatment Randomized Trial" }
+    ],
+    "related": [
+      { "href": "../de-quervain-tenosynovitis-exercises/", "eyebrow": "Different thumb-side pain", "title": "De Quervain starter program" },
+      { "href": "../osteoarthritis-care/", "eyebrow": "Whole-person arthritis care", "title": "Osteoarthritis treatment overview" },
+      { "href": "../home-exercise-programs/", "eyebrow": "All programs", "title": "Home exercise library" }
+    ]
+  },
+  {
+    "slug": "de-quervain-tenosynovitis-exercises",
+    "title": "De Quervain Tenosynovitis Starter Program",
+    "seoTitle": "De Quervain Exercises, Brace, and Activity Guide",
+    "shortTitle": "De Quervain wrist and thumb program",
+    "conditionName": "De Quervain tenosynovitis",
+    "publishedDate": "2026-07-30",
+    "reviewedDate": "2026-07-30",
+    "modifiedDate": "2026-07-30",
+    "video": null,
+    "metaDescription": "De Quervain exercises, thumb-spica brace guidance, activity changes, symptom rules, and evidence-based options for thumb-side wrist pain.",
+    "breadcrumb": "De Quervain tenosynovitis",
+    "kicker": "Thumb-side wrist pain · Assessment-first starter plan",
+    "h1": "De Quervain Exercises and Activity Guide",
+    "summary": "De Quervain tenosynovitis causes pain along the thumb side of the wrist, usually during thumb movement, gripping, lifting, or wrist deviation. Exercise evidence is limited, so this plan emphasizes diagnosis, activity modification, a short trial of a well-fitting thumb-spica orthosis, pain-free motion, and cautious loading.",
+    "programLevel": "Assessment first",
+    "authorityTitle": "Settle. Move. Reload.",
+    "authorityItems": [
+      { "icon": "fact_check", "text": "Exercise alone has not been proven effective" },
+      { "icon": "front_hand", "text": "Five cautious motion and loading options" },
+      { "icon": "medical_services", "text": "Better-supported clinician treatments are explained" }
+    ],
+    "proof": [
+      { "strong": "5 movements", "span": "pain-free motion and gradual loading" },
+      { "strong": "Light effort", "span": "before resistance or functional load" },
+      { "strong": "2 to 4 weeks", "span": "to reassess an unclear or nonimproving course" }
+    ],
+    "fitIntro": "This starter plan is for adults who have been evaluated and told De Quervain tenosynovitis is the likely diagnosis, or whose clinician has recommended a short trial of conservative care. Nearby joint, bone, nerve, and tendon conditions can produce similar symptoms.",
+    "fit": "Localized tenderness and pain over the thumb side of the wrist during lifting, gripping, pinching, opening containers, using a phone, or caring for an infant.",
+    "assessFirst": "An uncertain diagnosis, symptoms after a fall or direct blow, numbness, tingling, burning, progressive weakness, pain centered at the thumb-base joint, swelling or crepitus farther up the back of the forearm, a thumb that catches or locks, a visible mass, inflammatory arthritis, recent injection or surgery, or symptoms severe enough to prevent normal light hand use. Pregnancy and the postpartum period are not automatic exclusions, but brace fit, swelling, infant care, and loading should be individualized.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day care for a hot, red, rapidly swelling area, fever, an open wound, new deformity, major loss of motion after trauma, or inability to use the hand. Arrange prompt assessment for new numbness, sudden weakness, or severe pain after injury.",
+    "programHeading": "Settle the wrist. Maintain motion. Rebuild load carefully.",
+    "programIntro": "Exercise has not been proven effective as a stand-alone treatment. Pain-free motion and thumb-extension isometrics appear feasible within multimodal care. Network meta-analyses, with important certainty limitations, favor a clinician-delivered corticosteroid injection combined with thumb-spica immobilization for about three to four weeks. Injection suitability and risks require an individual clinical discussion.",
+    "frequency": "Pain-free motion 2 to 4 times per day; strengthening daily or every other day by stage",
+    "equipment": "Table, optional very light elastic loop, light cup, and a comfortable thumb-spica orthosis if helpful",
+    "checkpoint": "Seek reassessment if there is no clear improvement after 2 to 4 weeks",
+    "goal": "Comfortable lifting, gripping, pinching, infant care, phone use, and daily hand tasks",
+    "exercises": [
+      {
+        "name": "Pain-free thumb bend and return",
+        "dose": "1 set of 5 to 10 repetitions",
+        "frequency": "2 to 4 times per day",
+        "how": "Support the forearm with the wrist straight. Slowly move the thumb toward the fingers through a comfortable range, then return it to the starting position. Do not force the thumb tightly into the palm.",
+        "easier": "Use a smaller range.",
+        "harder": "Touch the thumb to each fingertip while the wrist remains neutral."
+      },
+      {
+        "name": "Supported wrist flexion and extension",
+        "dose": "1 set of 5 to 10 repetitions",
+        "frequency": "2 to 4 times per day",
+        "how": "Rest the forearm on a table with the hand just beyond the edge. Slowly bend the wrist forward and backward through a comfortable range. Keep the movement straight rather than drifting toward either side.",
+        "easier": "Rest the hand fully on the table and use a smaller range.",
+        "harder": "Increase the comfortable range. Do not add weight during the irritable stage."
+      },
+      {
+        "name": "Light thumb-extension isometric",
+        "dose": "Start with 5 holds of 10 seconds, building toward 5 holds of 20 seconds; rest about 60 seconds between holds",
+        "frequency": "Once daily after Stage 1 is tolerated",
+        "how": "Place the hand on its small-finger side with the wrist neutral and thumb in line with the forearm. Place a finger from the other hand against the back of the thumb. Gently attempt to lift the thumb while the other hand prevents movement. Begin at about 20 to 30 percent effort.",
+        "easier": "Use five-second holds and very light pressure.",
+        "harder": "Build the hold to 20 seconds, then increase toward moderate effort. Do not use maximal effort."
+      },
+      {
+        "name": "Slow thumb extension with light resistance",
+        "dose": "2 sets of 6 to 10 repetitions",
+        "frequency": "Every other day, beginning in Stage 3",
+        "how": "Place a very light elastic loop around the fingers and thumb. Keep the wrist neutral. Slowly move the thumb away from the palm, pause briefly, then return over two to three seconds.",
+        "easier": "Perform the movement without resistance.",
+        "harder": "Reach 10 controlled repetitions before using a slightly firmer band. Do not add resistance when radial wrist pain increases."
+      },
+      {
+        "name": "Neutral-wrist functional hold",
+        "dose": "3 holds of 20 to 30 seconds",
+        "frequency": "3 days per week, beginning in Stage 3",
+        "how": "Hold a light cup or similar object using the whole hand while keeping the wrist neutral. The task should remain easy enough to perform without compensating or gripping tightly.",
+        "easier": "Use an empty plastic cup or hold with both hands.",
+        "harder": "Add time first, then a small amount of weight. Progress one variable at a time."
+      }
+    ],
+    "responseIntro": "Start with the first two movements. Add loading only when resting pain and irritability are improving. Do not repeatedly use the Finkelstein or Eichhoff maneuver as a stretch; provoking a diagnostic position is not a required rehabilitation exercise.",
+    "green": "Motion is pain free or produces only very mild discomfort, technique remains relaxed, and symptoms return to baseline by the next morning.",
+    "yellow": "Pain becomes sharp, exceeds about 2 to 3 out of 10, increases with each repetition, or remains worse the next morning. Reduce effort, range, repetitions, or task exposure.",
+    "red": "Stop and arrange assessment for rapidly increasing swelling, redness, heat, new numbness, sudden weakness, triggering, deformity, or severe pain after trauma.",
+    "progression": [
+      { "title": "Stage 1: calm and maintain motion", "text": "Modify provoking tasks, use a comfortable orthosis selectively, and perform pain-free thumb and wrist motion. Do not strengthen through an irritable flare." },
+      { "title": "Stage 2: introduce isometric load", "text": "Add light thumb-extension isometrics. Build hold duration before effort. The exercise should not create a sustained increase in thumb-side wrist pain." },
+      { "title": "Stage 3: restore dynamic capacity", "text": "Add slow thumb extension with a light elastic and neutral-wrist functional holds when the earlier stage remains stable." },
+      { "title": "Stage 4: return to specific demands", "text": "Gradually restore lifting, gripping, infant care, racquet use, gym work, instrument playing, or occupational tasks. Increase duration, repetitions, or load one at a time." }
+    ],
+    "readyItems": [
+      "Resting pain and swelling are stable or improving.",
+      "Light thumb and wrist motion does not produce sharp pain.",
+      "The current stage has been tolerated for several sessions.",
+      "Symptoms return to baseline by the following morning.",
+      "Five light isometric holds can be completed without increasing pain.",
+      "Light daily tasks can be performed with a neutral wrist."
+    ],
+    "evaluation": "Schedule an evaluation if symptoms are substantial, the diagnosis is uncertain, function worsens, the brace causes pressure or numbness, or there is no clear improvement after two to four weeks. Persistent confirmed De Quervain tenosynovitis merits discussion of clinician-directed options because exercise alone has limited supporting evidence.",
+    "faqs": [
+      { "q": "Are exercises proven to treat De Quervain tenosynovitis?", "a": "Not yet. Available exercise studies are small, low quality, and multimodal. Pain-free motion and thumb-extension isometrics appear feasible, but exercise has not been shown to be an effective stand-alone treatment." },
+      { "q": "Should I stretch into the Finkelstein position?", "a": "No. Repeatedly forcing the thumb into the palm while deviating the wrist can strongly provoke the involved compartment. A positive diagnostic maneuver is not automatically a useful stretch." },
+      { "q": "Does a brace help?", "a": "A thumb-spica orthosis may reduce provocative loading. Evidence is strongest when immobilization is combined with a clinician-delivered corticosteroid injection. Orthosis-only schedules are less certain, so comfort and response should guide a short self-management trial." },
+      { "q": "How should I try the brace before an injection?", "a": "Use a comfortable thumb-spica orthosis during clearly aggravating tasks and, if helpful, at night for one to two weeks. Continue light hand use within comfort. The brace should support the wrist and thumb without pressing on the painful area or causing numbness, color change, or skin injury." },
+      { "q": "Should I get an injection?", "a": "Network meta-analyses, with important certainty limitations, favored corticosteroid injection plus thumb-spica immobilization. Injection suitability, technique, risks, and alternatives should be discussed with a qualified clinician." },
+      { "q": "Can I keep lifting my baby?", "a": "Usually, but technique and total load may need modification. Keep the wrists neutral, lift with the palms or forearms when possible, use both arms, and avoid repeatedly lifting with the thumbs spread and wrists angled toward the small-finger side." },
+      { "q": "What about massage, ultrasound, or scraping?", "a": "High-quality evidence for these treatments is limited. They should not displace diagnosis, activity modification, an appropriate orthosis, or discussion of better-supported medical options." }
+    ],
+    "sources": [
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10611995/", "label": "Management of De Quervain Tenosynovitis: Network Meta-Analysis, 2023" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/41298159/", "label": "Conservative Treatments for De Quervain Tenosynovitis: Network Meta-Analysis, 2025" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/37802688/", "label": "Exercise Evidence for Hand and Wrist Tendinopathy: Systematic Review" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10584067/", "label": "Isometric Thumb Extension Feasibility Trial" },
+      { "href": "https://www.dir.ca.gov/dwc/DWCPropRegs/2023/MTUS-Evidence-Based-Update-July/Hand-Wrist-Forearm-Disorders.pdf", "label": "ACOEM Hand, Wrist, and Forearm Disorders Guideline" }
+    ],
+    "related": [
+      { "href": "../thumb-cmc-osteoarthritis-exercises/", "eyebrow": "Different thumb-base pain", "title": "Thumb CMC osteoarthritis exercises" },
+      { "href": "../tendon-pain/", "eyebrow": "Tendon principles", "title": "Evidence-based tendon pain care" },
+      { "href": "../home-exercise-programs/", "eyebrow": "All programs", "title": "Home exercise library" }
+    ]
   }
 ]

@@ -2441,7 +2441,7 @@
 }
 
 .hep-hub-page .hep-filter-list input:checked + label span {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.14);
 }
 
 .hep-hub-page .hep-filter-list input:focus-visible + label {
@@ -3515,6 +3515,11 @@
     .hep-page .print-program-footer p {
         margin: 0 0 0.55mm;
         overflow-wrap: anywhere;
+    }
+
+    .hep-program-tibialis-posterior-tendinopathy-exercises #progress {
+        break-before: page;
+        page-break-before: always;
     }
 
     .hep-page a {

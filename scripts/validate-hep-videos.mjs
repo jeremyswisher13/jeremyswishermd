@@ -27,7 +27,18 @@ assert(privacyPage.includes('No YouTube player, thumbnail, or video content is r
 
 for (const program of programs) {
     const video = program.video;
-    assert(video && typeof video === 'object', 'Missing video configuration for ' + program.slug);
+    if (!video) {
+        const page = readFileSync(join(root, program.slug, 'index.html'), 'utf8');
+        assert(count(page, /data-video-resource/g) === 0, 'Unexpected video facade on ' + program.slug);
+        assert(count(page, /data-load-video/g) === 0, 'Unexpected video control on ' + program.slug);
+        assert(!page.includes('id="video"'), 'Unexpected video section on ' + program.slug);
+        assert(!page.includes('<strong>Optional video:</strong>'), 'Unexpected printed video attribution on ' + program.slug);
+        assert(!page.includes('<iframe'), 'Initial page must not contain a YouTube iframe on ' + program.slug);
+        assert(!page.includes('{{'), 'Unresolved template token on ' + program.slug);
+        continue;
+    }
+
+    assert(typeof video === 'object', 'Invalid video configuration for ' + program.slug);
     assert(youtubeIdPattern.test(video.id), 'Invalid YouTube ID for ' + program.slug);
     assert(typeof video.title === 'string' && video.title.trim(), 'Missing video title for ' + program.slug);
     assert(typeof video.description === 'string' && video.description.trim(), 'Missing video description for ' + program.slug);
@@ -58,4 +69,5 @@ for (const program of programs) {
     assert(!page.includes('{{'), 'Unresolved template token on ' + program.slug);
 }
 
-console.log('Validated click-to-load E3 Rehab video companions across ' + programs.length + ' home exercise programs.');
+const videoCount = programs.filter(program => program.video).length;
+console.log('Validated ' + videoCount + ' click-to-load E3 Rehab video companions across ' + programs.length + ' home exercise programs.');

@@ -267,6 +267,7 @@ for (const program of programs) {
     formatDate(program.publishedDate || '2026-07-17', program.slug, 'publishedDate');
     validateVideo(program.video, program.slug);
     const replacements = {
+        PAGE_CLASS: 'hep-program-' + program.slug,
         TITLE: program.title,
         SEO_TITLE: program.seoTitle,
         SHORT_TITLE: program.shortTitle,
