@@ -39,7 +39,7 @@ function escapeHtml(value) {
 function renderAuthorityItems(items) {
     return items.map((item) => [
         '                            <li>',
-        '                                <span class="material-symbols-outlined" aria-hidden="true">' + escapeHtml(item.icon) + '</span>',
+        '                                <span class="material-symbols-outlined" aria-hidden="true" data-icon="' + escapeHtml(item.icon) + '"></span>',
         '                                <span>' + escapeHtml(item.text) + '</span>',
         '                            </li>'
     ].join('\n')).join('\n');
@@ -100,7 +100,7 @@ function renderRelated(items) {
     return items.map((item) => [
         '                    <a class="related-card" href="' + escapeHtml(item.href) + '">',
         '                        <span>' + escapeHtml(item.eyebrow) + '</span><strong>' + escapeHtml(item.title) + '</strong>',
-        '                        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>',
+        '                        <span class="material-symbols-outlined" aria-hidden="true" data-icon="arrow_forward"></span>',
         '                    </a>'
     ].join('\n')).join('\n');
 }
@@ -193,7 +193,7 @@ function renderVideoSection(video) {
 function renderVideoPrintNote(video) {
     if (!video) return '';
 
-    return '                        <p><strong>Optional video:</strong> E3 Rehab, &ldquo;' + escapeHtml(video.title) + '&rdquo; Available in the full online guide listed above.</p>';
+    return '                        <p><strong>Optional video:</strong> An E3 Rehab technique companion is available in the full online guide listed above.</p>';
 }
 
 function buildSchema(program) {

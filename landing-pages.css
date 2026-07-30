@@ -1804,14 +1804,14 @@
     line-height: 1.5;
 }
 
-.landing-page .video-resource.is-loaded .video-stage {
+.landing-page .video-resource:is(.is-loading, .is-loaded) .video-stage {
     min-height: 200px;
     aspect-ratio: 16 / 9;
     background: #000000;
 }
 
-.landing-page .video-resource.is-loaded .video-stage::before,
-.landing-page .video-resource.is-loaded .video-stage::after {
+.landing-page .video-resource:is(.is-loading, .is-loaded) .video-stage::before,
+.landing-page .video-resource:is(.is-loading, .is-loaded) .video-stage::after {
     display: none;
 }
 
@@ -2949,7 +2949,7 @@
 
     .hep-page .print-progress-tracker th,
     .hep-page .print-progress-tracker td {
-        height: 7mm;
+        height: 6.25mm;
         padding: 1mm 2mm;
         border: 1px solid #888888;
         text-align: center;
@@ -2977,17 +2977,15 @@
     }
 
     .hep-page .print-program-footer {
-        break-inside: avoid;
-        page-break-inside: avoid;
-        margin-top: 2mm;
-        padding-top: 2.5mm;
-        border-top: 2px solid #0f1923;
-        font-size: 7.75pt;
-        line-height: 1.32;
+        margin-top: 1.5mm;
+        padding-top: 2mm;
+        border-top: 1.5px solid #0f1923;
+        font-size: 7.25pt;
+        line-height: 1.24;
     }
 
     .hep-page .print-program-footer p {
-        margin: 0 0 0.8mm;
+        margin: 0 0 0.55mm;
         overflow-wrap: anywhere;
     }
 

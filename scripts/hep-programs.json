@@ -5,7 +5,7 @@
     "seoTitle": "Beginner Knee Osteoarthritis Exercises",
     "shortTitle": "Beginner knee arthritis exercises",
     "conditionName": "Knee osteoarthritis",
-    "reviewedDate": "2026-07-17",
+    "reviewedDate": "2026-07-29",
     "modifiedDate": "2026-07-29",
     "video": {
       "id": "sLCahUJl8jk",
@@ -129,7 +129,7 @@
     "seoTitle": "Advanced Knee Osteoarthritis Exercises",
     "shortTitle": "Advanced knee arthritis exercises",
     "conditionName": "Knee osteoarthritis",
-    "reviewedDate": "2026-07-17",
+    "reviewedDate": "2026-07-29",
     "modifiedDate": "2026-07-29",
     "video": {
       "id": "sLCahUJl8jk",
@@ -261,7 +261,7 @@
     "seoTitle": "Patellofemoral Pain Exercises",
     "shortTitle": "Patellofemoral pain exercises",
     "conditionName": "Patellofemoral pain",
-    "reviewedDate": "2026-07-17",
+    "reviewedDate": "2026-07-29",
     "modifiedDate": "2026-07-29",
     "video": {
       "id": "K3HxB6rAeDo",
@@ -273,10 +273,10 @@
     "breadcrumb": "Patellofemoral pain",
     "kicker": "Front-of-knee pain · Home exercise plan",
     "h1": "Patellofemoral Pain Exercises",
-    "summary": "Patellofemoral pain usually responds best to education plus progressive knee and hip strengthening. This plan starts with four movements and a simple next-morning response rule.",
+    "summary": "Patellofemoral pain care should pair education with progressive knee-targeted exercise. Hip-targeted exercise can be added when it matches symptoms, impairments, preferences, or early knee-loading tolerance.",
     "authorityTitle": "Knee strength. Hip strength. Load control.",
     "authorityItems": [
-      { "icon": "exercise", "text": "Combined knee and hip strengthening" },
+      { "icon": "exercise", "text": "Knee-targeted strengthening, with hip exercise when indicated" },
       { "icon": "stairs", "text": "Progressive exposure to squatting and stairs" },
       { "icon": "speed", "text": "Workload changes matched to your symptoms" }
     ],
@@ -329,7 +329,7 @@
         "harder": "Add a loop band or progress toward a staggered bridge."
       }
     ],
-    "responseIntro": "Keep discomfort mild, approximately 3 out of 10 or less, without limping or changing how you move. Symptoms should not be meaningfully worse the following morning.",
+    "responseIntro": "Keep discomfort mild, approximately 3 out of 10 or less, without limping or changing how you move. Symptoms should not be meaningfully worse the following morning. These numbers are practical monitoring guides, not validated universal thresholds.",
     "green": "Mild front-of-knee discomfort, normal movement quality, and no meaningful increase the next morning.",
     "yellow": "Pain rises above mild, mechanics change, or stairs and squatting are worse the next day. Reduce knee depth, step height, resistance, or total repetitions.",
     "red": "Stop and seek same-day urgent assessment for a kneecap dislocation, true locking, rapid swelling, inability to bear weight, or a new painful, hot, red, or swollen joint with or without fever.",
@@ -368,7 +368,7 @@
     "seoTitle": "Rotator Cuff Pain Exercises",
     "shortTitle": "Rotator cuff-related shoulder exercises",
     "conditionName": "Rotator cuff-related shoulder pain",
-    "reviewedDate": "2026-07-17",
+    "reviewedDate": "2026-07-29",
     "modifiedDate": "2026-07-29",
     "video": {
       "id": "1Wy8jh4QQH8",
@@ -464,12 +464,13 @@
       { "q": "Do I need an MRI before starting?", "a": "Usually not for a typical nontraumatic presentation. Imaging becomes more useful when trauma, major weakness, another diagnosis, or failure to improve would change management." },
       { "q": "Should exercise be completely pain-free?", "a": "Not necessarily. Manageable discomfort can be acceptable if it settles within a few hours and the shoulder is not worse the next morning." },
       { "q": "Is a supervised program always better than home exercise?", "a": "Not always. The GRASP trial found that a supported home program performed similarly to a more intensive supervised progressive program over twelve months. Individual supervision remains valuable when the diagnosis, technique, progression, or adherence is difficult." },
-      { "q": "When should I consider an injection?", "a": "Exercise and education are first-line care. An injection may be discussed selectively when pain prevents rehabilitation or when the diagnosis and expected benefit are clear, but it should not replace progressive loading." }
+      { "q": "When should I consider an injection?", "a": "After an examination, a single subacromial corticosteroid injection may offer short-term pain relief when pain is blocking rehabilitation, but it does not replace exercise. Injectates are not interchangeable. Routine PRP use for rotator cuff tendinopathy or partial-thickness tears is not supported by the 2025 AAOS guideline, so the indication and uncertainty should be discussed individually." }
     ],
     "sources": [
       { "href": "https://pubmed.ncbi.nlm.nih.gov/40165544/", "label": "JOSPT Clinical Practice Guideline: Rotator Cuff Tendinopathy, 2025" },
       { "href": "https://www.orthopt.org/uploads/content_files/files/Rotator_Cuff_CPG.pdf", "label": "Academy of Orthopaedic Physical Therapy: Full Rotator Cuff Tendinopathy Guideline" },
-      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8343092/", "label": "GRASP Trial: Progressive Exercise Compared With Best-Practice Advice, 2021" }
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8343092/", "label": "GRASP Trial: Progressive Exercise Compared With Best-Practice Advice, 2021" },
+      { "href": "https://www.aaos.org/globalassets/quality-and-practice-resources/rotator-cuff/rotator-cuff-2025/rotator-cuff-cpg.pdf", "label": "AAOS Clinical Practice Guideline: Management of Rotator Cuff Injuries, 2025" }
     ],
     "related": [
       { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Shoulder evaluation", "title": "Knee, hip, and shoulder pain" },
@@ -483,7 +484,7 @@
     "seoTitle": "Achilles Tendinopathy Exercises",
     "shortTitle": "Midportion Achilles exercises",
     "conditionName": "Midportion Achilles tendinopathy",
-    "reviewedDate": "2026-07-17",
+    "reviewedDate": "2026-07-29",
     "modifiedDate": "2026-07-29",
     "video": {
       "id": "DnxahqgsAEw",
@@ -601,7 +602,7 @@
     "seoTitle": "Gluteal Tendinopathy Exercises",
     "shortTitle": "Gluteal tendinopathy exercises",
     "conditionName": "Gluteal tendinopathy and lateral hip pain",
-    "reviewedDate": "2026-07-17",
+    "reviewedDate": "2026-07-29",
     "modifiedDate": "2026-07-29",
     "video": {
       "id": "e_Kk-XqPWZo",
@@ -702,7 +703,7 @@
     "sources": [
       { "href": "https://pubmed.ncbi.nlm.nih.gov/29720374/", "label": "Mellor et al.: Education Plus Exercise Versus Corticosteroid Injection for Gluteal Tendinopathy, 2018" },
       { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4852446/", "label": "LEAP Trial Protocol: Exercise and Load-Management Program" },
-      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11263908/", "label": "LEAP-Ireland Feasibility Trial Protocol, 2024" }
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/42372389/", "label": "LEAP-Ireland Feasibility Randomized Trial Results, 2026" }
     ],
     "related": [
       { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Hip evaluation", "title": "Knee, hip, and shoulder pain" },
@@ -716,7 +717,7 @@
     "seoTitle": "Ankle Sprain Exercises",
     "shortTitle": "Lateral ankle sprain exercises",
     "conditionName": "Lateral ankle sprain",
-    "reviewedDate": "2026-07-17",
+    "reviewedDate": "2026-07-29",
     "modifiedDate": "2026-07-29",
     "video": {
       "id": "ga_OAPf6IOI",
@@ -742,8 +743,8 @@
     ],
     "fitIntro": "This starter program is intended for adults who have already been evaluated and told an uncomplicated lateral ankle sprain is the likely diagnosis. Fracture, syndesmotic injury, Achilles rupture, and major midfoot injury should be reasonably excluded.",
     "fit": "Pain and swelling mainly at the outer ankle after a rolling injury, with improving ability to bear weight and no concerning fracture or signs of a high ankle sprain.",
-    "assessFirst": "Inability to take four steps, tenderness at the posterior edge or tip of either ankle bone, tenderness at the base of the fifth metatarsal or navicular in the midfoot, pain above the ankle, recurrent instability, a suspected Achilles injury, or a severe injury that may need short immobilization.",
-    "redFlags": "A newly cold, pale, blue, or numb foot after injury requires immediate emergency evaluation. Seek same-day urgent assessment for deformity, signs of Achilles rupture, inability to take four steps, tenderness at the posterior edge or tip of either ankle bone, tenderness at the base of the fifth metatarsal or navicular, or pain above the ankle. Arrange a prompt assessment for worsening swelling or bruising, locking, or repeated giving way.",
+    "assessFirst": "Inability to take four steps; tenderness at the posterior edge or tip of either ankle bone, base of the fifth metatarsal, or navicular; pain or tenderness extending up the lower leg or at the proximal fibula; marked midfoot pain or swelling; bruising on the sole of the foot; recurrent instability; a suspected Achilles injury; or a severe injury that may need short immobilization.",
+    "redFlags": "A newly cold, pale, blue, or numb foot after injury requires immediate emergency evaluation. Seek same-day urgent assessment for deformity, signs of Achilles rupture, inability to take four steps, tenderness at the posterior edge or tip of either ankle bone, tenderness at the base of the fifth metatarsal or navicular, pain or tenderness at the proximal fibula, marked midfoot pain or swelling, bruising on the sole of the foot, or pain above the ankle. Arrange a prompt assessment for worsening swelling or bruising, locking, or repeated giving way.",
     "programHeading": "Move early, then rebuild ankle control and confidence.",
     "programIntro": "Progressive weight bearing with an appropriate brace or tape is supported for many uncomplicated sprains. Severe sprains may need clinician-directed immobilization for a short period before this progression.",
     "frequency": "Motion and balance daily; strength 3 days per week",
@@ -795,7 +796,7 @@
     "responseIntro": "Mild discomfort is acceptable, but not sharp pain, giving way, increased limping, or increased swelling later that day or the following morning.",
     "green": "Mild discomfort, improving walking, and swelling that is stable or decreasing by the next morning.",
     "yellow": "Limping, swelling, or pain is worse later that day or the next morning. Reduce walking volume, exercise range, resistance, or balance difficulty.",
-    "red": "Stop. A newly cold, pale, blue, or numb foot after injury requires immediate emergency evaluation. Seek same-day urgent assessment for deformity, signs of Achilles rupture, inability to take four steps, sharp bony pain, or pain above the ankle. Arrange a prompt assessment for repeated giving way.",
+    "red": "Stop. A newly cold, pale, blue, or numb foot after injury requires immediate emergency evaluation. Seek same-day urgent assessment for deformity, signs of Achilles rupture, inability to take four steps, sharp bony pain, pain or tenderness at the proximal fibula, marked midfoot pain or swelling, bruising on the sole of the foot, or pain above the ankle. Arrange a prompt assessment for repeated giving way.",
     "progression": [
       { "title": "Stage 1: protect and restore motion", "text": "Use an appropriate brace or tape, progressive weight bearing, and frequent comfortable motion. Avoid prolonged immobilization unless directed for a severe sprain." },
       { "title": "Stage 2: rebuild strength and balance", "text": "Progress eversion, heel raises, and single-leg balance. Increase challenge only when walking and next-day swelling remain stable." },
@@ -831,7 +832,7 @@
     "seoTitle": "Tennis Elbow Exercises",
     "shortTitle": "Tennis elbow and common extensor exercises",
     "conditionName": "Lateral elbow tendinopathy and common extensor tendinopathy",
-    "reviewedDate": "2026-07-17",
+    "reviewedDate": "2026-07-29",
     "modifiedDate": "2026-07-29",
     "video": {
       "id": "aOueY1l_X0U",
@@ -907,9 +908,9 @@
         "harder": "Use a stronger band or progress to a controlled single-arm row."
       }
     ],
-    "responseIntro": "A small amount of familiar discomfort can be acceptable when it stays controlled, does not increase across repetitions, and returns to baseline by the next morning.",
+    "responseIntro": "A small amount of familiar discomfort can be acceptable when it stays controlled, does not increase across repetitions, and returns to baseline by the next morning. These numbers are practical monitoring guides, not validated universal thresholds.",
     "green": "Pain stays between 0 and 3 out of 10, grip remains steady, and symptoms return to baseline by the following morning.",
-    "yellow": "Pain reaches 4 to 5 out of 10, grip feels weaker afterward, or the elbow remains worse the next morning. Reduce weight, range, or repetitions by 25 to 50 percent and add recovery time.",
+    "yellow": "Pain reaches 4 to 5 out of 10, grip feels weaker afterward, or the elbow remains worse the next morning. Return to the prior tolerated dose or reduce one or more loading variables and add recovery time.",
     "red": "Stop and seek prompt assessment for sharp, electric, or rapidly increasing pain, new numbness or weakness, major swelling, loss of motion, or symptoms that worsen week to week. Use same-day urgent care for rapidly progressive weakness or a new painful, hot, red, or swollen elbow with or without fever.",
     "progression": [
       { "title": "Stage 1: settle symptoms", "text": "Reduce repetitive hard gripping and palm-down lifting. Use a neutral grip or palm-up lifting when practical and begin comfortable isometrics." },
@@ -947,7 +948,7 @@
     "seoTitle": "Golfer's Elbow Exercises",
     "shortTitle": "Golfer's elbow and common flexor exercises",
     "conditionName": "Medial elbow tendinopathy and common flexor tendinopathy",
-    "reviewedDate": "2026-07-17",
+    "reviewedDate": "2026-07-29",
     "modifiedDate": "2026-07-29",
     "video": {
       "id": "3CJMz0HoGXk",
@@ -1023,9 +1024,9 @@
         "harder": "Use a stronger band or progress to a controlled single-arm row."
       }
     ],
-    "responseIntro": "A small amount of familiar tendon discomfort can be acceptable when it stays controlled and returns to baseline by the next morning. Neurologic symptoms or throwing-related instability are not acceptable loading symptoms.",
+    "responseIntro": "A small amount of familiar tendon discomfort can be acceptable when it stays controlled and returns to baseline by the next morning. Neurologic symptoms or throwing-related instability are not acceptable loading symptoms. These numbers are practical monitoring guides, not validated universal thresholds.",
     "green": "Pain stays between 0 and 3 out of 10, grip remains steady, and the elbow returns to baseline by the following morning.",
-    "yellow": "Pain reaches 4 to 5 out of 10 or remains worse the next morning. Reduce weight, range, or repetitions by 25 to 50 percent and allow more recovery.",
+    "yellow": "Pain reaches 4 to 5 out of 10 or remains worse the next morning. Return to the prior tolerated dose or reduce one or more loading variables and allow more recovery.",
     "red": "Stop and seek prompt assessment for ring-finger or small-finger numbness, hand weakness, snapping, sharp pain, major swelling, or pain or a feeling of instability during throwing. Use same-day urgent care for progressive weakness or a new painful, hot, red, or swollen elbow with or without fever.",
     "progression": [
       { "title": "Stage 1: settle symptoms", "text": "Reduce hard gripping, repeated wrist flexion and palm-down rotation, and painful throwing. Begin comfortable isometric loading." },
@@ -1063,7 +1064,7 @@
     "seoTitle": "Frozen Shoulder Exercises",
     "shortTitle": "Frozen shoulder and adhesive capsulitis exercises",
     "conditionName": "Adhesive capsulitis and frozen shoulder",
-    "reviewedDate": "2026-07-17",
+    "reviewedDate": "2026-07-29",
     "modifiedDate": "2026-07-29",
     "video": {
       "id": "SV7exHYLVHU",
@@ -1180,7 +1181,7 @@
     "seoTitle": "Patellar Tendinopathy Exercises",
     "shortTitle": "Patellar tendinopathy exercises",
     "conditionName": "Patellar tendinopathy in athletes",
-    "reviewedDate": "2026-07-17",
+    "reviewedDate": "2026-07-29",
     "modifiedDate": "2026-07-29",
     "video": {
       "id": "e7oGNVUQi2I",
@@ -1264,7 +1265,7 @@
         "harder": "Increase either intensity or volume, one variable at a time, then build repeated efforts and reduce the rest between efforts gradually."
       }
     ],
-    "responseIntro": "A repeatable load test, such as a decline squat, can help track the tendon. Mild pain can be acceptable when movement stays normal and the tendon returns to its usual baseline by the next morning.",
+    "responseIntro": "A repeatable load test, such as a decline squat, can help track the tendon. Mild pain can be acceptable when movement stays normal and the tendon returns to its usual baseline by the next morning. These numbers are practical monitoring guides, not validated universal thresholds.",
     "green": "Pain stays near 3 out of 10 or less, movement remains normal, and the tendon is back to its usual baseline the next morning.",
     "yellow": "Pain rises across sets, landing strategy changes, or the standard load test is meaningfully worse the next morning. Reduce weight, range, jump intensity, or contact count.",
     "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a sudden sharp pain or pop, new knee-extension weakness, rapid swelling, or inability to perform a straight-leg raise.",

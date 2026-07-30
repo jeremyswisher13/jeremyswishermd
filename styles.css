@@ -1852,6 +1852,10 @@ body {
     font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
 }
 
+.material-symbols-outlined::before {
+    content: attr(data-icon);
+}
+
 .container {
     max-width: 1240px;
     padding-inline: 32px;
