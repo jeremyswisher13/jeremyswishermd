@@ -416,7 +416,7 @@ function loadVideoResource(resource) {
     const videoId = resource.dataset.videoId;
     const videoTitle = resource.dataset.videoTitle;
     const stage = resource.querySelector('[data-video-stage]');
-    const status = resource.querySelector('[data-video-status]');
+    const status = resource.closest('.video-section')?.querySelector('[data-video-status]');
     const loadButton = resource.querySelector('[data-load-video]');
 
     if (!youtubeVideoIdPattern.test(videoId || '') || !videoTitle || !stage) {
@@ -548,15 +548,21 @@ videoResources.forEach(resource => {
     loadButton.addEventListener('click', () => loadVideoResource(resource));
 });
 
-// Privacy-safe scheduling measurement
+// Privacy-safe action measurement
 //
-// This site records only two scheduling actions: selecting a phone link or
-// selecting UCLA Health's appointment-request link. Events include the public
-// page path and a broad CTA placement. They never include the phone number,
-// destination URL, link text, query string, referrer, or page contents.
+// This site records only intentional actions: selecting a phone link, selecting
+// UCLA Health's appointment-request link, printing an exercise program, opening
+// referral instructions, or loading an optional exercise video. Events include
+// the public page path and a broad placement. They never include a phone number,
+// destination URL, link text, query string, referrer, video ID, or page contents.
 const ANALYTICS_PRODUCTION_HOSTS = new Set([
     'jeremyswishermd.com',
     'www.jeremyswishermd.com'
+]);
+const ANALYTICS_EXPLICIT_EVENTS = new Set([
+    'exercise_program_print',
+    'exercise_video_load',
+    'referral_instructions_click'
 ]);
 const ANALYTICS_LOCATIONS = new Set([
     'navigation',
@@ -597,27 +603,34 @@ function hasAnalyticsPrivacySignal() {
 }
 
 function analyticsPagePath() {
+    if (document.body?.classList.contains('not-found-page')) return '/404/';
+
     const path = window.location.pathname.replace(/\/{2,}/g, '/');
     return path.startsWith('/') ? path : '/';
 }
 
-function analyticsLocationForLink(link) {
-    const explicitLocation = link.dataset.analyticsLocation;
+function analyticsLocationForElement(element) {
+    const explicitLocation = element.dataset.analyticsLocation;
     if (ANALYTICS_LOCATIONS.has(explicitLocation)) return explicitLocation;
 
-    if (link.closest('#navbar')) return 'navigation';
-    if (link.closest('.landing-hero, .hero')) return 'hero';
-    if (link.closest('.patient-card')) return 'patient';
-    if (link.closest('.conversion-band')) return 'final_cta';
-    if (link.closest('.landing-sidebar, aside')) return 'sidebar';
-    if (link.closest('.contact-card, #contact')) return 'contact';
-    if (link.closest('.referral-card, section#referrals .clinician-panel')) return 'referral';
-    if (link.closest('footer')) return 'footer';
+    if (element.closest('#navbar')) return 'navigation';
+    if (element.closest('.landing-hero, .hero')) return 'hero';
+    if (element.closest('.patient-card')) return 'patient';
+    if (element.closest('.conversion-band')) return 'final_cta';
+    if (element.closest('.landing-sidebar, aside')) return 'sidebar';
+    if (element.closest('.contact-card, #contact')) return 'contact';
+    if (element.closest('.referral-card, section#referrals .clinician-panel')) return 'referral';
+    if (element.closest('footer')) return 'footer';
     return 'content';
 }
 
-function schedulingEventName(link) {
-    const rawHref = link.getAttribute('href')?.trim();
+function siteActionEventName(element) {
+    const explicitEvent = element.dataset.analyticsEvent;
+    if (ANALYTICS_EXPLICIT_EVENTS.has(explicitEvent)) return explicitEvent;
+
+    if (!(element instanceof HTMLAnchorElement)) return null;
+
+    const rawHref = element.getAttribute('href')?.trim();
     if (!rawHref) return null;
     if (rawHref.toLowerCase().startsWith('tel:')) return 'call_click';
 
@@ -631,10 +644,10 @@ function schedulingEventName(link) {
     }
 }
 
-function loadSchedulingAnalytics() {
+function loadSiteAnalytics() {
     if (!ANALYTICS_PRODUCTION_HOSTS.has(window.location.hostname)) return false;
     if (hasAnalyticsPrivacySignal()) return false;
-    if (document.querySelector('script[data-scheduling-analytics]')) return true;
+    if (document.querySelector('script[data-site-analytics]')) return true;
 
     window.sa_event = window.sa_event || function queueSimpleAnalyticsEvent(...args) {
         window.sa_event.q = window.sa_event.q || [];
@@ -647,7 +660,7 @@ function loadSchedulingAnalytics() {
     analyticsScript.integrity = 'sha384-rfv15RJy1bBYZ1Mf4xizO26jorXb2myipCvHXy4rkG0SuEET96S+m0sTzu5vfbSI';
     analyticsScript.crossOrigin = 'anonymous';
     analyticsScript.referrerPolicy = 'no-referrer';
-    analyticsScript.dataset.schedulingAnalytics = 'true';
+    analyticsScript.dataset.siteAnalytics = 'true';
     analyticsScript.dataset.autoCollect = 'false';
     analyticsScript.dataset.hostname = 'jeremyswishermd.com';
     analyticsScript.dataset.ignoreMetrics = ANALYTICS_IGNORED_METRICS;
@@ -655,27 +668,27 @@ function loadSchedulingAnalytics() {
     return true;
 }
 
-function measureSchedulingAction(event) {
+function measureSiteAction(event) {
     if (!(event.target instanceof Element)) return;
     if (event.type === 'auxclick' && event.button !== 1) return;
 
-    const link = event.target.closest('a[href]');
-    if (!link) return;
+    const actionElement = event.target.closest('[data-analytics-event], a[href]');
+    if (!actionElement) return;
 
-    const eventName = schedulingEventName(link);
+    const eventName = siteActionEventName(actionElement);
     if (!eventName || typeof window.sa_event !== 'function') return;
 
     try {
         window.sa_event(eventName, {
             page: analyticsPagePath(),
-            cta_location: analyticsLocationForLink(link)
+            cta_location: analyticsLocationForElement(actionElement)
         });
     } catch {
-        // Measurement must never interrupt a call or UCLA appointment link.
+        // Measurement must never interrupt the visitor's requested action.
     }
 }
 
-if (loadSchedulingAnalytics()) {
-    document.addEventListener('click', measureSchedulingAction, { capture: true });
-    document.addEventListener('auxclick', measureSchedulingAction, { capture: true });
+if (loadSiteAnalytics()) {
+    document.addEventListener('click', measureSiteAction, { capture: true });
+    document.addEventListener('auxclick', measureSiteAction, { capture: true });
 }

@@ -6,7 +6,7 @@
     "shortTitle": "Beginner knee arthritis exercises",
     "conditionName": "Knee osteoarthritis",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-29",
+    "modifiedDate": "2026-07-30",
     "video": {
       "id": "sLCahUJl8jk",
       "title": "Knee Osteoarthritis (OA) Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -130,7 +130,7 @@
     "shortTitle": "Advanced knee arthritis exercises",
     "conditionName": "Knee osteoarthritis",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-29",
+    "modifiedDate": "2026-07-30",
     "video": {
       "id": "sLCahUJl8jk",
       "title": "Knee Osteoarthritis (OA) Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -262,7 +262,7 @@
     "shortTitle": "Patellofemoral pain exercises",
     "conditionName": "Patellofemoral pain",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-29",
+    "modifiedDate": "2026-07-30",
     "video": {
       "id": "K3HxB6rAeDo",
       "title": "Patellofemoral Pain | Chondromalacia Patellae | Runner’s Knee (Education | Myths | Exercises)",
@@ -369,7 +369,7 @@
     "shortTitle": "Rotator cuff-related shoulder exercises",
     "conditionName": "Rotator cuff-related shoulder pain",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-29",
+    "modifiedDate": "2026-07-30",
     "video": {
       "id": "1Wy8jh4QQH8",
       "title": "Rotator Cuff Tear Rehab & Exercises (Shoulder Pain, Tendinitis, Impingement)",
@@ -485,7 +485,7 @@
     "shortTitle": "Midportion Achilles exercises",
     "conditionName": "Midportion Achilles tendinopathy",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-29",
+    "modifiedDate": "2026-07-30",
     "video": {
       "id": "DnxahqgsAEw",
       "title": "Achilles Tendinopathy / Tendinitis / Tendinosis | Heel Pain Rehab (Education, Myths, Exercises)",
@@ -603,7 +603,7 @@
     "shortTitle": "Gluteal tendinopathy exercises",
     "conditionName": "Gluteal tendinopathy and lateral hip pain",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-29",
+    "modifiedDate": "2026-07-30",
     "video": {
       "id": "e_Kk-XqPWZo",
       "title": "Gluteal Tendinopathy / Greater Trochanteric Hip Bursitis (Education | Myths | Exercises)",
@@ -718,7 +718,7 @@
     "shortTitle": "Lateral ankle sprain exercises",
     "conditionName": "Lateral ankle sprain",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-29",
+    "modifiedDate": "2026-07-30",
     "video": {
       "id": "ga_OAPf6IOI",
       "title": "How to Rehab a Sprained Ankle (Start to Finish)",
@@ -833,7 +833,7 @@
     "shortTitle": "Tennis elbow and common extensor exercises",
     "conditionName": "Lateral elbow tendinopathy and common extensor tendinopathy",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-29",
+    "modifiedDate": "2026-07-30",
     "video": {
       "id": "aOueY1l_X0U",
       "title": "Tennis Elbow Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -949,7 +949,7 @@
     "shortTitle": "Golfer's elbow and common flexor exercises",
     "conditionName": "Medial elbow tendinopathy and common flexor tendinopathy",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-29",
+    "modifiedDate": "2026-07-30",
     "video": {
       "id": "3CJMz0HoGXk",
       "title": "Golfer’s Elbow Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -1064,8 +1064,8 @@
     "seoTitle": "Frozen Shoulder Exercises",
     "shortTitle": "Frozen shoulder and adhesive capsulitis exercises",
     "conditionName": "Adhesive capsulitis and frozen shoulder",
-    "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-29",
+    "reviewedDate": "2026-07-30",
+    "modifiedDate": "2026-07-30",
     "video": {
       "id": "SV7exHYLVHU",
       "title": "BEST Exercises for Frozen Shoulder | Adhesive Capsulitis (Mobility, Stretches, Strength)",
@@ -1156,18 +1156,19 @@
       "Range or daily function is improving.",
       "One variable can increase without worse next-day stiffness."
     ],
-    "evaluation": "Schedule a review if the diagnosis is uncertain, symptoms escalate, or pain, sleep, function, and motion have not improved after four to six weeks. When early pain prevents meaningful exercise, discuss whether a shoulder-joint corticosteroid injection is appropriate for your health history.",
+    "evaluation": "Schedule a review if the diagnosis is uncertain, symptoms escalate, or pain, sleep, function, and motion have not improved after four to six weeks. When early pain prevents meaningful exercise, discuss whether a shoulder-joint corticosteroid injection is appropriate for your health history. If you have diabetes, also discuss how to monitor blood glucose because a temporary rise can occur after the injection.",
     "faqs": [
       { "q": "Should I force the shoulder to regain motion?", "a": "No. Stretch intensity should match how painful and sensitive the shoulder is. Brief pain-limited motion is safer early, while longer stretching near the end of your comfortable range is more appropriate once pain settles." },
       { "q": "How long does frozen shoulder last?", "a": "Recovery commonly takes many months. Some people retain mild pain or motion loss at twelve to eighteen months even when disability is much better." },
       { "q": "Do I need an MRI?", "a": "Usually not for a typical clinical pattern. Imaging is an adjunct when the presentation is atypical, trauma occurred, or another condition must be excluded." },
-      { "q": "Can an injection help?", "a": "A shoulder-joint corticosteroid injection can improve short-term pain and function, particularly earlier in the course, but it does not replace a staged mobility plan." }
+      { "q": "Can an injection help?", "a": "A shoulder-joint corticosteroid injection can improve short-term pain and function, particularly earlier in the course, but it does not replace a staged mobility plan. If you have diabetes, ask how to monitor blood glucose afterward because a temporary rise can occur." }
     ],
     "sources": [
       { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12231400/", "label": "Clinical Practice Guidelines for Diagnosis and Non-Surgical Treatment of Primary Frozen Shoulder, 2025" },
       { "href": "https://www.orthopt.org/uploads/content_files/ICF/2014/3._Shoulder_Pain_and_Mobility_Deficits_Adhesive_Capsulitis___May_2013.pdf", "label": "JOSPT Clinical Practice Guideline: Adhesive Capsulitis" },
       { "href": "https://pubmed.ncbi.nlm.nih.gov/36861780/", "label": "Manual Therapy and Exercise for Adhesive Capsulitis, Systematic Review and Meta-analysis, 2023" },
-      { "href": "https://pubmed.ncbi.nlm.nih.gov/33292924/", "label": "UK FROST Randomized Trial for Primary Frozen Shoulder" }
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/33292924/", "label": "UK FROST Randomized Trial for Primary Frozen Shoulder" },
+      { "href": "https://orthoinfo.aaos.org/treatment/cortisone-shot-steroid-injection/", "label": "American Academy of Orthopaedic Surgeons: Cortisone Shot (Steroid Injection)" }
     ],
     "related": [
       { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Shoulder evaluation", "title": "Knee, hip, and shoulder pain" },
@@ -1182,7 +1183,7 @@
     "shortTitle": "Patellar tendinopathy exercises",
     "conditionName": "Patellar tendinopathy in athletes",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-29",
+    "modifiedDate": "2026-07-30",
     "video": {
       "id": "e7oGNVUQi2I",
       "title": "Patellar Tendinopathy / Tendinitis / Tendinosis | Jumper’s Knee Rehab (Education, Myths, Exercises)",
@@ -1313,7 +1314,7 @@
     "conditionName": "Persistent or recurrent nonspecific low back pain",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-29",
+    "modifiedDate": "2026-07-30",
     "video": {
       "id": "x71Y5ijW4DU",
       "title": "Lower Back Pain Rehab (Exercises | Education | Myths | Prevention)",
@@ -1444,7 +1445,7 @@
     "conditionName": "Hip osteoarthritis",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-29",
+    "modifiedDate": "2026-07-30",
     "video": {
       "id": "x-O-m_WCtWw",
       "title": "Doctor of Physical Therapy Answers Your 10 Most Common Questions About Hip Osteoarthritis",
@@ -1580,7 +1581,7 @@
     "conditionName": "Acute grade I or II hamstring muscle strain in athletes",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-29",
+    "modifiedDate": "2026-07-30",
     "video": {
       "id": "7D50I7sdlXg",
       "title": "Hamstring Strain Rehab & Exercises (Strength | Running | Return to Sport)",
@@ -1719,7 +1720,7 @@
     "conditionName": "Plantar fasciopathy, commonly called plantar fasciitis, a common cause of plantar heel pain",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-29",
+    "modifiedDate": "2026-07-30",
     "video": {
       "id": "5D86b45yJzU",
       "title": "Plantar Fasciitis (Education | Myths | Stretching & Strengthening Exercises)",
