@@ -8,6 +8,19 @@ const root = resolve(scriptDirectory, '..');
 const htmlFiles = [];
 const errors = [];
 const analyticsEventCounts = new Map();
+const supportedMaterialIcons = new Set([
+    'accessibility', 'accessibility_new', 'airline_seat_flat', 'arrow_forward', 'badge', 'balance',
+    'bedtime', 'block', 'bloodtype', 'calculate', 'calendar_month', 'call', 'chair', 'check_circle',
+    'chevron_right', 'clinical_notes', 'diagnosis', 'directions_run', 'directions_walk', 'emergency',
+    'event_note', 'event_repeat', 'exercise', 'fact_check', 'fitness_center', 'flag', 'footprint',
+    'front_hand', 'groups', 'handshake', 'healing', 'history', 'hourglass_top', 'image_search',
+    'info', 'jump_to_element', 'link', 'location_on', 'medical_services', 'medication', 'menu_book',
+    'monitor_heart', 'monitoring', 'motion_photos_on', 'my_location', 'open_in_full', 'open_in_new',
+    'orthopedics', 'pause_circle', 'person_check', 'photo_camera', 'print', 'query_stats', 'radiology',
+    'receipt_long', 'route', 'schedule', 'school', 'science', 'speed', 'sports_baseball',
+    'sports_basketball', 'sports_golf', 'stairs', 'target', 'traffic', 'tune', 'vaccines', 'verified',
+    'verified_user', 'warning', 'water_drop', 'wb_sunny', 'work'
+]);
 const forbiddenEmDashes = [
     String.fromCodePoint(0x2014),
     '&' + 'mdash;',
@@ -95,6 +108,24 @@ for (const file of htmlFiles) {
     if (duplicateIds.length > 0) errors.push(displayFile + ': duplicate id ' + duplicateIds[0]);
     if (forbiddenEmDashes.some((dash) => html.toLowerCase().includes(dash.toLowerCase()))) {
         errors.push(displayFile + ': contains an em dash');
+    }
+    if (/fonts\.(?:googleapis|gstatic)\.com/i.test(html)) {
+        errors.push(displayFile + ': contains a remote Google Fonts dependency');
+    }
+    if (!/rel="preload" as="font"[^>]+inter-site\.woff2/.test(html)) {
+        errors.push(displayFile + ': missing the local Inter preload');
+    }
+    if (!/rel="preload" as="font"[^>]+newsreader-site\.woff2/.test(html)) {
+        errors.push(displayFile + ': missing the local Newsreader preload');
+    }
+    if (!/rel="preload" as="font"[^>]+material-symbols-site\.woff2/.test(html)) {
+        errors.push(displayFile + ': missing the local Material Symbols preload');
+    }
+
+    for (const [, iconName] of html.matchAll(/\sdata-icon="([^"]+)"/g)) {
+        if (!supportedMaterialIcons.has(iconName)) {
+            errors.push(displayFile + ': icon ' + iconName + ' is missing from the local Material Symbols subset');
+        }
     }
 
     for (const [, eventName] of html.matchAll(/\sdata-analytics-event="([^"]+)"/g)) {
