@@ -163,6 +163,10 @@ for (const program of programs) {
 }
 
 assert(!hub.includes('\u2014'), 'Home exercise library contains an em dash');
+assert(
+    hub.includes('beginner and advanced describe exercise demand, not arthritis severity'),
+    'Home exercise library must explain the knee OA beginner and advanced labels'
+);
 assert(count(hub, /class="program-card"/g) === programs.length, 'Library card count does not match program count');
 assert(hub.includes(`"numberOfItems": ${programs.length}`), 'Library ItemList count does not match program count');
 

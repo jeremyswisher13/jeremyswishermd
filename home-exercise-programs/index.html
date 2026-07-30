@@ -32,7 +32,7 @@
     <meta name="twitter:image:alt" content="Jeremy Swisher, MD, courtside while providing sports medicine coverage">
 
     <link rel="stylesheet" href="../styles.css?v=20260730-perf1">
-    <link rel="stylesheet" href="../landing-pages.css?v=20260730-prp2">
+    <link rel="stylesheet" href="../landing-pages.css?v=20260730-hep1">
 
     <script type="application/ld+json">
     {
@@ -46,8 +46,8 @@
           "description": "Printable, evidence-based home exercise programs for common sports medicine conditions.",
           "inLanguage": "en-US",
           "datePublished": "2026-07-17",
-          "dateModified": "2026-07-29",
-          "lastReviewed": "2026-07-29",
+          "dateModified": "2026-07-30",
+          "lastReviewed": "2026-07-30",
           "author": { "@id": "https://jeremyswishermd.com/#jeremy-swisher" },
           "mainEntity": { "@id": "https://jeremyswishermd.com/home-exercise-programs/#programs" },
           "breadcrumb": { "@id": "https://jeremyswishermd.com/home-exercise-programs/#breadcrumb" }
@@ -126,11 +126,11 @@
                 <div class="landing-hero-inner">
                     <div class="landing-hero-copy">
                         <p class="landing-kicker">Patient exercise library</p>
-                        <h1 id="page-title">Evidence-based home exercise programs for common sports medicine conditions.</h1>
-                        <p class="landing-summary">A clear plan for what to do next. Fifteen printable programs explain who each plan may fit, what to do, how much to do, when to progress, and when an in-person diagnosis matters. Each includes an optional E3 Rehab video companion.</p>
+                        <h1 id="page-title">Home exercise programs.</h1>
+                        <p class="landing-summary">Choose from 15 printable, evidence-based plans for common sports medicine conditions. Each includes exercise dosage, symptom rules, progression, safety guidance, and an optional E3 Rehab video companion.</p>
                         <div class="landing-actions">
-                            <a href="#programs" class="btn btn-primary">Choose a program</a>
-                            <a href="tel:310-319-1234" class="btn btn-outline">Call 310-319-1234</a>
+                            <a href="tel:310-319-1234" class="btn btn-primary">Call 310-319-1234</a>
+                            <a href="#programs" class="btn btn-outline">Browse programs</a>
                         </div>
                         <p class="page-update">Clinically reviewed July 2026</p>
                     </div>
@@ -154,7 +154,6 @@
 
             <nav class="page-jump" aria-label="On this page">
                 <span>On this page</span>
-                <a href="#programs">Choose a program</a>
                 <a href="#use">How to use it</a>
                 <a href="#symptoms">Symptom rules</a>
                 <a href="#safety">Safety</a>
@@ -165,20 +164,32 @@
         <div class="landing-body">
             <div class="landing-shell landing-layout">
                 <article class="landing-article">
-                    <div class="clinician-panel" role="group" aria-labelledby="reviewed-by-title">
-                        <span class="material-symbols-outlined" aria-hidden="true" data-icon="verified"></span>
-                        <div>
-                            <h2 id="reviewed-by-title">Written and clinically reviewed by Jeremy Swisher, MD</h2>
-                            <p><a href="../#about">About Dr. Swisher</a> <span aria-hidden="true">&middot;</span> <a href="https://www.uclahealth.org/providers/jeremy-swisher" target="_blank" rel="noopener noreferrer">Official UCLA Health profile</a></p>
-                        </div>
-                    </div>
                     <section class="content-section" id="programs">
                         <p class="section-label">Choose your program</p>
-                        <h2>Start with the diagnosis, not just the body part.</h2>
-                        <p class="section-intro">These plans are most useful after a clinician has identified the likely diagnosis. Two people with pain in the same location may need different loading, protection, or medical evaluation. For knee osteoarthritis, beginner and advanced describe exercise demand, not arthritis severity.</p>
-                        <div class="note-panel"><span class="material-symbols-outlined" aria-hidden="true" data-icon="info"></span><div><h3>The videos are optional</h3><p>Use each E3 Rehab video for education and visual technique, not as a second program. The written exercise dose, symptom rules, and progression on Dr. Swisher's page remain the plan.</p></div></div>
-                        <div class="program-card-grid">
-                            <a class="program-card" href="../knee-osteoarthritis-exercises/">
+                        <h2>Choose by diagnosis.</h2>
+                        <p class="section-intro">Use these plans after a clinician has identified the likely diagnosis. For knee osteoarthritis, beginner and advanced describe exercise demand, not arthritis severity.</p>
+                        <fieldset class="hep-filter-controls" data-program-filter hidden>
+                            <legend>Filter programs by body region</legend>
+                            <div class="hep-filter-list">
+                                <input type="radio" id="hep-filter-all" name="program-region" value="all" checked>
+                                <label for="hep-filter-all">All <span>15</span></label>
+                                <input type="radio" id="hep-filter-knee-thigh" name="program-region" value="knee-thigh">
+                                <label for="hep-filter-knee-thigh">Knee &amp; thigh <span>5</span></label>
+                                <input type="radio" id="hep-filter-shoulder" name="program-region" value="shoulder">
+                                <label for="hep-filter-shoulder">Shoulder <span>2</span></label>
+                                <input type="radio" id="hep-filter-elbow" name="program-region" value="elbow">
+                                <label for="hep-filter-elbow">Elbow <span>2</span></label>
+                                <input type="radio" id="hep-filter-hip" name="program-region" value="hip">
+                                <label for="hep-filter-hip">Hip <span>2</span></label>
+                                <input type="radio" id="hep-filter-foot-ankle" name="program-region" value="foot-ankle">
+                                <label for="hep-filter-foot-ankle">Foot &amp; ankle <span>3</span></label>
+                                <input type="radio" id="hep-filter-back" name="program-region" value="back">
+                                <label for="hep-filter-back">Low back <span>1</span></label>
+                            </div>
+                            <p class="hep-filter-status" data-program-filter-status role="status" aria-live="polite" aria-atomic="true">Showing all 15 programs.</p>
+                        </fieldset>
+                        <div class="program-card-grid" id="program-grid">
+                            <a class="program-card" data-program-region="knee-thigh" href="../knee-osteoarthritis-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="directions_walk"></span>
                                 <span class="program-card-label">Knee OA · Start here</span>
                                 <h3>Knee osteoarthritis: beginner</h3>
@@ -186,7 +197,7 @@
                                 <span class="program-card-meta">5 movements · Start here</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" href="../knee-osteoarthritis-advanced-exercises/">
+                            <a class="program-card" data-program-region="knee-thigh" href="../knee-osteoarthritis-advanced-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="fitness_center"></span>
                                 <span class="program-card-label">Knee OA · Progression</span>
                                 <h3>Knee osteoarthritis: advanced</h3>
@@ -194,7 +205,7 @@
                                 <span class="program-card-meta">6 movements · Build capacity</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" href="../patellofemoral-pain-exercises/">
+                            <a class="program-card" data-program-region="knee-thigh" href="../patellofemoral-pain-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="stairs"></span>
                                 <span class="program-card-label">Front of knee</span>
                                 <h3>Patellofemoral pain</h3>
@@ -202,7 +213,7 @@
                                 <span class="program-card-meta">4 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" href="../patellar-tendinopathy-exercises/">
+                            <a class="program-card" data-program-region="knee-thigh" href="../patellar-tendinopathy-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="sports_basketball"></span>
                                 <span class="program-card-label">Patellar tendon</span>
                                 <h3>Patellar tendinopathy</h3>
@@ -210,7 +221,7 @@
                                 <span class="program-card-meta">6 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" href="../hamstring-strain-exercises/">
+                            <a class="program-card" data-program-region="knee-thigh" href="../hamstring-strain-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="directions_run"></span>
                                 <span class="program-card-label">Posterior thigh · Athlete</span>
                                 <h3>Hamstring strain</h3>
@@ -218,7 +229,7 @@
                                 <span class="program-card-meta">6 elements · Sprint progression</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" href="../rotator-cuff-pain-exercises/">
+                            <a class="program-card" data-program-region="shoulder" href="../rotator-cuff-pain-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="accessibility_new"></span>
                                 <span class="program-card-label">Shoulder</span>
                                 <h3>Rotator cuff-related pain</h3>
@@ -226,7 +237,7 @@
                                 <span class="program-card-meta">5 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" href="../adhesive-capsulitis-exercises/">
+                            <a class="program-card" data-program-region="shoulder" href="../adhesive-capsulitis-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="accessibility"></span>
                                 <span class="program-card-label">Frozen shoulder</span>
                                 <h3>Adhesive capsulitis</h3>
@@ -234,7 +245,7 @@
                                 <span class="program-card-meta">5 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" href="../lateral-elbow-tendinopathy-exercises/">
+                            <a class="program-card" data-program-region="elbow" href="../lateral-elbow-tendinopathy-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="front_hand"></span>
                                 <span class="program-card-label">Outside elbow</span>
                                 <h3>Common extensor tendinopathy</h3>
@@ -242,7 +253,7 @@
                                 <span class="program-card-meta">5 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" href="../medial-elbow-tendinopathy-exercises/">
+                            <a class="program-card" data-program-region="elbow" href="../medial-elbow-tendinopathy-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="sports_golf"></span>
                                 <span class="program-card-label">Inside elbow</span>
                                 <h3>Common flexor tendinopathy</h3>
@@ -250,7 +261,7 @@
                                 <span class="program-card-meta">5 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" href="../achilles-tendinopathy-exercises/">
+                            <a class="program-card" data-program-region="foot-ankle" href="../achilles-tendinopathy-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="footprint"></span>
                                 <span class="program-card-label">Tendon</span>
                                 <h3>Midportion Achilles tendinopathy</h3>
@@ -258,7 +269,7 @@
                                 <span class="program-card-meta">5 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" href="../plantar-fasciitis-exercises/">
+                            <a class="program-card" data-program-region="foot-ankle" href="../plantar-fasciitis-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="footprint"></span>
                                 <span class="program-card-label">Bottom of heel</span>
                                 <h3>Plantar heel pain</h3>
@@ -266,7 +277,7 @@
                                 <span class="program-card-meta">5 movements · 12-week trial</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" href="../gluteal-tendinopathy-exercises/">
+                            <a class="program-card" data-program-region="hip" href="../gluteal-tendinopathy-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="airline_seat_flat"></span>
                                 <span class="program-card-label">Lateral hip</span>
                                 <h3>Gluteal tendinopathy</h3>
@@ -274,7 +285,7 @@
                                 <span class="program-card-meta">5 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" href="../hip-osteoarthritis-exercises/">
+                            <a class="program-card" data-program-region="hip" href="../hip-osteoarthritis-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="chair"></span>
                                 <span class="program-card-label">Hip arthritis · Beginner</span>
                                 <h3>Hip osteoarthritis</h3>
@@ -282,7 +293,7 @@
                                 <span class="program-card-meta">6 movements · Beginner plan</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" href="../lateral-ankle-sprain-exercises/">
+                            <a class="program-card" data-program-region="foot-ankle" href="../lateral-ankle-sprain-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="balance"></span>
                                 <span class="program-card-label">Ankle</span>
                                 <h3>Lateral ankle sprain</h3>
@@ -290,7 +301,7 @@
                                 <span class="program-card-meta">5 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" href="../low-back-pain-exercises/">
+                            <a class="program-card" data-program-region="back" href="../low-back-pain-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="exercise"></span>
                                 <span class="program-card-label">Low back · Persistent or recurrent</span>
                                 <h3>Nonspecific low back pain</h3>
@@ -299,7 +310,16 @@
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
                         </div>
+                        <div class="note-panel"><span class="material-symbols-outlined" aria-hidden="true" data-icon="info"></span><div><h3>The videos are optional</h3><p>Use each E3 Rehab video for education and visual technique, not as a second program. The written exercise dose, symptom rules, and progression on Dr. Swisher's page remain the plan.</p></div></div>
                     </section>
+
+                    <div class="clinician-panel" role="group" aria-labelledby="reviewed-by-title">
+                        <span class="material-symbols-outlined" aria-hidden="true" data-icon="verified"></span>
+                        <div>
+                            <h2 id="reviewed-by-title">Written and clinically reviewed by Jeremy Swisher, MD</h2>
+                            <p><a href="../#about">About Dr. Swisher</a> <span aria-hidden="true">&middot;</span> <a href="https://www.uclahealth.org/providers/jeremy-swisher" target="_blank" rel="noopener noreferrer">Official UCLA Health profile</a></p>
+                        </div>
+                    </div>
 
                     <section class="content-section" id="use">
                         <p class="section-label">How to use the plans</p>
@@ -386,6 +406,6 @@
     </main>
 
     <footer class="footer"><div class="landing-shell"><div class="footer-content"><div class="footer-brand"><span class="footer-name">Jeremy Swisher, MD</span><span class="footer-title">UCLA Sports Medicine</span></div><nav class="landing-footer-nav" aria-label="Care pages"><a href="../">Home</a><a href="../tendon-pain/">Tendon Pain</a><a href="../knee-hip-shoulder-pain/">Joint Pain</a><a href="../sports-injuries/">Sports Injuries</a><a href="../osteoarthritis-care/">Osteoarthritis</a><a href="../home-exercise-programs/" aria-current="page">Exercise Programs</a><a href="../orthobiologics/">PRP &amp; Orthobiologics</a><a href="../prp-knee-osteoarthritis/">PRP for Knee OA</a><a href="../hyaluronic-acid-knee-osteoarthritis/">Hyaluronic Acid</a><a href="../msk-ultrasound-guided-procedures/">MSK Ultrasound</a><a href="../locations/">Locations</a></nav><p class="footer-copy">&copy; 2026 Jeremy Swisher, MD.</p></div><p class="footer-professional-disclosure"><strong>This is the independent professional website of Jeremy Swisher, MD.</strong> References to UCLA Health describe his current employment and clinical practice. This is not an official UCLA Health website. The views and educational content are his own and do not necessarily represent UCLA Health or the University of California. UCLA Health manages appointments, medical records, billing, and clinical communication.</p><p class="footer-privacy-link"><a href="../privacy/">Privacy and analytics</a></p><p class="footer-disclaimer">For general educational information only; not individualized medical advice. If you have a medical emergency, call 911.</p></div></footer>
-    <script src="../script.js?v=20260730-prp2"></script>
+    <script src="../script.js?v=20260730-hep1"></script>
 </body>
 </html>

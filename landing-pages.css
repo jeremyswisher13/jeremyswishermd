@@ -2355,6 +2355,116 @@
     transform: translateX(3px);
 }
 
+/* Exercise library discovery */
+.hep-hub-page .landing-body {
+    padding-top: clamp(48px, 6vw, 76px);
+}
+
+.hep-hub-page .hep-filter-controls {
+    min-width: 0;
+    margin: 30px 0 0;
+    padding: 0;
+    border: 0;
+}
+
+.hep-hub-page .hep-filter-controls[hidden] {
+    display: none;
+}
+
+.hep-hub-page .hep-filter-controls legend {
+    margin: 0 0 14px;
+    color: var(--color-dark);
+    font-size: 0.72rem;
+    font-weight: 750;
+    letter-spacing: 0.13em;
+    line-height: 1.45;
+    text-transform: uppercase;
+}
+
+.hep-hub-page .hep-filter-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.hep-hub-page .hep-filter-list input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    border: 0;
+    white-space: nowrap;
+}
+
+.hep-hub-page .hep-filter-list label {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 44px;
+    padding: 10px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--color-primary-dark);
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease;
+}
+
+.hep-hub-page .hep-filter-list label:hover {
+    border-color: rgba(31, 108, 164, 0.55);
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.hep-hub-page .hep-filter-list label span {
+    min-width: 22px;
+    padding: 3px 6px;
+    border-radius: 999px;
+    background: rgba(15, 25, 35, 0.08);
+    color: inherit;
+    font-size: 0.66rem;
+    line-height: 1;
+    text-align: center;
+}
+
+.hep-hub-page .hep-filter-list input:checked + label {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: #ffffff;
+}
+
+.hep-hub-page .hep-filter-list input:checked + label span {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.hep-hub-page .hep-filter-list input:focus-visible + label {
+    outline: 3px solid rgba(31, 108, 164, 0.34);
+    outline-offset: 3px;
+}
+
+.hep-hub-page .hep-filter-status {
+    min-height: 1.3em;
+    margin: 12px 0 0;
+    color: var(--color-text-light);
+    font-size: 0.76rem;
+    line-height: 1.5;
+}
+
+.hep-hub-page .program-card[hidden] {
+    display: none !important;
+}
+
+.hep-hub-page #programs > .note-panel {
+    margin-top: 38px;
+}
+
 /* Responsive */
 @media (max-width: 1180px) {
     .landing-page {
@@ -2764,6 +2874,120 @@
     }
 }
 
+@media (max-width: 560px) {
+    .hep-hub-page .landing-hero-inner {
+        gap: 0;
+        padding-top: 34px;
+        padding-bottom: 38px;
+    }
+
+    .hep-hub-page .landing-hero h1 {
+        max-width: 330px;
+        font-size: clamp(2.85rem, 13vw, 3.35rem);
+        line-height: 0.96;
+    }
+
+    .hep-hub-page .landing-summary {
+        margin-top: 18px;
+        font-size: 0.96rem;
+        line-height: 1.58;
+    }
+
+    .hep-hub-page .landing-actions {
+        margin-top: 23px;
+    }
+
+    .hep-hub-page .landing-authority {
+        display: none;
+    }
+
+    .hep-hub-page .landing-proof {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .hep-hub-page .proof-stat,
+    .hep-hub-page .proof-stat:first-child,
+    .hep-hub-page .proof-stat:last-child {
+        padding: 15px 7px 16px;
+        border-bottom: 0;
+        border-left: 1px solid var(--color-border);
+        text-align: center;
+    }
+
+    .hep-hub-page .proof-stat:first-child {
+        border-left: 0;
+    }
+
+    .hep-hub-page .proof-stat strong {
+        font-size: 0.72rem;
+        line-height: 1.35;
+    }
+
+    .hep-hub-page .proof-stat span {
+        display: none;
+    }
+
+    .hep-hub-page .page-jump {
+        display: none;
+    }
+
+    .hep-hub-page .landing-body {
+        padding-top: 42px;
+    }
+
+    .hep-hub-page #programs {
+        padding-bottom: 46px;
+    }
+
+    .hep-hub-page #programs h2 {
+        font-size: clamp(2.35rem, 11.5vw, 2.85rem);
+    }
+
+    .hep-hub-page .hep-filter-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .hep-hub-page .hep-filter-list label {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 0.75rem;
+    }
+
+    .hep-hub-page .program-card-grid {
+        gap: 14px;
+        margin-top: 24px;
+    }
+
+    .hep-hub-page .program-card,
+    .hep-hub-page .program-card + .program-card {
+        min-height: 0;
+        margin-top: 0;
+        padding: 22px 22px 20px;
+    }
+
+    .hep-hub-page .program-card-icon {
+        margin-bottom: 16px;
+    }
+
+    .hep-hub-page .program-card-meta {
+        margin-top: 18px;
+        padding-top: 0;
+    }
+
+    .hep-hub-page #programs > .note-panel {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 820px) {
+    .hep-hub-page .landing-authority,
+    .hep-hub-page .page-jump {
+        display: none;
+    }
+}
+
 @media (max-width: 360px) {
     .landing-page {
         --landing-gutter: 18px;
@@ -2833,6 +3057,7 @@
     .hep-page .landing-shell > .landing-hero,
     .hep-page .landing-shell > .landing-proof,
     .hep-page .landing-shell > .page-jump,
+    .hep-page .hep-filter-controls,
     .hep-page .skip-link,
     .hep-page .no-print,
     .hep-page .print-secondary {
@@ -3199,6 +3424,10 @@
 
     .hep-page .material-symbols-outlined {
         display: none !important;
+    }
+
+    .hep-hub-page .program-card[hidden] {
+        display: flex !important;
     }
 
     .hep-page .print-progress-tracker {

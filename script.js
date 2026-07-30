@@ -548,6 +548,61 @@ videoResources.forEach(resource => {
     loadButton.addEventListener('click', () => loadVideoResource(resource));
 });
 
+// Exercise-library body-region filter
+//
+// Every program remains visible in the source. The controls appear only after
+// the complete radio group and card set have been verified and wired.
+const programFilter = document.querySelector('[data-program-filter]');
+const programFilterStatus = programFilter?.querySelector('[data-program-filter-status]');
+const programFilterInputs = programFilter
+    ? Array.from(programFilter.querySelectorAll('input[name="program-region"]'))
+    : [];
+const programCards = Array.from(document.querySelectorAll('#program-grid .program-card[data-program-region]'));
+const programRegionLabels = new Map([
+    ['knee-thigh', 'knee and thigh'],
+    ['shoulder', 'shoulder'],
+    ['elbow', 'elbow'],
+    ['hip', 'hip'],
+    ['foot-ankle', 'foot and ankle'],
+    ['back', 'low back']
+]);
+const expectedProgramRegions = new Set(programRegionLabels.keys());
+const inputRegions = new Set(programFilterInputs.map(input => input.value));
+const hasCompleteProgramFilter = (
+    programFilter instanceof HTMLFieldSetElement
+    && programFilterStatus instanceof HTMLElement
+    && programCards.length > 0
+    && programFilterInputs.length === expectedProgramRegions.size + 1
+    && inputRegions.has('all')
+    && [...expectedProgramRegions].every(region => inputRegions.has(region))
+    && programCards.every(card => expectedProgramRegions.has(card.dataset.programRegion))
+);
+
+if (hasCompleteProgramFilter) {
+    const updateProgramFilter = () => {
+        const selectedInput = programFilterInputs.find(input => input.checked);
+        const selectedRegion = selectedInput?.value || 'all';
+        let visibleCount = 0;
+
+        programCards.forEach(card => {
+            const isVisible = selectedRegion === 'all' || card.dataset.programRegion === selectedRegion;
+            card.hidden = !isVisible;
+            if (isVisible) visibleCount += 1;
+        });
+
+        programFilterStatus.textContent = selectedRegion === 'all'
+            ? `Showing all ${programCards.length} programs.`
+            : `Showing ${visibleCount} of ${programCards.length} programs for ${programRegionLabels.get(selectedRegion)}.`;
+    };
+
+    programFilterInputs.forEach(input => {
+        input.addEventListener('change', updateProgramFilter);
+    });
+
+    updateProgramFilter();
+    programFilter.hidden = false;
+}
+
 // Privacy-safe action measurement
 //
 // This site records only intentional actions: selecting a phone link, selecting

@@ -166,6 +166,7 @@ const expectedAnalyticsMinimums = new Map([
 const sharedScript = readFileSync(join(root, 'script.js'), 'utf8');
 const privacyPage = readFileSync(join(root, 'privacy', 'index.html'), 'utf8');
 const homePage = readFileSync(join(root, 'index.html'), 'utf8');
+const exerciseHubPage = readFileSync(join(root, 'home-exercise-programs', 'index.html'), 'utf8');
 const notFoundPage = readFileSync(join(root, '404.html'), 'utf8');
 
 for (const [eventName, minimum] of expectedAnalyticsMinimums) {
@@ -201,6 +202,61 @@ if (!/body class="[^"]*\bnot-found-page\b/.test(notFoundPage)) {
 }
 if (!/<meta name="robots" content="noindex, follow">/.test(notFoundPage)) {
     errors.push('404 page must remain noindex, follow');
+}
+
+const expectedProgramRegionCounts = new Map([
+    ['knee-thigh', 5],
+    ['shoulder', 2],
+    ['elbow', 2],
+    ['hip', 2],
+    ['foot-ankle', 3],
+    ['back', 1]
+]);
+const exerciseHubRegions = [...exerciseHubPage.matchAll(/\sdata-program-region="([^"]+)"/g)]
+    .map((match) => match[1]);
+const exerciseHubFilters = [...exerciseHubPage.matchAll(/name="program-region"\s+value="([^"]+)"/g)]
+    .map((match) => match[1]);
+const exerciseHubFilterBadges = [...exerciseHubPage.matchAll(/<label for="hep-filter-([^"]+)">[^<]+<span>(\d+)<\/span><\/label>/g)]
+    .map((match) => [match[1], Number.parseInt(match[2], 10)]);
+
+if (exerciseHubRegions.length !== 15) {
+    errors.push('Exercise library must contain exactly 15 filterable program cards');
+}
+for (const [region, expectedCount] of expectedProgramRegionCounts) {
+    const actualCount = exerciseHubRegions.filter(value => value === region).length;
+    if (actualCount !== expectedCount) {
+        errors.push('Exercise library region ' + region + ' expected ' + expectedCount + ' programs, found ' + actualCount);
+    }
+    if (!exerciseHubFilters.includes(region)) {
+        errors.push('Exercise library is missing the ' + region + ' filter');
+    }
+}
+if (!exerciseHubFilters.includes('all')) {
+    errors.push('Exercise library is missing the all-programs filter');
+}
+if (count(exerciseHubPage, /name="program-region"[^>]*\schecked(?:\s|>)/g) !== 1) {
+    errors.push('Exercise library must have exactly one default checked region filter');
+}
+for (const [filterId, visibleCount] of exerciseHubFilterBadges) {
+    const region = filterId === 'all' ? 'all' : filterId;
+    const expectedCount = region === 'all'
+        ? exerciseHubRegions.length
+        : expectedProgramRegionCounts.get(region);
+    if (visibleCount !== expectedCount) {
+        errors.push('Exercise library visible count for ' + region + ' expected ' + expectedCount + ', found ' + visibleCount);
+    }
+}
+if (exerciseHubFilterBadges.length !== expectedProgramRegionCounts.size + 1) {
+    errors.push('Exercise library must show a count for every region filter');
+}
+if (!/<fieldset class="hep-filter-controls" data-program-filter hidden>/.test(exerciseHubPage)) {
+    errors.push('Exercise library filter must remain hidden until its script is ready');
+}
+if (exerciseHubPage.indexOf('id="programs"') > exerciseHubPage.indexOf('class="clinician-panel"')) {
+    errors.push('Exercise library must present the program chooser before the clinician panel');
+}
+if (/\bdata-analytics-event=/.test(exerciseHubPage.match(/<fieldset class="hep-filter-controls"[\s\S]*?<\/fieldset>/)?.[0] || '')) {
+    errors.push('Exercise library body-region filters must not record health-related selections');
 }
 
 if (errors.length > 0) {
