@@ -3517,7 +3517,8 @@
         overflow-wrap: anywhere;
     }
 
-    .hep-program-tibialis-posterior-tendinopathy-exercises #progress {
+    .hep-program-tibialis-posterior-tendinopathy-exercises #progress,
+    .hep-program-advanced-meniscus-rehabilitation-exercises #progress {
         break-before: page;
         page-break-before: always;
     }

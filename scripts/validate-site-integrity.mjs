@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const root = resolve(scriptDirectory, '..');
+const hepPrograms = JSON.parse(readFileSync(join(scriptDirectory, 'hep-programs.json'), 'utf8'));
 const htmlFiles = [];
 const errors = [];
 const analyticsEventCounts = new Map();
@@ -159,8 +160,8 @@ for (const file of htmlFiles) {
 }
 
 const expectedAnalyticsMinimums = new Map([
-    ['exercise_program_print', 15],
-    ['exercise_video_load', 15],
+    ['exercise_program_print', hepPrograms.length],
+    ['exercise_video_load', hepPrograms.filter((program) => program.video).length],
     ['referral_instructions_click', 6]
 ]);
 const sharedScript = readFileSync(join(root, 'script.js'), 'utf8');
@@ -205,7 +206,7 @@ if (!/<meta name="robots" content="noindex, follow">/.test(notFoundPage)) {
 }
 
 const expectedProgramRegionCounts = new Map([
-    ['knee-thigh', 7],
+    ['knee-thigh', 8],
     ['shoulder', 2],
     ['elbow', 2],
     ['hip', 2],
@@ -220,8 +221,8 @@ const exerciseHubFilters = [...exerciseHubPage.matchAll(/name="program-region"\s
 const exerciseHubFilterBadges = [...exerciseHubPage.matchAll(/<label for="hep-filter-([^"]+)">[^<]+<span>(\d+)<\/span><\/label>/g)]
     .map((match) => [match[1], Number.parseInt(match[2], 10)]);
 
-if (exerciseHubRegions.length !== 21) {
-    errors.push('Exercise library must contain exactly 21 filterable program cards');
+if (exerciseHubRegions.length !== hepPrograms.length) {
+    errors.push('Exercise library program-card count does not match hep-programs.json');
 }
 for (const [region, expectedCount] of expectedProgramRegionCounts) {
     const actualCount = exerciseHubRegions.filter(value => value === region).length;
@@ -237,6 +238,9 @@ for (const [region, expectedCount] of expectedProgramRegionCounts) {
 }
 if (!exerciseHubFilters.includes('all')) {
     errors.push('Exercise library is missing the all-programs filter');
+}
+if (!homePage.includes('Explore all ' + exerciseHubRegions.length + ' exercise programs')) {
+    errors.push('Homepage exercise-library link count does not match the program-card count');
 }
 if (count(exerciseHubPage, /name="program-region"[^>]*\schecked(?:\s|>)/g) !== 1) {
     errors.push('Exercise library must have exactly one default checked region filter');

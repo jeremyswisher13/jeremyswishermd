@@ -216,7 +216,10 @@ for (const program of programs) {
     }
 
     assert(hub.includes(`href="../${slug}/"`), `${slug}: missing library card`);
-    assert(sitemap.includes(`<loc>${canonical}</loc>`), `${slug}: missing sitemap entry`);
+    assert(
+        sitemap.split(`<loc>${canonical}</loc>`).length - 1 === 1,
+        `${slug}: sitemap must contain the canonical exactly once`
+    );
 }
 
 assert(!hub.includes('\u2014'), 'Home exercise library contains an em dash');
@@ -226,6 +229,26 @@ assert(
 );
 assert(count(hub, /class="program-card"/g) === programs.length, 'Library card count does not match program count');
 assert(hub.includes(`"numberOfItems": ${programs.length}`), 'Library ItemList count does not match program count');
+
+const cardSlugs = [...hub.matchAll(/<a class="program-card"[^>]*href="\.\.\/([a-z0-9-]+)\/"/g)]
+    .map((match) => match[1]);
+const itemListEntries = [...hub.matchAll(
+    /\{\s*"@type":\s*"ListItem",\s*"position":\s*(\d+),\s*"name":\s*"[^"]+",\s*"url":\s*"https:\/\/jeremyswishermd\.com\/([a-z0-9-]+)\/"\s*\}/g
+)].map((match) => ({ position: Number.parseInt(match[1], 10), slug: match[2] }));
+const itemListSlugs = itemListEntries.map((entry) => entry.slug);
+
+assert(cardSlugs.length === programs.length, 'Library card slug count does not match program count');
+assert(new Set(cardSlugs).size === cardSlugs.length, 'Library contains a duplicate program card');
+assert(itemListEntries.length === programs.length, 'Library ItemList entry count does not match program count');
+assert(new Set(itemListSlugs).size === itemListSlugs.length, 'Library ItemList contains a duplicate program');
+assert(
+    itemListEntries.every((entry, index) => entry.position === index + 1),
+    'Library ItemList positions must be continuous and start at one'
+);
+assert(
+    cardSlugs.every((slug, index) => itemListSlugs[index] === slug),
+    'Library ItemList order does not match the visible program-card order'
+);
 
 if (errors.length > 0) {
     console.error(errors.join('\n'));

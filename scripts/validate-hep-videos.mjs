@@ -14,6 +14,15 @@ function count(value, pattern) {
     return (value.match(pattern) || []).length;
 }
 
+function escapeHtml(value) {
+    return String(value)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+}
+
 function assert(condition, message) {
     if (!condition) throw new Error(message);
 }
@@ -59,6 +68,9 @@ for (const program of programs) {
     assert(count(page, /data-load-video/g) === 1, 'Expected one load control on ' + program.slug);
     assert(count(page, /Watch on YouTube/g) === 1, 'Expected one YouTube fallback link on ' + program.slug);
     assert(page.includes('data-video-id="' + video.id + '"'), 'Generated page has the wrong video ID for ' + program.slug);
+    assert(page.includes(escapeHtml(video.title)), 'Generated page has a stale video title for ' + program.slug);
+    assert(page.includes(escapeHtml(video.description)), 'Generated page has a stale video description for ' + program.slug);
+    assert(page.includes(escapeHtml(video.caution)), 'Generated page has a stale video caution for ' + program.slug);
     assert(page.includes('<section class="content-section no-print video-section"'), 'Video must be hidden from print on ' + program.slug);
     assert(page.includes('<strong>Optional video:</strong>'), 'Printed attribution is missing on ' + program.slug);
     assert(!page.includes('<iframe'), 'Initial page must not contain a YouTube iframe on ' + program.slug);
@@ -67,6 +79,20 @@ for (const program of programs) {
     assert(!page.includes('googlevideo.com'), 'Initial page must not contact Google video hosts on ' + program.slug);
     assert(page.indexOf('id="video"') > page.indexOf('</ol>'), 'Video must follow the written exercise list on ' + program.slug);
     assert(!page.includes('{{'), 'Unresolved template token on ' + program.slug);
+
+    if (Number.isInteger(video.startSeconds)) {
+        assert(page.includes('data-video-start="' + video.startSeconds + '"'), 'Generated page has a stale video start time for ' + program.slug);
+        assert(page.includes('data-video-end="' + video.endSeconds + '"'), 'Generated page has a stale video end time for ' + program.slug);
+        assert(
+            page.includes('href="https://www.youtube.com/watch?v=' + video.id + '&amp;t=' + video.startSeconds + 's"'),
+            'Generated page has a stale YouTube chapter link for ' + program.slug
+        );
+    }
+
+    if (video.related) {
+        assert(page.includes('href="' + escapeHtml(video.related.href) + '"'), 'Generated page has a stale related video link for ' + program.slug);
+        assert(page.includes(escapeHtml(video.related.label)), 'Generated page has a stale related video label for ' + program.slug);
+    }
 }
 
 const videoCount = programs.filter(program => program.video).length;
