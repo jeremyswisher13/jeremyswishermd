@@ -3517,6 +3517,15 @@
         overflow-wrap: anywhere;
     }
 
+    .hep-program-gluteal-tendinopathy-exercises .print-program-footer {
+        font-size: 7pt;
+        line-height: 1.18;
+    }
+
+    .hep-program-gluteal-tendinopathy-exercises .print-program-footer p {
+        margin-bottom: 0.35mm;
+    }
+
     .hep-program-tibialis-posterior-tendinopathy-exercises #progress,
     .hep-program-advanced-meniscus-rehabilitation-exercises #progress {
         break-before: page;

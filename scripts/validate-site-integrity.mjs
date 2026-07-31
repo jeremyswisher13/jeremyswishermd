@@ -189,6 +189,12 @@ if (!privacyPage.includes('button that loads an optional exercise video')) {
 if (!privacyPage.includes('fixed path <code>/404/</code>')) {
     errors.push('Privacy page is missing the fixed 404-path disclosure');
 }
+if (!privacyPage.includes('Fonts and icons are self-hosted by this website and do not require a request to Google Fonts.')) {
+    errors.push('Privacy page must disclose that fonts and icons are self-hosted');
+}
+if (privacyPage.includes('loads font and icon files from Google Fonts')) {
+    errors.push('Privacy page incorrectly says that font and icon files load from Google Fonts');
+}
 if (
     !sharedScript.includes("classList.contains('not-found-page')")
     || !sharedScript.includes("return '/404/'")
