@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy and Analytics | Jeremy Swisher, MD</title>
-    <meta name="description" content="Learn how Jeremy Swisher, MD's independent professional website uses limited, cookie-free measurement for selected scheduling and educational actions.">
+    <meta name="description" content="Learn how Jeremy Swisher, MD's independent professional website uses limited, cookie-free measurement for public page loads and selected site actions.">
     <meta name="author" content="Jeremy Swisher, MD">
     <meta name="theme-color" content="#f5f1e9">
     <link rel="canonical" href="https://jeremyswishermd.com/privacy/">
@@ -16,7 +16,7 @@
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Privacy and Analytics | Jeremy Swisher, MD">
-    <meta property="og:description" content="A plain-language explanation of the site's limited, cookie-free action measurement.">
+    <meta property="og:description" content="A plain-language explanation of the site's limited, cookie-free page-load and action measurement.">
     <meta property="og:url" content="https://jeremyswishermd.com/privacy/">
     <meta property="og:image" content="https://jeremyswishermd.com/images/jeremy-swisher-social-preview-v2.jpg">
     <meta property="og:image:secure_url" content="https://jeremyswishermd.com/images/jeremy-swisher-social-preview-v2.jpg">
@@ -27,7 +27,7 @@
     <meta property="og:site_name" content="Jeremy Swisher, MD">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Privacy and Analytics | Jeremy Swisher, MD">
-    <meta name="twitter:description" content="A plain-language explanation of the site's limited, cookie-free action measurement.">
+    <meta name="twitter:description" content="A plain-language explanation of the site's limited, cookie-free page-load and action measurement.">
     <meta name="twitter:image" content="https://jeremyswishermd.com/images/jeremy-swisher-social-preview-v2.jpg">
     <meta name="twitter:image:alt" content="Jeremy Swisher, MD, courtside while providing sports medicine coverage">
 
@@ -41,8 +41,8 @@
       "@id": "https://jeremyswishermd.com/privacy/#webpage",
       "url": "https://jeremyswishermd.com/privacy/",
       "name": "Privacy and Analytics | Jeremy Swisher, MD",
-      "description": "A plain-language explanation of the limited, cookie-free action measurement used on Jeremy Swisher, MD's independent professional website.",
-      "dateModified": "2026-07-31",
+      "description": "A plain-language explanation of the limited, cookie-free page-load and action measurement used on Jeremy Swisher, MD's independent professional website.",
+      "dateModified": "2026-08-02",
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://jeremyswishermd.com/#website",
@@ -85,8 +85,8 @@
                     <div class="landing-hero-copy">
                         <p class="landing-kicker">Privacy and analytics</p>
                         <h1 id="page-title">Privacy and analytics on this website.</h1>
-                        <p class="landing-summary">This independent professional website uses cookie-free analytics only to understand which selected scheduling and educational actions help visitors take the next step.</p>
-                        <p class="page-update">Last updated July 31, 2026</p>
+                        <p class="landing-summary">This independent professional website uses cookie-free analytics only to understand which public pages and selected scheduling or educational actions help visitors take the next step.</p>
+                        <p class="page-update">Last updated August 2, 2026</p>
                     </div>
                     <aside class="landing-authority" aria-label="Privacy summary">
                         <span class="authority-eyebrow">At a glance</span>
@@ -102,7 +102,7 @@
 
             <ul class="landing-proof" aria-label="Privacy safeguards">
                 <li class="proof-stat"><strong>Cookie-free</strong><span>Minimal site analytics</span></li>
-                <li class="proof-stat"><strong>Intentional</strong><span>Five selected action types</span></li>
+                <li class="proof-stat"><strong>Minimal</strong><span>Path-only page loads and selected actions</span></li>
                 <li class="proof-stat"><strong>Respectful</strong><span>DNT and GPC honored</span></li>
             </ul>
         </div>
@@ -112,9 +112,10 @@
                 <div class="landing-article">
                     <section class="content-section" id="measured">
                         <p class="section-label">What is measured</p>
-                        <h2>Aggregate actions selected by visitors.</h2>
-                        <p>The site records an event when a visitor selects a phone link, the UCLA Health online appointment-request link, an exercise-program print button, referral instructions, or the button that loads an optional exercise video. Each event contains only the action type, the public page path, a broad placement such as navigation, hero, sidebar, content, contact, referral, or final call to action, and a timestamp used for aggregate reporting. Unknown addresses that reach the error page are grouped under the fixed path <code>/404/</code> rather than recording the requested address.</p>
-                        <p>Automatic pageview collection is disabled. The analytics configuration also omits referrers, campaign parameters, country or time-zone estimates, session IDs, time on page, scroll depth, user-agent details, screen size, viewport size, and browser language.</p>
+                        <h2>Aggregate page loads and actions selected by visitors.</h2>
+                        <p>The site records one minimal <code>page_view</code> event when a public page loads. It contains only the normalized public page path and a fixed page placement. It counts page loads, including internal navigation, and is not a session or unique-visitor measure. The site also records an event when a visitor selects a phone link, the UCLA Health online appointment-request link, a link to the clinic-locations page, a clinic directions link through UCLA Health or Google Maps, Dr. Swisher's official UCLA Health profile, an exercise-program print button, referral instructions, or the button that loads an optional exercise video.</p>
+                        <p>Action events contain only the action type, public page path, a broad placement such as navigation, hero, sidebar, content, contact, referral, or final call to action, and a timestamp used for aggregate reporting. The error page does not load analytics, so an unknown requested address is not sent to the analytics provider.</p>
+                        <p>Automatic provider pageview collection is disabled; <code>page_view</code> is a custom path-only event. The analytics configuration also omits referrers, campaign parameters, country or time-zone estimates, session IDs, time on page, scroll depth, the conventional user-agent string, operating-system details, screen size, viewport size, and browser language. On supported browsers, the provider script may receive a coarse browser-brand list and whether the device is classified as mobile.</p>
                     </section>
 
                     <section class="content-section" id="not-collected">
@@ -140,7 +141,7 @@
                     <section class="content-section" id="provider">
                         <p class="section-label">Analytics provider</p>
                         <h2>Why Simple Analytics is used.</h2>
-                        <p>The site uses Simple Analytics for these limited events. Simple Analytics states that it does not store IP addresses, place cookies, fingerprint visitors, or create device identifiers. Optional analytics metrics are disabled. The provider processes essential technical fields plus the event name, public page path, and broad action placement needed to count each action. Visitors whose browsers communicate Do Not Track or Global Privacy Control are not measured by this site.</p>
+                        <p>The site uses Simple Analytics for these limited events. Simple Analytics states that it does not store IP addresses, place cookies, fingerprint visitors, or create device identifiers. Optional analytics metrics are disabled. The provider processes essential technical fields plus the event name, public page path, and broad placement needed to count each page load or action. Visitors whose browsers communicate Do Not Track or Global Privacy Control are not measured by this site.</p>
                         <p><a href="https://docs.simpleanalytics.com/privacy" target="_blank" rel="noopener noreferrer" class="text-link">Read Simple Analytics privacy documentation <span class="material-symbols-outlined" aria-hidden="true" data-icon="open_in_new"></span></a></p>
                     </section>
 
@@ -182,6 +183,6 @@
         </div>
     </footer>
 
-    <script src="../script.js?v=20260730-hep1"></script>
+    <script src="../script.js?v=20260802-acq1"></script>
 </body>
 </html>

@@ -9,6 +9,7 @@ const hepPrograms = JSON.parse(readFileSync(join(scriptDirectory, 'hep-programs.
 const htmlFiles = [];
 const errors = [];
 const analyticsEventCounts = new Map();
+const expectedScriptCacheKey = '20260802-acq1';
 const supportedMaterialIcons = new Set([
     'accessibility', 'accessibility_new', 'airline_seat_flat', 'arrow_forward', 'badge', 'balance',
     'bedtime', 'block', 'bloodtype', 'calculate', 'calendar_month', 'call', 'chair', 'check_circle',
@@ -123,6 +124,13 @@ for (const file of htmlFiles) {
         errors.push(displayFile + ': missing the local Material Symbols preload');
     }
 
+    const sharedScriptReferences = [...html.matchAll(/<script\b[^>]*\bsrc="[^"]*script\.js\?v=([^"]+)"/gi)];
+    if (sharedScriptReferences.length !== 1) {
+        errors.push(displayFile + ': expected exactly one versioned shared script reference');
+    } else if (sharedScriptReferences[0][1] !== expectedScriptCacheKey) {
+        errors.push(displayFile + ': shared script cache key is not ' + expectedScriptCacheKey);
+    }
+
     for (const [, iconName] of html.matchAll(/\sdata-icon="([^"]+)"/g)) {
         if (!supportedMaterialIcons.has(iconName)) {
             errors.push(displayFile + ': icon ' + iconName + ' is missing from the local Material Symbols subset');
@@ -160,10 +168,16 @@ for (const file of htmlFiles) {
 }
 
 const expectedAnalyticsMinimums = new Map([
-    ['exercise_program_print', hepPrograms.length],
+    ['exercise_program_print', hepPrograms.length * 2],
     ['exercise_video_load', hepPrograms.filter((program) => program.video).length],
     ['referral_instructions_click', 6]
 ]);
+const automaticAnalyticsEvents = [
+    'page_view',
+    'location_page_click',
+    'directions_click',
+    'official_profile_click'
+];
 const sharedScript = readFileSync(join(root, 'script.js'), 'utf8');
 const privacyPage = readFileSync(join(root, 'privacy', 'index.html'), 'utf8');
 const homePage = readFileSync(join(root, 'index.html'), 'utf8');
@@ -180,14 +194,78 @@ for (const [eventName, minimum] of expectedAnalyticsMinimums) {
     }
 }
 
+for (const eventName of automaticAnalyticsEvents) {
+    if (!sharedScript.includes("'" + eventName + "'")) {
+        errors.push('Shared script does not implement analytics event ' + eventName);
+    }
+}
+if (!sharedScript.includes("destinationPath === '/locations'")) {
+    errors.push('Shared script does not classify internal clinic-location links');
+}
+if (!sharedScript.includes("destinationPath.startsWith('/locations/')")) {
+    errors.push('Shared script does not classify official UCLA Health directions links');
+}
+if (
+    !sharedScript.includes("destination.hostname === 'www.google.com'")
+    || !sharedScript.includes("destination.hostname === 'maps.google.com'")
+    || !sharedScript.includes("destinationPath.startsWith('/maps/')")
+) {
+    errors.push('Shared script does not classify direct Google Maps clinic-direction links');
+}
+if (!sharedScript.includes("destinationPath === '/providers/jeremy-swisher'")) {
+    errors.push('Shared script does not classify the official UCLA Health profile link');
+}
+if (
+    !sharedScript.includes("window.sa_event('page_view'")
+    || !sharedScript.includes("cta_location: 'page'")
+) {
+    errors.push('Shared script does not send the minimal path-only page-view event');
+}
+
+for (const program of hepPrograms) {
+    const programPage = readFileSync(join(root, program.slug, 'index.html'), 'utf8');
+    const printButtonCount = count(programPage, /<button\b[^>]*\bdata-print-program\b[^>]*>/g);
+    const measuredPrintButtonCount = count(
+        programPage,
+        /<button\b(?=[^>]*\bdata-print-program\b)(?=[^>]*\bdata-analytics-event="exercise_program_print")[^>]*>/g
+    );
+    if (printButtonCount !== 2 || measuredPrintButtonCount !== printButtonCount) {
+        errors.push(program.slug + ': every exercise-program print button must use exercise_program_print measurement');
+    }
+}
+
 if (!privacyPage.includes('exercise-program print button')) {
     errors.push('Privacy page is missing the exercise-program measurement disclosure');
 }
 if (!privacyPage.includes('button that loads an optional exercise video')) {
     errors.push('Privacy page is missing the optional-video measurement disclosure');
 }
-if (!privacyPage.includes('fixed path <code>/404/</code>')) {
-    errors.push('Privacy page is missing the fixed 404-path disclosure');
+if (!privacyPage.includes('one minimal <code>page_view</code> event')) {
+    errors.push('Privacy page is missing the path-only page-view measurement disclosure');
+}
+if (!privacyPage.includes('a coarse browser-brand list and whether the device is classified as mobile')) {
+    errors.push('Privacy page is missing the coarse browser and mobile classification disclosure');
+}
+if (!privacyPage.includes('a link to the clinic-locations page')) {
+    errors.push('Privacy page is missing the clinic-location measurement disclosure');
+}
+if (!privacyPage.includes('a clinic directions link through UCLA Health or Google Maps')) {
+    errors.push('Privacy page is missing the directions measurement disclosure');
+}
+if (!privacyPage.includes("Dr. Swisher's official UCLA Health profile")) {
+    errors.push('Privacy page is missing the official-profile measurement disclosure');
+}
+if (!sharedScript.includes("document.body?.classList.contains('not-found-page')")) {
+    errors.push('Shared script does not suppress analytics on the error page');
+}
+if (!privacyPage.includes('The error page does not load analytics')) {
+    errors.push('Privacy page is missing the error-page analytics disclosure');
+}
+if (
+    !sharedScript.includes('window.sa_event(eventName, metadata, continueNavigation)')
+    || !sharedScript.includes('window.setTimeout(continueNavigation, 350)')
+) {
+    errors.push('Shared script does not preserve measured same-tab navigation with a timeout fallback');
 }
 if (!privacyPage.includes('Fonts and icons are self-hosted by this website and do not require a request to Google Fonts.')) {
     errors.push('Privacy page must disclose that fonts and icons are self-hosted');

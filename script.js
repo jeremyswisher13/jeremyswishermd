@@ -606,11 +606,11 @@ if (hasCompleteProgramFilter) {
 
 // Privacy-safe action measurement
 //
-// This site records only intentional actions: selecting a phone link, selecting
-// UCLA Health's appointment-request link, printing an exercise program, opening
-// referral instructions, or loading an optional exercise video. Events include
-// the public page path and a broad placement. They never include a phone number,
-// destination URL, link text, query string, referrer, video ID, or page contents.
+// This site records one minimal path-only page-load event plus selected actions:
+// choosing a phone link, UCLA Health appointment request, clinic location,
+// directions, official profile, exercise-program print, referral instructions,
+// or optional exercise video. Events never include a phone number, destination
+// URL, link text, query string, referrer, video ID, or page contents.
 const ANALYTICS_PRODUCTION_HOSTS = new Set([
     'jeremyswishermd.com',
     'www.jeremyswishermd.com'
@@ -621,6 +621,7 @@ const ANALYTICS_EXPLICIT_EVENTS = new Set([
     'referral_instructions_click'
 ]);
 const ANALYTICS_LOCATIONS = new Set([
+    'page',
     'navigation',
     'hero',
     'patient',
@@ -694,15 +695,51 @@ function siteActionEventName(element) {
         const destination = new URL(rawHref, window.location.href);
         const isUclaAppointmentRequest = destination.hostname === 'cloud.h.uclahealth.org'
             && destination.pathname === '/appointment-request';
-        return isUclaAppointmentRequest ? 'appointment_request_click' : null;
+        if (isUclaAppointmentRequest) return 'appointment_request_click';
+
+        const currentPath = analyticsPagePath().replace(/\/+$/, '') || '/';
+        const destinationPath = destination.pathname.replace(/\/+$/, '') || '/';
+        const isInternalLocationPage = destination.origin === window.location.origin
+            && destinationPath === '/locations'
+            && currentPath !== '/locations';
+        if (isInternalLocationPage) return 'location_page_click';
+
+        const isGoogleMapsHost = destination.hostname === 'www.google.com'
+            || destination.hostname === 'google.com'
+            || destination.hostname === 'maps.google.com';
+        const isGoogleMapsDirections = isGoogleMapsHost
+            && (destinationPath === '/maps' || destinationPath.startsWith('/maps/'));
+        if (isGoogleMapsDirections) return 'directions_click';
+
+        const isUclaHealth = destination.hostname === 'www.uclahealth.org'
+            || destination.hostname === 'uclahealth.org';
+        if (!isUclaHealth) return null;
+
+        if (destinationPath === '/providers/jeremy-swisher') return 'official_profile_click';
+        if (destinationPath.startsWith('/locations/')) return 'directions_click';
+        return null;
     } catch {
         return null;
+    }
+}
+
+function measurePageView() {
+    if (typeof window.sa_event !== 'function') return;
+
+    try {
+        window.sa_event('page_view', {
+            page: analyticsPagePath(),
+            cta_location: 'page'
+        });
+    } catch {
+        // Measurement must never interrupt the page experience.
     }
 }
 
 function loadSiteAnalytics() {
     if (!ANALYTICS_PRODUCTION_HOSTS.has(window.location.hostname)) return false;
     if (hasAnalyticsPrivacySignal()) return false;
+    if (document.body?.classList.contains('not-found-page')) return false;
     if (document.querySelector('script[data-site-analytics]')) return true;
 
     window.sa_event = window.sa_event || function queueSimpleAnalyticsEvent(...args) {
@@ -734,17 +771,43 @@ function measureSiteAction(event) {
     const eventName = siteActionEventName(actionElement);
     if (!eventName || typeof window.sa_event !== 'function') return;
 
+    const metadata = {
+        page: analyticsPagePath(),
+        cta_location: analyticsLocationForElement(actionElement)
+    };
+    const canWaitForMeasurement = event.type === 'click'
+        && event.button === 0
+        && !event.defaultPrevented
+        && !event.metaKey
+        && !event.ctrlKey
+        && !event.shiftKey
+        && !event.altKey
+        && actionElement instanceof HTMLAnchorElement
+        && (!actionElement.target || actionElement.target.toLowerCase() === '_self')
+        && window.sa_loaded === true;
+
     try {
-        window.sa_event(eventName, {
-            page: analyticsPagePath(),
-            cta_location: analyticsLocationForElement(actionElement)
-        });
+        if (canWaitForMeasurement) {
+            event.preventDefault();
+            let navigationStarted = false;
+            const continueNavigation = () => {
+                if (navigationStarted) return;
+                navigationStarted = true;
+                window.location.href = actionElement.href;
+            };
+            window.sa_event(eventName, metadata, continueNavigation);
+            window.setTimeout(continueNavigation, 350);
+            return;
+        }
+
+        window.sa_event(eventName, metadata);
     } catch {
         // Measurement must never interrupt the visitor's requested action.
     }
 }
 
 if (loadSiteAnalytics()) {
+    measurePageView();
     document.addEventListener('click', measureSiteAction, { capture: true });
     document.addEventListener('auxclick', measureSiteAction, { capture: true });
 }
