@@ -6,7 +6,7 @@
     "shortTitle": "Beginner knee arthritis exercises",
     "conditionName": "Knee osteoarthritis",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-02",
     "video": {
       "id": "sLCahUJl8jk",
       "title": "Knee Osteoarthritis (OA) Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -119,8 +119,8 @@
     ],
     "related": [
       { "href": "../knee-osteoarthritis-advanced-exercises/", "eyebrow": "Ready to progress?", "title": "Advanced knee osteoarthritis exercises" },
-      { "href": "../osteoarthritis-care/", "eyebrow": "Whole-person plan", "title": "Osteoarthritis care beyond exercise" },
-      { "href": "../osteoarthritis-care/#injections", "eyebrow": "Compare options", "title": "Where injections may fit" }
+      { "href": "../knee-osteoarthritis/", "eyebrow": "Whole-person plan", "title": "Knee osteoarthritis diagnosis and treatment" },
+      { "href": "../knee-osteoarthritis-injection-comparison/", "eyebrow": "Compare options", "title": "PRP vs gel vs cortisone" }
     ]
   },
   {
@@ -130,7 +130,7 @@
     "shortTitle": "Advanced knee arthritis exercises",
     "conditionName": "Knee osteoarthritis",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-02",
     "video": {
       "id": "sLCahUJl8jk",
       "title": "Knee Osteoarthritis (OA) Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -251,8 +251,8 @@
     ],
     "related": [
       { "href": "../knee-osteoarthritis-exercises/", "eyebrow": "Start with the basics", "title": "Beginner knee osteoarthritis exercises" },
-      { "href": "../osteoarthritis-care/", "eyebrow": "Whole-person plan", "title": "Osteoarthritis care beyond exercise" },
-      { "href": "../osteoarthritis-care/#injections", "eyebrow": "Compare options", "title": "Where injections may fit" }
+      { "href": "../knee-osteoarthritis/", "eyebrow": "Whole-person plan", "title": "Knee osteoarthritis diagnosis and treatment" },
+      { "href": "../knee-osteoarthritis-injection-comparison/", "eyebrow": "Compare options", "title": "PRP vs gel vs cortisone" }
     ]
   },
   {

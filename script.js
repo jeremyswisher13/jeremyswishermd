@@ -604,6 +604,45 @@ if (hasCompleteProgramFilter) {
     programFilter.hidden = false;
 }
 
+// Show the knee OA mobile call bar only after the hero is out of view, then
+// hide it when the final scheduling section is visible. This keeps the first
+// screen and the final call to action free of duplicate controls.
+const contextualMobileCallBar = document.querySelector('.knee-oa-page .mobile-call-bar');
+const contextualMobileCallHero = document.querySelector('.knee-oa-page .landing-hero');
+const contextualMobileCallDestination = document.querySelector('.knee-oa-page .conversion-band');
+
+if (
+    contextualMobileCallBar
+    && contextualMobileCallHero
+    && contextualMobileCallDestination
+    && 'IntersectionObserver' in window
+) {
+    let isContextualHeroVisible = true;
+    let isContextualDestinationVisible = false;
+
+    const updateContextualMobileCallBar = () => {
+        contextualMobileCallBar.classList.toggle(
+            'is-visible',
+            !isContextualHeroVisible && !isContextualDestinationVisible
+        );
+    };
+
+    const contextualHeroObserver = new IntersectionObserver(entries => {
+        isContextualHeroVisible = entries.some(entry => entry.isIntersecting);
+        updateContextualMobileCallBar();
+    });
+
+    const contextualDestinationObserver = new IntersectionObserver(entries => {
+        isContextualDestinationVisible = entries.some(entry => (
+            entry.isIntersecting || entry.boundingClientRect.top < 0
+        ));
+        updateContextualMobileCallBar();
+    });
+
+    contextualHeroObserver.observe(contextualMobileCallHero);
+    contextualDestinationObserver.observe(contextualMobileCallDestination);
+}
+
 // Privacy-safe action measurement
 //
 // This site records one minimal path-only page-load event plus selected actions:
