@@ -608,6 +608,7 @@ if (hasCompleteProgramFilter) {
 // hide it when the final scheduling section is visible. This keeps the first
 // screen and the final call to action free of duplicate controls.
 const contextualMobileCallBar = document.querySelector('.knee-oa-page .mobile-call-bar');
+const contextualMobileCallLink = contextualMobileCallBar?.querySelector('a');
 const contextualMobileCallHero = document.querySelector('.knee-oa-page .landing-hero');
 const contextualMobileCallDestination = document.querySelector('.knee-oa-page .conversion-band');
 
@@ -621,10 +622,15 @@ if (
     let isContextualDestinationVisible = false;
 
     const updateContextualMobileCallBar = () => {
+        const shouldShowContextualMobileCallBar = !isContextualHeroVisible && !isContextualDestinationVisible;
         contextualMobileCallBar.classList.toggle(
             'is-visible',
-            !isContextualHeroVisible && !isContextualDestinationVisible
+            shouldShowContextualMobileCallBar
         );
+        contextualMobileCallBar.setAttribute('aria-hidden', String(!shouldShowContextualMobileCallBar));
+        if (contextualMobileCallLink) {
+            contextualMobileCallLink.tabIndex = shouldShowContextualMobileCallBar ? 0 : -1;
+        }
     };
 
     const contextualHeroObserver = new IntersectionObserver(entries => {
@@ -669,7 +675,8 @@ const ANALYTICS_LOCATIONS = new Set([
     'contact',
     'referral',
     'footer',
-    'content'
+    'content',
+    'mobile_sticky'
 ]);
 const ANALYTICS_IGNORED_METRICS = [
     'referrer',
