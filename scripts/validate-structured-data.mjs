@@ -45,6 +45,9 @@ collectHtmlFiles(root);
 for (const file of htmlFiles) {
   const relativePath = path.relative(root, file);
   const html = fs.readFileSync(file, "utf8");
+  const pageModifiedMeta = html.match(
+    /<meta\b[^>]*property=(['"])article:modified_time\1[^>]*content=(['"])([^'"]+)\2[^>]*>/i,
+  )?.[3];
   const blocks = html.matchAll(
     /<script\b[^>]*type=(["'])application\/ld\+json\1[^>]*>([\s\S]*?)<\/script>/gi,
   );
@@ -60,7 +63,27 @@ for (const file of htmlFiles) {
       continue;
     }
 
-    for (const node of flattenJsonLd(data)) {
+    const nodes = flattenJsonLd(data);
+    const pageNodeModifiedDates = nodes
+      .filter((node) => (
+        hasType(node, "MedicalWebPage")
+        || hasType(node, "WebPage")
+        || hasType(node, "ProfilePage")
+      ))
+      .map((node) => node.dateModified)
+      .filter((value) => typeof value === "string");
+
+    if (
+      pageModifiedMeta
+      && pageNodeModifiedDates.length > 0
+      && pageNodeModifiedDates.some((value) => value.slice(0, 10) !== pageModifiedMeta.slice(0, 10))
+    ) {
+      errors.push(
+        `${relativePath}: article:modified_time does not match page-level JSON-LD dateModified`,
+      );
+    }
+
+    for (const node of nodes) {
       if (!hasType(node, "ProfilePage")) continue;
 
       profilePageCount += 1;

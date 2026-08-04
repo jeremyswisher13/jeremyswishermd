@@ -100,9 +100,10 @@ function renderRelated(items) {
     return items.map((item) => [
         '                    <a class="related-card" href="' + escapeHtml(item.href) + '">',
         '                        <span>' + escapeHtml(item.eyebrow) + '</span><strong>' + escapeHtml(item.title) + '</strong>',
-        '                        <span class="material-symbols-outlined" aria-hidden="true" data-icon="arrow_forward"></span>',
+        item.description ? '                        <p>' + escapeHtml(item.description) + '</p>' : '',
+        '                        <span class="related-link">' + escapeHtml(item.linkLabel || 'Open guide') + ' <span class="material-symbols-outlined" aria-hidden="true" data-icon="arrow_forward"></span></span>',
         '                    </a>'
-    ].join('\n')).join('\n');
+    ].filter(Boolean).join('\n')).join('\n');
 }
 
 function validateVideo(video, slug) {
@@ -132,7 +133,7 @@ function validateVideo(video, slug) {
     if (video.related) {
         if (
             typeof video.related.href !== 'string'
-            || !/^\.\.\/[a-z0-9-]+\/$/.test(video.related.href)
+            || !/^\.\.\/[a-z0-9-]+\/(?:#[a-z0-9-]+)?$/.test(video.related.href)
             || typeof video.related.label !== 'string'
             || !video.related.label.trim()
         ) {

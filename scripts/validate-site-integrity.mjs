@@ -9,7 +9,7 @@ const hepPrograms = JSON.parse(readFileSync(join(scriptDirectory, 'hep-programs.
 const htmlFiles = [];
 const errors = [];
 const analyticsEventCounts = new Map();
-const expectedScriptCacheKey = '20260802-acq1';
+const expectedScriptCacheKey = '20260804-acq2';
 const supportedMaterialIcons = new Set([
     'accessibility', 'accessibility_new', 'airline_seat_flat', 'arrow_forward', 'badge', 'balance',
     'bedtime', 'block', 'bloodtype', 'calculate', 'calendar_month', 'call', 'chair', 'check_circle',
@@ -257,6 +257,18 @@ if (!privacyPage.includes("Dr. Swisher's official UCLA Health profile")) {
 }
 if (!sharedScript.includes("document.body?.classList.contains('not-found-page')")) {
     errors.push('Shared script does not suppress analytics on the error page');
+}
+if (
+    !sharedScript.includes("actionElement.protocol === 'http:'")
+    || !sharedScript.includes("actionElement.protocol === 'https:'")
+) {
+    errors.push('Shared script may delay phone or other custom-protocol links while measuring analytics');
+}
+if (
+    sharedScript.indexOf("element.closest('.referral-card, section#referrals .clinician-panel')")
+    > sharedScript.indexOf("element.closest('.contact-card, #contact')")
+) {
+    errors.push('Shared script classifies referral-card actions as generic contact actions');
 }
 if (!privacyPage.includes('The error page does not load analytics')) {
     errors.push('Privacy page is missing the error-page analytics disclosure');

@@ -6,7 +6,7 @@
     "shortTitle": "Beginner knee arthritis exercises",
     "conditionName": "Knee osteoarthritis",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-02",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "sLCahUJl8jk",
       "title": "Knee Osteoarthritis (OA) Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -15,8 +15,8 @@
       "startSeconds": 253,
       "endSeconds": 773,
       "related": {
-        "href": "../prp-knee-osteoarthritis/",
-        "label": "Read the current PRP evidence review"
+        "href": "../knee-osteoarthritis-injection-comparison/#comparison",
+        "label": "Compare knee injection options"
       }
     },
     "metaDescription": "Printable beginner knee osteoarthritis exercises, also called knee arthritis exercises, with strength, walking, symptom rules, and clear progression.",
@@ -119,8 +119,8 @@
     ],
     "related": [
       { "href": "../knee-osteoarthritis-advanced-exercises/", "eyebrow": "Ready to progress?", "title": "Advanced knee osteoarthritis exercises" },
-      { "href": "../knee-osteoarthritis/", "eyebrow": "Whole-person plan", "title": "Knee osteoarthritis diagnosis and treatment" },
-      { "href": "../knee-osteoarthritis-injection-comparison/", "eyebrow": "Compare options", "title": "PRP vs gel vs cortisone" }
+      { "href": "../knee-osteoarthritis/#treatment-path", "eyebrow": "Whole-person plan", "title": "Knee osteoarthritis diagnosis and treatment" },
+      { "href": "../knee-osteoarthritis-injection-comparison/#comparison", "eyebrow": "Compare options", "title": "PRP vs gel vs cortisone" }
     ]
   },
   {
@@ -130,7 +130,7 @@
     "shortTitle": "Advanced knee arthritis exercises",
     "conditionName": "Knee osteoarthritis",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-02",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "sLCahUJl8jk",
       "title": "Knee Osteoarthritis (OA) Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -139,8 +139,8 @@
       "startSeconds": 253,
       "endSeconds": 773,
       "related": {
-        "href": "../prp-knee-osteoarthritis/",
-        "label": "Read the current PRP evidence review"
+        "href": "../knee-osteoarthritis-injection-comparison/#comparison",
+        "label": "Compare knee injection options"
       }
     },
     "metaDescription": "Printable advanced knee osteoarthritis exercises for strength, stairs, hills, balance, aerobic conditioning, symptom rules, and progression.",
@@ -251,8 +251,8 @@
     ],
     "related": [
       { "href": "../knee-osteoarthritis-exercises/", "eyebrow": "Start with the basics", "title": "Beginner knee osteoarthritis exercises" },
-      { "href": "../knee-osteoarthritis/", "eyebrow": "Whole-person plan", "title": "Knee osteoarthritis diagnosis and treatment" },
-      { "href": "../knee-osteoarthritis-injection-comparison/", "eyebrow": "Compare options", "title": "PRP vs gel vs cortisone" }
+      { "href": "../knee-osteoarthritis/#treatment-path", "eyebrow": "Whole-person plan", "title": "Knee osteoarthritis diagnosis and treatment" },
+      { "href": "../knee-osteoarthritis-injection-comparison/#comparison", "eyebrow": "Compare options", "title": "PRP vs gel vs cortisone" }
     ]
   },
   {
@@ -262,7 +262,7 @@
     "shortTitle": "Patellofemoral pain exercises",
     "conditionName": "Patellofemoral pain",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "K3HxB6rAeDo",
       "title": "Patellofemoral Pain | Chondromalacia Patellae | Runner’s Knee (Education | Myths | Exercises)",
@@ -369,7 +369,7 @@
     "shortTitle": "Rotator cuff-related shoulder exercises",
     "conditionName": "Rotator cuff-related shoulder pain",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "1Wy8jh4QQH8",
       "title": "Rotator Cuff Tear Rehab & Exercises (Shoulder Pain, Tendinitis, Impingement)",
@@ -485,7 +485,7 @@
     "shortTitle": "Midportion Achilles exercises",
     "conditionName": "Midportion Achilles tendinopathy",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "DnxahqgsAEw",
       "title": "Achilles Tendinopathy / Tendinitis / Tendinosis | Heel Pain Rehab (Education, Myths, Exercises)",
@@ -593,7 +593,7 @@
     "related": [
       { "href": "../tendon-pain/", "eyebrow": "Tendon guide", "title": "Evidence-based tendon care" },
       { "href": "../sports-injuries/", "eyebrow": "Return to sport", "title": "Sports injury evaluation" },
-      { "href": "../lateral-ankle-sprain-exercises/", "eyebrow": "Ankle program", "title": "Lateral ankle sprain exercises" }
+      { "href": "../plantar-fasciitis-exercises/", "eyebrow": "Different heel pattern", "title": "Plantar heel pain exercises" }
     ]
   },
   {
@@ -603,7 +603,7 @@
     "shortTitle": "Gluteal tendinopathy exercises",
     "conditionName": "Gluteal tendinopathy and lateral hip pain",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "e_Kk-XqPWZo",
       "title": "Gluteal Tendinopathy / Greater Trochanteric Hip Bursitis (Education | Myths | Exercises)",
@@ -708,7 +708,7 @@
     "related": [
       { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Hip evaluation", "title": "Knee, hip, and shoulder pain" },
       { "href": "../tendon-pain/", "eyebrow": "Tendon principles", "title": "Evidence-based tendon care" },
-      { "href": "../knee-osteoarthritis-exercises/", "eyebrow": "Lower-limb plan", "title": "Beginner knee osteoarthritis exercises" }
+      { "href": "../hip-osteoarthritis-exercises/", "eyebrow": "Different hip pattern", "title": "Hip osteoarthritis exercises" }
     ]
   },
   {
@@ -718,7 +718,7 @@
     "shortTitle": "Lateral ankle sprain exercises",
     "conditionName": "Lateral ankle sprain",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "ga_OAPf6IOI",
       "title": "How to Rehab a Sprained Ankle (Start to Finish)",
@@ -822,8 +822,8 @@
     ],
     "related": [
       { "href": "../sports-injuries/", "eyebrow": "Injury guide", "title": "Sports injury evaluation" },
-      { "href": "../achilles-tendinopathy-exercises/", "eyebrow": "Tendon program", "title": "Midportion Achilles exercises" },
-      { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Joint pain guide", "title": "Knee, hip, and shoulder pain" }
+      { "href": "../peroneal-tendinopathy-exercises/", "eyebrow": "Persistent outer ankle pain", "title": "Peroneal tendinopathy exercises" },
+      { "href": "../achilles-tendinopathy-exercises/", "eyebrow": "Different tendon pattern", "title": "Midportion Achilles exercises" }
     ]
   },
   {
@@ -833,7 +833,7 @@
     "shortTitle": "Tennis elbow and common extensor exercises",
     "conditionName": "Lateral elbow tendinopathy and common extensor tendinopathy",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "aOueY1l_X0U",
       "title": "Tennis Elbow Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -949,7 +949,7 @@
     "shortTitle": "Golfer's elbow and common flexor exercises",
     "conditionName": "Medial elbow tendinopathy and common flexor tendinopathy",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "3CJMz0HoGXk",
       "title": "Golfer’s Elbow Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -1065,7 +1065,7 @@
     "shortTitle": "Frozen shoulder and adhesive capsulitis exercises",
     "conditionName": "Adhesive capsulitis and frozen shoulder",
     "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "SV7exHYLVHU",
       "title": "BEST Exercises for Frozen Shoulder | Adhesive Capsulitis (Mobility, Stretches, Strength)",
@@ -1183,7 +1183,7 @@
     "shortTitle": "Patellar tendinopathy exercises",
     "conditionName": "Patellar tendinopathy in athletes",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "e7oGNVUQi2I",
       "title": "Patellar Tendinopathy / Tendinitis / Tendinosis | Jumper’s Knee Rehab (Education, Myths, Exercises)",
@@ -1314,7 +1314,7 @@
     "conditionName": "Persistent or recurrent nonspecific low back pain",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "x71Y5ijW4DU",
       "title": "Lower Back Pain Rehab (Exercises | Education | Myths | Prevention)",
@@ -1432,7 +1432,7 @@
       { "href": "https://www.cochrane.org/evidence/CD009365_exercise-therapy-treating-acute-non-specific-low-back-pain", "label": "Cochrane Review: Exercise for Acute Nonspecific Low Back Pain, 2023" }
     ],
     "related": [
-      { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Regional pain guide", "title": "Knee, hip, and shoulder pain evaluation" },
+      { "href": "../sports-injuries/", "eyebrow": "Activity-related pain", "title": "Sports injury evaluation" },
       { "href": "../home-exercise-programs/", "eyebrow": "All programs", "title": "Home exercise library" },
       { "href": "../locations/", "eyebrow": "Need an evaluation?", "title": "Westwood and West Hills clinic locations" }
     ]
@@ -1445,7 +1445,7 @@
     "conditionName": "Hip osteoarthritis",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "x-O-m_WCtWw",
       "title": "Doctor of Physical Therapy Answers Your 10 Most Common Questions About Hip Osteoarthritis",
@@ -1581,7 +1581,7 @@
     "conditionName": "Acute grade I or II hamstring muscle strain in athletes",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "7D50I7sdlXg",
       "title": "Hamstring Strain Rehab & Exercises (Strength | Running | Return to Sport)",
@@ -1708,7 +1708,7 @@
     ],
     "related": [
       { "href": "../sports-injuries/", "eyebrow": "Diagnosis and return", "title": "Sports injury evaluation" },
-      { "href": "../patellar-tendinopathy-exercises/", "eyebrow": "Athlete loading", "title": "Patellar tendinopathy exercises" },
+      { "href": "../iliotibial-band-syndrome-exercises/", "eyebrow": "Runner program", "title": "Iliotibial band syndrome exercises" },
       { "href": "../home-exercise-programs/", "eyebrow": "All programs", "title": "Home exercise library" }
     ]
   },
@@ -1720,7 +1720,7 @@
     "conditionName": "Plantar fasciopathy, commonly called plantar fasciitis, a common cause of plantar heel pain",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "5D86b45yJzU",
       "title": "Plantar Fasciitis (Education | Myths | Stretching & Strengthening Exercises)",
@@ -1835,8 +1835,8 @@
     ],
     "related": [
       { "href": "../achilles-tendinopathy-exercises/", "eyebrow": "Different heel pattern", "title": "Midportion Achilles tendinopathy exercises" },
-      { "href": "../sports-injuries/", "eyebrow": "Activity and diagnosis", "title": "Sports injury evaluation" },
-      { "href": "../home-exercise-programs/", "eyebrow": "All programs", "title": "Home exercise library" }
+      { "href": "../tibialis-posterior-tendinopathy-exercises/", "eyebrow": "Different arch pattern", "title": "Tibialis posterior tendinopathy exercises" },
+      { "href": "../sports-injuries/", "eyebrow": "Activity and diagnosis", "title": "Sports injury evaluation" }
     ]
   },
   {
@@ -1847,7 +1847,7 @@
     "conditionName": "Meniscus tear",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "Rr0g_b8Neq4",
       "title": "Meniscus Tear Rehab & Exercises (Stretching | Strength | Plyometrics)",
@@ -1979,7 +1979,7 @@
     "conditionName": "Meniscus tear",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "sKZcTjlxk-Q",
       "title": "How To Return Back To Sport After An Injury (ACL, Meniscus, MCL, Ankle Sprain)",
@@ -2198,7 +2198,7 @@
     "conditionName": "Iliotibial band syndrome",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "qJ1mrNXXjSo",
       "title": "IT Band Pain / Iliotibial Band Friction Syndrome (Myth Busting | Exercises | Rehab)",
@@ -2320,7 +2320,7 @@
     "conditionName": "Peroneal tendinopathy",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "0fsR5-oqcVU",
       "title": "Peroneal Tendinopathy / Tendinitis: Causes & Treatment (Education | Strengthening | Stretching)",
@@ -2431,8 +2431,8 @@
       { "href": "https://doi.org/10.1016/j.mporth.2022.11.010", "label": "Peroneal Tendon Disorders: Diagnosis and Management Review" }
     ],
     "related": [
-      { "href": "../lateral-ankle-sprain-exercises/", "eyebrow": "After an ankle sprain", "title": "Lateral ankle sprain exercises" },
-      { "href": "../achilles-tendinopathy-exercises/", "eyebrow": "Different tendon", "title": "Midportion Achilles exercises" },
+      { "href": "../tendon-pain/", "eyebrow": "Tendon principles", "title": "Evidence-based tendon care" },
+      { "href": "../lateral-ankle-sprain-exercises/", "eyebrow": "Different outer ankle pattern", "title": "Lateral ankle sprain exercises" },
       { "href": "../sports-injuries/", "eyebrow": "Foot and ankle assessment", "title": "Sports injury care" }
     ]
   },
@@ -2444,7 +2444,7 @@
     "conditionName": "Tibialis posterior tendinopathy",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": {
       "id": "NKeQHV85QLc",
       "title": "Tibialis Posterior Tendinopathy | Tendinitis | Dysfunction | Pain (Exercises, Rehab, Strengthening)",
@@ -2557,9 +2557,9 @@
       { "href": "https://www.aafp.org/pubs/afp/issues/2022/0500/p479.html", "label": "AAFP: Tendinopathies of the Foot and Ankle, 2022" }
     ],
     "related": [
+      { "href": "../tendon-pain/", "eyebrow": "Tendon principles", "title": "Evidence-based tendon care" },
       { "href": "../peroneal-tendinopathy-exercises/", "eyebrow": "Different ankle tendon", "title": "Peroneal tendinopathy exercises" },
-      { "href": "../plantar-fasciitis-exercises/", "eyebrow": "Different arch or heel pain", "title": "Plantar heel pain exercises" },
-      { "href": "../sports-injuries/", "eyebrow": "Foot and ankle assessment", "title": "Sports injury care" }
+      { "href": "../plantar-fasciitis-exercises/", "eyebrow": "Different arch or heel pain", "title": "Plantar heel pain exercises" }
     ]
   },
   {
@@ -2570,7 +2570,7 @@
     "conditionName": "Thumb carpometacarpal osteoarthritis",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": null,
     "metaDescription": "Printable thumb CMC osteoarthritis exercises and brace guidance, with joint protection, gentle strength, symptom rules, and clear progression.",
     "breadcrumb": "Thumb CMC osteoarthritis",
@@ -2690,7 +2690,7 @@
     "conditionName": "De Quervain tenosynovitis",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-07-30",
+    "modifiedDate": "2026-08-04",
     "video": null,
     "metaDescription": "De Quervain exercises, thumb-spica brace guidance, activity changes, symptom rules, and evidence-based options for thumb-side wrist pain.",
     "breadcrumb": "De Quervain tenosynovitis",
@@ -2798,7 +2798,7 @@
     ],
     "related": [
       { "href": "../thumb-cmc-osteoarthritis-exercises/", "eyebrow": "Different thumb-base pain", "title": "Thumb CMC osteoarthritis exercises" },
-      { "href": "../tendon-pain/", "eyebrow": "Tendon principles", "title": "Evidence-based tendon pain care" },
+      { "href": "../msk-ultrasound-guided-procedures/", "eyebrow": "Procedure guidance", "title": "Ultrasound-guided procedures" },
       { "href": "../home-exercise-programs/", "eyebrow": "All programs", "title": "Home exercise library" }
     ]
   }

@@ -2041,6 +2041,20 @@
     line-height: 1.16;
 }
 
+.landing-page .related-card > .related-link {
+    margin-top: auto;
+}
+
+.landing-page .related-card > .related-link .material-symbols-outlined {
+    margin-left: 7px;
+    font-size: 18px;
+    transition: transform 180ms ease;
+}
+
+.landing-page .related-card:hover > .related-link .material-symbols-outlined {
+    transform: translateX(4px);
+}
+
 .landing-page .related-card > .material-symbols-outlined:last-child {
     margin-top: auto;
     color: var(--color-primary-dark);

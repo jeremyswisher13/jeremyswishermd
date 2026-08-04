@@ -133,6 +133,14 @@ for (const program of programs) {
     }
 
     for (const related of program.related || []) {
+        assert(typeof related.eyebrow === 'string' && related.eyebrow.trim(), `${slug}: related link eyebrow is missing`);
+        assert(typeof related.title === 'string' && related.title.trim(), `${slug}: related link title is missing`);
+        if (related.description !== undefined) {
+            assert(typeof related.description === 'string' && related.description.trim(), `${slug}: related link description is empty`);
+        }
+        if (related.linkLabel !== undefined) {
+            assert(typeof related.linkLabel === 'string' && related.linkLabel.trim(), `${slug}: related link label is empty`);
+        }
         const relatedMatch = /^\.\.\/([a-z0-9-]+)\/(?:#([a-z0-9-]+))?$/.exec(related.href);
         assert(Boolean(relatedMatch), `${slug}: invalid related link ${related.href}`);
         if (!relatedMatch) continue;
@@ -200,6 +208,13 @@ for (const program of programs) {
         for (const item of program[groupName] || []) {
             for (const field of fields) {
                 assert(page.includes(escapeHtml(item[field])), `${slug}: generated page is stale for ${groupName}.${field}`);
+            }
+        }
+    }
+    for (const related of program.related || []) {
+        for (const optionalField of ['description', 'linkLabel']) {
+            if (related[optionalField] !== undefined) {
+                assert(page.includes(escapeHtml(related[optionalField])), `${slug}: generated page is stale for related.${optionalField}`);
             }
         }
     }

@@ -721,8 +721,8 @@ function analyticsLocationForElement(element) {
     if (element.closest('.patient-card')) return 'patient';
     if (element.closest('.conversion-band')) return 'final_cta';
     if (element.closest('.landing-sidebar, aside')) return 'sidebar';
-    if (element.closest('.contact-card, #contact')) return 'contact';
     if (element.closest('.referral-card, section#referrals .clinician-panel')) return 'referral';
+    if (element.closest('.contact-card, #contact')) return 'contact';
     if (element.closest('footer')) return 'footer';
     return 'content';
 }
@@ -829,6 +829,7 @@ function measureSiteAction(event) {
         && !event.shiftKey
         && !event.altKey
         && actionElement instanceof HTMLAnchorElement
+        && (actionElement.protocol === 'http:' || actionElement.protocol === 'https:')
         && (!actionElement.target || actionElement.target.toLowerCase() === '_self')
         && window.sa_loaded === true;
 
