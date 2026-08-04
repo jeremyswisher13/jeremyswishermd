@@ -34,6 +34,20 @@ function hasType(node, expectedType) {
   return types.includes(expectedType);
 }
 
+function normalizeVisibleText(value) {
+  return String(value || "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;|&#160;|&#xa0;/gi, " ")
+    .replace(/&amp;|&#38;|&#x26;/gi, "&")
+    .replace(/&quot;|&#34;|&#x22;/gi, '"')
+    .replace(/&apos;|&#39;|&#x27;/gi, "'")
+    .replace(/&lt;|&#60;|&#x3c;/gi, "<")
+    .replace(/&gt;|&#62;|&#x3e;/gi, ">")
+    .replace(/\s+/g, " ")
+    .replace(/\s+([.,;:!?])/g, "$1")
+    .trim();
+}
+
 const fullIsoDateTime =
   /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/;
 const errors = [];
@@ -45,6 +59,10 @@ collectHtmlFiles(root);
 for (const file of htmlFiles) {
   const relativePath = path.relative(root, file);
   const html = fs.readFileSync(file, "utf8");
+  const visibleFaqs = new Map(
+    [...html.matchAll(/<details class="faq-item"[^>]*>\s*<summary>([\s\S]*?)<\/summary>\s*<p>([\s\S]*?)<\/p>\s*<\/details>/gi)]
+      .map((match) => [normalizeVisibleText(match[1]), normalizeVisibleText(match[2])]),
+  );
   const pageModifiedMeta = html.match(
     /<meta\b[^>]*property=(['"])article:modified_time\1[^>]*content=(['"])([^'"]+)\2[^>]*>/i,
   )?.[3];
@@ -84,6 +102,20 @@ for (const file of htmlFiles) {
     }
 
     for (const node of nodes) {
+      if (hasType(node, "FAQPage")) {
+        const questions = Array.isArray(node.mainEntity) ? node.mainEntity : [];
+        for (const question of questions) {
+          const questionText = normalizeVisibleText(question?.name);
+          const answerText = normalizeVisibleText(question?.acceptedAnswer?.text);
+          const visibleAnswer = visibleFaqs.get(questionText);
+          if (visibleAnswer === undefined) {
+            errors.push(`${relativePath}: JSON-LD FAQ question is not present in the visible FAQs: ${questionText}`);
+          } else if (visibleAnswer !== answerText) {
+            errors.push(`${relativePath}: JSON-LD FAQ answer does not match the visible answer: ${questionText}`);
+          }
+        }
+      }
+
       if (!hasType(node, "ProfilePage")) continue;
 
       profilePageCount += 1;

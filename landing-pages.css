@@ -2904,7 +2904,111 @@
 }
 
 .hep-hub-page .hep-filter-controls legend {
-    margin: 0 0 14px;
+    margin: 0 0 16px;
+    color: var(--color-dark);
+    font-size: 0.72rem;
+    font-weight: 750;
+    letter-spacing: 0.13em;
+    line-height: 1.45;
+    text-transform: uppercase;
+}
+
+.hep-hub-page .hep-search-field {
+    max-width: 760px;
+}
+
+.hep-hub-page .hep-search-field > label {
+    display: block;
+    margin: 0 0 9px;
+    color: var(--color-primary-dark);
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.hep-hub-page .hep-search-input-wrap {
+    position: relative;
+}
+
+.hep-hub-page .hep-search-input-wrap input {
+    width: 100%;
+    min-height: 54px;
+    padding: 13px 16px;
+    border: 1px solid var(--color-text-light);
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.82);
+    color: var(--color-dark);
+    font: inherit;
+    font-size: 16px;
+    line-height: 1.4;
+    transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.hep-hub-page .hep-search-input-wrap.has-search-value input {
+    padding-right: 76px;
+}
+
+.hep-hub-page .hep-search-input-wrap input::placeholder {
+    color: var(--color-text-light);
+}
+
+.hep-hub-page .hep-search-input-wrap input::-webkit-search-cancel-button {
+    display: none;
+}
+
+.hep-hub-page .hep-search-input-wrap input:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(31, 108, 164, 0.18);
+}
+
+.hep-hub-page .hep-search-input-wrap input:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 5px var(--color-primary-dark);
+}
+
+.hep-hub-page .hep-search-clear {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    min-width: 58px;
+    min-height: 40px;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 2px;
+    background: rgba(15, 25, 35, 0.07);
+    color: var(--color-primary-dark);
+    font: inherit;
+    font-size: 0.72rem;
+    font-weight: 750;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.hep-hub-page .hep-search-clear:hover {
+    background: rgba(31, 108, 164, 0.13);
+}
+
+.hep-hub-page .hep-search-clear:focus-visible {
+    outline: 3px solid rgba(31, 108, 164, 0.34);
+    outline-offset: 2px;
+}
+
+.hep-hub-page .hep-search-clear[hidden] {
+    display: none;
+}
+
+.hep-hub-page .hep-search-help {
+    margin: 8px 0 0;
+    color: var(--color-text-light);
+    font-size: 0.75rem;
+    line-height: 1.55;
+}
+
+.hep-hub-page .hep-filter-label {
+    margin: 24px 0 11px;
     color: var(--color-dark);
     font-size: 0.72rem;
     font-weight: 750;
@@ -2977,7 +3081,7 @@
 }
 
 .hep-hub-page .hep-filter-list input:focus-visible + label {
-    outline: 3px solid rgba(31, 108, 164, 0.34);
+    outline: 3px solid var(--color-primary-dark);
     outline-offset: 3px;
 }
 
@@ -2991,6 +3095,33 @@
 
 .hep-hub-page .program-card[hidden] {
     display: none !important;
+}
+
+.hep-hub-page .hep-empty-state {
+    margin-top: 24px;
+    padding: clamp(24px, 4vw, 38px);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.44);
+    text-align: center;
+}
+
+.hep-hub-page .hep-empty-state[hidden] {
+    display: none;
+}
+
+.hep-hub-page .hep-empty-state h3 {
+    margin: 0 0 9px;
+}
+
+.hep-hub-page .hep-empty-state p {
+    max-width: 650px;
+    margin: 0 auto 20px;
+    color: var(--color-text-light);
+}
+
+.hep-hub-page .hep-empty-state .btn {
+    min-width: 172px;
 }
 
 .hep-hub-page #programs > .note-panel {

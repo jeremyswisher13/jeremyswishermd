@@ -548,15 +548,23 @@ videoResources.forEach(resource => {
     loadButton.addEventListener('click', () => loadVideoResource(resource));
 });
 
-// Exercise-library body-region filter
+// Exercise-library search and body-region filter
 //
 // Every program remains visible in the source. The controls appear only after
-// the complete radio group and card set have been verified and wired.
+// the complete search, radio group, and card set have been verified and wired.
+// Search terms stay in this page only. They are not stored, added to the URL,
+// or included in analytics.
 const programFilter = document.querySelector('[data-program-filter]');
 const programFilterStatus = programFilter?.querySelector('[data-program-filter-status]');
+const programSearchInput = programFilter?.querySelector('[data-program-search]');
+const programSearchInputWrap = programSearchInput?.closest('.hep-search-input-wrap');
+const programSearchClear = programFilter?.querySelector('[data-program-search-clear]');
+const programResetButton = document.querySelector('[data-program-reset]');
+const programEmptyState = document.querySelector('[data-program-empty]');
 const programFilterInputs = programFilter
     ? Array.from(programFilter.querySelectorAll('input[name="program-region"]'))
     : [];
+const allProgramCards = Array.from(document.querySelectorAll('#program-grid .program-card'));
 const programCards = Array.from(document.querySelectorAll('#program-grid .program-card[data-program-region]'));
 const programRegionLabels = new Map([
     ['knee-thigh', 'knee and thigh'],
@@ -569,35 +577,100 @@ const programRegionLabels = new Map([
 ]);
 const expectedProgramRegions = new Set(programRegionLabels.keys());
 const inputRegions = new Set(programFilterInputs.map(input => input.value));
-const hasCompleteProgramFilter = (
+const programSearchStopWords = new Set([
+    'a', 'an', 'and', 'exercise', 'exercises', 'for', 'home', 'my', 'of', 'plan', 'plans',
+    'physical', 'program', 'programs', 'pt', 'rehab', 'rehabilitation', 'routine', 'routines',
+    'the', 'therapy', 'to', 'treatment', 'treatments'
+]);
+const normalizeProgramSearch = value => String(value || '')
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[’']s\b/gi, 's')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+const programSearchIndex = new Map(programCards.map(card => {
+    const programTitle = card.querySelector('h3')?.textContent || '';
+    const text = normalizeProgramSearch(`${programTitle} ${card.dataset.programSearch || ''}`);
+    return [card, { text, words: new Set(text.split(' ')) }];
+}));
+const hasCompleteProgramDiscovery = (
     programFilter instanceof HTMLFieldSetElement
     && programFilterStatus instanceof HTMLElement
+    && programSearchInput instanceof HTMLInputElement
+    && programSearchInputWrap instanceof HTMLElement
+    && programSearchClear instanceof HTMLButtonElement
+    && programResetButton instanceof HTMLButtonElement
+    && programEmptyState instanceof HTMLElement
     && programCards.length > 0
+    && allProgramCards.length === programCards.length
     && programFilterInputs.length === expectedProgramRegions.size + 1
     && inputRegions.has('all')
     && [...expectedProgramRegions].every(region => inputRegions.has(region))
     && programCards.every(card => expectedProgramRegions.has(card.dataset.programRegion))
+    && programCards.every(card => Boolean(card.dataset.programSearch?.trim()))
 );
 
-if (hasCompleteProgramFilter) {
+if (hasCompleteProgramDiscovery) {
     const updateProgramFilter = () => {
         const selectedInput = programFilterInputs.find(input => input.checked);
         const selectedRegion = selectedInput?.value || 'all';
+        const rawSearchValue = programSearchInput.value.trim();
+        const normalizedSearchValue = normalizeProgramSearch(rawSearchValue);
+        const searchTokens = normalizedSearchValue
+            ? normalizedSearchValue.split(' ').filter(token => !programSearchStopWords.has(token))
+            : [];
+        const searchIsActive = searchTokens.length > 0;
         let visibleCount = 0;
 
         programCards.forEach(card => {
-            const isVisible = selectedRegion === 'all' || card.dataset.programRegion === selectedRegion;
+            const matchesRegion = selectedRegion === 'all' || card.dataset.programRegion === selectedRegion;
+            const searchEntry = programSearchIndex.get(card) || { text: '', words: new Set() };
+            const matchesSearch = !searchIsActive || searchTokens.every(token => (
+                token.length <= 2 ? searchEntry.words.has(token) : searchEntry.text.includes(token)
+            ));
+            const isVisible = matchesRegion && matchesSearch;
             card.hidden = !isVisible;
             if (isVisible) visibleCount += 1;
         });
 
-        programFilterStatus.textContent = selectedRegion === 'all'
-            ? `Showing all ${programCards.length} programs.`
-            : `Showing ${visibleCount} of ${programCards.length} programs for ${programRegionLabels.get(selectedRegion)}.`;
+        if (selectedRegion === 'all' && !searchIsActive) {
+            programFilterStatus.textContent = `Showing all ${programCards.length} programs.`;
+        } else if (selectedRegion === 'all') {
+            programFilterStatus.textContent = `Showing ${visibleCount} of ${programCards.length} programs matching your search.`;
+        } else if (searchIsActive) {
+            programFilterStatus.textContent = `Showing ${visibleCount} of ${programCards.length} programs for ${programRegionLabels.get(selectedRegion)} matching your search.`;
+        } else {
+            programFilterStatus.textContent = `Showing ${visibleCount} of ${programCards.length} programs for ${programRegionLabels.get(selectedRegion)}.`;
+        }
+
+        programSearchClear.hidden = programSearchInput.value.length === 0;
+        programSearchInputWrap.classList.toggle('has-search-value', programSearchInput.value.length > 0);
+        programEmptyState.hidden = visibleCount !== 0;
     };
 
     programFilterInputs.forEach(input => {
         input.addEventListener('change', updateProgramFilter);
+    });
+    programSearchInput.addEventListener('input', updateProgramFilter);
+    programSearchInput.addEventListener('search', updateProgramFilter);
+    programSearchInput.addEventListener('keydown', event => {
+        if (event.key !== 'Escape' || !programSearchInput.value) return;
+        event.preventDefault();
+        programSearchInput.value = '';
+        updateProgramFilter();
+    });
+    programSearchClear.addEventListener('click', () => {
+        programSearchInput.value = '';
+        updateProgramFilter();
+        programSearchInput.focus();
+    });
+    programResetButton.addEventListener('click', () => {
+        const allProgramsInput = programFilterInputs.find(input => input.value === 'all');
+        if (allProgramsInput) allProgramsInput.checked = true;
+        programSearchInput.value = '';
+        updateProgramFilter();
+        programSearchInput.focus();
     });
 
     updateProgramFilter();

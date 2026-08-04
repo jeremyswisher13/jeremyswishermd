@@ -32,7 +32,7 @@
     <meta name="twitter:image:alt" content="Jeremy Swisher, MD, courtside while providing sports medicine coverage">
 
     <link rel="stylesheet" href="../styles.css?v=20260730-perf1">
-    <link rel="stylesheet" href="../landing-pages.css?v=20260730-hep3">
+    <link rel="stylesheet" href="../landing-pages.css?v=20260804-hep7">
 
     <script type="application/ld+json">
     {
@@ -46,7 +46,7 @@
           "description": "Printable, evidence-based home exercise programs for common sports medicine conditions.",
           "inLanguage": "en-US",
           "datePublished": "2026-07-17",
-          "dateModified": "2026-07-30",
+          "dateModified": "2026-08-04",
           "lastReviewed": "2026-07-30",
           "author": { "@id": "https://jeremyswishermd.com/#jeremy-swisher" },
           "mainEntity": { "@id": "https://jeremyswishermd.com/home-exercise-programs/#programs" },
@@ -176,8 +176,17 @@
                         <h2>Choose by diagnosis.</h2>
                         <p class="section-intro">Use these plans after a clinician has identified the likely diagnosis. For knee osteoarthritis, beginner and advanced describe exercise demand, not arthritis severity.</p>
                         <fieldset class="hep-filter-controls" data-program-filter hidden>
-                            <legend>Filter programs by body region</legend>
-                            <div class="hep-filter-list">
+                            <legend>Find a program</legend>
+                            <div class="hep-search-field" role="search">
+                                <label for="hep-program-search">Search by condition, symptom, or common name</label>
+                                <div class="hep-search-input-wrap">
+                                    <input type="search" id="hep-program-search" data-program-search autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="80" enterkeyhint="search" placeholder="Try frozen shoulder or tennis elbow" aria-describedby="hep-search-help" aria-controls="program-grid">
+                                    <button type="button" class="hep-search-clear" data-program-search-clear aria-label="Clear exercise program search" hidden>Clear</button>
+                                </div>
+                                <p id="hep-search-help" class="hep-search-help">Search stays on this page and is not recorded. These results help you find education after a diagnosis; they do not diagnose the cause of pain.</p>
+                            </div>
+                            <p class="hep-filter-label" id="hep-region-filter-label">Or filter by body region</p>
+                            <div class="hep-filter-list" role="radiogroup" aria-labelledby="hep-region-filter-label">
                                 <input type="radio" id="hep-filter-all" name="program-region" value="all" checked>
                                 <label for="hep-filter-all">All <span>22</span></label>
                                 <input type="radio" id="hep-filter-knee-thigh" name="program-region" value="knee-thigh">
@@ -198,7 +207,7 @@
                             <p class="hep-filter-status" data-program-filter-status role="status" aria-live="polite" aria-atomic="true">Showing all 22 programs.</p>
                         </fieldset>
                         <div class="program-card-grid" id="program-grid">
-                            <a class="program-card" data-program-region="knee-thigh" href="../knee-osteoarthritis-exercises/">
+                            <a class="program-card" data-program-region="knee-thigh" data-program-search="knee arthritis osteoarthritis OA joint pain stiffness walking stairs chair older adult beginner start" href="../knee-osteoarthritis-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="directions_walk"></span>
                                 <span class="program-card-label">Knee OA · Start here</span>
                                 <h3>Knee osteoarthritis: beginner</h3>
@@ -206,7 +215,7 @@
                                 <span class="program-card-meta">5 movements · Start here</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="knee-thigh" href="../knee-osteoarthritis-advanced-exercises/">
+                            <a class="program-card" data-program-region="knee-thigh" data-program-search="knee arthritis osteoarthritis OA joint pain advanced strength single leg hills recreation" href="../knee-osteoarthritis-advanced-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="fitness_center"></span>
                                 <span class="program-card-label">Knee OA · Progression</span>
                                 <h3>Knee osteoarthritis: advanced</h3>
@@ -214,7 +223,7 @@
                                 <span class="program-card-meta">6 movements · Build capacity</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="knee-thigh" href="../patellofemoral-pain-exercises/">
+                            <a class="program-card" data-program-region="knee-thigh" data-program-search="runner's knee runners knee kneecap front anterior knee pain patellofemoral syndrome PFP PFPS chondromalacia squat stairs running" href="../patellofemoral-pain-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="stairs"></span>
                                 <span class="program-card-label">Front of knee</span>
                                 <h3>Patellofemoral pain</h3>
@@ -222,7 +231,7 @@
                                 <span class="program-card-meta">4 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="knee-thigh" href="../patellar-tendinopathy-exercises/">
+                            <a class="program-card" data-program-region="knee-thigh" data-program-search="jumper's knee jumpers knee patellar tendon tendonitis tendinitis basketball volleyball jumping athlete" href="../patellar-tendinopathy-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="sports_basketball"></span>
                                 <span class="program-card-label">Patellar tendon</span>
                                 <h3>Patellar tendinopathy</h3>
@@ -230,7 +239,7 @@
                                 <span class="program-card-meta">6 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="knee-thigh" href="../hamstring-strain-exercises/">
+                            <a class="program-card" data-program-region="knee-thigh" data-program-search="pulled hamstring posterior back thigh muscle strain sprinting running athlete" href="../hamstring-strain-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="directions_run"></span>
                                 <span class="program-card-label">Posterior thigh · Athlete</span>
                                 <h3>Hamstring strain</h3>
@@ -238,7 +247,7 @@
                                 <span class="program-card-meta">6 elements · Sprint progression</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="knee-thigh" href="../meniscus-tear-rehabilitation-exercises/">
+                            <a class="program-card" data-program-region="knee-thigh" data-program-search="meniscal meniscus tear injury knee catching locking swelling nonoperative rehabilitation rehab" href="../meniscus-tear-rehabilitation-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="diagnosis"></span>
                                 <span class="program-card-label">Meniscus · After diagnosis</span>
                                 <h3>Nonoperative meniscus rehabilitation</h3>
@@ -246,7 +255,7 @@
                                 <span class="program-card-meta">6 movements · 8- to 12-week trial</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="knee-thigh" href="../advanced-meniscus-rehabilitation-exercises/">
+                            <a class="program-card" data-program-region="knee-thigh" data-program-search="meniscal meniscus tear injury advanced athlete running cutting pivoting landing return sport nonoperative rehab" href="../advanced-meniscus-rehabilitation-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="sports_basketball"></span>
                                 <span class="program-card-label">Meniscus · Nonoperative athlete</span>
                                 <h3>Advanced nonoperative meniscus rehabilitation</h3>
@@ -254,7 +263,7 @@
                                 <span class="program-card-meta">6 elements · Criteria based</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="knee-thigh" href="../iliotibial-band-syndrome-exercises/">
+                            <a class="program-card" data-program-region="knee-thigh" data-program-search="IT band ITB ITBS iliotibial band syndrome outside lateral knee pain runner running" href="../iliotibial-band-syndrome-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="directions_run"></span>
                                 <span class="program-card-label">Outside knee · Runner</span>
                                 <h3>Iliotibial band syndrome</h3>
@@ -262,7 +271,7 @@
                                 <span class="program-card-meta">5 movements · Runner plan</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="shoulder" href="../rotator-cuff-pain-exercises/">
+                            <a class="program-card" data-program-region="shoulder" data-program-search="rotator cuff shoulder pain tendinopathy tendonitis tendinitis impingement subacromial reaching lifting" href="../rotator-cuff-pain-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="accessibility_new"></span>
                                 <span class="program-card-label">Shoulder</span>
                                 <h3>Rotator cuff-related pain</h3>
@@ -270,7 +279,7 @@
                                 <span class="program-card-meta">5 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="shoulder" href="../adhesive-capsulitis-exercises/">
+                            <a class="program-card" data-program-region="shoulder" data-program-search="frozen shoulder stiff shoulder adhesive capsulitis limited motion range" href="../adhesive-capsulitis-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="accessibility"></span>
                                 <span class="program-card-label">Frozen shoulder</span>
                                 <h3>Adhesive capsulitis</h3>
@@ -278,7 +287,7 @@
                                 <span class="program-card-meta">5 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="elbow" href="../lateral-elbow-tendinopathy-exercises/">
+                            <a class="program-card" data-program-region="elbow" data-program-search="tennis elbow lateral outside elbow pain common extensor tendinopathy tendonitis tendinitis forearm grip" href="../lateral-elbow-tendinopathy-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="front_hand"></span>
                                 <span class="program-card-label">Outside elbow</span>
                                 <h3>Common extensor tendinopathy</h3>
@@ -286,7 +295,7 @@
                                 <span class="program-card-meta">5 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="elbow" href="../medial-elbow-tendinopathy-exercises/">
+                            <a class="program-card" data-program-region="elbow" data-program-search="golfer's elbow golfers elbow medial inside elbow pain common flexor tendinopathy tendonitis tendinitis forearm throwing" href="../medial-elbow-tendinopathy-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="sports_golf"></span>
                                 <span class="program-card-label">Inside elbow</span>
                                 <h3>Common flexor tendinopathy</h3>
@@ -294,7 +303,7 @@
                                 <span class="program-card-meta">5 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="hand-wrist" href="../thumb-cmc-osteoarthritis-exercises/">
+                            <a class="program-card" data-program-region="hand-wrist" data-program-search="thumb arthritis basal joint arthritis CMC carpometacarpal hand pain pinch grip brace" href="../thumb-cmc-osteoarthritis-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="front_hand"></span>
                                 <span class="program-card-label">Thumb-base arthritis</span>
                                 <h3>Thumb CMC osteoarthritis</h3>
@@ -302,7 +311,7 @@
                                 <span class="program-card-meta">5 movements · Brace guide</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="hand-wrist" href="../de-quervain-tenosynovitis-exercises/">
+                            <a class="program-card" data-program-region="hand-wrist" data-program-search="De Quervain dequervains thumb side wrist pain wrist tendonitis tenosynovitis thumb spica mother's thumb mothers thumb mommy thumb" href="../de-quervain-tenosynovitis-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="front_hand"></span>
                                 <span class="program-card-label">Thumb-side wrist · Assessment first</span>
                                 <h3>De Quervain tenosynovitis</h3>
@@ -310,7 +319,7 @@
                                 <span class="program-card-meta">5 movements · Evidence limits clear</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="foot-ankle" href="../achilles-tendinopathy-exercises/">
+                            <a class="program-card" data-program-region="foot-ankle" data-program-search="Achilles tendon heel cord tendon pain tendonitis tendinitis calf loading morning stiffness" href="../achilles-tendinopathy-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="footprint"></span>
                                 <span class="program-card-label">Tendon</span>
                                 <h3>Midportion Achilles tendinopathy</h3>
@@ -318,7 +327,7 @@
                                 <span class="program-card-meta">5 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="foot-ankle" href="../plantar-fasciitis-exercises/">
+                            <a class="program-card" data-program-region="foot-ankle" data-program-search="plantar fasciitis plantar fasciopathy plantar fascia heel pain bottom heel arch first step morning foot" href="../plantar-fasciitis-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="footprint"></span>
                                 <span class="program-card-label">Bottom of heel</span>
                                 <h3>Plantar heel pain</h3>
@@ -326,7 +335,7 @@
                                 <span class="program-card-meta">5 movements · 12-week trial</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="hip" href="../gluteal-tendinopathy-exercises/">
+                            <a class="program-card" data-program-region="hip" data-program-search="greater trochanteric pain syndrome GTPS lateral outside hip pain gluteal tendon trochanteric bursitis side lying" href="../gluteal-tendinopathy-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="airline_seat_flat"></span>
                                 <span class="program-card-label">Lateral hip</span>
                                 <h3>Gluteal tendinopathy</h3>
@@ -334,7 +343,7 @@
                                 <span class="program-card-meta">5 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="hip" href="../hip-osteoarthritis-exercises/">
+                            <a class="program-card" data-program-region="hip" data-program-search="hip arthritis osteoarthritis OA groin pain joint stiffness walking chair beginner" href="../hip-osteoarthritis-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="chair"></span>
                                 <span class="program-card-label">Hip arthritis · Beginner</span>
                                 <h3>Hip osteoarthritis</h3>
@@ -342,7 +351,7 @@
                                 <span class="program-card-meta">6 movements · Beginner plan</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="foot-ankle" href="../lateral-ankle-sprain-exercises/">
+                            <a class="program-card" data-program-region="foot-ankle" data-program-search="rolled ankle inversion ankle sprain ligament injury swelling balance return sport ankle instability unstable ankle" href="../lateral-ankle-sprain-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="balance"></span>
                                 <span class="program-card-label">Ankle</span>
                                 <h3>Lateral ankle sprain</h3>
@@ -350,7 +359,7 @@
                                 <span class="program-card-meta">5 movements · Printable</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="foot-ankle" href="../peroneal-tendinopathy-exercises/">
+                            <a class="program-card" data-program-region="foot-ankle" data-program-search="peroneal fibularis tendon outer outside lateral ankle pain tendonitis tendinitis eversion" href="../peroneal-tendinopathy-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="footprint"></span>
                                 <span class="program-card-label">Outer ankle tendon</span>
                                 <h3>Peroneal tendinopathy</h3>
@@ -358,7 +367,7 @@
                                 <span class="program-card-meta">5 movements · After evaluation</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="foot-ankle" href="../tibialis-posterior-tendinopathy-exercises/">
+                            <a class="program-card" data-program-region="foot-ankle" data-program-search="posterior tibial tendon dysfunction PTTD tibialis posterior tendonitis tendinitis inner medial ankle arch pain flatfoot adult acquired flatfoot" href="../tibialis-posterior-tendinopathy-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="footprint"></span>
                                 <span class="program-card-label">Inner ankle and arch tendon</span>
                                 <h3>Tibialis posterior tendinopathy</h3>
@@ -366,7 +375,7 @@
                                 <span class="program-card-meta">5 movements · Early-stage plan</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
-                            <a class="program-card" data-program-region="back" href="../low-back-pain-exercises/">
+                            <a class="program-card" data-program-region="back" data-program-search="low lower back pain LBP lumbar pain lumbago nonspecific persistent recurrent spine mobility strength" href="../low-back-pain-exercises/">
                                 <span class="program-card-icon material-symbols-outlined" aria-hidden="true" data-icon="exercise"></span>
                                 <span class="program-card-label">Low back · Persistent or recurrent</span>
                                 <h3>Nonspecific low back pain</h3>
@@ -374,6 +383,11 @@
                                 <span class="program-card-meta">6 movements · 6-week checkpoint</span>
                                 <span class="material-symbols-outlined program-card-arrow" aria-hidden="true" data-icon="arrow_forward"></span>
                             </a>
+                        </div>
+                        <div class="hep-empty-state" data-program-empty hidden>
+                            <h3>No matching program</h3>
+                            <p>Try a broader term, a body region, or a common name such as frozen shoulder, tennis elbow, or heel pain. If you are unsure of the diagnosis, start with an evaluation rather than choosing a program by pain location alone.</p>
+                            <button type="button" class="btn btn-outline" data-program-reset>Show all programs</button>
                         </div>
                         <div class="note-panel"><span class="material-symbols-outlined" aria-hidden="true" data-icon="info"></span><div><h3>The videos are optional and diagnosis-specific</h3><p>When a matching E3 Rehab companion is available, use it for education and visual technique, not as a second program. The written exercise dose, symptom rules, and progression on Dr. Swisher's page remain the plan. A generic video is not substituted when no close match exists.</p></div></div>
                     </section>
@@ -471,6 +485,6 @@
     </main>
 
     <footer class="footer"><div class="landing-shell"><div class="footer-content"><div class="footer-brand"><span class="footer-name">Jeremy Swisher, MD</span><span class="footer-title">UCLA Sports Medicine</span></div><nav class="landing-footer-nav" aria-label="Care pages"><a href="../">Home</a><a href="../tendon-pain/">Tendon Pain</a><a href="../knee-hip-shoulder-pain/">Joint Pain</a><a href="../sports-injuries/">Sports Injuries</a><a href="../osteoarthritis-care/">Osteoarthritis</a><a href="../home-exercise-programs/" aria-current="page">Exercise Programs</a><a href="../orthobiologics/">PRP &amp; Orthobiologics</a><a href="../prp-knee-osteoarthritis/">PRP for Knee OA</a><a href="../hyaluronic-acid-knee-osteoarthritis/">Hyaluronic Acid</a><a href="../msk-ultrasound-guided-procedures/">MSK Ultrasound</a><a href="../locations/">Locations</a></nav><p class="footer-copy">&copy; 2026 Jeremy Swisher, MD.</p></div><p class="footer-professional-disclosure"><strong>This is the independent professional website of Jeremy Swisher, MD.</strong> References to UCLA Health describe his current employment and clinical practice. This is not an official UCLA Health website. The views and educational content are his own and do not necessarily represent UCLA Health or the University of California. UCLA Health manages appointments, medical records, billing, and clinical communication.</p><p class="footer-privacy-link"><a href="../privacy/">Privacy and analytics</a></p><p class="footer-disclaimer">For general educational information only; not individualized medical advice. If you have a medical emergency, call 911.</p></div></footer>
-    <script src="../script.js?v=20260804-acq2"></script>
+    <script src="../script.js?v=20260804-acq3"></script>
 </body>
 </html>

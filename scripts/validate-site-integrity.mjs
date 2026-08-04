@@ -9,7 +9,7 @@ const hepPrograms = JSON.parse(readFileSync(join(scriptDirectory, 'hep-programs.
 const htmlFiles = [];
 const errors = [];
 const analyticsEventCounts = new Map();
-const expectedScriptCacheKey = '20260804-acq2';
+const expectedScriptCacheKey = '20260804-acq3';
 const supportedMaterialIcons = new Set([
     'accessibility', 'accessibility_new', 'airline_seat_flat', 'arrow_forward', 'badge', 'balance',
     'bedtime', 'block', 'bloodtype', 'calculate', 'calendar_month', 'call', 'chair', 'check_circle',
@@ -48,6 +48,16 @@ function decodeAttribute(value) {
         .replaceAll('&amp;', '&')
         .replaceAll('&#38;', '&')
         .replaceAll('&#x26;', '&');
+}
+
+function normalizeProgramSearchForValidation(value) {
+    return String(value || '')
+        .normalize('NFKD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[’']s\b/gi, 's')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim();
 }
 
 function splitLocalReference(value) {
@@ -104,6 +114,16 @@ for (const file of htmlFiles) {
     const displayFile = relative(root, file);
     const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
     const duplicateIds = ids.filter((id, index) => ids.indexOf(id) !== index);
+    const sourceNumberById = new Map();
+
+    for (const sourceListMatch of html.matchAll(/<ul\b[^>]*\bclass="[^"]*\bsource-list\b[^"]*"[^>]*>([\s\S]*?)<\/ul>/gi)) {
+        let sourceNumber = 0;
+        for (const sourceItemMatch of sourceListMatch[1].matchAll(/<li\b([^>]*)>/gi)) {
+            sourceNumber += 1;
+            const sourceId = /\bid="([^"]+)"/i.exec(sourceItemMatch[1])?.[1];
+            if (sourceId) sourceNumberById.set(sourceId, sourceNumber);
+        }
+    }
 
     if (count(html, /<main\b/g) !== 1) errors.push(displayFile + ': expected exactly one main element');
     if (count(html, /<h1\b/g) !== 1) errors.push(displayFile + ': expected exactly one h1 element');
@@ -152,6 +172,26 @@ for (const file of htmlFiles) {
             if (!relValues.has('noopener') || !relValues.has('noreferrer')) {
                 errors.push(displayFile + ': target="_blank" link is missing noopener noreferrer');
             }
+        }
+    }
+
+    for (const match of html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
+        const attributes = match[1];
+        if (!/\bclass="[^"]*\boa-cite\b[^"]*"/i.test(attributes)) continue;
+
+        const citationTarget = /\bhref="#([^"]+)"/i.exec(attributes)?.[1];
+        const visibleCitationNumber = Number.parseInt(match[2].replace(/<[^>]+>/g, '').trim(), 10);
+        const expectedCitationNumber = citationTarget ? sourceNumberById.get(citationTarget) : undefined;
+
+        if (!citationTarget || !Number.isInteger(visibleCitationNumber)) {
+            errors.push(displayFile + ': malformed numbered source citation');
+        } else if (expectedCitationNumber === undefined) {
+            errors.push(displayFile + ': numbered citation does not target a numbered source #' + citationTarget);
+        } else if (visibleCitationNumber !== expectedCitationNumber) {
+            errors.push(
+                displayFile + ': citation #' + citationTarget + ' displays '
+                + visibleCitationNumber + ' but is source ' + expectedCitationNumber
+            );
         }
     }
 
@@ -312,6 +352,18 @@ const expectedProgramRegionCounts = new Map([
 ]);
 const exerciseHubRegions = [...exerciseHubPage.matchAll(/\sdata-program-region="([^"]+)"/g)]
     .map((match) => match[1]);
+const exerciseHubProgramCardCount = count(exerciseHubPage, /<a class="program-card"(?:\s|>)/g);
+const exerciseHubSearchAliases = [...exerciseHubPage.matchAll(/\sdata-program-search="([^"]+)"/g)]
+    .map((match) => match[1].trim());
+const exerciseHubSearchCards = [...exerciseHubPage.matchAll(/<a class="program-card"([^>]*)>([\s\S]*?)<\/a>/g)]
+    .map((match) => {
+        const attributes = match[1];
+        const title = /<h3>([^<]+)<\/h3>/.exec(match[2])?.[1] || '';
+        const aliases = /\bdata-program-search="([^"]+)"/.exec(attributes)?.[1] || '';
+        const href = /\bhref="([^"]+)"/.exec(attributes)?.[1] || '';
+        const text = normalizeProgramSearchForValidation(title + ' ' + aliases);
+        return { href, text, words: new Set(text.split(' ')) };
+    });
 const exerciseHubFilters = [...exerciseHubPage.matchAll(/name="program-region"\s+value="([^"]+)"/g)]
     .map((match) => match[1]);
 const exerciseHubFilterBadges = [...exerciseHubPage.matchAll(/<label for="hep-filter-([^"]+)">[^<]+<span>(\d+)<\/span><\/label>/g)]
@@ -319,6 +371,18 @@ const exerciseHubFilterBadges = [...exerciseHubPage.matchAll(/<label for="hep-fi
 
 if (exerciseHubRegions.length !== hepPrograms.length) {
     errors.push('Exercise library program-card count does not match hep-programs.json');
+}
+if (exerciseHubProgramCardCount !== exerciseHubRegions.length) {
+    errors.push('Every exercise library program card must declare a supported body region');
+}
+if (
+    exerciseHubSearchAliases.length !== hepPrograms.length
+    || exerciseHubSearchAliases.some((aliases) => aliases.length < 12)
+) {
+    errors.push('Every exercise library program card must provide useful patient-friendly search aliases');
+}
+if (exerciseHubSearchCards.length !== hepPrograms.length) {
+    errors.push('Exercise library search index does not map cleanly to every program card');
 }
 for (const [region, expectedCount] of expectedProgramRegionCounts) {
     const actualCount = exerciseHubRegions.filter(value => value === region).length;
@@ -356,11 +420,77 @@ if (exerciseHubFilterBadges.length !== expectedProgramRegionCounts.size + 1) {
 if (!/<fieldset class="hep-filter-controls" data-program-filter hidden>/.test(exerciseHubPage)) {
     errors.push('Exercise library filter must remain hidden until its script is ready');
 }
+if (!/<input type="search"[^>]*\bdata-program-search\b[^>]*\bmaxlength="80"/.test(exerciseHubPage)) {
+    errors.push('Exercise library is missing its length-limited program search input');
+}
+if (!/\bdata-program-search-clear\b/.test(exerciseHubPage)) {
+    errors.push('Exercise library is missing its clear-search control');
+}
+if (!/\bdata-program-empty\b[^>]*\shidden/.test(exerciseHubPage)) {
+    errors.push('Exercise library is missing its initially hidden no-results guidance');
+}
+if (!/\bdata-program-reset\b/.test(exerciseHubPage)) {
+    errors.push('Exercise library is missing its reset-search control');
+}
+if (
+    !sharedScript.includes('searchTokens.every')
+    || !sharedScript.includes('programEmptyState.hidden = visibleCount !== 0')
+    || !sharedScript.includes("programSearchInput.addEventListener('input'")
+) {
+    errors.push('Shared script does not fully implement exercise-library search and empty-state behavior');
+}
+
+const patientSearchStopWords = new Set([
+    'a', 'an', 'and', 'exercise', 'exercises', 'for', 'home', 'my', 'of', 'plan', 'plans',
+    'physical', 'program', 'programs', 'pt', 'rehab', 'rehabilitation', 'routine', 'routines',
+    'the', 'therapy', 'to', 'treatment', 'treatments'
+]);
+const patientSearchExpectations = new Map([
+    ['OA', ['../hip-osteoarthritis-exercises/', '../knee-osteoarthritis-advanced-exercises/', '../knee-osteoarthritis-exercises/']],
+    ['IT', ['../iliotibial-band-syndrome-exercises/']],
+    ['ITBS', ['../iliotibial-band-syndrome-exercises/']],
+    ['PFPS', ['../patellofemoral-pain-exercises/']],
+    ["runner's knee exercises", ['../patellofemoral-pain-exercises/']],
+    ['frozen shoulder rehab', ['../adhesive-capsulitis-exercises/']],
+    ['tennis elbow exercises', ['../lateral-elbow-tendinopathy-exercises/']],
+    ["golfer's elbow exercises", ['../medial-elbow-tendinopathy-exercises/']],
+    ['plantar fasciopathy', ['../plantar-fasciitis-exercises/']],
+    ['PTTD', ['../tibialis-posterior-tendinopathy-exercises/']],
+    ['posterior tibial tendonitis exercises', ['../tibialis-posterior-tendinopathy-exercises/']],
+    ['thumb CMC arthritis', ['../thumb-cmc-osteoarthritis-exercises/']],
+    ["De Quervain's exercises", ['../de-quervain-tenosynovitis-exercises/']],
+    ['heel pain exercises', ['../achilles-tendinopathy-exercises/', '../plantar-fasciitis-exercises/']],
+    ['low back pain program', ['../low-back-pain-exercises/']],
+    ['hip pain', ['../gluteal-tendinopathy-exercises/', '../hip-osteoarthritis-exercises/']],
+    ['knee arthritis exercises', ['../knee-osteoarthritis-advanced-exercises/', '../knee-osteoarthritis-exercises/']],
+    ['ankle instability rehab', ['../lateral-ankle-sprain-exercises/']],
+    ['mommy thumb', ['../de-quervain-tenosynovitis-exercises/']]
+]);
+
+for (const [query, expectedHrefs] of patientSearchExpectations) {
+    const normalizedQuery = normalizeProgramSearchForValidation(query);
+    const tokens = normalizedQuery
+        ? normalizedQuery.split(' ').filter((token) => !patientSearchStopWords.has(token))
+        : [];
+    const actualHrefs = exerciseHubSearchCards
+        .filter((card) => tokens.every((token) => (
+            token.length <= 2 ? card.words.has(token) : card.text.includes(token)
+        )))
+        .map((card) => card.href)
+        .sort();
+    const expected = [...expectedHrefs].sort();
+    if (JSON.stringify(actualHrefs) !== JSON.stringify(expected)) {
+        errors.push(
+            'Exercise library search query "' + query + '" expected '
+            + expected.join(', ') + ', found ' + actualHrefs.join(', ')
+        );
+    }
+}
 if (exerciseHubPage.indexOf('id="programs"') > exerciseHubPage.indexOf('class="clinician-panel"')) {
     errors.push('Exercise library must present the program chooser before the clinician panel');
 }
 if (/\bdata-analytics-event=/.test(exerciseHubPage.match(/<fieldset class="hep-filter-controls"[\s\S]*?<\/fieldset>/)?.[0] || '')) {
-    errors.push('Exercise library body-region filters must not record health-related selections');
+    errors.push('Exercise library search and body-region filters must not record health-related selections');
 }
 
 if (errors.length > 0) {
