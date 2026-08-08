@@ -3848,6 +3848,11 @@
         page-break-after: avoid;
     }
 
+    .hep-page .print-heading-group {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
     .hep-page p,
     .hep-page li {
         orphans: 3;
@@ -4046,6 +4051,17 @@
         margin-top: 3mm;
     }
 
+    :is(
+        .hep-program-knee-osteoarthritis-advanced-exercises,
+        .hep-program-hamstring-strain-exercises,
+        .hep-program-hip-osteoarthritis-exercises,
+        .hep-program-meniscus-tear-rehabilitation-exercises,
+        .hep-program-patellar-tendinopathy-exercises
+    ) .option-list {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
     .hep-page .option-list li {
         padding: 2.5mm 0 2.5mm 5mm;
     }
@@ -4125,6 +4141,21 @@
         padding: 1mm 2mm;
         border: 1px solid #888888;
         text-align: center;
+    }
+
+    .hep-program-gluteal-tendinopathy-exercises .print-progress-tracker {
+        margin-top: 3mm;
+        padding-top: 2mm;
+    }
+
+    .hep-program-gluteal-tendinopathy-exercises .print-progress-tracker > p {
+        margin-bottom: 2mm;
+    }
+
+    .hep-program-gluteal-tendinopathy-exercises .print-progress-tracker th,
+    .hep-program-gluteal-tendinopathy-exercises .print-progress-tracker td {
+        height: 5.5mm;
+        padding: 0.75mm 2mm;
     }
 
     .hep-page .print-progress-tracker col.tracker-week {

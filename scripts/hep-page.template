@@ -34,7 +34,7 @@
     <meta name="twitter:image:alt" content="Jeremy Swisher, MD, courtside while providing sports medicine coverage">
 
     <link rel="stylesheet" href="../styles.css?v=20260730-perf1">
-    <link rel="stylesheet" href="../landing-pages.css?v=20260804-hep4">
+    <link rel="stylesheet" href="../landing-pages.css?v=20260808-hep8">
     <noscript><style>.print-program-button,.video-load-button{display:none!important}</style></noscript>
 
     <script type="application/ld+json">
@@ -117,7 +117,7 @@
             <div class="landing-shell landing-layout">
                 <article class="landing-article">
                     <div class="print-only print-program-header">
-                        <div class="print-program-brand"><p>Jeremy Swisher, MD</p><p>Evidence-based home exercise program</p></div>
+                        <div class="print-program-brand"><p>Jeremy Swisher, MD</p><p>Evidence-informed home exercise program</p></div>
                         <h2>{{TITLE}}</h2>
                         <div class="print-program-fields"><p>Name: __________________________________</p><p>Affected side: ______________</p><p>Start date: __________________</p><p>Review date: _________________</p><p>Clinician or PT: ______________________________</p></div>
                     </div>
@@ -171,8 +171,10 @@
                     </section>
 
                     <section class="content-section" id="progress">
-                        <p class="section-label">Progression</p>
-                        <h2>Build capacity in stages.</h2>
+                        <div class="print-heading-group">
+                            <p class="section-label">Progression</p>
+                            <h2>Build capacity in stages.</h2>
+                        </div>
                         <ol class="care-steps">
 {{PROGRESSION}}
                         </ol>
@@ -184,8 +186,8 @@
                     </section>
 
                     <section class="print-only print-progress-tracker" aria-labelledby="print-tracker-title">
-                        <h3 id="print-tracker-title">First six weeks</h3>
-                        <p>Mark up to three key program sessions each week. Circle or check the weekday boxes for mobility, walking, or other frequent work prescribed above. Use notes for symptoms, resistance, exercise duration, or an activity that became easier. Continue through the condition-specific trial described above when that trial is longer than six weeks.</p>
+                        <h3 id="print-tracker-title">Progress tracker</h3>
+                        <p>Use this tracker through the first checkpoint above. Mark up to three key sessions each week, check weekdays for frequent work, and note symptoms, resistance, duration, or activity gains. Continue through a longer condition-specific trial when useful.</p>
                         <table aria-labelledby="print-tracker-title">
                             <colgroup>
                                 <col class="tracker-week">

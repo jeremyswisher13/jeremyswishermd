@@ -6,7 +6,7 @@
     "shortTitle": "Beginner knee arthritis exercises",
     "conditionName": "Knee osteoarthritis",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "sLCahUJl8jk",
       "title": "Knee Osteoarthritis (OA) Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -130,7 +130,7 @@
     "shortTitle": "Advanced knee arthritis exercises",
     "conditionName": "Knee osteoarthritis",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "sLCahUJl8jk",
       "title": "Knee Osteoarthritis (OA) Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -262,7 +262,7 @@
     "shortTitle": "Patellofemoral pain exercises",
     "conditionName": "Patellofemoral pain",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "K3HxB6rAeDo",
       "title": "Patellofemoral Pain | Chondromalacia Patellae | Runner’s Knee (Education | Myths | Exercises)",
@@ -369,7 +369,7 @@
     "shortTitle": "Rotator cuff-related shoulder exercises",
     "conditionName": "Rotator cuff-related shoulder pain",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "1Wy8jh4QQH8",
       "title": "Rotator Cuff Tear Rehab & Exercises (Shoulder Pain, Tendinitis, Impingement)",
@@ -485,7 +485,7 @@
     "shortTitle": "Midportion Achilles exercises",
     "conditionName": "Midportion Achilles tendinopathy",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "DnxahqgsAEw",
       "title": "Achilles Tendinopathy / Tendinitis / Tendinosis | Heel Pain Rehab (Education, Myths, Exercises)",
@@ -513,7 +513,7 @@
     "assessFirst": "Pain directly at the heel attachment, a sudden injury, substantial swelling, inability to perform a heel raise, recent surgery, uncertainty about rupture, or a known inflammatory, endocrine, or metabolic disorder. Stop tendon-loading exercise and contact the prescribing clinician immediately for new Achilles pain, swelling, or weakness during fluoroquinolone treatment. FDA-approved fluoroquinolone medication guides direct patients to stop the medicine at the first tendon symptoms and obtain prompt medical guidance. If symptoms begin after the course has ended, seek prompt assessment. Age over 60, systemic corticosteroid treatment, or a kidney, heart, or lung transplant increases concern.",
     "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for new one-sided calf warmth or swelling, or for a sudden pop, bruising, a palpable gap, inability to push off or perform a heel raise, acute major swelling, or other signs of tendon rupture.",
     "programHeading": "Use two calf angles and one clear progression.",
-    "programIntro": "Perform the straight-knee and bent-knee loading exercises on the same day. Use the isometric hold as an entry option on more painful days, not as mandatory extra volume. Keep all work on a flat floor for this midportion starter plan.",
+    "programIntro": "Perform the straight-knee and bent-knee loading exercises on the same day. Use the isometric hold as an entry option on more painful days, not as mandatory extra volume. When you reach the single-leg heel-raise progression, use it in place of the slow straight-knee heel raise rather than as extra volume. Keep all work on a flat floor for this midportion starter plan.",
     "frequency": "Loading at least 3 days per week",
     "equipment": "Wall or counter, chair, optional backpack or dumbbell",
     "checkpoint": "Commit to at least 12 weeks",
@@ -547,7 +547,7 @@
         "name": "Single-leg heel raise progression",
         "dose": "3 sets of 6 to 12 repetitions",
         "frequency": "3 days per week when ready",
-        "how": "Rise and lower on one leg with a slow tempo, stable ankle, and similar heel height across repetitions.",
+        "how": "Use this in place of the slow straight-knee heel raise when ready. Rise and lower on one leg with a slow tempo, stable ankle, and similar heel height across repetitions.",
         "easier": "Use the other foot lightly for assistance.",
         "harder": "Add load while preserving height and control."
       },
@@ -573,7 +573,8 @@
       "You have completed the progressive loading stage needed for the activity you plan to resume.",
       "Pain stays at 5 out of 10 or less during activity and returns to baseline by the next morning.",
       "Pain and stiffness are not increasing from week to week.",
-      "Walking, stairs, and repeated heel raises are controlled without a sustained flare."
+      "Walking, stairs, and repeated heel raises are controlled without a sustained flare.",
+      "These markers guide progression but do not independently clear high-demand or competitive sport."
     ],
     "evaluation": "Schedule a visit if the pain is at the heel attachment, the diagnosis is uncertain, symptoms are worsening, a rupture is possible, or a consistent twelve-week loading trial does not improve function.",
     "faqs": [
@@ -603,7 +604,7 @@
     "shortTitle": "Gluteal tendinopathy exercises",
     "conditionName": "Gluteal tendinopathy and lateral hip pain",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "e_Kk-XqPWZo",
       "title": "Gluteal Tendinopathy / Greater Trochanteric Hip Bursitis (Education | Myths | Exercises)",
@@ -629,7 +630,7 @@
     "fitIntro": "This starter program is intended for adults who have already been evaluated and told gluteal tendinopathy is the likely diagnosis. It is not a self-diagnosis tool, a postoperative protocol, or a substitute for individualized care.",
     "fit": "Pain and tenderness around the greater trochanter, often aggravated by side-lying, prolonged walking, stairs, or standing on one leg.",
     "assessFirst": "Groin-dominant pain, major hip stiffness, rapidly progressive weakness, a substantial limp, recent trauma, lumbar nerve symptoms, or a diagnosis that remains uncertain.",
-    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment after acute trauma with inability to bear weight, rapidly progressive hip weakness, a pronounced hip drop or worsening limp, fever, deep groin pain with major motion loss, or new neurologic symptoms. Arrange a prompt evaluation for unexplained systemic or persistent night pain.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment after acute trauma with inability to bear weight, rapidly progressive hip weakness, a new or rapidly worsening pronounced hip drop or limp, fever, deep groin pain with major motion loss, or new neurologic symptoms. Arrange a prompt evaluation for unexplained systemic or persistent night pain.",
     "programHeading": "Change the positions, then train the hip.",
     "programIntro": "Temporarily reduce compressive positions such as lying on the painful side, crossing the legs, hanging on one hip, and forceful stretching that pulls the painful leg across the body. Use the isometric on lighter days and the strength movements on nonconsecutive loading days.",
     "frequency": "Isometric most days; strength 3 nonconsecutive days per week",
@@ -718,7 +719,7 @@
     "shortTitle": "Lateral ankle sprain exercises",
     "conditionName": "Lateral ankle sprain",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "ga_OAPf6IOI",
       "title": "How to Rehab a Sprained Ankle (Start to Finish)",
@@ -833,7 +834,7 @@
     "shortTitle": "Tennis elbow and common extensor exercises",
     "conditionName": "Lateral elbow tendinopathy and common extensor tendinopathy",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "aOueY1l_X0U",
       "title": "Tennis Elbow Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -949,7 +950,7 @@
     "shortTitle": "Golfer's elbow and common flexor exercises",
     "conditionName": "Medial elbow tendinopathy and common flexor tendinopathy",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "3CJMz0HoGXk",
       "title": "Golfer’s Elbow Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -1065,7 +1066,7 @@
     "shortTitle": "Frozen shoulder and adhesive capsulitis exercises",
     "conditionName": "Adhesive capsulitis and frozen shoulder",
     "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "SV7exHYLVHU",
       "title": "BEST Exercises for Frozen Shoulder | Adhesive Capsulitis (Mobility, Stretches, Strength)",
@@ -1183,7 +1184,7 @@
     "shortTitle": "Patellar tendinopathy exercises",
     "conditionName": "Patellar tendinopathy in athletes",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "e7oGNVUQi2I",
       "title": "Patellar Tendinopathy / Tendinitis / Tendinosis | Jumper’s Knee Rehab (Education, Myths, Exercises)",
@@ -1314,7 +1315,7 @@
     "conditionName": "Persistent or recurrent nonspecific low back pain",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "x71Y5ijW4DU",
       "title": "Lower Back Pain Rehab (Exercises | Education | Myths | Prevention)",
@@ -1445,7 +1446,7 @@
     "conditionName": "Hip osteoarthritis",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "x-O-m_WCtWw",
       "title": "Doctor of Physical Therapy Answers Your 10 Most Common Questions About Hip Osteoarthritis",
@@ -1581,7 +1582,7 @@
     "conditionName": "Acute grade I or II hamstring muscle strain in athletes",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "7D50I7sdlXg",
       "title": "Hamstring Strain Rehab & Exercises (Strength | Running | Return to Sport)",
@@ -1720,7 +1721,7 @@
     "conditionName": "Plantar fasciopathy, commonly called plantar fasciitis, a common cause of plantar heel pain",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "5D86b45yJzU",
       "title": "Plantar Fasciitis (Education | Myths | Stretching & Strengthening Exercises)",
@@ -1847,7 +1848,7 @@
     "conditionName": "Meniscus tear",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "Rr0g_b8Neq4",
       "title": "Meniscus Tear Rehab & Exercises (Stretching | Strength | Plyometrics)",
@@ -1935,8 +1936,8 @@
     ],
     "responseIntro": "Mild discomfort can be acceptable when movement stays controlled, there is no new limp, locking, or swelling, and the knee returns to its usual baseline by the next morning.",
     "green": "Mild discomfort, no new limp or catching, no increase in swelling, and the knee returns to its usual baseline by the following morning.",
-    "yellow": "Pain, swelling, limping, catching, or loss of motion is meaningfully worse later that day or the next morning. Reduce range, resistance, repetitions, step height, or walking time.",
-    "red": "Stop and obtain assessment for true locking, rapidly increasing swelling, recurrent giving way, inability to bear weight, a hot red joint, or new numbness or weakness.",
+    "yellow": "Pain, swelling, limping, catching, or temporary stiffness is meaningfully worse later that day or the next morning while full extension remains possible and there is no hard block. Reduce range, resistance, repetitions, step height, or walking time.",
+    "red": "Stop and obtain assessment for true locking, a new hard block or inability to fully straighten the knee, rapidly increasing swelling, recurrent giving way, inability to bear weight, a hot red joint, or new numbness or weakness.",
     "progression": [
       { "title": "Stage 1: restore motion and settle irritability", "text": "Use the lower exercise dose. Prioritize comfortable full extension, a nonlimping gait, and no accumulating swelling. Add 5 to 10 minutes of flat walking or easy cycling when tolerated." },
       { "title": "Stage 2: build strength and control", "text": "Reach the upper repetition range with controlled movement, then add a small amount of resistance, squat depth, or step height. Change one variable at a time." },
@@ -1979,7 +1980,7 @@
     "conditionName": "Meniscus tear",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "sKZcTjlxk-Q",
       "title": "How To Return Back To Sport After An Injury (ACL, Meniscus, MCL, Ankle Sprain)",
@@ -2085,8 +2086,8 @@
     ],
     "responseIntro": "Advanced training should leave the knee quiet enough to recover by the next morning. Mild pain can be acceptable, but do not progress impact when effusion, loss of motion, limping, or altered landing mechanics are present.",
     "green": "Pain is no more than mild, movement remains confident and controlled, there is no locking or giving way, no new swelling, fullness, or effusion, and motion and symptoms are back to baseline by the next morning.",
-    "yellow": "Pain reaches a moderate level, stiffness or catching increases, or movement quality changes. Reduce contacts, speed, depth, or resistance by about 25 to 50 percent and return to the last tolerated stage. If new swelling, fullness, effusion, or loss of extension appears, pause running, jumping, and cutting until baseline returns. Persistent or recurrent findings require reassessment.",
-    "red": "Stop and obtain assessment for true locking, rapid or recurrent effusion, repeated giving way, loss of extension, inability to bear weight, a new traumatic episode, unexpected numbness or weakness, or a hot red joint with or without fever.",
+    "yellow": "Pain reaches a moderate level, temporary stiffness or catching increases, or movement quality changes while usual full extension remains possible. Reduce contacts, speed, depth, or resistance by about 25 to 50 percent and return to the last tolerated stage. If new swelling, fullness, effusion, or temporary extension stiffness appears, pause running, jumping, and cutting until baseline returns. Persistent or recurrent findings require reassessment.",
+    "red": "Stop and obtain assessment for true locking, a new hard block or inability to fully straighten the knee, rapid or recurrent effusion, repeated giving way, inability to bear weight, a new traumatic episode, unexpected numbness or weakness, or a hot red joint with or without fever.",
     "progression": [
       {
         "title": "Stage 1: build the strength base and earn running",
@@ -2198,7 +2199,7 @@
     "conditionName": "Iliotibial band syndrome",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "qJ1mrNXXjSo",
       "title": "IT Band Pain / Iliotibial Band Friction Syndrome (Myth Busting | Exercises | Rehab)",
@@ -2320,7 +2321,7 @@
     "conditionName": "Peroneal tendinopathy",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "0fsR5-oqcVU",
       "title": "Peroneal Tendinopathy / Tendinitis: Causes & Treatment (Education | Strengthening | Stretching)",
@@ -2400,7 +2401,7 @@
     ],
     "responseIntro": "Mild discomfort can be acceptable when technique remains stable, there is no snapping or giving way, and symptoms return to their usual baseline by the next morning.",
     "green": "Mild discomfort, stable technique, no snapping or giving way, and symptoms return to their usual baseline by the next morning.",
-    "yellow": "Pain, swelling, limping, or instability is meaningfully worse later that day or the next morning. Reduce range, resistance, repetitions, steps, or terrain by about 25 to 50 percent and rebuild.",
+    "yellow": "Pain, swelling, limping, or fatigue is meaningfully worse later that day or the next morning without snapping or giving way. Reduce range, resistance, repetitions, steps, or terrain by about 25 to 50 percent and rebuild.",
     "red": "Stop for sharp pain, a pop, tendon snapping or displacement, new weakness, giving way, numbness, marked swelling, or inability to bear weight. Obtain an assessment.",
     "progression": [
       { "title": "Stage 1: settle and reload", "text": "Reduce hills, cambered roads, trail running, and cutting. Use isometric or light eversion, double-leg heel raises, supported balance, and level activity." },
@@ -2413,7 +2414,7 @@
       "Twenty controlled single-leg heel raises can be completed without rolling outward or snapping.",
       "Single-leg balance can be held for 45 to 60 seconds.",
       "Ten controlled step-downs can be completed without giving way.",
-      "For impact goals, 20 small double-leg and then single-leg pogos do not cause sharp pain or instability.",
+      "For impact goals, first 20 small double-leg pogos and then 20 small single-leg pogos on the involved side do not cause sharp pain or instability.",
       "These are practical progression guides, not validated return-to-sport cutoffs."
     ],
     "evaluation": "Schedule a reassessment for worsening symptoms, recurrent swelling, snapping, repeated sprains or giving way, inability to progress heel raises, inability to resume normal walking, or no improving trend after about six weeks.",
@@ -2444,7 +2445,7 @@
     "conditionName": "Tibialis posterior tendinopathy",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": {
       "id": "NKeQHV85QLc",
       "title": "Tibialis Posterior Tendinopathy | Tendinitis | Dysfunction | Pain (Exercises, Rehab, Strengthening)",
@@ -2570,7 +2571,7 @@
     "conditionName": "Thumb carpometacarpal osteoarthritis",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": null,
     "metaDescription": "Printable thumb CMC osteoarthritis exercises and brace guidance, with joint protection, gentle strength, symptom rules, and clear progression.",
     "breadcrumb": "Thumb CMC osteoarthritis",
@@ -2690,9 +2691,9 @@
     "conditionName": "De Quervain tenosynovitis",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-08-04",
+    "modifiedDate": "2026-08-08",
     "video": null,
-    "metaDescription": "De Quervain exercises, thumb-spica brace guidance, activity changes, symptom rules, and evidence-based options for thumb-side wrist pain.",
+    "metaDescription": "De Quervain exercises, thumb-spica brace guidance, activity changes, symptom rules, and evidence-informed options for thumb-side wrist pain.",
     "breadcrumb": "De Quervain tenosynovitis",
     "kicker": "Thumb-side wrist pain · Assessment-first starter plan",
     "h1": "De Quervain Exercises and Activity Guide",
