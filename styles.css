@@ -1990,6 +1990,11 @@ body {
     transform: none;
 }
 
+html.mobile-nav-open,
+html.mobile-nav-open body {
+    overflow: hidden;
+}
+
 /* Hero */
 .hero {
     display: block;
@@ -3035,6 +3040,10 @@ body {
         background: var(--color-bg);
     }
 
+    .nav-toggle {
+        display: none;
+    }
+
     .nav-ready .nav-toggle {
         display: flex;
     }
@@ -3046,6 +3055,7 @@ body {
         left: 0;
         flex-direction: column;
         align-items: stretch;
+        justify-content: flex-start;
         gap: 4px;
         max-height: calc(100vh - 78px);
         padding: 18px 28px 24px;
@@ -3056,6 +3066,14 @@ body {
 
     .nav-ready .nav-links {
         display: none;
+        height: calc(100vh - 78px);
+        height: calc(100dvh - 78px);
+        max-height: none;
+        padding-bottom: max(24px, env(safe-area-inset-bottom));
+        overscroll-behavior: contain;
+        border-bottom: 0;
+        box-shadow: none;
+        -webkit-overflow-scrolling: touch;
     }
 
     .nav-ready .nav-links.open {

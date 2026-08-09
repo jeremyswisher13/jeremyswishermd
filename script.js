@@ -21,6 +21,7 @@ function setMobileNavOpen(isOpen, options = {}) {
     navToggle.classList.toggle('active', shouldOpen);
     navToggle.setAttribute('aria-expanded', String(shouldOpen));
     navToggle.setAttribute('aria-label', shouldOpen ? 'Close navigation' : 'Open navigation');
+    document.documentElement.classList.toggle('mobile-nav-open', shouldOpen);
 
     if (shouldOpen && focusFirst) {
         const firstNavLink = navLinks.querySelector('a[href]');
@@ -70,6 +71,28 @@ if (navToggle && navLinks) {
         if (event.key === 'Escape' && navLinks.classList.contains('open')) {
             event.preventDefault();
             setMobileNavOpen(false, { returnFocus: true });
+            return;
+        }
+
+        if (
+            event.key === 'Tab'
+            && navLinks.classList.contains('open')
+            && (mobileNavMedia?.matches ?? window.innerWidth <= MOBILE_NAV_BREAKPOINT)
+        ) {
+            const focusableNavigationItems = [
+                navToggle,
+                ...navLinks.querySelectorAll('a[href]')
+            ];
+            const firstItem = focusableNavigationItems[0];
+            const lastItem = focusableNavigationItems[focusableNavigationItems.length - 1];
+
+            if (event.shiftKey && document.activeElement === firstItem) {
+                event.preventDefault();
+                lastItem.focus();
+            } else if (!event.shiftKey && document.activeElement === lastItem) {
+                event.preventDefault();
+                firstItem.focus();
+            }
         }
     });
 

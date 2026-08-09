@@ -576,6 +576,10 @@
     scroll-margin-top: 104px;
 }
 
+.landing-page .content-section + .content-section[id] {
+    scroll-margin-top: calc(26px - clamp(64px, 7vw, 88px));
+}
+
 /* Breadcrumb */
 .landing-page .breadcrumb {
     display: flex;
@@ -3368,6 +3372,10 @@
 
     .landing-page .content-section + .content-section {
         padding-top: 58px;
+    }
+
+    .landing-page .content-section + .content-section[id] {
+        scroll-margin-top: -32px;
     }
 
     .landing-page .content-section h2 {

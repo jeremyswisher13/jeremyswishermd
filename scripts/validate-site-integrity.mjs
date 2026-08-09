@@ -9,7 +9,34 @@ const hepPrograms = JSON.parse(readFileSync(join(scriptDirectory, 'hep-programs.
 const htmlFiles = [];
 const errors = [];
 const analyticsEventCounts = new Map();
-const expectedScriptCacheKey = '20260804-acq3';
+const expectedAssetCacheKey = '20260809-nav1';
+const expectedPrimaryNavigationLabels = [
+    'Knee Osteoarthritis',
+    'PRP for Knee OA',
+    'Exercise Library',
+    'Locations',
+    'About',
+    'Research',
+    'Call 310-319-1234'
+];
+const expectedPrimaryNavigationTargets = [
+    'knee-osteoarthritis/',
+    'prp-knee-osteoarthritis/',
+    'home-exercise-programs/',
+    'locations/',
+    '#about',
+    '#publications',
+    'tel:310-319-1234'
+];
+const hepProgramFiles = new Set(hepPrograms.map((program) => program.slug + '/index.html'));
+const expectedPrimaryNavigationCurrent = new Map([
+    ['knee-osteoarthritis/index.html', { index: 0, value: 'page' }],
+    ['hyaluronic-acid-knee-osteoarthritis/index.html', { index: 0, value: 'location' }],
+    ['knee-osteoarthritis-injection-comparison/index.html', { index: 0, value: 'location' }],
+    ['prp-knee-osteoarthritis/index.html', { index: 1, value: 'page' }],
+    ['home-exercise-programs/index.html', { index: 2, value: 'page' }],
+    ['locations/index.html', { index: 3, value: 'page' }]
+]);
 const supportedMaterialIcons = new Set([
     'accessibility', 'accessibility_new', 'airline_seat_flat', 'arrow_forward', 'badge', 'balance',
     'bedtime', 'block', 'bloodtype', 'calculate', 'calendar_month', 'call', 'chair', 'check_circle',
@@ -147,8 +174,68 @@ for (const file of htmlFiles) {
     const sharedScriptReferences = [...html.matchAll(/<script\b[^>]*\bsrc="[^"]*script\.js\?v=([^"]+)"/gi)];
     if (sharedScriptReferences.length !== 1) {
         errors.push(displayFile + ': expected exactly one versioned shared script reference');
-    } else if (sharedScriptReferences[0][1] !== expectedScriptCacheKey) {
-        errors.push(displayFile + ': shared script cache key is not ' + expectedScriptCacheKey);
+    } else if (sharedScriptReferences[0][1] !== expectedAssetCacheKey) {
+        errors.push(displayFile + ': shared script cache key is not ' + expectedAssetCacheKey);
+    }
+
+    const sharedStyleReferences = [...html.matchAll(/<link\b[^>]*\bhref="[^"]*styles\.css\?v=([^"]+)"/gi)];
+    if (sharedStyleReferences.length !== 1) {
+        errors.push(displayFile + ': expected exactly one versioned shared stylesheet reference');
+    } else if (sharedStyleReferences[0][1] !== expectedAssetCacheKey) {
+        errors.push(displayFile + ': shared stylesheet cache key is not ' + expectedAssetCacheKey);
+    }
+
+    const landingStyleReferences = [...html.matchAll(/<link\b[^>]*\bhref="[^"]*landing-pages\.css\?v=([^"]+)"/gi)];
+    if (landingStyleReferences.length > 1) {
+        errors.push(displayFile + ': expected no more than one landing-page stylesheet reference');
+    } else if (landingStyleReferences.length === 1 && landingStyleReferences[0][1] !== expectedAssetCacheKey) {
+        errors.push(displayFile + ': landing-page stylesheet cache key is not ' + expectedAssetCacheKey);
+    }
+
+    const primaryNavigation = /<nav class="nav-links" id="navLinks" aria-label="Primary navigation">([\s\S]*?)<\/nav>/i.exec(html)?.[1];
+    if (!primaryNavigation) {
+        errors.push(displayFile + ': missing primary navigation');
+    } else {
+        const navigationAnchors = [...primaryNavigation.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)];
+        const navigationLabels = navigationAnchors
+            .map((match) => match[2].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim());
+        const navigationTargets = navigationAnchors
+            .map((match) => /\bhref="([^"]+)"/i.exec(match[1])?.[1] || '')
+            .map((target) => target.replace(/^\.\.\//, '').replace(/^\//, ''));
+        if (navigationLabels.join('|') !== expectedPrimaryNavigationLabels.join('|')) {
+            errors.push(displayFile + ': primary navigation labels or order do not match the patient-first menu');
+        }
+        if (navigationTargets.join('|') !== expectedPrimaryNavigationTargets.join('|')) {
+            errors.push(displayFile + ': primary navigation destinations do not match the patient-first menu');
+        }
+
+        const expectedCurrent = hepProgramFiles.has(displayFile)
+            ? { index: 2, value: 'location' }
+            : expectedPrimaryNavigationCurrent.get(displayFile);
+        const activeIndexes = navigationAnchors
+            .map((match, index) => /\bclass="[^"]*\bactive\b[^"]*"/i.test(match[1]) ? index : -1)
+            .filter((index) => index >= 0);
+        const currentEntries = navigationAnchors
+            .map((match, index) => ({
+                index,
+                value: /\baria-current="([^"]+)"/i.exec(match[1])?.[1] || ''
+            }))
+            .filter((entry) => entry.value);
+
+        if (expectedCurrent) {
+            if (activeIndexes.length !== 1 || activeIndexes[0] !== expectedCurrent.index) {
+                errors.push(displayFile + ': primary navigation active state is incorrect');
+            }
+            if (
+                currentEntries.length !== 1
+                || currentEntries[0].index !== expectedCurrent.index
+                || currentEntries[0].value !== expectedCurrent.value
+            ) {
+                errors.push(displayFile + ': primary navigation aria-current state is incorrect');
+            }
+        } else if (activeIndexes.length > 0 || currentEntries.length > 0) {
+            errors.push(displayFile + ': primary navigation has an unexpected active or aria-current state');
+        }
     }
 
     for (const [, iconName] of html.matchAll(/\sdata-icon="([^"]+)"/g)) {
@@ -204,6 +291,46 @@ for (const file of htmlFiles) {
             const source = candidate.trim().split(/\s+/)[0];
             if (source) checkLocalReference(source, file, 'responsive image');
         }
+    }
+}
+
+const hepTemplate = readFileSync(join(scriptDirectory, 'hep-page.template'), 'utf8');
+const hepTemplateNavigation = /<nav class="nav-links" id="navLinks" aria-label="Primary navigation">([\s\S]*?)<\/nav>/i
+    .exec(hepTemplate)?.[1];
+if (!hepTemplateNavigation) {
+    errors.push('HEP page template is missing primary navigation');
+} else {
+    const templateAnchors = [...hepTemplateNavigation.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)];
+    const templateLabels = templateAnchors
+        .map((match) => match[2].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim());
+    const templateTargets = templateAnchors
+        .map((match) => /\bhref="([^"]+)"/i.exec(match[1])?.[1] || '')
+        .map((target) => target.replace(/^\.\.\//, '').replace(/^\//, ''));
+    const templateActiveIndexes = templateAnchors
+        .map((match, index) => /\bclass="[^"]*\bactive\b[^"]*"/i.test(match[1]) ? index : -1)
+        .filter((index) => index >= 0);
+    const templateCurrentEntries = templateAnchors
+        .map((match, index) => ({
+            index,
+            value: /\baria-current="([^"]+)"/i.exec(match[1])?.[1] || ''
+        }))
+        .filter((entry) => entry.value);
+
+    if (templateLabels.join('|') !== expectedPrimaryNavigationLabels.join('|')) {
+        errors.push('HEP page template navigation labels or order do not match the patient-first menu');
+    }
+    if (templateTargets.join('|') !== expectedPrimaryNavigationTargets.join('|')) {
+        errors.push('HEP page template navigation destinations do not match the patient-first menu');
+    }
+    if (templateActiveIndexes.length !== 1 || templateActiveIndexes[0] !== 2) {
+        errors.push('HEP page template must mark Exercise Library as active');
+    }
+    if (
+        templateCurrentEntries.length !== 1
+        || templateCurrentEntries[0].index !== 2
+        || templateCurrentEntries[0].value !== 'location'
+    ) {
+        errors.push('HEP page template must mark Exercise Library as the current location');
     }
 }
 
