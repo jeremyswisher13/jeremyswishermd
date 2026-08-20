@@ -580,6 +580,28 @@
     scroll-margin-top: calc(26px - clamp(64px, 7vw, 88px));
 }
 
+.landing-page .landing-article > .content-section[id]:first-child,
+.landing-page .landing-article > :not(.content-section) + .content-section[id] {
+    scroll-margin-top: 24px;
+}
+
+.landing-page.prp-page #medications-supplements,
+.landing-page.prp-page #safety,
+.landing-page.prp-page #prp-faq-title {
+    scroll-margin-top: 24px;
+}
+
+.landing-page .landing-article :where(p, li) a:not(.btn):not(.text-link):not(.oa-cite) {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+    text-decoration-color: rgba(22, 79, 121, 0.3);
+    text-underline-offset: 3px;
+}
+
+.landing-page .landing-article :where(p, li) a:not(.btn):not(.text-link):not(.oa-cite):hover {
+    text-decoration-color: currentColor;
+}
+
 /* Breadcrumb */
 .landing-page .breadcrumb {
     display: flex;
@@ -3995,6 +4017,23 @@
     .hep-page #response {
         break-inside: avoid;
         page-break-inside: avoid;
+    }
+
+    .hep-program-gluteal-tendinopathy-exercises #response {
+        break-inside: auto;
+        page-break-inside: auto;
+        padding-bottom: 2mm;
+    }
+
+    .hep-program-gluteal-tendinopathy-exercises #response .note-panel {
+        margin: 2mm 0;
+        padding: 2mm 3mm;
+    }
+
+    .hep-program-gluteal-tendinopathy-exercises #response .note-panel p {
+        margin-bottom: 0;
+        font-size: 8.5pt;
+        line-height: 1.3;
     }
 
     .hep-page .symptom-grid {

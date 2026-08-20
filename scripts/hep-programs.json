@@ -604,7 +604,7 @@
     "shortTitle": "Gluteal tendinopathy exercises",
     "conditionName": "Gluteal tendinopathy and lateral hip pain",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-08",
+    "modifiedDate": "2026-08-10",
     "video": {
       "id": "e_Kk-XqPWZo",
       "title": "Gluteal Tendinopathy / Greater Trochanteric Hip Bursitis (Education | Myths | Exercises)",
@@ -630,7 +630,7 @@
     "fitIntro": "This starter program is intended for adults who have already been evaluated and told gluteal tendinopathy is the likely diagnosis. It is not a self-diagnosis tool, a postoperative protocol, or a substitute for individualized care.",
     "fit": "Pain and tenderness around the greater trochanter, often aggravated by side-lying, prolonged walking, stairs, or standing on one leg.",
     "assessFirst": "Groin-dominant pain, major hip stiffness, rapidly progressive weakness, a substantial limp, recent trauma, lumbar nerve symptoms, or a diagnosis that remains uncertain.",
-    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment after acute trauma with inability to bear weight, rapidly progressive hip weakness, a new or rapidly worsening pronounced hip drop or limp, fever, deep groin pain with major motion loss, or new neurologic symptoms. Arrange a prompt evaluation for unexplained systemic or persistent night pain.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment after acute trauma with inability to bear weight, rapidly progressive hip weakness, a new or rapidly worsening pronounced hip drop or limp, fever or systemic illness with a painful hip, sudden or severe deep groin pain with major motion loss, or new neurologic symptoms. Arrange a prompt evaluation for chronic deep groin pain with major stiffness, unexplained systemic symptoms, or persistent night pain.",
     "programHeading": "Change the positions, then train the hip.",
     "programIntro": "Temporarily reduce compressive positions such as lying on the painful side, crossing the legs, hanging on one hip, and forceful stretching that pulls the painful leg across the body. Use the isometric on lighter days and the strength movements on nonconsecutive loading days.",
     "frequency": "Isometric most days; strength 3 nonconsecutive days per week",
@@ -682,7 +682,7 @@
     "responseIntro": "Some discomfort can be acceptable when it does not increase night pain or next-day symptoms. Night pain is a useful signal that total walking, standing, and exercise load may be too high.",
     "green": "Mild, controlled discomfort with stable sleep and no meaningful increase in next-day lateral hip pain.",
     "yellow": "Night pain or next-day walking pain increases. Reduce resistance, range, repetitions, long walks, hills, or sustained single-leg positions.",
-    "red": "Stop and seek same-day urgent assessment for new inability to bear weight, rapidly progressive weakness, deep groin pain with major stiffness, fever, or new neurologic symptoms.",
+    "red": "Stop and seek same-day urgent assessment for new inability to bear weight, rapidly progressive weakness, sudden or severe deep groin pain with major stiffness, fever or systemic illness with a painful hip, or new neurologic symptoms. Arrange prompt evaluation for chronic deep groin pain with major stiffness.",
     "progression": [
       { "title": "Stage 1: reduce compression", "text": "Avoid lying directly on the painful side, crossing the legs, and hanging on one hip. Use a pillow between the knees when lying on the other side." },
       { "title": "Stage 2: build lower-limb strength", "text": "Progress bridge, sit-to-stand, sidestep, and standing abduction by repetitions, band resistance, chair height, or external load." },

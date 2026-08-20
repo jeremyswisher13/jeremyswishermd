@@ -9,23 +9,23 @@ const hepPrograms = JSON.parse(readFileSync(join(scriptDirectory, 'hep-programs.
 const htmlFiles = [];
 const errors = [];
 const analyticsEventCounts = new Map();
-const expectedAssetCacheKey = '20260809-nav1';
+const expectedAssetCacheKey = '20260810-audit2';
 const expectedPrimaryNavigationLabels = [
     'Knee Osteoarthritis',
     'PRP for Knee OA',
     'Exercise Library',
+    'Orthobiologics',
     'Locations',
     'About',
-    'Research',
     'Call 310-319-1234'
 ];
 const expectedPrimaryNavigationTargets = [
     'knee-osteoarthritis/',
     'prp-knee-osteoarthritis/',
     'home-exercise-programs/',
+    'orthobiologics/',
     'locations/',
     '#about',
-    '#publications',
     'tel:310-319-1234'
 ];
 const hepProgramFiles = new Set(hepPrograms.map((program) => program.slug + '/index.html'));
@@ -35,7 +35,8 @@ const expectedPrimaryNavigationCurrent = new Map([
     ['knee-osteoarthritis-injection-comparison/index.html', { index: 0, value: 'location' }],
     ['prp-knee-osteoarthritis/index.html', { index: 1, value: 'page' }],
     ['home-exercise-programs/index.html', { index: 2, value: 'page' }],
-    ['locations/index.html', { index: 3, value: 'page' }]
+    ['orthobiologics/index.html', { index: 3, value: 'page' }],
+    ['locations/index.html', { index: 4, value: 'page' }]
 ]);
 const supportedMaterialIcons = new Set([
     'accessibility', 'accessibility_new', 'airline_seat_flat', 'arrow_forward', 'badge', 'balance',
@@ -208,6 +209,12 @@ for (const file of htmlFiles) {
         if (navigationTargets.join('|') !== expectedPrimaryNavigationTargets.join('|')) {
             errors.push(displayFile + ': primary navigation destinations do not match the patient-first menu');
         }
+        navigationAnchors.forEach((match, index) => {
+            const ariaLabel = /\baria-label="([^"]+)"/i.exec(match[1])?.[1] || '';
+            if (ariaLabel && !ariaLabel.toLowerCase().includes(navigationLabels[index].toLowerCase())) {
+                errors.push(displayFile + ': primary navigation accessible name must include its visible label');
+            }
+        });
 
         const expectedCurrent = hepProgramFiles.has(displayFile)
             ? { index: 2, value: 'location' }
@@ -280,6 +287,11 @@ for (const file of htmlFiles) {
                 + visibleCitationNumber + ' but is source ' + expectedCitationNumber
             );
         }
+
+        const citationAriaLabel = /\baria-label="([^"]+)"/i.exec(attributes)?.[1] || '';
+        if (!citationAriaLabel.includes(String(visibleCitationNumber))) {
+            errors.push(displayFile + ': numbered citation accessible name must include its visible number');
+        }
     }
 
     for (const [, source] of html.matchAll(/\s(?:src|poster)="([^"]+)"/gi)) {
@@ -322,6 +334,12 @@ if (!hepTemplateNavigation) {
     if (templateTargets.join('|') !== expectedPrimaryNavigationTargets.join('|')) {
         errors.push('HEP page template navigation destinations do not match the patient-first menu');
     }
+    templateAnchors.forEach((match, index) => {
+        const ariaLabel = /\baria-label="([^"]+)"/i.exec(match[1])?.[1] || '';
+        if (ariaLabel && !ariaLabel.toLowerCase().includes(templateLabels[index].toLowerCase())) {
+            errors.push('HEP page template navigation accessible name must include its visible label');
+        }
+    });
     if (templateActiveIndexes.length !== 1 || templateActiveIndexes[0] !== 2) {
         errors.push('HEP page template must mark Exercise Library as active');
     }
@@ -339,17 +357,55 @@ const expectedAnalyticsMinimums = new Map([
     ['exercise_video_load', hepPrograms.filter((program) => program.video).length],
     ['referral_instructions_click', 6]
 ]);
-const automaticAnalyticsEvents = [
-    'page_view',
+const expectedActionAnalyticsEvents = [
+    'call_click',
+    'appointment_request_click',
     'location_page_click',
     'directions_click',
-    'official_profile_click'
+    'official_profile_click',
+    'exercise_program_print',
+    'referral_instructions_click',
+    'exercise_video_load'
 ];
+const automaticAnalyticsEvents = [
+    'page_view',
+    ...expectedActionAnalyticsEvents
+];
+const actionCountWords = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+const expectedActionDisclosure = `Only ${actionCountWords[expectedActionAnalyticsEvents.length]} intentional action types are measured`;
 const sharedScript = readFileSync(join(root, 'script.js'), 'utf8');
 const privacyPage = readFileSync(join(root, 'privacy', 'index.html'), 'utf8');
 const homePage = readFileSync(join(root, 'index.html'), 'utf8');
 const exerciseHubPage = readFileSync(join(root, 'home-exercise-programs', 'index.html'), 'utf8');
 const notFoundPage = readFileSync(join(root, '404.html'), 'utf8');
+const prpPage = readFileSync(join(root, 'prp-knee-osteoarthritis', 'index.html'), 'utf8');
+const hyaluronicAcidPage = readFileSync(join(root, 'hyaluronic-acid-knee-osteoarthritis', 'index.html'), 'utf8');
+const injectionComparisonPage = readFileSync(join(root, 'knee-osteoarthritis-injection-comparison', 'index.html'), 'utf8');
+
+if (
+    !homePage.includes('href="orthobiologics/" class="text-link">Explore the Orthobiologics overview')
+) {
+    errors.push('Homepage is missing the Orthobiologics discovery link');
+}
+if (!/<nav class="footer-care-nav"[\s\S]*?href="#publications">Research<\/a>[\s\S]*?<\/nav>/.test(homePage)) {
+    errors.push('Homepage footer must retain a secondary link to Research');
+}
+for (const [label, page] of [
+    ['PRP page', prpPage],
+    ['Hyaluronic acid page', hyaluronicAcidPage],
+    ['Injection comparison page', injectionComparisonPage]
+]) {
+    if (!/<a class="related-card" href="\.\.\/orthobiologics\/">/.test(page)) {
+        errors.push(label + ' is missing its contextual Orthobiologics link');
+    }
+}
+
+if (
+    !homePage.includes('#pubToggleBtn,.pub-filters{display:none!important}')
+    || !homePage.includes('#pubFullList,.pub-list.hidden{display:block!important}')
+) {
+    errors.push('Homepage must expose all publication content when JavaScript is unavailable');
+}
 
 for (const [eventName, minimum] of expectedAnalyticsMinimums) {
     const countFound = analyticsEventCounts.get(eventName) || 0;
@@ -421,6 +477,9 @@ if (!privacyPage.includes('a clinic directions link through UCLA Health or Googl
 }
 if (!privacyPage.includes("Dr. Swisher's official UCLA Health profile")) {
     errors.push('Privacy page is missing the official-profile measurement disclosure');
+}
+if (!privacyPage.includes(expectedActionDisclosure)) {
+    errors.push('Privacy page must accurately disclose the intentional action count');
 }
 if (!sharedScript.includes("document.body?.classList.contains('not-found-page')")) {
     errors.push('Shared script does not suppress analytics on the error page');
