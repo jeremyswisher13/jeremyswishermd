@@ -92,7 +92,7 @@ function renderFaqs(items) {
 
 function renderSources(items) {
     return items.map((item) =>
-        '                            <li><a href="' + escapeHtml(item.href) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(item.label) + '</a></li>'
+        '                            <li><a href="' + escapeHtml(item.href) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(item.label) + '<span class="sr-only"> (opens in a new tab)</span></a></li>'
     ).join('\n');
 }
 
@@ -178,7 +178,7 @@ function renderVideoSection(video) {
         '                            </div>',
         '                            <figcaption class="video-caption">',
         '                                <p>' + escapeHtml(video.description) + '</p>',
-        '                                <a class="text-link" href="' + escapeHtml(watchUrl) + '" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>',
+        '                                <a class="text-link" href="' + escapeHtml(watchUrl) + '" target="_blank" rel="noopener noreferrer">Watch on YouTube<span class="sr-only"> (opens in a new tab)</span></a>',
         '                            </figcaption>',
         '                        </figure>',
         '                        <p class="sr-only" data-video-status role="status" aria-live="polite"></p>',

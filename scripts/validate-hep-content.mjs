@@ -39,6 +39,11 @@ const requiredProgramFields = [
     'evaluation'
 ];
 const requiredExerciseFields = ['name', 'dose', 'frequency', 'how', 'easier', 'harder'];
+const programSearchStopWords = new Set([
+    'a', 'an', 'and', 'exercise', 'exercises', 'for', 'home', 'my', 'of', 'plan', 'plans',
+    'physical', 'program', 'programs', 'pt', 'rehab', 'rehabilitation', 'routine', 'routines',
+    'the', 'therapy', 'to', 'treatment', 'treatments'
+]);
 const errors = [];
 const slugs = new Set();
 
@@ -57,6 +62,29 @@ function escapeHtml(value) {
         .replaceAll('>', '&gt;')
         .replaceAll('"', '&quot;')
         .replaceAll("'", '&#39;');
+}
+
+function normalizeProgramSearch(value) {
+    return String(value || '')
+        .normalize('NFKD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[’']s\b/gi, 's')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim();
+}
+
+function getProgramSearchTokens(value) {
+    const normalizedValue = normalizeProgramSearch(value);
+    return normalizedValue
+        ? normalizedValue.split(' ').filter(token => !programSearchStopWords.has(token))
+        : [];
+}
+
+function programSearchEntryMatches(entry, query) {
+    return getProgramSearchTokens(query).every(token => (
+        token.length <= 2 ? entry.words.has(token) : entry.text.includes(token)
+    ));
 }
 
 function validateDate(value, field, slug) {
@@ -247,6 +275,22 @@ assert(hub.includes(`"numberOfItems": ${programs.length}`), 'Library ItemList co
 
 const cardSlugs = [...hub.matchAll(/<a class="program-card"[^>]*href="\.\.\/([a-z0-9-]+)\/"/g)]
     .map((match) => match[1]);
+const programCardRecords = [...hub.matchAll(/<a class="program-card"([^>]*)>([\s\S]*?)<\/a>/g)]
+    .map((match) => {
+        const attributes = match[1];
+        const body = match[2];
+        const slug = attributes.match(/href="\.\.\/([a-z0-9-]+)\/"/)?.[1] || '';
+        const aliases = attributes.match(/data-program-search="([^"]+)"/)?.[1] || '';
+        const title = body.match(/<h3>([\s\S]*?)<\/h3>/)?.[1] || '';
+        const searchText = normalizeProgramSearch(`${title} ${aliases}`);
+        return {
+            aliases,
+            body,
+            searchEntry: { text: searchText, words: new Set(searchText.split(' ')) },
+            slug
+        };
+    });
+const programCardsBySlug = new Map(programCardRecords.map(card => [card.slug, card]));
 const itemListEntries = [...hub.matchAll(
     /\{\s*"@type":\s*"ListItem",\s*"position":\s*(\d+),\s*"name":\s*"[^"]+",\s*"url":\s*"https:\/\/jeremyswishermd\.com\/([a-z0-9-]+)\/"\s*\}/g
 )].map((match) => ({ position: Number.parseInt(match[1], 10), slug: match[2] }));
@@ -254,6 +298,8 @@ const itemListSlugs = itemListEntries.map((entry) => entry.slug);
 
 assert(cardSlugs.length === programs.length, 'Library card slug count does not match program count');
 assert(new Set(cardSlugs).size === cardSlugs.length, 'Library contains a duplicate program card');
+assert(programCardRecords.length === programs.length, 'Library searchable card count does not match program count');
+assert(programCardsBySlug.size === programCardRecords.length, 'Library contains a duplicate searchable program card');
 assert(itemListEntries.length === programs.length, 'Library ItemList entry count does not match program count');
 assert(new Set(itemListSlugs).size === itemListSlugs.length, 'Library ItemList contains a duplicate program');
 assert(
@@ -265,9 +311,88 @@ assert(
     'Library ItemList order does not match the visible program-card order'
 );
 
+for (const program of programs) {
+    const card = programCardsBySlug.get(program.slug);
+    assert(Boolean(card), `${program.slug}: missing searchable library card`);
+    if (!card) continue;
+
+    const hasVideoCue = card.body.includes('Video available');
+    assert(
+        hasVideoCue === Boolean(program.video),
+        `${program.slug}: library video cue does not match hep-programs.json`
+    );
+
+    for (const token of getProgramSearchTokens(program.shortTitle)) {
+        const tokenMatches = token.length <= 2
+            ? card.searchEntry.words.has(token)
+            : card.searchEntry.text.includes(token);
+        assert(tokenMatches, `${program.slug}: search index is missing shortTitle token "${token}"`);
+    }
+}
+
+const expectedVideoCueCount = programs.filter(program => Boolean(program.video)).length;
+assert(
+    programCardRecords.filter(card => card.body.includes('Video available')).length === expectedVideoCueCount,
+    'Library video cue count does not match hep-programs.json'
+);
+
+const broadSearchExpectations = [
+    ['knee pain', [
+        'knee-osteoarthritis-exercises',
+        'knee-osteoarthritis-advanced-exercises',
+        'patellofemoral-pain-exercises',
+        'patellar-tendinopathy-exercises',
+        'meniscus-tear-rehabilitation-exercises',
+        'advanced-meniscus-rehabilitation-exercises',
+        'iliotibial-band-syndrome-exercises'
+    ]],
+    ['front knee pain', ['patellofemoral-pain-exercises', 'patellar-tendinopathy-exercises']],
+    ['hamstring pain', ['hamstring-strain-exercises']],
+    ['meniscus pain', ['meniscus-tear-rehabilitation-exercises', 'advanced-meniscus-rehabilitation-exercises']],
+    ['shoulder pain', ['rotator-cuff-pain-exercises', 'adhesive-capsulitis-exercises']],
+    ['elbow pain', ['lateral-elbow-tendinopathy-exercises', 'medial-elbow-tendinopathy-exercises']],
+    ['hip pain', ['gluteal-tendinopathy-exercises', 'hip-osteoarthritis-exercises']],
+    ['thumb pain', ['thumb-cmc-osteoarthritis-exercises', 'de-quervain-tenosynovitis-exercises']],
+    ['heel pain', ['achilles-tendinopathy-exercises', 'plantar-fasciitis-exercises']],
+    ['ankle pain', [
+        'achilles-tendinopathy-exercises',
+        'lateral-ankle-sprain-exercises',
+        'peroneal-tendinopathy-exercises',
+        'tibialis-posterior-tendinopathy-exercises'
+    ]],
+    ['foot pain', ['plantar-fasciitis-exercises', 'tibialis-posterior-tendinopathy-exercises']],
+    ['back ache', ['low-back-pain-exercises']]
+];
+
+for (const [query, expectedSlugs] of broadSearchExpectations) {
+    for (const slug of expectedSlugs) {
+        assert(slugs.has(slug), `Search expectation for "${query}" references unknown program ${slug}`);
+        const card = programCardsBySlug.get(slug);
+        assert(
+            Boolean(card) && programSearchEntryMatches(card.searchEntry, query),
+            `${slug}: broad search "${query}" would under-return`
+        );
+    }
+}
+
+const exactSearchExpectations = [
+    ['shoulder pain', ['rotator-cuff-pain-exercises', 'adhesive-capsulitis-exercises']],
+    ['back pain', ['low-back-pain-exercises']]
+];
+
+for (const [query, expectedSlugs] of exactSearchExpectations) {
+    const matchingSlugs = programCardRecords
+        .filter(card => programSearchEntryMatches(card.searchEntry, query))
+        .map(card => card.slug);
+    assert(
+        matchingSlugs.join('|') === expectedSlugs.join('|'),
+        `Broad search "${query}" returned ${matchingSlugs.join(', ') || 'no programs'} instead of ${expectedSlugs.join(', ')}`
+    );
+}
+
 if (errors.length > 0) {
     console.error(errors.join('\n'));
     process.exitCode = 1;
 } else {
-    console.log(`Validated ${programs.length} home exercise programs, generated pages, library cards, dates, local relationships, and sitemap entries.`);
+    console.log(`Validated ${programs.length} home exercise programs, generated pages, library cards, search aliases, video cues, dates, local relationships, and sitemap entries.`);
 }

@@ -53,12 +53,14 @@ const fullIsoDateTime =
 const errors = [];
 let jsonLdBlockCount = 0;
 let profilePageCount = 0;
+const appointmentSchemaPages = new Set(["index.html", "locations/index.html"]);
 
 collectHtmlFiles(root);
 
 for (const file of htmlFiles) {
   const relativePath = path.relative(root, file);
   const html = fs.readFileSync(file, "utf8");
+  const structuredNodes = [];
   const visibleFaqs = new Map(
     [...html.matchAll(/<details class="faq-item"[^>]*>\s*<summary>([\s\S]*?)<\/summary>\s*<p>([\s\S]*?)<\/p>\s*<\/details>/gi)]
       .map((match) => [normalizeVisibleText(match[1]), normalizeVisibleText(match[2])]),
@@ -82,6 +84,7 @@ for (const file of htmlFiles) {
     }
 
     const nodes = flattenJsonLd(data);
+    structuredNodes.push(...nodes);
     const pageNodeModifiedDates = nodes
       .filter((node) => (
         hasType(node, "MedicalWebPage")
@@ -126,6 +129,41 @@ for (const file of htmlFiles) {
         errors.push(
           `${relativePath}: ProfilePage dateModified must be a full ISO 8601 DateTime with a timezone offset`,
         );
+      }
+    }
+  }
+
+  if (appointmentSchemaPages.has(relativePath)) {
+    const people = structuredNodes.filter((node) => (
+      hasType(node, "Person")
+      && node["@id"] === "https://jeremyswishermd.com/#jeremy-swisher"
+    ));
+
+    if (people.length !== 1) {
+      errors.push(`${relativePath}: expected one canonical Jeremy Swisher Person node`);
+    } else {
+      const contactPoints = Array.isArray(people[0].contactPoint)
+        ? people[0].contactPoint
+        : [people[0].contactPoint].filter(Boolean);
+      const schedulingContactPoints = contactPoints.filter((contactPoint) => (
+        contactPoint?.["@type"] === "ContactPoint"
+        && contactPoint.contactType === "appointments"
+        && contactPoint.telephone === "+1-310-319-1234"
+        && contactPoint.description === "UCLA Orthopedics scheduling"
+      ));
+
+      if (schedulingContactPoints.length !== 1) {
+        errors.push(`${relativePath}: missing the labeled UCLA Orthopedics scheduling ContactPoint`);
+      }
+
+      if (hasType(people[0], "Physician")) {
+        errors.push(`${relativePath}: the personal profile must remain modeled as Person, not Physician`);
+      }
+      if (Object.hasOwn(people[0], "medicalSpecialty")) {
+        errors.push(`${relativePath}: medicalSpecialty must not be added to the Person profile`);
+      }
+      if (Object.hasOwn(people[0], "telephone")) {
+        errors.push(`${relativePath}: the UCLA scheduling line must remain a labeled ContactPoint, not a direct Person telephone`);
       }
     }
   }

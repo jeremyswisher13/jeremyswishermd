@@ -3034,7 +3034,7 @@ html.mobile-nav-open body {
     }
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1280px) {
     .nav-links {
         top: 78px;
         background: var(--color-bg);
@@ -3087,7 +3087,9 @@ html.mobile-nav-open body {
         justify-content: center;
         text-align: center;
     }
+}
 
+@media (max-width: 1180px) {
     .hero-surface {
         grid-template-columns: minmax(440px, 48%) minmax(0, 52%);
     }

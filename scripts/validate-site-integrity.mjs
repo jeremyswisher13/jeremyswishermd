@@ -9,23 +9,25 @@ const hepPrograms = JSON.parse(readFileSync(join(scriptDirectory, 'hep-programs.
 const htmlFiles = [];
 const errors = [];
 const analyticsEventCounts = new Map();
-const expectedAssetCacheKey = '20260810-audit2';
+const expectedAssetCacheKey = '20260820-care1';
 const expectedPrimaryNavigationLabels = [
     'Knee Osteoarthritis',
     'PRP for Knee OA',
-    'Exercise Library',
     'Orthobiologics',
+    'Exercise Library',
     'Locations',
     'About',
+    'Research',
     'Call 310-319-1234'
 ];
 const expectedPrimaryNavigationTargets = [
     'knee-osteoarthritis/',
     'prp-knee-osteoarthritis/',
-    'home-exercise-programs/',
     'orthobiologics/',
+    'home-exercise-programs/',
     'locations/',
     '#about',
+    '#publications',
     'tel:310-319-1234'
 ];
 const hepProgramFiles = new Set(hepPrograms.map((program) => program.slug + '/index.html'));
@@ -34,9 +36,47 @@ const expectedPrimaryNavigationCurrent = new Map([
     ['hyaluronic-acid-knee-osteoarthritis/index.html', { index: 0, value: 'location' }],
     ['knee-osteoarthritis-injection-comparison/index.html', { index: 0, value: 'location' }],
     ['prp-knee-osteoarthritis/index.html', { index: 1, value: 'page' }],
-    ['home-exercise-programs/index.html', { index: 2, value: 'page' }],
-    ['orthobiologics/index.html', { index: 3, value: 'page' }],
+    ['orthobiologics/index.html', { index: 2, value: 'page' }],
+    ['home-exercise-programs/index.html', { index: 3, value: 'page' }],
     ['locations/index.html', { index: 4, value: 'page' }]
+]);
+const guideExperienceExpectations = new Map([
+    ['orthobiologics/index.html', {
+        handoffTarget: '../prp-knee-osteoarthritis/',
+        jumpTargets: [
+            '#overview',
+            '#where-prp-may-fit',
+            '#product-characterization',
+            '#claims-and-safety',
+            '#what-to-expect',
+            '#faq'
+        ],
+        rehabilitationTargets: [
+            '../knee-osteoarthritis-exercises/',
+            '../knee-osteoarthritis-advanced-exercises/',
+            '../rotator-cuff-pain-exercises/',
+            '../lateral-elbow-tendinopathy-exercises/',
+            '../patellar-tendinopathy-exercises/',
+            '../achilles-tendinopathy-exercises/',
+            '../plantar-fasciitis-exercises/'
+        ]
+    }],
+    ['prp-knee-osteoarthritis/index.html', {
+        handoffTarget: '../orthobiologics/',
+        jumpTargets: [
+            '#start-here',
+            '#evidence',
+            '#dose',
+            '#candidacy',
+            '#process',
+            '#medications-supplements',
+            '#safety',
+            '#guidelines',
+            '#cost',
+            '#locations',
+            '#prp-faq-title'
+        ]
+    }]
 ]);
 const supportedMaterialIcons = new Set([
     'accessibility', 'accessibility_new', 'airline_seat_flat', 'arrow_forward', 'badge', 'balance',
@@ -69,6 +109,14 @@ function collectHtmlFiles(directory) {
 
 function count(text, pattern) {
     return (text.match(pattern) || []).length;
+}
+
+function visibleAnchorText(contents) {
+    return contents
+        .replace(/<span\b[^>]*class="[^"]*\bsr-only\b[^"]*"[^>]*>\s*\(opens in a new tab\)\s*<\/span>/gi, '')
+        .replace(/<[^>]+>/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
 }
 
 function decodeAttribute(value) {
@@ -143,6 +191,8 @@ for (const file of htmlFiles) {
     const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
     const duplicateIds = ids.filter((id, index) => ids.indexOf(id) !== index);
     const sourceNumberById = new Map();
+    let appointmentLinkCount = 0;
+    const newTabLinkLabels = [];
 
     for (const sourceListMatch of html.matchAll(/<ul\b[^>]*\bclass="[^"]*\bsource-list\b[^"]*"[^>]*>([\s\S]*?)<\/ul>/gi)) {
         let sourceNumber = 0;
@@ -217,7 +267,7 @@ for (const file of htmlFiles) {
         });
 
         const expectedCurrent = hepProgramFiles.has(displayFile)
-            ? { index: 2, value: 'location' }
+            ? { index: 3, value: 'location' }
             : expectedPrimaryNavigationCurrent.get(displayFile);
         const activeIndexes = navigationAnchors
             .map((match, index) => /\bclass="[^"]*\bactive\b[^"]*"/i.test(match[1]) ? index : -1)
@@ -255,22 +305,48 @@ for (const file of htmlFiles) {
         analyticsEventCounts.set(eventName, (analyticsEventCounts.get(eventName) || 0) + 1);
     }
 
-    for (const match of html.matchAll(/<a\b([^>]*?)href="([^"]+)"([^>]*)>/gi)) {
-        const attributes = match[1] + match[3];
-        const href = match[2];
+    for (const match of html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
+        const attributes = match[1];
+        const contents = match[2];
+        const href = /\bhref="([^"]+)"/i.exec(attributes)?.[1] || '';
+        const opensInNewTab = /\btarget="_blank"/i.test(attributes);
         checkLocalReference(href, file, 'link');
 
-        if (/\btarget="_blank"/i.test(attributes)) {
+        if (opensInNewTab) {
+            newTabLinkLabels.push(visibleAnchorText(contents));
             const relMatch = /\brel="([^"]+)"/i.exec(attributes);
             const relValues = new Set((relMatch?.[1] || '').toLowerCase().split(/\s+/));
             if (!relValues.has('noopener') || !relValues.has('noreferrer')) {
                 errors.push(displayFile + ': target="_blank" link is missing noopener noreferrer');
+            }
+            const newTabCues = contents.match(/<span\b[^>]*class="[^"]*\bsr-only\b[^"]*"[^>]*>\s*\(opens in a new tab\)\s*<\/span>/gi) || [];
+            if (newTabCues.length !== 1) {
+                errors.push(displayFile + ': target="_blank" link must contain exactly one hidden new-tab cue');
+            }
+            if (/\baria-(?:label|labelledby)="/i.test(attributes)) {
+                errors.push(displayFile + ': target="_blank" link must not override its descendant new-tab cue');
+            }
+        } else if (/\(opens in a new tab\)/i.test(contents)) {
+            errors.push(displayFile + ': hidden new-tab cue appears on a link without target="_blank"');
+        }
+
+        for (const icon of contents.matchAll(/<span\b([^>]*\bdata-icon="open_in_new"[^>]*)>/gi)) {
+            if (!/\baria-hidden="true"/i.test(icon[1])) {
+                errors.push(displayFile + ': open-in-new icon must remain aria-hidden');
             }
         }
     }
 
     for (const match of html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
         const attributes = match[1];
+        const href = /\bhref="([^"]+)"/i.exec(attributes)?.[1] || '';
+        if (href.startsWith('https://cloud.h.uclahealth.org/appointment-request')) {
+            appointmentLinkCount += 1;
+            const appointmentLabel = visibleAnchorText(match[2]);
+            if (appointmentLabel !== 'Request on UCLA Health') {
+                errors.push(displayFile + ': UCLA appointment link must use the standard visible label');
+            }
+        }
         if (!/\bclass="[^"]*\boa-cite\b[^"]*"/i.test(attributes)) continue;
 
         const citationTarget = /\bhref="#([^"]+)"/i.exec(attributes)?.[1];
@@ -291,6 +367,91 @@ for (const file of htmlFiles) {
         const citationAriaLabel = /\baria-label="([^"]+)"/i.exec(attributes)?.[1] || '';
         if (!citationAriaLabel.includes(String(visibleCitationNumber))) {
             errors.push(displayFile + ': numbered citation accessible name must include its visible number');
+        }
+    }
+
+    if (displayFile === 'orthobiologics/index.html' && appointmentLinkCount !== 3) {
+        errors.push(displayFile + ': expected three UCLA appointment paths');
+    }
+    const expectedDirectionLabels = displayFile === 'index.html'
+        ? ['Directions to Westwood', 'Directions to West Hills']
+        : displayFile === 'locations/index.html'
+            ? [
+                'Westwood clinic page and directions',
+                'West Hills clinic page and directions',
+                'Open Westwood in Google Maps',
+                'Open West Hills in Google Maps'
+            ]
+            : [];
+    for (const label of expectedDirectionLabels) {
+        if (newTabLinkLabels.filter((candidate) => candidate === label).length !== 1) {
+            errors.push(displayFile + ': expected one external direction link labeled "' + label + '"');
+        }
+    }
+
+    const guideExpectation = guideExperienceExpectations.get(displayFile);
+    if (guideExpectation) {
+        const pageJumpNavigation = /<nav class="page-jump page-jump-disclosure" aria-label="On this page">([\s\S]*?)<\/nav>/i
+            .exec(html)?.[1] || '';
+        const jumpTargets = [...pageJumpNavigation.matchAll(/<a\b[^>]*\bhref="([^"]+)"/gi)]
+            .map((match) => match[1]);
+
+        if (!pageJumpNavigation) {
+            errors.push(displayFile + ': missing the responsive on-page disclosure');
+        } else {
+            if (!/<details\b[^>]*\bopen\b[^>]*\bdata-page-jump\b[^>]*>/i.test(pageJumpNavigation)) {
+                errors.push(displayFile + ': on-page disclosure must be open as its no-script fallback');
+            }
+            if (!/<summary>\s*On this page\s*<\/summary>/i.test(pageJumpNavigation)) {
+                errors.push(displayFile + ': on-page disclosure is missing its visible summary');
+            }
+            if (jumpTargets.join('|') !== guideExpectation.jumpTargets.join('|')) {
+                errors.push(displayFile + ': on-page disclosure destinations or order are incorrect');
+            }
+        }
+
+        const guideHandoff = /<section class="guide-handoff"[^>]*>([\s\S]*?)<\/section>/i
+            .exec(html)?.[1] || '';
+        if (!guideHandoff || !guideHandoff.includes(`href="${guideExpectation.handoffTarget}"`)) {
+            errors.push(displayFile + ': guide-choice handoff is missing its companion-guide destination');
+        }
+        if (count(guideHandoff, /class="guide-handoff-option is-current"/g) !== 1) {
+            errors.push(displayFile + ': guide-choice handoff must identify exactly one current guide');
+        }
+
+        if (guideExpectation.rehabilitationTargets) {
+            const rehabilitationTargets = [...html.matchAll(
+                /<p class="rehab-handoff">([\s\S]*?)<\/p>/gi
+            )].flatMap((match) => [...match[1].matchAll(/<a\b[^>]*\bhref="([^"]+)"/gi)]
+                .map((linkMatch) => linkMatch[1]));
+            if (rehabilitationTargets.join('|') !== guideExpectation.rehabilitationTargets.join('|')) {
+                errors.push(displayFile + ': diagnosis-specific rehabilitation handoffs are incomplete or out of order');
+            }
+        }
+    }
+
+    if (displayFile === 'prp-knee-osteoarthritis/index.html') {
+        const heroActions = /<div class="landing-actions">([\s\S]*?)<\/div>/i.exec(html)?.[1] || '';
+        const heroActionLabels = [...heroActions.matchAll(/<a\b[^>]*>([\s\S]*?)<\/a>/gi)]
+            .map((match) => visibleAnchorText(match[1]));
+        const expectedHeroActionLabels = [
+            'Call 310-319-1234',
+            'Request on UCLA Health',
+            'Could PRP fit me?'
+        ];
+        if (heroActionLabels.join('|') !== expectedHeroActionLabels.join('|')) {
+            errors.push(displayFile + ': hero scheduling and candidacy actions are missing or out of order');
+        }
+
+        const rehabilitationCard = /<div class="oa-answer-card"[^>]*>[\s\S]*?<h3>Keep rehabilitation central<\/h3>([\s\S]*?)<\/div>/i
+            .exec(html)?.[1] || '';
+        for (const target of [
+            '../knee-osteoarthritis-exercises/',
+            '../knee-osteoarthritis-advanced-exercises/'
+        ]) {
+            if (!rehabilitationCard.includes(`href="${target}"`)) {
+                errors.push(displayFile + ': early rehabilitation card is missing ' + target);
+            }
         }
     }
 
@@ -340,15 +501,38 @@ if (!hepTemplateNavigation) {
             errors.push('HEP page template navigation accessible name must include its visible label');
         }
     });
-    if (templateActiveIndexes.length !== 1 || templateActiveIndexes[0] !== 2) {
+    if (templateActiveIndexes.length !== 1 || templateActiveIndexes[0] !== 3) {
         errors.push('HEP page template must mark Exercise Library as active');
     }
     if (
         templateCurrentEntries.length !== 1
-        || templateCurrentEntries[0].index !== 2
+        || templateCurrentEntries[0].index !== 3
         || templateCurrentEntries[0].value !== 'location'
     ) {
         errors.push('HEP page template must mark Exercise Library as the current location');
+    }
+}
+
+for (const match of hepTemplate.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
+    const attributes = match[1];
+    const contents = match[2];
+    const opensInNewTab = /\btarget="_blank"/i.test(attributes);
+    const href = /\bhref="([^"]+)"/i.exec(attributes)?.[1] || '';
+    const newTabCues = contents.match(/<span\b[^>]*class="[^"]*\bsr-only\b[^"]*"[^>]*>\s*\(opens in a new tab\)\s*<\/span>/gi) || [];
+    if (opensInNewTab && newTabCues.length !== 1) {
+        errors.push('HEP page template target="_blank" link must contain exactly one hidden new-tab cue');
+    }
+    if (!opensInNewTab && newTabCues.length > 0) {
+        errors.push('HEP page template has a hidden new-tab cue on a same-tab link');
+    }
+    if (opensInNewTab && /\baria-(?:label|labelledby)="/i.test(attributes)) {
+        errors.push('HEP page template target="_blank" link must not override its descendant new-tab cue');
+    }
+    if (
+        href.startsWith('https://cloud.h.uclahealth.org/appointment-request')
+        && visibleAnchorText(contents) !== 'Request on UCLA Health'
+    ) {
+        errors.push('HEP page template UCLA appointment link must use the standard visible label');
     }
 }
 
@@ -381,6 +565,42 @@ const notFoundPage = readFileSync(join(root, '404.html'), 'utf8');
 const prpPage = readFileSync(join(root, 'prp-knee-osteoarthritis', 'index.html'), 'utf8');
 const hyaluronicAcidPage = readFileSync(join(root, 'hyaluronic-acid-knee-osteoarthritis', 'index.html'), 'utf8');
 const injectionComparisonPage = readFileSync(join(root, 'knee-osteoarthritis-injection-comparison', 'index.html'), 'utf8');
+const locationsPage = readFileSync(join(root, 'locations', 'index.html'), 'utf8');
+
+const homeHeroTitleMarkup = /<h1 class="hero-title" id="hero-title"[^>]*>([\s\S]*?)<\/h1>/i
+    .exec(homePage)?.[1] || '';
+const homeHeroTitleText = homeHeroTitleMarkup
+    .replace(/<[^>]+>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+if (homeHeroTitleText !== 'Primary care sports medicine in Los Angeles.') {
+    errors.push('Homepage hero H1 source text must retain literal whitespace between its visual lines');
+}
+
+const firstSchedulingStep = /<ol class="care-steps">\s*<li class="care-step">([\s\S]*?)<\/li>/i
+    .exec(locationsPage)?.[1] || '';
+const firstSchedulingStepText = firstSchedulingStep
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+if (
+    !/<h3>\s*Ask for Jeremy Swisher, MD\s*<\/h3>/i.test(firstSchedulingStep)
+    || !firstSchedulingStepText.includes(
+        'Request a new or follow-up sports medicine appointment with Jeremy Swisher, MD, then describe the body area, how long symptoms have been present, and whether there was a recent injury.'
+    )
+) {
+    errors.push('Locations scheduling must tell callers to ask for Jeremy Swisher, MD');
+}
+
+for (const subtitle of [
+    'Medical coverage &middot; NBA &middot; 2024&ndash;2025',
+    'Medical coverage &middot; WNBA &middot; 2024&ndash;2025',
+    'Medical coverage &middot; MLB &middot; 2024&ndash;2025'
+]) {
+    if (count(homePage, new RegExp('<span class="coverage-league">' + subtitle + '<\\/span>', 'g')) !== 1) {
+        errors.push('Homepage professional coverage card is missing the exact subtitle: ' + subtitle);
+    }
+}
 
 if (
     !homePage.includes('href="orthobiologics/" class="text-link">Explore the Orthobiologics overview')
@@ -683,5 +903,5 @@ if (errors.length > 0) {
     console.error(errors.join('\n'));
     process.exitCode = 1;
 } else {
-    console.log('Validated structure, duplicate IDs, local links, fragments, assets, external-link security, and dash policy across ' + htmlFiles.length + ' HTML files.');
+    console.log('Validated structure, duplicate IDs, local links, fragments, assets, external-link security and new-tab disclosure, and dash policy across ' + htmlFiles.length + ' HTML files.');
 }

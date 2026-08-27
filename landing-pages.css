@@ -2918,6 +2918,10 @@
     padding-top: clamp(48px, 6vw, 76px);
 }
 
+.hep-hub-page .program-card-meta {
+    padding-right: 40px;
+}
+
 .hep-hub-page .hep-filter-controls {
     min-width: 0;
     margin: 30px 0 0;
@@ -4486,6 +4490,247 @@
 
 @media (prefers-reduced-motion: reduce) {
     .knee-oa-page .mobile-call-bar {
+        transition: none;
+    }
+}
+
+/* Orthobiologics and PRP guide routing */
+.landing-page .guide-handoff {
+    display: grid;
+    grid-template-columns: minmax(190px, 0.58fr) minmax(0, 1.42fr);
+    gap: clamp(28px, 4.5vw, 62px);
+    align-items: start;
+    width: min(100%, 1240px);
+    margin: 0 auto;
+    padding: clamp(34px, 4vw, 50px) var(--landing-gutter);
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg-alt);
+}
+
+.landing-page .guide-handoff-heading .section-label {
+    margin: 0 0 10px;
+}
+
+.landing-page .guide-handoff-heading h2 {
+    margin: 0;
+    color: var(--color-dark);
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 2.5vw, 2.3rem);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+}
+
+.landing-page .guide-handoff-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.landing-page .guide-handoff-option {
+    display: block;
+    min-width: 0;
+    padding: 21px 22px 20px;
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-primary);
+    background: var(--color-bg);
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.landing-page .guide-handoff-option.is-current {
+    border-top-color: var(--color-accent-dark);
+}
+
+.landing-page a.guide-handoff-option {
+    transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.landing-page a.guide-handoff-option:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.landing-page .guide-handoff-meta {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--color-accent-dark);
+    font-size: 0.68rem;
+    font-weight: 750;
+    letter-spacing: 0.12em;
+    line-height: 1.45;
+    text-transform: uppercase;
+}
+
+.landing-page .guide-handoff-option h3 {
+    margin: 0 0 8px;
+    color: var(--color-dark);
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.16;
+}
+
+.landing-page .guide-handoff-option p {
+    margin: 0;
+    color: var(--color-text-light);
+    font-size: 0.82rem;
+    line-height: 1.58;
+}
+
+.landing-page .guide-handoff-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    margin-top: 11px;
+    color: var(--color-primary-dark);
+    font-size: 0.77rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: rgba(22, 79, 121, 0.28);
+    text-underline-offset: 4px;
+}
+
+.landing-page .guide-handoff-link .material-symbols-outlined {
+    font-size: 18px;
+}
+
+.landing-page .rehab-handoff,
+.landing-page .procedure-item p.rehab-handoff {
+    margin: 17px 0 0;
+    padding: 14px 16px;
+    border-left: 3px solid var(--color-accent-dark);
+    background: var(--color-bg-alt);
+    color: var(--color-text);
+    font-size: 0.86rem;
+    line-height: 1.65;
+}
+
+.knee-oa-page .oa-answer-card p + p {
+    margin-top: 10px;
+}
+
+/* Desktop keeps every destination visible; mobile uses the native disclosure. */
+.landing-page .page-jump.page-jump-disclosure {
+    display: block;
+    padding: 0;
+    overflow: visible;
+}
+
+.landing-page .page-jump.page-jump-disclosure > details {
+    display: block;
+    width: 100%;
+}
+
+.landing-page .page-jump-disclosure > details > summary {
+    display: none;
+}
+
+.landing-page .page-jump-disclosure > details > .page-jump-inner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0 22px;
+    width: 100%;
+    padding: 11px var(--landing-gutter);
+}
+
+.landing-page .page-jump-disclosure .page-jump-label {
+    flex: 0 0 auto;
+    color: var(--color-dark);
+    font-size: 0.7rem;
+    font-weight: 750;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 820px) {
+    .landing-page .guide-handoff {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .landing-page .page-jump.page-jump-disclosure,
+    .landing-page.knee-oa-page .page-jump.page-jump-disclosure {
+        box-shadow: none;
+    }
+
+    .landing-page .page-jump-disclosure > details > summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 56px;
+        padding: 6px var(--landing-gutter);
+        color: var(--color-dark);
+        cursor: pointer;
+        font-size: 0.76rem;
+        font-weight: 750;
+        letter-spacing: 0.13em;
+        list-style: none;
+        text-transform: uppercase;
+    }
+
+    .landing-page .page-jump-disclosure > details > summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .landing-page .page-jump-disclosure > details > summary::after {
+        display: grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        border: 1px solid var(--color-border);
+        border-radius: 50%;
+        color: var(--color-primary-dark);
+        content: '+';
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        font-weight: 400;
+        line-height: 1;
+    }
+
+    .landing-page .page-jump-disclosure > details[open] > summary::after {
+        content: '\2212';
+    }
+
+    .landing-page .page-jump-disclosure > details:not([open]) > .page-jump-inner {
+        display: none;
+    }
+
+    .landing-page .page-jump-disclosure > details[open] > .page-jump-inner {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0 22px;
+        padding: 0 var(--landing-gutter) 14px;
+    }
+
+    .landing-page .page-jump-disclosure .page-jump-label {
+        display: none;
+    }
+
+    .landing-page .page-jump-disclosure .page-jump-inner a {
+        width: 100%;
+        padding: 10px 0;
+        border-top: 1px solid var(--color-border);
+        white-space: normal;
+    }
+}
+
+@media (max-width: 560px) {
+    .landing-page .guide-handoff-options,
+    .landing-page .page-jump-disclosure > details[open] > .page-jump-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .landing-page .guide-handoff-option {
+        padding: 19px 19px 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .landing-page a.guide-handoff-option {
         transition: none;
     }
 }

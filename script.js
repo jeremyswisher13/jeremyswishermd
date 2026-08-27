@@ -3,7 +3,7 @@
 // ready, the mobile menu becomes a compact toggle.
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
-const MOBILE_NAV_BREAKPOINT = 1180;
+const MOBILE_NAV_BREAKPOINT = 1280;
 const mobileNavMedia = typeof window.matchMedia === 'function'
     ? window.matchMedia(`(max-width: ${MOBILE_NAV_BREAKPOINT}px)`)
     : null;
@@ -126,6 +126,37 @@ if (navToggle && navLinks) {
     // Only switch to the collapsed mobile-menu presentation after every
     // navigation handler has been installed successfully.
     document.documentElement.classList.add('nav-ready');
+}
+
+// Long guide pages keep their section links visible without JavaScript. Once
+// enhancement is ready, the same native disclosure starts collapsed on small
+// screens and remains fully expanded on larger screens.
+const pageJumpDisclosures = Array.from(document.querySelectorAll('details[data-page-jump]'));
+const PAGE_JUMP_BREAKPOINT = 820;
+const pageJumpMedia = typeof window.matchMedia === 'function'
+    ? window.matchMedia(`(max-width: ${PAGE_JUMP_BREAKPOINT}px)`)
+    : null;
+
+function syncPageJumpDisclosures(event = pageJumpMedia) {
+    const isCompact = typeof event?.matches === 'boolean'
+        ? event.matches
+        : window.innerWidth <= PAGE_JUMP_BREAKPOINT;
+
+    pageJumpDisclosures.forEach(disclosure => {
+        disclosure.open = !isCompact;
+    });
+}
+
+if (pageJumpDisclosures.length > 0) {
+    syncPageJumpDisclosures();
+
+    if (pageJumpMedia?.addEventListener) {
+        pageJumpMedia.addEventListener('change', syncPageJumpDisclosures);
+    } else if (pageJumpMedia?.addListener) {
+        pageJumpMedia.addListener(syncPageJumpDisclosures);
+    } else {
+        window.addEventListener('resize', syncPageJumpDisclosures);
+    }
 }
 
 // Navbar scroll effect
