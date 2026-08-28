@@ -1,0 +1,26 @@
+{
+  "name": "swishermd-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.19"
+  },
+  "scripts": {
+    "validate": "npm run validate:site && npm run validate:schema && npm run validate:hep-content && npm run validate:hep-videos",
+    "validate:site": "node scripts/validate-site-integrity.mjs",
+    "validate:schema": "node scripts/validate-structured-data.mjs",
+    "validate:hep-content": "node scripts/validate-hep-content.mjs",
+    "validate:hep-videos": "node scripts/validate-hep-videos.mjs",
+    "test": "npm run test:rendered",
+    "test:rendered": "playwright test",
+    "test:lighthouse": "node scripts/run-lighthouse.mjs",
+    "test:quality": "npm run validate && npm run test:rendered && npm run test:lighthouse"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.62.1",
+    "chrome-launcher": "1.2.1",
+    "lighthouse": "13.4.1"
+  }
+}

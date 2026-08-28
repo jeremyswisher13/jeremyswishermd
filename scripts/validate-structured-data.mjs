@@ -4,10 +4,18 @@ import process from "node:process";
 
 const root = path.resolve(process.argv[2] ?? path.join(import.meta.dirname, ".."));
 const htmlFiles = [];
+const ignoredHtmlDirectories = new Set([
+  ".git",
+  ".quality-results",
+  "audits",
+  "node_modules",
+  "playwright-report",
+  "test-results",
+]);
 
 function collectHtmlFiles(directory) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
-    if (entry.name === ".git" || entry.name === "node_modules") continue;
+    if (entry.isDirectory() && ignoredHtmlDirectories.has(entry.name)) continue;
 
     const fullPath = path.join(directory, entry.name);
     if (entry.isDirectory()) {

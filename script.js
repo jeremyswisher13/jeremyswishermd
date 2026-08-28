@@ -7,6 +7,95 @@ const MOBILE_NAV_BREAKPOINT = 1280;
 const mobileNavMedia = typeof window.matchMedia === 'function'
     ? window.matchMedia(`(max-width: ${MOBILE_NAV_BREAKPOINT}px)`)
     : null;
+const mobileNavBackgroundState = new Map();
+const supportsNativeInert = typeof HTMLElement !== 'undefined'
+    && 'inert' in HTMLElement.prototype;
+
+function isMobileNavOpen() {
+    const isMobile = mobileNavMedia
+        ? mobileNavMedia.matches
+        : window.innerWidth <= MOBILE_NAV_BREAKPOINT;
+
+    return Boolean(navLinks?.classList.contains('open') && isMobile);
+}
+
+function getMobileNavFocusableItems() {
+    if (!navToggle || !navLinks) return [];
+
+    return [
+        navToggle,
+        ...navLinks.querySelectorAll('a[href]:not([hidden])')
+    ].filter(item => (
+        !item.hasAttribute('disabled')
+        && item.getAttribute('aria-hidden') !== 'true'
+    ));
+}
+
+function getMobileNavBackgroundRoots() {
+    if (!navToggle || !navLinks || !document.body) return [];
+
+    const interactivePath = new Set([navToggle, navLinks]);
+    const pathContainers = new Set();
+
+    [navToggle, navLinks].forEach(item => {
+        let parent = item.parentElement;
+
+        while (parent) {
+            interactivePath.add(parent);
+            pathContainers.add(parent);
+            if (parent === document.body) break;
+            parent = parent.parentElement;
+        }
+    });
+
+    const backgroundRoots = new Set();
+    pathContainers.forEach(container => {
+        Array.from(container.children).forEach(child => {
+            if (!interactivePath.has(child)) backgroundRoots.add(child);
+        });
+    });
+
+    return Array.from(backgroundRoots);
+}
+
+function isolateMobileNavBackground(shouldIsolate) {
+    if (shouldIsolate) {
+        if (mobileNavBackgroundState.size > 0) return;
+
+        getMobileNavBackgroundRoots().forEach(element => {
+            mobileNavBackgroundState.set(element, {
+                inert: element.getAttribute('inert'),
+                ariaHidden: element.getAttribute('aria-hidden')
+            });
+
+            if (supportsNativeInert) {
+                element.inert = true;
+            } else {
+                // Older browsers still get an accessibility-tree fallback;
+                // the focus and click guards below supply the interaction half.
+                element.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+        return;
+    }
+
+    mobileNavBackgroundState.forEach((state, element) => {
+        if (supportsNativeInert) {
+            if (state.inert === null) {
+                element.inert = false;
+                element.removeAttribute('inert');
+            } else {
+                element.setAttribute('inert', state.inert);
+            }
+        } else if (state.ariaHidden === null) {
+            element.removeAttribute('aria-hidden');
+        } else {
+            element.setAttribute('aria-hidden', state.ariaHidden);
+        }
+    });
+    mobileNavBackgroundState.clear();
+}
 
 function setMobileNavOpen(isOpen, options = {}) {
     if (!navToggle || !navLinks) return;
@@ -22,10 +111,11 @@ function setMobileNavOpen(isOpen, options = {}) {
     navToggle.setAttribute('aria-expanded', String(shouldOpen));
     navToggle.setAttribute('aria-label', shouldOpen ? 'Close navigation' : 'Open navigation');
     document.documentElement.classList.toggle('mobile-nav-open', shouldOpen);
+    isolateMobileNavBackground(shouldOpen);
 
     if (shouldOpen && focusFirst) {
-        const firstNavLink = navLinks.querySelector('a[href]');
-        firstNavLink?.focus();
+        const focusableItems = getMobileNavFocusableItems();
+        (focusableItems[1] || focusableItems[0])?.focus();
     } else if (!shouldOpen && returnFocus) {
         navToggle.focus();
     }
@@ -76,15 +166,13 @@ if (navToggle && navLinks) {
 
         if (
             event.key === 'Tab'
-            && navLinks.classList.contains('open')
-            && (mobileNavMedia?.matches ?? window.innerWidth <= MOBILE_NAV_BREAKPOINT)
+            && isMobileNavOpen()
         ) {
-            const focusableNavigationItems = [
-                navToggle,
-                ...navLinks.querySelectorAll('a[href]')
-            ];
+            const focusableNavigationItems = getMobileNavFocusableItems();
             const firstItem = focusableNavigationItems[0];
             const lastItem = focusableNavigationItems[focusableNavigationItems.length - 1];
+
+            if (!firstItem || !lastItem) return;
 
             if (event.shiftKey && document.activeElement === firstItem) {
                 event.preventDefault();
@@ -96,16 +184,33 @@ if (navToggle && navLinks) {
         }
     });
 
+    document.addEventListener('focusin', event => {
+        if (
+            !isMobileNavOpen()
+            || event.target === navToggle
+            || (event.target instanceof Node && navLinks.contains(event.target))
+        ) {
+            return;
+        }
+
+        const focusableItems = getMobileNavFocusableItems();
+        (focusableItems[1] || focusableItems[0])?.focus();
+    });
+
     document.addEventListener('click', event => {
         if (
-            navLinks.classList.contains('open')
+            isMobileNavOpen()
             && event.target instanceof Node
             && !navLinks.contains(event.target)
             && !navToggle.contains(event.target)
         ) {
-            setMobileNavOpen(false);
+            // Native inert suppresses this interaction. This capture-phase guard
+            // gives browsers without inert the same safe behavior.
+            event.preventDefault();
+            event.stopPropagation();
+            setMobileNavOpen(false, { returnFocus: true });
         }
-    });
+    }, true);
 
     const closeNavAboveMobile = event => {
         const isMobile = typeof event.matches === 'boolean'

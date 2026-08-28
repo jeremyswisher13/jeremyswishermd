@@ -8,8 +8,16 @@ const root = resolve(scriptDirectory, '..');
 const hepPrograms = JSON.parse(readFileSync(join(scriptDirectory, 'hep-programs.json'), 'utf8'));
 const htmlFiles = [];
 const errors = [];
+const ignoredHtmlDirectories = new Set([
+    '.git',
+    '.quality-results',
+    'audits',
+    'node_modules',
+    'playwright-report',
+    'test-results'
+]);
 const analyticsEventCounts = new Map();
-const expectedAssetCacheKey = '20260820-care1';
+const expectedAssetCacheKey = '20260827-quality1';
 const expectedPrimaryNavigationLabels = [
     'Knee Osteoarthritis',
     'PRP for Knee OA',
@@ -100,7 +108,7 @@ const forbiddenEmDashes = [
 
 function collectHtmlFiles(directory) {
     for (const entry of readdirSync(directory, { withFileTypes: true })) {
-        if (entry.name === '.git' || entry.name === 'node_modules') continue;
+        if (entry.isDirectory() && ignoredHtmlDirectories.has(entry.name)) continue;
         const fullPath = join(directory, entry.name);
         if (entry.isDirectory()) collectHtmlFiles(fullPath);
         if (entry.isFile() && entry.name.endsWith('.html')) htmlFiles.push(fullPath);

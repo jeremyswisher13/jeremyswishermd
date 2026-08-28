@@ -1,3 +1,10 @@
 # Local design-review artifacts (not deployed by GitHub Pages)
 design-qa.md
 qa-*
+/audits/
+
+# Local dependency and automated-quality artifacts
+node_modules/
+playwright-report/
+test-results/
+.quality-results/
