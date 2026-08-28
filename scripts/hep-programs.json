@@ -2199,8 +2199,8 @@
     "shortTitle": "IT band syndrome exercises",
     "conditionName": "Iliotibial band syndrome",
     "publishedDate": "2026-07-30",
-    "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-08-08",
+    "reviewedDate": "2026-08-28",
+    "modifiedDate": "2026-08-28",
     "video": {
       "id": "qJ1mrNXXjSo",
       "title": "IT Band Pain / Iliotibial Band Friction Syndrome (Myth Busting | Exercises | Rehab)",
@@ -2306,7 +2306,7 @@
       { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11377285/", "label": "Systematic Review of Conservative IT Band Treatments in Runners, 2024" },
       { "href": "https://pubmed.ncbi.nlm.nih.gov/32448384/", "label": "Pilot Randomized Trial of Hip Strengthening and Run-Walk Rehabilitation" },
       { "href": "https://pubmed.ncbi.nlm.nih.gov/36758425/", "label": "Systematic Review and Meta-Analysis of Strength and Running Mechanics" },
-      { "href": "https://www.massgeneral.org/assets/mgh/pdf/orthopaedics/sports-medicine/physical-therapy/rehabilitation-protocol-for-iliotibial-band-syndrome.pdf", "label": "Mass General Brigham Criterion-Based IT Band Rehabilitation Protocol" }
+      { "href": "https://now.aapmr.org/iliotibial-band-syndrome/", "label": "AAPM&R PM&R KnowledgeNow: Iliotibial Band Syndrome, updated 2024" }
     ],
     "related": [
       { "href": "../gluteal-tendinopathy-exercises/", "eyebrow": "Different lateral pain", "title": "Gluteal tendinopathy exercises" },
@@ -2691,8 +2691,8 @@
     "shortTitle": "De Quervain wrist and thumb program",
     "conditionName": "De Quervain tenosynovitis",
     "publishedDate": "2026-07-30",
-    "reviewedDate": "2026-07-30",
-    "modifiedDate": "2026-08-08",
+    "reviewedDate": "2026-08-28",
+    "modifiedDate": "2026-08-28",
     "video": null,
     "metaDescription": "De Quervain exercises, thumb-spica brace guidance, activity changes, symptom rules, and evidence-informed options for thumb-side wrist pain.",
     "breadcrumb": "De Quervain tenosynovitis",
@@ -2750,7 +2750,7 @@
         "name": "Slow thumb extension with light resistance",
         "dose": "2 sets of 6 to 10 repetitions",
         "frequency": "Every other day, beginning in Stage 3",
-        "how": "Place a very light elastic loop around the fingers and thumb. Keep the wrist neutral. Slowly move the thumb away from the palm, pause briefly, then return over two to three seconds.",
+        "how": "Rest the hand on its small-finger side with the wrist neutral. Place a very light elastic loop around the fingers and thumb. Keeping the thumb in the same plane as the palm, slowly move it away from the index finger to open the angle between the thumb and index finger; do not lift it forward, out of the plane of the palm. Pause briefly, then return over two to three seconds.",
         "easier": "Perform the movement without resistance.",
         "harder": "Reach 10 controlled repetitions before using a slightly firmer band. Do not add resistance when radial wrist pain increases."
       },
@@ -2796,7 +2796,7 @@
       { "href": "https://pubmed.ncbi.nlm.nih.gov/41298159/", "label": "Conservative Treatments for De Quervain Tenosynovitis: Network Meta-Analysis, 2025" },
       { "href": "https://pubmed.ncbi.nlm.nih.gov/37802688/", "label": "Exercise Evidence for Hand and Wrist Tendinopathy: Systematic Review" },
       { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10584067/", "label": "Isometric Thumb Extension Feasibility Trial" },
-      { "href": "https://www.dir.ca.gov/dwc/DWCPropRegs/2023/MTUS-Evidence-Based-Update-July/Hand-Wrist-Forearm-Disorders.pdf", "label": "ACOEM Hand, Wrist, and Forearm Disorders Guideline" }
+      { "href": "https://www.dir.ca.gov/dwc/DWCPropRegs/2025/MTUS-Evidence-Based-Update-August/Hand-Wrist-Forearm-Disorders-Guideline.pdf", "label": "ACOEM Hand, Wrist, and Forearm Disorders Guideline, 2025" }
     ],
     "related": [
       { "href": "../thumb-cmc-osteoarthritis-exercises/", "eyebrow": "Different thumb-base pain", "title": "Thumb CMC osteoarthritis exercises" },

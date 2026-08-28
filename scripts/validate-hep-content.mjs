@@ -39,6 +39,10 @@ const requiredProgramFields = [
     'evaluation'
 ];
 const requiredExerciseFields = ['name', 'dose', 'frequency', 'how', 'easier', 'harder'];
+const retiredSourceUrls = new Set([
+    'https://www.massgeneral.org/assets/mgh/pdf/orthopaedics/sports-medicine/physical-therapy/rehabilitation-protocol-for-iliotibial-band-syndrome.pdf',
+    'https://www.dir.ca.gov/dwc/DWCPropRegs/2023/MTUS-Evidence-Based-Update-July/Hand-Wrist-Forearm-Disorders.pdf'
+]);
 const programSearchStopWords = new Set([
     'a', 'an', 'and', 'exercise', 'exercises', 'for', 'home', 'my', 'of', 'plan', 'plans',
     'physical', 'program', 'programs', 'pt', 'rehab', 'rehabilitation', 'routine', 'routines',
@@ -158,6 +162,23 @@ for (const program of programs) {
     for (const source of program.sources || []) {
         assert(/^https:\/\//.test(source.href), `${slug}: source is not HTTPS: ${source.href}`);
         assert(typeof source.label === 'string' && source.label.trim(), `${slug}: source label is missing`);
+        assert(!retiredSourceUrls.has(source.href), `${slug}: source URL is retired: ${source.href}`);
+    }
+
+    if (slug === 'de-quervain-tenosynovitis-exercises') {
+        const currentGuidelineUrl = 'https://www.dir.ca.gov/dwc/DWCPropRegs/2025/MTUS-Evidence-Based-Update-August/Hand-Wrist-Forearm-Disorders-Guideline.pdf';
+        const thumbExtension = program.exercises.find(exercise => exercise.name === 'Slow thumb extension with light resistance');
+        assert(
+            program.sources.some(source => source.href === currentGuidelineUrl),
+            `${slug}: missing current 2025 ACOEM guideline`
+        );
+        assert(Boolean(thumbExtension), `${slug}: missing dynamic thumb-extension exercise`);
+        assert(
+            thumbExtension?.how.includes('same plane as the palm')
+                && thumbExtension.how.includes('away from the index finger')
+                && thumbExtension.how.includes('do not lift it forward, out of the plane of the palm'),
+            `${slug}: dynamic thumb-extension cue does not clearly distinguish extension from abduction`
+        );
     }
 
     for (const related of program.related || []) {
