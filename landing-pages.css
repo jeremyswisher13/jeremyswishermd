@@ -3810,6 +3810,18 @@
 @media print {
     @page {
         margin: 11mm 12mm 13mm;
+
+        @bottom-left {
+            content: "Jeremy Swisher, MD - Home exercise program";
+            color: #536273;
+            font: 7pt Arial, sans-serif;
+        }
+
+        @bottom-right {
+            content: "Page " counter(page) " of " counter(pages);
+            color: #536273;
+            font: 7pt Arial, sans-serif;
+        }
     }
 
     body.landing-page.hep-page {
@@ -4181,13 +4193,17 @@
         .hep-program-hamstring-strain-exercises,
         .hep-program-hip-osteoarthritis-exercises,
         .hep-program-meniscus-tear-rehabilitation-exercises,
-        .hep-program-patellar-tendinopathy-exercises
-    ) .option-list {
+        .hep-program-patellar-tendinopathy-exercises,
+        .hep-program-patellofemoral-pain-return-to-running-exercises,
+        .hep-program-de-quervain-tenosynovitis-exercises
+    ) .readiness-block {
         break-inside: avoid;
         page-break-inside: avoid;
     }
 
     .hep-page .option-list li {
+        break-inside: avoid;
+        page-break-inside: avoid;
         padding: 2.5mm 0 2.5mm 5mm;
     }
 
@@ -4269,18 +4285,18 @@
     }
 
     .hep-program-gluteal-tendinopathy-exercises .print-progress-tracker {
-        margin-top: 3mm;
-        padding-top: 2mm;
+        margin-top: 2.5mm;
+        padding-top: 1.5mm;
     }
 
     .hep-program-gluteal-tendinopathy-exercises .print-progress-tracker > p {
-        margin-bottom: 2mm;
+        margin-bottom: 1.5mm;
     }
 
     .hep-program-gluteal-tendinopathy-exercises .print-progress-tracker th,
     .hep-program-gluteal-tendinopathy-exercises .print-progress-tracker td {
-        height: 5.5mm;
-        padding: 0.75mm 2mm;
+        height: 5mm;
+        padding: 0.5mm 2mm;
     }
 
     .hep-page .print-progress-tracker col.tracker-week {
@@ -4337,12 +4353,12 @@
     }
 
     .hep-program-gluteal-tendinopathy-exercises .print-program-footer {
-        font-size: 7pt;
-        line-height: 1.18;
+        font-size: 6.9pt;
+        line-height: 1.16;
     }
 
     .hep-program-gluteal-tendinopathy-exercises .print-program-footer p {
-        margin-bottom: 0.35mm;
+        margin-bottom: 0.2mm;
     }
 
     .hep-program-tibialis-posterior-tendinopathy-exercises #progress,
