@@ -485,7 +485,7 @@
     "shortTitle": "Midportion Achilles exercises",
     "conditionName": "Midportion Achilles tendinopathy",
     "reviewedDate": "2026-07-29",
-    "modifiedDate": "2026-08-08",
+    "modifiedDate": "2026-08-28",
     "video": {
       "id": "DnxahqgsAEw",
       "title": "Achilles Tendinopathy / Tendinitis / Tendinosis | Heel Pain Rehab (Education, Myths, Exercises)",
@@ -584,6 +584,7 @@
       { "q": "How long does recovery take?", "a": "Commit to at least a twelve-week loading trial. Recovery commonly takes three to six months, and return to higher-demand sport may take longer." }
     ],
     "sources": [
+      { "href": "https://doi.org/10.1016/j.basket.2026.100007", "label": "Swisher, Waldrop, and Sitton: Achilles Tendinopathy in Basketball, 2026" },
       { "href": "https://www.orthopt.org/content/s/achilles-pain-stiffness-and-muscle-power-deficits-midportion-achilles-tendinopathy-revision-2024", "label": "JOSPT Clinical Practice Guideline: Midportion Achilles Tendinopathy, 2024" },
       { "href": "https://pubmed.ncbi.nlm.nih.gov/26018970/", "label": "Beyer et al.: Heavy Slow Resistance Versus Eccentric Training, 2015" },
       { "href": "https://pubmed.ncbi.nlm.nih.gov/17307888/", "label": "Silbernagel et al.: Pain-Monitoring Model and Continued Activity, 2007" },
