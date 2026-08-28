@@ -311,6 +311,11 @@ const athleteContinuationPairs = new Map([
     ['patellofemoral-pain-return-to-running-exercises', 'patellofemoral-pain-exercises'],
     ['achilles-tendinopathy-return-to-sport-exercises', 'achilles-tendinopathy-exercises']
 ]);
+const verifiedAthleteVideoIds = new Map([
+    ['ankle-sprain-return-to-sport-exercises', 'ga_OAPf6IOI'],
+    ['patellofemoral-pain-return-to-running-exercises', 'K3HxB6rAeDo'],
+    ['achilles-tendinopathy-return-to-sport-exercises', 'DnxahqgsAEw']
+]);
 const programsBySlug = new Map(programs.map(program => [program.slug, program]));
 for (const [continuationSlug, foundationSlug] of athleteContinuationPairs) {
     const continuation = programsBySlug.get(continuationSlug);
@@ -329,6 +334,10 @@ for (const [continuationSlug, foundationSlug] of athleteContinuationPairs) {
         [continuation?.summary, ...(continuation?.readyItems || []), ...(continuation?.faqs || []).map(item => item.a)]
             .some(value => /does not independently|not independent|does not.*clear/i.test(value || '')),
         `${continuationSlug}: must distinguish progression from independent medical clearance`
+    );
+    assert(
+        continuation?.video?.id === verifiedAthleteVideoIds.get(continuationSlug),
+        `${continuationSlug}: missing its verified diagnosis-specific E3 Rehab video`
     );
 }
 

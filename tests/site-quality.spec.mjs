@@ -70,6 +70,40 @@ test('exercise library remains complete without JavaScript', async ({ browser })
   await context.close();
 });
 
+for (const video of [
+  {
+    path: '/ankle-sprain-return-to-sport-exercises/',
+    id: 'ga_OAPf6IOI',
+    title: 'How to Rehab a Sprained Ankle (Start to Finish)',
+  },
+  {
+    path: '/patellofemoral-pain-return-to-running-exercises/',
+    id: 'K3HxB6rAeDo',
+    title: 'Patellofemoral Pain | Chondromalacia Patellae | Runner’s Knee (Education | Myths | Exercises)',
+  },
+  {
+    path: '/achilles-tendinopathy-return-to-sport-exercises/',
+    id: 'DnxahqgsAEw',
+    title: 'Achilles Tendinopathy / Tendinitis / Tendinosis | Heel Pain Rehab (Education, Myths, Exercises)',
+  },
+]) {
+  test(`${video.path} exposes the verified E3 companion without loading YouTube`, async ({ page }) => {
+    await blockThirdPartyRequests(page);
+    await page.goto(video.path, { waitUntil: 'domcontentloaded' });
+
+    const resource = page.locator('[data-video-resource]');
+    await expect(resource).toHaveCount(1);
+    await expect(resource).toHaveAttribute('data-video-id', video.id);
+    await expect(resource).toHaveAttribute('data-video-title', video.title);
+    await expect(resource.locator('[data-load-video]')).toBeVisible();
+    await expect(resource.locator('iframe')).toHaveCount(0);
+    await expect(resource.getByRole('link', { name: /Watch on YouTube/ })).toHaveAttribute(
+      'href',
+      new RegExp(`watch\\?v=${video.id}`),
+    );
+  });
+}
+
 for (const program of [
   '/ankle-sprain-return-to-sport-exercises/',
   '/patellofemoral-pain-return-to-running-exercises/',
