@@ -39,6 +39,7 @@ const requiredProgramFields = [
     'evaluation'
 ];
 const requiredExerciseFields = ['name', 'dose', 'frequency', 'how', 'easier', 'harder'];
+const allowedProgramAudiences = new Set(['athlete']);
 const retiredSourceUrls = new Set([
     'https://www.massgeneral.org/assets/mgh/pdf/orthopaedics/sports-medicine/physical-therapy/rehabilitation-protocol-for-iliotibial-band-syndrome.pdf',
     'https://www.dir.ca.gov/dwc/DWCPropRegs/2023/MTUS-Evidence-Based-Update-July/Hand-Wrist-Forearm-Disorders.pdf'
@@ -149,6 +150,20 @@ for (const program of programs) {
     assert(Array.isArray(program.faqs) && program.faqs.length >= 4, `${slug}: expected at least four FAQs`);
     assert(Array.isArray(program.sources) && program.sources.length >= 3, `${slug}: expected at least three sources`);
     assert(Array.isArray(program.related) && program.related.length === 3, `${slug}: expected three related links`);
+
+    if (program.audiences !== undefined) {
+        assert(Array.isArray(program.audiences) && program.audiences.length > 0, `${slug}: audiences must be a non-empty array`);
+        assert(new Set(program.audiences).size === program.audiences.length, `${slug}: duplicate audience value`);
+        for (const audience of program.audiences || []) {
+            assert(allowedProgramAudiences.has(audience), `${slug}: unsupported audience ${audience}`);
+        }
+        if (program.audiences?.includes('athlete')) {
+            assert(
+                typeof program.programLevel === 'string' && /athlete|runner/i.test(program.programLevel),
+                `${slug}: athlete program must declare an athlete or runner program level`
+            );
+        }
+    }
 
     const exerciseNames = new Set();
     for (const exercise of program.exercises || []) {
@@ -286,6 +301,37 @@ for (const program of programs) {
     );
 }
 
+for (const field of ['seoTitle', 'h1', 'metaDescription']) {
+    const values = programs.map(program => program[field]);
+    assert(new Set(values).size === values.length, `Home exercise programs contain a duplicate ${field}`);
+}
+
+const athleteContinuationPairs = new Map([
+    ['ankle-sprain-return-to-sport-exercises', 'lateral-ankle-sprain-exercises'],
+    ['patellofemoral-pain-return-to-running-exercises', 'patellofemoral-pain-exercises'],
+    ['achilles-tendinopathy-return-to-sport-exercises', 'achilles-tendinopathy-exercises']
+]);
+const programsBySlug = new Map(programs.map(program => [program.slug, program]));
+for (const [continuationSlug, foundationSlug] of athleteContinuationPairs) {
+    const continuation = programsBySlug.get(continuationSlug);
+    const foundation = programsBySlug.get(foundationSlug);
+    assert(Boolean(continuation), `${continuationSlug}: athlete continuation is missing`);
+    assert(Boolean(foundation), `${foundationSlug}: foundation program is missing`);
+    assert(
+        continuation?.related.some(item => item.href === `../${foundationSlug}/`),
+        `${continuationSlug}: missing foundation-program link`
+    );
+    assert(
+        foundation?.related.some(item => item.href === `../${continuationSlug}/`),
+        `${foundationSlug}: missing reciprocal athlete-progression link`
+    );
+    assert(
+        [continuation?.summary, ...(continuation?.readyItems || []), ...(continuation?.faqs || []).map(item => item.a)]
+            .some(value => /does not independently|not independent|does not.*clear/i.test(value || '')),
+        `${continuationSlug}: must distinguish progression from independent medical clearance`
+    );
+}
+
 assert(!hub.includes('\u2014'), 'Home exercise library contains an em dash');
 assert(
     hub.includes('beginner and advanced describe exercise demand, not arthritis severity'),
@@ -302,10 +348,14 @@ const programCardRecords = [...hub.matchAll(/<a class="program-card"([^>]*)>([\s
         const body = match[2];
         const slug = attributes.match(/href="\.\.\/([a-z0-9-]+)\/"/)?.[1] || '';
         const aliases = attributes.match(/data-program-search="([^"]+)"/)?.[1] || '';
+        const audiences = (attributes.match(/data-program-audience="([^"]+)"/)?.[1] || '')
+            .split(/\s+/)
+            .filter(Boolean);
         const title = body.match(/<h3>([\s\S]*?)<\/h3>/)?.[1] || '';
         const searchText = normalizeProgramSearch(`${title} ${aliases}`);
         return {
             aliases,
+            audiences,
             body,
             searchEntry: { text: searchText, words: new Set(searchText.split(' ')) },
             slug
@@ -343,6 +393,13 @@ for (const program of programs) {
         `${program.slug}: library video cue does not match hep-programs.json`
     );
 
+    const expectedAudiences = [...(program.audiences || [])].sort();
+    const cardAudiences = [...card.audiences].sort();
+    assert(
+        JSON.stringify(cardAudiences) === JSON.stringify(expectedAudiences),
+        `${program.slug}: library audience metadata does not match hep-programs.json`
+    );
+
     for (const token of getProgramSearchTokens(program.shortTitle)) {
         const tokenMatches = token.length <= 2
             ? card.searchEntry.words.has(token)
@@ -350,6 +407,14 @@ for (const program of programs) {
         assert(tokenMatches, `${program.slug}: search index is missing shortTitle token "${token}"`);
     }
 }
+
+const athletePrograms = programs.filter(program => program.audiences?.includes('athlete'));
+assert(athletePrograms.length === 7, 'Expected seven athlete programs');
+assert(
+    programCardRecords.filter(card => card.audiences.includes('athlete')).length === athletePrograms.length,
+    'Athlete filter count does not match athlete program metadata'
+);
+assert(hub.includes('Show 7 programs for running, jumping, cutting, and return to practice'), 'Library athlete-filter count is stale');
 
 const expectedVideoCueCount = programs.filter(program => Boolean(program.video)).length;
 assert(
@@ -362,12 +427,13 @@ const broadSearchExpectations = [
         'knee-osteoarthritis-exercises',
         'knee-osteoarthritis-advanced-exercises',
         'patellofemoral-pain-exercises',
+        'patellofemoral-pain-return-to-running-exercises',
         'patellar-tendinopathy-exercises',
         'meniscus-tear-rehabilitation-exercises',
         'advanced-meniscus-rehabilitation-exercises',
         'iliotibial-band-syndrome-exercises'
     ]],
-    ['front knee pain', ['patellofemoral-pain-exercises', 'patellar-tendinopathy-exercises']],
+    ['front knee pain', ['patellofemoral-pain-exercises', 'patellofemoral-pain-return-to-running-exercises', 'patellar-tendinopathy-exercises']],
     ['hamstring pain', ['hamstring-strain-exercises']],
     ['meniscus pain', ['meniscus-tear-rehabilitation-exercises', 'advanced-meniscus-rehabilitation-exercises']],
     ['shoulder pain', ['rotator-cuff-pain-exercises', 'adhesive-capsulitis-exercises']],
@@ -378,6 +444,7 @@ const broadSearchExpectations = [
     ['ankle pain', [
         'achilles-tendinopathy-exercises',
         'lateral-ankle-sprain-exercises',
+        'ankle-sprain-return-to-sport-exercises',
         'peroneal-tendinopathy-exercises',
         'tibialis-posterior-tendinopathy-exercises'
     ]],

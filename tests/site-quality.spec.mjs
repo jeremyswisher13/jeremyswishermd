@@ -6,12 +6,88 @@ const representativeRoutes = [
   { name: 'PRP guide', path: '/prp-knee-osteoarthritis/', status: 200 },
   { name: 'exercise library', path: '/home-exercise-programs/', status: 200 },
   { name: 'exercise program', path: '/knee-osteoarthritis-exercises/', status: 200 },
+  { name: 'sports injury athlete hub', path: '/sports-injuries/', status: 200 },
+  { name: 'ankle athlete progression', path: '/ankle-sprain-return-to-sport-exercises/', status: 200 },
+  { name: 'patellofemoral athlete progression', path: '/patellofemoral-pain-return-to-running-exercises/', status: 200 },
+  { name: 'Achilles athlete progression', path: '/achilles-tendinopathy-return-to-sport-exercises/', status: 200 },
   { name: 'custom 404', path: '/quality-check-missing-page/', status: 404 },
 ];
 
 test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
 });
+
+test('exercise library combines athlete, region, and search filters and resets cleanly', async ({ page }) => {
+  await blockThirdPartyRequests(page);
+  await page.goto('/home-exercise-programs/', { waitUntil: 'domcontentloaded' });
+
+  const controls = page.locator('[data-program-filter]');
+  const athleteFilter = page.locator('[data-program-audience-filter]');
+  const search = page.locator('[data-program-filter] input[data-program-search]');
+  const status = page.locator('[data-program-filter-status]');
+  const visibleCards = page.locator('#program-grid .program-card:not([hidden])');
+
+  await expect(controls).toBeVisible();
+  await page.locator('label[for="hep-athlete-only"]').click();
+  await expect(athleteFilter).toBeChecked();
+  await expect(visibleCards).toHaveCount(7);
+  await expect(status).toHaveText('Showing 7 of 25 athlete progressions.');
+
+  await page.locator('label[for="hep-filter-foot-ankle"]').click();
+  await expect(page.locator('#hep-filter-foot-ankle')).toBeChecked();
+  await expect(visibleCards).toHaveCount(2);
+  await expect(status).toHaveText('Showing 2 of 25 athlete progressions for foot and ankle.');
+
+  await search.fill('cutting');
+  await expect(visibleCards).toHaveCount(1);
+  await expect(visibleCards).toHaveAttribute('href', '../ankle-sprain-return-to-sport-exercises/');
+
+  await search.fill('patellofemoral');
+  await expect(visibleCards).toHaveCount(0);
+  await expect(page.locator('[data-program-empty]')).toBeVisible();
+
+  await page.locator('[data-program-reset]').click();
+  await expect(athleteFilter).not.toBeChecked();
+  await expect(page.locator('#hep-filter-all')).toBeChecked();
+  await expect(search).toHaveValue('');
+  await expect(search).toBeFocused();
+  await expect(visibleCards).toHaveCount(25);
+  await expect(status).toHaveText('Showing all 25 programs.');
+});
+
+test('exercise library remains complete without JavaScript', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  await blockThirdPartyRequests(page);
+  await page.goto('/home-exercise-programs/', { waitUntil: 'domcontentloaded' });
+
+  await expect(page.locator('[data-program-filter]')).toBeHidden();
+  await expect(page.locator('#program-grid .program-card')).toHaveCount(25);
+  expect(await page.locator('#program-grid .program-card').evaluateAll((cards) => (
+    cards.every((card) => !card.hidden)
+  ))).toBe(true);
+
+  await context.close();
+});
+
+for (const program of [
+  '/ankle-sprain-return-to-sport-exercises/',
+  '/patellofemoral-pain-return-to-running-exercises/',
+  '/achilles-tendinopathy-return-to-sport-exercises/',
+]) {
+  test(`${program} keeps the athlete prescription in print`, async ({ page }) => {
+    await blockThirdPartyRequests(page);
+    await page.goto(program, { waitUntil: 'domcontentloaded' });
+    await page.emulateMedia({ media: 'print' });
+
+    await expect(page.locator('.print-program-header')).toBeVisible();
+    await expect(page.locator('.print-program-brief')).toBeVisible();
+    await expect(page.locator('#program')).toBeVisible();
+    await expect(page.locator('#response')).toBeVisible();
+    await expect(page.locator('#progress')).toBeVisible();
+    await expect(page.locator('.navbar')).toBeHidden();
+  });
+}
 
 async function blockThirdPartyRequests(page) {
   await page.route('**/*', async (route) => {

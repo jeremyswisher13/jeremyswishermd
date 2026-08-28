@@ -17,7 +17,7 @@ const ignoredHtmlDirectories = new Set([
     'test-results'
 ]);
 const analyticsEventCounts = new Map();
-const expectedAssetCacheKey = '20260827-quality1';
+const expectedAssetCacheKey = '20260828-athlete1';
 const expectedPrimaryNavigationLabels = [
     'Knee Osteoarthritis',
     'PRP for Knee OA',
@@ -756,11 +756,11 @@ if (!/<meta name="robots" content="noindex, follow">/.test(notFoundPage)) {
 }
 
 const expectedProgramRegionCounts = new Map([
-    ['knee-thigh', 8],
+    ['knee-thigh', 9],
     ['shoulder', 2],
     ['elbow', 2],
     ['hip', 2],
-    ['foot-ankle', 5],
+    ['foot-ankle', 7],
     ['hand-wrist', 2],
     ['back', 1]
 ]);
@@ -769,6 +769,8 @@ const exerciseHubRegions = [...exerciseHubPage.matchAll(/\sdata-program-region="
 const exerciseHubProgramCardCount = count(exerciseHubPage, /<a class="program-card"(?:\s|>)/g);
 const exerciseHubSearchAliases = [...exerciseHubPage.matchAll(/\sdata-program-search="([^"]+)"/g)]
     .map((match) => match[1].trim());
+const exerciseHubAthleteCardCount = [...exerciseHubPage.matchAll(/\sdata-program-audience="([^"]+)"/g)]
+    .filter((match) => match[1].split(/\s+/).includes('athlete')).length;
 const exerciseHubSearchCards = [...exerciseHubPage.matchAll(/<a class="program-card"([^>]*)>([\s\S]*?)<\/a>/g)]
     .map((match) => {
         const attributes = match[1];
@@ -813,6 +815,12 @@ for (const [region, expectedCount] of expectedProgramRegionCounts) {
 if (!exerciseHubFilters.includes('all')) {
     errors.push('Exercise library is missing the all-programs filter');
 }
+if (exerciseHubAthleteCardCount !== 7) {
+    errors.push('Exercise library expected seven athlete progressions, found ' + exerciseHubAthleteCardCount);
+}
+if (!/<input type="checkbox"[^>]*\bdata-program-audience-filter\b/.test(exerciseHubPage)) {
+    errors.push('Exercise library is missing the athlete-progression filter');
+}
 if (!homePage.includes('Explore all ' + exerciseHubRegions.length + ' exercise programs')) {
     errors.push('Homepage exercise-library link count does not match the program-card count');
 }
@@ -848,6 +856,8 @@ if (!/\bdata-program-reset\b/.test(exerciseHubPage)) {
 }
 if (
     !sharedScript.includes('searchTokens.every')
+    || !sharedScript.includes('matchesAudience')
+    || !sharedScript.includes("programAudienceFilter.addEventListener('change'")
     || !sharedScript.includes('programEmptyState.hidden = visibleCount !== 0')
     || !sharedScript.includes("programSearchInput.addEventListener('input'")
 ) {
@@ -863,8 +873,8 @@ const patientSearchExpectations = new Map([
     ['OA', ['../hip-osteoarthritis-exercises/', '../knee-osteoarthritis-advanced-exercises/', '../knee-osteoarthritis-exercises/']],
     ['IT', ['../iliotibial-band-syndrome-exercises/']],
     ['ITBS', ['../iliotibial-band-syndrome-exercises/']],
-    ['PFPS', ['../patellofemoral-pain-exercises/']],
-    ["runner's knee exercises", ['../patellofemoral-pain-exercises/']],
+    ['PFPS', ['../patellofemoral-pain-exercises/', '../patellofemoral-pain-return-to-running-exercises/']],
+    ["runner's knee exercises", ['../patellofemoral-pain-exercises/', '../patellofemoral-pain-return-to-running-exercises/']],
     ['frozen shoulder rehab', ['../adhesive-capsulitis-exercises/']],
     ['tennis elbow exercises', ['../lateral-elbow-tendinopathy-exercises/']],
     ["golfer's elbow exercises", ['../medial-elbow-tendinopathy-exercises/']],
@@ -877,7 +887,7 @@ const patientSearchExpectations = new Map([
     ['low back pain program', ['../low-back-pain-exercises/']],
     ['hip pain', ['../gluteal-tendinopathy-exercises/', '../hip-osteoarthritis-exercises/']],
     ['knee arthritis exercises', ['../knee-osteoarthritis-advanced-exercises/', '../knee-osteoarthritis-exercises/']],
-    ['ankle instability rehab', ['../lateral-ankle-sprain-exercises/']],
+    ['ankle instability rehab', ['../ankle-sprain-return-to-sport-exercises/', '../lateral-ankle-sprain-exercises/']],
     ['mommy thumb', ['../de-quervain-tenosynovitis-exercises/']]
 ]);
 

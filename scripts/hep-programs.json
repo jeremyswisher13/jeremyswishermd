@@ -357,7 +357,7 @@
       { "href": "https://bjsm.bmj.com/content/58/24/1486", "label": "British Journal of Sports Medicine: Best Practice Guide for Patellofemoral Pain, 2024" }
     ],
     "related": [
-      { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Joint pain guide", "title": "Knee, hip, and shoulder pain" },
+      { "href": "../patellofemoral-pain-return-to-running-exercises/", "eyebrow": "Athlete progression", "title": "Return to running and jumping" },
       { "href": "../sports-injuries/", "eyebrow": "Training decisions", "title": "Sports injury evaluation" },
       { "href": "../patellar-tendinopathy-exercises/", "eyebrow": "Athlete tendon loading", "title": "Patellar tendinopathy exercises" }
     ]
@@ -552,12 +552,12 @@
         "harder": "Add load while preserving height and control."
       },
       {
-        "name": "Later-stage pogo or hop",
-        "dose": "2 to 3 sets of 15 to 20 contacts",
+        "name": "Initial two-leg pogo readiness",
+        "dose": "2 sets of 10 to 15 contacts",
         "frequency": "2 to 3 days per week when ready",
-        "how": "Begin with small two-leg springing contacts. Keep the rhythm quiet and controlled. Add this only after walking, stairs, and repeated single-leg heel raises are tolerated.",
+        "how": "Use small two-leg springing contacts as an entry check for the athlete progression. Keep the rhythm quiet and controlled. Add this only after walking, stairs, and repeated single-leg heel raises are tolerated.",
         "easier": "Use brisk marching or quick heel raises without leaving the floor.",
-        "harder": "Progress toward single-leg or activity-specific hopping."
+        "harder": "Move to the athlete return-to-sport program for single-leg plyometrics, running, repeated jumping, and court exposure."
       }
     ],
     "responseIntro": "Some tendon discomfort during loading can be acceptable when mechanics remain controlled and next-morning pain or stiffness does not increase. Complete rest is usually unnecessary.",
@@ -567,7 +567,7 @@
     "progression": [
       { "title": "Stage 1: establish a tolerable load", "text": "Use two-leg slow raises and optional isometric holds. Continue general activity within pain tolerance rather than resting completely." },
       { "title": "Stage 2: increase tendon strength", "text": "Progress from two legs to one leg, then add external load. Choose a resistance that makes the final repetitions challenging while controlled." },
-      { "title": "Stage 3: restore spring and sport", "text": "Add fast calf work, pogo contacts, hopping, and running volume only after slow strength and daily activities are stable." }
+      { "title": "Stage 3: establish initial impact readiness", "text": "Add fast calf work and a small dose of two-leg pogo contacts after slow strength and daily activities are stable. Use the separate athlete progression for running volume, single-leg plyometrics, repeated jumping, speed, and court exposure." }
     ],
     "readyItems": [
       "You have completed the progressive loading stage needed for the activity you plan to resume.",
@@ -593,7 +593,7 @@
       { "href": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/019537s092lbl.pdf", "label": "FDA-Approved Ciprofloxacin Label and Medication Guide, 2021" }
     ],
     "related": [
-      { "href": "../tendon-pain/", "eyebrow": "Tendon guide", "title": "Evidence-based tendon care" },
+      { "href": "../achilles-tendinopathy-return-to-sport-exercises/", "eyebrow": "Athlete progression", "title": "Return to running, jumping, and basketball" },
       { "href": "../sports-injuries/", "eyebrow": "Return to sport", "title": "Sports injury evaluation" },
       { "href": "../plantar-fasciitis-exercises/", "eyebrow": "Different heel pattern", "title": "Plantar heel pain exercises" }
     ]
@@ -823,7 +823,7 @@
       { "href": "https://bjsm.bmj.com/content/55/22/1270", "label": "PAASS Return-to-Sport Consensus for Acute Lateral Ankle Sprain, 2021" }
     ],
     "related": [
-      { "href": "../sports-injuries/", "eyebrow": "Injury guide", "title": "Sports injury evaluation" },
+      { "href": "../ankle-sprain-return-to-sport-exercises/", "eyebrow": "Athlete progression", "title": "Return to cutting and sport" },
       { "href": "../peroneal-tendinopathy-exercises/", "eyebrow": "Persistent outer ankle pain", "title": "Peroneal tendinopathy exercises" },
       { "href": "../achilles-tendinopathy-exercises/", "eyebrow": "Different tendon pattern", "title": "Midportion Achilles exercises" }
     ]
@@ -1184,6 +1184,7 @@
     "seoTitle": "Patellar Tendinopathy Exercises",
     "shortTitle": "Patellar tendinopathy exercises",
     "conditionName": "Patellar tendinopathy in athletes",
+    "audiences": ["athlete"],
     "reviewedDate": "2026-07-29",
     "modifiedDate": "2026-08-08",
     "video": {
@@ -1197,6 +1198,7 @@
     "kicker": "Jumper's knee · Progressive tendon loading",
     "h1": "Patellar Tendinopathy Exercises for Athletes",
     "summary": "Progressive loading is commonly recommended, and slow resistance is a practical strength foundation. Trial certainty remains limited, and no single loading program is proven best. Athletes whose sports require jumping, sprinting, or repeated fast loading should add those demands gradually.",
+    "programLevel": "Athlete progression",
     "authorityTitle": "Strength. Spring. Sport capacity.",
     "authorityItems": [
       { "icon": "fitness_center", "text": "Progressive quadriceps and tendon strength" },
@@ -1581,6 +1583,7 @@
     "seoTitle": "Hamstring Strain Exercises",
     "shortTitle": "Hamstring strain exercises",
     "conditionName": "Acute grade I or II hamstring muscle strain in athletes",
+    "audiences": ["athlete"],
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-07-29",
     "modifiedDate": "2026-08-08",
@@ -1979,6 +1982,7 @@
     "seoTitle": "Advanced Nonoperative Meniscus Rehab for Athletes",
     "shortTitle": "Advanced nonoperative meniscus rehabilitation",
     "conditionName": "Meniscus tear",
+    "audiences": ["athlete"],
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-07-30",
     "modifiedDate": "2026-08-08",
@@ -1995,7 +1999,7 @@
     "kicker": "Meniscus tear · Advanced athlete progression",
     "h1": "Advanced Nonoperative Meniscus Rehabilitation for Athletes",
     "summary": "This advanced continuation is for a skeletally mature athlete with a clinician-confirmed meniscus tear already selected for nonoperative care. It builds unilateral strength, running, landing, deceleration, and change-of-direction capacity after the starter plan. Progress depends on a quiet knee and demonstrated function, not a fixed calendar.",
-    "programLevel": "After the starter plan and clinician clearance",
+    "programLevel": "Athlete progression after the starter plan and clinician clearance",
     "authorityTitle": "Strength. Speed. Sport.",
     "authorityItems": [
       {
@@ -2198,6 +2202,7 @@
     "seoTitle": "Iliotibial Band Syndrome Exercises for Runners",
     "shortTitle": "IT band syndrome exercises",
     "conditionName": "Iliotibial band syndrome",
+    "audiences": ["athlete"],
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
     "modifiedDate": "2026-08-28",
@@ -2802,6 +2807,388 @@
       { "href": "../thumb-cmc-osteoarthritis-exercises/", "eyebrow": "Different thumb-base pain", "title": "Thumb CMC osteoarthritis exercises" },
       { "href": "../msk-ultrasound-guided-procedures/", "eyebrow": "Procedure guidance", "title": "Ultrasound-guided procedures" },
       { "href": "../home-exercise-programs/", "eyebrow": "All programs", "title": "Home exercise library" }
+    ]
+  },
+  {
+    "slug": "ankle-sprain-return-to-sport-exercises",
+    "title": "Lateral Ankle Sprain Return-to-Sport Program",
+    "seoTitle": "Return to Sport After an Ankle Sprain",
+    "shortTitle": "Ankle sprain athlete progression",
+    "conditionName": "Lateral ankle sprain in athletes",
+    "audiences": ["athlete"],
+    "publishedDate": "2026-08-28",
+    "reviewedDate": "2026-08-28",
+    "modifiedDate": "2026-08-28",
+    "metaDescription": "Advanced ankle-sprain rehabilitation for athletes, with strength, dynamic balance, hopping, deceleration, cutting, and return-to-sport guidance.",
+    "breadcrumb": "Ankle sprain return to sport",
+    "kicker": "Lateral ankle sprain · Athlete progression",
+    "h1": "Return to Sport After a Lateral Ankle Sprain",
+    "summary": "This continuation builds the strength, balance, hopping, braking, and change-of-direction capacity needed after an uncomplicated lateral ankle sprain. It begins after the foundation program is controlled and guides training progression, not independent medical clearance.",
+    "programLevel": "Athlete progression after the foundation plan",
+    "authorityTitle": "Strength. Control. Sport exposure.",
+    "authorityItems": [
+      { "icon": "fitness_center", "text": "Loaded calf and lower-limb strength" },
+      { "icon": "balance", "text": "Dynamic balance and multidirectional landing" },
+      { "icon": "route", "text": "Planned cutting before reactive sport demands" }
+    ],
+    "proof": [
+      { "strong": "6 elements", "span": "strength through change of direction" },
+      { "strong": "5 PAASS domains", "span": "reviewed before full return" },
+      { "strong": "Full practice", "span": "before unrestricted competition" }
+    ],
+    "fitIntro": "This advanced program is for an athlete with an evaluated, uncomplicated lateral ankle sprain who has completed the starter plan or comparable rehabilitation. Its entry markers are practical gates, not validated clearance thresholds.",
+    "fit": "Walking and stairs are nearly normal, swelling is stable or decreasing, functional ankle motion is comfortable, and band eversion, heel raises, single-leg balance, and small hop-and-hold drills are controlled.",
+    "assessFirst": "Pain above the ankle, focal bone or midfoot pain, locking, tendon snapping, repeated giving way, substantial swelling, an uncertain diagnosis, suspected fracture, syndesmotic or high-ankle injury, Achilles or peroneal tendon injury, osteochondral injury, major midfoot injury, neurologic symptoms, or postoperative rehabilitation.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek immediate emergency evaluation for a newly cold, pale, blue, or numb foot. Seek same-day urgent assessment for deformity, inability to bear weight, a new pop with loss of push-off, severe or rapidly increasing swelling, or sharp bony pain after a new injury.",
+    "programHeading": "Progress from force control to unpredictable sport.",
+    "programIntro": "Keep the loaded strength work as the base. Add impact only after small hops remain controlled, then progress speed, direction, decision-making, and practice volume one variable at a time. Complete two green-response sessions before increasing a drill.",
+    "frequency": "Strength 2 to 3 days weekly; impact and cutting 1 to 2 days weekly initially",
+    "equipment": "Stable step, external weight, resistance band, floor markers, and open training space",
+    "checkpoint": "Reassess after every 2 green-response sport sessions",
+    "goal": "Confident running, landing, braking, cutting, and full-practice exposure",
+    "exercises": [
+      {
+        "name": "Loaded straight-knee and bent-knee calf pair",
+        "dose": "3 sets of 6 to 12 straight-knee repetitions and 3 sets of 8 to 15 bent-knee repetitions",
+        "frequency": "2 to 3 nonconsecutive days per week",
+        "how": "Use one leg when controlled. Complete straight-knee raises first, then repeat with a steady knee bend. Keep heel height and ankle alignment consistent as the set becomes challenging.",
+        "easier": "Use fingertip support, both legs, or lighter external load.",
+        "harder": "Add load, then use a faster upward phase while keeping the lowering phase controlled. Do not sacrifice heel height for speed."
+      },
+      {
+        "name": "Single-leg squat or lateral step-down",
+        "dose": "3 sets of 6 to 10 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Lower through a controlled range with the whole foot grounded and the knee tracking comfortably over the foot. Use a stable support when needed.",
+        "easier": "Use a shallower range, a lower step, or more hand support.",
+        "harder": "Progress depth, external load, and movement speed separately rather than changing them together."
+      },
+      {
+        "name": "Multidirectional reach balance",
+        "dose": "2 to 3 rounds of 3 to 5 controlled reaches in each selected direction",
+        "frequency": "3 or more days per week",
+        "how": "Stand on the involved leg near support and reach the other foot forward, sideways, and diagonally. Keep the stance foot stable while the knee, hip, and trunk control the reach.",
+        "easier": "Shorten the reach or tap a finger on support.",
+        "harder": "Increase reach distance, add trunk rotation, or respond to a visual cue before using an unstable surface."
+      },
+      {
+        "name": "Multidirectional hop and stick",
+        "dose": "2 to 3 sets of 4 to 6 hops in each selected direction",
+        "frequency": "2 days per week initially",
+        "how": "Hop forward or sideways and hold the landing for two seconds. Land quietly with the foot, knee, hip, and trunk controlled before adding diagonal directions.",
+        "easier": "Use a smaller two-leg hop or a step-and-hold drill.",
+        "harder": "Increase distance, add diagonal hops, then progress to repeated hops only after single landings remain controlled."
+      },
+      {
+        "name": "Repeated pogo or line hops",
+        "dose": "2 to 3 sets of 10 to 20 contacts",
+        "frequency": "2 days per week initially",
+        "how": "Use low, rhythmic contacts over one spot or a line. Keep the contacts quiet and the ankle spring consistent across the set.",
+        "easier": "Use quick heel raises without leaving the floor or two-leg pogos.",
+        "harder": "Progress to one leg, then forward-back and side-to-side rhythm. Increase contacts or direction, not both at once."
+      },
+      {
+        "name": "Acceleration, deceleration, and cutting progression",
+        "dose": "4 to 6 high-quality repetitions each direction at about 50 to 70 percent effort",
+        "frequency": "1 to 2 days per week after hopping remains green",
+        "how": "Accelerate over 5 to 10 meters and stop under control. Add planned 45-degree cuts, then larger angles and faster approaches. Reactive cues come last. Allow full recovery between early repetitions.",
+        "easier": "Use a brisk shuffle-to-stop, a shorter approach, or a lower speed.",
+        "harder": "Add speed, then cutting angle, then a reactive cue. Progress from modified practice to full practice before competition."
+      }
+    ],
+    "responseIntro": "Impact and sport work should not create growing swelling, repeated instability, altered landing, or a meaningful increase the next morning. Change one variable at a time: contacts, distance, speed, direction, decision-making demand, or practice volume.",
+    "green": "No more than mild symptoms, no giving way, controlled landings and cuts, stable confidence, and no meaningful increase in pain or swelling by the next morning.",
+    "yellow": "Swelling increases, confidence falls, landing or cutting changes, a limp appears, or symptoms remain worse the next morning. Reduce speed, cutting angle, contacts, or total practice exposure.",
+    "red": "Stop for new sharp pain, a pop, inability to bear weight, new bony pain, pain above the ankle, locking, deformity, a cold or numb foot, or repeated giving way. Arrange prompt assessment rather than pushing through.",
+    "progression": [
+      { "title": "Stage 1: rebuild force and single-leg control", "text": "Progress loaded calf work, single-leg strength, and multidirectional balance while walking, stairs, and next-day swelling remain stable." },
+      { "title": "Stage 2: add landing and repeated contacts", "text": "Begin hop-and-stick drills, then low repeated contacts. Require two green-response sessions before increasing distance, contacts, or direction." },
+      { "title": "Stage 3: restore speed and planned direction change", "text": "Build straight-line running and braking before planned cuts. Increase approach speed and cutting angle separately." },
+      { "title": "Stage 4: add decisions and practice exposure", "text": "Introduce reactive cues, then modified practice, full practice, limited competition, and unrestricted participation through a shared return decision." }
+    ],
+    "readyItems": [
+      "Pain during sport and over the previous 24 hours is acceptable and stable.",
+      "Functional ankle motion, strength, endurance, and power match the athlete's current sport demands.",
+      "Confidence, perceived stability, and psychological readiness are improving.",
+      "Single-leg balance and dynamic reach tasks remain controlled.",
+      "Hopping, jumping, agility, and sport-specific drills are tolerated without a next-day reaction.",
+      "A full training session has been completed at the required intensity and volume.",
+      "These PAASS domains organize the return decision, but PAASS does not supply universal cutoffs and no single test provides clearance."
+    ],
+    "evaluation": "Schedule a reassessment for recurrent giving way, persistent swelling, pain above the ankle, locking, tendon snapping, inability to progress hopping or cutting, or uncertainty about full-speed or contact return. Unrestricted competition should be a shared decision with a qualified clinician and the athlete's rehabilitation team.",
+    "faqs": [
+      { "q": "What is different from the starter ankle program?", "a": "The starter program restores motion, basic strength, balance, and a small hop. This progression adds loaded single-leg work, repeated impact, braking, cutting, reactive tasks, and practice exposure." },
+      { "q": "Does passing one hop test mean I am cleared?", "a": "No. Return decisions should also consider pain, ankle motion and capacity, confidence, balance, sport skills, and tolerance of a full training session. PAASS does not define one universal cutoff." },
+      { "q": "Should I wear a brace or tape?", "a": "A brace or tape may reduce recurrence risk during higher-risk activity. Selection should reflect comfort, sport rules, injury history, and clinician or athletic-trainer guidance rather than replace rehabilitation." },
+      { "q": "When should cutting begin?", "a": "Begin after straight-line running, braking, and multidirectional hopping are controlled without giving way or a next-day increase. Start planned and submaximal, then add angle, speed, and reactive cues one at a time." },
+      { "q": "When can I return to a game?", "a": "A game should follow successful modified practice and full practice at the required intensity and volume. Completing this page guides progression but does not independently provide medical clearance." }
+    ],
+    "sources": [
+      { "href": "https://www.orthopt.org/uploads/content_files/files/jospt.2021.0302.pdf", "label": "JOSPT Clinical Practice Guideline: Lateral Ankle Ligament Sprains, 2021" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/34158354/", "label": "PAASS Return-to-Sport Consensus for Acute Lateral Ankle Sprain" },
+      { "href": "https://bjsm.bmj.com/content/58/19/1115", "label": "Ankle-GO and Two-Year Risk of Recurrent Sprain" },
+      { "href": "https://www.bmj.com/content/339/bmj.b2684", "label": "Home Proprioceptive Training and Ankle-Sprain Recurrence" }
+    ],
+    "related": [
+      { "href": "../lateral-ankle-sprain-exercises/", "eyebrow": "Build the base first", "title": "Starter lateral ankle sprain program" },
+      { "href": "../sports-injuries/#athlete-programs", "eyebrow": "All athlete pathways", "title": "Sports injury return-to-sport hub" },
+      { "href": "../achilles-tendinopathy-return-to-sport-exercises/", "eyebrow": "Other lower-leg progression", "title": "Achilles return to sport" }
+    ]
+  },
+  {
+    "slug": "patellofemoral-pain-return-to-running-exercises",
+    "title": "Patellofemoral Pain Return-to-Running and Jumping Program",
+    "seoTitle": "Return to Running With Patellofemoral Pain",
+    "shortTitle": "Patellofemoral running and jumping progression",
+    "conditionName": "Patellofemoral pain in runners and jumping athletes",
+    "audiences": ["athlete"],
+    "publishedDate": "2026-08-28",
+    "reviewedDate": "2026-08-28",
+    "modifiedDate": "2026-08-28",
+    "metaDescription": "An athlete progression for patellofemoral pain, with heavier knee and hip exercise, run-walk intervals, landing, jumping, and workload guidance.",
+    "breadcrumb": "Patellofemoral return to running",
+    "kicker": "Patellofemoral pain · Runner and jumping progression",
+    "h1": "Return to Running and Jumping With Patellofemoral Pain",
+    "summary": "This continuation adds heavier knee loading, graded running, landing, jumping, and deceleration after the patellofemoral foundation plan. It is for a confirmed diagnosis with a quiet knee and stable next-morning response, and it does not independently provide medical clearance.",
+    "programLevel": "Athlete progression after the foundation plan",
+    "authorityTitle": "Load. Run. Land.",
+    "authorityItems": [
+      { "icon": "fitness_center", "text": "Heavier knee-targeted strength with optional hip work" },
+      { "icon": "directions_run", "text": "Easy run-walk exposure before hills and speed" },
+      { "icon": "jump_to_element", "text": "Landing and jumping before repeated sport demand" }
+    ],
+    "proof": [
+      { "strong": "6 elements", "span": "strength through deceleration" },
+      { "strong": "One variable", "span": "progressed at a time" },
+      { "strong": "Full practice", "span": "before unrestricted competition" }
+    ],
+    "fitIntro": "This program is for a runner or jumping athlete who has been evaluated and told patellofemoral pain is the likely diagnosis, has controlled the starter exercises, and is ready for higher knee and sport demand.",
+    "fit": "Walking and ordinary stairs are tolerable, functional knee motion is present without meaningful swelling, starter squats and step-downs are controlled, and symptoms return to baseline by the next morning.",
+    "assessFirst": "Acute trauma, meaningful swelling or effusion, true locking, recurrent kneecap dislocation or instability, focal patellar-tendon or tibial-tubercle pain, focal bone pain, growth-center pain, a symptomatic cartilage or meniscus injury, loss of motion, or postoperative rehabilitation.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a kneecap dislocation, rapid traumatic swelling, inability to bear weight, true locking or inability to straighten the knee, or a new painful, hot, red, or swollen joint with or without fever.",
+    "programHeading": "Build strength first, then layer running and impact.",
+    "programIntro": "Knee-targeted exercise remains central. Add hip-targeted work when it matches symptoms, impairments, preferences, or tolerance. Running, landing, and jumping are graded exposures, not extra conditioning added on top of an already excessive workload.",
+    "frequency": "Strength 2 to 3 days weekly; running and impact every other day initially",
+    "equipment": "External weight, stable step, optional band or knee-extension machine, and open training space",
+    "checkpoint": "Review after every 2 stable running or impact sessions",
+    "goal": "Tolerate running, landing, jumping, braking, and full-practice workload",
+    "exercises": [
+      {
+        "name": "Loaded squat or leg press",
+        "dose": "3 to 4 sets of 6 to 12 repetitions",
+        "frequency": "2 to 3 nonconsecutive days per week",
+        "how": "Use a squat variation or leg press that allows controlled knee bending. Keep the feet grounded and use a range that remains tolerable through the set and the next morning.",
+        "easier": "Use a higher box, a shallower range, or less external load.",
+        "harder": "Increase range first, then add load while preserving control."
+      },
+      {
+        "name": "Loaded split squat or step-down",
+        "dose": "3 sets of 6 to 10 repetitions per side",
+        "frequency": "2 to 3 days per week",
+        "how": "Use a supported split squat or controlled step-down. Keep the whole foot grounded and let the knee move through a comfortable path without forcing one supposedly perfect alignment.",
+        "easier": "Use more support, a shorter range, or a lower step.",
+        "harder": "Progress depth, external load, then movement speed one at a time."
+      },
+      {
+        "name": "Resisted knee extension",
+        "dose": "3 sets of 8 to 15 repetitions",
+        "frequency": "2 to 3 days per week",
+        "how": "Use a knee-extension machine or a resistance band secured according to its manufacturer. Straighten the knee through a tolerable arc, pause briefly, and lower slowly. Do not improvise an unsafe anchor.",
+        "easier": "Use less resistance or a smaller comfortable arc.",
+        "harder": "Increase load after 15 controlled repetitions rather than forcing a painful range."
+      },
+      {
+        "name": "Optional hip-targeted strength",
+        "dose": "2 to 3 sets of 8 to 15 repetitions",
+        "frequency": "2 to 3 days per week when indicated",
+        "how": "Choose one hip exercise that matches the evaluation, such as a lateral band walk, hip abduction, or controlled single-leg hip hinge. Keep the trunk and pelvis controlled without trying to force a perfect knee position.",
+        "easier": "Use no band, a smaller range, or two-leg support.",
+        "harder": "Add resistance or single-leg demand only when it serves the athlete's specific limitation."
+      },
+      {
+        "name": "Run-walk progression",
+        "dose": "Alternate 1 to 4 minutes of easy running with about 1 minute of walking for 20 to 30 minutes",
+        "frequency": "Every other day initially",
+        "how": "Use flat ground and an easy pace. Start at the shortest run interval that keeps symptoms and stride controlled. Build easy running duration before adding frequency, hills, or speed.",
+        "easier": "Use 30 to 60 seconds of running followed by a longer walk or use tolerable cycling.",
+        "harder": "Lengthen the run intervals, then reduce walk time. Add one later variable at a time."
+      },
+      {
+        "name": "Landing, pogo, and deceleration progression",
+        "dose": "2 to 3 sets of 8 to 10 controlled contacts or 4 to 6 braking repetitions",
+        "frequency": "2 days per week initially",
+        "how": "Begin with a snap-down or landing-and-hold. Progress to bilateral pogos, then selected single-leg or multidirectional hops. Add submaximal acceleration and controlled stopping only after landing remains green.",
+        "easier": "Use a step-and-stick, low two-leg landing, or brisk march-to-stop.",
+        "harder": "Progress height or distance, then repeated contacts, then braking speed and planned direction change."
+      }
+    ],
+    "responseIntro": "A conservative running protocol in published research used pain no higher than 2 out of 10, return to pre-run pain within 60 minutes, and no increase the next morning. That is an evidence-derived monitoring option, not a validated universal threshold. Strength and impact should remain mild enough that movement stays normal.",
+    "green": "No more than mild symptoms, normal running or landing mechanics, no swelling, and pain returns to the usual baseline within an hour and remains stable the next morning.",
+    "yellow": "Pain builds, stride or landing changes, symptoms fail to settle, or stairs and squatting are worse the next morning. Reduce range, load, run time, contacts, speed, or total weekly exposure.",
+    "red": "Stop and seek assessment for rapid swelling, true locking, inability to straighten the knee, recurrent kneecap instability, inability to bear weight, focal bone pain, or a new painful, hot, red, or swollen joint with or without fever.",
+    "progression": [
+      { "title": "Stage 1: earn the higher-load phase", "text": "Build loaded bilateral and single-leg strength with full functional motion, no meaningful swelling, and a stable next-morning response." },
+      { "title": "Stage 2: restore easy running", "text": "Use flat run-walk intervals every other day. Build easy duration before frequency, then add hills or speed one variable at a time." },
+      { "title": "Stage 3: add landing and repeated impact", "text": "Progress landing-and-hold to pogo and selected unilateral or multidirectional contacts. Require two green-response sessions before increasing demand." },
+      { "title": "Stage 4: restore braking and sport exposure", "text": "Add submaximal acceleration and deceleration, then planned direction change, modified practice, full practice, and an individualized return decision." }
+    ],
+    "readyItems": [
+      "Functional knee motion is present without meaningful swelling or effusion.",
+      "Loaded knee exercise and single-leg tasks remain controlled at a challenging dose.",
+      "Two easy running or landing exposures stay within the response rule before one variable increases.",
+      "Knee and hip capacity are satisfactory for the athlete's demands when objective testing is available.",
+      "Repeated running, jumping, or deceleration sessions do not create a next-day reaction.",
+      "Modified practice and then full practice are tolerated at the required intensity and volume.",
+      "Strength or hop symmetry may inform testing, but no percentage or home test independently provides clearance."
+    ],
+    "evaluation": "Schedule a reassessment for swelling, locking, patellar instability, focal tendon or bone pain, loss of motion, altered mechanics that persist despite load reduction, or inability to progress over several weeks. High-speed, pivoting, or contact return should be reviewed with a qualified clinician.",
+    "faqs": [
+      { "q": "Do I have to stop running completely?", "a": "Not always. Reduce the variable that repeatedly drives symptoms, such as duration, speed, downhill running, or consecutive days. Use run-walk intervals or cross-training when continuous running is not controlled." },
+      { "q": "Should every athlete change cadence or foot strike?", "a": "No. Movement or running retraining is individualized. A modest cadence trial can help selected runners when assessment links the change to comfort, but do not force a forefoot strike or several form changes at once." },
+      { "q": "Should I focus on the hip or knee?", "a": "Knee-targeted exercise should remain central. Hip exercise can be added when it matches symptoms, impairments, preferences, or early knee-loading tolerance." },
+      { "q": "When can jumping begin?", "a": "Begin after loaded strength and easy running or daily tasks remain stable without swelling. Start with low land-and-hold work, then progress contacts, direction, and speed one at a time." },
+      { "q": "Does completing the plan clear me for sport?", "a": "No. The plan develops capacity. Unrestricted return also depends on diagnosis, symptoms, objective function, confidence, sport demands, and tolerance of full practice." }
+    ],
+    "sources": [
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/39401870/", "label": "Best Practice Guide for Patellofemoral Pain, 2024" },
+      { "href": "https://www.orthopt.org/content/s/patellofemoral-pain-2019", "label": "JOSPT Clinical Practice Guideline: Patellofemoral Pain, 2019" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/28476901/", "label": "Education, Exercise, and Gait-Retraining Trial in Runners" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/38198492/", "label": "Randomized Trial of Gait Retraining for Runners With Patellofemoral Pain, 2024" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4975817/", "label": "Patellofemoral Pain Definition and Consensus Recommendations" }
+    ],
+    "related": [
+      { "href": "../patellofemoral-pain-exercises/", "eyebrow": "Build the base first", "title": "Starter patellofemoral pain program" },
+      { "href": "../sports-injuries/#athlete-programs", "eyebrow": "All athlete pathways", "title": "Sports injury return-to-sport hub" },
+      { "href": "../patellar-tendinopathy-exercises/", "eyebrow": "Different front-knee diagnosis", "title": "Patellar tendinopathy for athletes" }
+    ]
+  },
+  {
+    "slug": "achilles-tendinopathy-return-to-sport-exercises",
+    "title": "Achilles Tendinopathy Return-to-Sport Program",
+    "seoTitle": "Achilles Tendinopathy Return to Running and Sport",
+    "shortTitle": "Achilles athlete progression",
+    "conditionName": "Midportion Achilles tendinopathy in athletes",
+    "audiences": ["athlete"],
+    "publishedDate": "2026-08-28",
+    "reviewedDate": "2026-08-28",
+    "modifiedDate": "2026-08-28",
+    "metaDescription": "Advanced midportion Achilles rehabilitation with heavy calf loading, plyometrics, graded running, basketball court exposure, and symptom-guided progression.",
+    "breadcrumb": "Achilles tendinopathy return to sport",
+    "kicker": "Midportion Achilles tendinopathy · Athlete progression",
+    "h1": "Achilles Tendinopathy Return to Running, Jumping, and Basketball",
+    "summary": "This continuation builds heavy calf strength, faster loading, plyometrics, running, and basketball court exposure after the midportion Achilles foundation plan. It uses symptoms, calf capacity, and practice tolerance to guide progression without treating one test as clearance.",
+    "programLevel": "Athlete progression after the foundation plan",
+    "authorityTitle": "Strength. Spring. Court capacity.",
+    "authorityItems": [
+      { "icon": "fitness_center", "text": "Heavy gastrocnemius and soleus loading" },
+      { "icon": "jump_to_element", "text": "Fast calf work before repeated jumping" },
+      { "icon": "sports_basketball", "text": "Running and court minutes progressed separately" }
+    ],
+    "proof": [
+      { "strong": "6 elements", "span": "strength through full practice" },
+      { "strong": "36 to 72 hours", "span": "often used after higher tendon-load sessions" },
+      { "strong": "Next morning", "span": "checked before progressing" }
+    ],
+    "fitIntro": "This advanced program is for an athlete with a clinically established midportion Achilles tendinopathy who has completed the starter loading phase. It is not for insertional symptoms without modification, a suspected rupture, or postoperative recovery.",
+    "fit": "Walking pain is minimal, morning symptoms are stable from week to week, repeated straight-knee and bent-knee single-leg heel raises are controlled, and basic two-leg pogo work is tolerated without a next-morning flare.",
+    "assessFirst": "Pain directly at the heel attachment, sudden injury, suspected partial or complete rupture, substantial calf swelling, recent surgery, new weakness or loss of push-off, systemic inflammatory or metabolic contributors, or new tendon pain during or after fluoroquinolone treatment.",
+    "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for new one-sided calf warmth or swelling, a sudden pop, new bruising, a palpable gap, substantial acute swelling, or inability to push off or perform a heel raise.",
+    "programHeading": "Separate strength, spring, running, and court load.",
+    "programIntro": "Maintain heavy straight-knee and bent-knee loading while faster work is added. Classify sport sessions as light, medium, or high tendon load and allow more recovery after the harder sessions. Do not increase external load, running, jump contacts, and court minutes in the same step.",
+    "frequency": "Heavy loading at least 3 days weekly; plyometrics and high-load sport 1 to 2 days weekly initially",
+    "equipment": "External weight, stable step or calf machine, floor markers, and court or running space",
+    "checkpoint": "Review weekly morning symptoms, heel-raise quality, and sport exposure",
+    "goal": "Restore running speed, braking, repeated jumping, and full basketball practice",
+    "exercises": [
+      {
+        "name": "Heavy straight-knee calf raise",
+        "dose": "3 to 4 sets of 6 to 10 repetitions",
+        "frequency": "At least 3 days per week",
+        "how": "Use one leg and external load when controlled. Rise through a consistent height, pause briefly, and lower over two to three seconds while keeping the knee straight.",
+        "easier": "Use both legs, more hand support, or less external load.",
+        "harder": "Add load while preserving heel height and control across the final repetitions."
+      },
+      {
+        "name": "Heavy bent-knee or seated soleus raise",
+        "dose": "3 to 4 sets of 6 to 10 repetitions",
+        "frequency": "At least 3 days per week",
+        "how": "Keep the knee bent and lift the heel through the largest controlled range. Use a seated machine, weighted knee, or supported bent-knee standing variation with secure equipment.",
+        "easier": "Use both legs or reduce the external load.",
+        "harder": "Progress load independently from the straight-knee raise while maintaining heel height."
+      },
+      {
+        "name": "Fast calf raise or rebounding heel raise",
+        "dose": "3 sets of 8 to 15 repetitions",
+        "frequency": "2 days per week",
+        "how": "Rise with a controlled faster upward phase and lower under control. Begin without leaving the floor before progressing toward a small rebound.",
+        "easier": "Use two legs or a quick heel raise without a rebound.",
+        "harder": "Progress toward one-leg fast raises, then a low rebound when height and rhythm stay consistent."
+      },
+      {
+        "name": "Plyometric ladder",
+        "dose": "2 to 3 sets of 10 to 20 contacts",
+        "frequency": "1 to 2 days per week initially",
+        "how": "Begin with bilateral pogos, then unilateral pogos, forward hops, lateral hops, and selected repeated or multidirectional contacts. Keep the rhythm quiet and the rebound height consistent.",
+        "easier": "Use fast calf raises, marching, or lower two-leg contacts.",
+        "harder": "Increase one variable: single-leg demand, direction, height, distance, or total contacts."
+      },
+      {
+        "name": "Return-to-running intervals",
+        "dose": "Start near 1 minute of easy running and 1 minute of walking for about 20 minutes",
+        "frequency": "Initially leave at least 48 hours between meaningful running exposures",
+        "how": "Use flat ground and a conversational pace. Track running minutes and the next-morning response. Build easy duration before speed, hills, sprinting, or consecutive days.",
+        "easier": "Shorten the run interval, lengthen the walk, or use tolerable cycling.",
+        "harder": "Lengthen continuous easy running, then add one later variable at a time."
+      },
+      {
+        "name": "Basketball return-to-court exposure",
+        "dose": "Begin with 15 to 25 minutes of low-intensity skill work and record court minutes and jump contacts",
+        "frequency": "1 to 2 court sessions per week initially",
+        "how": "Start with shooting, easy jogging, and controlled shuffling. Add closeouts, planned deceleration, submaximal layups and jumps, planned cutting, repeated jumping, and sprint efforts before modified and full practice.",
+        "easier": "Use stationary shooting, walking patterns, fewer contacts, or shorter court time.",
+        "harder": "Increase intensity, jump contacts, or court minutes one at a time, then move from modified to full practice."
+      }
+    ],
+    "responseIntro": "Tendon loading should remain tolerable with controlled mechanics and a stable next morning. The existing pain-monitoring model allows activity pain up to 5 out of 10 when symptoms return to baseline by the next morning and do not increase week to week, but that is a monitoring ceiling, not a clearance standard.",
+    "green": "Activity pain remains tolerable, heel height and mechanics stay controlled, symptoms return to baseline by the next morning, and pain or stiffness is not increasing from week to week.",
+    "yellow": "Morning stiffness increases, heel-rise height or rebound quality falls, or running plus strength creates a cumulative flare. Reduce total contacts, external load, running, or court exposure rather than changing everything at once.",
+    "red": "Stop and seek same-day urgent assessment for a sudden pop, new bruising, a palpable gap, loss of push-off, inability to heel raise, substantial acute swelling, or new one-sided calf warmth or swelling.",
+    "progression": [
+      { "title": "Stage 1: establish heavy calf capacity", "text": "Progress straight-knee and bent-knee loading while walking and morning symptoms remain stable. External load should rise without loss of heel height." },
+      { "title": "Stage 2: restore faster force", "text": "Add fast calf raises, then low bilateral and unilateral contacts. Allow 36 to 72 hours after higher tendon-load sessions when needed for recovery." },
+      { "title": "Stage 3: rebuild running and jumping exposure", "text": "Use flat run-walk intervals and a counted plyometric ladder. Build duration and contacts before speed, direction, or repeated high-intensity efforts." },
+      { "title": "Stage 4: restore basketball workload", "text": "Progress court skills, braking, cutting, repeated jumping, and sprinting, then modified practice, full practice, limited competition, and unrestricted participation through a shared decision." }
+    ],
+    "readyItems": [
+      "Morning pain and stiffness are stable and are not increasing from week to week.",
+      "Single-leg heel-rise height and endurance are controlled for the athlete's current phase.",
+      "Fast calf work and hopping maintain consistent height, rhythm, and confidence.",
+      "Running speed, acceleration, braking, and repeated jumps can be progressed without a next-day flare.",
+      "Court minutes, jump contacts, and intensity have been tracked rather than increased together.",
+      "Modified practice and then full practice are tolerated at the required intensity and volume.",
+      "Questionnaires and objective tests can inform the decision, but imaging, one percentage, or one home test does not independently clear competitive basketball."
+    ],
+    "evaluation": "Schedule a reassessment for insertional pain, worsening morning symptoms, loss of heel-raise height, inability to progress impact, new calf swelling, an uncertain diagnosis, or difficulty returning to high-speed or repeated-jump sport. Competitive return should be a shared decision with a qualified clinician and rehabilitation team.",
+    "faqs": [
+      { "q": "How is this different from the starter Achilles program?", "a": "The starter establishes slow straight-knee and bent-knee loading and initial impact readiness. This page adds heavy loading, faster force, structured running, repeated jumping, cutting, court minutes, and full-practice exposure." },
+      { "q": "Can I keep running during rehabilitation?", "a": "Often yes, when running stays within the pain-monitoring rule and the next morning remains stable. Reduce running or court load when it repeatedly creates a cumulative flare." },
+      { "q": "How should I schedule hard tendon sessions?", "a": "Light tendon activity can occur more often, while moderate or high-load running, jumping, or court sessions commonly need 36 to 72 hours of recovery. The exact schedule should reflect the athlete's response rather than a rigid calendar." },
+      { "q": "Does a normal scan mean I am ready?", "a": "No. Imaging appearance does not determine sport readiness. Symptoms, calf capacity, fast loading, confidence, sport exposure, and full-practice tolerance matter more for progression." },
+      { "q": "Does completing the page clear me for basketball?", "a": "No. It develops capacity and documents exposure. Unrestricted competitive return remains an individualized, shared medical and sport decision." }
+    ],
+    "sources": [
+      { "href": "https://doi.org/10.1016/j.basket.2026.100007", "label": "Swisher, Waldrop, and Sitton: Achilles Tendinopathy in Basketball, 2026" },
+      { "href": "https://www.orthopt.org/uploads/content_files/files/Achilles_Pain_revision_2024.pdf", "label": "JOSPT Clinical Practice Guideline: Midportion Achilles Tendinopathy, 2024" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/32267723/", "label": "Conservative Management and Return-to-Sport Clinical Concepts" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/39271248/", "label": "Achilles Tendinopathy Core Outcome Set, 2024" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/32658037/", "label": "Incremental Achilles Tendon-Loading Study" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/17307888/", "label": "Pain-Monitoring and Continued-Activity Randomized Trial" },
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/27226389/", "label": "Bern Consensus Statement on Return to Sport" }
+    ],
+    "related": [
+      { "href": "../achilles-tendinopathy-exercises/", "eyebrow": "Build the base first", "title": "Starter midportion Achilles program" },
+      { "href": "../sports-injuries/#athlete-programs", "eyebrow": "All athlete pathways", "title": "Sports injury return-to-sport hub" },
+      { "href": "../patellar-tendinopathy-exercises/", "eyebrow": "Other basketball tendon plan", "title": "Patellar tendinopathy for athletes" }
     ]
   }
 ]

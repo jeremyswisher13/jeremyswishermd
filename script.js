@@ -707,7 +707,7 @@ videoResources.forEach(resource => {
     loadButton.addEventListener('click', () => loadVideoResource(resource));
 });
 
-// Exercise-library search and body-region filter
+// Exercise-library search, athlete focus, and body-region filter
 //
 // Every program remains visible in the source. The controls appear only after
 // the complete search, radio group, and card set have been verified and wired.
@@ -718,6 +718,7 @@ const programFilterStatus = programFilter?.querySelector('[data-program-filter-s
 const programSearchInput = programFilter?.querySelector('[data-program-search]');
 const programSearchInputWrap = programSearchInput?.closest('.hep-search-input-wrap');
 const programSearchClear = programFilter?.querySelector('[data-program-search-clear]');
+const programAudienceFilter = programFilter?.querySelector('[data-program-audience-filter]');
 const programResetButton = document.querySelector('[data-program-reset]');
 const programEmptyState = document.querySelector('[data-program-empty]');
 const programFilterInputs = programFilter
@@ -759,6 +760,8 @@ const hasCompleteProgramDiscovery = (
     && programSearchInput instanceof HTMLInputElement
     && programSearchInputWrap instanceof HTMLElement
     && programSearchClear instanceof HTMLButtonElement
+    && programAudienceFilter instanceof HTMLInputElement
+    && programAudienceFilter.type === 'checkbox'
     && programResetButton instanceof HTMLButtonElement
     && programEmptyState instanceof HTMLElement
     && programCards.length > 0
@@ -780,23 +783,34 @@ if (hasCompleteProgramDiscovery) {
             ? normalizedSearchValue.split(' ').filter(token => !programSearchStopWords.has(token))
             : [];
         const searchIsActive = searchTokens.length > 0;
+        const athleteOnly = programAudienceFilter.checked;
         let visibleCount = 0;
 
         programCards.forEach(card => {
             const matchesRegion = selectedRegion === 'all' || card.dataset.programRegion === selectedRegion;
+            const matchesAudience = !athleteOnly
+                || (card.dataset.programAudience || '').split(/\s+/).includes('athlete');
             const searchEntry = programSearchIndex.get(card) || { text: '', words: new Set() };
             const matchesSearch = !searchIsActive || searchTokens.every(token => (
                 token.length <= 2 ? searchEntry.words.has(token) : searchEntry.text.includes(token)
             ));
-            const isVisible = matchesRegion && matchesSearch;
+            const isVisible = matchesRegion && matchesAudience && matchesSearch;
             card.hidden = !isVisible;
             if (isVisible) visibleCount += 1;
         });
 
-        if (selectedRegion === 'all' && !searchIsActive) {
+        if (!athleteOnly && selectedRegion === 'all' && !searchIsActive) {
             programFilterStatus.textContent = `Showing all ${programCards.length} programs.`;
-        } else if (selectedRegion === 'all') {
+        } else if (athleteOnly && selectedRegion === 'all' && !searchIsActive) {
+            programFilterStatus.textContent = `Showing ${visibleCount} of ${programCards.length} athlete progressions.`;
+        } else if (athleteOnly && selectedRegion === 'all') {
+            programFilterStatus.textContent = `Showing ${visibleCount} of ${programCards.length} athlete progressions matching your search.`;
+        } else if (!athleteOnly && selectedRegion === 'all') {
             programFilterStatus.textContent = `Showing ${visibleCount} of ${programCards.length} programs matching your search.`;
+        } else if (athleteOnly && searchIsActive) {
+            programFilterStatus.textContent = `Showing ${visibleCount} of ${programCards.length} athlete progressions for ${programRegionLabels.get(selectedRegion)} matching your search.`;
+        } else if (athleteOnly) {
+            programFilterStatus.textContent = `Showing ${visibleCount} of ${programCards.length} athlete progressions for ${programRegionLabels.get(selectedRegion)}.`;
         } else if (searchIsActive) {
             programFilterStatus.textContent = `Showing ${visibleCount} of ${programCards.length} programs for ${programRegionLabels.get(selectedRegion)} matching your search.`;
         } else {
@@ -811,6 +825,7 @@ if (hasCompleteProgramDiscovery) {
     programFilterInputs.forEach(input => {
         input.addEventListener('change', updateProgramFilter);
     });
+    programAudienceFilter.addEventListener('change', updateProgramFilter);
     programSearchInput.addEventListener('input', updateProgramFilter);
     programSearchInput.addEventListener('search', updateProgramFilter);
     programSearchInput.addEventListener('keydown', event => {
@@ -827,6 +842,7 @@ if (hasCompleteProgramDiscovery) {
     programResetButton.addEventListener('click', () => {
         const allProgramsInput = programFilterInputs.find(input => input.value === 'all');
         if (allProgramsInput) allProgramsInput.checked = true;
+        programAudienceFilter.checked = false;
         programSearchInput.value = '';
         updateProgramFilter();
         programSearchInput.focus();
