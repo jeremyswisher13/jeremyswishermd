@@ -24,6 +24,45 @@ test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
 });
 
+test('homepage publication totals, disclosure, and filters stay synchronized', async ({ page }) => {
+  await blockThirdPartyRequests(page);
+  await page.goto('/', { waitUntil: 'domcontentloaded' });
+
+  const disclosure = page.locator('#pubToggleBtn');
+  const fullList = page.locator('#pubFullList');
+  const cards = fullList.locator('.pub-card');
+  const filterButtons = page.locator('.pub-filter');
+  const peerReviewedCount = await page.locator('#peer-reviewed .pub-card').count();
+  const bookChapterCount = await page.locator('#book-chapters .pub-card').count();
+  const otherCount = await page.locator('#other .pub-card').count();
+  const total = peerReviewedCount + bookChapterCount + otherCount;
+
+  await expect(page.getByText(`${peerReviewedCount} Peer-Reviewed Works`, { exact: true })).toBeVisible();
+  await expect(disclosure).toHaveText(`Browse All ${total} Scholarly Works`);
+  await expect(disclosure).toHaveAttribute('aria-expanded', 'false');
+  await expect(fullList).toBeHidden();
+  await expect(cards).toHaveCount(total);
+  await expect(filterButtons).toHaveCount(3);
+  await expect(filterButtons.nth(0)).toHaveText(`Peer-Reviewed Work (${peerReviewedCount})`);
+  await expect(filterButtons.nth(1)).toHaveText(`Book Chapters (${bookChapterCount})`);
+  await expect(filterButtons.nth(2)).toHaveText(`Other Scholarly Work (${otherCount})`);
+
+  await disclosure.click();
+  await expect(disclosure).toHaveText('Show Less');
+  await expect(disclosure).toHaveAttribute('aria-expanded', 'true');
+  await expect(fullList).toBeVisible();
+
+  await filterButtons.nth(1).click();
+  await expect(filterButtons.nth(1)).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('#book-chapters')).toBeVisible();
+  await expect(page.locator('#peer-reviewed')).toBeHidden();
+  await expect(page.locator('#other')).toBeHidden();
+
+  await disclosure.click();
+  await expect(disclosure).toHaveText(`Browse All ${total} Scholarly Works`);
+  await expect(disclosure).toHaveAttribute('aria-expanded', 'false');
+});
+
 test('exercise library combines athlete, region, and search filters and resets cleanly', async ({ page }) => {
   await blockThirdPartyRequests(page);
   await page.goto('/home-exercise-programs/', { waitUntil: 'domcontentloaded' });

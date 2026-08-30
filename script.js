@@ -407,9 +407,9 @@ if (fadeElements.length) {
 }
 
 // Publication disclosure toggle
-const TOTAL_PUBLICATIONS = 38;
 const pubToggleBtn = document.getElementById('pubToggleBtn');
 const pubFullList = document.getElementById('pubFullList');
+const totalPublications = pubFullList?.querySelectorAll('.pub-card').length || 0;
 
 function syncPublicationDisclosure() {
     if (!pubToggleBtn || !pubFullList) return;
@@ -418,7 +418,7 @@ function syncPublicationDisclosure() {
     pubToggleBtn.setAttribute('aria-expanded', String(isExpanded));
     pubToggleBtn.textContent = isExpanded
         ? 'Show Less'
-        : `Browse All ${TOTAL_PUBLICATIONS} Scholarly Works`;
+        : `Browse All ${totalPublications} Scholarly Works`;
 }
 
 if (pubToggleBtn && pubFullList) {

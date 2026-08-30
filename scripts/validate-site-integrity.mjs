@@ -17,7 +17,7 @@ const ignoredHtmlDirectories = new Set([
     'test-results'
 ]);
 const analyticsEventCounts = new Map();
-const expectedAssetCacheKey = '20260828-athlete1';
+const expectedAssetCacheKey = '20260830-siteqa1';
 const expectedPrimaryNavigationLabels = [
     'Knee Osteoarthritis',
     'PRP for Knee OA',
@@ -600,6 +600,22 @@ if (
     errors.push('Locations scheduling must tell callers to ask for Jeremy Swisher, MD');
 }
 
+const expectedWestHillsMapHref = 'https://www.google.com/maps/search/?api=1&amp;query=UCLA+Health+West+Hills+Orthopedic+Surgery%2C+7230+Medical+Center+Drive%2C+Suite+604%2C+West+Hills%2C+CA+91307';
+for (const [label, page] of [
+    ['Homepage', homePage],
+    ['Locations page', locationsPage]
+]) {
+    const westHillsMapAnchor = /<a\b([^>]*)>(?:Directions to West Hills|Open West Hills in Google Maps)[\s\S]*?<\/a>/i
+        .exec(page)?.[1] || '';
+    const westHillsMapHref = /\bhref="([^"]+)"/i.exec(westHillsMapAnchor)?.[1] || '';
+    if (westHillsMapHref !== expectedWestHillsMapHref) {
+        errors.push(`${label} West Hills directions must point to the explicit 7230 Medical Center Drive address`);
+    }
+    if (/query_place_id=/i.test(westHillsMapHref)) {
+        errors.push(`${label} West Hills directions must not reuse the physician's Westwood Google place ID`);
+    }
+}
+
 for (const subtitle of [
     'Medical coverage &middot; NBA &middot; 2024&ndash;2025',
     'Medical coverage &middot; WNBA &middot; 2024&ndash;2025',
@@ -633,6 +649,45 @@ if (
     || !homePage.includes('#pubFullList,.pub-list.hidden{display:block!important}')
 ) {
     errors.push('Homepage must expose all publication content when JavaScript is unavailable');
+}
+
+const publicationPanel = /<div class="pub-full-list hidden" id="pubFullList">([\s\S]*?)<\/div><!-- end pub-full-list -->/i
+    .exec(homePage)?.[1] || '';
+const publicationCounts = [...publicationPanel.matchAll(
+    /<button class="pub-filter(?: active)?"[^>]*>(?:Peer-Reviewed Work|Book Chapters|Other Scholarly Work) \((\d+)\)<\/button>/g
+)].map((match) => Number(match[1]));
+const publicationCardCount = (publicationPanel.match(/<(?:article|div) class="pub-card">/g) || []).length;
+const publicationFilterTotal = publicationCounts.reduce((total, value) => total + value, 0);
+const homepagePeerReviewedCount = Number(
+    /<span>(\d+) Peer-Reviewed Works<\/span>/i.exec(homePage)?.[1] || 0
+);
+const homepagePublicationToggleCount = Number(
+    /id="pubToggleBtn"[^>]*>Browse All (\d+) Scholarly Works<\/button>/i.exec(homePage)?.[1] || 0
+);
+
+if (publicationCounts.length !== 3) {
+    errors.push('Homepage publication filters must expose counts for all three scholarly-work groups');
+}
+if (publicationCardCount !== publicationFilterTotal) {
+    errors.push(
+        `Homepage publication filters total ${publicationFilterTotal}, but the disclosure contains ${publicationCardCount} cards`
+    );
+}
+if (homepagePeerReviewedCount !== publicationCounts[0]) {
+    errors.push(
+        `Homepage hero says ${homepagePeerReviewedCount} peer-reviewed works, but the publication filter contains ${publicationCounts[0] || 0}`
+    );
+}
+if (homepagePublicationToggleCount !== publicationCardCount) {
+    errors.push(
+        `Homepage publication button says ${homepagePublicationToggleCount} scholarly works, but the disclosure contains ${publicationCardCount}`
+    );
+}
+if (
+    !sharedScript.includes("pubFullList?.querySelectorAll('.pub-card').length")
+    || /TOTAL_PUBLICATIONS\s*=\s*\d+/.test(sharedScript)
+) {
+    errors.push('Shared script must derive the publication disclosure count from the rendered publication cards');
 }
 
 for (const [eventName, minimum] of expectedAnalyticsMinimums) {
