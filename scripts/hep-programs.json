@@ -258,21 +258,21 @@
   {
     "slug": "patellofemoral-pain-exercises",
     "title": "Patellofemoral Pain Home Exercise Program",
-    "seoTitle": "Patellofemoral Pain Exercises",
+    "seoTitle": "Patellofemoral Pain Syndrome Exercises",
     "shortTitle": "Patellofemoral pain exercises",
     "conditionName": "Patellofemoral pain",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-08-30",
     "video": {
       "id": "K3HxB6rAeDo",
       "title": "Patellofemoral Pain | Chondromalacia Patellae | Runner’s Knee (Education | Myths | Exercises)",
       "description": "A visual overview of patellofemoral pain, load management, and common hip and knee exercise progressions.",
       "caution": "The examples include later, higher-stress options. Do not add them all or jump directly to deeper or higher-volume versions. Chondromalacia is a structural cartilage term and is not required for a clinical diagnosis of patellofemoral pain; imaging findings do not independently identify the pain source. Follow this page’s pain limit, next-morning rule, and three-day strength dose."
     },
-    "metaDescription": "Printable patellofemoral pain exercises for front-of-knee pain, with hip and knee strengthening, symptom rules, and clear progression.",
+    "metaDescription": "Printable patellofemoral pain syndrome (PFPS) exercises for front-of-knee pain, with hip and knee strengthening, symptom rules, and clear progression.",
     "breadcrumb": "Patellofemoral pain",
     "kicker": "Front-of-knee pain · Home exercise plan",
-    "h1": "Patellofemoral Pain Exercises",
+    "h1": "Patellofemoral Pain Syndrome (PFPS) Exercises",
     "summary": "Patellofemoral pain care should pair education with progressive knee-targeted exercise. Hip-targeted exercise can be added when it matches symptoms, impairments, preferences, or early knee-loading tolerance.",
     "authorityTitle": "Knee strength. Hip strength. Load control.",
     "authorityItems": [
@@ -481,18 +481,18 @@
   {
     "slug": "achilles-tendinopathy-exercises",
     "title": "Midportion Achilles Tendinopathy Home Exercise Program",
-    "seoTitle": "Achilles Tendinopathy Exercises",
+    "seoTitle": "Achilles Tendinopathy Exercises & Plan",
     "shortTitle": "Midportion Achilles exercises",
     "conditionName": "Midportion Achilles tendinopathy",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-08-30",
     "video": {
       "id": "DnxahqgsAEw",
       "title": "Achilles Tendinopathy / Tendinitis / Tendinosis | Heel Pain Rehab (Education, Myths, Exercises)",
       "description": "A visual overview of Achilles tendinopathy, load monitoring, calf strengthening, and staged return to faster activity.",
       "caution": "The video discusses both midportion and insertional Achilles tendinopathy. This page is specifically for midportion pain. Keep early loading on a flat floor, and do not add step-deficit raises or hopping before slow strength and daily activity are stable."
     },
-    "metaDescription": "Printable Achilles tendinopathy exercises for progressive calf loading, symptom monitoring, return to activity, and guidance on when to seek care.",
+    "metaDescription": "Printable midportion Achilles tendinopathy exercises with progressive calf loading and next-morning pain and stiffness rules to guide progression.",
     "breadcrumb": "Midportion Achilles tendinopathy",
     "kicker": "Achilles tendon · Home exercise plan",
     "h1": "Midportion Achilles Tendinopathy Exercises",

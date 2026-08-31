@@ -62,6 +62,8 @@ const errors = [];
 let jsonLdBlockCount = 0;
 let profilePageCount = 0;
 const appointmentSchemaPages = new Set(["index.html", "locations/index.html"]);
+const verifiedGoogleBusinessProfileUrl = "https://www.google.com/maps?cid=7679588860652061702";
+const retiredGooglePlaceId = "ChIJNwM_tp6dwoARBoQ2bGFhk2o";
 
 collectHtmlFiles(root);
 
@@ -150,6 +152,7 @@ for (const file of htmlFiles) {
     if (people.length !== 1) {
       errors.push(`${relativePath}: expected one canonical Jeremy Swisher Person node`);
     } else {
+      const sameAs = Array.isArray(people[0].sameAs) ? people[0].sameAs : [];
       const contactPoints = Array.isArray(people[0].contactPoint)
         ? people[0].contactPoint
         : [people[0].contactPoint].filter(Boolean);
@@ -162,6 +165,13 @@ for (const file of htmlFiles) {
 
       if (schedulingContactPoints.length !== 1) {
         errors.push(`${relativePath}: missing the labeled UCLA Orthopedics scheduling ContactPoint`);
+      }
+
+      if (!sameAs.includes(verifiedGoogleBusinessProfileUrl)) {
+        errors.push(`${relativePath}: missing the verified Google Business Profile URL`);
+      }
+      if (sameAs.some((url) => String(url).includes(retiredGooglePlaceId))) {
+        errors.push(`${relativePath}: contains the retired Google Maps place ID`);
       }
 
       if (hasType(people[0], "Physician")) {
