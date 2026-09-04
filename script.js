@@ -726,6 +726,9 @@ const programFilterInputs = programFilter
     : [];
 const allProgramCards = Array.from(document.querySelectorAll('#program-grid .program-card'));
 const programCards = Array.from(document.querySelectorAll('#program-grid .program-card[data-program-region]'));
+const athleteProgramCount = programCards.filter(card => (
+    (card.dataset.programAudience || '').split(/\s+/).includes('athlete')
+)).length;
 const programRegionLabels = new Map([
     ['knee-thigh', 'knee and thigh'],
     ['shoulder', 'shoulder'],
@@ -802,15 +805,15 @@ if (hasCompleteProgramDiscovery) {
         if (!athleteOnly && selectedRegion === 'all' && !searchIsActive) {
             programFilterStatus.textContent = `Showing all ${programCards.length} programs.`;
         } else if (athleteOnly && selectedRegion === 'all' && !searchIsActive) {
-            programFilterStatus.textContent = `Showing ${visibleCount} of ${programCards.length} athlete progressions.`;
+            programFilterStatus.textContent = `Showing ${visibleCount} of ${athleteProgramCount} athlete progressions.`;
         } else if (athleteOnly && selectedRegion === 'all') {
-            programFilterStatus.textContent = `Showing ${visibleCount} of ${programCards.length} athlete progressions matching your search.`;
+            programFilterStatus.textContent = `Showing ${visibleCount} of ${athleteProgramCount} athlete progressions matching your search.`;
         } else if (!athleteOnly && selectedRegion === 'all') {
             programFilterStatus.textContent = `Showing ${visibleCount} of ${programCards.length} programs matching your search.`;
         } else if (athleteOnly && searchIsActive) {
-            programFilterStatus.textContent = `Showing ${visibleCount} of ${programCards.length} athlete progressions for ${programRegionLabels.get(selectedRegion)} matching your search.`;
+            programFilterStatus.textContent = `Showing ${visibleCount} of ${athleteProgramCount} athlete progressions for ${programRegionLabels.get(selectedRegion)} matching your search.`;
         } else if (athleteOnly) {
-            programFilterStatus.textContent = `Showing ${visibleCount} of ${programCards.length} athlete progressions for ${programRegionLabels.get(selectedRegion)}.`;
+            programFilterStatus.textContent = `Showing ${visibleCount} of ${athleteProgramCount} athlete progressions for ${programRegionLabels.get(selectedRegion)}.`;
         } else if (searchIsActive) {
             programFilterStatus.textContent = `Showing ${visibleCount} of ${programCards.length} programs for ${programRegionLabels.get(selectedRegion)} matching your search.`;
         } else {
@@ -1083,15 +1086,16 @@ function measureSiteAction(event) {
 
     try {
         if (canWaitForMeasurement) {
-            event.preventDefault();
             let navigationStarted = false;
             const continueNavigation = () => {
                 if (navigationStarted) return;
                 navigationStarted = true;
                 window.location.href = actionElement.href;
             };
-            window.sa_event(eventName, metadata, continueNavigation);
+            // Arm navigation before measurement can throw or fail to call back.
             window.setTimeout(continueNavigation, 350);
+            event.preventDefault();
+            window.sa_event(eventName, metadata, continueNavigation);
             return;
         }
 

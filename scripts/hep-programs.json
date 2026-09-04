@@ -1187,12 +1187,12 @@
     "conditionName": "Patellar tendinopathy in athletes",
     "audiences": ["athlete"],
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-09-04",
     "video": {
       "id": "e7oGNVUQi2I",
       "title": "Patellar Tendinopathy / Tendinitis / Tendinosis | Jumper’s Knee Rehab (Education, Myths, Exercises)",
       "description": "A visual overview of patellar tendinopathy, load monitoring, slow resistance, jumping progressions, and return to sport.",
-      "caution": "The exercises are stage choices, not one workout. Start with the isometric and only two slow-strength movements. Never improvise a Spanish-squat anchor, and delay jumping or sprinting until slow loading is stable with at least 48 hours between early high-load sessions."
+      "caution": "The exercises are stage choices, not one workout. Begin with the isometric on higher-irritability days or two slow-strength movements on nonconsecutive loading days. Once slow strength begins, use the isometric on alternate or recovery days, or as a brief warm-up only when it reliably helps. Never improvise a Spanish-squat anchor, and delay jumping or sprinting until slow loading is stable with at least 48 hours between early high-load sessions."
     },
     "metaDescription": "Printable patellar tendinopathy exercises for athletes, with strength, jumping, sprinting, symptom monitoring, and return-to-sport guidance.",
     "breadcrumb": "Patellar tendinopathy for athletes",
@@ -2819,7 +2819,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-08-28",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-09-04",
     "video": {
       "id": "ga_OAPf6IOI",
       "title": "How to Rehab a Sprained Ankle (Start to Finish)",
@@ -2906,7 +2906,7 @@
     "responseIntro": "Impact and sport work should not create growing swelling, repeated instability, altered landing, or a meaningful increase the next morning. Change one variable at a time: contacts, distance, speed, direction, decision-making demand, or practice volume.",
     "green": "No more than mild symptoms, no giving way, controlled landings and cuts, stable confidence, and no meaningful increase in pain or swelling by the next morning.",
     "yellow": "Swelling increases, confidence falls, landing or cutting changes, a limp appears, or symptoms remain worse the next morning. Reduce speed, cutting angle, contacts, or total practice exposure.",
-    "red": "Stop for new sharp pain, a pop, inability to bear weight, new bony pain, pain above the ankle, locking, deformity, a cold or numb foot, repeated giving way, or new one-sided calf swelling, warmth, or redness. Arrange prompt assessment rather than pushing through.",
+    "red": "Stop. Seek immediate emergency evaluation for a newly cold, pale, blue, or numb foot. Seek same-day urgent assessment for a new pop with weakness or loss of push-off, inability to bear weight, severe or rapidly increasing swelling, new bony pain after injury, pain above the ankle, locking, deformity, or new one-sided calf swelling, warmth, or redness. Arrange prompt reassessment for new sharp pain or repeated giving way rather than pushing through.",
     "progression": [
       { "title": "Stage 1: rebuild force and single-leg control", "text": "Progress loaded calf work, single-leg strength, and multidirectional balance while walking, stairs, and next-day swelling remain stable." },
       { "title": "Stage 2: add landing and repeated contacts", "text": "Begin hop-and-stick drills, then low repeated contacts. Require two green-response sessions before increasing distance, contacts, or direction." },

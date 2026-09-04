@@ -77,18 +77,33 @@ test('exercise library combines athlete, region, and search filters and resets c
   await page.locator('label[for="hep-athlete-only"]').click();
   await expect(athleteFilter).toBeChecked();
   await expect(visibleCards).toHaveCount(7);
-  await expect(status).toHaveText('Showing 7 of 25 athlete progressions.');
+  await expect(status).toHaveText('Showing 7 of 7 athlete progressions.');
 
   await page.locator('label[for="hep-filter-foot-ankle"]').click();
   await expect(page.locator('#hep-filter-foot-ankle')).toBeChecked();
   await expect(visibleCards).toHaveCount(2);
-  await expect(status).toHaveText('Showing 2 of 25 athlete progressions for foot and ankle.');
+  await expect(status).toHaveText('Showing 2 of 7 athlete progressions for foot and ankle.');
 
   await search.fill('cutting');
   await expect(visibleCards).toHaveCount(1);
   await expect(visibleCards).toHaveAttribute('href', '../ankle-sprain-return-to-sport-exercises/');
+  await expect(status).toHaveText('Showing 1 of 7 athlete progressions for foot and ankle matching your search.');
 
   await search.fill('patellofemoral');
+  await expect(visibleCards).toHaveCount(0);
+  await expect(page.locator('[data-program-empty]')).toBeVisible();
+  await expect(status).toHaveText('Showing 0 of 7 athlete progressions for foot and ankle matching your search.');
+
+  await page.locator('label[for="hep-filter-all"]').click();
+  await search.fill('achilles');
+  await expect(visibleCards).toHaveCount(1);
+  await expect(status).toHaveText('Showing 1 of 7 athlete progressions matching your search.');
+
+  await page.locator('label[for="hep-athlete-only"]').click();
+  await expect(visibleCards).toHaveCount(2);
+  await expect(status).toHaveText('Showing 2 of 25 programs matching your search.');
+  await page.locator('label[for="hep-athlete-only"]').click();
+  await search.fill('doesnotmatchanyprogram');
   await expect(visibleCards).toHaveCount(0);
   await expect(page.locator('[data-program-empty]')).toBeVisible();
 

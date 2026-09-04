@@ -18,6 +18,7 @@ const ignoredHtmlDirectories = new Set([
 ]);
 const analyticsEventCounts = new Map();
 const expectedAssetCacheKey = '20260830-siteqa1';
+const expectedScriptCacheKey = '20260904-fixes1';
 const expectedPrimaryNavigationLabels = [
     'Knee Osteoarthritis',
     'PRP for Knee OA',
@@ -233,8 +234,8 @@ for (const file of htmlFiles) {
     const sharedScriptReferences = [...html.matchAll(/<script\b[^>]*\bsrc="[^"]*script\.js\?v=([^"]+)"/gi)];
     if (sharedScriptReferences.length !== 1) {
         errors.push(displayFile + ': expected exactly one versioned shared script reference');
-    } else if (sharedScriptReferences[0][1] !== expectedAssetCacheKey) {
-        errors.push(displayFile + ': shared script cache key is not ' + expectedAssetCacheKey);
+    } else if (sharedScriptReferences[0][1] !== expectedScriptCacheKey) {
+        errors.push(displayFile + ': shared script cache key is not ' + expectedScriptCacheKey);
     }
 
     const sharedStyleReferences = [...html.matchAll(/<link\b[^>]*\bhref="[^"]*styles\.css\?v=([^"]+)"/gi)];
