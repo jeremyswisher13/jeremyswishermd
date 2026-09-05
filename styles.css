@@ -881,6 +881,13 @@ ul {
 }
 
 /* ===== Publication Toggle ===== */
+/* Keep all research readable if JavaScript is disabled or fails to load.
+   Only expose the controls and hiding rules after their handlers are ready. */
+#publications:not(.publications-enhanced) .pub-toggle-wrap,
+#publications:not(.publications-enhanced) .pub-filters {
+    display: none;
+}
+
 .pub-highlights {
     max-width: 900px;
     margin: 0 auto;
@@ -906,7 +913,7 @@ ul {
     margin-top: 32px;
 }
 
-.pub-full-list.hidden {
+.publications-enhanced .pub-full-list.hidden {
     display: none;
 }
 
@@ -948,7 +955,7 @@ ul {
     margin: 0 auto;
 }
 
-.pub-list.hidden {
+.publications-enhanced .pub-list.hidden {
     display: none;
 }
 

@@ -470,6 +470,12 @@ const initialPublicationFilter = publicationFilters.find(filter => (
 
 if (initialPublicationFilter) selectPublicationFilter(initialPublicationFilter);
 
+// Progressive enhancement: a failed script request must not hide research.
+// Enable the disclosure/filter presentation only once all handlers are ready.
+if (pubToggleBtn && pubFullList && initialPublicationFilter) {
+    pubFullList.closest('#publications')?.classList.add('publications-enhanced');
+}
+
 // Open the native print dialog for patient home exercise programs.
 const printProgramButtons = Array.from(document.querySelectorAll('[data-print-program]'));
 const printProgramStatus = document.getElementById('printStatus');

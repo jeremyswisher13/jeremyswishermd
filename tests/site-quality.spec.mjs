@@ -63,6 +63,31 @@ test('homepage publication totals, disclosure, and filters stay synchronized', a
   await expect(disclosure).toHaveAttribute('aria-expanded', 'false');
 });
 
+for (const failureMode of ['disabled', 'blocked']) {
+  test(`all research stays readable when JavaScript is ${failureMode}`, async ({ browser }) => {
+    const context = await browser.newContext({ javaScriptEnabled: failureMode !== 'disabled' });
+    const page = await context.newPage();
+    await blockThirdPartyRequests(page);
+    if (failureMode === 'blocked') {
+      await page.route('**/script.js*', route => route.abort());
+    }
+    await page.goto('/', { waitUntil: 'load' });
+
+    await expect(page.locator('#publications')).not.toHaveClass(/publications-enhanced/);
+    await expect(page.locator('#pubToggleBtn')).toBeHidden();
+    await expect(page.locator('.pub-filters')).toBeHidden();
+    await expect(page.locator('#pubFullList')).toBeVisible();
+    for (const id of ['peer-reviewed', 'book-chapters', 'other']) {
+      await expect(page.locator(`#${id}`)).toBeVisible();
+      for (const card of await page.locator(`#${id} .pub-card`).all()) {
+        await expect(card).toBeVisible();
+      }
+    }
+    expect(await page.locator('#pubFullList .pub-card').count()).toBeGreaterThan(0);
+    await context.close();
+  });
+}
+
 test('exercise library combines athlete, region, and search filters and resets cleanly', async ({ page }) => {
   await blockThirdPartyRequests(page);
   await page.goto('/home-exercise-programs/', { waitUntil: 'domcontentloaded' });

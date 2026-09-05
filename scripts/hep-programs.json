@@ -1587,12 +1587,12 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-09-05",
     "video": {
       "id": "7D50I7sdlXg",
       "title": "Hamstring Strain Rehab & Exercises (Strength | Running | Return to Sport)",
       "description": "A visual overview of criteria-based hamstring rehabilitation, progressive strength, running exposure, and return-to-sport planning.",
-      "caution": "This program is only for an already-evaluated, uncomplicated grade I or II muscle or myotendinous strain. It does not cover a complete tear, tendon avulsion, proximal hamstring tendinopathy, an adolescent apophyseal avulsion, or postoperative rehabilitation. Sprinting and high-speed sport work should be pain-free.",
+      "caution": "This program is only for an already-evaluated, uncomplicated grade I or II muscle or myotendinous strain. It does not cover a complete tear, tendon avulsion, proximal hamstring tendinopathy, an adolescent apophyseal avulsion, or postoperative rehabilitation. The video uses different pain limits and running examples. Follow this page's more conservative pain rules, readiness checks, and exercise doses, and use video examples as alternatives rather than extra volume. Sprinting and high-speed sport work should be pain-free.",
       "startSeconds": 75,
       "endSeconds": 808,
       "related": {
@@ -3084,7 +3084,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-08-28",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-09-05",
     "video": {
       "id": "DnxahqgsAEw",
       "title": "Achilles Tendinopathy / Tendinitis / Tendinosis | Heel Pain Rehab (Education, Myths, Exercises)",
@@ -3168,9 +3168,9 @@
         "harder": "Increase intensity, jump contacts, or court minutes one at a time, then move from modified to full practice."
       }
     ],
-    "responseIntro": "A published pain-monitoring model used a ceiling of 5 out of 10 during, after, and the next morning; this was not an ideal pain target or a return-to-sport test. For this self-guided plan, keep symptoms tolerable and movement controlled, and require recovery toward the usual baseline over the next 24 to 72 hours before progressing a high-load session.",
-    "green": "Activity pain remains tolerable, heel height and mechanics stay controlled, symptoms recover toward the usual baseline over the next 24 to 72 hours, and pain or stiffness is not increasing from week to week.",
-    "yellow": "Morning stiffness increases, the delayed 24- to 72-hour response worsens, heel-rise height or rebound quality falls, or running plus strength creates a cumulative flare. Reduce total contacts, external load, running, or court exposure rather than changing everything at once.",
+    "responseIntro": "A published pain-monitoring model used a ceiling of 5 out of 10 during, after, and the next morning; this was not an ideal pain target or a return-to-sport test. For this self-guided plan, keep symptoms tolerable and movement controlled. Check symptoms and function the next morning and again over 24 to 72 hours after a demanding session. Next-morning worsening means do not increase the next exposure; recovery time is not permission to progress through a flare.",
+    "green": "Activity pain remains tolerable, heel height and mechanics stay controlled, and next-morning pain, stiffness, and function remain at the usual baseline. After a demanding session, also check the delayed 24- to 72-hour response. Increase the next exposure only when symptoms and function are at the usual baseline and are not worsening from week to week.",
+    "yellow": "Morning pain or stiffness increases, the delayed 24- to 72-hour response worsens, heel-rise height or rebound quality falls, or running plus strength creates a cumulative flare. Do not increase the next exposure. Allow recovery and repeat or reduce the previous dose; reduce total contacts, external load, running, or court exposure rather than changing everything at once. Progress only once symptoms and function have returned to the usual baseline.",
     "red": "Stop and seek same-day urgent assessment for a sudden pop, new bruising, a palpable gap, loss of push-off, inability to heel raise, substantial acute swelling, or new one-sided calf warmth or swelling.",
     "progression": [
       { "title": "Stage 1: establish heavy calf capacity", "text": "Progress straight-knee and bent-knee loading while walking and morning symptoms remain stable. External load should rise without loss of heel height." },
@@ -3190,8 +3190,8 @@
     "evaluation": "Schedule a reassessment for insertional pain, worsening morning symptoms, loss of heel-raise height, inability to progress impact, new calf swelling, an uncertain diagnosis, or difficulty returning to high-speed or repeated-jump sport. Competitive return should be a shared decision with a qualified clinician and rehabilitation team.",
     "faqs": [
       { "q": "How is this different from the starter Achilles program?", "a": "The starter establishes slow straight-knee and bent-knee loading and initial impact readiness. This page adds heavy loading, faster force, structured running, repeated jumping, cutting, court minutes, and full-practice exposure." },
-      { "q": "Can I keep running during rehabilitation?", "a": "Often yes, when running stays within the pain-monitoring rule and the next morning remains stable. Reduce running or court load when it repeatedly creates a cumulative flare." },
-      { "q": "How should I schedule hard tendon sessions?", "a": "Light tendon activity can occur more often, while moderate or high-load running, jumping, or court sessions commonly need 36 to 72 hours of recovery. The exact schedule should reflect the athlete's response rather than a rigid calendar." },
+      { "q": "Can I keep running during rehabilitation?", "a": "Often yes, when running stays within the pain-monitoring rule and next-morning symptoms and function remain at the usual baseline. After a demanding session, also check the delayed 24- to 72-hour response. If symptoms or function worsen, do not increase the next exposure; allow recovery and repeat or reduce the previous dose." },
+      { "q": "How should I schedule hard tendon sessions?", "a": "Light tendon activity can occur more often, while moderate or high-load running, jumping, or court sessions commonly need 36 to 72 hours of recovery. This recovery interval does not override next-morning worsening: do not increase the next exposure until symptoms and function have returned to the usual baseline. The exact schedule should reflect the athlete's response rather than a rigid calendar." },
       { "q": "Does a normal scan mean I am ready?", "a": "No. Imaging appearance does not determine sport readiness. Symptoms, calf capacity, fast loading, confidence, sport exposure, and full-practice tolerance matter more for progression." },
       { "q": "Does completing the page clear me for basketball?", "a": "No. It develops capacity and documents exposure. Unrestricted competitive return remains an individualized, shared medical and sport decision." }
     ],

@@ -17,8 +17,8 @@ const ignoredHtmlDirectories = new Set([
     'test-results'
 ]);
 const analyticsEventCounts = new Map();
-const expectedAssetCacheKey = '20260904-patients2';
-const expectedScriptCacheKey = '20260904-fixes1';
+const expectedAssetCacheKey = '20260905-resilience1';
+const expectedScriptCacheKey = '20260905-resilience1';
 const expectedPrimaryNavigationLabels = [
     'Conditions &amp; Care',
     'Appointments &amp; Insurance',
@@ -249,7 +249,7 @@ for (const file of htmlFiles) {
     }
 
     const landingStyleReferences = [...html.matchAll(/<link\b[^>]*\bhref="[^"]*landing-pages\.css\?v=([^"]+)"/gi)];
-    if (!/<noscript><link rel="stylesheet" href="[^"]*navigation-nojs\.css\?v=20260904-patients2"><\/noscript>/.test(html)) {
+    if (!/<noscript><link rel="stylesheet" href="[^"]*navigation-nojs\.css\?v=20260905-resilience1"><\/noscript>/.test(html)) {
         errors.push(displayFile + ': expanded navigation styles must be isolated to the no-JavaScript fallback');
     }
     if (landingStyleReferences.length > 1) {

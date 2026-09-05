@@ -4,8 +4,12 @@ from shutil import copyfile
 
 from reportlab.lib import colors
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Table, TableStyle
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 from pypdf import PdfReader
+from tagged_pdf import SemanticPDF
+from validate_tagged_pdf import validate
+
+tagger = SemanticPDF()
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "output/pdf/jeremy-swisher-referral-guide.pdf"
@@ -26,7 +30,8 @@ styles = {
 }
 
 def p(text, style="body"):
-    return Paragraph(text, styles[style])
+    role = {"title": "H1", "heading": "H2"}.get(style, "P")
+    return tagger.paragraph(text, styles[style], role)
 
 def link(url, label):
     return f'<link href="{url}" color="#17615C"><u>{label}</u></link>'
@@ -73,12 +78,15 @@ def footer(canvas, doc):
     canvas.line(40, 52, 572, 52)
     canvas.setFillColor(MUTED)
     canvas.setFont("Helvetica", 8)
-    canvas.drawString(40, 40, "Independent professional website guide; not an official UCLA form. UCLA manages clinical care.")
-    canvas.drawString(40, 28, "Contact and location information checked September 4, 2026. Verify current details with UCLA.")
+    tagger.footer_text(canvas, 40, 40, "Independent professional website guide; not an official UCLA form. UCLA manages clinical care.")
+    tagger.footer_text(canvas, 40, 28, "Contact and location information checked September 4, 2026. Verify current details with UCLA.")
 
 OUTPUT.parent.mkdir(parents=True, exist_ok=True)
 SimpleDocTemplate(str(OUTPUT), pagesize=(612,792), rightMargin=40, leftMargin=40,
-                  topMargin=32, bottomMargin=67).build(story, onFirstPage=footer, onLaterPages=footer)
+                  topMargin=32, bottomMargin=67).build(story, onFirstPage=footer, onLaterPages=footer,
+                                                     canvasmaker=tagger.canvas)
+tagger.finish(OUTPUT)
+validate(OUTPUT)
 reader = PdfReader(OUTPUT)
 assert len(reader.pages) == 1, "Referral guide must remain one page"
 text = reader.pages[0].extract_text()
