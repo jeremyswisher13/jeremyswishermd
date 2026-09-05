@@ -3108,27 +3108,6 @@ html.mobile-nav-open body {
         display: flex;
     }
 
-    html:not(.nav-ready) .navbar {
-        position: relative;
-        height: auto;
-    }
-
-    html:not(.nav-ready) .nav-container {
-        flex-wrap: wrap;
-        height: auto;
-        min-height: 78px;
-    }
-
-    html:not(.nav-ready) .nav-logo {
-        min-height: 78px;
-    }
-
-    html:not(.nav-ready) .nav-links {
-        position: static;
-        flex-basis: 100%;
-        max-height: none;
-    }
-
     .nav-link,
     .nav-appointment {
         width: 100%;

@@ -71,3 +71,28 @@ test('missing nested pages retain root-relative patient navigation', async ({ co
     '/locations/', '/#about', '/#publications', 'tel:310-319-1234',
   ]);
 });
+
+test('delayed navigation enhancement does not move the page content', async ({ context, page, baseURL }) => {
+  await localOnly(context, baseURL);
+  await page.setViewportSize({ width: 390, height: 844 });
+  let releaseScript;
+  const scriptGate = new Promise(resolve => { releaseScript = resolve; });
+  await context.route('**/script.js?*', async route => {
+    await scriptGate;
+    await route.continue();
+  });
+  await page.goto('/knee-osteoarthritis-exercises/', { waitUntil: 'commit' });
+  try {
+    await expect(page.locator('main')).toBeVisible();
+    await page.waitForFunction(() => document.querySelector('.navbar')
+      && getComputedStyle(document.querySelector('.navbar')).position === 'fixed');
+    await expect(page.locator('html')).not.toHaveClass(/nav-ready/);
+    const before = await page.locator('main').boundingBox();
+    releaseScript();
+    await expect(page.locator('html')).toHaveClass(/nav-ready/);
+    const after = await page.locator('main').boundingBox();
+    expect(Math.abs(after.y - before.y)).toBeLessThanOrEqual(1);
+  } finally {
+    releaseScript();
+  }
+});

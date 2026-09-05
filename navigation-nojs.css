@@ -1,0 +1,24 @@
+/* Loaded only through <noscript>. Keep the expanded navigation in document
+   flow without shifting the page when JavaScript initializes a compact menu. */
+@media (max-width: 1280px) {
+    .navbar {
+        position: relative;
+        height: auto;
+    }
+
+    .nav-container {
+        flex-wrap: wrap;
+        height: auto;
+        min-height: 78px;
+    }
+
+    .nav-logo {
+        min-height: 78px;
+    }
+
+    .nav-links {
+        position: static;
+        flex-basis: 100%;
+        max-height: none;
+    }
+}

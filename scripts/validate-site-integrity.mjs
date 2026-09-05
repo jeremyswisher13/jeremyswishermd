@@ -17,7 +17,7 @@ const ignoredHtmlDirectories = new Set([
     'test-results'
 ]);
 const analyticsEventCounts = new Map();
-const expectedAssetCacheKey = '20260904-patients1';
+const expectedAssetCacheKey = '20260904-patients2';
 const expectedScriptCacheKey = '20260904-fixes1';
 const expectedPrimaryNavigationLabels = [
     'Conditions &amp; Care',
@@ -249,6 +249,9 @@ for (const file of htmlFiles) {
     }
 
     const landingStyleReferences = [...html.matchAll(/<link\b[^>]*\bhref="[^"]*landing-pages\.css\?v=([^"]+)"/gi)];
+    if (!/<noscript><link rel="stylesheet" href="[^"]*navigation-nojs\.css\?v=20260904-patients2"><\/noscript>/.test(html)) {
+        errors.push(displayFile + ': expanded navigation styles must be isolated to the no-JavaScript fallback');
+    }
     if (landingStyleReferences.length > 1) {
         errors.push(displayFile + ': expected no more than one landing-page stylesheet reference');
     } else if (landingStyleReferences.length === 1 && landingStyleReferences[0][1] !== expectedAssetCacheKey) {
