@@ -17,12 +17,11 @@ const ignoredHtmlDirectories = new Set([
     'test-results'
 ]);
 const analyticsEventCounts = new Map();
-const expectedAssetCacheKey = '20260830-siteqa1';
+const expectedAssetCacheKey = '20260904-patients1';
 const expectedScriptCacheKey = '20260904-fixes1';
 const expectedPrimaryNavigationLabels = [
-    'Knee Osteoarthritis',
-    'PRP for Knee OA',
-    'Orthobiologics',
+    'Conditions &amp; Care',
+    'Appointments &amp; Insurance',
     'Exercise Library',
     'Locations',
     'About',
@@ -30,9 +29,8 @@ const expectedPrimaryNavigationLabels = [
     'Call 310-319-1234'
 ];
 const expectedPrimaryNavigationTargets = [
-    'knee-osteoarthritis/',
-    'prp-knee-osteoarthritis/',
-    'orthobiologics/',
+    '#expertise',
+    'locations/#scheduling',
     'home-exercise-programs/',
     'locations/',
     '#about',
@@ -41,13 +39,18 @@ const expectedPrimaryNavigationTargets = [
 ];
 const hepProgramFiles = new Set(hepPrograms.map((program) => program.slug + '/index.html'));
 const expectedPrimaryNavigationCurrent = new Map([
-    ['knee-osteoarthritis/index.html', { index: 0, value: 'page' }],
+    ['sports-injuries/index.html', { index: 0, value: 'location' }],
+    ['tendon-pain/index.html', { index: 0, value: 'location' }],
+    ['knee-hip-shoulder-pain/index.html', { index: 0, value: 'location' }],
+    ['osteoarthritis-care/index.html', { index: 0, value: 'location' }],
+    ['msk-ultrasound-guided-procedures/index.html', { index: 0, value: 'location' }],
+    ['knee-osteoarthritis/index.html', { index: 0, value: 'location' }],
     ['hyaluronic-acid-knee-osteoarthritis/index.html', { index: 0, value: 'location' }],
     ['knee-osteoarthritis-injection-comparison/index.html', { index: 0, value: 'location' }],
-    ['prp-knee-osteoarthritis/index.html', { index: 1, value: 'page' }],
-    ['orthobiologics/index.html', { index: 2, value: 'page' }],
-    ['home-exercise-programs/index.html', { index: 3, value: 'page' }],
-    ['locations/index.html', { index: 4, value: 'page' }]
+    ['prp-knee-osteoarthritis/index.html', { index: 0, value: 'location' }],
+    ['orthobiologics/index.html', { index: 0, value: 'location' }],
+    ['home-exercise-programs/index.html', { index: 2, value: 'page' }],
+    ['locations/index.html', { index: 3, value: 'page' }]
 ]);
 const guideExperienceExpectations = new Map([
     ['orthobiologics/index.html', {
@@ -276,7 +279,7 @@ for (const file of htmlFiles) {
         });
 
         const expectedCurrent = hepProgramFiles.has(displayFile)
-            ? { index: 3, value: 'location' }
+            ? { index: 2, value: 'location' }
             : expectedPrimaryNavigationCurrent.get(displayFile);
         const activeIndexes = navigationAnchors
             .map((match, index) => /\bclass="[^"]*\bactive\b[^"]*"/i.test(match[1]) ? index : -1)
@@ -510,12 +513,12 @@ if (!hepTemplateNavigation) {
             errors.push('HEP page template navigation accessible name must include its visible label');
         }
     });
-    if (templateActiveIndexes.length !== 1 || templateActiveIndexes[0] !== 3) {
+    if (templateActiveIndexes.length !== 1 || templateActiveIndexes[0] !== 2) {
         errors.push('HEP page template must mark Exercise Library as active');
     }
     if (
         templateCurrentEntries.length !== 1
-        || templateCurrentEntries[0].index !== 3
+        || templateCurrentEntries[0].index !== 2
         || templateCurrentEntries[0].value !== 'location'
     ) {
         errors.push('HEP page template must mark Exercise Library as the current location');
@@ -582,8 +585,30 @@ const homeHeroTitleText = homeHeroTitleMarkup
     .replace(/<[^>]+>/g, '')
     .replace(/\s+/g, ' ')
     .trim();
-if (homeHeroTitleText !== 'Primary care sports medicine in Los Angeles.') {
+if (homeHeroTitleText !== 'Nonsurgical care for joint pain and sports injuries.') {
     errors.push('Homepage hero H1 source text must retain literal whitespace between its visual lines');
+}
+
+// Keep the approved patient and referring-office pathways intact.
+const hero = /<div class="hero-text">([\s\S]*?)<\/div>\s*<figure/i.exec(homePage)?.[1] || '';
+for (const required of ['Westwood and West Hills', 'Jeremy Swisher, MD', 'locations/#insurance', 'locations/#referrals']) {
+    if (!hero.includes(required)) errors.push('Homepage hero is missing patient-pathway detail: ' + required);
+}
+if (homePage.indexOf('id="expertise"') > homePage.indexOf('id="about"')) {
+    errors.push('Homepage condition entry points should appear before the biography');
+}
+for (const required of ['id="insurance"', 'exact plan', 'referral or approval', 'self-pay estimate', 'not a confirmed appointment', 'UCLA&rsquo;s approved referral channels']) {
+    if (!locationsPage.includes(required)) errors.push('Locations is missing appointment/referral guidance: ' + required);
+}
+if (locationsPage.includes('310-825-2631')) errors.push('Locations must use the currently verified clinic routing number');
+const referralPdfPath = join(root, 'resources', 'jeremy-swisher-referral-guide.pdf');
+if (!existsSync(referralPdfPath) || readFileSync(referralPdfPath).subarray(0, 5).toString() !== '%PDF-') {
+    errors.push('Missing or invalid referral guide PDF');
+}
+for (const [name, html] of [['Homepage', homePage], ['Locations', locationsPage]]) {
+    if (!/<a\b[^>]+href="(?:\.\.\/)?resources\/jeremy-swisher-referral-guide\.pdf"[^>]*\bdownload\b/.test(html)) {
+        errors.push(name + ' must provide the downloadable referral guide');
+    }
 }
 
 const firstSchedulingStep = /<ol class="care-steps">\s*<li class="care-step">([\s\S]*?)<\/li>/i

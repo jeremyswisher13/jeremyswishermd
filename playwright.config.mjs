@@ -1,5 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const siteTestPort = Number(process.env.SITE_TEST_PORT || 4173);
+const siteTestURL = `http://127.0.0.1:${siteTestPort}`;
+
 export default defineConfig({
   testDir: './tests',
   fullyParallel: false,
@@ -13,13 +16,14 @@ export default defineConfig({
   },
   use: {
     ...devices['Desktop Chrome'],
-    baseURL: 'http://127.0.0.1:4173',
+    baseURL: siteTestURL,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
   },
   webServer: {
     command: 'node scripts/serve-site.mjs',
-    url: 'http://127.0.0.1:4173/',
+    url: `${siteTestURL}/`,
+    env: { PORT: String(siteTestPort) },
     timeout: 15_000,
     reuseExistingServer: !process.env.CI,
     stdout: 'pipe',

@@ -2012,8 +2012,8 @@ html.mobile-nav-open body {
 .hero-surface {
     display: grid;
     grid-template-columns: minmax(540px, 47%) minmax(0, 53%);
-    height: clamp(560px, 46.2vw, 686px);
-    min-height: 0;
+    height: auto;
+    min-height: 560px;
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -2022,8 +2022,8 @@ html.mobile-nav-open body {
     flex-direction: column;
     justify-content: center;
     min-width: 0;
-    height: clamp(560px, 46.2vw, 686px);
-    padding: 76px clamp(48px, 5.3vw, 98px) 68px;
+    height: auto;
+    padding: 48px clamp(48px, 5.3vw, 98px);
     background: var(--color-bg);
     z-index: 1;
 }
@@ -2048,15 +2048,15 @@ html.mobile-nav-open body {
     font-weight: 500;
 }
 
-.hero-title {
+.hero .hero-title {
     max-width: 700px;
     margin: 0 0 22px;
     color: var(--color-dark);
     font-family: var(--font-display);
-    font-size: clamp(4.4rem, 5.4vw, 5.75rem);
+    font-size: clamp(2.65rem, 4.3vw, 4.2rem);
     font-weight: 500;
     letter-spacing: -0.045em;
-    line-height: 0.9;
+    line-height: 1.02;
 }
 
 .hero-title em {
@@ -2081,6 +2081,7 @@ html.mobile-nav-open body {
     display: flex;
     align-items: center;
     gap: 34px;
+    flex-wrap: wrap;
 }
 
 .hero-actions .btn-primary {
@@ -2125,7 +2126,7 @@ html.mobile-nav-open body {
 .hero-image-wrap {
     position: relative;
     min-width: 0;
-    height: clamp(560px, 46.2vw, 686px);
+    height: auto;
     min-height: 0;
     margin: 0 0 0 -32px;
     overflow: hidden;
@@ -2994,6 +2995,33 @@ html.mobile-nav-open body {
     min-height: 44px;
 }
 
+.hero-booking-note {
+    margin: 18px 0 4px;
+    max-width: 460px;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+
+.care-treatment-links {
+    margin-top: 24px;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.care-treatment-links a {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.hero-insurance-link {
+    align-self: flex-start;
+    padding-block: 10px;
+    font-size: 0.9375rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 /* Responsive editorial layout */
 @media (max-width: 1240px) {
     .hero-text {
@@ -3078,6 +3106,27 @@ html.mobile-nav-open body {
 
     .nav-ready .nav-links.open {
         display: flex;
+    }
+
+    html:not(.nav-ready) .navbar {
+        position: relative;
+        height: auto;
+    }
+
+    html:not(.nav-ready) .nav-container {
+        flex-wrap: wrap;
+        height: auto;
+        min-height: 78px;
+    }
+
+    html:not(.nav-ready) .nav-logo {
+        min-height: 78px;
+    }
+
+    html:not(.nav-ready) .nav-links {
+        position: static;
+        flex-basis: 100%;
+        max-height: none;
     }
 
     .nav-link,

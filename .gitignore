@@ -8,3 +8,6 @@ node_modules/
 playwright-report/
 test-results/
 .quality-results/
+
+# Referral-guide authoring output; deployable PDF is in resources/.
+/output/pdf/

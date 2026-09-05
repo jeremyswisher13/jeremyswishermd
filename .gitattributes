@@ -1,0 +1,2 @@
+# PDFs are binary artifacts; preserve their bytes and do not apply text filters.
+*.pdf binary

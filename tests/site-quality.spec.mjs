@@ -196,7 +196,7 @@ for (const program of exerciseProgramsWithVideo) {
     expect(iframeUrl.searchParams.get('hl')).toBe('en');
     expect(iframeUrl.searchParams.get('playsinline')).toBe('1');
     expect(iframeUrl.searchParams.get('rel')).toBe('0');
-    expect(iframeUrl.searchParams.get('origin')).toBe('http://127.0.0.1:4173');
+    expect(iframeUrl.searchParams.get('origin')).toBe(new URL(page.url()).origin);
     expect(iframeUrl.searchParams.has('autoplay')).toBe(false);
 
     if (Number.isInteger(program.video.startSeconds)) {
