@@ -346,6 +346,8 @@ for (const program of exercisePrograms) {
 
     await expect(page.locator('.print-program-header')).toBeVisible();
     await expect(page.locator('.print-program-brief')).toBeVisible();
+    await expect(page.locator('.print-program-eligibility p')).toBeVisible();
+    await expect(page.locator('.print-program-eligibility p')).toHaveText(program.fitIntro);
     await expect(page.locator('#program')).toBeVisible();
     await expect(page.locator('#response')).toBeVisible();
     await expect(page.locator('#progress')).toBeVisible();
@@ -354,11 +356,49 @@ for (const program of exercisePrograms) {
     await expect(page.locator('.navbar')).toBeHidden();
     await expect(page.locator('[data-print-program]').first()).toBeHidden();
 
+    // Check rendered text, not merely the existence of section containers.
+    const prescription = await page.locator('.landing-article').innerText();
+    const normalize = (text) => text.replace(/\s+/g, ' ').trim();
+    const expectedText = [
+      program.fitIntro, program.fit, program.assessFirst, program.redFlags,
+      program.programHeading, program.programIntro, program.frequency, program.equipment, program.checkpoint, program.goal,
+      ...program.exercises.flatMap((exercise) => Object.values(exercise)),
+      program.responseIntro, program.green, program.yellow, program.red,
+      ...program.progression.flatMap((stage) => [stage.title, stage.text]),
+      ...program.readyItems, program.evaluation,
+    ];
+    for (const text of expectedText) {
+      expect(normalize(prescription), `Missing printed instruction: ${text}`).toContain(normalize(text));
+    }
+
     const canonical = `https://jeremyswishermd.com/${program.slug}/`;
     const canonicalLink = page.locator(`.print-program-footer a[href="${canonical}"]`);
     await expect(canonicalLink).toHaveCount(1);
     await expect(canonicalLink).toBeVisible();
     await expect(canonicalLink).toHaveText(canonical);
+  });
+}
+
+for (const mode of ['unavailable', 'throws', 'no-afterprint']) {
+  test(`print controls remain usable when printing is ${mode}`, async ({ page }) => {
+    await page.addInitScript((printMode) => {
+      window.print = printMode === 'unavailable' ? undefined : () => {
+        if (printMode === 'throws') throw new Error('Simulated print failure');
+      };
+    }, mode);
+    await blockThirdPartyRequests(page);
+    await page.goto(`/${exercisePrograms[0].slug}/`, { waitUntil: 'domcontentloaded' });
+    await page.locator('[data-print-program]').first().click();
+    for (const button of await page.locator('[data-print-program]').all()) {
+      await expect(button).toBeEnabled();
+      await expect(button).not.toHaveAttribute('aria-busy', 'true');
+    }
+    await expect(page.locator('body')).not.toHaveClass(/\bis-printing\b/);
+    if (mode === 'unavailable') {
+      await expect(page.locator('#printStatus')).toHaveText('Printing is unavailable in this browser. Use the browser menu and choose Print.');
+    } else if (mode === 'throws') {
+      await expect(page.locator('#printStatus')).toHaveText('The print dialog could not open. Use the browser menu and choose Print.');
+    }
   });
 }
 

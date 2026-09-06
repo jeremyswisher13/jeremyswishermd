@@ -3810,7 +3810,9 @@
 @media print {
     @page {
         margin: 11mm 12mm 13mm;
+    }
 
+    @page hep-program {
         @bottom-left {
             content: "Jeremy Swisher, MD - Home exercise program";
             color: #536273;
@@ -3825,6 +3827,7 @@
     }
 
     body.landing-page.hep-page {
+        page: hep-program;
         min-width: 0;
         overflow: visible;
         background: #ffffff;
@@ -3925,6 +3928,10 @@
         page-break-inside: avoid;
     }
 
+    .hep-page .print-program-eligibility {
+        grid-column: 1 / -1;
+    }
+
     .hep-page .print-program-brief h3 {
         margin: 0 0 1.5mm;
         font-family: Arial, sans-serif;
@@ -3971,6 +3978,11 @@
     .hep-page .print-heading-group {
         break-inside: avoid;
         page-break-inside: avoid;
+    }
+
+    .hep-page #progress .print-heading-group {
+        break-after: avoid;
+        page-break-after: avoid;
     }
 
     .hep-page p,
@@ -4188,15 +4200,7 @@
         margin-top: 3mm;
     }
 
-    :is(
-        .hep-program-knee-osteoarthritis-advanced-exercises,
-        .hep-program-hamstring-strain-exercises,
-        .hep-program-hip-osteoarthritis-exercises,
-        .hep-program-meniscus-tear-rehabilitation-exercises,
-        .hep-program-patellar-tendinopathy-exercises,
-        .hep-program-patellofemoral-pain-return-to-running-exercises,
-        .hep-program-de-quervain-tenosynovitis-exercises
-    ) .readiness-block {
+    .hep-page .readiness-block {
         break-inside: avoid;
         page-break-inside: avoid;
     }
@@ -4248,6 +4252,11 @@
 
     .hep-hub-page .program-card[hidden] {
         display: flex !important;
+    }
+
+    .hep-page .print-program-record {
+        break-inside: avoid;
+        page-break-inside: avoid;
     }
 
     .hep-page .print-progress-tracker {
@@ -4361,8 +4370,7 @@
         margin-bottom: 0.2mm;
     }
 
-    .hep-program-tibialis-posterior-tendinopathy-exercises #progress,
-    .hep-program-advanced-meniscus-rehabilitation-exercises #progress {
+    .hep-program-tibialis-posterior-tendinopathy-exercises #progress {
         break-before: page;
         page-break-before: always;
     }

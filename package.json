@@ -15,8 +15,9 @@
     "validate:sitemap": "node scripts/sync-sitemap-dates.mjs --check",
     "test": "npm run test:rendered",
     "test:rendered": "playwright test",
+    "test:print-pdf": "node scripts/export-hep-pdfs.mjs && python3 -B scripts/validate-hep-pdfs.py .quality-results/print",
     "test:lighthouse": "node scripts/run-lighthouse.mjs",
-    "test:quality": "npm run validate && npm run test:rendered && npm run test:lighthouse"
+    "test:quality": "npm run validate && npm run test:rendered && npm run test:print-pdf && npm run test:lighthouse"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
