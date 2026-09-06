@@ -588,7 +588,7 @@ const homeHeroTitleText = homeHeroTitleMarkup
     .replace(/<[^>]+>/g, '')
     .replace(/\s+/g, ' ')
     .trim();
-if (homeHeroTitleText !== 'Nonsurgical care for joint pain and sports injuries.') {
+if (homeHeroTitleText !== 'Nonsurgical care for joint pain and sports injuries in Los Angeles.') {
     errors.push('Homepage hero H1 source text must retain literal whitespace between its visual lines');
 }
 

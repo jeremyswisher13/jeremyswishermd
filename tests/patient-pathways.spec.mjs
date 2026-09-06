@@ -10,7 +10,9 @@ async function localOnly(context, baseURL) {
 test('homepage puts consultation routes and named booking guidance before biography', async ({ context, page, baseURL }) => {
   await localOnly(context, baseURL);
   await page.goto('/');
-  await expect(page.locator('h1')).toHaveText('Nonsurgical care for joint pain and sports injuries.');
+  await expect(page.locator('h1')).toHaveText('Nonsurgical care for joint pain and sports injuries in Los Angeles.');
+  await expect(page.locator('.hero-description')).toHaveText('Appointments in Westwood and West Hills, with a treatment plan built around your daily life and activity goals.');
+  await expect(page.locator('.hero-kicker')).toHaveText('Jeremy Swisher, MD | UCLA Sports Medicine');
   await expect(page.locator('.hero-booking-note')).toContainText('Jeremy Swisher, MD');
   await expect(page.locator('.hero-booking-note')).toContainText('Westwood or West Hills');
   for (const path of ['sports-injuries/', 'tendon-pain/', 'knee-hip-shoulder-pain/']) {
