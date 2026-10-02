@@ -485,7 +485,7 @@
     "shortTitle": "Midportion Achilles exercises",
     "conditionName": "Midportion Achilles tendinopathy",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-30",
+    "modifiedDate": "2026-10-02",
     "video": {
       "id": "DnxahqgsAEw",
       "title": "Achilles Tendinopathy / Tendinitis / Tendinosis | Heel Pain Rehab (Education, Myths, Exercises)",
@@ -571,7 +571,7 @@
     ],
     "readyItems": [
       "You have completed the progressive loading stage needed for the activity you plan to resume.",
-      "Pain stays at 5 out of 10 or less during activity and returns to baseline by the next morning.",
+      "Keep symptoms tolerable, movement controlled, and morning function at the usual baseline. A published pain-monitoring model used 5 out of 10 as a ceiling, not a pain target or a stand-alone readiness test. Do not increase the next exposure if symptoms or function worsen the next morning or trend worse from week to week.",
       "Pain and stiffness are not increasing from week to week.",
       "Walking, stairs, and repeated heel raises are controlled without a sustained flare.",
       "These markers guide progression but do not independently clear high-demand or competitive sport."
@@ -590,7 +590,7 @@
       { "href": "https://pubmed.ncbi.nlm.nih.gov/17307888/", "label": "Silbernagel et al.: Pain-Monitoring Model and Continued Activity, 2007" },
       { "href": "https://pubmed.ncbi.nlm.nih.gov/27226389/", "label": "Bern Consensus Statement on Return to Sport, 2016" },
       { "href": "https://pubmed.ncbi.nlm.nih.gov/40240126/", "label": "Achilles Tendinopathy Diagnostic and Medical-Attention Delphi Consensus, 2025" },
-      { "href": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/019537s092lbl.pdf", "label": "FDA-Approved Ciprofloxacin Label and Medication Guide, 2021" }
+      { "href": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=888dc7f9-ad9c-4c00-8d50-8ddfd9bd27c0", "label": "FDA-Approved Ciprofloxacin Label and Medication Guide, Current DailyMed Label" }
     ],
     "related": [
       { "href": "../achilles-tendinopathy-return-to-sport-exercises/", "eyebrow": "Athlete progression", "title": "Return to running, jumping, and basketball" },
@@ -2452,7 +2452,7 @@
     "conditionName": "Tibialis posterior tendinopathy",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-02",
     "video": {
       "id": "NKeQHV85QLc",
       "title": "Tibialis Posterior Tendinopathy | Tendinitis | Dysfunction | Pain (Exercises, Rehab, Strengthening)",
@@ -2546,7 +2546,7 @@
       "The arch and heel position do not show progressive change during loading.",
       "Single-leg balance can be held for 45 to 60 seconds.",
       "Ten controlled step-downs can be completed without a sustained flare.",
-      "Impact begins only after 20 small pogos are tolerated and after clinician review when foot collapse was ever suspected."
+      "After walking, stairs, heel raises, and step-downs are tolerated and assessment supports impact, begin with a small trial of low double-leg pogos. Clinician review is required when foot collapse was ever suspected. Progress toward single-leg contacts only when needed for the goal and tolerated without a next-day flare. These walking times and repetition counts are practical guideposts, not validated return-to-sport cutoffs. New or progressive arch change, loss of push-off, or instability requires reassessment regardless of the numbers."
     ],
     "evaluation": "Schedule a reassessment for any new arch change, worsening push-off, recurrent swelling, inability to progress heel raises, no improving trend after six weeks, or persistent limits after eight to twelve weeks.",
     "faqs": [
@@ -2578,7 +2578,7 @@
     "conditionName": "Thumb carpometacarpal osteoarthritis",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-02",
     "video": null,
     "metaDescription": "Printable thumb CMC osteoarthritis exercises and brace guidance, with joint protection, gentle strength, symptom rules, and clear progression.",
     "breadcrumb": "Thumb CMC osteoarthritis",
@@ -2636,7 +2636,7 @@
         "name": "Thumb palmar-abduction isometric",
         "dose": "5 holds of 5 to 10 seconds",
         "frequency": "3 days per week",
-        "how": "Hold the thumb in a relaxed C position in front of the palm. Place a finger from the opposite hand against the outside of the thumb. Gently press outward without allowing movement and keep the thumb knuckle from collapsing backward.",
+        "how": "Hold the hand with the palm facing sideways and the thumb softly bent. Move the thumb a little away from the palm, as if opening a space to hold a small cup; the thumb moves perpendicular to the plane of the palm. Place a finger of the other hand against the thumb to resist that same direction. Press gently without movement and keep the thumb knuckle from bending backward.",
         "easier": "Perform three five-second holds.",
         "harder": "Build to 10-second holds, then use a light elastic loop. Do not use maximal effort."
       },
@@ -2698,7 +2698,7 @@
     "conditionName": "De Quervain tenosynovitis",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-02",
     "video": null,
     "metaDescription": "De Quervain exercises, thumb-spica brace guidance, activity changes, symptom rules, and evidence-informed options for thumb-side wrist pain.",
     "breadcrumb": "De Quervain tenosynovitis",
@@ -2722,7 +2722,7 @@
     "assessFirst": "An uncertain diagnosis, symptoms after a fall or direct blow, numbness, tingling, burning, progressive weakness, pain centered at the thumb-base joint, swelling or crepitus farther up the back of the forearm, a thumb that catches or locks, a visible mass, inflammatory arthritis, recent injection or surgery, or symptoms severe enough to prevent normal light hand use. Pregnancy and the postpartum period are not automatic exclusions, but brace fit, swelling, infant care, and loading should be individualized.",
     "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day care for a hot, red, rapidly swelling area, fever, an open wound, new deformity, major loss of motion after trauma, or inability to use the hand. Arrange prompt assessment for new numbness, sudden weakness, or severe pain after injury.",
     "programHeading": "Settle the wrist. Maintain motion. Rebuild load carefully.",
-    "programIntro": "Exercise has not been proven effective as a stand-alone treatment. Pain-free motion and thumb-extension isometrics appear feasible within multimodal care. Network meta-analyses rank clinician-delivered corticosteroid injection, often combined with three to four weeks of thumb-spica immobilization, among the better-supported options. The added functional benefit of immobilization was statistically detectable but not clinically important in one analysis, and overall certainty ranges from low to very low. Injection suitability and risks require an individual clinical discussion.",
+    "programIntro": "Exercise has not been proven effective as a stand-alone treatment. Pain-free motion and thumb-extension isometrics appear feasible within multimodal care. Network meta-analyses rank clinician-delivered corticosteroid injection, often combined with three to four weeks of thumb-spica immobilization, among the better-supported options. A 2023 review found moderate-certainty evidence for a statistically detectable but not clinically important added functional benefit from immobilization. A separate 2025 review rated its evidence low to very low. Injection suitability and risks require an individual clinical discussion.",
     "frequency": "Pain-free motion 2 to 4 times per day; strengthening daily or every other day by stage",
     "equipment": "Table, optional very light elastic loop, light cup, and a comfortable thumb-spica orthosis if helpful",
     "checkpoint": "Seek reassessment if there is no clear improvement after 2 to 4 weeks",
@@ -2793,7 +2793,7 @@
       { "q": "Should I stretch into the Finkelstein position?", "a": "No. Repeatedly forcing the thumb into the palm while deviating the wrist can strongly provoke the involved compartment. A positive diagnostic maneuver is not automatically a useful stretch." },
       { "q": "Does a brace help?", "a": "A thumb-spica orthosis may reduce provocative loading. It is often studied with a clinician-delivered corticosteroid injection, but the added functional benefit was small and not clinically important in one network meta-analysis. Orthosis-only schedules are less certain, so comfort and response should guide a short self-management trial." },
       { "q": "How should I try the brace before an injection?", "a": "Use a comfortable thumb-spica orthosis during clearly aggravating tasks and, if helpful, at night for one to two weeks. Continue light hand use within comfort. The brace should support the wrist and thumb without pressing on the painful area or causing numbness, color change, or skin injury." },
-      { "q": "Should I get an injection?", "a": "Network meta-analyses rank corticosteroid injection, often with short thumb-spica immobilization, among the better-supported options, but overall certainty ranges from low to very low. Injection suitability, technique, risks, and alternatives should be discussed with a qualified clinician." },
+      { "q": "Should I get an injection?", "a": "Network meta-analyses rank corticosteroid injection, often with short thumb-spica immobilization, among the better-supported options. Certainty varies by review and outcome: the 2023 review rated the added functional benefit of immobilization moderate, while the 2025 review rated its evidence low to very low. Injection suitability, technique, risks, and alternatives should be discussed with a qualified clinician." },
       { "q": "Can I keep lifting my baby?", "a": "Usually, but technique and total load may need modification. Keep the wrists neutral, lift with the palms or forearms when possible, use both arms, and avoid repeatedly lifting with the thumbs spread and wrists angled toward the small-finger side." },
       { "q": "What about massage, ultrasound, or scraping?", "a": "High-quality evidence for these treatments is limited. They should not displace diagnosis, activity modification, an appropriate orthosis, or discussion of better-supported medical options." }
     ],
@@ -2819,7 +2819,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-08-28",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-09-04",
+    "modifiedDate": "2026-10-02",
     "video": {
       "id": "ga_OAPf6IOI",
       "title": "How to Rehab a Sprained Ankle (Start to Finish)",
@@ -2933,7 +2933,7 @@
     "sources": [
       { "href": "https://www.orthopt.org/uploads/content_files/files/jospt.2021.0302.pdf", "label": "JOSPT Clinical Practice Guideline: Lateral Ankle Ligament Sprains, 2021" },
       { "href": "https://pubmed.ncbi.nlm.nih.gov/34158354/", "label": "PAASS Return-to-Sport Consensus for Acute Lateral Ankle Sprain" },
-      { "href": "https://bjsm.bmj.com/content/58/19/1115", "label": "Ankle-GO and Two-Year Risk of Recurrent Sprain" },
+      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10920508/", "label": "Ankle-GO and Two-Year Risk of Recurrent Sprain" },
       { "href": "https://www.bmj.com/content/339/bmj.b2684", "label": "Home Proprioceptive Training and Ankle-Sprain Recurrence" }
     ],
     "related": [
@@ -2951,7 +2951,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-08-28",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-02",
     "video": {
       "id": "K3HxB6rAeDo",
       "title": "Patellofemoral Pain | Chondromalacia Patellae | Runner’s Knee (Education | Myths | Exercises)",
@@ -3035,7 +3035,7 @@
         "harder": "Progress height or distance, then repeated contacts, then braking speed and planned direction change."
       }
     ],
-    "responseIntro": "In a randomized trial of runners with patellofemoral pain, participants adjusted running to keep pain at 2 out of 10 or less. This page adds conservative one-hour and next-morning checks; these are practical monitoring rules, not validated universal clearance thresholds. Strength and impact should remain mild enough that movement stays normal.",
+    "responseIntro": "A randomized trial of runners with patellofemoral pain used pain at 2 out of 10 or less during running, return to the pre-run level within an hour, and no increase the next morning. These trial monitoring rules are not validated universal clearance thresholds. Strength and impact should remain mild enough that movement stays normal.",
     "green": "No more than mild symptoms, normal running or landing mechanics, no swelling, and pain returns to the usual baseline within an hour and remains stable the next morning.",
     "yellow": "Pain builds, stride or landing changes, symptoms fail to settle, or stairs and squatting are worse the next morning. Reduce range, load, run time, contacts, speed, or total weekly exposure.",
     "red": "Stop and seek assessment for rapid swelling, true locking, inability to straighten the knee, recurrent kneecap instability, inability to bear weight, focal bone pain, or a new painful, hot, red, or swollen joint with or without fever.",
@@ -3084,7 +3084,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-08-28",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-09-05",
+    "modifiedDate": "2026-10-02",
     "video": {
       "id": "DnxahqgsAEw",
       "title": "Achilles Tendinopathy / Tendinitis / Tendinosis | Heel Pain Rehab (Education, Myths, Exercises)",
@@ -3110,7 +3110,7 @@
     ],
     "fitIntro": "This advanced program is for an athlete with a clinically established midportion Achilles tendinopathy who has completed the starter loading phase. It is not for insertional symptoms without modification, a suspected rupture, or postoperative recovery.",
     "fit": "Walking pain is minimal, morning symptoms are stable from week to week, repeated straight-knee and bent-knee single-leg heel raises are controlled, and basic two-leg pogo work is tolerated without a next-morning flare.",
-    "assessFirst": "Pain directly at the heel attachment, sudden injury, suspected partial or complete rupture, substantial calf swelling, recent surgery, new weakness or loss of push-off, or systemic inflammatory or metabolic contributors. Stop Achilles-loading exercise and contact the prescribing clinician promptly for new tendon pain, swelling, or weakness during fluoroquinolone treatment or in the months afterward. Follow the medication guide and do not resume high-load work until assessed.",
+    "assessFirst": "Pain directly at the heel attachment, sudden injury, suspected partial or complete rupture, substantial calf swelling, recent surgery, new weakness or loss of push-off, or systemic inflammatory or metabolic contributors. Stop tendon-loading exercise for new tendon pain, swelling, or weakness during fluoroquinolone treatment or in the months afterward. Fluoroquinolone medication guides direct patients to stop the medicine at the first tendon symptoms and obtain prompt medical guidance; contact the prescribing clinician immediately during treatment. If symptoms begin after the course has ended, seek prompt assessment. Do not resume high-load work until assessed.",
     "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for new one-sided calf warmth or swelling, a sudden pop, new bruising, a palpable gap, substantial acute swelling, or inability to push off or perform a heel raise.",
     "programHeading": "Separate strength, spring, running, and court load.",
     "programIntro": "Maintain heavy straight-knee and bent-knee loading while faster work is added. Classify sport sessions as light, medium, or high tendon load and allow more recovery after the harder sessions. These are exercise categories, not separate sessions to stack. Combine or substitute fast calf work, plyometrics, running, and court work within a planned week, and count running, court work, and jumping as tendon-loading sessions. Do not increase external load, running, jump contacts, and court minutes in the same step.",
@@ -3202,7 +3202,8 @@
       { "href": "https://pubmed.ncbi.nlm.nih.gov/39271248/", "label": "Achilles Tendinopathy Core Outcome Set, 2024" },
       { "href": "https://pubmed.ncbi.nlm.nih.gov/32658037/", "label": "Incremental Achilles Tendon-Loading Study" },
       { "href": "https://pubmed.ncbi.nlm.nih.gov/17307888/", "label": "Pain-Monitoring and Continued-Activity Randomized Trial" },
-      { "href": "https://pubmed.ncbi.nlm.nih.gov/27226389/", "label": "Bern Consensus Statement on Return to Sport" }
+      { "href": "https://pubmed.ncbi.nlm.nih.gov/27226389/", "label": "Bern Consensus Statement on Return to Sport" },
+      { "href": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=888dc7f9-ad9c-4c00-8d50-8ddfd9bd27c0", "label": "FDA-Approved Ciprofloxacin Label and Medication Guide, Current DailyMed Label" }
     ],
     "related": [
       { "href": "../achilles-tendinopathy-exercises/", "eyebrow": "Build the base first", "title": "Starter midportion Achilles program" },
