@@ -14,6 +14,7 @@ const outputDirectory = join(root, '.quality-results', 'lighthouse');
 const routes = [
   { name: 'homepage', path: '/', thresholds: { performance: 0.8, accessibility: 0.95, 'best-practices': 0.9, seo: 0.9 } },
   { name: 'prp-guide', path: '/prp-knee-osteoarthritis/', thresholds: { performance: 0.8, accessibility: 0.95, 'best-practices': 0.9, seo: 0.9 } },
+  { name: 'a2m-guide', path: '/a2m-knee-osteoarthritis/', thresholds: { performance: 0.8, accessibility: 0.95, 'best-practices': 0.9, seo: 0.9 } },
   { name: 'exercise-library', path: '/home-exercise-programs/', thresholds: { performance: 0.8, accessibility: 0.95, 'best-practices': 0.9, seo: 0.9 } },
   { name: 'exercise-program', path: '/knee-osteoarthritis-exercises/', thresholds: { performance: 0.8, accessibility: 0.95, 'best-practices': 0.9, seo: 0.9 } },
   { name: 'athlete-hub', path: '/sports-injuries/', thresholds: { performance: 0.8, accessibility: 0.95, 'best-practices': 0.9, seo: 0.9 } },

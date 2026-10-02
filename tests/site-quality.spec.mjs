@@ -11,6 +11,7 @@ const exerciseProgramsWithoutVideo = exercisePrograms.filter((program) => !progr
 const representativeRoutes = [
   { name: 'homepage', path: '/', status: 200 },
   { name: 'PRP guide', path: '/prp-knee-osteoarthritis/', status: 200 },
+  { name: 'A2M evidence guide', path: '/a2m-knee-osteoarthritis/', status: 200 },
   { name: 'exercise library', path: '/home-exercise-programs/', status: 200 },
   { name: 'exercise program', path: '/knee-osteoarthritis-exercises/', status: 200 },
   { name: 'sports injury athlete hub', path: '/sports-injuries/', status: 200 },

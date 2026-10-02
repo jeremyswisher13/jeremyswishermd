@@ -46,6 +46,7 @@ const expectedPrimaryNavigationCurrent = new Map([
     ['msk-ultrasound-guided-procedures/index.html', { index: 0, value: 'location' }],
     ['knee-osteoarthritis/index.html', { index: 0, value: 'location' }],
     ['hyaluronic-acid-knee-osteoarthritis/index.html', { index: 0, value: 'location' }],
+    ['a2m-knee-osteoarthritis/index.html', { index: 0, value: 'location' }],
     ['knee-osteoarthritis-injection-comparison/index.html', { index: 0, value: 'location' }],
     ['prp-knee-osteoarthritis/index.html', { index: 0, value: 'location' }],
     ['orthobiologics/index.html', { index: 0, value: 'location' }],
