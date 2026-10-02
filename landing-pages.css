@@ -123,7 +123,7 @@
     line-height: 1.66;
 }
 
-.knee-oa-page .oa-cite {
+.landing-page .oa-cite {
     display: inline-grid;
     place-items: center;
     width: 18px;
@@ -139,7 +139,7 @@
     vertical-align: super;
 }
 
-.knee-oa-page .oa-cite:hover {
+.landing-page .oa-cite:hover {
     border-color: var(--color-primary-dark);
     background: rgba(31, 108, 164, 0.08);
 }
@@ -4539,7 +4539,7 @@
         display: none;
     }
 
-    .knee-oa-page .oa-cite {
+    .landing-page .oa-cite {
         width: 23px;
         height: 23px;
         margin: 2px 1px 2px 3px;
