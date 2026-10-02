@@ -3103,7 +3103,7 @@
 }
 
 .hep-hub-page .hep-athlete-toggle input:checked + label small {
-    color: rgba(255, 255, 255, 0.84);
+    color: #ffffff;
 }
 
 .hep-hub-page .hep-athlete-toggle input:focus-visible + label {
