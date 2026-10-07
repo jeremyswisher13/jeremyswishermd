@@ -126,12 +126,13 @@
   },
   {
     "slug": "knee-osteoarthritis-advanced-exercises",
+    "guidedSession": true,
     "title": "Advanced Knee Osteoarthritis Home Exercise Program",
     "seoTitle": "Advanced Knee Osteoarthritis Exercises",
     "shortTitle": "Advanced knee arthritis exercises",
     "conditionName": "Knee osteoarthritis",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "sLCahUJl8jk",
       "title": "Knee Osteoarthritis (OA) Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -176,7 +177,7 @@
         "name": "Loaded squat to a chair",
         "dose": "3 sets of 6 to 12 repetitions",
         "frequency": "2 to 3 days per week",
-        "how": "Hold a dumbbell or loaded backpack close to your chest. Sit the hips back toward a stable chair, keep both feet grounded, then stand tall with controlled knee alignment.",
+        "how": "Place a stable chair against a wall. Hold a dumbbell or loaded backpack close to your chest. Sit the hips back toward the chair, keep both feet grounded, then stand tall with controlled knee alignment.",
         "easier": "Use a higher chair, lighter load, or smaller range.",
         "harder": "Add a small amount of weight or lower the chair after the upper repetition range feels controlled."
       },
@@ -184,7 +185,7 @@
         "name": "Supported split squat",
         "dose": "2 to 3 sets of 6 to 10 repetitions per side",
         "frequency": "2 to 3 days per week",
-        "how": "Stand in a staggered stance beside a stable support. Lower both knees through a comfortable range while keeping the front foot planted, then push through the front leg to rise.",
+        "how": "Stand beside a stable support with one foot forward and the other behind, keeping some width between the feet for balance. Lower both knees through a comfortable range while keeping the front foot planted, then push through the front leg to rise.",
         "easier": "Use more hand support, a shorter stance, or a smaller range.",
         "harder": "Use less support, increase the range, or hold light weight."
       },
@@ -200,7 +201,7 @@
         "name": "Resisted knee extension",
         "dose": "2 to 4 sets of 8 to 15 repetitions per side",
         "frequency": "2 to 3 days per week",
-        "how": "Anchor a resistance band behind the chair or use an ankle weight. Straighten one knee smoothly, pause, then lower over two to three seconds while the thigh stays supported.",
+        "how": "Sit in a stable chair with the thigh supported. Use an ankle weight, or a band around the ankle secured behind you according to its manufacturer. Straighten one knee smoothly, pause, then lower over two to three seconds. Do not improvise an unsafe anchor.",
         "easier": "Use lighter resistance or a smaller comfortable range.",
         "harder": "Increase resistance gradually after 15 controlled repetitions."
       },
@@ -483,12 +484,13 @@
   },
   {
     "slug": "achilles-tendinopathy-exercises",
+    "guidedSession": true,
     "title": "Midportion Achilles Tendinopathy Home Exercise Program",
     "seoTitle": "Achilles Tendinopathy Exercises & Plan",
     "shortTitle": "Midportion Achilles exercises",
     "conditionName": "Midportion Achilles tendinopathy",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-10-02",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "DnxahqgsAEw",
       "title": "Achilles Tendinopathy / Tendinitis / Tendinosis | Heel Pain Rehab (Education, Myths, Exercises)",
@@ -526,41 +528,41 @@
         "name": "Optional calf-raise isometric hold",
         "dose": "4 holds of 20 to 30 seconds",
         "frequency": "On more painful days",
-        "how": "Rise onto both forefeet on a flat floor and hold at a comfortable height while using a counter for balance. Keep pressure even across the forefoot.",
+        "how": "Stand on a flat floor facing a counter and use it for balance. Rise onto both forefeet to a comfortable height, keep pressure even across the forefoot, and hold without bouncing. Lower gently when the hold ends.",
         "easier": "Hold lower or shift more weight to the less painful side.",
-        "harder": "Shift more weight toward the involved side."
+        "harder": "Keep the same comfortable heel height and shift more weight toward the involved side. Use this as an entry option on a more painful day; it does not replace the later slow-strength progression."
       },
       {
         "name": "Slow straight-knee heel raise",
         "dose": "3 sets of 8 to 15 repetitions",
         "frequency": "At least 3 days per week",
-        "how": "With knees straight and support nearby, rise for two to three seconds and lower for two to three seconds. Start with both legs.",
+        "how": "Stand on a flat floor with both feet pointing forward and a counter within reach. Keep the knees straight, rise onto the forefeet for two to three seconds, then lower the heels to the floor for two to three seconds. Keep the ankles centered and use both legs to start.",
         "easier": "Use more hand support or a smaller range.",
-        "harder": "Progress to one leg, then add a backpack or dumbbell."
+        "harder": "Once both-leg raises are controlled and morning pain and stiffness stay stable, move to the single-leg progression below in place of this exercise. Add a backpack or dumbbell only while heel height and control remain consistent."
       },
       {
         "name": "Slow bent-knee heel raise",
         "dose": "3 sets of 8 to 15 repetitions",
         "frequency": "At least 3 days per week",
-        "how": "Keep a small, steady bend in both knees while lifting and lowering the heels slowly. Keep the knees over the middle toes.",
-        "easier": "Use a wall sit position with a smaller heel lift.",
-        "harder": "Shift toward one leg or add external load."
+        "how": "Stand on a flat floor with a counter for balance. Keep a small, steady bend in both knees as you slowly lift and lower the heels. Keep the knees over the middle toes and hold the knee bend throughout the movement.",
+        "easier": "Use the supported wall-sit position with a smaller heel lift, keeping both feet on the flat floor.",
+        "harder": "Keep the knee bend steady and shift more weight toward one leg, or add external load. Choose one change while heel height, control, and next-morning symptoms remain stable."
       },
       {
         "name": "Single-leg heel raise progression",
         "dose": "3 sets of 6 to 12 repetitions",
         "frequency": "3 days per week when ready",
-        "how": "Use this in place of the slow straight-knee heel raise when ready. Rise and lower on one leg with a slow tempo, stable ankle, and similar heel height across repetitions.",
+        "how": "Use this in place of the slow straight-knee heel raise when ready. Stand on the involved leg on a flat floor with a counter for balance. Rise and lower slowly with the knee straight, ankle stable, and similar heel height across repetitions.",
         "easier": "Use the other foot lightly for assistance.",
-        "harder": "Add load while preserving height and control."
+        "harder": "Add a backpack or dumbbell while preserving heel height and control. Hold the current level if next-morning pain or stiffness increases."
       },
       {
         "name": "Initial two-leg pogo readiness",
         "dose": "2 sets of 10 to 15 contacts",
         "frequency": "2 to 3 days per week when ready",
-        "how": "Use small two-leg springing contacts as an entry check for the athlete progression. Keep the rhythm quiet and controlled. Add this only after walking, stairs, and repeated single-leg heel raises are tolerated.",
+        "how": "Add this only after walking, stairs, and repeated single-leg heel raises are tolerated. On a flat, clear surface, make small springing contacts with both feet and land quietly in the same spot. Keep the rhythm and jump height controlled; this is an entry check for the athlete progression.",
         "easier": "Use brisk marching or quick heel raises without leaving the floor.",
-        "harder": "Move to the athlete return-to-sport program for single-leg plyometrics, running, repeated jumping, and court exposure."
+        "harder": "For single-leg plyometrics, running, repeated jumping, and court exposure, use the athlete return-to-sport program and its entry criteria. Keep this starter drill small while slow strength, daily activity, and morning symptoms remain stable."
       }
     ],
     "responseIntro": "Some tendon discomfort during loading can be acceptable when mechanics remain controlled and next-morning pain or stiffness does not increase. Complete rest is usually unnecessary.",
@@ -603,12 +605,13 @@
   },
   {
     "slug": "gluteal-tendinopathy-exercises",
+    "guidedSession": true,
     "title": "Gluteal Tendinopathy Home Exercise Program",
     "seoTitle": "Gluteal Tendinopathy Exercises",
     "shortTitle": "Gluteal tendinopathy exercises",
     "conditionName": "Gluteal tendinopathy and lateral hip pain",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "e_Kk-XqPWZo",
       "title": "Gluteal Tendinopathy / Greater Trochanteric Hip Bursitis (Education | Myths | Exercises)",
@@ -646,7 +649,7 @@
         "name": "Hip abduction isometric",
         "dose": "5 holds of 10 to 20 seconds",
         "frequency": "Most days",
-        "how": "Sit with a loop band or belt around the thighs. Press the knees gently outward without moving, hold, then relax. Keep the feet grounded.",
+        "how": "Sit in a stable chair with feet flat and knees about hip-width apart. Place a loop band or belt around the thighs just above the knees. Press the knees gently outward without moving, hold, then relax. Keep the feet grounded.",
         "easier": "Use less pressure or a shorter hold.",
         "harder": "Increase the hold or band resistance without increasing night pain."
       },
@@ -656,7 +659,7 @@
         "frequency": "3 nonconsecutive days per week",
         "how": "Lie on your back with knees bent. Press through the heels, lift the hips while keeping the pelvis level, then lower slowly.",
         "easier": "Use a smaller range.",
-        "harder": "Add a band, use a staggered stance, or progress toward an offset bridge."
+        "harder": "Add a band above the knees or place one foot slightly farther forward so the other leg does more work. Keep the pelvis level and night and next-day symptoms stable."
       },
       {
         "name": "Sit to stand or shallow squat",
@@ -678,7 +681,7 @@
         "name": "Standing band hip abduction",
         "dose": "2 sets of 8 to 12 repetitions per side",
         "frequency": "3 nonconsecutive days per week",
-        "how": "Hold a counter. Move one leg slightly out to the side without leaning the trunk or turning the toes outward, then return slowly.",
+        "how": "Place a loop band around both legs above the knees or at the ankles and hold a counter. Move one leg slightly out to the side without leaning the trunk or turning the toes outward, then return slowly without crossing the legs.",
         "easier": "Use no band and a smaller range.",
         "harder": "Increase band resistance or pause at the end range."
       }
@@ -718,12 +721,13 @@
   },
   {
     "slug": "lateral-ankle-sprain-exercises",
+    "guidedSession": true,
     "title": "Lateral Ankle Sprain Home Exercise Program",
     "seoTitle": "Ankle Sprain Exercises",
     "shortTitle": "Lateral ankle sprain exercises",
     "conditionName": "Lateral ankle sprain",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "ga_OAPf6IOI",
       "title": "How to Rehab a Sprained Ankle (Start to Finish)",
@@ -751,7 +755,7 @@
     "assessFirst": "Inability to take four steps; tenderness at the posterior edge or tip of either ankle bone, base of the fifth metatarsal, or navicular; pain or tenderness extending up the lower leg or at the proximal fibula; marked midfoot pain or swelling; bruising on the sole of the foot; recurrent instability; a suspected Achilles injury; or a severe injury that may need short immobilization.",
     "redFlags": "A newly cold, pale, blue, or numb foot after injury requires immediate emergency evaluation. Seek same-day urgent assessment for deformity, signs of Achilles rupture, inability to take four steps, tenderness at the posterior edge or tip of either ankle bone, tenderness at the base of the fifth metatarsal or navicular, pain or tenderness at the proximal fibula, marked midfoot pain or swelling, bruising on the sole of the foot, or pain above the ankle. Arrange a prompt assessment for worsening swelling or bruising, locking, or repeated giving way.",
     "programHeading": "Move early, then rebuild ankle control and confidence.",
-    "programIntro": "Progressive weight bearing with an appropriate brace or tape is supported for many uncomplicated sprains. Severe sprains may need clinician-directed immobilization for a short period before this progression.",
+    "programIntro": "Progressive weight bearing with an appropriate brace or tape is supported for many uncomplicated sprains. Severe sprains may need clinician-directed immobilization for a short period before this progression. Begin with comfortable motion, then build strength and supported balance as walking improves. The hop-and-hold is a later-stage option after normal walking, stairs, and basic single-leg control return.",
     "frequency": "Motion and balance daily; strength 3 days per week",
     "equipment": "Chair or counter, resistance band, optional brace",
     "checkpoint": "Reassess by function over 2 to 6 weeks",
@@ -761,41 +765,41 @@
         "name": "Ankle pumps or alphabet",
         "dose": "1 to 2 minutes",
         "frequency": "3 to 5 times per day early",
-        "how": "Move the ankle gently up, down, in, and out, or trace the alphabet with the toes. Stay within a comfortable range without forcing the injured direction.",
+        "how": "Sit with the leg supported and the foot free to move. Gently point the foot up and down and move it inward and outward, or draw letters with the toes while the knee stays still. Use a comfortable range and do not force the direction that injured the ankle.",
         "easier": "Use smaller motions with the leg supported.",
-        "harder": "Increase the range as swelling and pain settle."
+        "harder": "Make the motions a little larger as pain and swelling settle. Keep the movement gentle rather than pushing into the injured direction."
       },
       {
         "name": "Band-resisted eversion",
         "dose": "2 to 3 sets of 12 to 20 repetitions",
         "frequency": "3 days per week when tolerated",
-        "how": "Anchor a band to the inside. Move the forefoot outward against the band without rotating the entire leg, then return slowly.",
+        "how": "Sit with the heel supported and loop a band around the forefoot. Anchor the other end securely on the inside of the involved foot so it pulls inward. Keep the knee and thigh still, move the forefoot outward against the band, then return slowly.",
         "easier": "Use a lighter band or shorter range.",
-        "harder": "Use a stronger band or slower return."
+        "harder": "Choose a stronger band or a slower return, one change at a time. Keep the leg still and hold the current level if walking or next-day swelling worsens."
       },
       {
         "name": "Heel raise",
         "dose": "2 to 3 sets of 8 to 15 repetitions",
         "frequency": "3 days per week",
-        "how": "Rise onto both forefeet with support nearby, keep the ankle centered, then lower slowly.",
+        "how": "Stand on a flat floor facing a counter, with both feet pointing forward. Rise onto both forefeet while keeping the ankles centered, then lower slowly. Use the counter for balance and keep pressure through both sides of the forefoot.",
         "easier": "Use more hand support or a smaller range.",
-        "harder": "Progress to one leg or add external load."
+        "harder": "Progress to one leg, then add external load while heel height and ankle control stay steady. Increase the challenge only while walking and next-day swelling remain stable."
       },
       {
         "name": "Single-leg balance",
         "dose": "3 rounds of 30 to 60 seconds",
         "frequency": "Daily",
-        "how": "Stand on the injured leg near a counter. Keep the heel and the bases of the big and little toes in contact with the floor while maintaining a steady posture with a soft knee.",
+        "how": "Stand on the injured leg on a firm floor with a counter within reach. Keep the heel and the bases of the big and little toes grounded, the knee softly bent, and your posture steady. Use the support whenever needed to regain control.",
         "easier": "Use fingertip support or a shorter interval.",
-        "harder": "Add head turns, reaches, or a less stable surface while keeping a stable support within reach. Do not use an unstable surface if you have meaningful fall risk."
+        "harder": "Once basic balance, walking, stairs, and swelling are stable, add head turns or small reaches. A less stable surface is a later option with stable support within reach; do not use it if you have meaningful fall risk."
       },
       {
         "name": "Later-stage hop and hold",
         "dose": "2 sets of 6 to 10 repetitions",
         "frequency": "2 to 3 days per week when ready",
-        "how": "Make a small forward or side hop and land quietly on the injured leg. Hold the landing for two seconds before the next repetition.",
+        "how": "Begin only after normal walking, stairs, and basic single-leg control return. On a clear, firm surface, make a small forward or side hop and land quietly on the injured leg. Hold the landing for two seconds with a steady ankle before the next repetition.",
         "easier": "Use a step-and-hold without leaving the floor.",
-        "harder": "Increase direction, distance, or sport-specific speed gradually."
+        "harder": "Increase direction, distance, or sport-specific speed gradually, changing one at a time. Keep landings controlled without giving way, increased limping, or increased swelling later that day or the next morning."
       }
     ],
     "responseIntro": "Mild discomfort is acceptable, but not sharp pain, giving way, increased limping, or increased swelling later that day or the following morning.",
@@ -1217,12 +1221,13 @@
   },
   {
     "slug": "adhesive-capsulitis-exercises",
+    "guidedSession": true,
     "title": "Adhesive Capsulitis Home Exercise Program",
     "seoTitle": "Frozen Shoulder Exercises",
     "shortTitle": "Frozen shoulder and adhesive capsulitis exercises",
     "conditionName": "Adhesive capsulitis and frozen shoulder",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "SV7exHYLVHU",
       "title": "BEST Exercises for Frozen Shoulder | Adhesive Capsulitis (Mobility, Stretches, Strength)",
@@ -1260,41 +1265,41 @@
         "name": "Supported table slide",
         "dose": "1 to 2 sets of 5 to 10 repetitions",
         "frequency": "Daily",
-        "how": "Sit facing a table with the hand supported on a towel. Slide the hand forward as the trunk inclines, then return before the muscles tense or pain increases.",
+        "how": "Sit facing a table with the involved hand resting on a towel. Let the towel slide forward as you gently lean from the trunk, keeping the shoulder relaxed. Return before the muscles tense or pain increases; the hand stays supported throughout.",
         "easier": "Use a shorter range and pause only 1 to 5 seconds in a comfortable position.",
-        "harder": "Gradually hold 10 to 30 seconds near a tolerable end range before adding force."
+        "harder": "As rest and night pain settle, gradually hold 10 to 30 seconds near a tolerable end range. Let the supported position provide a gentle stretch without pushing or forcing the shoulder."
       },
       {
         "name": "Cane-assisted external rotation",
         "dose": "1 to 2 sets of 5 to 10 repetitions",
         "frequency": "Daily",
-        "how": "Lie on the back or sit supported with both elbows near the sides. Use the unaffected arm and cane to rotate the involved forearm outward without letting the elbow drift away.",
+        "how": "Lie on your back or sit supported, holding a cane with both hands and the elbows close to your sides. Use the unaffected arm to guide the involved forearm outward while its elbow stays near the body. Stop within a comfortable range and return gently.",
         "easier": "Use a smaller range with the arm fully supported and only a brief pause.",
-        "harder": "Increase the hold toward 10 to 30 seconds, then increase range without forcing the arm."
+        "harder": "As pain settles, increase the hold toward 10 to 30 seconds, then increase the comfortable range. Keep the elbow near the side and do not force the arm outward."
       },
       {
         "name": "Supine assisted elevation",
         "dose": "1 to 2 sets of 5 to 10 repetitions",
         "frequency": "Daily when tolerated",
-        "how": "Lie on the back, clasp the hands or hold a cane, and let the unaffected arm assist the involved arm overhead through a comfortable range.",
+        "how": "Add this when the earlier movements are tolerated and pain is settling. Lie on your back, clasp the hands or hold a cane, and use the unaffected arm to help the involved arm move overhead. Stay within a comfortable range, then lower with the same assistance.",
         "easier": "Stop well before pain or support the arm on a pillow.",
-        "harder": "Increase elevation gradually, then use less help from the other arm."
+        "harder": "Increase the comfortable elevation gradually, then use less help from the other arm. Keep the shoulder relaxed and step back if rest pain, night pain, or next-morning stiffness increases."
       },
       {
         "name": "Active wall slide",
         "dose": "2 sets of 6 to 10 repetitions",
         "frequency": "Daily when rest pain is settling",
-        "how": "Place the hand or forearm on a wall and slide upward while keeping the neck relaxed. Lower slowly without shrugging or twisting the trunk.",
+        "how": "Use this as rest pain settles. Face a wall with the involved hand or forearm against it, then slide upward through a comfortable range while keeping the neck relaxed. Lower slowly without shrugging or twisting the trunk.",
         "easier": "Use the other hand to assist or shorten the range.",
-        "harder": "Reach higher or add a brief comfortable end-range pause."
+        "harder": "Reach a little higher or add a brief, comfortable end-range pause. Do not push through pain to gain height; sleep and next-morning motion should remain stable."
       },
       {
         "name": "Optional light band row",
         "dose": "2 sets of 8 to 12 repetitions",
         "frequency": "2 to 3 days per week",
-        "how": "Add this option when pain is settling and shoulder-blade strength or endurance supports a functional goal. Use a comfortable range and light resistance. Draw the shoulder blades gently back while keeping the neck relaxed and avoiding trunk compensation.",
+        "how": "Add this option when pain is settling and shoulder-blade strength or endurance supports a functional goal. Secure a light band in front of you and draw the elbows back through a comfortable range, gently bringing the shoulder blades together. Keep the neck relaxed and the trunk still.",
         "easier": "Use a 5 to 10 second isometric hold or a lighter band.",
-        "harder": "Add repetitions, then resistance, only when the shoulder returns to its usual baseline by the next day."
+        "harder": "Add repetitions within the prescribed range, then resistance, only when the shoulder returns to its usual baseline by the next day. Keep the neck relaxed and avoid pulling harder by leaning back."
       }
     ],
     "responseIntro": "Gentle pulling or mild discomfort can be acceptable when it settles promptly and does not meaningfully increase rest pain, night pain, or next-morning stiffness.",
@@ -1336,13 +1341,14 @@
   },
   {
     "slug": "patellar-tendinopathy-exercises",
+    "guidedSession": true,
     "title": "Patellar Tendinopathy Exercise Program for Athletes",
     "seoTitle": "Patellar Tendinopathy Exercises",
     "shortTitle": "Patellar tendinopathy exercises",
     "conditionName": "Patellar tendinopathy in athletes",
     "audiences": ["athlete"],
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-09-04",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "e7oGNVUQi2I",
       "title": "Patellar Tendinopathy / Tendinitis / Tendinosis | Jumper’s Knee Rehab (Education, Myths, Exercises)",
@@ -1397,7 +1403,7 @@
         "name": "Slow split squat",
         "dose": "3 sets of 6 to 12 repetitions per side",
         "frequency": "2 to 3 days per week",
-        "how": "Keep the front foot grounded and lower slowly with the knee tracking over the middle toes. Use support if needed for balance.",
+        "how": "Stand with one foot forward and the other behind, beside a stable support if needed for balance. Keep the front foot grounded and lower slowly with the knee tracking over the middle toes, then rise with control.",
         "easier": "Use a shorter depth, hand support, or more assistance from the back leg.",
         "harder": "Add range, backpack or dumbbell load, then emphasize the front leg."
       },
@@ -1413,7 +1419,7 @@
         "name": "Landing drill to low pogo jumps",
         "dose": "Begin with 2 to 3 sets of 10 controlled contacts",
         "frequency": "2 days per week with at least 48 hours between sessions",
-        "how": "Start with a quiet landing and hold. Progress to small, quick bilateral pogo jumps while maintaining alignment and a spring-like ankle and knee strategy.",
+        "how": "Begin only after slow loading is controlled and baseline symptoms are stable. Start with a quiet landing and hold. Progress to small, quick two-leg pogo jumps while maintaining alignment and a spring-like ankle and knee strategy. Keep at least 48 hours between these early high tendon-load sessions.",
         "easier": "Practice a landing without a rebound jump.",
         "harder": "Add rebound speed, then height, then single-leg or multidirectional contacts. Change only one variable per session."
       },
@@ -1421,7 +1427,7 @@
         "name": "Sport-specific jump and acceleration exposure",
         "dose": "Begin with 3 to 5 sets of 3 to 5 high-quality efforts",
         "frequency": "1 to 2 days per week after low-level jumping is tolerated",
-        "how": "Select a jump, landing, sprint, or deceleration pattern required by the sport. Track the number, intensity, surface, and next-morning response.",
+        "how": "Use this stage only after low-level jumping is tolerated. Select a jump, landing, sprint, or deceleration pattern required by the sport. Track the number, intensity, surface, and next-morning response, counting this exposure together with strength, practice, and competition.",
         "easier": "Reduce speed, height, approach distance, or total efforts.",
         "harder": "Increase either intensity or volume, one variable at a time, then build repeated efforts and reduce the rest between efforts gradually."
       }
@@ -1468,13 +1474,14 @@
   },
   {
     "slug": "low-back-pain-exercises",
+    "guidedSession": true,
     "title": "Persistent or Recurrent Low Back Pain Home Exercise Program",
     "seoTitle": "Low Back Pain Exercises",
     "shortTitle": "Low back pain exercises",
     "conditionName": "Persistent or recurrent nonspecific low back pain",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "x71Y5ijW4DU",
       "title": "Lower Back Pain Rehab (Exercises | Education | Myths | Prevention)",
@@ -1531,7 +1538,7 @@
         "name": "Bridge",
         "dose": "2 to 3 sets of 6 to 12 repetitions",
         "frequency": "2 to 3 days per week",
-        "how": "Lie with the knees bent. Press through the feet, lift the hips through a comfortable range, pause briefly, then lower with control.",
+        "how": "Lie on your back with the knees bent and both feet flat, about hip-width apart. Press through the feet, lift the hips through a comfortable range, pause briefly, then lower with control.",
         "easier": "Use a smaller lift or begin with repeated five-second holds.",
         "harder": "Add a backpack, band, longer hold, or staggered foot position."
       },
@@ -1539,7 +1546,7 @@
         "name": "Quadruped reach",
         "dose": "2 to 3 sets of 5 to 10 repetitions per side",
         "frequency": "2 to 3 days per week",
-        "how": "From hands and knees, reach one arm or one leg while keeping the trunk comfortable and steady. Progress to the opposite arm and leg together only when the simpler version is controlled.",
+        "how": "Start on hands and knees, with hands under the shoulders and knees under the hips. Reach one arm or one leg while keeping the trunk comfortable and steady, then return. Progress to the opposite arm and leg together only when the simpler version is controlled.",
         "easier": "Slide one foot backward or lift one hand at a time.",
         "harder": "Use the opposite arm and leg, pause for three seconds, or add repetitions."
       },
@@ -1556,7 +1563,7 @@
         "dose": "2 to 3 sets of 6 to 10 hinges, then 2 to 4 carries of 20 to 40 seconds",
         "frequency": "2 to 3 days per week",
         "how": "Practice pushing the hips backward while keeping a comfortable trunk position, then stand by driving through the feet. When controlled, carry a light object close to the body while walking normally.",
-        "easier": "Hinge to a wall without weight and omit the carry.",
+        "easier": "Stand with your back toward a wall and push the hips backward to lightly touch it without weight. Omit the carry.",
         "harder": "Increase the hinge range or carried load gradually while preserving comfortable, confident movement."
       }
     ],
@@ -1599,13 +1606,14 @@
   },
   {
     "slug": "hip-osteoarthritis-exercises",
+    "guidedSession": true,
     "title": "Beginner Hip Osteoarthritis Home Exercise Program",
     "seoTitle": "Hip Osteoarthritis Exercises",
     "shortTitle": "Hip arthritis exercises",
     "conditionName": "Hip osteoarthritis",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "x-O-m_WCtWw",
       "title": "Doctor of Physical Therapy Answers Your 10 Most Common Questions About Hip Osteoarthritis",
@@ -1666,7 +1674,7 @@
         "name": "Bridge",
         "dose": "1 to 3 sets of 8 to 12 repetitions",
         "frequency": "2 to 3 days per week",
-        "how": "Lie with the knees bent. Press through the feet, lift the hips through a comfortable range, pause briefly, then lower slowly.",
+        "how": "Lie on your back with the knees bent and both feet flat, about hip-width apart. Press through the feet, lift the hips through a comfortable range, pause briefly, then lower slowly.",
         "easier": "Use a smaller lift on a firm bed. If getting down is unsafe, use supported standing hip extension instead.",
         "harder": "Add a loop above the knees, a two-second hold, or a staggered foot position."
       },
@@ -1735,6 +1743,7 @@
   },
   {
     "slug": "hamstring-strain-exercises",
+    "guidedSession": true,
     "title": "Hamstring Strain Exercise Program for Athletes",
     "seoTitle": "Hamstring Strain Exercises",
     "shortTitle": "Hamstring strain exercises",
@@ -1742,7 +1751,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-09-05",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "7D50I7sdlXg",
       "title": "Hamstring Strain Rehab & Exercises (Strength | Running | Return to Sport)",
@@ -1795,7 +1804,7 @@
         "name": "Short- to long-lever bridge",
         "dose": "2 to 3 sets of 6 to 12 repetitions",
         "frequency": "2 to 3 days per week",
-        "how": "Press through both heels, lift the hips without forcing the back, pause briefly, and lower slowly.",
+        "how": "Lie on your back with both knees bent and heels on the floor. Begin with the heels close enough to the hips for a comfortable lift. Press through both heels, lift the hips without forcing the back, pause briefly, and lower slowly.",
         "easier": "Use a smaller lift, place the heels closer to the hips, or use an isometric hold.",
         "harder": "Move the heels farther away, use a staggered stance, then progress to a controlled single-leg bridge."
       },
@@ -1819,7 +1828,7 @@
         "name": "Side plank with controlled trunk work",
         "dose": "2 to 3 holds of 15 to 30 seconds per side",
         "frequency": "2 to 3 days per week",
-        "how": "Keep the ribs and pelvis stacked without rotating or sagging. The goal is controlled trunk and pelvic endurance, not maximal fatigue.",
+        "how": "Lie on your side with the forearm under the shoulder and knees bent. Lift the hips, supporting yourself on the forearm and lower knee. Keep the ribs and pelvis stacked without rotating or sagging. The goal is controlled trunk and pelvic endurance, not maximal fatigue.",
         "easier": "Bend the knees and support from the forearm and lower knee.",
         "harder": "Use straight legs, extend the hold, or add 6 to 10 slow trunk rotations."
       },
@@ -1875,13 +1884,14 @@
   },
   {
     "slug": "plantar-fasciitis-exercises",
+    "guidedSession": true,
     "title": "Plantar Heel Pain Home Exercise Program",
     "seoTitle": "Plantar Fasciitis Exercises",
     "shortTitle": "Plantar heel pain exercises",
     "conditionName": "Plantar fasciopathy, commonly called plantar fasciitis, a common cause of plantar heel pain",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "5D86b45yJzU",
       "title": "Plantar Fasciitis (Education | Myths | Stretching & Strengthening Exercises)",
@@ -1922,41 +1932,41 @@
         "name": "Seated plantar-fascia stretch",
         "dose": "10 repetitions with a 10-second hold",
         "frequency": "3 times per day, especially before first steps and after prolonged rest",
-        "how": "Cross the affected ankle over the other leg. Gently pull the toes, especially the big toe, toward the shin until the arch feels taut.",
+        "how": "Sit and cross the affected ankle over the other leg. Hold the toes, especially the big toe, and gently pull them toward the shin until the arch feels taut. Keep the pull gentle rather than forcing the toes or pressing into heel pain.",
         "easier": "Use 5 repetitions with less toe pull.",
-        "harder": "Use a comfortable weight-bearing toe-on-wall or rolled-towel stretch for 2 to 3 holds of 20 to 30 seconds. Skip this option if it provokes the big-toe joint, plantar fascia, or Achilles tendon; use flat-floor loading instead."
+        "harder": "For a comfortable weight-bearing option, place the toes against a wall or over a rolled towel and use 2 to 3 holds of 20 to 30 seconds. Skip it if it provokes the big-toe joint, plantar fascia, or Achilles tendon; use flat-floor loading instead."
       },
       {
         "name": "Straight-knee calf stretch",
         "dose": "2 holds of 30 seconds",
         "frequency": "1 to 2 times per day",
-        "how": "Place the involved leg behind you with the heel down, toes forward, and knee straight. Lean toward the wall until the upper calf feels a gentle stretch.",
+        "how": "Face a wall with the hands supported and the involved leg behind you. Keep the back heel down, toes forward, and knee straight. Lean toward the wall until you feel a gentle stretch in the upper calf, keeping the heel grounded.",
         "easier": "Use a shorter stance or 15- to 20-second holds.",
-        "harder": "Use 3 holds of 30 seconds or a slightly deeper controlled lean."
+        "harder": "Use 3 holds of 30 seconds or a slightly deeper controlled lean. Choose one change and keep the stretch gentle; do not progress if first-step pain is worse the next morning."
       },
       {
         "name": "Bent-knee calf stretch",
         "dose": "2 holds of 30 seconds",
         "frequency": "1 to 2 times per day",
-        "how": "Keep the involved heel down and toes forward while bending the back knee until the lower calf feels a gentle stretch.",
+        "how": "Face a wall with the hands supported and the involved leg behind you. Keep the back heel down and toes forward, then bend that knee slightly until the lower calf feels a gentle stretch. Keep the heel grounded throughout.",
         "easier": "Use a smaller knee bend or 15- to 20-second holds.",
-        "harder": "Use 3 holds of 30 seconds or a slightly deeper controlled range."
+        "harder": "Use 3 holds of 30 seconds or a slightly deeper controlled knee bend. Choose one change and keep the stretch gentle; do not progress if first-step pain is worse the next morning."
       },
       {
         "name": "Slow supported heel raise",
         "dose": "Start with 2 sets of 8 repetitions using both legs",
         "frequency": "Every other day",
-        "how": "From a flat floor, rise for about three seconds, pause for two seconds, then lower for about three seconds while using a counter for support.",
+        "how": "Stand on a flat floor facing a counter and start with both legs. Rise onto the forefeet for about three seconds, pause for two seconds, then lower for about three seconds. Use the counter for balance and keep the heels moving without rolling the ankles.",
         "easier": "Use a seated heel raise, smaller range, or more hand support.",
-        "harder": "Build toward 3 sets of 8 to 12, then change one variable such as less hand support, a rolled towel beneath the toes, assisted single-leg work, or backpack load. Remove the towel if it aggravates the toe, fascia, or Achilles."
+        "harder": "Build toward 3 sets of 8 to 12 while first-step pain stays stable the next morning. Then choose one change: less hand support, a rolled towel beneath the toes, assisted single-leg work, or backpack load. Remove the towel if it aggravates the toe, fascia, or Achilles."
       },
       {
         "name": "Seated short-foot or arch set",
         "dose": "2 sets of 8 repetitions with a 5-second hold",
         "frequency": "Daily or every other day",
-        "how": "Keep the heel and the bases of the big and little toes on the floor. Gently shorten the foot by drawing the forefoot toward the heel without curling the toes.",
+        "how": "Sit with the foot flat and keep the heel and the bases of the big and little toes on the floor. Gently draw the forefoot toward the heel to shorten the foot and lift the arch slightly. Keep the toes relaxed rather than curling or gripping the floor.",
         "easier": "Use 1 set of 8 while seated with light effort.",
-        "harder": "Progress to 2 sets of 10 while standing, then to controlled single-leg work."
+        "harder": "Progress to 2 sets of 10 while standing, then to controlled single-leg work. Keep the toes relaxed and choose a level that does not worsen first-step pain the next morning."
       }
     ],
     "responseIntro": "Pain monitoring is useful, but no validated universal numeric cutoff exists. Mild, tolerable discomfort can be acceptable when form remains normal, symptoms settle, and first-step pain the next morning is unchanged or better. Stretching should feel gentle and firm, never forced.",
@@ -2002,13 +2012,14 @@
   },
   {
     "slug": "meniscus-tear-rehabilitation-exercises",
+    "guidedSession": true,
     "title": "Nonoperative Meniscus Tear Home Exercise Program",
     "seoTitle": "Nonoperative Meniscus Tear Exercises",
     "shortTitle": "Meniscus tear exercises",
     "conditionName": "Meniscus tear",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "Rr0g_b8Neq4",
       "title": "Meniscus Tear Rehab & Exercises (Stretching | Strength | Plyometrics)",
@@ -2089,7 +2100,7 @@
         "name": "Supported single-leg balance",
         "dose": "2 to 3 holds of 20 to 45 seconds per side",
         "frequency": "3 to 5 days per week",
-        "how": "Stand beside a counter with a soft knee and level pelvis. Use fingertip support as needed and keep a stable surface beneath you.",
+        "how": "Stand beside a counter on a stable surface. Shift onto one leg, lift the opposite foot, and keep a soft stance knee and level pelvis. Use fingertip support as needed.",
         "easier": "Keep one toe lightly on the floor.",
         "harder": "Reduce hand support or add slow reaching while preserving knee control."
       }
@@ -2134,6 +2145,8 @@
   },
   {
     "slug": "advanced-meniscus-rehabilitation-exercises",
+    "guidedSession": true,
+    "guidedExerciseOrder": [3, 4, 5, 0, 1, 2],
     "title": "Advanced Nonoperative Meniscus Rehabilitation Program for Athletes",
     "seoTitle": "Advanced Nonoperative Meniscus Rehab for Athletes",
     "shortTitle": "Advanced nonoperative meniscus rehabilitation",
@@ -2141,7 +2154,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "sKZcTjlxk-Q",
       "title": "How To Return Back To Sport After An Injury (ACL, Meniscus, MCL, Ankle Sprain)",
@@ -2208,7 +2221,7 @@
         "name": "Single-leg knee extension",
         "dose": "3 to 4 sets of 8 to 12 repetitions per side",
         "frequency": "2 to 3 days per week",
-        "how": "Use a knee-extension machine, heavy resistance band, or ankle weight. Straighten through the available comfortable range, pause, then lower over two to three seconds without letting the final repetitions lose control.",
+        "how": "Use a knee-extension machine, ankle weight, or heavy resistance band secured according to its manufacturer. Straighten through the available comfortable range, pause, then lower over two to three seconds without letting the final repetitions lose control. Do not improvise an unsafe band anchor.",
         "easier": "Use lighter resistance, a smaller comfortable range, or both legs on a machine.",
         "harder": "Increase resistance after 12 controlled repetitions while preserving terminal-extension control."
       },
@@ -2224,7 +2237,7 @@
         "name": "Straight-line run progression",
         "dose": "Begin with 6 rounds of 1 minute easy running and 2 minutes walking",
         "frequency": "Every other day, usually 2 to 3 days per week",
-        "how": "Use a level, predictable surface and an easy conversational pace. Repeat a level until the knee is unchanged later that day and the following morning. Progress to 6 rounds of 2 minutes running and 1 minute walking, then 5 rounds of 4 minutes running and 1 minute walking.",
+        "how": "Begin only with full extension, no more than trace swelling, a normal gait, 30 minutes of brisk walking and controlled single-leg step-downs without a next-day flare, and clinician-assessed strength adequate for running. An acute tear needs explicit confirmation that impact is appropriate. Use a level, predictable surface and an easy conversational pace. Repeat a level until the knee is unchanged later that day and the following morning. Progress to 6 rounds of 2 minutes running and 1 minute walking, then 5 rounds of 4 minutes running and 1 minute walking.",
         "easier": "Use brisk walking, cycling, or shorter run intervals until 30 minutes of brisk walking is well tolerated.",
         "harder": "Build to 20 to 30 minutes of continuous easy running before adding hills or speed. Increase duration, speed, or terrain, but only one at a time."
       },
@@ -2232,15 +2245,15 @@
         "name": "Jump and controlled-landing progression",
         "dose": "2 to 3 sets of 4 to 6 quality contacts",
         "frequency": "2 nonconsecutive days per week, before strength work",
-        "how": "Begin with a quick rise to the toes followed by a controlled quarter-squat landing without leaving the floor. Progress to a low double-leg jump and hold the landing for two seconds. Land quietly with the knee and trunk controlled.",
-        "easier": "Use snap-downs without a jump or a very small double-leg hop in place.",
-        "harder": "Progress to forward and lateral hop-and-stick drills, then carefully to repeated or single-leg hops. Maximal testing should be supervised."
+        "how": "Use this stage only when strength and easy running remain green; an acute tear needs clinician confirmation that impact is appropriate. Begin with a quick rise to the toes followed by a controlled quarter-squat landing without leaving the floor. Progress to a low double-leg jump and hold the landing for two seconds. Land quietly with the knee and trunk controlled.",
+        "easier": "Keep both feet on the floor for the rise to the toes and shallow squat, or reduce the squat depth.",
+        "harder": "After two green-response sessions at the current level, progress to forward and lateral hop-and-stick drills, then carefully to repeated or single-leg hops. Change contacts or intensity one at a time. Maximal testing should be supervised."
       },
       {
         "name": "Planned deceleration and change of direction",
         "dose": "4 to 6 repetitions each direction at about 50 to 70 percent effort",
         "frequency": "1 to 2 days per week after straight-line running and landing remain green",
-        "how": "Accelerate over 5 to 10 meters, then stop within three to four controlled steps. Next, add a planned 45-degree cut. Keep the first sessions predictable and allow full recovery between repetitions.",
+        "how": "Begin only after straight-line running and landing remain green. Have a clinician review readiness for pivoting. Accelerate over 5 to 10 meters, then stop within three to four controlled steps. Next, add a planned 45-degree cut. Keep the first sessions predictable and allow full recovery between repetitions.",
         "easier": "Use a brisk shuffle-to-stop, shorter approach, or lower speed.",
         "harder": "Progress speed, then cutting angle, then a reactive cue. Move from modified noncontact practice to full practice before competition."
       }
@@ -2354,6 +2367,7 @@
   },
   {
     "slug": "iliotibial-band-syndrome-exercises",
+    "guidedSession": true,
     "title": "Iliotibial Band Syndrome Home Exercise Program for Runners",
     "seoTitle": "Iliotibial Band Syndrome Exercises for Runners",
     "shortTitle": "IT band syndrome exercises",
@@ -2361,7 +2375,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "qJ1mrNXXjSo",
       "title": "IT Band Pain / Iliotibial Band Friction Syndrome (Myth Busting | Exercises | Rehab)",
@@ -2410,7 +2424,7 @@
         "name": "Modified side plank",
         "dose": "2 to 3 holds of 15 to 30 seconds per side",
         "frequency": "2 to 3 days per week",
-        "how": "Support the body on the forearm and bent knees while keeping the trunk and hips in a straight line.",
+        "how": "Lie on your side with the forearm under the shoulder and knees bent. Lift the hips, supporting the body on the forearm and lower knee while keeping the trunk and hips in a straight line.",
         "easier": "Shorten the hold or place the upper hand on the floor.",
         "harder": "Use straight legs, then add controlled top-leg abduction."
       },
@@ -2426,7 +2440,7 @@
         "name": "Supported split squat",
         "dose": "Begin with 2 to 3 holds of 20 to 45 seconds, then progress to 2 to 3 sets of 6 to 12 repetitions per side",
         "frequency": "2 to 3 days per week",
-        "how": "Use a stable support and lower through a comfortable range in a staggered stance. Keep the front foot planted and the movement controlled.",
+        "how": "Stand beside a stable support with one foot forward and the other behind. Lower through a comfortable range while keeping the front foot planted. For the initial holds, stay in this lowered position; for repetitions, rise and lower with control.",
         "easier": "Use more hand support, a shorter stance, or a smaller range.",
         "harder": "Increase range, add light weight, or elevate the rear foot only after the standard version is controlled."
       },
@@ -2477,13 +2491,14 @@
   },
   {
     "slug": "peroneal-tendinopathy-exercises",
+    "guidedSession": true,
     "title": "Peroneal Tendinopathy Home Exercise Program",
     "seoTitle": "Peroneal Tendinopathy Exercises",
     "shortTitle": "Peroneal tendon exercises",
     "conditionName": "Peroneal tendinopathy",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "0fsR5-oqcVU",
       "title": "Peroneal Tendinopathy / Tendinitis: Causes & Treatment (Education | Strengthening | Stretching)",
@@ -2524,41 +2539,41 @@
         "name": "Banded ankle eversion",
         "dose": "3 sets of 12 to 20 repetitions",
         "frequency": "2 to 3 days per week",
-        "how": "Sit with a band around the forefoot and anchored toward the opposite side. Keep the knee and thigh still, turn the sole gently outward through a comfortable range, then return over about three seconds.",
+        "how": "Sit with the heel supported and loop a band around the forefoot, securing the other end toward the opposite side. Keep the knee and thigh still as you move the forefoot outward and gently turn the sole outward through a comfortable range. Return over about three seconds without rolling the whole leg.",
         "easier": "Use a lighter band or four holds of 20 to 30 seconds without movement.",
-        "harder": "Use a heavier band, slow the return, or perform side-lying eversion with a light ankle weight."
+        "harder": "Choose a heavier band, a slower return, or side-lying eversion with a light ankle weight. Change one variable after several stable sessions; keep the motion controlled without snapping or giving way."
       },
       {
         "name": "Heel raise",
         "dose": "3 sets of 8 to 15 repetitions",
         "frequency": "2 to 3 days per week",
-        "how": "Rise as high as you can control and lower slowly while keeping pressure through both the big-toe and little-toe sides of the forefoot rather than rolling outward.",
+        "how": "Stand on a flat floor near a counter. Rise as high as you can control, then lower slowly while keeping pressure through both the big-toe and little-toe sides of the forefoot. Keep the ankle centered rather than rolling onto the outer edge.",
         "easier": "Use both legs and hand support.",
-        "harder": "Progress to one leg, then add weight or use a step."
+        "harder": "Progress to one leg, then choose added weight or a stable step with a rail or counter within reach. Keep heel height and foot pressure controlled, with no snapping or giving way and symptoms back to baseline by the next morning."
       },
       {
         "name": "Supported single-leg balance",
         "dose": "3 rounds of 30 to 60 seconds per side",
         "frequency": "3 to 5 days per week",
-        "how": "Stand near a stable support with the whole forefoot grounded and the knee softly bent.",
+        "how": "Stand on one leg on a firm, level surface with a stable support within reach. Keep the whole forefoot grounded and the knee softly bent. Use the support to regain a steady posture rather than letting the ankle roll outward.",
         "easier": "Use fingertip support or keep the other toes on the floor.",
-        "harder": "Add a three-way reach, small trunk rotations, or a controlled single-leg hip hinge."
+        "harder": "Add a small three-way reach, trunk rotation, or controlled single-leg hip hinge. Choose one challenge and shorten it if the foot rolls outward, symptoms increase, or you lose control."
       },
       {
         "name": "Low step-up to controlled step-down",
         "dose": "2 to 3 sets of 8 to 12 repetitions per side",
         "frequency": "2 to 3 days per week",
-        "how": "Step onto a low stable step without pushing from the back leg, stand tall, then lower slowly with the foot and knee controlled.",
+        "how": "Face a low, stable step with a rail or counter nearby. Place the working foot fully on the step, rise without pushing off strongly from the back leg, and stand tall. Lower slowly while keeping the foot and knee controlled.",
         "easier": "Use a lower step and a rail.",
-        "harder": "Use a lateral or forward step-down, a slightly taller step, or light weight."
+        "harder": "Choose a lateral or forward step-down, a slightly taller step, or light weight. Progress one variable after several stable sessions, keeping the ankle centered and the next-morning response at baseline."
       },
       {
         "name": "Level walking or cycling base",
         "dose": "Start with a repeatable 10 to 20 minutes",
         "frequency": "Most days",
-        "how": "Choose flat walking or cycling that does not cause a sustained flare. Keep terrain and effort predictable while you establish a repeatable baseline.",
+        "how": "Choose flat walking or cycling at an effort you can repeat without a sustained flare. Keep terrain and effort predictable, and notice whether pain, swelling, or limping changes later that day or the next morning.",
         "easier": "Split the time into two shorter sessions.",
-        "harder": "Add two to five minutes first, then speed, hills, uneven ground, or trail exposure one variable at a time."
+        "harder": "Add two to five minutes first. After several stable sessions, add speed, hills, uneven ground, or trail exposure one variable at a time; step back if pain, swelling, or limping worsens."
       }
     ],
     "responseIntro": "Mild discomfort can be acceptable when technique remains stable, there is no snapping or giving way, and symptoms return to their usual baseline by the next morning.",
@@ -2601,13 +2616,14 @@
   },
   {
     "slug": "tibialis-posterior-tendinopathy-exercises",
+    "guidedSession": true,
     "title": "Tibialis Posterior Tendinopathy Home Exercise Program",
     "seoTitle": "Posterior Tibial Tendon Pain Exercises",
     "shortTitle": "Posterior tibial tendon exercises",
     "conditionName": "Tibialis posterior tendinopathy",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-10-02",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "NKeQHV85QLc",
       "title": "Tibialis Posterior Tendinopathy | Tendinitis | Dysfunction | Pain (Exercises, Rehab, Strengthening)",
@@ -2648,41 +2664,41 @@
         "name": "Banded foot adduction",
         "dose": "3 to 4 sets of 12 to 15 repetitions",
         "frequency": "2 to 3 days per week",
-        "how": "Sit with both knees bent and the foot in a supportive shoe. Anchor a band outside the forefoot at about 45 degrees to the floor. Keep the heel and leg quiet, slide the forefoot inward, then return over three seconds without clawing the toes.",
+        "how": "Sit with both knees bent and the involved foot in a supportive shoe. Secure a band outside the forefoot at about 45 degrees to the floor. Keep the heel and leg quiet, slide the forefoot inward, then return over three seconds without clawing the toes.",
         "easier": "Use no band, a shorter range, or four low-effort isometric holds of 20 seconds.",
-        "harder": "Use a stronger band or a four-second return."
+        "harder": "Choose a stronger band or a four-second return after several stable next mornings. Keep the heel and leg still, and avoid increasing the challenge when medial ankle swelling or walking tolerance worsens."
       },
       {
         "name": "Heel raise with controlled heel direction",
         "dose": "3 sets of 8 to 15 repetitions",
         "frequency": "2 to 3 days per week",
-        "how": "Keep the base of the big toe grounded, rise as high as controlled, allow the heels to turn slightly toward each other, then lower over three seconds. A small ball between the heels can guide the motion, but do not force an arch position.",
+        "how": "Stand near a counter and keep pressure through the base of the big toe as you rise as high as controlled. Allow the heels to turn slightly toward each other, then lower over three seconds. A small ball between the heels can guide the motion; do not squeeze hard or force an arch position.",
         "easier": "Use a seated or double-leg version with hand support.",
-        "harder": "Progress to one leg, then add weight or use a step after 15 controlled repetitions."
+        "harder": "Progress to one leg, then add weight or use a stable step after 15 controlled repetitions. Advance only after several stable next mornings, with normal gait and push-off and no visible worsening of arch or heel position."
       },
       {
         "name": "Supported single-leg balance",
         "dose": "3 rounds of 30 to 60 seconds per side",
         "frequency": "2 to 3 days per week",
-        "how": "Stand near a stable support and let the foot move naturally within a tolerable range while the knee and pelvis remain controlled.",
+        "how": "Stand on the involved leg on a firm floor with stable support within reach. Keep the knee and pelvis controlled while allowing the foot to move naturally within a tolerable range. Use the support when needed rather than forcing the arch to stay rigid.",
         "easier": "Use fingertip support or keep the opposite toes on the floor.",
-        "harder": "Add three-way reaches or slow trunk rotations."
+        "harder": "Add a small three-way reach or slow trunk rotation while keeping the knee and pelvis controlled. Keep the challenge within a range that preserves walking tolerance and the next-morning baseline."
       },
       {
         "name": "Squat to chair or supported split squat",
         "dose": "2 to 3 sets of 8 to 15 repetitions",
         "frequency": "2 to 3 days per week",
-        "how": "Keep the whole foot grounded and move through a comfortable range with a stable chair or rail nearby.",
+        "how": "For the chair option, stand in front of a stable chair, keep the whole foot grounded, and sit back through a comfortable range before standing again. For the supported split squat, hold a rail, use a staggered stance, and bend both knees through a comfortable range. Keep foot pressure steady in either version.",
         "easier": "Use a higher chair, shallower range, or more support.",
-        "harder": "Use a lower chair, split squat or reverse lunge, then add light weight."
+        "harder": "Choose a lower chair, split squat, or reverse lunge before adding light weight. Change one variable after several stable next mornings, preserving controlled foot pressure and normal walking and push-off."
       },
       {
         "name": "Supported single-leg hip hinge",
         "dose": "2 to 3 sets of 6 to 12 repetitions per side",
         "frequency": "2 to 3 days per week",
-        "how": "Stand on one leg near a stable support, soften the knee, hinge at the hip without twisting, then return upright with controlled foot pressure.",
+        "how": "Stand on the involved leg with stable support within reach and soften the knee. Send the hips back as the trunk tips forward without twisting, then return upright. Keep foot pressure controlled and use the support as needed.",
         "easier": "Use kickstand toes and hand support.",
-        "harder": "Progress to a single-leg deadlift, add a knee drive, or hold weight in the opposite hand."
+        "harder": "Progress to a single-leg deadlift, add a knee drive, or hold weight in the opposite hand. Choose one change after several stable next mornings and keep the foot, knee, and pelvis controlled."
       }
     ],
     "responseIntro": "Establish a repeatable daily step baseline. If walking is provocative, temporarily use cycling or swimming. Increase steps, pace, hills, or running one variable at a time while monitoring gait, push-off, swelling, and foot shape.",
@@ -2727,13 +2743,14 @@
   },
   {
     "slug": "thumb-cmc-osteoarthritis-exercises",
+    "guidedSession": true,
     "title": "Thumb CMC Osteoarthritis Home Exercise Program",
     "seoTitle": "Thumb CMC Osteoarthritis Exercises and Brace Guide",
     "shortTitle": "Thumb CMC arthritis exercises",
     "conditionName": "Thumb carpometacarpal osteoarthritis",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-10-02",
+    "modifiedDate": "2026-10-07",
     "video": null,
     "metaDescription": "Printable thumb CMC osteoarthritis exercises and brace guidance, with joint protection, gentle strength, symptom rules, and clear progression.",
     "breadcrumb": "Thumb CMC osteoarthritis",
@@ -2769,7 +2786,7 @@
         "frequency": "Daily",
         "how": "Support the forearm and keep the wrist straight. Bring the thumb pad toward the index fingertip to form a relaxed letter C. Keep the thumb joints softly bent and avoid squeezing. Hold for two to three seconds, then relax.",
         "easier": "Move only toward the index finger through a smaller range.",
-        "harder": "Touch each fingertip in sequence. Reach toward the base of the small finger only when comfortable."
+        "harder": "Touch each fingertip in sequence without squeezing. Reach toward the base of the small finger only when comfortable and symptoms return to the usual baseline by the next morning."
       },
       {
         "name": "Gentle first web-space opening",
@@ -2777,15 +2794,15 @@
         "frequency": "Daily",
         "how": "Support the affected hand with the palm facing up. Use the other hand to gently guide the thumb away from the palm until a mild stretch is felt in the web space. Do not force the base joint or push into sharp pain.",
         "easier": "Use a smaller range and a 10-second hold.",
-        "harder": "Progress toward a 30-second hold without increasing the force."
+        "harder": "Progress toward a 30-second hold without increasing the force. Keep a mild web-space stretch rather than pushing the thumb base into pain."
       },
       {
         "name": "First dorsal interosseous index slide",
         "dose": "2 sets of 8 to 12 repetitions",
         "frequency": "3 days per week",
-        "how": "Place the hand flat on a table with the palm down. Keep the other fingers relaxed. Slide the index finger sideways away from the middle finger, then return slowly without hard pinching.",
+        "how": "Place the hand palm down on a table and keep the other fingers relaxed. Slide the index finger sideways away from the middle finger, then return slowly. Keep the hand supported and avoid hard pinching or twisting at the thumb base.",
         "easier": "Use no resistance and a shorter slide.",
-        "harder": "Add a very light elastic loop around the fingers."
+        "harder": "Add a very light elastic loop around the fingers while keeping the same controlled index-finger slide. Reduce resistance if aching or swelling increases or symptoms stay worse the following morning."
       },
       {
         "name": "Thumb palmar-abduction isometric",
@@ -2793,15 +2810,15 @@
         "frequency": "3 days per week",
         "how": "Hold the hand with the palm facing sideways and the thumb softly bent. Move the thumb a little away from the palm, as if opening a space to hold a small cup; the thumb moves perpendicular to the plane of the palm. Place a finger of the other hand against the thumb to resist that same direction. Press gently without movement and keep the thumb knuckle from bending backward.",
         "easier": "Perform three five-second holds.",
-        "harder": "Build to 10-second holds, then use a light elastic loop. Do not use maximal effort."
+        "harder": "Build to 10-second holds, then use a light elastic loop while keeping the thumb knuckle from bending backward. Do not use maximal effort; step back if aching or swelling increases or symptoms remain worse the following morning."
       },
       {
         "name": "Controlled three-point pinch",
         "dose": "1 to 2 sets of 6 to 10 repetitions",
         "frequency": "2 to 3 days per week, beginning in Stage 3",
-        "how": "Use very soft therapy putty, a folded sponge, or a light clothespin. Pinch between the thumb pad and the pads of the index and middle fingers. Maintain a rounded C shape and avoid a forceful side or key pinch.",
+        "how": "Begin this in Stage 3 after comfortable movement and light stabilization work are tolerated. Use very soft therapy putty, a folded sponge, or a light clothespin, and pinch between the thumb pad and the pads of the index and middle fingers. Maintain a rounded C shape and avoid a forceful side or key pinch.",
         "easier": "Practice the position without resistance.",
-        "harder": "Increase resistance slightly or practice the same alignment during a meaningful daily task."
+        "harder": "Increase resistance slightly or use the same rounded alignment during a meaningful daily task. Keep the pinch light and controlled, and reduce it if aching or swelling increases or symptoms remain worse the following morning."
       }
     ],
     "responseIntro": "Begin with one set when the thumb is irritable. Mild discomfort can be acceptable when movement remains controlled and symptoms return to their usual baseline by the next morning.",
@@ -2847,13 +2864,14 @@
   },
   {
     "slug": "de-quervain-tenosynovitis-exercises",
+    "guidedSession": true,
     "title": "De Quervain Tenosynovitis Starter Program",
     "seoTitle": "De Quervain Exercises, Brace, and Activity Guide",
     "shortTitle": "De Quervain wrist and thumb program",
     "conditionName": "De Quervain tenosynovitis",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-10-02",
+    "modifiedDate": "2026-10-07",
     "video": null,
     "metaDescription": "De Quervain exercises, thumb-spica brace guidance, activity changes, symptom rules, and evidence-informed options for thumb-side wrist pain.",
     "breadcrumb": "De Quervain tenosynovitis",
@@ -2877,7 +2895,7 @@
     "assessFirst": "An uncertain diagnosis, symptoms after a fall or direct blow, numbness, tingling, burning, progressive weakness, pain centered at the thumb-base joint, swelling or crepitus farther up the back of the forearm, a thumb that catches or locks, a visible mass, inflammatory arthritis, recent injection or surgery, or symptoms severe enough to prevent normal light hand use. Pregnancy and the postpartum period are not automatic exclusions, but brace fit, swelling, infant care, and loading should be individualized.",
     "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day care for a hot, red, rapidly swelling area, fever, an open wound, new deformity, major loss of motion after trauma, or inability to use the hand. Arrange prompt assessment for new numbness, sudden weakness, or severe pain after injury.",
     "programHeading": "Settle the wrist. Maintain motion. Rebuild load carefully.",
-    "programIntro": "Exercise has not been proven effective as a stand-alone treatment. Pain-free motion and thumb-extension isometrics appear feasible within multimodal care. Network meta-analyses rank clinician-delivered corticosteroid injection, often combined with three to four weeks of thumb-spica immobilization, among the better-supported options. A 2023 review found moderate-certainty evidence for a statistically detectable but not clinically important added functional benefit from immobilization. A separate 2025 review rated its evidence low to very low. Injection suitability and risks require an individual clinical discussion.",
+    "programIntro": "Exercise has not been proven effective as a stand-alone treatment. Pain-free motion and thumb-extension isometrics appear feasible within multimodal care. Network meta-analyses rank clinician-delivered corticosteroid injection, often combined with three to four weeks of thumb-spica immobilization, among the better-supported options. A 2023 review found moderate-certainty evidence for a statistically detectable but not clinically important added functional benefit from immobilization. A separate 2025 review rated its evidence low to very low. Injection suitability and risks require an individual clinical discussion. Start with the first two movements; add the isometric only after Stage 1 is tolerated, and add resistance and functional holds in Stage 3 when the earlier stage remains stable.",
     "frequency": "Pain-free motion 2 to 4 times per day; strengthening daily or every other day by stage",
     "equipment": "Table, optional very light elastic loop, light cup, and a comfortable thumb-spica orthosis if helpful",
     "checkpoint": "Seek reassessment if there is no clear improvement after 2 to 4 weeks",
@@ -2889,7 +2907,7 @@
         "frequency": "2 to 4 times per day",
         "how": "Support the forearm with the wrist straight. Slowly move the thumb toward the fingers through a comfortable range, then return it to the starting position. Do not force the thumb tightly into the palm.",
         "easier": "Use a smaller range.",
-        "harder": "Touch the thumb to each fingertip while the wrist remains neutral."
+        "harder": "Touch the thumb to each fingertip while the wrist remains neutral. Keep the motion pain free or only very mildly uncomfortable; do not force the thumb tightly into the palm."
       },
       {
         "name": "Supported wrist flexion and extension",
@@ -2897,21 +2915,21 @@
         "frequency": "2 to 4 times per day",
         "how": "Rest the forearm on a table with the hand just beyond the edge. Slowly bend the wrist forward and backward through a comfortable range. Keep the movement straight rather than drifting toward either side.",
         "easier": "Rest the hand fully on the table and use a smaller range.",
-        "harder": "Increase the comfortable range. Do not add weight during the irritable stage."
+        "harder": "Increase only the comfortable range while the wrist moves straight. Do not add weight during the irritable stage or push through increasing thumb-side wrist pain."
       },
       {
         "name": "Light thumb-extension isometric",
         "dose": "Start with 5 holds of 10 seconds, building toward 5 holds of 20 seconds; rest about 60 seconds between holds",
         "frequency": "Once daily after Stage 1 is tolerated",
-        "how": "Place the hand on its small-finger side with the wrist neutral and thumb in line with the forearm. Place a finger from the other hand against the back of the thumb. Gently attempt to lift the thumb while the other hand prevents movement. Begin at about 20 to 30 percent effort.",
+        "how": "Add this only after the Stage 1 movements are tolerated and resting pain and irritability are improving. Place the hand on its small-finger side with the wrist neutral and thumb in line with the forearm. Put a finger from the other hand against the back of the thumb and gently attempt to lift the thumb while that finger prevents movement. Begin at about 20 to 30 percent effort.",
         "easier": "Use five-second holds and very light pressure.",
-        "harder": "Build the hold to 20 seconds, then increase toward moderate effort. Do not use maximal effort."
+        "harder": "Build the hold to 20 seconds, then increase toward moderate effort. Do not use maximal effort or progress while thumb-side wrist pain increases or remains worse the next morning."
       },
       {
         "name": "Slow thumb extension with light resistance",
         "dose": "2 sets of 6 to 10 repetitions",
         "frequency": "Every other day, beginning in Stage 3",
-        "how": "Rest the hand on its small-finger side with the wrist neutral. Place a very light elastic loop around the fingers and thumb. Keeping the thumb in the same plane as the palm, slowly move it away from the index finger to open the angle between the thumb and index finger; do not lift it forward, out of the plane of the palm. Pause briefly, then return over two to three seconds.",
+        "how": "Begin this in Stage 3 when the earlier stage remains stable. Rest the hand on its small-finger side with the wrist neutral. Place a very light elastic loop around the fingers and thumb. Keeping the thumb in the same plane as the palm, slowly move it away from the index finger to open the angle between the thumb and index finger; do not lift it forward, out of the plane of the palm. Pause briefly, then return over two to three seconds.",
         "easier": "Perform the movement without resistance.",
         "harder": "Reach 10 controlled repetitions before using a slightly firmer band. Do not add resistance when radial wrist pain increases."
       },
@@ -2919,9 +2937,9 @@
         "name": "Neutral-wrist functional hold",
         "dose": "3 holds of 20 to 30 seconds",
         "frequency": "3 days per week, beginning in Stage 3",
-        "how": "Hold a light cup or similar object using the whole hand while keeping the wrist neutral. The task should remain easy enough to perform without compensating or gripping tightly.",
+        "how": "Begin this in Stage 3 when the earlier stage remains stable. Hold a light cup or similar object with the whole hand and keep the wrist straight. Use an easy grip without gripping tightly or changing wrist position to manage the weight.",
         "easier": "Use an empty plastic cup or hold with both hands.",
-        "harder": "Add time first, then a small amount of weight. Progress one variable at a time."
+        "harder": "Add time within the prescribed range first, then a small amount of weight, changing one variable at a time. Step back if thumb-side wrist pain increases or symptoms remain worse the next morning."
       }
     ],
     "responseIntro": "Start with the first two movements. Add loading only when resting pain and irritability are improving. Do not repeatedly use the Finkelstein or Eichhoff maneuver as a stretch; provoking a diagnostic position is not a required rehabilitation exercise.",
@@ -2967,6 +2985,7 @@
   },
   {
     "slug": "ankle-sprain-return-to-sport-exercises",
+    "guidedSession": true,
     "title": "Lateral Ankle Sprain Return-to-Sport Program",
     "seoTitle": "Return to Sport After an Ankle Sprain",
     "shortTitle": "Ankle sprain athlete progression",
@@ -2974,7 +2993,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-08-28",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-10-02",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "ga_OAPf6IOI",
       "title": "How to Rehab a Sprained Ankle (Start to Finish)",
@@ -3003,7 +3022,7 @@
     "assessFirst": "Pain above the ankle, focal bone or midfoot pain, locking, tendon snapping, repeated giving way, substantial swelling, an uncertain diagnosis, suspected fracture, syndesmotic or high-ankle injury, Achilles or peroneal tendon injury, osteochondral injury, major midfoot injury, neurologic symptoms, or postoperative rehabilitation.",
     "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek immediate emergency evaluation for a newly cold, pale, blue, or numb foot. Seek same-day urgent assessment for deformity, inability to bear weight, a new pop with loss of push-off, severe or rapidly increasing swelling, sharp bony pain after a new injury, or new one-sided calf swelling, warmth, or redness, particularly after immobilization.",
     "programHeading": "Progress from force control to unpredictable sport.",
-    "programIntro": "Keep the loaded strength work as the base. Add impact only after small hops remain controlled, then progress speed, direction, decision-making, and practice volume one variable at a time. Complete two green-response sessions before increasing a drill.",
+    "programIntro": "Begin only while walking and stairs are nearly normal, swelling is stable or decreasing, ankle motion is comfortable, and the starter strength, balance, and small hop-and-hold drills are controlled. Keep the loaded strength work as the base. Add impact only after small hops remain controlled, then progress speed, direction, decision-making, and practice volume one variable at a time. Complete two green-response sessions before increasing a drill.",
     "frequency": "Strength 2 to 3 days weekly; impact and cutting 1 to 2 days weekly initially",
     "equipment": "Stable step, external weight, resistance band, floor markers, and open training space",
     "checkpoint": "Reassess after every 2 green-response sport sessions",
@@ -3013,49 +3032,49 @@
         "name": "Loaded straight-knee and bent-knee calf pair",
         "dose": "3 sets of 6 to 12 straight-knee repetitions and 3 sets of 8 to 15 bent-knee repetitions",
         "frequency": "2 to 3 nonconsecutive days per week",
-        "how": "Use one leg when controlled. Complete straight-knee raises first, then repeat with a steady knee bend. Keep heel height and ankle alignment consistent as the set becomes challenging.",
+        "how": "Stand near a counter and use one leg when controlled, with external load held securely. Complete the straight-knee raises first, then repeat with a steady knee bend. Keep heel height and ankle alignment consistent as the set becomes challenging.",
         "easier": "Use fingertip support, both legs, or lighter external load.",
-        "harder": "Add load, then use a faster upward phase while keeping the lowering phase controlled. Do not sacrifice heel height for speed."
+        "harder": "Add load, then use a faster upward phase while keeping the lowering phase controlled. Preserve heel height and complete two green-response sessions before increasing the drill."
       },
       {
         "name": "Single-leg squat or lateral step-down",
         "dose": "3 sets of 6 to 10 repetitions per side",
         "frequency": "2 to 3 days per week",
-        "how": "Lower through a controlled range with the whole foot grounded and the knee tracking comfortably over the foot. Use a stable support when needed.",
+        "how": "For a single-leg squat, stand on the involved leg near support and sit the hips back through a controlled range. For a lateral step-down, stand sideways on a stable step and lower the opposite heel toward the floor, then return. Keep the whole stance foot grounded and the knee tracking comfortably over it.",
         "easier": "Use a shallower range, a lower step, or more hand support.",
-        "harder": "Progress depth, external load, and movement speed separately rather than changing them together."
+        "harder": "Choose greater depth, external load, or faster movement separately. Complete two green-response sessions before the next change, with steady ankle control and no next-morning increase in pain or swelling."
       },
       {
         "name": "Multidirectional reach balance",
         "dose": "2 to 3 rounds of 3 to 5 controlled reaches in each selected direction",
         "frequency": "3 or more days per week",
-        "how": "Stand on the involved leg near support and reach the other foot forward, sideways, and diagonally. Keep the stance foot stable while the knee, hip, and trunk control the reach.",
+        "how": "Stand on the involved leg near stable support and reach the other foot forward, sideways, and diagonally. Keep the stance foot grounded while the knee, hip, and trunk control the reach. Return to a steady starting position between reaches.",
         "easier": "Shorten the reach or tap a finger on support.",
-        "harder": "Increase reach distance, add trunk rotation, or respond to a visual cue before using an unstable surface."
+        "harder": "Choose a longer reach, trunk rotation, or a visual cue before considering an unstable surface. Complete two green-response sessions before increasing the drill, with stable support within reach."
       },
       {
         "name": "Multidirectional hop and stick",
         "dose": "2 to 3 sets of 4 to 6 hops in each selected direction",
         "frequency": "2 days per week initially",
-        "how": "Hop forward or sideways and hold the landing for two seconds. Land quietly with the foot, knee, hip, and trunk controlled before adding diagonal directions.",
+        "how": "Add impact only after the starter small hops remain controlled and walking, stairs, and next-day swelling stay stable. On a firm, clear surface, hop forward or sideways and hold the landing for two seconds. Land quietly with the foot, knee, hip, and trunk controlled before adding diagonal directions.",
         "easier": "Use a smaller two-leg hop or a step-and-hold drill.",
-        "harder": "Increase distance, add diagonal hops, then progress to repeated hops only after single landings remain controlled."
+        "harder": "Increase distance, add diagonal hops, then progress to repeated hops only after single landings stay controlled. Complete two green-response sessions before increasing the drill."
       },
       {
         "name": "Repeated pogo or line hops",
         "dose": "2 to 3 sets of 10 to 20 contacts",
         "frequency": "2 days per week initially",
-        "how": "Use low, rhythmic contacts over one spot or a line. Keep the contacts quiet and the ankle spring consistent across the set.",
+        "how": "Use this after hop-and-stick landings remain controlled. On a firm, clear surface, make low, rhythmic contacts over one spot or a line. Keep landings quiet and the ankle spring consistent throughout the set.",
         "easier": "Use quick heel raises without leaving the floor or two-leg pogos.",
-        "harder": "Progress to one leg, then forward-back and side-to-side rhythm. Increase contacts or direction, not both at once."
+        "harder": "Progress to one leg, then forward-back and side-to-side rhythm. Increase contacts or direction separately after two green-response sessions, preserving landing control and stable next-morning symptoms."
       },
       {
         "name": "Acceleration, deceleration, and cutting progression",
         "dose": "4 to 6 high-quality repetitions each direction at about 50 to 70 percent effort",
         "frequency": "1 to 2 days per week after hopping remains green",
-        "how": "Accelerate over 5 to 10 meters and stop under control. Add planned 45-degree cuts, then larger angles and faster approaches. Reactive cues come last. Allow full recovery between early repetitions.",
+        "how": "Begin only after hopping stays green. Use a clear area to accelerate over 5 to 10 meters and stop under control, allowing full recovery between early repetitions. Add planned 45-degree cuts before larger angles and faster approaches; reactive cues come last.",
         "easier": "Use a brisk shuffle-to-stop, a shorter approach, or a lower speed.",
-        "harder": "Add speed, then cutting angle, then a reactive cue. Progress from modified practice to full practice before competition."
+        "harder": "Add speed, then cutting angle, then a reactive cue, with two green-response sessions before each increase. Progress from modified practice to full practice before competition; these drills do not independently provide sport clearance."
       }
     ],
     "responseIntro": "Impact and sport work should not create growing swelling, repeated instability, altered landing, or a meaningful increase the next morning. Change one variable at a time: contacts, distance, speed, direction, decision-making demand, or practice volume.",
@@ -3099,6 +3118,7 @@
   },
   {
     "slug": "patellofemoral-pain-return-to-running-exercises",
+    "guidedSession": true,
     "title": "Patellofemoral Pain Return-to-Running and Jumping Program",
     "seoTitle": "Return to Running With Patellofemoral Pain",
     "shortTitle": "Patellofemoral running and jumping progression",
@@ -3106,7 +3126,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-08-28",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-10-02",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "K3HxB6rAeDo",
       "title": "Patellofemoral Pain | Chondromalacia Patellae | Runner’s Knee (Education | Myths | Exercises)",
@@ -3153,7 +3173,7 @@
         "name": "Loaded split squat or step-down",
         "dose": "3 sets of 6 to 10 repetitions per side",
         "frequency": "2 to 3 days per week",
-        "how": "Use a supported split squat or controlled step-down. Keep the whole foot grounded and let the knee move through a comfortable path without forcing one supposedly perfect alignment.",
+        "how": "For a split squat, stand with one foot forward and the other behind beside a stable support, then lower and rise with control. For a step-down, stand on a stable low step and slowly tap the other heel to the floor, then return. Keep the working foot grounded and let the knee move through a comfortable path without forcing one supposedly perfect alignment.",
         "easier": "Use more support, a shorter range, or a lower step.",
         "harder": "Progress depth, external load, then movement speed one at a time."
       },
@@ -3177,17 +3197,17 @@
         "name": "Run-walk progression",
         "dose": "Alternate 1 to 4 minutes of easy running with about 1 minute of walking for 20 to 30 minutes",
         "frequency": "Every other day initially",
-        "how": "Use flat ground and an easy pace. Start at the shortest run interval that keeps symptoms and stride controlled. Build easy running duration before adding frequency, hills, or speed.",
+        "how": "Begin when walking and ordinary stairs are tolerable, there is no meaningful swelling, and starter squats and step-downs are controlled with a stable next-morning response. Use flat ground and an easy pace. Start at the shortest run interval that keeps symptoms and stride controlled. Build easy running duration before adding frequency, hills, or speed.",
         "easier": "Use 30 to 60 seconds of running followed by a longer walk or use tolerable cycling.",
-        "harder": "Lengthen the run intervals, then reduce walk time. Add one later variable at a time."
+        "harder": "After two green-response sessions, lengthen the run intervals, then reduce walk time. Add frequency, hills, or speed later, one variable at a time."
       },
       {
         "name": "Landing, pogo, and deceleration progression",
         "dose": "2 to 3 sets of 8 to 10 controlled contacts or 4 to 6 braking repetitions",
         "frequency": "2 days per week initially",
-        "how": "Begin with a snap-down or landing-and-hold. Progress to bilateral pogos, then selected single-leg or multidirectional hops. Add submaximal acceleration and controlled stopping only after landing remains green.",
+        "how": "Begin after loaded strength and easy running or daily tasks remain stable without swelling. For a snap-down, rise onto the toes, then lower into a shallow squat with both feet staying on the floor; or start with a low landing-and-hold. Progress to bilateral pogos, then selected single-leg or multidirectional hops. Add submaximal acceleration and controlled stopping only after landing remains green.",
         "easier": "Use a step-and-stick, low two-leg landing, or brisk march-to-stop.",
-        "harder": "Progress height or distance, then repeated contacts, then braking speed and planned direction change."
+        "harder": "Require two green-response sessions before increasing demand. Progress height or distance, then repeated contacts, then braking speed and planned direction change, one variable at a time."
       }
     ],
     "responseIntro": "A randomized trial of runners with patellofemoral pain used pain at 2 out of 10 or less during running, return to the pre-run level within an hour, and no increase the next morning. These trial monitoring rules are not validated universal clearance thresholds. Strength and impact should remain mild enough that movement stays normal.",
@@ -3232,6 +3252,7 @@
   },
   {
     "slug": "achilles-tendinopathy-return-to-sport-exercises",
+    "guidedSession": true,
     "title": "Achilles Tendinopathy Return-to-Sport Program",
     "seoTitle": "Achilles Tendinopathy Return to Running and Sport",
     "shortTitle": "Achilles athlete progression",
@@ -3239,7 +3260,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-08-28",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-10-02",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "DnxahqgsAEw",
       "title": "Achilles Tendinopathy / Tendinitis / Tendinosis | Heel Pain Rehab (Education, Myths, Exercises)",
@@ -3268,7 +3289,7 @@
     "assessFirst": "Pain directly at the heel attachment, sudden injury, suspected partial or complete rupture, substantial calf swelling, recent surgery, new weakness or loss of push-off, or systemic inflammatory or metabolic contributors. Stop tendon-loading exercise for new tendon pain, swelling, or weakness during fluoroquinolone treatment or in the months afterward. Fluoroquinolone medication guides direct patients to stop the medicine at the first tendon symptoms and obtain prompt medical guidance; contact the prescribing clinician immediately during treatment. If symptoms begin after the course has ended, seek prompt assessment. Do not resume high-load work until assessed.",
     "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for new one-sided calf warmth or swelling, a sudden pop, new bruising, a palpable gap, substantial acute swelling, or inability to push off or perform a heel raise.",
     "programHeading": "Separate strength, spring, running, and court load.",
-    "programIntro": "Maintain heavy straight-knee and bent-knee loading while faster work is added. Classify sport sessions as light, medium, or high tendon load and allow more recovery after the harder sessions. These are exercise categories, not separate sessions to stack. Combine or substitute fast calf work, plyometrics, running, and court work within a planned week, and count running, court work, and jumping as tendon-loading sessions. Do not increase external load, running, jump contacts, and court minutes in the same step.",
+    "programIntro": "Begin only while walking pain is minimal, morning symptoms are stable from week to week, repeated straight-knee and bent-knee single-leg heel raises are controlled, and basic two-leg pogo work is tolerated without a next-morning flare. Maintain heavy straight-knee and bent-knee loading while faster work is added. Classify sport sessions as light, medium, or high tendon load and allow more recovery after the harder sessions. These are exercise categories, not separate sessions to stack. Combine or substitute fast calf work, plyometrics, running, and court work within a planned week, and count running, court work, and jumping as tendon-loading sessions. Do not increase external load, running, jump contacts, and court minutes in the same step.",
     "frequency": "Heavy loading at least 3 days weekly; plyometrics and high-load sport 1 to 2 days weekly initially",
     "equipment": "External weight, stable step or calf machine, floor markers, and court or running space",
     "checkpoint": "Review weekly morning symptoms, heel-raise quality, and sport exposure",
@@ -3278,49 +3299,49 @@
         "name": "Heavy straight-knee calf raise",
         "dose": "3 to 4 sets of 6 to 10 repetitions",
         "frequency": "At least 3 days per week",
-        "how": "Use one leg and external load when controlled. Rise through a consistent height, pause briefly, and lower over two to three seconds while keeping the knee straight. Choose a load that makes the final two repetitions challenging while heel height and control remain consistent, usually with about one to three repetitions still possible.",
+        "how": "Use a stable surface with support within reach, and use one leg and secure external load when controlled. Keep the knee straight, rise through a consistent height, pause briefly, and lower over two to three seconds. Choose a load that makes the final two repetitions challenging while heel height and control remain consistent, usually with about one to three repetitions still possible.",
         "easier": "Use both legs, more hand support, or less external load.",
-        "harder": "Add load while preserving heel height and control across the final repetitions."
+        "harder": "Add load while preserving heel height and control across the final repetitions. Do not increase the next exposure if morning symptoms or the delayed 24- to 72-hour response worsen."
       },
       {
         "name": "Heavy bent-knee or seated soleus raise",
         "dose": "3 to 4 sets of 6 to 10 repetitions",
         "frequency": "At least 3 days per week",
-        "how": "Keep the knee bent and lift the heel through the largest controlled range. Use a seated machine, weighted knee, or supported bent-knee standing variation with secure equipment. Choose a load that makes the final two repetitions challenging while heel height and control remain consistent, usually with about one to three repetitions still possible.",
+        "how": "Use a seated machine, securely weighted knee, or supported bent-knee standing variation. Keep the knee bent and lift the heel through the largest controlled range, then lower with control. Choose a load that makes the final two repetitions challenging while heel height and control remain consistent, usually with about one to three repetitions still possible.",
         "easier": "Use both legs or reduce the external load.",
-        "harder": "Progress load independently from the straight-knee raise while maintaining heel height."
+        "harder": "Progress load independently from the straight-knee raise while maintaining heel height. Do not increase the next exposure if morning symptoms or the delayed 24- to 72-hour response worsen."
       },
       {
         "name": "Fast calf raise or rebounding heel raise",
         "dose": "3 sets of 8 to 15 repetitions",
         "frequency": "2 days per week",
-        "how": "Rise with a controlled faster upward phase and lower under control. Begin without leaving the floor before progressing toward a small rebound.",
+        "how": "Use support nearby and start with the feet staying in contact with the floor. Rise with a controlled, faster upward phase, then lower under control. Add a small rebound only after heel height and rhythm remain consistent and morning symptoms stay stable.",
         "easier": "Use two legs or a quick heel raise without a rebound.",
-        "harder": "Progress toward one-leg fast raises, then a low rebound when height and rhythm stay consistent."
+        "harder": "Progress toward one-leg fast raises, then a low rebound when height and rhythm stay consistent. Keep the current level if morning symptoms or the delayed 24- to 72-hour response worsen."
       },
       {
         "name": "Plyometric ladder",
         "dose": "2 to 3 sets of 10 to 20 contacts",
         "frequency": "1 to 2 days per week initially",
-        "how": "Begin with bilateral pogos, then unilateral pogos, forward hops, lateral hops, and selected repeated or multidirectional contacts. Keep the rhythm quiet and the rebound height consistent.",
+        "how": "Use this after slow calf strength and basic two-leg pogo work are tolerated with stable morning symptoms. On a firm, clear surface, begin with small two-leg pogos before progressing to one-leg pogos, forward hops, lateral hops, and selected repeated or multidirectional contacts. Keep landings quiet and rebound height consistent.",
         "easier": "Use fast calf raises, marching, or lower two-leg contacts.",
-        "harder": "Increase one variable: single-leg demand, direction, height, distance, or total contacts."
+        "harder": "Increase one variable: single-leg demand, direction, height, distance, or total contacts. Progress only when symptoms and function are at the usual baseline, including the delayed 24- to 72-hour response after demanding work."
       },
       {
         "name": "Return-to-running intervals",
         "dose": "Start near 1 minute of easy running and 1 minute of walking for about 20 minutes",
         "frequency": "Leave at least 48 hours between running exposures initially; use closer to 72 hours after a high-load session or delayed tendon reaction",
-        "how": "Use flat ground and a conversational pace. Track running minutes and the response over the next 24 to 72 hours. Build easy duration before speed, hills, sprinting, or consecutive days.",
+        "how": "Use flat ground and an easy pace that lets you speak comfortably. Follow the run-walk dose above and track running minutes, morning symptoms, and the response over the next 24 to 72 hours. Build easy duration before speed, hills, sprinting, or consecutive days.",
         "easier": "Shorten the run interval, lengthen the walk, or use tolerable cycling.",
-        "harder": "Lengthen continuous easy running, then add one later variable at a time."
+        "harder": "Lengthen continuous easy running, then add one later variable at a time. Do not increase running together with external load, jump contacts, or court minutes, and wait until symptoms and function are back at the usual baseline."
       },
       {
         "name": "Basketball return-to-court exposure",
         "dose": "Begin with 15 to 25 minutes of low-intensity skill work and record court minutes and jump contacts",
         "frequency": "1 to 2 court sessions per week initially",
-        "how": "Start with shooting, easy jogging, and controlled shuffling. Add closeouts, planned deceleration, submaximal layups and jumps, planned cutting, repeated jumping, and sprint efforts before modified and full practice.",
+        "how": "Start with shooting, easy jogging, and controlled shuffling, recording court minutes and jump contacts. Add closeouts, planned deceleration, submaximal layups and jumps, planned cutting, repeated jumping, and sprint efforts before modified and full practice. Count court work as tendon loading rather than adding it on top of the week without adjustment.",
         "easier": "Use stationary shooting, walking patterns, fewer contacts, or shorter court time.",
-        "harder": "Increase intensity, jump contacts, or court minutes one at a time, then move from modified to full practice."
+        "harder": "Increase intensity, jump contacts, or court minutes one at a time when morning and delayed symptoms and function stay at baseline. Move from modified to full practice before competitive return through a shared decision with the clinician and rehabilitation team."
       }
     ],
     "responseIntro": "A published pain-monitoring model used a ceiling of 5 out of 10 during, after, and the next morning; this was not an ideal pain target or a return-to-sport test. For this self-guided plan, keep symptoms tolerable and movement controlled. Check symptoms and function the next morning and again over 24 to 72 hours after a demanding session. Next-morning worsening means do not increase the next exposure; recovery time is not permission to progress through a flare.",

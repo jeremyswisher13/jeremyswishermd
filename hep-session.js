@@ -9,13 +9,34 @@ export const NEXT_MORNING_RESPONSES = Object.freeze([
     { value: 'not-sure', label: 'Not sure' }
 ]);
 
-const PILOT_SLUGS = new Set([
+export const GUIDED_PROGRAM_SLUGS = Object.freeze([
     'knee-osteoarthritis-exercises',
-    'rotator-cuff-pain-exercises',
+    'knee-osteoarthritis-advanced-exercises',
     'patellofemoral-pain-exercises',
+    'rotator-cuff-pain-exercises',
+    'achilles-tendinopathy-exercises',
+    'gluteal-tendinopathy-exercises',
+    'lateral-ankle-sprain-exercises',
     'lateral-elbow-tendinopathy-exercises',
-    'medial-elbow-tendinopathy-exercises'
+    'medial-elbow-tendinopathy-exercises',
+    'adhesive-capsulitis-exercises',
+    'patellar-tendinopathy-exercises',
+    'low-back-pain-exercises',
+    'hip-osteoarthritis-exercises',
+    'hamstring-strain-exercises',
+    'plantar-fasciitis-exercises',
+    'meniscus-tear-rehabilitation-exercises',
+    'advanced-meniscus-rehabilitation-exercises',
+    'iliotibial-band-syndrome-exercises',
+    'peroneal-tendinopathy-exercises',
+    'tibialis-posterior-tendinopathy-exercises',
+    'thumb-cmc-osteoarthritis-exercises',
+    'de-quervain-tenosynovitis-exercises',
+    'ankle-sprain-return-to-sport-exercises',
+    'patellofemoral-pain-return-to-running-exercises',
+    'achilles-tendinopathy-return-to-sport-exercises'
 ]);
+const SUPPORTED_PROGRAM_SLUGS = new Set(GUIDED_PROGRAM_SLUGS);
 const RESPONSE_VALUES = new Set(NEXT_MORNING_RESPONSES.map(response => response.value));
 const PROGRAM_FIELDS = [
     'title', 'fitIntro', 'programIntro', 'frequency', 'equipment', 'checkpoint', 'goal',
@@ -49,7 +70,7 @@ export function progressStorageKey(slug) {
 }
 
 export function validateProgramData(value) {
-    if (!isObject(value) || !PILOT_SLUGS.has(value.slug)) return null;
+    if (!isObject(value) || !SUPPORTED_PROGRAM_SLUGS.has(value.slug)) return null;
     if (!PROGRAM_FIELDS.every(field => isText(value[field], 6000))) return null;
     if (!isText(value.canonical, 1000)) return null;
     try {
@@ -91,7 +112,7 @@ export function createSessionRecord(value, exerciseCount) {
 }
 
 export function validateProgressStore(value, slug, exerciseCount) {
-    if (!isObject(value) || value.version !== SESSION_STORAGE_VERSION || value.slug !== slug || !PILOT_SLUGS.has(slug)) return null;
+    if (!isObject(value) || value.version !== SESSION_STORAGE_VERSION || value.slug !== slug || !SUPPORTED_PROGRAM_SLUGS.has(slug)) return null;
     if (!Number.isInteger(exerciseCount) || exerciseCount < 1 || exerciseCount > 24) return null;
     if (!isText(value.goal, 140, true) || !Array.isArray(value.records)) return null;
     const records = value.records.slice(0, MAX_RECORDS).map(record => createSessionRecord(record, exerciseCount));
@@ -421,7 +442,7 @@ function initializeGuidedSession(root, program) {
         const heading = panelHeading('Your next session');
         paragraph(panel, program.title);
         paragraph(panel, program.programIntro);
-        paragraph(panel, 'Use the dose and frequency shown for each exercise. Skip exercises that are not due for this session or that your clinician has asked you to leave out.');
+        paragraph(panel, 'Use the dose and frequency shown for each exercise. Skip exercises that are not due today, belong to a later stage you have not reached, or that your clinician has asked you to leave out.');
         panel.append(definitionList([
             ['Program frequency', program.frequency], ['Equipment', program.equipment],
             ['Checkpoint', program.checkpoint], ['Program goal', program.goal]
@@ -447,12 +468,18 @@ function initializeGuidedSession(root, program) {
         const heading = element('h3', '', exercise.name);
         heading.setAttribute('data-hep-exercise-title', '');
         card.append(heading);
-        if (state.index === 0) paragraph(card, program.programIntro, 'hep-session-response-intro');
+        if (state.index === 0) {
+            paragraph(card, program.programIntro, 'hep-session-response-intro');
+            paragraph(card, 'Use the dose and frequency shown for each exercise. Skip exercises that are not due today, belong to a later stage you have not reached, or that your clinician has asked you to leave out.');
+        }
         card.append(definitionList([['Dose', exercise.dose], ['Frequency', exercise.frequency]]));
         card.append(element('h4', '', 'How to do it'), element('p', '', exercise.how));
         card.append(element('h4', '', 'Easier option'), element('p', '', exercise.easier));
         const harder = element('details', 'hep-session-detail');
         harder.append(element('summary', '', 'Harder option from this program'), element('p', '', exercise.harder));
+        const progressionLink = element('a', '', 'See progression & readiness criteria');
+        progressionLink.href = '#progress';
+        harder.append(progressionLink);
         card.append(harder);
         if (state.steps[state.index]) paragraph(card, `Previously marked ${state.steps[state.index] === 'done' ? 'done' : 'skipped'}. You can change this below.`, 'hep-session-entry-meta');
         const advance = choice => {
