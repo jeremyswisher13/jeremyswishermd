@@ -11,9 +11,12 @@ const pilotSlugs = [
   'knee-osteoarthritis-exercises',
   'rotator-cuff-pain-exercises',
   'patellofemoral-pain-exercises',
+  'lateral-elbow-tendinopathy-exercises',
+  'medial-elbow-tendinopathy-exercises',
 ];
 const pilots = pilotSlugs.map(slug => programs.find(program => program.slug === slug));
 const knee = pilots[0];
+const elbows = pilots.slice(3);
 const storageKey = slug => `swishermd:hep-progress:v1:${slug}`;
 const session = page => page.locator('[data-hep-session]');
 const contentTypes = {
@@ -70,6 +73,13 @@ async function start(page) {
   await expect(session(page).locator('[data-hep-exercise]')).toBeVisible();
 }
 
+async function expectExercisePrescription(card, exercise) {
+  await expect(card.locator('dl dt')).toHaveText(['Dose', 'Frequency']);
+  await expect(card.locator('dl dd')).toHaveText([exercise.dose, exercise.frequency]);
+  await expect(card.locator('h4')).toHaveText(['How to do it', 'Easier option']);
+  await expect(card.locator('h4 + p')).toHaveText([exercise.how, exercise.easier]);
+}
+
 async function finish(page, program = knee, { skip = false } = {}) {
   for (let index = 0; index < program.exercises.length; index += 1) {
     await session(page).locator(skip ? '[data-hep-skip]' : '[data-hep-done]').click();
@@ -88,7 +98,7 @@ async function addRecord(page, { notes = 'A short session felt manageable.', goa
   await expect(session(page).locator('[data-hep-history]')).toContainText(notes);
 }
 
-test('only the three pilots launch a session and preserve every original exercise prescription', async ({ context, page, baseURL }) => {
+test('only the five guided programs launch a session and preserve every original exercise prescription', async ({ context, page, baseURL }) => {
   await localOnly(context, baseURL);
   for (const program of pilots) {
     await visit(page, program);
@@ -101,6 +111,7 @@ test('only the three pilots launch a session and preserve every original exercis
     for (const exercise of program.exercises) {
       const card = session(page).locator('[data-hep-exercise]');
       await expect(card.locator('[data-hep-exercise-title]')).toHaveText(exercise.name);
+      await expectExercisePrescription(card, exercise);
       for (const instruction of Object.values(exercise)) await expect(card).toContainText(instruction);
       await card.locator('[data-hep-done]').click();
     }
@@ -112,6 +123,50 @@ test('only the three pilots launch a session and preserve every original exercis
   await page.goto('/ankle-sprain-return-to-sport-exercises/');
   await expect(page.locator('[data-hep-session], [data-hep-launch], #hep-session-data')).toHaveCount(0);
 });
+
+for (const program of elbows) {
+  test(`${program.slug}: harder options start collapsed and reveal the maintained progression without changing the prescription`, async ({ context, page, baseURL }) => {
+    await localOnly(context, baseURL);
+    await visit(page, program);
+    await expect(session(page).locator('dl dd').first()).toHaveText(program.frequency);
+    await start(page);
+    for (const exercise of program.exercises) {
+      const card = session(page).locator('[data-hep-exercise]');
+      const disclosure = card.locator('details');
+      const toggle = disclosure.locator('summary');
+      const harder = disclosure.locator('p');
+      await expect(card.locator('[data-hep-exercise-title]')).toHaveText(exercise.name);
+      await expect(disclosure).toHaveCount(1);
+      await expect(toggle).toHaveText('Harder option from this program');
+      await expect(disclosure).toHaveJSProperty('open', false);
+      await expect(harder).toBeHidden();
+      await expectExercisePrescription(card, exercise);
+
+      await toggle.focus();
+      await page.keyboard.press('Enter');
+      await expect(disclosure).toHaveJSProperty('open', true);
+      await expect(harder).toBeVisible();
+      await expect(harder).toHaveText(exercise.harder);
+      await expectExercisePrescription(card, exercise);
+
+      await toggle.click();
+      await expect(disclosure).toHaveJSProperty('open', false);
+      await expect(harder).toBeHidden();
+      await toggle.click();
+      await expect(disclosure).toHaveJSProperty('open', true);
+      await expect(harder).toBeVisible();
+      await expect(harder).toHaveText(exercise.harder);
+      await expectExercisePrescription(card, exercise);
+      await toggle.focus();
+      await page.keyboard.press('Space');
+      await expect(disclosure).toHaveJSProperty('open', false);
+      await expect(harder).toBeHidden();
+      await card.locator('[data-hep-done]').click();
+    }
+    await expect(session(page).locator('[data-hep-completed-count]')).toHaveText(`${program.exercises.length} done`);
+    await expect(session(page).locator('[data-hep-skipped-count]')).toHaveText('0 skipped');
+  });
+}
 
 test('done, skip, and previous exercise replace a decision without double-counting', async ({ context, page, baseURL }) => {
   await localOnly(context, baseURL);
@@ -408,34 +463,42 @@ test('without JavaScript or a loaded session module the complete program remains
   }
 });
 
-test('the mobile session supports keyboard focus, avoids overflow, and passes axe in active views', async ({ context, page, baseURL }) => {
-  await localOnly(context, baseURL);
-  await page.setViewportSize({ width: 390, height: 844 });
-  await visit(page);
-  await page.locator('[data-hep-launch]').first().focus();
-  await page.keyboard.press('Enter');
-  await expect.poll(() => page.evaluate(() => {
-    const active = document.activeElement;
-    return active?.matches('[data-hep-start], [data-hep-exercise-title]');
-  })).toBe(true);
-  if (await session(page).locator('[data-hep-start]').isVisible()) await page.keyboard.press('Enter');
-  await expect(session(page).locator('[data-hep-exercise-title]')).toBeFocused();
-  await page.keyboard.press('Tab');
-  const focus = await page.evaluate(() => ({ tag: document.activeElement.tagName, inside: Boolean(document.activeElement.closest('[data-hep-session]')) }));
-  expect(focus.inside).toBe(true);
-  expect(['BUTTON', 'SUMMARY']).toContain(focus.tag);
-  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
-  await page.evaluate(async () => { await document.fonts?.ready; });
-  const activeResults = await new AxeBuilder({ page }).include('[data-hep-session]').withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
-  expect(activeResults.violations, JSON.stringify(activeResults.violations, null, 2)).toEqual([]);
-  await session(page).locator('[data-hep-done]').click();
-  await expect(session(page).locator('[data-hep-exercise-title]')).toBeFocused();
-  const heading = await session(page).locator('[data-hep-exercise-title]').boundingBox();
-  const navigation = await page.locator('#navbar').boundingBox();
-  expect(heading.y).toBeGreaterThanOrEqual(navigation.y + navigation.height);
-  for (let index = 1; index < knee.exercises.length; index += 1) await session(page).locator('[data-hep-done]').click();
-  await expect(session(page).getByRole('heading', { name: 'Session review', exact: true })).toBeFocused();
-  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
-  const reviewResults = await new AxeBuilder({ page }).include('[data-hep-session]').withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
-  expect(reviewResults.violations, JSON.stringify(reviewResults.violations, null, 2)).toEqual([]);
-});
+for (const program of [knee, ...elbows]) {
+  test(`${program.slug}: the mobile session supports keyboard focus, avoids overflow, and passes axe in active views`, async ({ context, page, baseURL }) => {
+    await localOnly(context, baseURL);
+    await page.setViewportSize({ width: 390, height: 844 });
+    await visit(page, program);
+    await page.locator('[data-hep-launch]').first().focus();
+    await page.keyboard.press('Enter');
+    await expect.poll(() => page.evaluate(() => {
+      const active = document.activeElement;
+      return active?.matches('[data-hep-start], [data-hep-exercise-title]');
+    })).toBe(true);
+    if (await session(page).locator('[data-hep-start]').isVisible()) await page.keyboard.press('Enter');
+    await expect(session(page).locator('[data-hep-exercise-title]')).toBeFocused();
+    await page.keyboard.press('Tab');
+    const focus = await page.evaluate(() => ({ tag: document.activeElement.tagName, inside: Boolean(document.activeElement.closest('[data-hep-session]')) }));
+    expect(focus.inside).toBe(true);
+    expect(['BUTTON', 'SUMMARY']).toContain(focus.tag);
+    const harderToggle = session(page).locator('[data-hep-exercise] details summary');
+    await harderToggle.focus();
+    await page.keyboard.press('Enter');
+    await expect(harderToggle).toBeFocused();
+    await expect(session(page).locator('[data-hep-exercise] details p')).toBeVisible();
+    await expect(session(page).locator('[data-hep-exercise] details p')).toHaveText(program.exercises[0].harder);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+    await page.evaluate(async () => { await document.fonts?.ready; });
+    const activeResults = await new AxeBuilder({ page }).include('[data-hep-session]').withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+    expect(activeResults.violations, JSON.stringify(activeResults.violations, null, 2)).toEqual([]);
+    await session(page).locator('[data-hep-done]').click();
+    await expect(session(page).locator('[data-hep-exercise-title]')).toBeFocused();
+    const heading = await session(page).locator('[data-hep-exercise-title]').boundingBox();
+    const navigation = await page.locator('#navbar').boundingBox();
+    expect(heading.y).toBeGreaterThanOrEqual(navigation.y + navigation.height);
+    for (let index = 1; index < program.exercises.length; index += 1) await session(page).locator('[data-hep-done]').click();
+    await expect(session(page).getByRole('heading', { name: 'Session review', exact: true })).toBeFocused();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+    const reviewResults = await new AxeBuilder({ page }).include('[data-hep-session]').withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+    expect(reviewResults.violations, JSON.stringify(reviewResults.violations, null, 2)).toEqual([]);
+  });
+}

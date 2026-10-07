@@ -11,7 +11,9 @@ const youtubeIdPattern = /^[A-Za-z0-9_-]{11}$/;
 const guidedSessionSlugs = new Set([
     'knee-osteoarthritis-exercises',
     'rotator-cuff-pain-exercises',
-    'patellofemoral-pain-exercises'
+    'patellofemoral-pain-exercises',
+    'lateral-elbow-tendinopathy-exercises',
+    'medial-elbow-tendinopathy-exercises'
 ]);
 
 function renderGuidedSessionData(program, canonical) {
@@ -297,7 +299,7 @@ for (const program of programs) {
         SESSION_LAUNCH: guidedSession ? '                            <a href="#guided-session" class="btn btn-primary" data-hep-launch data-hep-launch-start hidden>Start a guided session</a>' : '',
         SESSION_JUMP: guidedSession ? '                <a href="#guided-session" data-hep-launch hidden>Guided session</a>' : '',
         SESSION_SECTION: guidedSession ? renderGuidedSessionData(program, canonical) : '',
-        SESSION_SCRIPT: guidedSession ? '    <script type="module" src="../hep-session.js?v=20261007-session1"></script>' : '',
+        SESSION_SCRIPT: guidedSession ? '    <script type="module" src="../hep-session.js?v=20261007-session2"></script>' : '',
         TITLE: program.title,
         SEO_TITLE: program.seoTitle,
         SHORT_TITLE: program.shortTitle,

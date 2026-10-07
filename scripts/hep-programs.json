@@ -838,7 +838,7 @@
     "shortTitle": "Tennis elbow and common extensor exercises",
     "conditionName": "Lateral elbow tendinopathy and common extensor tendinopathy",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "aOueY1l_X0U",
       "title": "Tennis Elbow Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -852,23 +852,41 @@
     "summary": "Activity adjustment and progressive wrist-extensor loading are commonly used first-line strategies. Average exercise benefits are modest and evidence certainty is low, so recovery and response vary.",
     "authorityTitle": "Settle symptoms. Build strength. Restore grip.",
     "authorityItems": [
-      { "icon": "front_hand", "text": "Progressive wrist-extensor loading" },
-      { "icon": "fitness_center", "text": "Grip and forearm capacity for daily tasks" },
-      { "icon": "work", "text": "A staged return to work, lifting, or sport" }
+      {
+        "icon": "front_hand",
+        "text": "Progressive wrist-extensor loading"
+      },
+      {
+        "icon": "fitness_center",
+        "text": "Grip and forearm capacity for daily tasks"
+      },
+      {
+        "icon": "work",
+        "text": "A staged return to work, lifting, or sport"
+      }
     ],
     "proof": [
-      { "strong": "5 movements", "span": "forearm, grip, and shoulder support" },
-      { "strong": "3 days", "span": "of progressive strength each week" },
-      { "strong": "4 to 6 weeks", "span": "to look for meaningful improvement" }
+      {
+        "strong": "5 movements",
+        "span": "forearm, grip, and shoulder support"
+      },
+      {
+        "strong": "3 days",
+        "span": "of progressive strength each week"
+      },
+      {
+        "strong": "4 to 6 weeks",
+        "span": "to look for meaningful improvement"
+      }
     ],
     "fitIntro": "This starter program is intended for adults who have already been evaluated and told common extensor or lateral elbow tendinopathy is the likely diagnosis. It is not a self-diagnosis tool, a postoperative protocol, or a substitute for individualized care.",
     "fit": "Gradual pain and tenderness at or just below the outside elbow, aggravated by gripping, carrying, palm-down lifting, resisted wrist or finger extension, or stretching the wrist extensors.",
     "assessFirst": "A sudden injury, major swelling or weakness, inability to fully move the elbow, locking or instability, neck pain with radiating symptoms, numbness or tingling, or pain located farther down the forearm that may reflect radial nerve involvement.",
     "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a sudden pop with bruising or deformity, rapidly increasing pain, marked or progressive weakness, or a new painful, hot, red, or swollen elbow with or without fever. Arrange a prompt evaluation for new numbness, persistent rest or night pain, or unexplained systemic symptoms.",
     "programHeading": "Load the wrist extensors, then restore the task.",
-    "programIntro": "Guidelines support several ways to load the wrist extensors: holding without movement, lifting, and controlled lowering. No single dose is proven best. Use the static hold as the main load when the elbow is especially painful. As slow wrist extension becomes tolerable, use the hold as a warm-up rather than treating both exercises as full sessions on the same day.",
+    "programIntro": "Use wrist-extensor loading as the main exercise. When the elbow is especially painful, start with the static hold. As slow wrist extension becomes tolerable, use a brief easy hold as a warm-up instead of doing both as full loading sessions. Add rotation and grip one at a time as tolerated; the row is optional. No single loading dose is proven best.",
     "frequency": "Isometric daily when symptoms are sensitive; strength about 3 days per week",
-    "equipment": "Table, light dumbbell or water bottle, towel or putty, optional band",
+    "equipment": "Table, light dumbbell or water bottle, light hammer, towel or putty, optional band",
     "checkpoint": "Look for improvement by 4 to 6 weeks",
     "goal": "Comfortable grip, carrying, lifting, work, and sport",
     "exercises": [
@@ -876,41 +894,41 @@
         "name": "Isometric wrist extension",
         "dose": "5 holds of 30 seconds with about 60 seconds of rest",
         "frequency": "Daily during the more painful phase",
-        "how": "Support the forearm palm down with the wrist near neutral. Press the back of the hand into the opposite hand or a fixed surface without allowing movement. Begin at light effort, usually around 20 to 40 percent, and use less if symptoms are highly irritable.",
+        "how": "Sit with the forearm supported, palm down, and wrist straight. Place the opposite hand across the back of the hand. Try to lift the knuckles while the opposite hand holds the wrist still. Keep the fingers relaxed and breathe normally. Begin at light effort, usually around 20 to 40 percent, and use less if symptoms are highly irritable.",
         "easier": "Use 3 holds of 20 seconds at lighter effort.",
-        "harder": "Build to 5 holds of 45 seconds, then increase resistance gradually."
+        "harder": "Build toward 5 holds of 45 seconds before increasing hand pressure. Change one variable at a time and keep the next-morning response at baseline."
       },
       {
         "name": "Slow wrist extension",
         "dose": "3 sets of 12, progressing toward 15 repetitions",
         "frequency": "Every other day, usually 3 days per week",
-        "how": "Support the forearm palm down with the hand over a table edge. Raise the wrist for 2 seconds and lower for 3 to 4 seconds. Keep the fingers relaxed.",
-        "easier": "Use 2 sets of 10 with less weight or assist the lifting phase with the other hand.",
-        "harder": "After two stable sessions, add the smallest available weight while keeping the slow tempo."
+        "how": "Rest the forearm palm down on a table with the elbow bent and only the hand beyond the edge. Hold a light dumbbell or water bottle. Lift the knuckles for 2 seconds, then lower for 3 to 4 seconds. Keep the forearm supported and avoid rolling the wrist sideways.",
+        "easier": "Use 2 sets of 10 with less weight or a smaller range. If needed, help lift with the other hand, then lower slowly with the affected hand.",
+        "harder": "Once 15 repetitions are controlled for two sessions without a next-morning flare, add a little water to the bottle or the smallest weight increment. Keep the same slow tempo."
       },
       {
         "name": "Forearm pronation and supination",
         "dose": "2 sets of 12 repetitions in each direction",
         "frequency": "3 days per week",
-        "how": "Keep the elbow at 90 degrees against the side. Slowly rotate a light hammer or dumbbell from palm up to palm down without moving the upper arm.",
-        "easier": "Use no weight or hold closer to the weighted end.",
-        "harder": "Hold farther from the weighted end, then add load."
+        "how": "Support the forearm with the elbow bent to 90 degrees and the hand beyond the table edge. Hold a light hammer upright with its head above the thumb. Slowly turn palm up and return to thumb up, then turn palm down and return. Keep the wrist straight and upper arm still. Count each return to thumb up as one repetition in that direction.",
+        "easier": "Practice without the hammer, or grip close to its head and use a smaller comfortable arc.",
+        "harder": "Move the grip a small distance farther down the hammer handle to increase the lever length. Keep the same controlled range and speed before trying a heavier hammer."
       },
       {
         "name": "Controlled grip",
         "dose": "3 sets of 8 squeezes with a 5-second hold",
         "frequency": "3 days per week",
-        "how": "Squeeze a rolled towel or soft putty at submaximal effort. Keep the wrist straight rather than bending it back during the squeeze.",
+        "how": "Support the forearm and keep the wrist straight. Squeeze a rolled towel or soft putty at submaximal effort, hold, then fully relax between repetitions. Avoid maximal gripping.",
         "easier": "Use a lighter squeeze or a 3-second hold.",
-        "harder": "Use firmer putty, then progress to short loaded carries with a neutral wrist."
+        "harder": "Use firmer putty, then try a light carry at your side with the wrist straight. Start with a brief carry and increase time or weight separately."
       },
       {
         "name": "Optional band row with a neutral wrist",
         "dose": "2 to 3 sets of 12 repetitions",
         "frequency": "3 days per week",
-        "how": "Use this option when shoulder-blade strength or endurance is limited or it supports a relevant task. Keep a relaxed grip and straight wrist, then draw the shoulder blade gently back without shrugging or clenching the band.",
-        "easier": "Use a lighter band or 2 sets of 10.",
-        "harder": "Use a stronger band or progress to a controlled single-arm row."
+        "how": "Use this optional exercise when shoulder-blade strength or endurance is limited or it supports your task. Secure the band at lower-chest height. With a relaxed grip and straight wrists, pull the elbows toward the ribs without shrugging, then return slowly.",
+        "easier": "Use a lighter band, stand closer to the anchor, or use 2 sets of 10.",
+        "harder": "Take a small step away from the anchor or use a slightly stronger band. Keep the wrists straight and avoid clenching harder to finish the repetitions."
       }
     ],
     "responseIntro": "A small amount of familiar discomfort can be acceptable when it stays controlled, does not increase across repetitions, and returns to baseline by the next morning. These numbers are practical monitoring guides, not validated universal thresholds.",
@@ -918,9 +936,18 @@
     "yellow": "Pain reaches 4 to 5 out of 10, grip feels weaker afterward, or the elbow remains worse the next morning. Return to the prior tolerated dose or reduce one or more loading variables and add recovery time.",
     "red": "Stop and seek prompt assessment for sharp, electric, or rapidly increasing pain, new numbness or weakness, major swelling, loss of motion, or symptoms that worsen week to week. Use same-day urgent care for rapidly progressive weakness or a new painful, hot, red, or swollen elbow with or without fever.",
     "progression": [
-      { "title": "Stage 1: settle symptoms", "text": "Reduce repetitive hard gripping and palm-down lifting. Use a neutral grip or palm-up lifting when practical and begin comfortable isometrics." },
-      { "title": "Stage 2: build forearm capacity", "text": "Add slow wrist extension, rotation, and controlled grip every other day. Progress repetitions before adding weight." },
-      { "title": "Stage 3: return to work and sport demands", "text": "Progress lever length, loaded carries, work tools, racquet handling, or lifting. Begin near half of your usual volume and increase only when symptoms return to baseline by the next day." }
+      {
+        "title": "Stage 1: settle symptoms",
+        "text": "Reduce repetitive hard gripping and palm-down lifting. Use a neutral grip or palm-up lifting when practical and begin comfortable isometrics."
+      },
+      {
+        "title": "Stage 2: build forearm capacity",
+        "text": "Add slow wrist extension, rotation, and controlled grip every other day. Progress repetitions before adding weight."
+      },
+      {
+        "title": "Stage 3: return to work and sport demands",
+        "text": "Progress lever length, loaded carries, work tools, racquet handling, or lifting. Begin near half of your usual volume and increase only when symptoms return to baseline by the next day."
+      }
     ],
     "readyItems": [
       "Elbow and wrist motion are full or nearly full.",
@@ -930,22 +957,71 @@
     ],
     "evaluation": "Schedule a visit if neurologic or mechanical symptoms are present, pain is worsening, grip strength is progressively declining, or a correctly dosed program does not produce meaningful improvement after about four to six weeks.",
     "faqs": [
-      { "q": "Do I need complete rest?", "a": "Usually not. Reduce the most provocative gripping and lifting dose while keeping tolerable movement and progressive loading." },
-      { "q": "Should I stretch the forearm?", "a": "Gentle stretching is optional and should not provoke a sustained flare. Stretching alone has not shown durable superiority over a loading-based plan." },
-      { "q": "Will a counterforce strap help?", "a": "A strap or wrist support may improve pain during an activity for some people, but long-term benefit is uncertain and it should not replace progressive loading." },
-      { "q": "Do I need imaging?", "a": "Imaging is not routinely required for a typical presentation. It becomes more useful after trauma, with mechanical or neurologic findings, or when appropriate care has not worked." }
+      {
+        "q": "Do I need complete rest?",
+        "a": "Usually not. Reduce the most provocative gripping and lifting dose while keeping tolerable movement and progressive loading."
+      },
+      {
+        "q": "Should I stretch the forearm?",
+        "a": "Gentle stretching is optional and should not provoke a sustained flare. Stretching alone has not shown durable superiority over a loading-based plan."
+      },
+      {
+        "q": "Will a counterforce strap help?",
+        "a": "A strap or wrist support may improve pain during an activity for some people, but long-term benefit is uncertain and it should not replace progressive loading."
+      },
+      {
+        "q": "Do I need imaging?",
+        "a": "Imaging is not routinely required for a typical presentation. It becomes more useful after trauma, with mechanical or neurologic findings, or when appropriate care has not worked."
+      },
+      {
+        "q": "When can I use the harder options?",
+        "a": "Wait until the current dose feels controlled for at least two sessions, grip remains steady, and symptoms return to your usual baseline by the next morning. Reach the top of the repetition range before adding resistance. Change one variable at a time, such as weight, lever length, hold time, or task duration. A harder option replaces the easier version; it is not extra work to stack onto the session."
+      }
     ],
     "sources": [
-      { "href": "https://www.orthopt.org/uploads/content_files/files/lucado_et_al_2022_lateral_elbow_pain_and_muscle_function_impairments.pdf", "label": "JOSPT Clinical Practice Guideline: Lateral Elbow Pain and Muscle Function Impairments, 2022" },
-      { "href": "https://www.cochrane.org/evidence/CD013042_manual-therapy-and-exercise-treating-tennis-elbow", "label": "Cochrane Review: Manual Therapy and Exercise for Lateral Elbow Pain, 2024" },
-      { "href": "https://pubmed.ncbi.nlm.nih.gov/34501416/", "label": "Eccentric Exercise for Lateral Elbow Tendinopathy, Systematic Review and Meta-analysis, 2021" },
-      { "href": "https://pubmed.ncbi.nlm.nih.gov/31425384/", "label": "Unsupervised Isometric Exercise for Lateral Elbow Tendinopathy, Randomized Trial" }
+      {
+        "href": "https://www.orthopt.org/uploads/content_files/files/lucado_et_al_2022_lateral_elbow_pain_and_muscle_function_impairments.pdf",
+        "label": "JOSPT Clinical Practice Guideline: Lateral Elbow Pain and Muscle Function Impairments, 2022"
+      },
+      {
+        "href": "https://www.cochrane.org/evidence/CD013042_manual-therapy-and-exercise-treating-tennis-elbow",
+        "label": "Cochrane Review: Manual Therapy and Exercise for Lateral Elbow Pain, 2024"
+      },
+      {
+        "href": "https://pubmed.ncbi.nlm.nih.gov/34501416/",
+        "label": "Eccentric Exercise for Lateral Elbow Tendinopathy, Systematic Review and Meta-analysis, 2021"
+      },
+      {
+        "href": "https://pubmed.ncbi.nlm.nih.gov/31425384/",
+        "label": "Unsupervised Isometric Exercise for Lateral Elbow Tendinopathy, Randomized Trial"
+      },
+      {
+        "href": "https://orthoinfo.aaos.org/globalassets/pdfs/2022-therapeutic-exercise-program-for-epicondylitis.pdf",
+        "label": "AAOS: Therapeutic Exercise Program for Tennis Elbow and Golfer’s Elbow"
+      },
+      {
+        "href": "https://www.dynamichealth.nhs.uk/help-and-advice/elbow-pain/",
+        "label": "NHS Dynamic Health: Elbow Pain and Progressive Home Exercises"
+      }
     ],
     "related": [
-      { "href": "../tendon-pain/", "eyebrow": "Tendon guide", "title": "Evidence-based tendon care" },
-      { "href": "../medial-elbow-tendinopathy-exercises/", "eyebrow": "Inside elbow", "title": "Common flexor tendinopathy exercises" },
-      { "href": "../rotator-cuff-pain-exercises/", "eyebrow": "Shoulder program", "title": "Rotator cuff-related pain exercises" }
-    ]
+      {
+        "href": "../tendon-pain/",
+        "eyebrow": "Tendon guide",
+        "title": "Evidence-based tendon care"
+      },
+      {
+        "href": "../medial-elbow-tendinopathy-exercises/",
+        "eyebrow": "Inside elbow",
+        "title": "Common flexor tendinopathy exercises"
+      },
+      {
+        "href": "../rotator-cuff-pain-exercises/",
+        "eyebrow": "Shoulder program",
+        "title": "Rotator cuff-related pain exercises"
+      }
+    ],
+    "guidedSession": true
   },
   {
     "slug": "medial-elbow-tendinopathy-exercises",
@@ -954,7 +1030,7 @@
     "shortTitle": "Golfer's elbow and common flexor exercises",
     "conditionName": "Medial elbow tendinopathy and common flexor tendinopathy",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "3CJMz0HoGXk",
       "title": "Golfer’s Elbow Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -968,23 +1044,41 @@
     "summary": "Common flexor tendinopathy can improve with activity adjustment and progressive loading of the wrist flexors and pronators. Because medial-elbow exercise research is limited, this plan uses a conservative dose and clear reasons to seek assessment.",
     "authorityTitle": "Strength. Rotation. Grip.",
     "authorityItems": [
-      { "icon": "front_hand", "text": "Progressive wrist-flexor and pronator loading" },
-      { "icon": "sports_baseball", "text": "Stop signs for nerve symptoms and throwing instability" },
-      { "icon": "fitness_center", "text": "A gradual return to grip and task demand" }
+      {
+        "icon": "front_hand",
+        "text": "Progressive wrist-flexor and pronator loading"
+      },
+      {
+        "icon": "sports_baseball",
+        "text": "Stop signs for nerve symptoms and throwing instability"
+      },
+      {
+        "icon": "fitness_center",
+        "text": "A gradual return to grip and task demand"
+      }
     ],
     "proof": [
-      { "strong": "5 movements", "span": "forearm, grip, and shoulder support" },
-      { "strong": "3 days", "span": "of progressive strength each week" },
-      { "strong": "Lower certainty", "span": "with conservative starting doses" }
+      {
+        "strong": "5 movements",
+        "span": "forearm, grip, and shoulder support"
+      },
+      {
+        "strong": "3 days",
+        "span": "of progressive strength each week"
+      },
+      {
+        "strong": "Lower certainty",
+        "span": "with conservative starting doses"
+      }
     ],
     "fitIntro": "This starter program is intended for adults who have already been evaluated and told common flexor or medial elbow tendinopathy is the likely diagnosis. It is not appropriate for a suspected ulnar collateral ligament injury or ulnar neuropathy.",
     "fit": "Gradual focal pain and tenderness at or just below the inside elbow, aggravated by gripping, resisted wrist flexion, forearm pronation, or stretching into wrist extension.",
     "assessFirst": "A sudden throwing injury, loss of throwing velocity, a feeling that the inner elbow is unstable during throwing, numbness or tingling into the ring and small fingers, hand weakness, snapping at the medial elbow, major swelling, locking, or neck symptoms radiating into the arm.",
     "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a sudden pop with bruising or deformity, marked or progressive hand weakness, acute throwing-related instability, or a new painful, hot, red, or swollen elbow with or without fever. Arrange a prompt evaluation for persistent ring-finger or small-finger numbness, unexplained rest or night pain, weight loss, or other systemic symptoms.",
     "programHeading": "Strengthen the forearm while watching for signs of nerve or ligament injury.",
-    "programIntro": "Direct exercise evidence for medial elbow tendinopathy is limited. Eccentric-biased wrist-flexor loading has the most direct condition-specific support, but overall certainty remains low. The isometric, forearm-rotation, grip, and shoulder exercises are cautious extrapolations and should be used only when relevant and tolerated.",
+    "programIntro": "Use wrist-flexor loading as the main exercise. When the elbow is especially painful, start with the static hold. As slow wrist flexion becomes tolerable, use a brief easy hold as a warm-up instead of doing both as full loading sessions. Add rotation and grip one at a time as tolerated; the row is optional. Direct research for medial elbow tendinopathy is limited, so use the next-morning response to guide the dose.",
     "frequency": "Isometric daily when symptoms are sensitive; strength about 3 days per week",
-    "equipment": "Table, light dumbbell or hammer, towel or putty, optional band",
+    "equipment": "Table, light dumbbell or water bottle, light hammer, towel or putty, optional band",
     "checkpoint": "Look for improvement by 4 to 6 weeks",
     "goal": "Comfortable grip, pulling, lifting, work, racquet, or golf demand",
     "exercises": [
@@ -992,41 +1086,41 @@
         "name": "Isometric wrist flexion",
         "dose": "5 holds of 30 seconds with about 60 seconds of rest",
         "frequency": "Daily during the more painful phase",
-        "how": "Support the forearm palm up with the wrist near neutral. Press the palm into the opposite hand without allowing movement. Begin at light effort, usually around 20 to 40 percent, and use less if symptoms are highly irritable.",
+        "how": "Sit with the forearm supported, palm up, and wrist straight. Place the opposite hand across the palm. Try to curl the palm toward the forearm while the opposite hand holds the wrist still. Keep the fingers relaxed and breathe normally. Begin at light effort, usually around 20 to 40 percent, and use less if symptoms are highly irritable.",
         "easier": "Use 3 holds of 20 seconds at lighter effort.",
-        "harder": "Build to 5 holds of 45 seconds, then increase resistance gradually."
+        "harder": "Build toward 5 holds of 45 seconds before increasing hand pressure. Change one variable at a time and keep the next-morning response at baseline."
       },
       {
         "name": "Slow wrist flexion",
         "dose": "3 sets of 12, progressing toward 15 repetitions",
         "frequency": "Every other day, usually 3 days per week",
-        "how": "Support the forearm palm up with the hand over a table edge. Curl upward for 2 seconds and lower for 3 to 4 seconds.",
-        "easier": "Use 2 sets of 10 with less weight or assist the upward phase with the other hand.",
-        "harder": "After two stable sessions, add the smallest available weight while preserving the slow tempo."
+        "how": "Rest the forearm palm up on a table with the elbow bent and only the hand beyond the edge. Hold a light dumbbell or water bottle. Curl the palm toward the forearm for 2 seconds, then lower for 3 to 4 seconds. Keep the forearm supported and avoid rolling the wrist sideways.",
+        "easier": "Use 2 sets of 10 with less weight or a smaller range. If needed, help lift with the other hand, then lower slowly with the affected hand.",
+        "harder": "Once 15 repetitions are controlled for two sessions without a next-morning flare, add a little water to the bottle or the smallest weight increment. Keep the same slow tempo."
       },
       {
-        "name": "Slow palm-down forearm rotation",
+        "name": "Slow forearm rotation with a hammer",
         "dose": "2 sets of 12 repetitions",
         "frequency": "3 days per week",
-        "how": "Keep the elbow at 90 degrees. Start palm up and slowly turn palm down against a light hammer or band, then return with control.",
-        "easier": "Use no weight or hold closer to the weighted end.",
-        "harder": "Increase the lever length, then add load."
+        "how": "Support the forearm with the elbow bent to 90 degrees and the hand beyond the table edge. Start thumb up with the hammer head pointing toward the ceiling. Slowly lower the hammer toward a palm-up position over 3 to 4 seconds, keeping the wrist straight and upper arm still. Use the other hand to help return to thumb up. This loads the pronator muscles as they control the lowering.",
+        "easier": "Practice without the hammer, or grip close to its head and use a smaller comfortable arc.",
+        "harder": "Move the grip a small distance farther down the hammer handle to increase the lever length. Keep the same controlled range and speed before trying a heavier hammer."
       },
       {
         "name": "Controlled grip",
         "dose": "3 sets of 8 squeezes with a 5-second hold",
         "frequency": "3 days per week",
-        "how": "Squeeze a rolled towel or soft putty at submaximal effort. Keep the wrist straight and avoid maximal gripping.",
+        "how": "Support the forearm and keep the wrist straight. Squeeze a rolled towel or soft putty at submaximal effort, hold, then fully relax between repetitions. Avoid maximal gripping.",
         "easier": "Use a lighter squeeze or a 3-second hold.",
-        "harder": "Use firmer putty, then progress to short neutral-wrist carries."
+        "harder": "Use firmer putty, then try a light carry at your side with the wrist straight. Start with a brief carry and increase time or weight separately."
       },
       {
         "name": "Optional band row with a neutral wrist",
         "dose": "2 to 3 sets of 12 repetitions",
         "frequency": "3 days per week",
-        "how": "Use this option when shoulder-blade strength or endurance is limited or it supports a relevant task. Keep a relaxed grip and straight wrist, then draw the shoulder blade back without shrugging.",
-        "easier": "Use a lighter band or 2 sets of 10.",
-        "harder": "Use a stronger band or progress to a controlled single-arm row."
+        "how": "Use this optional exercise when shoulder-blade strength or endurance is limited or it supports your task. Secure the band at lower-chest height. With a relaxed grip and straight wrists, pull the elbows toward the ribs without shrugging, then return slowly.",
+        "easier": "Use a lighter band, stand closer to the anchor, or use 2 sets of 10.",
+        "harder": "Take a small step away from the anchor or use a slightly stronger band. Keep the wrists straight and avoid clenching harder to finish the repetitions."
       }
     ],
     "responseIntro": "A small amount of familiar tendon discomfort can be acceptable when it stays controlled and returns to baseline by the next morning. Neurologic symptoms or throwing-related instability are not acceptable loading symptoms. These numbers are practical monitoring guides, not validated universal thresholds.",
@@ -1034,9 +1128,18 @@
     "yellow": "Pain reaches 4 to 5 out of 10 or remains worse the next morning. Return to the prior tolerated dose or reduce one or more loading variables and allow more recovery.",
     "red": "Stop and seek prompt assessment for ring-finger or small-finger numbness, hand weakness, snapping, sharp pain, major swelling, or pain or a feeling of instability during throwing. Use same-day urgent care for progressive weakness or a new painful, hot, red, or swollen elbow with or without fever.",
     "progression": [
-      { "title": "Stage 1: settle symptoms", "text": "Reduce hard gripping, repeated wrist flexion and palm-down rotation, and painful throwing. Begin comfortable isometric loading." },
-      { "title": "Stage 2: build forearm capacity", "text": "Add slow wrist flexion, palm-down rotation, and controlled grip every other day. Progress repetitions before adding load." },
-      { "title": "Stage 3: restore the task", "text": "Progress neutral-wrist carries, pulling, work tools, racquet or golf demand. Throwing athletes need ligament and nerve assessment plus a separate interval throwing plan." }
+      {
+        "title": "Stage 1: settle symptoms",
+        "text": "Reduce hard gripping, repeated wrist flexion and palm-down rotation, and painful throwing. Begin comfortable isometric loading."
+      },
+      {
+        "title": "Stage 2: build forearm capacity",
+        "text": "Add slow wrist flexion, controlled pronator lowering, and grip every other day. Introduce one movement at a time and progress repetitions before adding load."
+      },
+      {
+        "title": "Stage 3: restore the task",
+        "text": "Progress neutral-wrist carries, pulling, work tools, racquet or golf demand. Throwing athletes need ligament and nerve assessment plus a separate interval throwing plan."
+      }
     ],
     "readyItems": [
       "Elbow, forearm, and wrist motion are full and comfortable.",
@@ -1046,22 +1149,71 @@
     ],
     "evaluation": "Schedule a visit for any nerve symptoms, snapping, pain on the inside of the elbow during throwing, instability, progressive weakness, or no meaningful improvement after about four to six weeks. Overhead athletes should be assessed before beginning an interval throwing program.",
     "faqs": [
-      { "q": "Is this only golfer's elbow?", "a": "No. Common flexor tendinopathy also occurs with work, lifting, climbing, racquet sports, and other repeated gripping or forearm tasks." },
-      { "q": "Can I keep using the arm?", "a": "Usually yes, with the most painful gripping, palm-down rotation, or throwing dose reduced. Mild, stable discomfort can be acceptable when symptoms return to baseline by the next morning." },
-      { "q": "Will a brace fix it?", "a": "A brace can be tried for short-term activity tolerance, but it should not replace progressive loading and task modification." },
-      { "q": "Why do throwers need an assessment first?", "a": "Pain on the inside elbow during throwing may reflect the ulnar collateral ligament, ulnar nerve, or other structures rather than an isolated tendon problem." }
+      {
+        "q": "Is this only golfer's elbow?",
+        "a": "No. Common flexor tendinopathy also occurs with work, lifting, climbing, racquet sports, and other repeated gripping or forearm tasks."
+      },
+      {
+        "q": "Can I keep using the arm?",
+        "a": "Usually yes, with the most painful gripping, palm-down rotation, or throwing dose reduced. Mild, stable discomfort can be acceptable when symptoms return to baseline by the next morning."
+      },
+      {
+        "q": "Will a brace fix it?",
+        "a": "A brace can be tried for short-term activity tolerance, but it should not replace progressive loading and task modification."
+      },
+      {
+        "q": "Why do throwers need an assessment first?",
+        "a": "Pain on the inside elbow during throwing may reflect the ulnar collateral ligament, ulnar nerve, or other structures rather than an isolated tendon problem."
+      },
+      {
+        "q": "When can I use the harder options?",
+        "a": "Wait until the current dose feels controlled for at least two sessions, grip remains steady, and symptoms return to your usual baseline by the next morning. Reach the top of the repetition range before adding resistance. Change one variable at a time, such as weight, lever length, hold time, or task duration. A harder option replaces the easier version; it is not extra work to stack onto the session."
+      }
     ],
     "sources": [
-      { "href": "https://pubmed.ncbi.nlm.nih.gov/41887339/", "label": "Eccentric Exercise for Medial Epicondylitis, Systematic Review, 2026" },
-      { "href": "https://pubmed.ncbi.nlm.nih.gov/24944855/", "label": "Tyler et al.: Eccentric Wrist-Flexor Exercise for Chronic Medial Epicondylosis" },
-      { "href": "https://pubmed.ncbi.nlm.nih.gov/37701778/", "label": "Current Concepts of Natural Course and in Management of Medial Epicondylitis: A Clinical Overview" },
-      { "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4986646/", "label": "Review: Medial Elbow Tendinopathy and Differential Diagnosis" }
+      {
+        "href": "https://pubmed.ncbi.nlm.nih.gov/41887339/",
+        "label": "Eccentric Exercise for Medial Epicondylitis, Systematic Review, 2026"
+      },
+      {
+        "href": "https://pubmed.ncbi.nlm.nih.gov/24944855/",
+        "label": "Tyler et al.: Eccentric Wrist-Flexor Exercise for Chronic Medial Epicondylosis"
+      },
+      {
+        "href": "https://pubmed.ncbi.nlm.nih.gov/37701778/",
+        "label": "Current Concepts of Natural Course and in Management of Medial Epicondylitis: A Clinical Overview"
+      },
+      {
+        "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4986646/",
+        "label": "Review: Medial Elbow Tendinopathy and Differential Diagnosis"
+      },
+      {
+        "href": "https://orthoinfo.aaos.org/globalassets/pdfs/2022-therapeutic-exercise-program-for-epicondylitis.pdf",
+        "label": "AAOS: Therapeutic Exercise Program for Tennis Elbow and Golfer’s Elbow"
+      },
+      {
+        "href": "https://www.dynamichealth.nhs.uk/help-and-advice/elbow-pain/",
+        "label": "NHS Dynamic Health: Elbow Pain and Progressive Home Exercises"
+      }
     ],
     "related": [
-      { "href": "../tendon-pain/", "eyebrow": "Tendon guide", "title": "Evidence-based tendon care" },
-      { "href": "../lateral-elbow-tendinopathy-exercises/", "eyebrow": "Outside elbow", "title": "Common extensor tendinopathy exercises" },
-      { "href": "../sports-injuries/", "eyebrow": "Athlete evaluation", "title": "Sports injury assessment" }
-    ]
+      {
+        "href": "../tendon-pain/",
+        "eyebrow": "Tendon guide",
+        "title": "Evidence-based tendon care"
+      },
+      {
+        "href": "../lateral-elbow-tendinopathy-exercises/",
+        "eyebrow": "Outside elbow",
+        "title": "Common extensor tendinopathy exercises"
+      },
+      {
+        "href": "../sports-injuries/",
+        "eyebrow": "Athlete evaluation",
+        "title": "Sports injury assessment"
+      }
+    ],
+    "guidedSession": true
   },
   {
     "slug": "adhesive-capsulitis-exercises",

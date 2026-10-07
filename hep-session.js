@@ -12,7 +12,9 @@ export const NEXT_MORNING_RESPONSES = Object.freeze([
 const PILOT_SLUGS = new Set([
     'knee-osteoarthritis-exercises',
     'rotator-cuff-pain-exercises',
-    'patellofemoral-pain-exercises'
+    'patellofemoral-pain-exercises',
+    'lateral-elbow-tendinopathy-exercises',
+    'medial-elbow-tendinopathy-exercises'
 ]);
 const RESPONSE_VALUES = new Set(NEXT_MORNING_RESPONSES.map(response => response.value));
 const PROGRAM_FIELDS = [

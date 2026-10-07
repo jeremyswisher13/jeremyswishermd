@@ -35,6 +35,7 @@ EMERGENCY_DISCLOSURE = (
 SUMMARY_SLUGS = {
     "knee-osteoarthritis-exercises", "rotator-cuff-pain-exercises",
     "patellofemoral-pain-exercises",
+    "lateral-elbow-tendinopathy-exercises", "medial-elbow-tendinopathy-exercises",
 }
 SUMMARY_TITLE = "Exercise follow-up summary"
 SUMMARY_CAPTION = "Patient-recorded sessions and next-morning responses"
@@ -137,7 +138,7 @@ def load_summary_fixtures(path, programs):
         raise ValueError("expected version 1 synthetic-only summary fixtures")
     summaries = manifest["summaries"]
     if not isinstance(summaries, list) or len(summaries) != len(SUMMARY_SLUGS):
-        raise ValueError("expected one summary fixture for each of the three pilots")
+        raise ValueError("expected one summary fixture for each guided program")
     if {summary["slug"] for summary in summaries} != SUMMARY_SLUGS:
         raise ValueError("missing, duplicate, or unexpected summary pilot")
     sources = {program["slug"]: program for program in programs}
@@ -343,7 +344,7 @@ def main():
             failures.extend(f"{path.name}: {issue}" for issue in issues)
     if failures:
         print("\n".join(f"FAIL {failure}" for failure in failures), file=sys.stderr)
-        print(f"Failed: {len(failures)} issue(s); checked {file_count}/{len(programs) * 2} program PDFs ({page_count} pages), and {summary_file_count}/6 summary PDFs ({summary_page_count} pages).", file=sys.stderr)
+        print(f"Failed: {len(failures)} issue(s); checked {file_count}/{len(programs) * 2} program PDFs ({page_count} pages), and {summary_file_count}/{len(SUMMARY_SLUGS) * 2} summary PDFs ({summary_page_count} pages).", file=sys.stderr)
         return 1
     print(f"Validated {file_count} PDFs for {len(programs)} programs in Letter and A4 ({page_count} pages): complete source text, intact exercises/stages, attached headings, tracker/footer, paper sizes, page numbering, and a non-exercise footer control.")
     print(f"Validated {summary_file_count} synthetic follow-up summary PDFs ({summary_page_count} pages): latest six entries, dates/counts/responses, complete long notes/goals, newest-first intact table rows, attached/repeated headings, paper sizes, no blank pages, and isolation from excluded entries, other programs, and the original guides.")
