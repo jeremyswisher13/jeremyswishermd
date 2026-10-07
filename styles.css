@@ -76,8 +76,12 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     scroll-padding-top: 80px;
+}
+
+html.smooth-scroll {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -1813,6 +1817,26 @@ ul {
     .fade-in {
         opacity: 1;
         transform: none;
+    }
+}
+
+/* Print visibility also applies when the shared script is unavailable. */
+@media print {
+    .fade-in {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .navbar,
+    .skip-link,
+    .mobile-call-bar {
+        display: none !important;
+    }
+
+    .landing-page .landing-sidebar {
+        position: static !important;
+        top: auto !important;
     }
 }
 

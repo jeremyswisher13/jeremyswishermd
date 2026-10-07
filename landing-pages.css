@@ -1721,6 +1721,10 @@
     top: 106px;
 }
 
+.landing-page .landing-sidebar.landing-sidebar-unstuck {
+    position: static;
+}
+
 .landing-page .sidebar-panel {
     padding: 27px 0 0;
     border-top: 2px solid var(--color-dark);

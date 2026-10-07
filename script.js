@@ -264,6 +264,100 @@ if (pageJumpDisclosures.length > 0) {
     }
 }
 
+// Fragment links can target content inside a closed disclosure. Open all of
+// its closed ancestors before scrolling, including on older Safari versions
+// that do not reveal these targets automatically.
+function fragmentIdFromHash(hash) {
+    const value = String(hash || '').replace(/^#/, '');
+    try {
+        return decodeURIComponent(value);
+    } catch {
+        return value;
+    }
+}
+
+function openDetailsForFragment(id, scrollToTarget = false) {
+    const target = id ? document.getElementById(id) : null;
+    let closedDisclosure = target?.closest('details:not([open])');
+    if (!closedDisclosure) return;
+
+    while (closedDisclosure) {
+        closedDisclosure.open = true;
+        closedDisclosure = closedDisclosure.parentElement?.closest('details:not([open])');
+    }
+
+    if (scrollToTarget) target.scrollIntoView();
+}
+
+document.addEventListener('click', event => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+    if (!link || link.hasAttribute('download')) return;
+    const target = link.getAttribute('target');
+    if (target && target.toLowerCase() !== '_self') return;
+
+    try {
+        const destination = new URL(link.getAttribute('href'), location.href);
+        const current = new URL(location.href);
+        if (
+            destination.origin === current.origin
+            && destination.pathname === current.pathname
+            && destination.search === current.search
+        ) {
+            openDetailsForFragment(fragmentIdFromHash(destination.hash));
+        }
+    } catch {
+        // An invalid URL retains the browser's normal link behavior.
+    }
+});
+window.addEventListener('hashchange', () => openDetailsForFragment(fragmentIdFromHash(location.hash), true));
+if (location.hash) openDetailsForFragment(fragmentIdFromHash(location.hash), true);
+// End fragment disclosure behavior.
+
+// Keep tall desktop sidebars in normal flow so all of their links can be
+// reached without scrolling to the very end of a long article.
+const landingSidebars = Array.from(document.querySelectorAll('.landing-page .landing-sidebar'));
+let landingSidebarFitFrame = 0;
+
+function syncLandingSidebarFit() {
+    landingSidebarFitFrame = 0;
+    landingSidebars.forEach(sidebar => {
+        sidebar.classList.remove('landing-sidebar-unstuck');
+        const style = window.getComputedStyle(sidebar);
+        if (style.position !== 'sticky') return;
+        const stickyTop = Number.parseFloat(style.top) || 0;
+        sidebar.classList.toggle('landing-sidebar-unstuck',
+            sidebar.offsetHeight + stickyTop + 16 > window.innerHeight);
+    });
+}
+
+function scheduleLandingSidebarFit() {
+    if (!landingSidebarFitFrame) {
+        landingSidebarFitFrame = window.requestAnimationFrame(syncLandingSidebarFit);
+    }
+}
+
+if (landingSidebars.length) {
+    syncLandingSidebarFit();
+    window.addEventListener('resize', scheduleLandingSidebarFit, { passive: true });
+    window.addEventListener('load', scheduleLandingSidebarFit, { once: true });
+    if ('ResizeObserver' in window) {
+        const sidebarObserver = new ResizeObserver(scheduleLandingSidebarFit);
+        landingSidebars.forEach(sidebar => sidebarObserver.observe(sidebar));
+    }
+}
+
+// Enable animation only after the initial fragment has landed. Arriving from
+// another page should open directly at the requested section.
+function enableSmoothInPageScrolling() {
+    window.requestAnimationFrame(() => document.documentElement.classList.add('smooth-scroll'));
+}
+if (document.readyState === 'complete') {
+    enableSmoothInPageScrolling();
+} else {
+    window.addEventListener('load', enableSmoothInPageScrolling, { once: true });
+}
+
 // Navbar scroll effect
 const navbar = document.getElementById('navbar');
 
@@ -534,8 +628,33 @@ printProgramButtons.forEach(button => {
     button.addEventListener('click', () => openPrintProgram(button));
 });
 
-window.addEventListener('beforeprint', () => document.body.classList.add('is-printing'));
-window.addEventListener('afterprint', () => resetPrintProgramState(true));
+// Print the complete page, including disclosures and cards the visitor has
+// not scrolled to yet. Restore only disclosures opened for this print session.
+const printOpenedDisclosures = new Set();
+
+function openDisclosuresForPrint() {
+    document.querySelectorAll('details:not([open]):not([data-page-jump])').forEach(disclosure => {
+        disclosure.open = true;
+        printOpenedDisclosures.add(disclosure);
+    });
+}
+
+function restoreDisclosuresAfterPrint() {
+    printOpenedDisclosures.forEach(disclosure => {
+        disclosure.open = false;
+    });
+    printOpenedDisclosures.clear();
+}
+
+window.addEventListener('beforeprint', () => {
+    document.body.classList.add('is-printing');
+    if (fadeElements.length) revealFadeElementsImmediately();
+    openDisclosuresForPrint();
+});
+window.addEventListener('afterprint', () => {
+    restoreDisclosuresAfterPrint();
+    resetPrintProgramState(true);
+});
 
 // Privacy-conscious video companions for home exercise programs.
 //
