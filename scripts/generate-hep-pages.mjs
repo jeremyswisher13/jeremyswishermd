@@ -1,3 +1,4 @@
+import { GUIDED_PROGRAM_SLUGS } from '../hep-session.js';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,17 +9,12 @@ const template = readFileSync(join(scriptDirectory, 'hep-page.template'), 'utf8'
 const programs = JSON.parse(readFileSync(join(scriptDirectory, 'hep-programs.json'), 'utf8'));
 const siteRoot = 'https://jeremyswishermd.com';
 const youtubeIdPattern = /^[A-Za-z0-9_-]{11}$/;
-const guidedSessionSlugs = new Set([
-    'knee-osteoarthritis-exercises',
-    'rotator-cuff-pain-exercises',
-    'patellofemoral-pain-exercises',
-    'lateral-elbow-tendinopathy-exercises',
-    'medial-elbow-tendinopathy-exercises'
-]);
+const guidedSessionSlugs = new Set(GUIDED_PROGRAM_SLUGS);
 
 function renderGuidedSessionData(program, canonical) {
     const fields = ['slug', 'title', 'fitIntro', 'programIntro', 'frequency', 'equipment', 'checkpoint', 'goal', 'responseIntro', 'green', 'yellow', 'red', 'exercises'];
     const data = Object.fromEntries(fields.map(field => [field, program[field]]));
+    if (program.guidedExerciseOrder) data.exercises = program.guidedExerciseOrder.map(index => program.exercises[index]);
     data.canonical = canonical;
     // JSON remains data even if a future exercise cue contains an HTML delimiter.
     const serialized = JSON.stringify(data).replaceAll('<', '\\u003c').replaceAll('>', '\\u003e').replaceAll('&', '\\u0026');
@@ -284,6 +280,14 @@ for (const program of programs) {
     if (program.guidedSession && !guidedSessionSlugs.has(program.slug)) {
         throw new Error('Guided sessions are not configured for ' + program.slug);
     }
+    if (program.guidedExerciseOrder !== undefined) {
+        const order = program.guidedExerciseOrder;
+        if (!Array.isArray(order) || order.length !== program.exercises.length
+            || new Set(order).size !== order.length
+            || !order.every(index => Number.isInteger(index) && index >= 0 && index < program.exercises.length)) {
+            throw new Error('Invalid guided exercise order for ' + program.slug);
+        }
+    }
     const canonical = siteRoot + '/' + program.slug + '/';
     const guidedSession = program.guidedSession === true;
     const reviewedDate = formatDate(program.reviewedDate, program.slug, 'reviewedDate');
@@ -299,7 +303,7 @@ for (const program of programs) {
         SESSION_LAUNCH: guidedSession ? '                            <a href="#guided-session" class="btn btn-primary" data-hep-launch data-hep-launch-start hidden>Start a guided session</a>' : '',
         SESSION_JUMP: guidedSession ? '                <a href="#guided-session" data-hep-launch hidden>Guided session</a>' : '',
         SESSION_SECTION: guidedSession ? renderGuidedSessionData(program, canonical) : '',
-        SESSION_SCRIPT: guidedSession ? '    <script type="module" src="../hep-session.js?v=20261007-session2"></script>' : '',
+        SESSION_SCRIPT: guidedSession ? '    <script type="module" src="../hep-session.js?v=20261007-session3"></script>' : '',
         TITLE: program.title,
         SEO_TITLE: program.seoTitle,
         SHORT_TITLE: program.shortTitle,

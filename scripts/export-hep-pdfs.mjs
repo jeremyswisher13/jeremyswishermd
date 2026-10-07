@@ -8,18 +8,16 @@ import { startSiteServer } from './serve-site.mjs';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const output = resolve(process.argv[2] || join(root, '.quality-results/print'));
 const programs = JSON.parse(await readFile(join(root, 'scripts/hep-programs.json'), 'utf8'));
+if (!Array.isArray(programs) || programs.length !== 25
+  || new Set(programs.map(program => program.slug)).size !== 25
+  || programs.some(program => program.guidedSession !== true)) {
+  throw new Error('Print QA requires all 25 unique maintained programs with guided sessions enabled');
+}
 await mkdir(output, { recursive: true });
 const server = await startSiteServer({ port: 0 });
 const baseURL = `http://127.0.0.1:${server.address().port}`;
 let browser;
 const manifest = [];
-const summaryPilotSlugs = [
-  'knee-osteoarthritis-exercises',
-  'rotator-cuff-pain-exercises',
-  'patellofemoral-pain-exercises',
-  'lateral-elbow-tendinopathy-exercises',
-  'medial-elbow-tendinopathy-exercises',
-];
 // Keep the fixture oracle independent of the session module's response labels.
 const summaryResponses = [
   ['not-checked', 'Not checked yet'],
@@ -61,11 +59,7 @@ function syntheticSummaryFixture(program) {
 }
 
 async function exportFollowUpSummaries() {
-  const fixtures = summaryPilotSlugs.map(slug => {
-    const program = programs.find(item => item.slug === slug);
-    if (!program) throw new Error(`Missing summary pilot: ${slug}`);
-    return syntheticSummaryFixture(program);
-  });
+  const fixtures = programs.map(syntheticSummaryFixture);
   const context = await browser.newContext({ locale: 'en-US', timezoneId: 'UTC' });
   await context.route('**/*', route => (
     new URL(route.request().url()).origin === baseURL ? route.continue() : route.abort()

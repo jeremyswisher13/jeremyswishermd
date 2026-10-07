@@ -32,11 +32,7 @@ EMERGENCY_DISCLOSURE = (
     "General education only, not individualized medical advice. "
     "For a medical emergency, call 911."
 )
-SUMMARY_SLUGS = {
-    "knee-osteoarthritis-exercises", "rotator-cuff-pain-exercises",
-    "patellofemoral-pain-exercises",
-    "lateral-elbow-tendinopathy-exercises", "medial-elbow-tendinopathy-exercises",
-}
+EXPECTED_PROGRAM_COUNT = 25
 SUMMARY_TITLE = "Exercise follow-up summary"
 SUMMARY_CAPTION = "Patient-recorded sessions and next-morning responses"
 SUMMARY_HEADERS = ("Date", "Done", "Skipped", "Next-morning response", "Notes / activity goal")
@@ -137,10 +133,11 @@ def load_summary_fixtures(path, programs):
     if manifest.get("version") != 1 or manifest.get("syntheticOnly") is not True:
         raise ValueError("expected version 1 synthetic-only summary fixtures")
     summaries = manifest["summaries"]
-    if not isinstance(summaries, list) or len(summaries) != len(SUMMARY_SLUGS):
+    expected_slugs = {program["slug"] for program in programs}
+    if not isinstance(summaries, list) or len(summaries) != EXPECTED_PROGRAM_COUNT:
         raise ValueError("expected one summary fixture for each guided program")
-    if {summary["slug"] for summary in summaries} != SUMMARY_SLUGS:
-        raise ValueError("missing, duplicate, or unexpected summary pilot")
+    if {summary["slug"] for summary in summaries} != expected_slugs:
+        raise ValueError("missing, duplicate, or unexpected summary program")
     sources = {program["slug"]: program for program in programs}
     for summary in summaries:
         program = sources[summary["slug"]]
@@ -285,8 +282,8 @@ def main():
     args = parser.parse_args()
     try:
         programs = json.loads(args.programs.read_text(encoding="utf-8"))
-        if not isinstance(programs, list) or not programs:
-            raise ValueError("expected a nonempty array of programs")
+        if not isinstance(programs, list) or len(programs) != EXPECTED_PROGRAM_COUNT:
+            raise ValueError("expected exactly 25 maintained exercise programs")
         sources = []
         slugs = set()
         for program in programs:
@@ -294,6 +291,8 @@ def main():
             if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", slug) or slug in slugs:
                 raise ValueError(f"invalid or duplicate slug: {slug!r}")
             slugs.add(slug)
+            if program.get("guidedSession") is not True:
+                raise ValueError(f"{slug}: guided session must be enabled for every maintained program")
             fields = expected_fields(program)
             if not program["exercises"] or not program["progression"] or not program["readyItems"]:
                 raise ValueError(f"{slug}: empty exercise, progression, or readiness list")
@@ -344,7 +343,7 @@ def main():
             failures.extend(f"{path.name}: {issue}" for issue in issues)
     if failures:
         print("\n".join(f"FAIL {failure}" for failure in failures), file=sys.stderr)
-        print(f"Failed: {len(failures)} issue(s); checked {file_count}/{len(programs) * 2} program PDFs ({page_count} pages), and {summary_file_count}/{len(SUMMARY_SLUGS) * 2} summary PDFs ({summary_page_count} pages).", file=sys.stderr)
+        print(f"Failed: {len(failures)} issue(s); checked {file_count}/{len(programs) * 2} program PDFs ({page_count} pages), and {summary_file_count}/{len(programs) * 2} summary PDFs ({summary_page_count} pages).", file=sys.stderr)
         return 1
     print(f"Validated {file_count} PDFs for {len(programs)} programs in Letter and A4 ({page_count} pages): complete source text, intact exercises/stages, attached headings, tracker/footer, paper sizes, page numbering, and a non-exercise footer control.")
     print(f"Validated {summary_file_count} synthetic follow-up summary PDFs ({summary_page_count} pages): latest six entries, dates/counts/responses, complete long notes/goals, newest-first intact table rows, attached/repeated headings, paper sizes, no blank pages, and isolation from excluded entries, other programs, and the original guides.")

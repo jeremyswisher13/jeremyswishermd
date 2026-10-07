@@ -7,16 +7,28 @@ import { expect, test } from '@playwright/test';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const programs = JSON.parse(readFileSync(new URL('../scripts/hep-programs.json', import.meta.url), 'utf8'));
-const pilotSlugs = [
+const mobileProgramSlugs = [
   'knee-osteoarthritis-exercises',
   'rotator-cuff-pain-exercises',
   'patellofemoral-pain-exercises',
   'lateral-elbow-tendinopathy-exercises',
   'medial-elbow-tendinopathy-exercises',
+  'advanced-meniscus-rehabilitation-exercises',
+  'adhesive-capsulitis-exercises',
+  'thumb-cmc-osteoarthritis-exercises',
+  'plantar-fasciitis-exercises',
 ];
-const pilots = pilotSlugs.map(slug => programs.find(program => program.slug === slug));
-const knee = pilots[0];
-const elbows = pilots.slice(3);
+function programFor(slug) {
+  const program = programs.find(item => item.slug === slug);
+  if (!program) throw new Error(`Missing maintained exercise program: ${slug}`);
+  return program;
+}
+const mobilePrograms = mobileProgramSlugs.map(programFor);
+const knee = programFor('knee-osteoarthritis-exercises');
+const rotatorCuff = programFor('rotator-cuff-pain-exercises');
+const advancedMeniscus = programFor('advanced-meniscus-rehabilitation-exercises');
+const guidedExercises = program => program.guidedExerciseOrder
+  ? program.guidedExerciseOrder.map(index => program.exercises[index]) : program.exercises;
 const storageKey = slug => `swishermd:hep-progress:v1:${slug}`;
 const session = page => page.locator('[data-hep-session]');
 const contentTypes = {
@@ -98,17 +110,30 @@ async function addRecord(page, { notes = 'A short session felt manageable.', goa
   await expect(session(page).locator('[data-hep-history]')).toContainText(notes);
 }
 
-test('only the five guided programs launch a session and preserve every original exercise prescription', async ({ context, page, baseURL }) => {
-  await localOnly(context, baseURL);
-  for (const program of pilots) {
+test('all 25 maintained programs have unique routes and enable guided sessions', () => {
+  expect(programs).toHaveLength(25);
+  expect(new Set(programs.map(program => program.slug)).size).toBe(25);
+  expect(programs.every(program => program.guidedSession === true)).toBe(true);
+  expect(advancedMeniscus.guidedExerciseOrder).toEqual([3, 4, 5, 0, 1, 2]);
+  expect(advancedMeniscus.programIntro).toContain('Perform impact work before heavy strength when both occur in one session.');
+  for (const program of programs.filter(program => program.slug !== advancedMeniscus.slug)) {
+    expect(program.guidedExerciseOrder).toBeUndefined();
+  }
+});
+
+for (const program of programs) {
+  test(`${program.slug}: the guided session preserves every original exercise prescription in the maintained guided order`, async ({ context, page, baseURL }) => {
+    await localOnly(context, baseURL);
     await visit(page, program);
+    const exercises = guidedExercises(program);
+    await expect(page.locator('[data-hep-session], #hep-session-data')).toHaveCount(2);
     const data = JSON.parse(await page.locator('#hep-session-data').textContent());
-    expect(data.exercises).toEqual(program.exercises);
+    expect(data.exercises).toEqual(exercises);
     expect(data.frequency).toBe(program.frequency);
     await expect(session(page)).toContainText(program.frequency);
     await start(page);
     await expect(session(page).locator('[data-hep-exercise]')).toContainText(program.programIntro);
-    for (const exercise of program.exercises) {
+    for (const exercise of exercises) {
       const card = session(page).locator('[data-hep-exercise]');
       await expect(card.locator('[data-hep-exercise-title]')).toHaveText(exercise.name);
       await expectExercisePrescription(card, exercise);
@@ -118,28 +143,36 @@ test('only the five guided programs launch a session and preserve every original
     for (const rule of [program.responseIntro, program.green, program.yellow, program.red]) {
       await expect(session(page)).toContainText(rule);
     }
+    await expect(session(page).locator('[data-hep-completed-count]')).toHaveText(`${program.exercises.length} done`);
+    await expect(session(page).locator('[data-hep-skipped-count]')).toHaveText('0 skipped');
+    await session(page).locator('[data-hep-back]').click();
+    await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(exercises.at(-1).name);
+    await expectExercisePrescription(session(page).locator('[data-hep-exercise]'), exercises.at(-1));
     await expect(page.locator('#program .exercise-item')).toHaveCount(program.exercises.length);
-  }
-  await page.goto('/ankle-sprain-return-to-sport-exercises/');
-  await expect(page.locator('[data-hep-session], [data-hep-launch], #hep-session-data')).toHaveCount(0);
-});
+  });
+}
 
-for (const program of elbows) {
+for (const program of programs) {
   test(`${program.slug}: harder options start collapsed and reveal the maintained progression without changing the prescription`, async ({ context, page, baseURL }) => {
     await localOnly(context, baseURL);
     await visit(page, program);
     await expect(session(page).locator('dl dd').first()).toHaveText(program.frequency);
+    await expect(page.locator('#progress')).toHaveCount(1);
     await start(page);
-    for (const exercise of program.exercises) {
+    for (const exercise of guidedExercises(program)) {
       const card = session(page).locator('[data-hep-exercise]');
       const disclosure = card.locator('details');
       const toggle = disclosure.locator('summary');
       const harder = disclosure.locator('p');
+      const readinessLink = disclosure.getByRole('link', { name: 'See progression & readiness criteria', exact: true, includeHidden: true });
       await expect(card.locator('[data-hep-exercise-title]')).toHaveText(exercise.name);
       await expect(disclosure).toHaveCount(1);
       await expect(toggle).toHaveText('Harder option from this program');
       await expect(disclosure).toHaveJSProperty('open', false);
       await expect(harder).toBeHidden();
+      await expect(readinessLink).toHaveCount(1);
+      await expect(readinessLink).toHaveAttribute('href', '#progress');
+      await expect(readinessLink).toBeHidden();
       await expectExercisePrescription(card, exercise);
 
       await toggle.focus();
@@ -147,20 +180,24 @@ for (const program of elbows) {
       await expect(disclosure).toHaveJSProperty('open', true);
       await expect(harder).toBeVisible();
       await expect(harder).toHaveText(exercise.harder);
+      await expect(readinessLink).toBeVisible();
       await expectExercisePrescription(card, exercise);
 
       await toggle.click();
       await expect(disclosure).toHaveJSProperty('open', false);
       await expect(harder).toBeHidden();
+      await expect(readinessLink).toBeHidden();
       await toggle.click();
       await expect(disclosure).toHaveJSProperty('open', true);
       await expect(harder).toBeVisible();
       await expect(harder).toHaveText(exercise.harder);
+      await expect(readinessLink).toBeVisible();
       await expectExercisePrescription(card, exercise);
       await toggle.focus();
       await page.keyboard.press('Space');
       await expect(disclosure).toHaveJSProperty('open', false);
       await expect(harder).toBeHidden();
+      await expect(readinessLink).toBeHidden();
       await card.locator('[data-hep-done]').click();
     }
     await expect(session(page).locator('[data-hep-completed-count]')).toHaveText(`${program.exercises.length} done`);
@@ -224,7 +261,7 @@ test('progress is off by default and private session details never enter request
 
 test('opting in saves and restores progress; opting out removes only this program key', async ({ context, page, baseURL }) => {
   await localOnly(context, baseURL);
-  const otherKey = storageKey(pilots[1].slug);
+  const otherKey = storageKey(rotatorCuff.slug);
   await context.addInitScript(({ otherKey }) => {
     if (localStorage.getItem(otherKey) === null) localStorage.setItem(otherKey, 'other-program-sentinel');
     if (localStorage.getItem('unrelated-setting') === null) localStorage.setItem('unrelated-setting', 'keep-me');
@@ -308,7 +345,7 @@ test('malformed and incompatible saved data are ignored without displaying an un
   for (const raw of [
     '{not-json',
     JSON.stringify({ version: 999, slug: knee.slug, goal: '', records: [] }),
-    JSON.stringify({ version: 1, slug: pilots[1].slug, goal: '', records: [] }),
+    JSON.stringify({ version: 1, slug: rotatorCuff.slug, goal: '', records: [] }),
     JSON.stringify({ version: 1, slug: knee.slug, goal: '', records: [{ id: 'bad', date: '2026-02-31', completed: 100, skipped: -1, response: 'baseline', notes: 'UNSAFE_RECORD_SENTINEL', goal: '' }] }),
   ]) {
     await page.evaluate(({ key, raw }) => localStorage.setItem(key, raw), { key: storageKey(knee.slug), raw });
@@ -463,7 +500,7 @@ test('without JavaScript or a loaded session module the complete program remains
   }
 });
 
-for (const program of [knee, ...elbows]) {
+for (const program of mobilePrograms) {
   test(`${program.slug}: the mobile session supports keyboard focus, avoids overflow, and passes axe in active views`, async ({ context, page, baseURL }) => {
     await localOnly(context, baseURL);
     await page.setViewportSize({ width: 390, height: 844 });
@@ -485,7 +522,7 @@ for (const program of [knee, ...elbows]) {
     await page.keyboard.press('Enter');
     await expect(harderToggle).toBeFocused();
     await expect(session(page).locator('[data-hep-exercise] details p')).toBeVisible();
-    await expect(session(page).locator('[data-hep-exercise] details p')).toHaveText(program.exercises[0].harder);
+    await expect(session(page).locator('[data-hep-exercise] details p')).toHaveText(guidedExercises(program)[0].harder);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
     await page.evaluate(async () => { await document.fonts?.ready; });
     const activeResults = await new AxeBuilder({ page }).include('[data-hep-session]').withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();

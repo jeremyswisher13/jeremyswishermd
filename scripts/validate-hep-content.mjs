@@ -1,3 +1,4 @@
+import { GUIDED_PROGRAM_SLUGS } from '../hep-session.js';
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -39,13 +40,7 @@ const requiredProgramFields = [
     'evaluation'
 ];
 const requiredExerciseFields = ['name', 'dose', 'frequency', 'how', 'easier', 'harder'];
-const guidedSessionSlugs = new Set([
-    'knee-osteoarthritis-exercises',
-    'rotator-cuff-pain-exercises',
-    'patellofemoral-pain-exercises',
-    'lateral-elbow-tendinopathy-exercises',
-    'medial-elbow-tendinopathy-exercises'
-]);
+const guidedSessionSlugs = new Set(GUIDED_PROGRAM_SLUGS);
 const guidedSessionFields = ['slug', 'title', 'fitIntro', 'programIntro', 'frequency', 'equipment', 'checkpoint', 'goal', 'responseIntro', 'green', 'yellow', 'red', 'exercises'];
 const allowedProgramAudiences = new Set(['athlete']);
 const retiredSourceUrls = new Set([
@@ -232,13 +227,21 @@ for (const program of programs) {
     const page = readFileSync(pagePath, 'utf8');
     const canonical = `https://jeremyswishermd.com/${slug}/`;
     const guidedSession = guidedSessionSlugs.has(slug);
-    assert(program.guidedSession === (guidedSession ? true : undefined), `${slug}: guided-session pilot flag is incorrect`);
+    assert(program.guidedSession === (guidedSession ? true : undefined), `${slug}: guided-session flag is incorrect`);
+    if (program.guidedExerciseOrder !== undefined) {
+        const order = program.guidedExerciseOrder;
+        assert(Array.isArray(order) && order.length === program.exercises.length
+            && new Set(order).size === order.length
+            && order.every(index => Number.isInteger(index) && index >= 0 && index < program.exercises.length),
+        `${slug}: guided exercise order must include each exercise exactly once`);
+    }
     const sessionPayload = page.match(/<script type="application\/json" id="hep-session-data">([^<]*)<\/script>/);
     if (guidedSession) {
         assert(Boolean(sessionPayload), `${slug}: guided-session data is missing or unsafe`);
         if (sessionPayload) {
             try {
                 const expected = Object.fromEntries(guidedSessionFields.map(field => [field, program[field]]));
+                if (program.guidedExerciseOrder) expected.exercises = program.guidedExerciseOrder.map(index => program.exercises[index]);
                 expected.canonical = canonical;
                 assert(JSON.stringify(JSON.parse(sessionPayload[1])) === JSON.stringify(expected), `${slug}: guided-session instructions differ from maintained program data`);
             } catch {
@@ -246,10 +249,10 @@ for (const program of programs) {
             }
         }
         assert(page.includes('data-hep-session hidden'), `${slug}: guided session must start hidden until initialized`);
-        assert(page.includes('src="../hep-session.js?v=20261007-session2"'), `${slug}: guided-session module is missing`);
+        assert(page.includes('src="../hep-session.js?v=20261007-session3"'), `${slug}: guided-session module is missing`);
         assert(page.includes('href="../hep-session.css?v=20261007-session1"'), `${slug}: guided-session stylesheet is missing`);
     } else {
-        assert(!sessionPayload && !page.includes('hep-session.js') && !page.includes('hep-session.css'), `${slug}: non-pilot page includes guided-session assets`);
+        assert(!sessionPayload && !page.includes('hep-session.js') && !page.includes('hep-session.css'), `${slug}: non-guided page includes guided-session assets`);
     }
     assert(count(page, /<h1\b/g) === 1, `${slug}: expected one h1`);
     assert(page.includes(`class="landing-page hep-page hep-program-${slug}"`), `${slug}: program body class is incorrect`);
@@ -426,8 +429,8 @@ for (const program of programs) {
 
     const hasVideoCue = card.body.includes('Video available');
     assert(
-        card.body.includes('Includes guided sessions and an optional progress log.') === guidedSessionSlugs.has(program.slug),
-        `${program.slug}: library guided-session cue does not match pilot programs`
+        card.body.includes('Guided session · ') === guidedSessionSlugs.has(program.slug),
+        `${program.slug}: library guided-session cue does not match guided programs`
     );
     assert(
         hasVideoCue === Boolean(program.video),

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import {
-  MAX_RECORDS, SESSION_STORAGE_VERSION, createSessionRecord, isValidSessionDate,
+  GUIDED_PROGRAM_SLUGS, MAX_RECORDS, SESSION_STORAGE_VERSION, createSessionRecord, isValidSessionDate,
   localDateString, mergeProgressRecords, progressStorageKey, validateProgramData, validateProgressStore,
 } from '../../hep-session.js';
 
@@ -49,10 +49,27 @@ test('program validation preserves the published clinical prescription and rejec
   for (const field of ['fitIntro', 'programIntro', 'frequency', 'equipment', 'checkpoint', 'goal', 'responseIntro', 'green', 'yellow', 'red']) {
     assert.equal(validated[field], program[field]);
   }
-  assert.equal(validateProgramData({ ...validProgram, slug: 'ankle-sprain-return-to-sport-exercises' }), null);
+  assert.equal(validateProgramData({ ...validProgram, slug: 'unsupported-exercise-program' }), null);
   assert.equal(validateProgramData({ ...validProgram, exercises: [{ ...program.exercises[0], dose: '' }] }), null);
   assert.equal(validateProgramData({ ...validProgram, exercises: [] }), null);
   assert.equal(validateProgramData({ ...validProgram, frequency: null }), null);
+});
+
+test('all 25 maintained programs preserve their prescriptions and use isolated valid progress stores', () => {
+  assert.equal(programs.length, 25);
+  assert.deepEqual(new Set(GUIDED_PROGRAM_SLUGS), new Set(programs.map(item => item.slug)));
+  const keys = new Set();
+  for (const maintained of programs) {
+    assert.equal(maintained.guidedSession, true, maintained.slug);
+    const validated = validateProgramData({ ...maintained, canonical: `https://jeremyswishermd.com/${maintained.slug}/` });
+    assert.ok(validated, maintained.slug);
+    assert.deepEqual(validated.exercises, maintained.exercises);
+    const store = { version: SESSION_STORAGE_VERSION, slug: maintained.slug, goal: '', records: [] };
+    assert.deepEqual(validateProgressStore(store, maintained.slug, maintained.exercises.length), store);
+    assert.equal(validateProgressStore(store, 'unsupported-exercise-program', maintained.exercises.length), null);
+    keys.add(progressStorageKey(maintained.slug));
+  }
+  assert.equal(keys.size, 25);
 });
 
 test('program data rejects unsafe canonical URLs and malformed exercise instructions', () => {
