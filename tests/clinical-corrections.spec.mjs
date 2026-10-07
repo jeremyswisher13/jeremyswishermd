@@ -8,6 +8,60 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
+const urgentWarningCases = [
+  ['hamstring-strain-exercises', ['same-day sports-medicine or orthopedic assessment', 'new neurologic symptoms', 'Stop the current exercise for a new pop or tearing sensation', 'Seek emergency assessment', 'coughing blood', 'whole-leg swelling']],
+  ['peroneal-tendinopathy-exercises', ['same-day urgent assessment', 'a wound with spreading redness', 'tendon displacement']],
+  ['tibialis-posterior-tendinopathy-exercises', ['same-day urgent assessment', 'especially with diabetes or reduced sensation', 'new arch collapse']],
+  ['thumb-cmc-osteoarthritis-exercises', ['same-day care', 'Remove a brace immediately', 'after the brace is removed']],
+  ['de-quervain-tenosynovitis-exercises', ['same-day care', 'an open wound', 'major loss of motion after trauma']],
+  ['lateral-elbow-tendinopathy-exercises', ['same-day urgent care', 'a sudden pop with bruising or deformity', 'marked or progressive weakness']],
+  ['medial-elbow-tendinopathy-exercises', ['same-day urgent care', 'a sudden pop with bruising or deformity', 'acute throwing-related instability']],
+  ['achilles-tendinopathy-exercises', ['same-day urgent assessment', 'calf warmth or swelling', 'perform a heel raise']],
+  ['rotator-cuff-pain-exercises', ['same-day urgent assessment', 'rapidly progressive weakness', 'new or worsening numbness']],
+  ['adhesive-capsulitis-exercises', ['same-day urgent assessment', 'new or worsening numbness', 'rapidly progressive weakness']],
+  ['knee-osteoarthritis-exercises', ['same-day urgent assessment', 'rapid deformity', 'one-sided calf swelling']],
+  ['knee-osteoarthritis-advanced-exercises', ['same-day urgent assessment', 'rapid deformity', 'one-sided calf swelling']],
+  ['patellofemoral-pain-exercises', ['same-day urgent assessment', 'loss of knee extension', 'rapidly worsening pain']],
+  ['gluteal-tendinopathy-exercises', ['same-day urgent assessment', 'pronounced hip drop or limp', 'new neurologic symptoms']],
+  ['lateral-ankle-sprain-exercises', ['immediate emergency evaluation', 'same-day urgent assessment', 'posterior edge or tip of either ankle bone', 'fifth metatarsal or navicular']],
+  ['patellar-tendinopathy-exercises', ['same-day urgent assessment', 'one-sided calf swelling', 'a locked knee', 'with or without fever']],
+  ['low-back-pain-exercises', ['Call 911', 'severe abdominal or chest pain', 'emergency care for new loss of bladder or bowel control', 'same-day urgent assessment', 'immunosuppressed or uses injected drugs']],
+  ['hip-osteoarthritis-exercises', ['same-day urgent assessment', 'visible deformity after trauma', 'one-sided leg swelling']],
+  ['plantar-fasciitis-exercises', ['Call 911', 'coughing blood', 'Seek emergency care now', 'same-day urgent assessment', 'especially with diabetes', 'inability to bear weight after trauma']],
+  ['meniscus-tear-rehabilitation-exercises', ['same-day urgent assessment', 'a newly locked knee', 'with or without fever', 'one-sided calf swelling']],
+  ['advanced-meniscus-rehabilitation-exercises', ['same-day urgent assessment', 'a newly locked knee', 'with or without fever', 'one-sided calf swelling']],
+  ['iliotibial-band-syndrome-exercises', ['same-day urgent assessment after major trauma', 'inability to bear weight', 'with or without fever']],
+  ['ankle-sprain-return-to-sport-exercises', ['immediate emergency evaluation', 'same-day urgent assessment', 'one-sided calf swelling']],
+  ['patellofemoral-pain-return-to-running-exercises', ['same-day urgent assessment', 'kneecap dislocation', 'true locking or inability to straighten the knee', 'with or without fever']],
+  ['achilles-tendinopathy-return-to-sport-exercises', ['same-day urgent assessment', 'loss of push-off', 'one-sided calf warmth or swelling']],
+];
+
+for (const [slug, instructions] of urgentWarningCases) {
+  test(`${slug} preserves urgent actions in static, guided, and printed warnings`, async ({ page }) => {
+    await page.goto(`/${slug}/`);
+    const staticWarning = page.locator('#response .symptom-red');
+    await expect(staticWarning).toBeVisible();
+    await page.locator('#guided-session .hep-session-safety summary').click();
+    const guidedWarning = page.locator('#guided-session .hep-session-rules section').filter({ hasText: 'Red light' });
+    await expect(guidedWarning).toBeVisible();
+    for (const instruction of instructions) {
+      await expect(staticWarning).toContainText(instruction);
+      await expect(guidedWarning).toContainText(instruction);
+    }
+    await page.emulateMedia({ media: 'print' });
+    await expect(staticWarning).toBeVisible();
+    for (const instruction of instructions) await expect(staticWarning).toContainText(instruction);
+  });
+}
+
+test('orthobiologics overview explicitly directs same-day post-injection assessment', async ({ page }) => {
+  await page.goto('/orthobiologics/');
+  const warning = page.locator('.note-panel').filter({ hasText: 'Autologous does not mean risk-free.' });
+  await expect(warning).toBeVisible();
+  await expect(warning).toContainText('Seek same-day urgent medical assessment');
+  await expect(warning).toContainText('Do not wait for a routine reply.');
+});
+
 for (const media of ['screen', 'print']) {
   test(`ankle emergency urgency is preserved in the ${media} stop box`, async ({ page }) => {
     await page.goto('/ankle-sprain-return-to-sport-exercises/');
