@@ -76,8 +76,12 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     scroll-padding-top: 80px;
+}
+
+html.smooth-scroll {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -1813,6 +1817,36 @@ ul {
     .fade-in {
         opacity: 1;
         transform: none;
+    }
+}
+
+/* Cards keep their base hover transitions after the fade class is removed.
+   Disable those transitions while printing so the snapshot is fully visible. */
+body.is-printing .fade-in,
+body.is-printing .visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+/* Print visibility also applies when the shared script is unavailable. */
+@media print {
+    .fade-in,
+    .visible {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .navbar,
+    .skip-link,
+    .mobile-call-bar {
+        display: none !important;
+    }
+
+    .landing-page .landing-sidebar {
+        position: static !important;
+        top: auto !important;
     }
 }
 
