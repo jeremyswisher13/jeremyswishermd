@@ -8,16 +8,23 @@ const exercisePrograms = JSON.parse(
 const exerciseProgramsWithVideo = exercisePrograms.filter((program) => program.video);
 const exerciseProgramsWithoutVideo = exercisePrograms.filter((program) => !program.video);
 
-const representativeRoutes = [
+const siteRoutes = [
   { name: 'homepage', path: '/', status: 200 },
   { name: 'PRP guide', path: '/prp-knee-osteoarthritis/', status: 200 },
   { name: 'A2M evidence guide', path: '/a2m-knee-osteoarthritis/', status: 200 },
   { name: 'exercise library', path: '/home-exercise-programs/', status: 200 },
-  { name: 'exercise program', path: '/knee-osteoarthritis-exercises/', status: 200 },
   { name: 'sports injury athlete hub', path: '/sports-injuries/', status: 200 },
-  { name: 'ankle athlete progression', path: '/ankle-sprain-return-to-sport-exercises/', status: 200 },
-  { name: 'patellofemoral athlete progression', path: '/patellofemoral-pain-return-to-running-exercises/', status: 200 },
-  { name: 'Achilles athlete progression', path: '/achilles-tendinopathy-return-to-sport-exercises/', status: 200 },
+  { name: 'hyaluronic acid guide', path: '/hyaluronic-acid-knee-osteoarthritis/', status: 200 },
+  { name: 'injection comparison', path: '/knee-osteoarthritis-injection-comparison/', status: 200 },
+  { name: 'orthobiologics', path: '/orthobiologics/', status: 200 },
+  { name: 'ultrasound procedures', path: '/msk-ultrasound-guided-procedures/', status: 200 },
+  { name: 'osteoarthritis care', path: '/osteoarthritis-care/', status: 200 },
+  { name: 'knee osteoarthritis', path: '/knee-osteoarthritis/', status: 200 },
+  { name: 'joint pain', path: '/knee-hip-shoulder-pain/', status: 200 },
+  { name: 'tendon pain', path: '/tendon-pain/', status: 200 },
+  { name: 'locations and referrals', path: '/locations/', status: 200 },
+  { name: 'privacy', path: '/privacy/', status: 200 },
+  ...exercisePrograms.map(program => ({ name: program.slug, path: `/${program.slug}/`, status: 200 })),
   { name: 'custom 404', path: '/quality-check-missing-page/', status: 404 },
 ];
 
@@ -479,25 +486,39 @@ async function backgroundIsRestored(locator) {
   ));
 }
 
-test.describe('representative rendered pages', () => {
-  for (const route of representativeRoutes) {
-    test(`${route.name} renders and has no axe violations`, async ({ page }) => {
-      await blockThirdPartyRequests(page);
-      const response = await page.goto(route.path, { waitUntil: 'domcontentloaded' });
+for (const viewport of [
+  { name: 'desktop', width: 1440, height: 1000 },
+  { name: 'mobile', width: 390, height: 844 },
+]) {
+  test.describe(`every site page on ${viewport.name}`, () => {
+    for (const route of siteRoutes) {
+      test(`${route.name} renders without errors, overflow, or axe violations`, async ({ page }) => {
+        const runtimeErrors = [];
+        page.on('pageerror', error => runtimeErrors.push(error.message));
+        await page.setViewportSize({ width: viewport.width, height: viewport.height });
+        await blockThirdPartyRequests(page);
+        const response = await page.goto(route.path, { waitUntil: 'domcontentloaded' });
 
-      expect(response?.status()).toBe(route.status);
-      await expect(page.locator('main')).toBeVisible();
-      await expect(page.locator('h1')).toHaveCount(1);
-      await waitForStableAccessibilityState(page);
+        expect(response?.status()).toBe(route.status);
+        await expect(page.locator('main')).toBeVisible();
+        await expect(page.locator('h1')).toHaveCount(1);
+        await waitForStableAccessibilityState(page);
 
-      const results = await new AxeBuilder({ page })
-        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
-        .analyze();
+        expect(runtimeErrors).toEqual([]);
+        expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+        expect(await page.locator('img').evaluateAll(images => images
+          .filter(image => image.complete && image.currentSrc && image.naturalWidth === 0)
+          .map(image => image.currentSrc))).toEqual([]);
 
-      expect(results.violations, JSON.stringify(results.violations, null, 2)).toEqual([]);
-    });
-  }
-});
+        const results = await new AxeBuilder({ page })
+          .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+          .analyze();
+
+        expect(results.violations, JSON.stringify(results.violations, null, 2)).toEqual([]);
+      });
+    }
+  });
+}
 
 test('mobile navigation isolates the page and keeps keyboard focus inside the menu', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });

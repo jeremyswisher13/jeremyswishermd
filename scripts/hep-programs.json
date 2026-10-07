@@ -92,7 +92,7 @@
     "responseIntro": "Mild to moderate discomfort can be acceptable when movement stays controlled and symptoms return to your usual baseline by the next day.",
     "green": "Mild discomfort, no new limp, and the knee is back to its usual baseline by the following morning.",
     "yellow": "Pain, swelling, or limping is meaningfully worse later that day or remains worse the next morning. Reduce depth, load, repetitions, or aerobic time.",
-    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a new or rapidly worsening painful, hot, red, or swollen joint with or without fever, new one-sided calf swelling, true locking, rapidly increasing swelling, or inability to bear weight after trauma.",
+    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a new or rapidly worsening painful, hot, red, or swollen joint with or without fever, new one-sided calf swelling, true locking, rapid deformity, rapidly increasing swelling, or inability to bear weight after trauma.",
     "progression": [
       { "title": "Stage 1: establish tolerance", "text": "Use a comfortable range and the lower end of each repetition range. Prioritize smooth movement and symptoms that return to baseline by the next day." },
       { "title": "Stage 2: build strength", "text": "Reach the top of the repetition range, then lower the chair, raise the step, add a band or backpack, or slow the lowering phase." },
@@ -225,7 +225,7 @@
     "responseIntro": "Mild to moderate discomfort can be acceptable when technique remains controlled and pain, swelling, limping, and function return to your usual baseline by the next morning.",
     "green": "Mild discomfort, steady movement quality, no new limp, and the knee is back to its usual baseline by the following morning.",
     "yellow": "Pain, swelling, limping, or stair function is meaningfully worse later that day or remains worse the next morning. Reduce load, range, repetitions, step height, or aerobic time.",
-    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a new or rapidly worsening painful, hot, red, or swollen joint with or without fever, new one-sided calf swelling, true locking, rapidly increasing swelling, or inability to bear weight after trauma.",
+    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a new or rapidly worsening painful, hot, red, or swollen joint with or without fever, new one-sided calf swelling, true locking, rapid deformity, rapidly increasing swelling, or inability to bear weight after trauma.",
     "progression": [
       { "title": "Stage 1: practice the movements with control", "text": "Start at the lower dose with support and a comfortable range. Stop each set while you could still complete two or three controlled repetitions rather than training to failure." },
       { "title": "Stage 2: add one strength variable", "text": "First reach the upper repetition range. Then add a small amount of resistance, range, step height, or single-leg demand while the next-morning response stays stable." },
@@ -303,7 +303,7 @@
         "name": "Sit to stand or shallow squat",
         "dose": "3 sets of 8 to 15 repetitions",
         "frequency": "3 days per week",
-        "how": "Use a chair as a target. Keep the feet grounded, knees tracking over the middle toes, and lower only as far as you can control.",
+        "how": "For a squat, stand in front of a stable chair, lower toward it only as far as you can control, then stand back up. For sit to stand, begin seated, lean forward, stand, and lower back with control. Keep the feet grounded and the knees moving comfortably toward the middle toes.",
         "easier": "Use a higher chair or a shallower squat.",
         "harder": "Lower the chair, deepen the squat gradually, or hold light weight."
       },
@@ -335,7 +335,7 @@
     "responseIntro": "Keep discomfort mild, approximately 3 out of 10 or less, without limping or changing how you move. Symptoms should not be meaningfully worse the following morning. These numbers are practical monitoring guides, not validated universal thresholds.",
     "green": "Mild front-of-knee discomfort, normal movement quality, and no meaningful increase the next morning.",
     "yellow": "Pain rises above mild, mechanics change, or stairs and squatting are worse the next day. Reduce knee depth, step height, resistance, or total repetitions.",
-    "red": "Stop and seek same-day urgent assessment for a kneecap dislocation, true locking, rapid swelling, inability to bear weight, or a new painful, hot, red, or swollen joint with or without fever.",
+    "red": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Stop and seek same-day urgent assessment for a kneecap dislocation, true locking, loss of knee extension, rapidly worsening pain, rapid swelling, inability to bear weight, or a new painful, hot, red, or swollen joint with or without fever.",
     "progression": [
       { "title": "Stage 1: calm the workload", "text": "Temporarily reduce provocative running, jumping, deep squatting, or hill volume while keeping general activity within tolerance." },
       { "title": "Stage 2: build repetitions", "text": "Work toward the upper repetition range with controlled knee alignment before increasing depth, step height, band resistance, or weight." },
@@ -419,7 +419,7 @@
         "name": "Band external rotation",
         "dose": "2 to 3 sets of 8 to 15 repetitions",
         "frequency": "3 days per week",
-        "how": "Keep the elbow at your side with a small towel between the arm and body. Rotate the forearm outward without twisting the trunk, then return slowly.",
+        "how": "Secure one end of a light band to a stable anchor at elbow height on the opposite side of your body from the working arm. Stand with that side toward the anchor and hold the free end in the working hand. Keep the elbow bent about 90 degrees at your side with a small towel between the arm and body. Rotate the forearm outward against the band without twisting the trunk, then return slowly.",
         "easier": "Use a lighter band or a shorter range.",
         "harder": "Use a stronger band or slow the return for three seconds."
       },
@@ -429,7 +429,7 @@
         "frequency": "3 days per week",
         "how": "Anchor the band in front of you. Pull the elbows back while keeping the shoulders away from the ears, pause, then return with control.",
         "easier": "Stand closer to the anchor or use a lighter band.",
-        "harder": "Increase band resistance or use a staggered stance."
+        "harder": "Increase band resistance while keeping the trunk steady and the return controlled."
       },
       {
         "name": "Arm raise slightly forward from the side",
@@ -451,7 +451,7 @@
     "responseIntro": "Manageable discomfort is acceptable when it settles within a few hours and the shoulder is not worse the next morning.",
     "green": "Mild discomfort that settles within a few hours, with stable sleep and daily function the next morning.",
     "yellow": "Night pain, reaching, or daily function is worse the next day. Reduce range, resistance, repetitions, or the number of exercises.",
-    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for sudden loss of strength, inability to raise the arm after trauma, deformity, new or worsening numbness, or a new painful, hot, red, or swollen shoulder with or without fever.",
+    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for sudden loss of strength, rapidly progressive weakness, inability to raise the arm after trauma, deformity, new or worsening numbness, feeling seriously unwell, or a new painful, hot, red, or swollen shoulder with or without fever.",
     "progression": [
       { "title": "Stage 1: restore comfortable motion", "text": "Use assisted motion and low resistance. Avoid repeatedly testing the most painful range during the day." },
       { "title": "Stage 2: build cuff and shoulder blade strength", "text": "Reach the top repetition range, then progress range first when appropriate, followed by band resistance or light external weight." },
@@ -568,7 +568,7 @@
     "responseIntro": "Some tendon discomfort during loading can be acceptable when mechanics remain controlled and next-morning pain or stiffness does not increase. Complete rest is usually unnecessary.",
     "green": "Tolerable discomfort, good heel-raise control, and morning pain or stiffness that is unchanged or improving.",
     "yellow": "Next-morning pain or stiffness increases, the heel-raise height falls, or running and strengthening together create a cumulative flare. Reduce load or total contacts.",
-    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for new one-sided calf swelling, a sudden pop, new bruising, a palpable gap, or inability to push off.",
+    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for new one-sided calf warmth or swelling, a sudden pop, new bruising, a palpable gap, or inability to push off or perform a heel raise, or acute major swelling.",
     "progression": [
       { "title": "Stage 1: establish a tolerable load", "text": "Use two-leg slow raises and optional isometric holds. Continue general activity within pain tolerance rather than resting completely." },
       { "title": "Stage 2: increase tendon strength", "text": "Progress from two legs to one leg, then add external load. Choose a resistance that makes the final repetitions challenging while controlled." },
@@ -631,7 +631,7 @@
     ],
     "proof": [
       { "strong": "5 movements", "span": "isometric and progressive strength" },
-      { "strong": "3 days", "span": "of loading each week" },
+      { "strong": "3 days", "span": "of progressive strength work each week" },
       { "strong": "8 weeks", "span": "for an initial structured trial" }
     ],
     "fitIntro": "This starter program is intended for adults who have already been evaluated and told gluteal tendinopathy is the likely diagnosis. It is not a self-diagnosis tool, a postoperative protocol, or a substitute for individualized care.",
@@ -689,7 +689,7 @@
     "responseIntro": "Some discomfort can be acceptable when it does not increase night pain or next-day symptoms. Night pain is a useful signal that total walking, standing, and exercise load may be too high.",
     "green": "Mild, controlled discomfort with stable sleep and no meaningful increase in next-day lateral hip pain.",
     "yellow": "Night pain or next-day walking pain increases. Reduce resistance, range, repetitions, long walks, hills, or sustained single-leg positions.",
-    "red": "Stop and seek same-day urgent assessment for new inability to bear weight, rapidly progressive weakness, sudden or severe deep groin pain with major stiffness, fever or systemic illness with a painful hip, or new neurologic symptoms. Arrange prompt evaluation for chronic deep groin pain with major stiffness.",
+    "red": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Stop and seek same-day urgent assessment for new inability to bear weight, rapidly progressive weakness, a new or rapidly worsening pronounced hip drop or limp, sudden or severe deep groin pain with major stiffness, fever or systemic illness with a painful hip, or new neurologic symptoms. Arrange prompt evaluation for chronic deep groin pain with major stiffness.",
     "progression": [
       { "title": "Stage 1: reduce compression", "text": "Avoid lying directly on the painful side, crossing the legs, and hanging on one hip. Use a pillow between the knees when lying on the other side." },
       { "title": "Stage 2: build lower-limb strength", "text": "Progress bridge, sit-to-stand, sidestep, and standing abduction by repetitions, band resistance, chair height, or external load." },
@@ -805,7 +805,7 @@
     "responseIntro": "Mild discomfort is acceptable, but not sharp pain, giving way, increased limping, or increased swelling later that day or the following morning.",
     "green": "Mild discomfort, improving walking, and swelling that is stable or decreasing by the next morning.",
     "yellow": "Limping, swelling, or pain is worse later that day or the next morning. Reduce walking volume, exercise range, resistance, or balance difficulty.",
-    "red": "Stop. A newly cold, pale, blue, or numb foot after injury requires immediate emergency evaluation. Seek same-day urgent assessment for deformity, signs of Achilles rupture, inability to take four steps, sharp bony pain, pain or tenderness at the proximal fibula, marked midfoot pain or swelling, bruising on the sole of the foot, or pain above the ankle. Arrange a prompt assessment for repeated giving way.",
+    "red": "Stop. A newly cold, pale, blue, or numb foot after injury requires immediate emergency evaluation. Seek same-day urgent assessment for deformity, signs of Achilles rupture, inability to take four steps, sharp bony pain, tenderness at the posterior edge or tip of either ankle bone, tenderness at the base of the fifth metatarsal or navicular, pain or tenderness at the proximal fibula, marked midfoot pain or swelling, bruising on the sole of the foot, or pain above the ankle. Arrange a prompt assessment for repeated giving way.",
     "progression": [
       { "title": "Stage 1: protect and restore motion", "text": "Use an appropriate brace or tape, progressive weight bearing, and frequent comfortable motion. Avoid prolonged immobilization unless directed for a severe sprain." },
       { "title": "Stage 2: rebuild strength and balance", "text": "Progress eversion, heel raises, and single-leg balance. Increase challenge only when walking and next-day swelling remain stable." },
@@ -938,7 +938,7 @@
     "responseIntro": "A small amount of familiar discomfort can be acceptable when it stays controlled, does not increase across repetitions, and returns to baseline by the next morning. These numbers are practical monitoring guides, not validated universal thresholds.",
     "green": "Pain stays between 0 and 3 out of 10, grip remains steady, and symptoms return to baseline by the following morning.",
     "yellow": "Pain reaches 4 to 5 out of 10, grip feels weaker afterward, or the elbow remains worse the next morning. Return to the prior tolerated dose or reduce one or more loading variables and add recovery time.",
-    "red": "Stop and seek prompt assessment for sharp, electric, or rapidly increasing pain, new numbness or weakness, major swelling, loss of motion, or symptoms that worsen week to week. Use same-day urgent care for rapidly progressive weakness or a new painful, hot, red, or swollen elbow with or without fever.",
+    "red": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Stop and seek prompt assessment for sharp, electric, or rapidly increasing pain, new numbness or weakness, major swelling, loss of motion, or symptoms that worsen week to week. Use same-day urgent care for a sudden pop with bruising or deformity, rapidly increasing pain, marked or progressive weakness, or a new painful, hot, red, or swollen elbow with or without fever.",
     "progression": [
       {
         "title": "Stage 1: settle symptoms",
@@ -1130,7 +1130,7 @@
     "responseIntro": "A small amount of familiar tendon discomfort can be acceptable when it stays controlled and returns to baseline by the next morning. Neurologic symptoms or throwing-related instability are not acceptable loading symptoms. These numbers are practical monitoring guides, not validated universal thresholds.",
     "green": "Pain stays between 0 and 3 out of 10, grip remains steady, and the elbow returns to baseline by the following morning.",
     "yellow": "Pain reaches 4 to 5 out of 10 or remains worse the next morning. Return to the prior tolerated dose or reduce one or more loading variables and allow more recovery.",
-    "red": "Stop and seek prompt assessment for ring-finger or small-finger numbness, hand weakness, snapping, sharp pain, major swelling, or pain or a feeling of instability during throwing. Use same-day urgent care for progressive weakness or a new painful, hot, red, or swollen elbow with or without fever.",
+    "red": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Stop and seek prompt assessment for ring-finger or small-finger numbness, hand weakness, snapping, sharp pain, major swelling, or pain or a feeling of instability during throwing. Use same-day urgent care for a sudden pop with bruising or deformity, marked or progressive hand weakness, acute throwing-related instability, or a new painful, hot, red, or swollen elbow with or without fever.",
     "progression": [
       {
         "title": "Stage 1: settle symptoms",
@@ -1305,7 +1305,7 @@
     "responseIntro": "Gentle pulling or mild discomfort can be acceptable when it settles promptly and does not meaningfully increase rest pain, night pain, or next-morning stiffness.",
     "green": "The mobility dose settles promptly, sleep is not worse, and the shoulder is no stiffer the next morning.",
     "yellow": "Pain stays elevated later that day, sleep worsens, or motion is worse the next morning. Reduce range, hold time, repetitions, or session frequency.",
-    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for sudden weakness, new numbness, traumatic loss of function, or a new painful, hot, red, or swollen shoulder with or without fever.",
+    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for sudden weakness, rapidly progressive weakness, new or worsening numbness, traumatic loss of function, or a new painful, hot, red, or swollen shoulder with or without fever.",
     "progression": [
       { "title": "Stage 1: when rest and night pain are high", "text": "Use brief, comfortable table slides and assisted outward rotation. Avoid prolonged or forceful stretching." },
       { "title": "Stage 2: as pain becomes less constant", "text": "Increase hold duration gradually and add assisted elevation and active wall slides." },
@@ -1377,7 +1377,7 @@
     "assessFirst": "Diffuse pain around or behind the kneecap, substantial joint swelling, locking, instability, acute trauma, pain at the tibial tubercle or growth center, fat-pad pain, or symptoms suggesting inflammatory disease.",
     "redFlags": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for new one-sided calf swelling, a sudden pop with inability to perform a straight-leg raise, a palpable tendon defect, rapid traumatic swelling, inability to bear weight, a locked knee, or a new painful, hot, red, or swollen joint with or without fever.",
     "programHeading": "Build strength before progressing to jumping.",
-    "programIntro": "Do not begin every exercise at full volume. Begin with the isometric on higher-irritability days or two slow-strength movements on nonconsecutive loading days. Once slow strength begins, use the isometric on alternate or recovery days, or as a brief warm-up only when it reliably helps. Count isometrics, strength, jumping, practice, and competition together when judging the next-morning response. Add low-level jumping only after slow loading is controlled, baseline symptoms are stable, and there is at least forty-eight hours between early high tendon-load sessions.",
+    "programIntro": "Do not begin every exercise at full volume. Begin with the isometric on higher-irritability days or two slow-strength movements on nonconsecutive loading days. Once slow strength begins, use the isometric on alternate or recovery days, or as a brief warm-up only when it reliably helps. Count isometrics, strength, jumping, practice, and competition together when judging the next-morning response. Add low-level jumping only after slow loading is controlled, baseline symptoms are stable, and there is at least forty-eight hours between early high tendon-load sessions. When jumping begins, combine a low-volume jump exposure with selected strength work or replace part of an earlier loading day. Do not simply add two new demanding tendon days; preserve the planned recovery between total high-load sessions and individualize the load with your clinician.",
     "frequency": "Strength 3 days per week; jumping initially 2 days per week",
     "equipment": "Wall, chair, backpack or weights, optional band or gym equipment; use a Spanish-squat strap only with a fixed, load-rated anchor",
     "checkpoint": "Adjust at 4 to 6 weeks; judge the strength trial near 12 weeks",
@@ -1387,7 +1387,7 @@
         "name": "Spanish squat or wall-sit isometric",
         "dose": "5 holds of 30 to 45 seconds with 1 to 2 minutes of rest",
         "frequency": "Daily in the initial isometric stage; on alternate or recovery days once slow strength begins",
-        "how": "Use a wall sit unless a clinician has shown you a secure Spanish-squat setup using a purpose-built strap attached to a fixed, load-rated anchor. Do not attach an improvised strap to furniture or a door handle. Keep the trunk tall and hold at a tolerable knee angle.",
+        "how": "For a wall sit, place your back against a wall with your feet about hip-width apart and far enough forward to keep them planted as you slide into a shallow, tolerable knee bend. Keep your back supported, breathe normally, and slide back up to finish. Use a Spanish squat only if a clinician has shown you a secure setup using a purpose-built strap attached to a fixed, load-rated anchor. Do not attach an improvised strap to furniture or a door handle. Hold at a tolerable knee angle.",
         "easier": "Use a shorter hold, shallower knee angle, or bilateral wall sit.",
         "harder": "Increase hold time, knee angle, or resistance without worsening the next-morning tendon test."
       },
@@ -1411,7 +1411,7 @@
         "name": "Resisted knee extension",
         "dose": "3 sets of 8 to 15 repetitions",
         "frequency": "2 to 3 days per week",
-        "how": "Use a band, ankle weight, or machine. Straighten and lower the knee slowly without snapping into extension.",
+        "how": "Sit in a stable chair with the thigh supported. Use an ankle weight, a knee-extension machine, or a band around the ankle secured behind you according to its manufacturer. Straighten and lower the knee slowly through a tolerable arc without snapping into extension. Do not improvise an unsafe anchor.",
         "easier": "Use lighter resistance or a shorter tolerable arc.",
         "harder": "Increase resistance and work gradually toward a heavier 6 to 8 repetition range."
       },
@@ -1435,7 +1435,7 @@
     "responseIntro": "A repeatable load test, such as a decline squat, can help track the tendon. Mild pain can be acceptable when movement stays normal and the tendon returns to its usual baseline by the next morning. These numbers are practical monitoring guides, not validated universal thresholds.",
     "green": "Pain stays near 3 out of 10 or less, movement remains normal, and the tendon is back to its usual baseline the next morning.",
     "yellow": "Pain rises across sets, landing strategy changes, or the standard load test is meaningfully worse the next morning. Reduce weight, range, jump intensity, or contact count.",
-    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a sudden sharp pain or pop, new knee-extension weakness, rapid swelling, or inability to perform a straight-leg raise.",
+    "red": "Stop. Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Seek same-day urgent assessment for a sudden sharp pain or pop, new knee-extension weakness, rapid swelling, or inability to perform a straight-leg raise. Seek same-day urgent assessment for new one-sided calf swelling, a palpable tendon defect, inability to bear weight, a locked knee, or a new painful, hot, red, or swollen joint with or without fever.",
     "progression": [
       { "title": "Stage 1: control sudden increases in load", "text": "Reduce the most provocative jump, sprint, or competition volume while maintaining tolerable conditioning and skill work." },
       { "title": "Stage 2: build slow strength", "text": "Progress from isometrics to slow controlled strength exercises. Over time the exercises should become meaningfully heavy while the tendon returns to its usual baseline by the next day." },
@@ -1504,7 +1504,7 @@
     ],
     "proof": [
       { "strong": "6 movements", "span": "aerobic activity, motion, and strength" },
-      { "strong": "3 days", "span": "of strength work each week" },
+      { "strong": "2 to 3 days", "span": "of strength work each week" },
       { "strong": "6 weeks", "span": "to compare function and consistency" }
     ],
     "fitIntro": "This starter program is intended for adults who have already been evaluated and told persistent or recurrent nonspecific low back pain is the likely diagnosis. It is not for a new unexplained episode with warning signs, a postoperative protocol, pregnancy-specific pain, or a known fracture, infection, cancer, inflammatory disorder, or progressive neurologic condition.",
@@ -1570,7 +1570,7 @@
     "responseIntro": "Temporary back discomfort or muscle soreness can occur with exercise. Continue when movement remains controlled and symptoms settle to the usual baseline by the next morning. There is no universal pain cutoff. New or progressively spreading leg symptoms matter more than a brief, familiar back ache.",
     "green": "Mild, familiar discomfort, normal movement, and symptoms that settle during recovery and return to the usual baseline by the next morning.",
     "yellow": "Pain steadily rises across sets, sleep or function is meaningfully worse, or the flare remains worse the next morning. Reduce one variable such as range, load, repetitions, time, or frequency.",
-    "red": "Stop and seek emergency care for new loss of bladder or bowel control, inability to urinate, saddle numbness, severe or rapidly progressive leg weakness, or a newly cold, pale, blue, or profoundly numb leg. Seek same-day urgent assessment for fever with severe back pain, major trauma with inability to walk, new leg or foot weakness, worsening walking, or new severe focal back pain after even minor trauma when fracture risk is increased. Stop the current exercise and arrange prompt assessment for new or progressively worsening leg pain, numbness, tingling, or weakness.",
+    "red": "Call 911 for chest pain, trouble breathing, fainting, severe abdominal or chest pain, or another medical emergency. Stop and seek emergency care for new loss of bladder or bowel control, inability to urinate, saddle numbness, severe or rapidly progressive leg weakness, or a newly cold, pale, blue, or profoundly numb leg. Seek same-day urgent assessment for fever with severe back pain, major trauma with inability to walk, new leg or foot weakness, worsening walking, or new severe focal back pain after even minor trauma when fracture risk is increased. Stop the current exercise and arrange prompt assessment for new or progressively worsening leg pain, numbness, tingling, or weakness. Seek same-day urgent assessment for major trauma with severe pain, recent serious infection with severe back pain, or severe back pain in someone who is immunosuppressed or uses injected drugs.",
     "progression": [
       { "title": "Stage 1: restore regular movement", "text": "Use short aerobic bouts, a comfortable movement option, and the easiest strength variations. Avoid prolonged bed rest and change positions as needed." },
       { "title": "Stage 2: build general strength and endurance", "text": "Reach the upper repetition range, then add a set, resistance, range, or aerobic time. No special core exercise is required if another form of strength work is more comfortable and sustainable." },
@@ -1706,7 +1706,7 @@
     "responseIntro": "Some temporary discomfort can occur when beginning exercise. Mild, controlled aching may be acceptable when movement remains steady and symptoms return to the usual baseline by the following morning. A sharp or catching groin pain is a reason to reduce the range or stop that movement.",
     "green": "Mild discomfort or muscle effort, no new limp or loss of balance, and pain, sleep, and daily function are back to the usual baseline by the next morning.",
     "yellow": "Pain, limping, sleep, or walking is meaningfully worse later that day or remains worse the next morning. Reduce the most recently changed variable, such as range, resistance, repetitions, step height, or aerobic time, then retry the easier dose.",
-    "red": "Stop and seek urgent assessment for sudden severe groin or hip pain with inability to bear weight; a new hot, red, or markedly swollen joint, with or without fever or feeling acutely unwell; rapidly progressive weakness or neurologic symptoms; or inability to bear weight after trauma.",
+    "red": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Stop and seek same-day urgent assessment for sudden severe groin or hip pain with inability to bear weight; a new hot, red, or markedly swollen joint, with or without fever or feeling acutely unwell; rapidly progressive weakness or neurologic symptoms; inability to bear weight or visible deformity after trauma; or new one-sided leg swelling.",
     "progression": [
       { "title": "Stage 1: establish tolerance", "text": "Use comfortable motion, one strength set, substantial hand support, and 5 to 10 minutes of aerobic activity. Focus on steady movement without a new limp." },
       { "title": "Stage 2: build strength", "text": "Reach the upper repetition range, then add a second or third set. After that, change one variable such as chair height, band resistance, step height, or aerobic duration." },
@@ -1844,7 +1844,7 @@
     "responseIntro": "A home program should be conservative. Familiar discomfort up to about 3 out of 10 can be acceptable during strength work when there is no sharp or tearing sensation, limp, or compensation and symptoms return to baseline by the next morning. This is a practical rule, not a validated universal threshold. Sprinting should be pain-free.",
     "green": "Discomfort stays near 0 to 3 out of 10 during strength work, movement remains normal, and symptoms are no worse later that day or the next morning.",
     "yellow": "Pain rises across repetitions, exceeds 3 out of 10, alters movement, or remains meaningfully worse the next morning. Reduce range, load, repetitions, or running speed or volume and repeat the prior successful level after symptoms settle.",
-    "red": "Stop for a new pop or tearing sensation, rapidly increasing bruising or swelling, a palpable defect, marked weakness, buckling, inability to walk, or new neurologic symptoms. Stop sprinting with any hamstring pain and reassess before returning to high-speed progression.",
+    "red": "Call 911 for chest pain, trouble breathing, coughing blood, fainting, or a newly cold, pale, or numb leg. Stop the current exercise for a new pop or tearing sensation. Seek same-day sports-medicine or orthopedic assessment for a new pop followed by disabling pain, a palpable defect, marked weakness or buckling, inability to walk, rapidly increasing bruising or swelling, or new neurologic symptoms. Seek emergency assessment for rapidly escalating thigh pain with tense swelling, numbness, or weakness. Stop sprinting with any hamstring pain and reassess before returning to high-speed progression. New one-sided calf or whole-leg swelling, warmth, or redness also requires urgent assessment. Seek same-day sports medicine or orthopedic assessment for focal sit-bone pain in an adolescent.",
     "progression": [
       { "title": "Stage 1: restore comfortable movement and activation", "text": "Normalize walking and use heel digs, bilateral bridge, low-load trunk work, and tolerable cycling or other conditioning." },
       { "title": "Stage 2: build range and strength", "text": "Add sliders and hip hinges. Increase range, repetitions, and then resistance while monitoring the next-day response." },
@@ -1972,7 +1972,7 @@
     "responseIntro": "Pain monitoring is useful, but no validated universal numeric cutoff exists. Mild, tolerable discomfort can be acceptable when form remains normal, symptoms settle, and first-step pain the next morning is unchanged or better. Stretching should feel gentle and firm, never forced.",
     "green": "Discomfort stays mild, approximately 0 to 3 out of 10, without a limp and settles within several hours. First-step pain the next morning is unchanged or improving.",
     "yellow": "Pain reaches roughly 4 to 5 out of 10, changes gait, persists through the day, or first-step pain is meaningfully worse the next morning. Reduce strength load, repetitions, range, or complexity and return to bilateral or seated work.",
-    "red": "Stop for sharp, tearing, electric, or rapidly escalating pain; new bruising, swelling, weakness, numbness, inability to bear weight, or a red-flag feature. Seek emergency care now for a cold, pale, blue, or newly numb foot. Seek same-day urgent assessment for a new hot, red, or markedly swollen foot, with or without fever; an infected wound; a sudden pop with arch change; rapidly worsening neurologic symptoms; or new one-sided calf swelling.",
+    "red": "Call 911 for chest pain, trouble breathing, coughing blood, or fainting. Stop for sharp, tearing, electric, or rapidly escalating pain; new bruising, swelling, weakness, numbness, inability to bear weight, or a red-flag feature. Seek emergency care now for a cold, pale, blue, or newly numb foot. Seek same-day urgent assessment for a new hot, red, or markedly swollen foot, with or without fever; an open wound or suspected infection, especially with diabetes; a sudden tearing sensation or pop with bruising, weakness, or a change in arch shape; inability to bear weight after trauma; rapidly worsening neurologic symptoms; or new one-sided calf swelling.",
     "progression": [
       { "title": "Stage 1: settle the load spike", "text": "Reduce abrupt running, jumping, and prolonged-standing spikes, break up standing, and use comfortable footwear. Complete rest is usually unnecessary." },
       { "title": "Stage 2: build foot and calf capacity", "text": "Progress heel raises toward 3 sets of 8 to 12 every other day. Increase load before complexity and require a stable next-morning response." },
@@ -2108,7 +2108,7 @@
     "responseIntro": "Mild discomfort can be acceptable when movement stays controlled, there is no new limp, locking, or swelling, and the knee returns to its usual baseline by the next morning.",
     "green": "Mild discomfort, no new limp or catching, no increase in swelling, and the knee returns to its usual baseline by the following morning.",
     "yellow": "Pain, swelling, limping, catching, or temporary stiffness is meaningfully worse later that day or the next morning while full extension remains possible and there is no hard block. Reduce range, resistance, repetitions, step height, or walking time.",
-    "red": "Stop and obtain assessment for true locking, a new hard block or inability to fully straighten the knee, rapidly increasing swelling, recurrent giving way, inability to bear weight, a hot red joint, or new numbness or weakness.",
+    "red": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Stop and obtain assessment for true locking, a new hard block or inability to fully straighten the knee, rapidly increasing swelling, recurrent giving way, inability to bear weight, a hot red joint, or new numbness or weakness. Seek same-day urgent assessment for a newly locked knee, inability to bear weight after trauma, a new or rapidly worsening hot, red, or markedly swollen joint with or without fever, or new unexplained one-sided calf swelling.",
     "progression": [
       { "title": "Stage 1: restore motion and settle irritability", "text": "Use the lower exercise dose. Prioritize comfortable full extension, a nonlimping gait, and no accumulating swelling. Add 5 to 10 minutes of flat walking or easy cycling when tolerated." },
       { "title": "Stage 2: build strength and control", "text": "Reach the upper repetition range with controlled movement, then add a small amount of resistance, squat depth, or step height. Change one variable at a time." },
@@ -2261,7 +2261,7 @@
     "responseIntro": "Advanced training should leave the knee quiet enough to recover by the next morning. Mild pain can be acceptable, but do not progress impact when effusion, loss of motion, limping, or altered landing mechanics are present.",
     "green": "Pain is no more than mild, movement remains confident and controlled, there is no locking or giving way, no new swelling, fullness, or effusion, and motion and symptoms are back to baseline by the next morning.",
     "yellow": "Pain reaches a moderate level, temporary stiffness or catching increases, or movement quality changes while usual full extension remains possible. Reduce contacts, speed, depth, or resistance by about 25 to 50 percent and return to the last tolerated stage. If new swelling, fullness, effusion, or temporary extension stiffness appears, pause running, jumping, and cutting until baseline returns. Persistent or recurrent findings require reassessment.",
-    "red": "Stop and obtain assessment for true locking, a new hard block or inability to fully straighten the knee, rapid or recurrent effusion, repeated giving way, inability to bear weight, a new traumatic episode, unexpected numbness or weakness, or a hot red joint with or without fever.",
+    "red": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Stop and obtain assessment for true locking, a new hard block or inability to fully straighten the knee, rapid or recurrent effusion, repeated giving way, inability to bear weight, a new traumatic episode, unexpected numbness or weakness, or a hot red joint with or without fever. Seek same-day urgent assessment for a newly locked knee, inability to bear weight after trauma, a new or rapidly worsening hot, red, or markedly swollen joint with or without fever, or new unexplained one-sided calf swelling.",
     "progression": [
       {
         "title": "Stage 1: build the strength base and earn running",
@@ -2432,7 +2432,7 @@
         "name": "Bridge",
         "dose": "2 to 3 sets of 8 to 15 repetitions",
         "frequency": "2 to 3 days per week",
-        "how": "Press through both feet, lift the hips, pause, and lower slowly without arching the lower back.",
+        "how": "Lie on your back with both knees bent and feet flat, about hip-width apart. Press through both feet, lift the hips through a comfortable range, pause, and lower slowly without arching the lower back.",
         "easier": "Use a smaller lift.",
         "harder": "Add a band, stagger the feet, or progress to a controlled single-leg march."
       },
@@ -2456,7 +2456,7 @@
     "responseIntro": "Strength work may cause mild localized discomfort. Running should stop before sharp lateral pain builds or changes your stride. Use the later response and the next morning, not pain tolerance alone, to decide the dose.",
     "green": "No more than mild localized discomfort, running form remains normal, and symptoms return to baseline by the next morning.",
     "yellow": "Pain builds during the session, begins earlier than usual, changes running form, or remains worse the next morning. Shorten the run, reduce hills or speed, and decrease exercise range or load.",
-    "red": "Stop and seek assessment for joint swelling, locking, instability, inability to bear weight, focal bone pain, numbness, weakness, or symptoms that worsen despite substantial load reduction.",
+    "red": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Stop and seek assessment for joint swelling, locking, instability, inability to bear weight, focal bone pain, numbness, weakness, or symptoms that worsen despite substantial load reduction. Seek same-day urgent assessment after major trauma, for inability to bear weight, or for a new or rapidly worsening hot, red, or markedly swollen joint with or without fever.",
     "progression": [
       { "title": "Stage 1: find a tolerable training level", "text": "Reduce the most provocative variable, such as run duration, downhill running, speed, consecutive days, or cambered surfaces. Keep running below the symptom threshold when possible, or use tolerable cycling, swimming, or elliptical work." },
       { "title": "Stage 2: build multiplanar strength", "text": "Complete strength work two to three days weekly for at least four to eight weeks. Reach the upper repetition or hold range, then add resistance or single-leg demand while the next-morning response remains stable." },
@@ -2468,7 +2468,8 @@
       "Full knee motion and no joint swelling, locking, or instability.",
       "The strength session is controlled and symptoms return to baseline the next morning.",
       "Ten controlled low step-downs per side without escalating lateral pain.",
-      "You understand how to stop before pain changes your stride."
+      "You understand how to stop before pain changes your stride.",
+      "These are practical starting benchmarks, not validated ITBS clearance tests. Your clinician may adjust them to your presentation and goals."
     ],
     "evaluation": "Schedule a reassessment when the diagnosis is uncertain, symptoms worsen, impact pain begins progressively earlier, or there is no meaningful improvement after six to eight weeks of consistent load adjustment and strength work.",
     "faqs": [
@@ -2541,7 +2542,7 @@
         "frequency": "2 to 3 days per week",
         "how": "Sit with the heel supported and loop a band around the forefoot, securing the other end toward the opposite side. Keep the knee and thigh still as you move the forefoot outward and gently turn the sole outward through a comfortable range. Return over about three seconds without rolling the whole leg.",
         "easier": "Use a lighter band or four holds of 20 to 30 seconds without movement.",
-        "harder": "Choose a heavier band, a slower return, or side-lying eversion with a light ankle weight. Change one variable after several stable sessions; keep the motion controlled without snapping or giving way."
+        "harder": "Choose a heavier band or a slower return. Change one variable after several stable sessions; keep the motion controlled without snapping or giving way."
       },
       {
         "name": "Heel raise",
@@ -2579,7 +2580,7 @@
     "responseIntro": "Mild discomfort can be acceptable when technique remains stable, there is no snapping or giving way, and symptoms return to their usual baseline by the next morning.",
     "green": "Mild discomfort, stable technique, no snapping or giving way, and symptoms return to their usual baseline by the next morning.",
     "yellow": "Pain, swelling, limping, or fatigue is meaningfully worse later that day or the next morning without snapping or giving way. Reduce range, resistance, repetitions, steps, or terrain by about 25 to 50 percent and rebuild.",
-    "red": "Stop for sharp pain, a pop, tendon snapping or displacement, new weakness, giving way, numbness, marked swelling, or inability to bear weight. Obtain an assessment.",
+    "red": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Stop for sharp pain, a pop, tendon snapping or displacement, new weakness, giving way, numbness, marked swelling, or inability to bear weight. Seek same-day urgent assessment for inability to bear weight after trauma, visible deformity, rapidly increasing swelling, a hot red swollen ankle or foot with or without fever, a wound with spreading redness, or severe unrelenting pain. Arrange prompt assessment for a new pop with weakness, repeated snapping or tendon displacement, recurrent giving way, new numbness or foot drop, focal bone pain, or progressive rest or night pain.",
     "progression": [
       { "title": "Stage 1: settle and reload", "text": "Reduce hills, cambered roads, trail running, and cutting. Use isometric or light eversion, double-leg heel raises, supported balance, and level activity." },
       { "title": "Stage 2: build capacity", "text": "Progress to moving eversion, single-leg heel raises, step-downs, and dynamic balance. Add one variable only after several stable sessions." },
@@ -2704,7 +2705,7 @@
     "responseIntro": "Establish a repeatable daily step baseline. If walking is provocative, temporarily use cycling or swimming. Increase steps, pace, hills, or running one variable at a time while monitoring gait, push-off, swelling, and foot shape.",
     "green": "Mild discomfort, normal gait and push-off, no visible worsening of arch or heel position, and symptoms return to baseline by the next morning.",
     "yellow": "Medial ankle swelling, limping, walking tolerance, or next-morning pain is meaningfully worse. Reduce resistance, heel-raise range, repetitions, or daily steps by about 25 to 50 percent.",
-    "red": "Stop for a pop, sudden weakness, inability to perform a heel raise, new or progressive arch collapse, focal bone pain, numbness, hot red swelling, or inability to bear weight. Obtain an assessment.",
+    "red": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Stop for a pop, sudden weakness, inability to perform a heel raise, new or progressive arch collapse, focal bone pain, numbness, hot red swelling, or inability to bear weight. Seek same-day urgent assessment for inability to bear weight after trauma, visible or rapidly progressive deformity, a hot red markedly swollen foot with or without fever, especially with diabetes or reduced sensation, a wound with spreading redness, or severe unrelenting pain. Arrange prompt evaluation for a pop with sudden loss of push-off, new arch collapse, inability to perform a heel raise, rapidly increasing weakness, focal navicular bone pain, new numbness, or progressive rest or night pain.",
     "progression": [
       { "title": "Stage 1: reduce overload and establish support", "text": "Track daily steps. Consider supportive footwear or clinician-directed arch support. Use banded adduction, seated or double-leg heel raises, and supported balance." },
       { "title": "Stage 2: build tendon and calf capacity", "text": "Progress adduction resistance, double-leg to single-leg heel raises, and squat, split-squat, or hip-hinge strength. Advance only after several stable next mornings." },
@@ -2824,7 +2825,7 @@
     "responseIntro": "Begin with one set when the thumb is irritable. Mild discomfort can be acceptable when movement remains controlled and symptoms return to their usual baseline by the next morning.",
     "green": "Mild discomfort up to about 3 out of 10, controlled movement, and symptoms return to their usual baseline by the next morning.",
     "yellow": "Pain is sharper, technique changes, aching or swelling is meaningfully worse later in the day, or symptoms remain worse the following morning. Reduce resistance, range, repetitions, or pinch practice.",
-    "red": "Stop and seek assessment for rapidly increasing swelling, redness, heat, fever, new numbness, new deformity, sudden loss of strength, or severe pain after trauma.",
+    "red": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Stop. Seek same-day care for a rapidly worsening hot, red, or markedly swollen joint, fever, a wound near the joint, new deformity after trauma, or inability to use the hand after injury. Remove a brace immediately if it causes numbness or color change. Seek urgent assessment if a finger or hand remains numb, cold, pale, blue, or weak after the brace is removed. Arrange prompt assessment for new numbness, sudden loss of strength, severe pain after injury, or other new unexplained symptoms.",
     "progression": [
       { "title": "Stage 1: protect and move", "text": "Use joint-protection strategies and a comfortable orthosis during aggravating tasks when helpful. Perform rounded opposition and gentle web-space opening." },
       { "title": "Stage 2: build control", "text": "Add first dorsal interosseous work and light palmar-abduction isometrics. Reach the upper repetition range before adding resistance." },
@@ -2945,7 +2946,7 @@
     "responseIntro": "Start with the first two movements. Add loading only when resting pain and irritability are improving. Do not repeatedly use the Finkelstein or Eichhoff maneuver as a stretch; provoking a diagnostic position is not a required rehabilitation exercise.",
     "green": "Motion is pain free or produces only very mild discomfort, technique remains relaxed, and symptoms return to baseline by the next morning.",
     "yellow": "Pain becomes sharp, exceeds about 2 to 3 out of 10, increases with each repetition, or remains worse the next morning. Reduce effort, range, repetitions, or task exposure.",
-    "red": "Stop and arrange assessment for rapidly increasing swelling, redness, heat, new numbness, sudden weakness, triggering, deformity, or severe pain after trauma.",
+    "red": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Stop. Seek same-day care for a hot, red, rapidly swelling area, fever, an open wound, new deformity, major loss of motion after trauma, or inability to use the hand. Arrange prompt assessment for new numbness, sudden weakness, triggering, or severe pain after injury.",
     "progression": [
       { "title": "Stage 1: calm and maintain motion", "text": "Modify provoking tasks, use a comfortable orthosis selectively, and perform pain-free thumb and wrist motion. Do not strengthen through an irritable flare." },
       { "title": "Stage 2: introduce isometric load", "text": "Add light thumb-extension isometrics. Build hold duration before effort. The exercise should not create a sustained increase in thumb-side wrist pain." },
@@ -3080,7 +3081,7 @@
     "responseIntro": "Impact and sport work should not create growing swelling, repeated instability, altered landing, or a meaningful increase the next morning. Change one variable at a time: contacts, distance, speed, direction, decision-making demand, or practice volume.",
     "green": "No more than mild symptoms, no giving way, controlled landings and cuts, stable confidence, and no meaningful increase in pain or swelling by the next morning.",
     "yellow": "Swelling increases, confidence falls, landing or cutting changes, a limp appears, or symptoms remain worse the next morning. Reduce speed, cutting angle, contacts, or total practice exposure.",
-    "red": "Stop. Seek immediate emergency evaluation for a newly cold, pale, blue, or numb foot. Seek same-day urgent assessment for a new pop with weakness or loss of push-off, inability to bear weight, severe or rapidly increasing swelling, new bony pain after injury, pain above the ankle, locking, deformity, or new one-sided calf swelling, warmth, or redness. Arrange prompt reassessment for new sharp pain or repeated giving way rather than pushing through.",
+    "red": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Stop. Seek immediate emergency evaluation for a newly cold, pale, blue, or numb foot. Seek same-day urgent assessment for a new pop with weakness or loss of push-off, inability to bear weight, severe or rapidly increasing swelling, new bony pain after injury, pain above the ankle, locking, deformity, or new one-sided calf swelling, warmth, or redness. Arrange prompt reassessment for new sharp pain or repeated giving way rather than pushing through.",
     "progression": [
       { "title": "Stage 1: rebuild force and single-leg control", "text": "Progress loaded calf work, single-leg strength, and multidirectional balance while walking, stairs, and next-day swelling remain stable." },
       { "title": "Stage 2: add landing and repeated contacts", "text": "Begin hop-and-stick drills, then low repeated contacts. Require two green-response sessions before increasing distance, contacts, or direction." },
@@ -3213,7 +3214,7 @@
     "responseIntro": "A randomized trial of runners with patellofemoral pain used pain at 2 out of 10 or less during running, return to the pre-run level within an hour, and no increase the next morning. These trial monitoring rules are not validated universal clearance thresholds. Strength and impact should remain mild enough that movement stays normal.",
     "green": "No more than mild symptoms, normal running or landing mechanics, no swelling, and pain returns to the usual baseline within an hour and remains stable the next morning.",
     "yellow": "Pain builds, stride or landing changes, symptoms fail to settle, or stairs and squatting are worse the next morning. Reduce range, load, run time, contacts, speed, or total weekly exposure.",
-    "red": "Stop and seek assessment for rapid swelling, true locking, inability to straighten the knee, recurrent kneecap instability, inability to bear weight, focal bone pain, or a new painful, hot, red, or swollen joint with or without fever.",
+    "red": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Stop and seek assessment for rapid swelling, true locking, inability to straighten the knee, recurrent kneecap instability, inability to bear weight, focal bone pain, or a new painful, hot, red, or swollen joint with or without fever. Seek same-day urgent assessment for a kneecap dislocation, rapid traumatic swelling, inability to bear weight, true locking or inability to straighten the knee, or a new painful, hot, red, or swollen joint with or without fever.",
     "progression": [
       { "title": "Stage 1: earn the higher-load phase", "text": "Build loaded bilateral and single-leg strength with full functional motion, no meaningful swelling, and a stable next-morning response." },
       { "title": "Stage 2: restore easy running", "text": "Use flat run-walk intervals every other day. Build easy duration before frequency, then add hills or speed one variable at a time." },
@@ -3347,7 +3348,7 @@
     "responseIntro": "A published pain-monitoring model used a ceiling of 5 out of 10 during, after, and the next morning; this was not an ideal pain target or a return-to-sport test. For this self-guided plan, keep symptoms tolerable and movement controlled. Check symptoms and function the next morning and again over 24 to 72 hours after a demanding session. Next-morning worsening means do not increase the next exposure; recovery time is not permission to progress through a flare.",
     "green": "Activity pain remains tolerable, heel height and mechanics stay controlled, and next-morning pain, stiffness, and function remain at the usual baseline. After a demanding session, also check the delayed 24- to 72-hour response. Increase the next exposure only when symptoms and function are at the usual baseline and are not worsening from week to week.",
     "yellow": "Morning pain or stiffness increases, the delayed 24- to 72-hour response worsens, heel-rise height or rebound quality falls, or running plus strength creates a cumulative flare. Do not increase the next exposure. Allow recovery and repeat or reduce the previous dose; reduce total contacts, external load, running, or court exposure rather than changing everything at once. Progress only once symptoms and function have returned to the usual baseline.",
-    "red": "Stop and seek same-day urgent assessment for a sudden pop, new bruising, a palpable gap, loss of push-off, inability to heel raise, substantial acute swelling, or new one-sided calf warmth or swelling.",
+    "red": "Call 911 for chest pain, trouble breathing, fainting, or another medical emergency. Stop and seek same-day urgent assessment for a sudden pop, new bruising, a palpable gap, loss of push-off, inability to heel raise, substantial acute swelling, or new one-sided calf warmth or swelling.",
     "progression": [
       { "title": "Stage 1: establish heavy calf capacity", "text": "Progress straight-knee and bent-knee loading while walking and morning symptoms remain stable. External load should rise without loss of heel height." },
       { "title": "Stage 2: restore faster force", "text": "Add fast calf raises, then low bilateral and unilateral contacts. Allow 36 to 72 hours after higher tendon-load sessions when needed for recovery." },
