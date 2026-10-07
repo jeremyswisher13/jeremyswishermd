@@ -44,7 +44,7 @@ const guidedSessionSlugs = new Set([
     'rotator-cuff-pain-exercises',
     'patellofemoral-pain-exercises'
 ]);
-const guidedSessionFields = ['slug', 'title', 'fitIntro', 'frequency', 'equipment', 'checkpoint', 'goal', 'responseIntro', 'green', 'yellow', 'red', 'exercises'];
+const guidedSessionFields = ['slug', 'title', 'fitIntro', 'programIntro', 'frequency', 'equipment', 'checkpoint', 'goal', 'responseIntro', 'green', 'yellow', 'red', 'exercises'];
 const allowedProgramAudiences = new Set(['athlete']);
 const retiredSourceUrls = new Set([
     'https://www.massgeneral.org/assets/mgh/pdf/orthopaedics/sports-medicine/physical-therapy/rehabilitation-protocol-for-iliotibial-band-syndrome.pdf',

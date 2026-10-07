@@ -15,7 +15,7 @@ const guidedSessionSlugs = new Set([
 ]);
 
 function renderGuidedSessionData(program, canonical) {
-    const fields = ['slug', 'title', 'fitIntro', 'frequency', 'equipment', 'checkpoint', 'goal', 'responseIntro', 'green', 'yellow', 'red', 'exercises'];
+    const fields = ['slug', 'title', 'fitIntro', 'programIntro', 'frequency', 'equipment', 'checkpoint', 'goal', 'responseIntro', 'green', 'yellow', 'red', 'exercises'];
     const data = Object.fromEntries(fields.map(field => [field, program[field]]));
     data.canonical = canonical;
     // JSON remains data even if a future exercise cue contains an HTML delimiter.

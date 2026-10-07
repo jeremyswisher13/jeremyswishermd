@@ -46,7 +46,7 @@ test('simultaneous response edits converge and merged history retains only the n
 test('program validation preserves the published clinical prescription and rejects incomplete or unsupported programs', () => {
   const validated = validateProgramData(validProgram);
   assert.deepEqual(validated.exercises, program.exercises);
-  for (const field of ['fitIntro', 'frequency', 'equipment', 'checkpoint', 'goal', 'responseIntro', 'green', 'yellow', 'red']) {
+  for (const field of ['fitIntro', 'programIntro', 'frequency', 'equipment', 'checkpoint', 'goal', 'responseIntro', 'green', 'yellow', 'red']) {
     assert.equal(validated[field], program[field]);
   }
   assert.equal(validateProgramData({ ...validProgram, slug: 'ankle-sprain-return-to-sport-exercises' }), null);

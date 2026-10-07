@@ -97,6 +97,7 @@ test('only the three pilots launch a session and preserve every original exercis
     expect(data.frequency).toBe(program.frequency);
     await expect(session(page)).toContainText(program.frequency);
     await start(page);
+    await expect(session(page).locator('[data-hep-exercise]')).toContainText(program.programIntro);
     for (const exercise of program.exercises) {
       const card = session(page).locator('[data-hep-exercise]');
       await expect(card.locator('[data-hep-exercise-title]')).toHaveText(exercise.name);

@@ -16,7 +16,7 @@ const PILOT_SLUGS = new Set([
 ]);
 const RESPONSE_VALUES = new Set(NEXT_MORNING_RESPONSES.map(response => response.value));
 const PROGRAM_FIELDS = [
-    'title', 'fitIntro', 'frequency', 'equipment', 'checkpoint', 'goal',
+    'title', 'fitIntro', 'programIntro', 'frequency', 'equipment', 'checkpoint', 'goal',
     'responseIntro', 'green', 'yellow', 'red'
 ];
 const EXERCISE_FIELDS = ['name', 'dose', 'frequency', 'how', 'easier', 'harder'];
@@ -418,6 +418,7 @@ function initializeGuidedSession(root, program) {
         panel.replaceChildren();
         const heading = panelHeading('Your next session');
         paragraph(panel, program.title);
+        paragraph(panel, program.programIntro);
         paragraph(panel, 'Use the dose and frequency shown for each exercise. Skip exercises that are not due for this session or that your clinician has asked you to leave out.');
         panel.append(definitionList([
             ['Program frequency', program.frequency], ['Equipment', program.equipment],
@@ -443,7 +444,9 @@ function initializeGuidedSession(root, program) {
         card.setAttribute('data-hep-exercise', '');
         const heading = element('h3', '', exercise.name);
         heading.setAttribute('data-hep-exercise-title', '');
-        card.append(heading, definitionList([['Dose', exercise.dose], ['Frequency', exercise.frequency]]));
+        card.append(heading);
+        if (state.index === 0) paragraph(card, program.programIntro, 'hep-session-response-intro');
+        card.append(definitionList([['Dose', exercise.dose], ['Frequency', exercise.frequency]]));
         card.append(element('h4', '', 'How to do it'), element('p', '', exercise.how));
         card.append(element('h4', '', 'Easier option'), element('p', '', exercise.easier));
         const harder = element('details', 'hep-session-detail');
