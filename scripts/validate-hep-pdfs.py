@@ -11,6 +11,7 @@ import re
 import sys
 import unicodedata
 from pathlib import Path
+from datetime import date
 
 from pypdf import PdfReader
 
@@ -30,6 +31,25 @@ CONTACT_FOOTER = "Questions? Call UCLA Orthopedics at 310-319-1234."
 EMERGENCY_DISCLOSURE = (
     "General education only, not individualized medical advice. "
     "For a medical emergency, call 911."
+)
+SUMMARY_SLUGS = {
+    "knee-osteoarthritis-exercises", "rotator-cuff-pain-exercises",
+    "patellofemoral-pain-exercises",
+}
+SUMMARY_TITLE = "Exercise follow-up summary"
+SUMMARY_CAPTION = "Patient-recorded sessions and next-morning responses"
+SUMMARY_HEADERS = ("Date", "Done", "Skipped", "Next-morning response", "Notes / activity goal")
+SUMMARY_RESPONSES = {
+    "not-checked": "Not checked yet", "baseline": "Back to usual baseline",
+    "more-symptomatic": "Still more symptomatic", "not-sure": "Not sure",
+}
+SUMMARY_DISCLOSURE = (
+    "These entries are patient-recorded and have not been reviewed by a clinician. "
+    "Use the original program’s dose, frequency, and symptom rules."
+)
+SUMMARY_PRINT_NOTICE = (
+    "Printing or saving this summary does not send it to your doctor. "
+    "Bring it to follow-up if helpful."
 )
 
 
@@ -110,6 +130,153 @@ def validate_pdf(path, program, fields):
     return issues, len(pages)
 
 
+def load_summary_fixtures(path, programs):
+    """Read the separately seeded oracle, rather than scraped report text."""
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    if manifest.get("version") != 1 or manifest.get("syntheticOnly") is not True:
+        raise ValueError("expected version 1 synthetic-only summary fixtures")
+    summaries = manifest["summaries"]
+    if not isinstance(summaries, list) or len(summaries) != len(SUMMARY_SLUGS):
+        raise ValueError("expected one summary fixture for each of the three pilots")
+    if {summary["slug"] for summary in summaries} != SUMMARY_SLUGS:
+        raise ValueError("missing, duplicate, or unexpected summary pilot")
+    sources = {program["slug"]: program for program in programs}
+    for summary in summaries:
+        program = sources[summary["slug"]]
+        if summary["title"] != program["title"] or summary["canonical"] != f"https://jeremyswishermd.com/{program['slug']}/":
+            raise ValueError(f"{program['slug']}: fixture title or canonical differs from the source program")
+        if not isinstance(summary["goal"], str) or not 1 <= len(summary["goal"]) <= 140:
+            raise ValueError(f"{program['slug']}: invalid synthetic current goal")
+        if len(summary["entries"]) != 6:
+            raise ValueError(f"{program['slug']}: expected six included entries")
+        records = [*summary["entries"], summary["excludedEntry"]]
+        if len({entry["id"] for entry in records}) != 7:
+            raise ValueError(f"{program['slug']}: duplicate fixture entry ID")
+        record_dates = []
+        for index, entry in enumerate(records):
+            saved_date = date.fromisoformat(entry["date"])
+            record_dates.append(saved_date)
+            if saved_date.month != 10 or saved_date.year != 2026 or entry["displayDate"] != f"Oct {saved_date.day}, 2026":
+                raise ValueError(f"{program['slug']}: fixture display date does not match its saved date")
+            if not all(isinstance(entry[key], int) and not isinstance(entry[key], bool) and entry[key] >= 0 for key in ("completed", "skipped")):
+                raise ValueError(f"{program['slug']}: invalid fixture counts")
+            if entry["completed"] + entry["skipped"] != len(program["exercises"]):
+                raise ValueError(f"{program['slug']}: fixture counts do not total the prescribed exercises")
+            if entry["responseText"] != SUMMARY_RESPONSES[entry["response"]]:
+                raise ValueError(f"{program['slug']}: invalid fixture response label")
+            if not isinstance(entry["notes"], str) or not 1 <= len(entry["notes"]) <= 200:
+                raise ValueError(f"{program['slug']}: invalid synthetic notes")
+            if not isinstance(entry["goal"], str) or not 1 <= len(entry["goal"]) <= 140:
+                raise ValueError(f"{program['slug']}: invalid synthetic entry goal")
+            if index < 6 and (len(entry["notes"]) != 200 or len(entry["goal"]) != 140):
+                raise ValueError(f"{program['slug']}: included fixture entries must exercise maximum-length wrapping")
+            if not isinstance(entry["marker"], str) or entry["marker"] not in entry["notes"]:
+                raise ValueError(f"{program['slug']}: missing synthetic entry marker")
+        if record_dates != sorted(record_dates, reverse=True) or len(set(record_dates)) != 7:
+            raise ValueError(f"{program['slug']}: fixture must be newest first with distinct dates")
+        expected_files = [{"format": paper, "file": f"{program['slug']}-summary-{paper}.pdf"} for paper in ("Letter", "A4")]
+        if summary["files"] != expected_files:
+            raise ValueError(f"{program['slug']}: expected exactly Letter and A4 summary exports")
+        other_markers = [marker for other in summaries if other["slug"] != summary["slug"]
+                         for marker in [other["goal"], *[entry["marker"] for entry in other["entries"]]]]
+        if summary["otherProgramMarkers"] != other_markers:
+            raise ValueError(f"{program['slug']}: incomplete cross-program isolation oracle")
+    return [(summary, sources[summary["slug"]]) for summary in summaries]
+
+
+def summary_row_text(entry):
+    return " ".join((entry["displayDate"], str(entry["completed"]), str(entry["skipped"]),
+                     entry["responseText"], entry["notes"], f"Goal: {entry['goal']}"))
+
+
+def validate_summary_pdf(path, paper, summary, program):
+    issues = []
+    try:
+        reader = PdfReader(path)
+        raw_pages = [page.extract_text() or "" for page in reader.pages]
+    except Exception as error:
+        return [f"cannot read summary PDF: {error}"], 0
+    if not raw_pages:
+        return ["summary PDF contains no pages"], 0
+    pages = [normalize(raw) for raw in raw_pages]
+    full_text = "".join(pages)
+    for index, (page, text) in enumerate(zip(reader.pages, pages), 1):
+        width, height = (612, 792) if paper == "Letter" else (595.28, 841.89)
+        if abs(float(page.mediabox.width) - width) > 2 or abs(float(page.mediabox.height) - height) > 2:
+            issues.append(f"page {index}: unexpected {paper} paper dimensions {page.mediabox.width} x {page.mediabox.height}")
+        body = text.replace(normalize(SUMMARY_CAPTION), "")
+        for header in SUMMARY_HEADERS:
+            body = body.replace(normalize(header), "")
+        if not any(character.isalnum() for character in body):
+            issues.append(f"page {index}: blank or contains only repeated table headers")
+        if PAGE_NUMBER.findall(raw_pages[index - 1]):
+            issues.append(f"page {index}: original program page-number footer leaked into summary")
+
+    required = {
+        "summary title": SUMMARY_TITLE, "patient-recorded label": "Patient-recorded",
+        "source program title": program["title"], "latest entry count": "Latest 6 entries",
+        "current activity goal": f"Current activity goal: {summary['goal']}",
+        "table caption": SUMMARY_CAPTION, "patient-recorded disclosure": SUMMARY_DISCLOSURE,
+        "source program link": f"Program: {summary['canonical']}",
+        "print sharing notice": SUMMARY_PRINT_NOTICE,
+        **{f"column {index}": header for index, header in enumerate(SUMMARY_HEADERS, 1)},
+    }
+    for index, entry in enumerate(summary["entries"], 1):
+        required.update({
+            f"entry {index} date": entry["displayDate"],
+            f"entry {index} response": entry["responseText"],
+            f"entry {index} complete long notes": entry["notes"],
+            f"entry {index} complete activity goal": f"Goal: {entry['goal']}",
+        })
+    for label, value in required.items():
+        if normalize(value) not in full_text:
+            issues.append(f"missing or altered summary text: {label}")
+
+    # Source text is an isolation oracle: even a partially leaked original guide
+    # must fail, rather than only checking its prominent heading.
+    forbidden = {
+        "exercise running footer": MARGIN_FOOTER,
+        "original print header": "Evidence-informed home exercise program",
+        "six-week tracker": TRACKER_HEADING, "tracker columns": "Key sessions",
+        "daily tracker column": "Daily or most-day work",
+        "full guide footer": "Full guide and references:",
+        "clinical review footer": "Clinical review:",
+        "excluded seventh entry": summary["excludedEntry"]["marker"],
+        "excluded seventh notes": summary["excludedEntry"]["notes"],
+        "excluded seventh goal": summary["excludedEntry"]["goal"],
+        **{f"other program marker {index}": marker for index, marker in enumerate(summary["otherProgramMarkers"], 1)},
+        **{f"original guide {label}": value for label, value in expected_fields(program).items()
+           if label not in ("title", "canonical guide URL")},
+    }
+    for label, value in forbidden.items():
+        if normalize(value) in full_text:
+            issues.append(f"summary contains excluded text: {label}")
+
+    row_texts = [normalize(summary_row_text(entry)) for entry in summary["entries"]]
+    positions = []
+    for index, (entry, row) in enumerate(zip(summary["entries"], row_texts), 1):
+        position = full_text.find(row)
+        if position < 0:
+            issues.append(f"entry {index}: date, done/skipped counts, response, notes, and goal must remain in one ordered table row")
+        else:
+            positions.append(position)
+            if not any(row in page for page in pages):
+                issues.append(f"entry {index}: table row split across pages")
+        if full_text.count(normalize(entry["notes"])) != 1:
+            issues.append(f"entry {index}: expected its notes exactly once")
+    if len(positions) == 6 and positions != sorted(positions):
+        issues.append("summary table entries are not in newest-first order")
+    header_needles = [normalize(value) for value in (SUMMARY_CAPTION, *SUMMARY_HEADERS)]
+    first_page_needles = [normalize(value) for value in (SUMMARY_TITLE, program["title"], "Latest 6 entries", f"Current activity goal: {summary['goal']}")]
+    if row_texts[0] in full_text and not all(needle in pages[0] for needle in [*first_page_needles, *header_needles, row_texts[0]]):
+        issues.append("summary heading, caption, column headings, and first table row must stay together on the first page")
+    for index, page in enumerate(pages, 1):
+        if any(row in page for row in row_texts) and not all(normalize(header) in page for header in SUMMARY_HEADERS):
+            issues.append(f"page {index}: table rows missing intact repeated column headings")
+    # Long notes may legitimately need multiple pages. No arbitrary page limit.
+    return issues, len(pages)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output_directory", type=Path, help="Directory containing every SLUG-Letter.pdf and SLUG-A4.pdf")
@@ -157,11 +324,29 @@ def main():
                 failures.append(f'care-page-control.pdf: page {index} incorrectly labeled as an exercise program')
     except Exception as error:
         failures.append(f'care-page-control.pdf: cannot read control PDF: {error}')
+    summary_file_count = summary_page_count = 0
+    summary_manifest = args.output_directory / "summary-manifest.json"
+    try:
+        summary_sources = load_summary_fixtures(summary_manifest, programs)
+    except (OSError, ValueError, KeyError, TypeError, AttributeError) as error:
+        failures.append(f"summary-manifest.json: cannot load synthetic summary fixtures: {error}")
+        summary_sources = []
+    for summary, program in summary_sources:
+        for exported in summary["files"]:
+            path = args.output_directory / exported["file"]
+            if not path.is_file():
+                failures.append(f"{path.name}: missing required summary PDF")
+                continue
+            issues, count = validate_summary_pdf(path, exported["format"], summary, program)
+            summary_file_count += 1
+            summary_page_count += count
+            failures.extend(f"{path.name}: {issue}" for issue in issues)
     if failures:
         print("\n".join(f"FAIL {failure}" for failure in failures), file=sys.stderr)
-        print(f"Failed: {len(failures)} issue(s); checked {file_count}/{len(programs) * 2} PDFs, {page_count} pages.", file=sys.stderr)
+        print(f"Failed: {len(failures)} issue(s); checked {file_count}/{len(programs) * 2} program PDFs ({page_count} pages), and {summary_file_count}/6 summary PDFs ({summary_page_count} pages).", file=sys.stderr)
         return 1
     print(f"Validated {file_count} PDFs for {len(programs)} programs in Letter and A4 ({page_count} pages): complete source text, intact exercises/stages, attached headings, tracker/footer, paper sizes, page numbering, and a non-exercise footer control.")
+    print(f"Validated {summary_file_count} synthetic follow-up summary PDFs ({summary_page_count} pages): latest six entries, dates/counts/responses, complete long notes/goals, newest-first intact table rows, attached/repeated headings, paper sizes, no blank pages, and isolation from excluded entries, other programs, and the original guides.")
     return 0
 
 

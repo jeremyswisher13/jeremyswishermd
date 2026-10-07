@@ -1,0 +1,601 @@
+/* Guided home exercise sessions. Loaded only for the three pilot programs. */
+.hep-session {
+    max-width: 700px;
+    margin: clamp(40px, 5vw, 64px) 0;
+    color: var(--color-text);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    line-height: 1.65;
+    scroll-margin-top: 104px;
+}
+
+.hep-session[hidden],
+.hep-session [hidden] {
+    display: none !important;
+}
+
+.hep-session .hep-session-shell {
+    min-width: 0;
+    padding: clamp(24px, 3vw, 34px);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.32);
+}
+
+.hep-session .hep-session-header {
+    margin-bottom: 26px;
+}
+
+.hep-session .hep-session-eyebrow {
+    margin: 0 0 10px;
+    color: var(--color-primary-dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.hep-session h2,
+.hep-session h3 {
+    color: var(--color-dark);
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+}
+
+.hep-session h2 {
+    margin: 0 0 14px;
+    font-size: clamp(2rem, 3vw, 2.65rem);
+    line-height: 1.08;
+}
+
+.hep-session h3 {
+    margin: 0 0 14px;
+    font-size: clamp(1.65rem, 2.4vw, 2.1rem);
+    line-height: 1.15;
+    scroll-margin-top: 104px;
+}
+
+.hep-session h4 {
+    margin: 0 0 7px;
+    color: var(--color-dark);
+    font-size: 1rem;
+    font-weight: 650;
+    line-height: 1.4;
+}
+
+.hep-session p {
+    margin: 0 0 16px;
+}
+
+.hep-session .hep-session-intro {
+    max-width: 58ch;
+    margin: 0;
+    color: var(--color-text-light);
+    line-height: 1.65;
+}
+
+.hep-session .hep-session-panel {
+    min-width: 0;
+}
+
+.hep-session .hep-session-progress {
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-primary-dark);
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.hep-session .hep-session-progress p {
+    margin-bottom: 10px;
+}
+
+.hep-session progress {
+    display: block;
+    width: 100%;
+    height: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+    border: 0;
+    border-radius: 3px;
+    background: var(--color-border-light);
+    color: var(--color-primary);
+    accent-color: var(--color-primary);
+}
+
+.hep-session progress::-webkit-progress-bar {
+    border-radius: 3px;
+    background: var(--color-border-light);
+}
+
+.hep-session progress::-webkit-progress-value {
+    border-radius: 3px;
+    background: var(--color-primary);
+}
+
+.hep-session progress::-moz-progress-bar {
+    border-radius: 3px;
+    background: var(--color-primary);
+}
+
+.hep-session .hep-session-exercise {
+    min-width: 0;
+}
+
+.hep-session .hep-session-prescription {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 16px 24px;
+    margin: 0 0 23px;
+    padding: 17px 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.hep-session .hep-session-prescription > div {
+    min-width: 0;
+}
+
+.hep-session .hep-session-prescription dt {
+    margin-bottom: 5px;
+    color: var(--color-text-light);
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.hep-session .hep-session-prescription dd {
+    margin: 0;
+    color: var(--color-dark);
+    font-size: 1rem;
+    font-weight: 650;
+    line-height: 1.5;
+}
+
+.hep-session .hep-session-detail {
+    margin: 18px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border-light);
+}
+
+.hep-session .hep-session-detail p:last-child,
+.hep-session .hep-session-exercise > p:last-child {
+    margin-bottom: 0;
+}
+
+.hep-session .hep-session-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 12px;
+    margin-top: 25px;
+}
+
+.hep-session .hep-session-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 48px;
+    max-width: 100%;
+    padding: 11px 19px;
+    border: 1px solid var(--color-primary-dark);
+    border-radius: var(--radius-sm);
+    background: var(--color-primary-dark);
+    color: var(--color-text-inverse);
+    font: 600 1rem/1.45 var(--font-family);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.hep-session .hep-session-button:hover {
+    border-color: var(--color-dark);
+    background: var(--color-dark);
+}
+
+.hep-session .hep-session-button.is-secondary {
+    border-color: var(--color-border);
+    background: transparent;
+    color: var(--color-primary-dark);
+}
+
+.hep-session .hep-session-button.is-secondary:hover {
+    border-color: var(--color-primary-dark);
+    background: rgba(31, 108, 164, 0.06);
+}
+
+.hep-session .hep-session-button.is-quiet {
+    min-height: 44px;
+    padding: 9px 8px;
+    border-color: transparent;
+    background: transparent;
+    color: var(--color-primary-dark);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: rgba(22, 79, 121, 0.35);
+    text-underline-offset: 4px;
+}
+
+.hep-session .hep-session-button.is-quiet:hover {
+    background: rgba(31, 108, 164, 0.06);
+    text-decoration-color: currentColor;
+}
+
+.hep-session .hep-session-button:disabled {
+    opacity: 0.55;
+    cursor: default;
+}
+
+.hep-session :where(button, a, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 3px solid var(--color-primary-dark);
+    outline-offset: 4px;
+    box-shadow: 0 0 0 2px var(--color-bg);
+}
+
+.hep-session :where(h2, h3)[tabindex="-1"]:focus-visible {
+    outline: 2px solid var(--color-primary-dark);
+    outline-offset: 5px;
+}
+
+.hep-session .hep-session-form {
+    margin-top: 22px;
+}
+
+.hep-session .hep-session-field {
+    display: grid;
+    gap: 8px;
+    margin: 0 0 21px;
+}
+
+.hep-session label,
+.hep-session legend {
+    color: var(--color-dark);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.hep-session fieldset {
+    min-width: 0;
+    margin: 0 0 21px;
+    padding: 0;
+    border: 0;
+}
+
+.hep-session legend {
+    margin-bottom: 10px;
+}
+
+.hep-session :where(input:not([type="checkbox"]):not([type="radio"]), select, textarea) {
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+    padding: 11px 12px;
+    border: 1px solid var(--color-text-light);
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--color-dark);
+    font: 400 1rem/1.5 var(--font-family);
+}
+
+.hep-session textarea {
+    min-height: 105px;
+    resize: vertical;
+}
+
+.hep-session ::placeholder {
+    color: var(--color-text-light);
+    opacity: 1;
+}
+
+.hep-session input:is([type="checkbox"], [type="radio"]) {
+    flex: 0 0 auto;
+    width: 21px;
+    height: 21px;
+    margin: 2px 0 0;
+    accent-color: var(--color-primary-dark);
+}
+
+.hep-session .hep-session-check,
+.hep-session label:has(> input:is([type="checkbox"], [type="radio"])) {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    min-height: 44px;
+    padding: 10px 0;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.hep-session .hep-session-field > :where(small, .hep-session-hint),
+.hep-session .hep-session-storage {
+    color: var(--color-text-light);
+    font-size: 0.86rem;
+    line-height: 1.6;
+}
+
+.hep-session .hep-session-safety {
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border);
+}
+
+.hep-session summary {
+    min-height: 44px;
+    padding: 10px 0;
+    color: var(--color-primary-dark);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.hep-session .hep-session-rules {
+    padding-top: 13px;
+}
+
+.hep-session .hep-session-rules > section + section {
+    margin-top: 19px;
+    padding-top: 18px;
+    border-top: 1px solid var(--color-border-light);
+}
+
+.hep-session .hep-session-rules h3 {
+    margin-bottom: 8px;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 650;
+    letter-spacing: 0;
+    line-height: 1.4;
+}
+
+.hep-session .hep-session-rules p {
+    font-size: 0.94rem;
+    line-height: 1.7;
+}
+
+.hep-session .hep-session-rules p:last-child {
+    margin-bottom: 0;
+}
+
+.hep-session .hep-session-storage {
+    margin: 20px 0 0;
+}
+
+.hep-session .hep-session-status {
+    margin: 14px 0 0;
+    color: var(--color-primary-dark);
+    font-size: 0.9rem;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+.hep-session .hep-session-status:empty {
+    margin: 0;
+}
+
+.hep-session .hep-session-history {
+    margin-top: 25px;
+}
+
+.hep-session .hep-session-entry {
+    min-width: 0;
+    padding: 21px 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.hep-session .hep-session-entry-summary {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 6px 20px;
+    margin-bottom: 10px;
+    color: var(--color-dark);
+    font-weight: 600;
+}
+
+.hep-session .hep-session-entry-meta {
+    color: var(--color-text-light);
+    font-size: 0.86rem;
+    font-weight: 400;
+}
+
+.hep-session .hep-session-entry p {
+    margin-bottom: 10px;
+    overflow-wrap: anywhere;
+}
+
+.hep-session .hep-session-entry .hep-session-actions {
+    gap: 8px 12px;
+    margin-top: 12px;
+}
+
+.hep-session .hep-session-empty {
+    padding: 21px 0;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-light);
+}
+
+.hep-session .hep-session-inline-confirm {
+    margin-top: 16px;
+    padding: 18px 0 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.hep-summary-printout {
+    display: none;
+}
+
+@media (max-width: 560px) {
+    .hep-session .hep-session-shell {
+        padding: 23px 19px;
+    }
+
+    .hep-session .hep-session-header {
+        margin-bottom: 22px;
+    }
+
+    .hep-session .hep-session-prescription {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+    }
+
+    .hep-session .hep-session-actions {
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .hep-session .hep-session-actions > .hep-session-button:not(.is-quiet) {
+        flex: 1 1 100%;
+    }
+
+    .hep-session .hep-session-actions > .hep-session-button.is-quiet {
+        flex: 0 1 auto;
+    }
+
+    .hep-session .hep-session-entry-summary {
+        display: grid;
+        gap: 4px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hep-session *,
+    .hep-session *::before,
+    .hep-session *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+@media print {
+    .hep-session,
+    .hep-summary-printout {
+        display: none !important;
+    }
+
+    @page hep-summary {
+        size: auto;
+        margin: 12mm;
+
+        @bottom-left {
+            content: none;
+        }
+
+        @bottom-right {
+            content: none;
+        }
+    }
+
+    body.landing-page.hep-page.hep-summary-printing {
+        page: hep-summary;
+        background: #ffffff;
+        color: #111111;
+        font: 9pt/1.35 Arial, sans-serif;
+    }
+
+    body.hep-summary-printing > * {
+        display: none !important;
+    }
+
+    body.hep-summary-printing > .hep-summary-printout {
+        display: block !important;
+        page: hep-summary;
+        width: auto;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        color: #111111;
+        font: 9pt/1.35 Arial, sans-serif;
+        overflow-wrap: anywhere;
+    }
+
+    body.hep-summary-printing .hep-summary-printout :where(h1, h2, h3) {
+        margin: 0 0 3mm;
+        color: #102438;
+        font-family: Arial, sans-serif;
+        font-size: 16pt;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: 0;
+        break-after: avoid;
+    }
+
+    body.hep-summary-printing .hep-summary-printout p {
+        margin: 0 0 2.5mm;
+        font-size: 9pt;
+        line-height: 1.35;
+    }
+
+    body.hep-summary-printing .hep-summary-meta,
+    body.hep-summary-printing .hep-summary-goal {
+        margin-bottom: 4mm;
+        padding-bottom: 3mm;
+        border-bottom: 1px solid #b9b9b9;
+        break-inside: avoid;
+    }
+
+    body.hep-summary-printing .hep-summary-printout a {
+        color: #111111;
+        text-decoration: none;
+    }
+
+    body.hep-summary-printing .hep-summary-printout a::after {
+        content: none !important;
+    }
+
+    body.hep-summary-printing .hep-summary-table {
+        width: 100%;
+        margin: 4mm 0;
+        border-collapse: collapse;
+        table-layout: fixed;
+        font: 8pt/1.3 Arial, sans-serif;
+    }
+
+    body.hep-summary-printing .hep-summary-table th,
+    body.hep-summary-printing .hep-summary-table td {
+        padding: 2mm 1.6mm;
+        border: 1px solid #b9b9b9;
+        color: #111111;
+        text-align: left;
+        vertical-align: top;
+        overflow-wrap: anywhere;
+        word-break: normal;
+    }
+
+    body.hep-summary-printing .hep-summary-table th {
+        background: #f0f0f0;
+        font-weight: 700;
+    }
+
+    body.hep-summary-printing .hep-summary-table th:nth-child(1) {
+        width: 16%;
+    }
+
+    body.hep-summary-printing .hep-summary-table th:nth-child(2),
+    body.hep-summary-printing .hep-summary-table th:nth-child(3) {
+        width: 9%;
+    }
+
+    body.hep-summary-printing .hep-summary-table th:nth-child(4) {
+        width: 24%;
+    }
+
+    body.hep-summary-printing .hep-summary-table th:nth-child(5) {
+        width: 42%;
+    }
+
+    body.hep-summary-printing .hep-summary-table tr {
+        break-inside: avoid;
+    }
+}

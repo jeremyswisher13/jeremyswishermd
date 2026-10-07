@@ -39,6 +39,12 @@ const requiredProgramFields = [
     'evaluation'
 ];
 const requiredExerciseFields = ['name', 'dose', 'frequency', 'how', 'easier', 'harder'];
+const guidedSessionSlugs = new Set([
+    'knee-osteoarthritis-exercises',
+    'rotator-cuff-pain-exercises',
+    'patellofemoral-pain-exercises'
+]);
+const guidedSessionFields = ['slug', 'title', 'fitIntro', 'frequency', 'equipment', 'checkpoint', 'goal', 'responseIntro', 'green', 'yellow', 'red', 'exercises'];
 const allowedProgramAudiences = new Set(['athlete']);
 const retiredSourceUrls = new Set([
     'https://www.massgeneral.org/assets/mgh/pdf/orthopaedics/sports-medicine/physical-therapy/rehabilitation-protocol-for-iliotibial-band-syndrome.pdf',
@@ -223,6 +229,26 @@ for (const program of programs) {
 
     const page = readFileSync(pagePath, 'utf8');
     const canonical = `https://jeremyswishermd.com/${slug}/`;
+    const guidedSession = guidedSessionSlugs.has(slug);
+    assert(program.guidedSession === (guidedSession ? true : undefined), `${slug}: guided-session pilot flag is incorrect`);
+    const sessionPayload = page.match(/<script type="application\/json" id="hep-session-data">([^<]*)<\/script>/);
+    if (guidedSession) {
+        assert(Boolean(sessionPayload), `${slug}: guided-session data is missing or unsafe`);
+        if (sessionPayload) {
+            try {
+                const expected = Object.fromEntries(guidedSessionFields.map(field => [field, program[field]]));
+                expected.canonical = canonical;
+                assert(JSON.stringify(JSON.parse(sessionPayload[1])) === JSON.stringify(expected), `${slug}: guided-session instructions differ from maintained program data`);
+            } catch {
+                assert(false, `${slug}: guided-session data is not valid JSON`);
+            }
+        }
+        assert(page.includes('data-hep-session hidden'), `${slug}: guided session must start hidden until initialized`);
+        assert(page.includes('src="../hep-session.js?v=20261007-session1"'), `${slug}: guided-session module is missing`);
+        assert(page.includes('href="../hep-session.css?v=20261007-session1"'), `${slug}: guided-session stylesheet is missing`);
+    } else {
+        assert(!sessionPayload && !page.includes('hep-session.js') && !page.includes('hep-session.css'), `${slug}: non-pilot page includes guided-session assets`);
+    }
     assert(count(page, /<h1\b/g) === 1, `${slug}: expected one h1`);
     assert(page.includes(`class="landing-page hep-page hep-program-${slug}"`), `${slug}: program body class is incorrect`);
     assert(page.includes(`<link rel="canonical" href="${canonical}">`), `${slug}: canonical is incorrect`);
@@ -397,6 +423,10 @@ for (const program of programs) {
     if (!card) continue;
 
     const hasVideoCue = card.body.includes('Video available');
+    assert(
+        card.body.includes('Includes guided sessions and an optional progress log.') === guidedSessionSlugs.has(program.slug),
+        `${program.slug}: library guided-session cue does not match pilot programs`
+    );
     assert(
         hasVideoCue === Boolean(program.video),
         `${program.slug}: library video cue does not match hep-programs.json`

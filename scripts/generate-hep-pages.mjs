@@ -8,6 +8,21 @@ const template = readFileSync(join(scriptDirectory, 'hep-page.template'), 'utf8'
 const programs = JSON.parse(readFileSync(join(scriptDirectory, 'hep-programs.json'), 'utf8'));
 const siteRoot = 'https://jeremyswishermd.com';
 const youtubeIdPattern = /^[A-Za-z0-9_-]{11}$/;
+const guidedSessionSlugs = new Set([
+    'knee-osteoarthritis-exercises',
+    'rotator-cuff-pain-exercises',
+    'patellofemoral-pain-exercises'
+]);
+
+function renderGuidedSessionData(program, canonical) {
+    const fields = ['slug', 'title', 'fitIntro', 'frequency', 'equipment', 'checkpoint', 'goal', 'responseIntro', 'green', 'yellow', 'red', 'exercises'];
+    const data = Object.fromEntries(fields.map(field => [field, program[field]]));
+    data.canonical = canonical;
+    // JSON remains data even if a future exercise cue contains an HTML delimiter.
+    const serialized = JSON.stringify(data).replaceAll('<', '\\u003c').replaceAll('>', '\\u003e').replaceAll('&', '\\u0026');
+    return '                    <section id="guided-session" class="hep-session no-print" data-hep-session hidden></section>\n'
+        + '                    <script type="application/json" id="hep-session-data">' + serialized + '</script>';
+}
 
 function formatDate(value, slug, fieldName) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
@@ -261,7 +276,14 @@ function buildSchema(program) {
 }
 
 for (const program of programs) {
+    if (program.guidedSession !== undefined && typeof program.guidedSession !== 'boolean') {
+        throw new Error('Invalid guidedSession flag for ' + program.slug);
+    }
+    if (program.guidedSession && !guidedSessionSlugs.has(program.slug)) {
+        throw new Error('Guided sessions are not configured for ' + program.slug);
+    }
     const canonical = siteRoot + '/' + program.slug + '/';
+    const guidedSession = program.guidedSession === true;
     const reviewedDate = formatDate(program.reviewedDate, program.slug, 'reviewedDate');
     const modifiedDate = program.modifiedDate || program.reviewedDate;
     formatDate(modifiedDate, program.slug, 'modifiedDate');
@@ -269,6 +291,13 @@ for (const program of programs) {
     validateVideo(program.video, program.slug);
     const replacements = {
         PAGE_CLASS: 'hep-program-' + program.slug,
+        PRINT_BUTTON_CLASS: guidedSession ? 'btn-outline' : 'btn-primary',
+        SESSION_NOJS: guidedSession ? ',[data-hep-launch]' : '',
+        SESSION_STYLES: guidedSession ? '    <link rel="stylesheet" href="../hep-session.css?v=20261007-session1">' : '',
+        SESSION_LAUNCH: guidedSession ? '                            <a href="#guided-session" class="btn btn-primary" data-hep-launch data-hep-launch-start hidden>Start a guided session</a>' : '',
+        SESSION_JUMP: guidedSession ? '                <a href="#guided-session" data-hep-launch hidden>Guided session</a>' : '',
+        SESSION_SECTION: guidedSession ? renderGuidedSessionData(program, canonical) : '',
+        SESSION_SCRIPT: guidedSession ? '    <script type="module" src="../hep-session.js?v=20261007-session1"></script>' : '',
         TITLE: program.title,
         SEO_TITLE: program.seoTitle,
         SHORT_TITLE: program.shortTitle,
@@ -314,10 +343,19 @@ for (const program of programs) {
 
     let output = template;
     for (const [token, value] of Object.entries(replacements)) {
+        if (value === '' && token.startsWith('SESSION_')) {
+            if (token === 'SESSION_SECTION') output = output.replace('{{SESSION_SECTION}}\n\n', '');
+            output = output.replace(new RegExp('^[ \\t]*\\{\\{' + token + '\\}\\}\\r?\\n', 'gm'), '');
+        }
         output = output.replaceAll('{{' + token + '}}', escapeHtml(value));
     }
 
     const htmlTokens = [
+        'SESSION_STYLES',
+        'SESSION_LAUNCH',
+        'SESSION_JUMP',
+        'SESSION_SECTION',
+        'SESSION_SCRIPT',
         'SCHEMA',
         'AUTHORITY_ITEMS',
         'PROOF_ITEMS',

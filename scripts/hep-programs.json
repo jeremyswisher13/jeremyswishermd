@@ -1,12 +1,13 @@
 [
   {
     "slug": "knee-osteoarthritis-exercises",
+    "guidedSession": true,
     "title": "Beginner Knee Osteoarthritis Home Exercise Program",
     "seoTitle": "Beginner Knee Osteoarthritis Exercises",
     "shortTitle": "Beginner knee arthritis exercises",
     "conditionName": "Knee osteoarthritis",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "sLCahUJl8jk",
       "title": "Knee Osteoarthritis (OA) Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -257,12 +258,13 @@
   },
   {
     "slug": "patellofemoral-pain-exercises",
+    "guidedSession": true,
     "title": "Patellofemoral Pain Home Exercise Program",
     "seoTitle": "Patellofemoral Pain Syndrome Exercises",
     "shortTitle": "Patellofemoral pain exercises",
     "conditionName": "Patellofemoral pain",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-30",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "K3HxB6rAeDo",
       "title": "Patellofemoral Pain | Chondromalacia Patellae | Runner’s Knee (Education | Myths | Exercises)",
@@ -364,12 +366,13 @@
   },
   {
     "slug": "rotator-cuff-pain-exercises",
+    "guidedSession": true,
     "title": "Rotator Cuff-Related Shoulder Pain Home Exercise Program",
     "seoTitle": "Rotator Cuff Pain Exercises",
     "shortTitle": "Rotator cuff-related shoulder exercises",
     "conditionName": "Rotator cuff-related shoulder pain",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-08-28",
+    "modifiedDate": "2026-10-07",
     "video": {
       "id": "1Wy8jh4QQH8",
       "title": "Rotator Cuff Tear Rehab & Exercises (Shoulder Pain, Tendinitis, Impingement)",
