@@ -17,6 +17,8 @@ const routes = [
   { name: 'a2m-guide', path: '/a2m-knee-osteoarthritis/', thresholds: { performance: 0.8, accessibility: 0.95, 'best-practices': 0.9, seo: 0.9 } },
   { name: 'exercise-library', path: '/home-exercise-programs/', thresholds: { performance: 0.8, accessibility: 0.95, 'best-practices': 0.9, seo: 0.9 } },
   { name: 'exercise-program', path: '/knee-osteoarthritis-exercises/', thresholds: { performance: 0.8, accessibility: 0.95, 'best-practices': 0.9, seo: 0.9 } },
+  { name: 'extensor-exercise-program', path: '/lateral-elbow-tendinopathy-exercises/', thresholds: { performance: 0.8, accessibility: 0.95, 'best-practices': 0.9, seo: 0.9 } },
+  { name: 'flexor-exercise-program', path: '/medial-elbow-tendinopathy-exercises/', thresholds: { performance: 0.8, accessibility: 0.95, 'best-practices': 0.9, seo: 0.9 } },
   { name: 'athlete-hub', path: '/sports-injuries/', thresholds: { performance: 0.8, accessibility: 0.95, 'best-practices': 0.9, seo: 0.9 } },
   { name: 'athlete-program', path: '/achilles-tendinopathy-return-to-sport-exercises/', thresholds: { performance: 0.8, accessibility: 0.95, 'best-practices': 0.9, seo: 0.9 } },
   { name: '404', path: '/404.html', thresholds: { performance: 0.8, accessibility: 0.95, 'best-practices': 0.9 } },

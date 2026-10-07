@@ -42,7 +42,9 @@ const requiredExerciseFields = ['name', 'dose', 'frequency', 'how', 'easier', 'h
 const guidedSessionSlugs = new Set([
     'knee-osteoarthritis-exercises',
     'rotator-cuff-pain-exercises',
-    'patellofemoral-pain-exercises'
+    'patellofemoral-pain-exercises',
+    'lateral-elbow-tendinopathy-exercises',
+    'medial-elbow-tendinopathy-exercises'
 ]);
 const guidedSessionFields = ['slug', 'title', 'fitIntro', 'programIntro', 'frequency', 'equipment', 'checkpoint', 'goal', 'responseIntro', 'green', 'yellow', 'red', 'exercises'];
 const allowedProgramAudiences = new Set(['athlete']);
@@ -244,7 +246,7 @@ for (const program of programs) {
             }
         }
         assert(page.includes('data-hep-session hidden'), `${slug}: guided session must start hidden until initialized`);
-        assert(page.includes('src="../hep-session.js?v=20261007-session1"'), `${slug}: guided-session module is missing`);
+        assert(page.includes('src="../hep-session.js?v=20261007-session2"'), `${slug}: guided-session module is missing`);
         assert(page.includes('href="../hep-session.css?v=20261007-session1"'), `${slug}: guided-session stylesheet is missing`);
     } else {
         assert(!sessionPayload && !page.includes('hep-session.js') && !page.includes('hep-session.css'), `${slug}: non-pilot page includes guided-session assets`);

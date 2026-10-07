@@ -17,6 +17,8 @@ const summaryPilotSlugs = [
   'knee-osteoarthritis-exercises',
   'rotator-cuff-pain-exercises',
   'patellofemoral-pain-exercises',
+  'lateral-elbow-tendinopathy-exercises',
+  'medial-elbow-tendinopathy-exercises',
 ];
 // Keep the fixture oracle independent of the session module's response labels.
 const summaryResponses = [
