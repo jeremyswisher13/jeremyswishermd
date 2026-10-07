@@ -53,10 +53,25 @@ test('beforeprint reveals homepage cards that have never entered the viewport', 
   await expect(contactCard).toHaveClass(/\bfade-in\b/);
   await expect(contactCard).toHaveCSS('opacity', '0');
 
-  await page.evaluate(() => window.dispatchEvent(new Event('beforeprint')));
-  await expect(contactCard).toHaveCSS('opacity', '1');
+  // Inspect in the same task as beforeprint: a print snapshot cannot wait for
+  // the cards' screen hover transitions to finish.
+  const printStyles = await page.evaluate(() => {
+    window.dispatchEvent(new Event('beforeprint'));
+    return [...document.querySelectorAll('.media-card, .coverage-category, .contact-card')]
+      .map(card => {
+        const style = getComputedStyle(card);
+        return { opacity: style.opacity, transform: style.transform, transition: style.transitionDuration };
+      });
+  });
+  expect(printStyles.length).toBeGreaterThan(0);
+  expect(printStyles.every(style => style.opacity === '1'
+    && style.transform === 'none' && style.transition === '0s')).toBe(true);
+  await page.emulateMedia({ media: 'print' });
   expect(await page.locator('.media-card, .coverage-category, .contact-card')
-    .evaluateAll(cards => cards.every(card => getComputedStyle(card).opacity === '1'))).toBe(true);
+    .evaluateAll(cards => cards.every(card => {
+      const style = getComputedStyle(card);
+      return style.opacity === '1' && style.transitionDuration === '0s';
+    }))).toBe(true);
   await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
 });
 
