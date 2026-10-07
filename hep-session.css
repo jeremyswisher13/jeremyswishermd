@@ -9,6 +9,7 @@
     scroll-margin-top: 104px;
 }
 
+[data-hep-launch][hidden],
 .hep-session[hidden],
 .hep-session [hidden] {
     display: none !important;
