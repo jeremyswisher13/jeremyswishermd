@@ -193,6 +193,44 @@ function renderedTextAudit({ scopeSelector = 'body' } = {}) {
     if (shapedClip) review.push({ selector, text: text.slice(0, 200), reason: 'Non-rectangular clip-path needs screenshot review.' });
   }
 
+  // Text can fit its box and still collide with a decorative bullet or arrow.
+  const visibleTextRects = element => {
+    const rects = [];
+    const textWalker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    for (let node = textWalker.nextNode(); node; node = textWalker.nextNode()) {
+      if (!node.textContent.trim() || isHidden(node.parentElement)) continue;
+      const range = document.createRange();
+      range.selectNodeContents(node);
+      rects.push(...range.getClientRects());
+    }
+    return rects;
+  };
+  const intersects = (text, decoration) => Math.min(text.right, decoration.right) - Math.max(text.left, decoration.left) > tolerance
+    && Math.min(text.bottom, decoration.bottom) - Math.max(text.top, decoration.top) > tolerance;
+  const checkDecoration = (element, bounds, decoration) => {
+    const collisions = visibleTextRects(element).filter(rect => intersects(rect, bounds));
+    if (collisions.length) findings.push({
+      selector: selectorFor(element), text: element.textContent.trim(),
+      reasons: [{ type: 'decoration-overlap', decoration, decorationBounds: rectJSON(bounds), textBounds: collisions.map(rectJSON) }],
+    });
+  };
+  for (const item of scope.querySelectorAll('.option-list > li, .expect-list > li')) {
+    if (isHidden(item)) continue;
+    const marker = getComputedStyle(item, '::before');
+    if (marker.display === 'none' || marker.content === 'none' || marker.position !== 'absolute') continue;
+    const [left, top, width, height] = ['left', 'top', 'width', 'height'].map(key => Number.parseFloat(marker[key]));
+    if (![left, top, width, height].every(Number.isFinite) || width <= 0 || height <= 0) continue;
+    const itemRect = item.getBoundingClientRect();
+    const x = itemRect.left + item.clientLeft + left;
+    const y = itemRect.top + item.clientTop + top;
+    checkDecoration(item, { left: x, top: y, right: x + width, bottom: y + height }, 'list bullet');
+  }
+  for (const meta of scope.querySelectorAll('.program-card-meta')) {
+    if (isHidden(meta)) continue;
+    const arrow = meta.parentElement.querySelector('.program-card-arrow');
+    if (arrow && styleFor(arrow).display !== 'none') checkDecoration(meta, arrow.getBoundingClientRect(), 'program card arrow');
+  }
+
   return {
     scope: scopeSelector, viewport: { width: window.innerWidth, height: window.innerHeight, contentWidth: viewportWidth },
     documentSize: { width: document.documentElement.scrollWidth, height: document.documentElement.scrollHeight },
@@ -246,6 +284,11 @@ test('text geometry calibration detects real clipping and permits reachable or h
     .vertical { width: 230px; height: 15px; overflow: hidden; }
     .scroll { width: 120px; overflow-x: auto; }
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+    .option-list { list-style: none; padding: 0; }
+    .option-list li { position: relative; }
+    .option-list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 7px; height: 7px; background: blue; }
+    .program-card { position: relative; height: 26px; }
+    .program-card-arrow { position: absolute; top: 0; left: 30px; width: 22px; height: 22px; }
   </style></head><body>
     <p id="normal-wrap" class="wrap">A long heading should wrap into readable lines at a narrow width.</p>
     <div class="clip"><div><span id="nested-clipped" class="wide">Inaccessible clipped heading text continues beyond its hidden ancestor</span></div></div>
@@ -255,11 +298,14 @@ test('text geometry calibration detects real clipping and permits reachable or h
     <span class="sr-only">Screen reader information</span>
     <details><summary>Closed disclosure label</summary><p id="closed-body" class="wide">Hidden disclosure content is not an overflow failure</p></details>
     <p id="below-fold" style="margin-top: 1000px">Normal text below the fold remains reachable.</p>
+    <ul class="option-list"><li id="bullet-overlap">Bullet collision</li><li id="bullet-clear" style="padding-left: 20px">Readable bullet</li></ul>
+    <div class="program-card"><span id="arrow-overlap" class="program-card-meta">Caption</span><span class="program-card-arrow" aria-hidden="true"></span></div>
+    <div class="program-card"><span id="arrow-clear" class="program-card-meta">Caption</span><span class="program-card-arrow" style="left: 200px" aria-hidden="true"></span></div>
   </body></html>`);
   const audit = await page.evaluate(renderedTextAudit);
   writeJSON('calibration.json', audit);
   expect(audit.findings.map(finding => finding.selector).sort()).toEqual([
-    '#clipped-inside-scroll', '#nested-clipped', '#vertical-clipped',
+    '#arrow-overlap', '#bullet-overlap', '#clipped-inside-scroll', '#nested-clipped', '#vertical-clipped',
   ]);
   expect(audit.findings.find(finding => finding.selector === '#nested-clipped').reasons[0].axes).toContain('x');
   expect(audit.findings.find(finding => finding.selector === '#vertical-clipped').reasons[0].axes).toContain('y');

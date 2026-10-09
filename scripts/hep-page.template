@@ -35,7 +35,7 @@
 
     <link rel="stylesheet" href="../styles.css?v=20261009-audit1">
     <noscript><link rel="stylesheet" href="../navigation-nojs.css?v=20261007-audit1"></noscript>
-    <link rel="stylesheet" href="../landing-pages.css?v=20261007-audit1">
+    <link rel="stylesheet" href="../landing-pages.css?v=20261009-text1">
 {{SESSION_STYLES}}
     <noscript><style>.print-program-button,.video-load-button,.video-privacy-note,.print-dialog-guidance{{SESSION_NOJS}}{display:none!important}.print-fallback-guidance{display:inline}</style></noscript>
 

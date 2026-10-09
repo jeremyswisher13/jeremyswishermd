@@ -18,7 +18,7 @@ const ignoredHtmlDirectories = new Set([
 ]);
 const analyticsEventCounts = new Map();
 const expectedAssetCacheKey = '20261009-audit1';
-const expectedLandingStyleCacheKey = '20261007-audit1';
+const expectedLandingStyleCacheKey = '20261009-text1';
 const expectedScriptCacheKey = '20261007-audit1';
 const expectedPrimaryNavigationLabels = [
     'Conditions &amp; Care',
