@@ -200,7 +200,10 @@ function renderedTextAudit({ scopeSelector = 'body' } = {}) {
 async function settle(page) {
   await page.evaluate(async () => {
     await document.fonts.ready;
-    await Promise.all([...document.images].map(image => image.decode().catch(() => {})));
+    // Offscreen lazy images need not load before text is measurable; waiting for
+    // their decode can stall forever until they enter the viewport.
+    await Promise.all([...document.images].filter(image => image.complete)
+      .map(image => image.decode().catch(() => {})));
     window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
     await new Promise(resolveFrame => requestAnimationFrame(() => requestAnimationFrame(resolveFrame)));
   });
