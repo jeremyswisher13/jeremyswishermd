@@ -121,6 +121,12 @@ test('simple is the default; workout drafts survive view changes and previous na
   await finishFrom(page, knee, 2);
   await expect(session(page).locator('[data-hep-completed-count]')).toHaveText('4 done');
   await expect(session(page).locator('[data-hep-skipped-count]')).toHaveText('1 skipped');
+  const preview = session(page).locator('[data-hep-review-workout] details');
+  await expect(preview).toHaveJSProperty('open', false);
+  await preview.locator('summary').click();
+  await expect(preview.locator('.hep-workout-record-exercise').first()).toContainText('Reps: 11');
+  await expect(preview.locator('.hep-workout-record-exercise').nth(1)).toContainText('Skipped');
+  await expect(preview).not.toContainText('SKIPPED_SET_PRIVATE_DRAFT');
   await save(page);
   const [record] = (await readStore(page)).records;
   expect(record.workout[0].sets).toEqual([{ ...blankRecordedSet(), amount: 11 }]);
@@ -138,7 +144,7 @@ test('rep sets record holds, lb, kg, and descriptive bands; add/remove enforces 
   await first.locator('[data-hep-set-unit]').selectOption('lb');
   await first.getByLabel('Weight (lb)', { exact: true }).fill('10');
   await first.locator('summary').click();
-  await first.getByLabel('Hold per rep (seconds, optional)', { exact: true }).fill('5');
+  await first.getByLabel('Hold / timed variation (seconds, optional)', { exact: true }).fill('5');
   await first.getByLabel('Side or variation (optional)', { exact: true }).fill('Left side');
   await session(page).locator('[data-hep-add-set]').click();
   await sets(page).nth(1).locator('[data-hep-set-amount]').fill('10');
@@ -228,7 +234,97 @@ test('an invalid hidden hold cannot be bypassed by changing mode or marking done
   await finishFrom(page);
   await save(page);
   await session(page).locator('.hep-workout-record > summary').click();
-  await expect(session(page).locator('.hep-workout-record-exercise').first()).toContainText('8-second holds');
+  await expect(session(page).locator('.hep-workout-record-exercise').first()).toContainText('Timed variation: 8 seconds');
+});
+
+test('a completed exercise edited to an invalid value resumes at that exercise and saves only after correction', async ({ context, page, baseURL }) => {
+  await localOnly(context, baseURL);
+  await visit(page);
+  await session(page).locator('[data-hep-storage]').check();
+  await start(page);
+  await finishFrom(page);
+  await session(page).locator('[data-hep-back]').click();
+  await sets(page).first().locator('[data-hep-set-amount]').fill('10001');
+  await session(page).locator('[data-hep-log]').click();
+  await session(page).locator('[data-hep-resume]').click();
+  await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(knee.exercises.at(-1).name);
+  await expect(sets(page).first().locator('[data-hep-set-amount]')).toHaveValue('10001');
+  await session(page).locator('[data-hep-done]').click();
+  await expect(sets(page).first().locator('[data-hep-set-amount]')).toBeFocused();
+  await expect(session(page).locator('[data-hep-save]')).toHaveCount(0);
+  expect((await readStore(page)).records).toHaveLength(0);
+  await sets(page).first().locator('[data-hep-set-amount]').fill('12');
+  await session(page).locator('[data-hep-done]').click();
+  await save(page, 'Corrected completed exercise');
+  const [record] = (await readStore(page)).records;
+  expect(record).toMatchObject({ completed: knee.exercises.length, skipped: 0 });
+  expect(record.workout.at(-1).sets).toEqual([{ ...blankRecordedSet(), amount: 12 }]);
+});
+
+test('final save revalidates earlier completed sets and focuses an invalid hidden field while retaining review entries', async ({ context, page, baseURL }) => {
+  await localOnly(context, baseURL);
+  await visit(page);
+  await session(page).locator('[data-hep-storage]').check();
+  await start(page);
+  await sets(page).first().locator('summary').click();
+  await sets(page).first().locator('[data-hep-set-holdSeconds]').fill('5');
+  // Retain the real input to model a late draft update after per-exercise validation.
+  await page.evaluate(() => { window.__lateWorkoutInput = document.querySelector('[data-hep-set-holdSeconds]'); });
+  await finishFrom(page);
+  await session(page).getByLabel('Session date', { exact: true }).fill('2026-10-07');
+  await session(page).getByLabel('Activity goal (optional)', { exact: true }).fill('Keep this review goal');
+  await session(page).getByLabel('Notes (optional)', { exact: true }).fill('Keep this review note');
+  await session(page).getByLabel('Next-morning response', { exact: true }).selectOption('baseline');
+  await page.evaluate(() => {
+    window.__lateWorkoutInput.value = '3601';
+    window.__lateWorkoutInput.dispatchEvent(new Event('input', { bubbles: true }));
+    delete window.__lateWorkoutInput;
+  });
+  await session(page).locator('[data-hep-save]').click();
+  await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[0].name);
+  await expect(sets(page).first().locator('details')).toHaveJSProperty('open', true);
+  await expect(sets(page).first().locator('[data-hep-set-holdSeconds]')).toBeFocused();
+  await expect(session(page).locator('[data-hep-status]')).toContainText(`Check the recorded set values for ${knee.exercises[0].name}`);
+  expect((await readStore(page)).records).toHaveLength(0);
+  await sets(page).first().locator('[data-hep-set-holdSeconds]').fill('5');
+  await finishFrom(page);
+  await expect(session(page).getByLabel('Session date', { exact: true })).toHaveValue('2026-10-07');
+  await expect(session(page).getByLabel('Activity goal (optional)', { exact: true })).toHaveValue('Keep this review goal');
+  await expect(session(page).getByLabel('Notes (optional)', { exact: true })).toHaveValue('Keep this review note');
+  await expect(session(page).getByLabel('Next-morning response', { exact: true })).toHaveValue('baseline');
+  await session(page).locator('[data-hep-save]').click();
+  await expect(session(page).locator('[data-hep-entry]')).toHaveCount(1);
+  expect((await readStore(page)).records[0].workout[0].sets).toEqual([{ ...blankRecordedSet(), holdSeconds: 5 }]);
+});
+
+test('a timed carry records time-only details in review, restored history, and the follow-up summary', async ({ context, page, baseURL }) => {
+  const program = programFor('low-back-pain-exercises');
+  const index = program.exercises.length - 1;
+  await localOnly(context, baseURL);
+  await visit(page, program);
+  await session(page).locator('[data-hep-storage]').check();
+  await start(page);
+  for (let current = 0; current < index; current += 1) await session(page).locator('[data-hep-skip]').click();
+  await sets(page).first().locator('summary').click();
+  await expect(sets(page).first()).toContainText('leave the rep count blank, enter seconds, and name the variation below');
+  await sets(page).first().getByLabel('Hold / timed variation (seconds, optional)', { exact: true }).fill('30');
+  await sets(page).first().getByLabel('Side or variation (optional)', { exact: true }).fill('Carry');
+  await session(page).locator('[data-hep-done]').click();
+  const preview = session(page).locator('[data-hep-review-workout] details');
+  await expect(preview).toHaveJSProperty('open', false);
+  await preview.locator('summary').click();
+  await expect(preview.locator('.hep-workout-record-exercise').last()).toContainText('Timed variation: 30 seconds · Carry');
+  await save(page);
+  const [record] = (await readStore(page, program)).records;
+  expect(record.workout[index].sets).toEqual([{ ...blankRecordedSet(), holdSeconds: 30, note: 'Carry' }]);
+  await page.reload();
+  await session(page).locator('[data-hep-log]').click();
+  await session(page).locator('.hep-workout-record > summary').click();
+  await expect(session(page).locator('.hep-workout-record-exercise').last()).toContainText('Timed variation: 30 seconds · Carry');
+  await page.evaluate(() => { window.print = () => { window.__timedSummary = document.querySelector('.hep-summary-printout').textContent; }; });
+  await session(page).locator('[data-hep-print-summary]').click();
+  expect(await page.evaluate(() => window.__timedSummary)).toContain('Timed variation: 30 seconds · Carry');
+  await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
 });
 
 test('legacy v1 records and workout records restore together; response edits preserve sets and previous sets remain a blank-field reference', async ({ context, page, baseURL }) => {
