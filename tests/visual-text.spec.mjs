@@ -1,4 +1,4 @@
-import { mkdirSync, readdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { expect, test } from '@playwright/test';
@@ -8,6 +8,11 @@ const evidenceRoot = join(siteRoot, '.quality-results', 'visual-text');
 const widths = [320, 390, 768, 1440];
 const screenshotWidths = new Set([390, 1440]);
 const excludedDirectories = new Set(['node_modules', 'tests', 'scripts', 'audits', 'test-results', 'playwright-report']);
+const exercisePrograms = JSON.parse(readFileSync(join(siteRoot, 'scripts', 'hep-programs.json'), 'utf8'));
+const programsByPath = new Map(exercisePrograms.map(program => [`/${program.slug}/`, program]));
+const guidedExercises = program => program.guidedExerciseOrder
+  ? program.guidedExerciseOrder.map(index => program.exercises[index]) : program.exercises;
+const guidedExerciseCount = exercisePrograms.reduce((total, program) => total + guidedExercises(program).length, 0);
 
 function findHTML(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
@@ -197,16 +202,16 @@ function renderedTextAudit({ scopeSelector = 'body' } = {}) {
   };
 }
 
-async function settle(page) {
-  await page.evaluate(async () => {
+async function settle(page, { scrollToTop = true } = {}) {
+  await page.evaluate(async scrollToTop => {
     await document.fonts.ready;
     // Offscreen lazy images need not load before text is measurable; waiting for
     // their decode can stall forever until they enter the viewport.
     await Promise.all([...document.images].filter(image => image.complete)
       .map(image => image.decode().catch(() => {})));
-    window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
+    if (scrollToTop) window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
     await new Promise(resolveFrame => requestAnimationFrame(() => requestAnimationFrame(resolveFrame)));
-  });
+  }, scrollToTop);
 }
 
 test.beforeEach(async ({ context, page, baseURL }) => {
@@ -219,7 +224,14 @@ test.beforeAll(() => {
   writeJSON('manifest.json', {
     routes, widths, expectedRouteWidthAudits: routes.length * widths.length,
     fullPageScreenshotWidths: [...screenshotWidths],
-    states: ['default', 'expanded-content when present', 'each publication filter when present', 'longest clinic program selected when present', 'open mobile navigation when present'],
+    guidedSessions: {
+      programs: exercisePrograms.length, exercises: guidedExerciseCount,
+      expectedExerciseAudits: guidedExerciseCount * widths.length,
+      expectedExerciseScreenshots: guidedExerciseCount * screenshotWidths.size,
+      expectedUnsavedReviewAudits: exercisePrograms.length * widths.length,
+      programExercises: exercisePrograms.map(program => ({ slug: program.slug, exercises: guidedExercises(program).map(exercise => exercise.name) })),
+    },
+    states: ['default', 'expanded-content when present', 'each publication filter when present', 'longest clinic program selected when present', 'every guided exercise with harder option and workout fields expanded', 'unsaved guided-session review', 'open mobile navigation when present'],
     results: routes.flatMap(route => widths.map(width => `${route.name}-${width}.audit.json`)),
   });
 });
@@ -257,8 +269,10 @@ test('text geometry calibration detects real clipping and permits reachable or h
 });
 
 for (const route of routes) {
+  const program = programsByPath.get(route.path);
   for (const width of widths) {
     test(`${route.name}: visible text at ${width}px`, async ({ page }) => {
+      if (program) test.setTimeout(120_000);
       await page.setViewportSize({ width, height: width >= 1440 ? 1000 : 844 });
       const response = await page.goto(route.path, { waitUntil: 'load' });
       expect(response?.status()).toBe(route.status);
@@ -266,7 +280,7 @@ for (const route of routes) {
       await expect(page.locator('html')).toHaveClass(/\bnav-ready\b/);
       await settle(page);
       const reports = [];
-      const capture = async (state, { scopeSelector = 'body', fullPage = true, sectionSelector } = {}) => {
+      const capture = async (state, { scopeSelector = 'body', fullPage = true, sectionSelector, guidedExercise } = {}) => {
         const audit = await page.evaluate(renderedTextAudit, { scopeSelector });
         const screenshots = [];
         if (screenshotWidths.has(width)) {
@@ -275,9 +289,15 @@ for (const route of routes) {
           await target.screenshot({ path: join(evidenceRoot, filename), ...(sectionSelector ? {} : { fullPage }), animations: 'disabled' });
           screenshots.push(filename);
         }
-        reports.push({ state, ...audit, screenshots });
+        reports.push({ state, ...audit, screenshots, ...(guidedExercise ? { guidedExercise } : {}) });
         // Persist after each state: a later interaction failure still leaves its preceding evidence.
-        writeJSON(`${route.name}-${width}.audit.json`, { route, width, reports });
+        writeJSON(`${route.name}-${width}.audit.json`, {
+          route, width, reports,
+          guidedExerciseCoverage: {
+            expected: program ? guidedExercises(program).length : 0,
+            completed: reports.filter(report => report.guidedExercise).length,
+          },
+        });
       };
 
       await capture('default');
@@ -314,6 +334,51 @@ for (const route of routes) {
         await expect(page.locator('[data-clinic-card]')).toBeVisible();
         await settle(page);
         await capture('longest-clinic-program');
+      }
+      if (program) {
+        const session = page.locator('[data-hep-session]');
+        const exercises = guidedExercises(program);
+        const generated = JSON.parse(await page.locator('#hep-session-data').textContent());
+        expect(generated.exercises.map(exercise => exercise.name)).toEqual(exercises.map(exercise => exercise.name));
+        await expect(session).toHaveAttribute('data-hep-session-ready', 'true');
+        await expect(session.locator('[data-hep-storage]')).not.toBeChecked();
+        await session.locator('[data-hep-mode="workout"]').check();
+        await session.locator('[data-hep-start]').click();
+        for (const [index, exercise] of exercises.entries()) {
+          const card = session.locator('[data-hep-exercise]');
+          await expect(card.locator('[data-hep-exercise-title]')).toHaveText(exercise.name);
+          await expect(card.locator('[data-hep-workout]')).toBeVisible();
+          const addSet = card.locator('[data-hep-add-set]');
+          if (await addSet.isEnabled()) await addSet.click();
+          const sets = card.locator('[data-hep-set]');
+          await expect(sets).toHaveCount(2);
+          // Empty drafts expose both numeric and descriptive resistance labels
+          // without fabricating completed work or saving personal information.
+          const units = card.locator('[data-hep-set-unit]');
+          if (await units.count()) {
+            await units.nth(0).selectOption('kg');
+            await units.nth(1).selectOption('band');
+          }
+          const expandedDisclosures = await card.locator('details').evaluateAll(details => {
+            details.forEach(detail => { detail.open = true; });
+            return details.length;
+          });
+          await settle(page, { scrollToTop: false });
+          await capture(`guided-exercise-${String(index + 1).padStart(2, '0')}`, {
+            scopeSelector: '[data-hep-session]', sectionSelector: '[data-hep-session]',
+            guidedExercise: { index: index + 1, name: exercise.name, expandedDisclosures, emptySets: await sets.count() },
+          });
+          await card.locator('[data-hep-skip]').click();
+        }
+        await expect(session.locator('[data-hep-completed-count]')).toHaveText('0 done');
+        await expect(session.locator('[data-hep-skipped-count]')).toHaveText(`${exercises.length} skipped`);
+        await session.locator('details').evaluateAll(details => { details.forEach(detail => { detail.open = true; }); });
+        await settle(page, { scrollToTop: false });
+        await capture('guided-session-review', { scopeSelector: '[data-hep-session]', sectionSelector: '[data-hep-session]' });
+        expect(reports.filter(report => report.guidedExercise)).toHaveLength(exercises.length);
+        await expect(session.locator('[data-hep-storage]')).not.toBeChecked();
+        expect(await page.evaluate(key => localStorage.getItem(key), `swishermd:hep-progress:v1:${program.slug}`)).toBeNull();
+        await session.locator('[data-hep-finish]').click();
       }
       const navToggle = page.locator('#navToggle');
       if (await navToggle.isVisible()) {
