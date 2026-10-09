@@ -1,6 +1,6 @@
 // Optional patient session tools. Clinical instructions come from the page's
 // generated program data; personal entries stay in memory or opted-in storage.
-import { MAX_PROGRESS_BYTES, appendWorkoutDetails, blankSet, mountWorkout, recordedSets, validateWorkoutEntries, validateWorkoutOptions } from './hep-workout.js?v=20261008-workout1';
+import { MAX_PROGRESS_BYTES, appendWorkoutDetails, blankSet, mountWorkout, recordedSets, validateWorkoutEntries, validateWorkoutOptions } from './hep-workout.js?v=20261008-workout2';
 export const SESSION_STORAGE_VERSION = 1;
 export const MAX_RECORDS = 30;
 export const NEXT_MORNING_RESPONSES = Object.freeze([
@@ -176,7 +176,7 @@ function initializeGuidedSession(root, program) {
         changedIds: new Set(), goalChanged: false, historyNeedsRefresh: false,
         steps: program.exercises.map(() => null), index: 0, started: false,
         workoutMode: false, usedWorkout: false, sets: program.exercises.map(() => [blankSet()]), workoutControls: null,
-        date: localDateString(), notes: '', response: 'not-checked', view: 'welcome',
+        date: localDateString(), notes: '', response: 'not-checked', view: 'welcome', resumeView: 'exercise',
         printout: null, printTimer: null, printing: false
     };
 
@@ -598,6 +598,24 @@ function initializeGuidedSession(root, program) {
         wrapper.append(label, input);
         return { wrapper, input };
     }
+    function sessionWorkout() {
+        return state.steps.map((step, index) => ({
+            status: step, measure: program.workoutOptions[index].measure, label: program.workoutOptions[index].label,
+            sets: step === 'done' ? recordedSets(state.sets[index], program.workoutOptions[index]) : []
+        }));
+    }
+    function validateWorkoutBeforeSave() {
+        if (!state.usedWorkout) return true;
+        const invalidIndex = sessionWorkout().findIndex(entry => entry.status === 'done'
+            && !validateWorkoutEntries([entry], 1, 1));
+        if (invalidIndex === -1) return true;
+        state.index = invalidIndex;
+        state.workoutMode = true;
+        renderExercise(true);
+        state.workoutControls.valid();
+        announce(`Check the recorded set values for ${program.exercises[invalidIndex].name} before adding your entry. You can also skip this exercise without recording its sets.`);
+        return false;
+    }
     function renderReview(moveFocus = false) {
         state.view = 'review';
         resetPanel();
@@ -610,7 +628,13 @@ function initializeGuidedSession(root, program) {
         skipped.setAttribute('data-hep-skipped-count', '');
         summary.append(completed, document.createTextNode(' · '), skipped);
         panel.append(summary);
-        if (state.usedWorkout) paragraph(panel, 'Your recorded set details will be included in this entry. Skipped exercises have no recorded sets.');
+        if (state.usedWorkout) {
+            paragraph(panel, 'Your recorded set details will be included in this entry. Skipped exercises have no recorded sets.');
+            const preview = element('div');
+            preview.setAttribute('data-hep-review-workout', '');
+            appendWorkoutDetails(preview, sessionWorkout(), program.exercises);
+            panel.append(preview);
+        }
         paragraph(panel, 'Adding a log entry is optional. Check your next-morning response later in the progress log.');
         const form = element('form', 'hep-session-form');
         form.setAttribute('data-hep-review', '');
@@ -638,14 +662,12 @@ function initializeGuidedSession(root, program) {
         form.append(actions);
         form.addEventListener('submit', event => {
             event.preventDefault();
+            if (!validateWorkoutBeforeSave()) return;
             const record = createSessionRecord({
                 id: newRecordId(), date: state.date, ...counts(),
                 response: state.response, notes: state.notes, goal: state.goal,
                 createdAt: Date.now(), updatedAt: Date.now(),
-                ...(state.usedWorkout ? { workout: state.steps.map((step, index) => ({
-                    status: step, measure: program.workoutOptions[index].measure, label: program.workoutOptions[index].label,
-                    sets: step === 'done' ? recordedSets(state.sets[index], program.workoutOptions[index]) : []
-                })) } : {})
+                ...(state.usedWorkout ? { workout: sessionWorkout() } : {})
             }, program.exercises.length);
             if (!record) {
                 announce('Check the session date and field lengths before adding your entry.');
@@ -666,10 +688,11 @@ function initializeGuidedSession(root, program) {
 
     function returnToSession() {
         if (!state.started) { renderWelcome(true); return; }
-        if (state.steps.every(step => step !== null)) renderReview(true);
+        if (state.resumeView === 'review' && state.steps.every(step => step !== null)) renderReview(true);
         else renderExercise(true);
     }
     function renderHistory(moveFocus = false) {
+        if (state.started && state.view !== 'history') state.resumeView = state.view;
         state.view = 'history';
         resetPanel();
         const heading = panelHeading('Progress log');

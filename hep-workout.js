@@ -67,7 +67,8 @@ export function recordedSets(drafts, option) {
 export function describeSet(set, measure, label) {
     const parts = [];
     if (set.amount !== null) parts.push(label ? `${label}: ${set.amount}` : `${set.amount} ${measure}`);
-    if (set.holdSeconds !== null) parts.push(`${set.holdSeconds}-second holds`);
+    if (set.holdSeconds !== null) parts.push(set.amount === null
+        ? `Timed variation: ${set.holdSeconds} seconds` : `${set.holdSeconds}-second holds`);
     if (['lb', 'kg'].includes(set.unit)) parts.push(set.load === null ? `${set.unit} (weight not entered)` : `${set.load} ${set.unit}`);
     if (set.unit === 'bodyweight') parts.push('body weight');
     if (set.unit === 'band') parts.push(set.resistance ? `Band: ${set.resistance}` : 'Band (not described)');
@@ -195,8 +196,11 @@ export function mountWorkout(parent, option, drafts, previous, announce) {
             }
             row.append(grid);
             const extra = node('details', 'hep-workout-extra');
-            extra.append(node('summary', '', option.measure === 'reps' ? 'Hold time / side / variation' : 'Side / variation'));
-            if (option.measure === 'reps') extra.append(field('Hold per rep (seconds, optional)', 'holdSeconds', 3600).wrapper);
+            extra.append(node('summary', '', option.measure === 'reps' ? 'Hold / timed variation / side' : 'Side / variation'));
+            if (option.measure === 'reps') {
+                extra.append(field('Hold / timed variation (seconds, optional)', 'holdSeconds', 3600).wrapper);
+                extra.append(node('p', 'hep-workout-help', 'For repeated reps, enter the hold time per rep. For a timed hold or carry from your program, leave the rep count blank, enter seconds, and name the variation below.'));
+            }
             extra.append(field('Side or variation (optional)', 'note', 80, 'text').wrapper);
             row.append(extra);
             if (drafts.length > 1) row.append(makeButton(`Remove set ${index + 1}`, () => {

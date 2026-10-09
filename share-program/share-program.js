@@ -90,7 +90,7 @@
             cardTitle.textContent = '';
             cardLink.textContent = '';
             cardLink.removeAttribute('href');
-            openLink.removeAttribute('href');
+            openLink.setAttribute('href', '../home-exercise-programs/');
             qrContainer.replaceChildren();
             status.textContent = 'Choose a program to create its card.';
             return;

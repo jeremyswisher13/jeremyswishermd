@@ -71,7 +71,8 @@ def expected_set_text(value, label):
     if value["amount"] is not None:
         parts.append(f"{label}: {value['amount']:g}")
     if value["holdSeconds"] is not None:
-        parts.append(f"{value['holdSeconds']}-second holds")
+        parts.append(f"Timed variation: {value['holdSeconds']} seconds" if value["amount"] is None
+                     else f"{value['holdSeconds']}-second holds")
     unit = value["unit"]
     if unit in ("lb", "kg"):
         parts.append(f"{unit} (weight not entered)" if value["load"] is None
@@ -164,6 +165,11 @@ def load_fixtures(directory, programs_path, options_path):
                 validate_workout(record, options)
         latest = records[latest_index]
         require(fixture["latestWorkoutId"] == latest["id"], "latest-workout selector differs from the fixture")
+        if fixture["id"] == "common-extensor-standard":
+            timed = latest["workout"][3]["sets"][0]
+            require(timed["amount"] is None and timed["holdSeconds"] == 30
+                    and timed["note"] == "Synthetic QA time-only carry: Left side",
+                    "standard extensor fixture must print a time-only carry without a rep count")
         for index, entry in enumerate(records[7]["workout"]):
             require(len(entry["sets"]) == 1 and entry["sets"][0]["amount"] == 901 + index
                     and entry["sets"][0]["note"] == f"OLDER_WORKOUT_SET {fixture['id']} E{index + 1}",
@@ -291,6 +297,11 @@ def validate_pdf(path, paper, fixture, program):
         start = exercise_positions[index]
         end = exercise_positions[index + 1] if index + 1 < len(exercise_positions) else full.find(normalize(DISCLOSURE))
         block = full[start:end] if start >= 0 and end > start else ""
+        recorded = next(record for record in fixture["records"]
+                        if record["id"] == fixture["latestWorkoutId"])["workout"][index]
+        amount_count = sum(value["amount"] is not None for value in recorded["sets"])
+        if block.count(normalize(exercise["label"] + ":")) != amount_count:
+            issues.append(f"exercise {index + 1}: primary amounts are missing, duplicated, or fabricated on time-only sets")
         line_positions = []
         for set_index, line in enumerate(exercise["expectedLines"], 1):
             needle = normalize(line)

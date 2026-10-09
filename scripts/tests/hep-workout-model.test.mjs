@@ -26,6 +26,34 @@ test('empty drafts do not fabricate sets, zero amounts remain recorded, and opti
   assert.deepEqual(recordedSets([blankSet()], reps), []);
 });
 
+test('time-only variations retain the existing set schema and survive validation and history restoration without becoming repeated holds', () => {
+  const drafts = [
+    { ...blankSet(), holdSeconds: '30', note: 'Carry' },
+    { ...blankSet(), holdSeconds: '20', note: 'Static hold' },
+    { ...blankSet(), amount: '12', holdSeconds: '5' },
+  ];
+  const before = structuredClone(drafts);
+  const sets = recordedSets(drafts, reps);
+  assert.deepEqual(sets, [
+    recordedSet({ holdSeconds: 30, note: 'Carry' }),
+    recordedSet({ holdSeconds: 20, note: 'Static hold' }),
+    recordedSet({ amount: 12, holdSeconds: 5 }),
+  ]);
+  assert.deepEqual(drafts, before);
+  const timedEntry = entry({ sets });
+  assert.deepEqual(validateWorkoutEntries([timedEntry], 1, 1), [timedEntry]);
+  const record = createSessionRecord(workout({ workout: [timedEntry, entry({ status: 'skipped', sets: [] })] }), 2);
+  assert.ok(record);
+  const saved = { version: 1, slug, goal: '', records: [record] };
+  const restored = validateProgressStore(JSON.parse(JSON.stringify(saved)), slug, 2);
+  assert.deepEqual(restored, saved);
+  const restoredEntry = restored.records[0].workout[0];
+  assert.equal(describeSet(restoredEntry.sets[0], restoredEntry.measure, restoredEntry.label), 'Timed variation: 30 seconds · Carry');
+  assert.equal(describeSet(restoredEntry.sets[1], restoredEntry.measure, restoredEntry.label), 'Timed variation: 20 seconds · Static hold');
+  assert.equal(describeSet(restoredEntry.sets[2], restoredEntry.measure, restoredEntry.label), 'Reps per side: 12 · 5-second holds');
+  assert.deepEqual(drafts, before);
+});
+
 test('descriptive resistance never becomes a numeric load and inapplicable fields are removed from saved actuals', () => {
   const band = { ...blankSet(), amount: '8', unit: 'band', load: '99', resistance: 'Light blue band' };
   assert.deepEqual(recordedSets([band], reps), [recordedSet({ amount: 8, unit: 'band', resistance: 'Light blue band' })]);
