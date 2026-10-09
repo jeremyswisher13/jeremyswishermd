@@ -1,4 +1,67 @@
-/* Guided home exercise sessions. Loaded only for the three pilot programs. */
+/* Guided sessions and optional workout logging for maintained home programs. */
+.hep-session .hep-session-mode {
+    display: grid;
+    gap: 10px;
+    margin: 22px 0;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+}
+.hep-session .hep-session-mode legend { margin-bottom: 12px; font-weight: 650; }
+.hep-session .hep-session-mode-choice {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+.hep-session .hep-session-mode-choice:has(input:checked) { border-color: var(--color-primary-dark); background: rgba(255,255,255,.55); }
+.hep-session .hep-session-mode-choice input { flex: 0 0 auto; margin: 5px 0 0; accent-color: var(--color-primary-dark); }
+.hep-session .hep-session-mode-choice strong,
+.hep-session .hep-session-mode-choice span span { display: block; }
+.hep-session .hep-session-mode-choice span span { color: var(--color-text-light); font-size: .88rem; }
+.hep-session .hep-workout { margin: 24px 0; padding-top: 24px; border-top: 1px solid var(--color-border); }
+.hep-session .hep-workout-help { color: var(--color-text-light); font-size: .88rem; }
+.hep-session .hep-workout-set {
+    min-width: 0;
+    margin: 20px 0;
+    padding: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: rgba(255,255,255,.4);
+}
+.hep-session .hep-workout-set legend { padding: 0 7px; font-weight: 650; font-size: .88rem; }
+.hep-session .hep-workout-grid,
+.hep-session .hep-workout-timer-form { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.hep-session .hep-workout-grid .hep-session-field { margin: 0; min-width: 0; }
+.hep-session .hep-workout-grid input,
+.hep-session .hep-workout-grid select,
+.hep-session .hep-workout-timer-form input,
+.hep-session .hep-workout-timer-form select { width: 100%; min-width: 0; }
+.hep-session .hep-workout-extra { margin-top: 12px; font-size: .88rem; }
+.hep-session .hep-workout-extra summary { padding: 9px 0; cursor: pointer; }
+.hep-session .hep-workout-extra .hep-session-field { margin: 12px 0; }
+.hep-session .hep-workout-previous { padding: 16px; background: var(--color-border-light); border-radius: var(--radius-sm); overflow-wrap: anywhere; }
+.hep-session .hep-workout-previous h5 { font-size: .88rem; margin: 0 0 8px; }
+.hep-session .hep-workout-previous ol { margin: 0 0 10px; padding-left: 20px; font-size: .88rem; }
+.hep-session .hep-workout-previous p { margin: 0; font-size: .8rem; }
+.hep-session .hep-workout-timer { margin: 24px 0 0; padding: 22px 0 0; border-top: 1px solid var(--color-border); }
+.hep-session .hep-workout-timer-form .hep-session-field { margin: 0; }
+.hep-session .hep-workout-timer-form button { grid-column: 1 / -1; justify-self: start; }
+.hep-session .hep-workout-clock { margin: 18px 0 0; color: var(--color-dark); font-size: 2.8rem; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.hep-session .hep-workout-timer .hep-session-actions { margin-top: 12px; }
+.hep-session .hep-workout-record { margin: 16px 0; overflow-wrap: anywhere; }
+.hep-session .hep-workout-record summary { padding: 10px 0; font-weight: 600; cursor: pointer; }
+.hep-session .hep-workout-record-exercise { margin: 14px 0; }
+.hep-session .hep-workout-record-exercise p,
+.hep-session .hep-workout-record-exercise ol { margin: 0; font-size: .88rem; }
+.hep-session .hep-workout-record-exercise ol { padding-left: 20px; }
+@media (max-width: 480px) {
+    .hep-session .hep-workout-grid { grid-template-columns: minmax(0,1fr); }
+    .hep-session .hep-workout-set { padding: 12px; }
+}
 .hep-session {
     max-width: 700px;
     margin: clamp(40px, 5vw, 64px) 0;
@@ -598,5 +661,19 @@
 
     body.hep-summary-printing .hep-summary-table tr {
         break-inside: avoid;
+    }
+    body.hep-summary-printing .hep-workout-record-exercise {
+        margin: 3mm 0;
+        break-inside: avoid;
+    }
+    body.hep-summary-printing .hep-summary-workout-date { break-after: avoid; }
+    body.hep-summary-printing .hep-workout-record-exercise h4 {
+        margin: 0 0 1mm;
+        font: bold 9pt/1.35 Arial, sans-serif;
+    }
+    body.hep-summary-printing .hep-workout-record-exercise ol {
+        margin: 0;
+        padding-left: 5mm;
+        font: 9pt/1.35 Arial, sans-serif;
     }
 }

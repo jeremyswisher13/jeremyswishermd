@@ -13,6 +13,7 @@ const siteRoutes = [
   { name: 'PRP guide', path: '/prp-knee-osteoarthritis/', status: 200 },
   { name: 'A2M evidence guide', path: '/a2m-knee-osteoarthritis/', status: 200 },
   { name: 'exercise library', path: '/home-exercise-programs/', status: 200 },
+  { name: 'clinic program sharing', path: '/share-program/', status: 200 },
   { name: 'sports injury athlete hub', path: '/sports-injuries/', status: 200 },
   { name: 'hyaluronic acid guide', path: '/hyaluronic-acid-knee-osteoarthritis/', status: 200 },
   { name: 'injection comparison', path: '/knee-osteoarthritis-injection-comparison/', status: 200 },

@@ -1,4 +1,5 @@
 import { GUIDED_PROGRAM_SLUGS } from '../hep-session.js';
+import { validateWorkoutOptions } from '../hep-workout.js';
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -243,14 +244,17 @@ for (const program of programs) {
                 const expected = Object.fromEntries(guidedSessionFields.map(field => [field, program[field]]));
                 if (program.guidedExerciseOrder) expected.exercises = program.guidedExerciseOrder.map(index => program.exercises[index]);
                 expected.canonical = canonical;
+                const options = JSON.parse(readFileSync(join(scriptDirectory, 'hep-workout-options.json'), 'utf8'))[slug];
+                assert(Boolean(validateWorkoutOptions(options, program.exercises.length)), `${slug}: workout metadata is invalid`);
+                expected.workoutOptions = program.guidedExerciseOrder ? program.guidedExerciseOrder.map(index => options[index]) : options;
                 assert(JSON.stringify(JSON.parse(sessionPayload[1])) === JSON.stringify(expected), `${slug}: guided-session instructions differ from maintained program data`);
             } catch {
                 assert(false, `${slug}: guided-session data is not valid JSON`);
             }
         }
         assert(page.includes('data-hep-session hidden'), `${slug}: guided session must start hidden until initialized`);
-        assert(page.includes('src="../hep-session.js?v=20261007-session3"'), `${slug}: guided-session module is missing`);
-        assert(page.includes('href="../hep-session.css?v=20261007-session1"'), `${slug}: guided-session stylesheet is missing`);
+        assert(page.includes('src="../hep-session.js?v=20261008-workout1"'), `${slug}: guided-session module is missing`);
+        assert(page.includes('href="../hep-session.css?v=20261008-workout1"'), `${slug}: guided-session stylesheet is missing`);
     } else {
         assert(!sessionPayload && !page.includes('hep-session.js') && !page.includes('hep-session.css'), `${slug}: non-guided page includes guided-session assets`);
     }

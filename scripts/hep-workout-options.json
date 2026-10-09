@@ -1,0 +1,186 @@
+{
+  "knee-osteoarthritis-exercises": [
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "minutes", "label": "Minutes", "resistance": false }
+  ],
+  "knee-osteoarthritis-advanced-exercises": [
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "minutes", "label": "Minutes", "resistance": false }
+  ],
+  "patellofemoral-pain-exercises": [
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": false },
+    { "measure": "reps", "label": "Steps each direction", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true }
+  ],
+  "rotator-cuff-pain-exercises": [
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": false }
+  ],
+  "achilles-tendinopathy-exercises": [
+    { "measure": "seconds", "label": "Hold (seconds)", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "contacts", "label": "Contacts", "resistance": false }
+  ],
+  "gluteal-tendinopathy-exercises": [
+    { "measure": "seconds", "label": "Hold (seconds)", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Steps each direction", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true }
+  ],
+  "lateral-ankle-sprain-exercises": [
+    { "measure": "minutes", "label": "Minutes", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "seconds", "label": "Hold (seconds)", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": false }
+  ],
+  "lateral-elbow-tendinopathy-exercises": [
+    { "measure": "seconds", "label": "Hold (seconds)", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps each direction", "resistance": true },
+    { "measure": "reps", "label": "Squeezes", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true }
+  ],
+  "medial-elbow-tendinopathy-exercises": [
+    { "measure": "seconds", "label": "Hold (seconds)", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Squeezes", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true }
+  ],
+  "adhesive-capsulitis-exercises": [
+    { "measure": "reps", "label": "Reps", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": true }
+  ],
+  "patellar-tendinopathy-exercises": [
+    { "measure": "seconds", "label": "Hold (seconds)", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "contacts", "label": "Contacts", "resistance": false },
+    { "measure": "reps", "label": "Efforts", "resistance": false }
+  ],
+  "low-back-pain-exercises": [
+    { "measure": "minutes", "label": "Minutes", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Hinge reps", "resistance": true }
+  ],
+  "hip-osteoarthritis-exercises": [
+    { "measure": "reps", "label": "Reps per side", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "minutes", "label": "Minutes", "resistance": false }
+  ],
+  "hamstring-strain-exercises": [
+    { "measure": "reps", "label": "Reps", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": false },
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "seconds", "label": "Hold per side (seconds)", "resistance": false },
+    { "measure": "reps", "label": "Runs", "resistance": false }
+  ],
+  "plantar-fasciitis-exercises": [
+    { "measure": "reps", "label": "Repetitions", "resistance": false },
+    { "measure": "seconds", "label": "Hold (seconds)", "resistance": false },
+    { "measure": "seconds", "label": "Hold (seconds)", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": false }
+  ],
+  "meniscus-tear-rehabilitation-exercises": [
+    { "measure": "reps", "label": "Contractions", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "seconds", "label": "Hold per side (seconds)", "resistance": false }
+  ],
+  "advanced-meniscus-rehabilitation-exercises": [
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "minutes", "label": "Minutes", "resistance": false },
+    { "measure": "contacts", "label": "Contacts", "resistance": false },
+    { "measure": "reps", "label": "Reps each direction", "resistance": false }
+  ],
+  "iliotibial-band-syndrome-exercises": [
+    { "measure": "reps", "label": "Reps or steps", "resistance": true },
+    { "measure": "seconds", "label": "Hold per side (seconds)", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true }
+  ],
+  "peroneal-tendinopathy-exercises": [
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "seconds", "label": "Hold per side (seconds)", "resistance": false },
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "minutes", "label": "Minutes", "resistance": false }
+  ],
+  "tibialis-posterior-tendinopathy-exercises": [
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "seconds", "label": "Hold per side (seconds)", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true }
+  ],
+  "thumb-cmc-osteoarthritis-exercises": [
+    { "measure": "reps", "label": "Reps", "resistance": false },
+    { "measure": "seconds", "label": "Hold (seconds)", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "seconds", "label": "Hold (seconds)", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true }
+  ],
+  "de-quervain-tenosynovitis-exercises": [
+    { "measure": "reps", "label": "Reps", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": false },
+    { "measure": "seconds", "label": "Hold (seconds)", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "seconds", "label": "Hold (seconds)", "resistance": true }
+  ],
+  "ankle-sprain-return-to-sport-exercises": [
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "reps", "label": "Reaches each direction", "resistance": false },
+    { "measure": "reps", "label": "Hops each direction", "resistance": false },
+    { "measure": "contacts", "label": "Contacts", "resistance": false },
+    { "measure": "reps", "label": "Reps each direction", "resistance": false }
+  ],
+  "patellofemoral-pain-return-to-running-exercises": [
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "minutes", "label": "Minutes", "resistance": false },
+    { "measure": "contacts", "label": "Contacts", "resistance": false }
+  ],
+  "achilles-tendinopathy-return-to-sport-exercises": [
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": false },
+    { "measure": "contacts", "label": "Contacts", "resistance": false },
+    { "measure": "minutes", "label": "Minutes", "resistance": false },
+    { "measure": "minutes", "label": "Court minutes", "resistance": false }
+  ]
+}

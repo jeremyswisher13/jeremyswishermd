@@ -1,4 +1,5 @@
 import { GUIDED_PROGRAM_SLUGS } from '../hep-session.js';
+import { validateWorkoutOptions } from '../hep-workout.js';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -7,6 +8,7 @@ const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const root = resolve(scriptDirectory, '..');
 const template = readFileSync(join(scriptDirectory, 'hep-page.template'), 'utf8');
 const programs = JSON.parse(readFileSync(join(scriptDirectory, 'hep-programs.json'), 'utf8'));
+const workoutOptions = JSON.parse(readFileSync(join(scriptDirectory, 'hep-workout-options.json'), 'utf8'));
 const siteRoot = 'https://jeremyswishermd.com';
 const youtubeIdPattern = /^[A-Za-z0-9_-]{11}$/;
 const guidedSessionSlugs = new Set(GUIDED_PROGRAM_SLUGS);
@@ -16,6 +18,9 @@ function renderGuidedSessionData(program, canonical) {
     const data = Object.fromEntries(fields.map(field => [field, program[field]]));
     if (program.guidedExerciseOrder) data.exercises = program.guidedExerciseOrder.map(index => program.exercises[index]);
     data.canonical = canonical;
+    const options = validateWorkoutOptions(workoutOptions[program.slug], program.exercises.length);
+    if (!options) throw new Error('Invalid workout options for ' + program.slug);
+    data.workoutOptions = program.guidedExerciseOrder ? program.guidedExerciseOrder.map(index => options[index]) : options;
     // JSON remains data even if a future exercise cue contains an HTML delimiter.
     const serialized = JSON.stringify(data).replaceAll('<', '\\u003c').replaceAll('>', '\\u003e').replaceAll('&', '\\u0026');
     return '                    <section id="guided-session" class="hep-session no-print" data-hep-session hidden></section>\n'
@@ -299,14 +304,15 @@ for (const program of programs) {
         PAGE_CLASS: 'hep-program-' + program.slug,
         PRINT_BUTTON_CLASS: guidedSession ? 'btn-outline' : 'btn-primary',
         SESSION_NOJS: guidedSession ? ',[data-hep-launch]' : '',
-        SESSION_STYLES: guidedSession ? '    <link rel="stylesheet" href="../hep-session.css?v=20261007-session1">' : '',
+        SESSION_STYLES: guidedSession ? '    <link rel="stylesheet" href="../hep-session.css?v=20261008-workout1">' : '',
         SESSION_LAUNCH: guidedSession ? '                            <a href="#guided-session" class="btn btn-primary" data-hep-launch data-hep-launch-start hidden>Start a guided session</a>' : '',
         SESSION_JUMP: guidedSession ? '                <a href="#guided-session" data-hep-launch hidden>Guided session</a>' : '',
         SESSION_SECTION: guidedSession ? renderGuidedSessionData(program, canonical) : '',
-        SESSION_SCRIPT: guidedSession ? '    <script type="module" src="../hep-session.js?v=20261007-session3"></script>' : '',
+        SESSION_SCRIPT: guidedSession ? '    <script type="module" src="../hep-session.js?v=20261008-workout1"></script>' : '',
         TITLE: program.title,
         SEO_TITLE: program.seoTitle,
         SHORT_TITLE: program.shortTitle,
+        SLUG: program.slug,
         META_DESCRIPTION: program.metaDescription,
         CANONICAL: canonical,
         REVIEWED_DATE_ISO: program.reviewedDate,
@@ -388,4 +394,14 @@ for (const program of programs) {
     writeFileSync(join(outputDirectory, 'index.html'), output);
 }
 
-console.log('Generated ' + programs.length + ' home exercise program pages.');
+const sharePath = join(root, 'share-program/index.html');
+const shareData = JSON.stringify(programs.map(({ slug, title }) => ({ slug, title })))
+    .replaceAll('<', '\\u003c').replaceAll('>', '\\u003e').replaceAll('&', '\\u0026');
+const shareOptions = programs.map(program => `                            <option value="${escapeHtml(program.slug)}" id="program=${escapeHtml(program.slug)}">${escapeHtml(program.title)}</option>`).join('\n');
+const sharingPage = readFileSync(sharePath, 'utf8')
+    .replace(/(<!-- CLINIC_PROGRAM_OPTIONS_START -->)[\s\S]*?(<!-- CLINIC_PROGRAM_OPTIONS_END -->)/,
+        (_, start, end) => `${start}\n${shareOptions}\n                            ${end}`)
+    .replace(/(<!-- CLINIC_PROGRAM_DATA_START -->)[\s\S]*?(<!-- CLINIC_PROGRAM_DATA_END -->)/,
+        (_, start, end) => `${start}\n    <script type="application/json" id="clinic-program-data">${shareData}</script>\n    ${end}`);
+writeFileSync(sharePath, sharingPage);
+console.log('Generated ' + programs.length + ' home exercise program pages and synchronized clinic sharing.');

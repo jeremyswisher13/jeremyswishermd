@@ -23,6 +23,7 @@ const routes = [
   { name: 'prp-guide', path: '/prp-knee-osteoarthritis/', thresholds },
   { name: 'a2m-guide', path: '/a2m-knee-osteoarthritis/', thresholds },
   { name: 'exercise-library', path: '/home-exercise-programs/', thresholds },
+  { name: 'clinic-program-sharing', path: '/share-program/', thresholds },
   { name: 'athlete-hub', path: '/sports-injuries/', thresholds },
   { name: 'hyaluronic-acid-guide', path: '/hyaluronic-acid-knee-osteoarthritis/', thresholds },
   { name: 'injection-comparison', path: '/knee-osteoarthritis-injection-comparison/', thresholds },
