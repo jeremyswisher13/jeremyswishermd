@@ -71,6 +71,72 @@ test('clinic tool starts with an explicit choice and shares every maintained can
     expect(await page.evaluate(() => [localStorage.length, sessionStorage.length])).toEqual([0, 0]);
 });
 
+for (const width of [1280, 320]) {
+    test(`delayed sharing initialization preserves the chooser, preview, and footer layout at ${width}px`, async ({ context, page, baseURL }) => {
+        await localOnly(context, baseURL);
+        await page.setViewportSize({ width, height: 900 });
+        await context.addInitScript(() => {
+            window.__clinicLayoutShifts = [];
+            new PerformanceObserver(list => {
+                for (const entry of list.getEntries()) {
+                    if (!entry.hadRecentInput) window.__clinicLayoutShifts.push({ value: entry.value, startTime: entry.startTime });
+                }
+            }).observe({ type: 'layout-shift', buffered: true });
+        });
+        let releaseSharingScript;
+        let sharingScriptRequested;
+        const sharingScriptHeld = new Promise(resolve => { releaseSharingScript = resolve; });
+        const sharingScriptRequest = new Promise(resolve => { sharingScriptRequested = resolve; });
+        await context.route('**/share-program/share-program.js*', async route => {
+            sharingScriptRequested();
+            await sharingScriptHeld;
+            await route.continue();
+        });
+        // A deferred script blocks DOMContentLoaded, so inspect the rendered HTML before releasing it.
+        await page.goto('/share-program/', { waitUntil: 'commit' });
+        const select = page.getByLabel('Home exercise program', { exact: true });
+        const layoutSelectors = ['.clinic-fallback', '.clinic-workspace', '.clinic-controls', '.clinic-preview', '.footer'];
+        const readLayout = () => page.evaluate(selectors => Object.fromEntries(selectors.map(selector => {
+            const { top, width, height } = document.querySelector(selector).getBoundingClientRect();
+            return [selector, { top, width, height }];
+        })), layoutSelectors);
+        let initialLayout;
+        let initializationStart;
+        try {
+            await sharingScriptRequest;
+            await expect(page.locator('[data-clinic-workspace]')).toBeVisible();
+            await expect(page.locator('[data-clinic-empty]')).toBeVisible();
+            await expect(select).toBeDisabled();
+            await expect(select).toHaveValue('');
+            await expect(page.locator('[data-clinic-fallback] a')).toHaveAttribute('href', '../home-exercise-programs/');
+            // fonts.ready waits for onload in Chromium; inspect the actual faces while the deferred script is held.
+            await expect.poll(() => page.evaluate(() => ['Inter', 'Newsreader'].every(family => [...document.fonts]
+                .some(font => font.family.replace(/['"]/g, '') === family && font.status === 'loaded')))).toBe(true);
+            await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+            initialLayout = await readLayout();
+            initializationStart = await page.evaluate(() => performance.now());
+        } finally {
+            releaseSharingScript();
+        }
+        await page.waitForLoadState('load');
+        await expect(select).toBeEnabled();
+        await expect(select).toHaveValue('');
+        await expect(page.locator('[data-clinic-card]')).toBeHidden();
+        await expect(page.locator('[data-clinic-fallback]')).toBeVisible();
+        await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+        const readyLayout = await readLayout();
+        for (const selector of layoutSelectors) {
+            for (const dimension of ['top', 'width', 'height']) {
+                expect(readyLayout[selector][dimension], `${selector} ${dimension}`).toBeCloseTo(initialLayout[selector][dimension], 1);
+            }
+        }
+        const initializationShift = await page.evaluate(start => window.__clinicLayoutShifts
+            .filter(entry => entry.startTime >= start)
+            .reduce((total, entry) => total + entry.value, 0), initializationStart);
+        expect(initializationShift).toBeLessThan(0.01);
+    });
+}
+
 test('copy succeeds locally and clipboard rejection selects the visible manual link', async ({ context, page, baseURL }) => {
     await localOnly(context, baseURL);
     await context.addInitScript(() => {
@@ -114,6 +180,19 @@ test('QR script failure preserves a complete printable link card', async ({ cont
     await expect(page.getByRole('button', { name: 'Print program card', exact: true })).toBeVisible();
 });
 
+test('sharing script failure leaves a clear library link and no inactive program selection', async ({ context, page, baseURL }) => {
+    await localOnly(context, baseURL);
+    await context.route('**/share-program/share-program.js*', route => route.abort());
+    await page.goto('/share-program/');
+    await expect(page.locator('[data-clinic-fallback]')).toBeVisible();
+    await expect(page.locator('[data-clinic-fallback] a')).toHaveAttribute('href', '../home-exercise-programs/');
+    const select = page.getByLabel('Home exercise program', { exact: true });
+    await expect(select).toBeDisabled();
+    await expect(select).toHaveValue('');
+    await expect(page.locator('[data-clinic-card]')).toBeHidden();
+    await expect(page.locator('[data-clinic-actions]')).toBeHidden();
+});
+
 test('print shows one small card with the full link and program fitting guidance', async ({ context, page, baseURL }) => {
     await localOnly(context, baseURL);
     await context.addInitScript(() => { window.__printCalls = 0; window.print = () => { window.__printCalls += 1; }; });
@@ -124,6 +203,7 @@ test('print shows one small card with the full link and program fitting guidance
     await page.emulateMedia({ media: 'print' });
     await expect(page.locator('.navbar')).toBeHidden();
     await expect(page.locator('.clinic-controls')).toBeHidden();
+    await expect(page.locator('[data-clinic-fallback]')).toBeHidden();
     await expect(page.locator('.footer')).toBeHidden();
     await expect(page.locator('[data-clinic-card]')).toBeVisible();
     await expect(page.locator('[data-clinic-card-url]')).toHaveText(canonical(program));

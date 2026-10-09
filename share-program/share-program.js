@@ -135,8 +135,7 @@
             status.textContent = 'That program link is unavailable. Choose a program from the list.';
         }
     }
-    workspace.hidden = false;
-    document.querySelector('[data-clinic-fallback]').hidden = true;
     applyFragment();
+    select.disabled = false;
     window.addEventListener('hashchange', applyFragment);
 })();
