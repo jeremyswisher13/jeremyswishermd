@@ -25,7 +25,8 @@ const maximumText = (text, length) => text.padEnd(length, '.').slice(0, length);
 function expectedSetText(set, label) {
   const parts = [];
   if (set.amount !== null) parts.push(`${label}: ${set.amount}`);
-  if (set.holdSeconds !== null) parts.push(`${set.holdSeconds}-second holds`);
+  if (set.holdSeconds !== null) parts.push(set.amount === null
+    ? `Timed variation: ${set.holdSeconds} seconds` : `${set.holdSeconds}-second holds`);
   if (set.unit === 'lb' || set.unit === 'kg') parts.push(set.load === null ? `${set.unit} (weight not entered)` : `${set.load} ${set.unit}`);
   if (set.unit === 'bodyweight') parts.push('body weight');
   if (set.unit === 'band') parts.push(set.resistance ? `Band: ${set.resistance}` : 'Band (not described)');
@@ -69,6 +70,12 @@ function fixtureFor(definition) {
   }));
   // A blank completed exercise is valid optional logging and needs its own text.
   if (definition.slug === 'advanced-meniscus-rehabilitation-exercises') workout[4].sets = [];
+  // Controlled grip can progress to a carry; print its time without fabricating reps.
+  if (definition.id === 'common-extensor-standard') {
+    workout[3].sets[0].amount = null;
+    workout[3].sets[0].holdSeconds = 30;
+    workout[3].sets[0].note = 'Synthetic QA time-only carry: Left side';
+  }
   if (definition.stress) {
     workout[1].sets = Array.from({ length: 8 }, (_, index) => ({
       ...blankSet(), amount: 101 + index, holdSeconds: index + 1,
