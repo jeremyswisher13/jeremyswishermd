@@ -3967,6 +3967,7 @@
     .hep-page .content-section h2 {
         margin-bottom: 3mm;
         font-size: 18pt;
+        letter-spacing: normal;
     }
 
     .hep-page .content-section > .section-label,
