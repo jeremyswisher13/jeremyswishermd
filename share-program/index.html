@@ -32,7 +32,8 @@
     <link rel="stylesheet" href="../styles.css?v=20261007-audit1">
     <noscript><link rel="stylesheet" href="../navigation-nojs.css?v=20261007-audit1"></noscript>
     <link rel="stylesheet" href="../landing-pages.css?v=20261007-audit1">
-    <link rel="stylesheet" href="share-program.css?v=20261008-clinic1">
+    <link rel="stylesheet" href="share-program.css?v=20261008-clinic2">
+    <noscript><style>.clinic-share-page .clinic-workspace { display: none !important; }</style></noscript>
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"WebPage","@id":"https://jeremyswishermd.com/share-program/#webpage","url":"https://jeremyswishermd.com/share-program/","name":"Share a Home Exercise Program | Jeremy Swisher, MD","description":"Share a clinician-selected home exercise program with a link and locally generated QR card.","inLanguage":"en-US","dateModified":"2026-10-08","author":{"@id":"https://jeremyswishermd.com/#jeremy-swisher"}}
     </script>
@@ -62,13 +63,13 @@
                 <h1>Send the plan home.</h1>
                 <p>Choose the program discussed during the visit. Share its link, let a patient scan the code, or print a card to take home.</p>
             </header>
-            <p class="clinic-fallback" data-clinic-fallback>Use the <a href="../home-exercise-programs/">exercise library</a> to open and print any program. The sharing tool becomes available when this page’s scripts load.</p>
-            <div class="clinic-workspace" data-clinic-workspace hidden>
+            <p class="clinic-fallback" data-clinic-fallback>You can also use the <a href="../home-exercise-programs/">exercise library</a> to open and print any program, including when sharing controls are unavailable.</p>
+            <div class="clinic-workspace" data-clinic-workspace>
                 <section class="clinic-controls" aria-labelledby="clinic-choose-title">
                     <p class="clinic-step">01 / Choose</p>
                     <h2 id="clinic-choose-title">The program from your visit.</h2>
                     <label for="clinic-program">Home exercise program</label>
-                    <select id="clinic-program" aria-describedby="clinic-choice-help">
+                    <select id="clinic-program" aria-describedby="clinic-choice-help" disabled>
                         <option value="">Choose a program</option>
                         <!-- CLINIC_PROGRAM_OPTIONS_START -->
                             <option value="knee-osteoarthritis-exercises" id="program=knee-osteoarthritis-exercises">Beginner Knee Osteoarthritis Home Exercise Program</option>
@@ -135,6 +136,6 @@
     <!-- CLINIC_PROGRAM_DATA_END -->
     <script src="../script.js?v=20261007-audit1"></script>
     <script src="vendor/qrcodegen-v1.8.0.js?v=1.8.0" defer></script>
-    <script src="share-program.js?v=20261008-clinic1" defer></script>
+    <script src="share-program.js?v=20261008-clinic2" defer></script>
 </body>
 </html>

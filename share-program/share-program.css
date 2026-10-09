@@ -61,7 +61,7 @@
 @media print {
     @page { size: auto; margin: .6in; }
     html, body.clinic-share-page { background: #fff !important; overflow: visible; }
-    .clinic-share-page :is(.navbar, .skip-link, .breadcrumb, .clinic-intro, .clinic-controls, .clinic-preview-heading, .clinic-empty, .footer) { display: none !important; }
+    .clinic-share-page :is(.navbar, .skip-link, .breadcrumb, .clinic-intro, .clinic-fallback, .clinic-controls, .clinic-preview-heading, .clinic-empty, .footer) { display: none !important; }
     .clinic-share-page main { padding: 0 !important; }
     .clinic-share-page .clinic-shell { width: 100%; max-width: none; padding: 0; }
     .clinic-workspace { display: block; border: 0; }
