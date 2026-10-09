@@ -2036,6 +2036,18 @@ html.mobile-nav-open body {
     overflow: hidden;
 }
 
+.print-fallback-guidance {
+    display: none;
+}
+
+.nav-load-failed :is(.print-program-button, .video-load-button, .video-privacy-note, .print-dialog-guidance) {
+    display: none !important;
+}
+
+.nav-load-failed .print-fallback-guidance {
+    display: inline;
+}
+
 /* Hero */
 .hero {
     display: block;
@@ -3147,6 +3159,29 @@ html.mobile-nav-open body {
 
     .nav-ready .nav-links.open {
         display: flex;
+    }
+
+    /* A failed shared-script request keeps the expanded navigation in flow.
+       The normal loading path retains its existing compact-menu layout. */
+    .nav-load-failed .navbar {
+        position: relative;
+        height: auto;
+    }
+
+    .nav-load-failed .nav-container {
+        flex-wrap: wrap;
+        height: auto;
+        min-height: 78px;
+    }
+
+    .nav-load-failed .nav-logo {
+        min-height: 78px;
+    }
+
+    .nav-load-failed .nav-links {
+        position: static;
+        flex-basis: 100%;
+        max-height: none;
     }
 
     .nav-link,

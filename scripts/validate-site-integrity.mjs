@@ -17,7 +17,8 @@ const ignoredHtmlDirectories = new Set([
     'test-results'
 ]);
 const analyticsEventCounts = new Map();
-const expectedAssetCacheKey = '20261007-audit1';
+const expectedAssetCacheKey = '20261009-audit1';
+const expectedLandingStyleCacheKey = '20261007-audit1';
 const expectedScriptCacheKey = '20261007-audit1';
 const expectedPrimaryNavigationLabels = [
     'Conditions &amp; Care',
@@ -242,6 +243,10 @@ for (const file of htmlFiles) {
         errors.push(displayFile + ': shared script cache key is not ' + expectedScriptCacheKey);
     }
 
+    if (!/<script\b[^>]*\bsrc="[^"]*script\.js\?v=[^"]+"[^>]*onerror="document\.documentElement\.classList\.add\('nav-load-failed'\)"/.test(html)) {
+        errors.push(displayFile + ': missing the navigation script download-failure fallback');
+    }
+
     const sharedStyleReferences = [...html.matchAll(/<link\b[^>]*\bhref="[^"]*styles\.css\?v=([^"]+)"/gi)];
     if (sharedStyleReferences.length !== 1) {
         errors.push(displayFile + ': expected exactly one versioned shared stylesheet reference');
@@ -255,8 +260,8 @@ for (const file of htmlFiles) {
     }
     if (landingStyleReferences.length > 1) {
         errors.push(displayFile + ': expected no more than one landing-page stylesheet reference');
-    } else if (landingStyleReferences.length === 1 && landingStyleReferences[0][1] !== expectedAssetCacheKey) {
-        errors.push(displayFile + ': landing-page stylesheet cache key is not ' + expectedAssetCacheKey);
+    } else if (landingStyleReferences.length === 1 && landingStyleReferences[0][1] !== expectedLandingStyleCacheKey) {
+        errors.push(displayFile + ': landing-page stylesheet cache key is not ' + expectedLandingStyleCacheKey);
     }
 
     const primaryNavigation = /<nav class="nav-links" id="navLinks" aria-label="Primary navigation">([\s\S]*?)<\/nav>/i.exec(html)?.[1];

@@ -93,9 +93,42 @@ for (const failureMode of ['disabled', 'blocked']) {
       }
     }
     expect(await page.locator('#pubFullList .pub-card').count()).toBeGreaterThan(0);
+    if (failureMode === 'blocked') {
+      await expect(page.locator('html')).toHaveClass(/\bnav-load-failed\b/);
+      for (const width of [390, 1265]) {
+        await page.setViewportSize({ width, height: 844 });
+        await expect(page.locator('.nav-toggle')).toBeHidden();
+        await expect(page.locator('.navbar')).toHaveCSS('position', 'relative');
+        await expect(page.locator('.nav-links')).toHaveCSS('position', 'static');
+        const headerBounds = await page.locator('.navbar').boundingBox();
+        const mainBounds = await page.locator('main').boundingBox();
+        expect(mainBounds.y, `main follows the expanded header at ${width}px`)
+          .toBeGreaterThanOrEqual(headerBounds.y + headerBounds.height);
+      }
+    }
     await context.close();
   });
 }
+
+test('a failed shared script leaves the written HEP, browser print guidance, and independent guided session usable', async ({ page }) => {
+  await blockThirdPartyRequests(page);
+  await page.route('**/script.js*', route => route.abort());
+  await page.goto('/knee-osteoarthritis-exercises/', { waitUntil: 'load' });
+
+  await expect(page.locator('html')).toHaveClass(/\bnav-load-failed\b/);
+  for (const button of await page.locator('.print-program-button, .video-load-button').all()) {
+    await expect(button).toBeHidden();
+  }
+  await expect(page.locator('.print-dialog-guidance')).toBeHidden();
+  await expect(page.locator('.print-fallback-guidance')).toBeVisible();
+  await expect(page.locator('.print-fallback-guidance')).toHaveText('Use the browser menu and choose Print to print this program or save a PDF.');
+  await expect(page.locator('#program')).toBeVisible();
+  await expect(page.getByRole('link', { name: /Watch on YouTube/ })).toBeVisible();
+  await expect(page.locator('[data-hep-session]')).toBeVisible();
+  await page.locator('[data-hep-launch-start]').click();
+  await expect(page.locator('[data-hep-session]')).toHaveAttribute('data-hep-session-ready', 'true');
+  await expect(page.locator('[data-hep-session] [data-hep-done]')).toBeVisible();
+});
 
 test('exercise library combines athlete, region, and search filters and resets cleanly', async ({ page }) => {
   await blockThirdPartyRequests(page);
