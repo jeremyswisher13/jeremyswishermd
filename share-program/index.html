@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="../styles.css?v=20261009-audit1">
     <noscript><link rel="stylesheet" href="../navigation-nojs.css?v=20261007-audit1"></noscript>
     <link rel="stylesheet" href="../landing-pages.css?v=20261007-audit1">
-    <link rel="stylesheet" href="share-program.css?v=20261008-clinic2">
+    <link rel="stylesheet" href="share-program.css?v=20261009-text1">
     <noscript><style>.clinic-share-page .clinic-workspace { display: none !important; }</style></noscript>
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"WebPage","@id":"https://jeremyswishermd.com/share-program/#webpage","url":"https://jeremyswishermd.com/share-program/","name":"Share a Home Exercise Program | Jeremy Swisher, MD","description":"Share a clinician-selected home exercise program with a link and locally generated QR card.","inLanguage":"en-US","dateModified":"2026-10-09","author":{"@id":"https://jeremyswishermd.com/#jeremy-swisher"}}
@@ -69,7 +69,7 @@
                     <p class="clinic-step">01 / Choose</p>
                     <h2 id="clinic-choose-title">The program from your visit.</h2>
                     <label for="clinic-program">Home exercise program</label>
-                    <select id="clinic-program" aria-describedby="clinic-choice-help" disabled>
+                    <select id="clinic-program" aria-describedby="clinic-selected-title clinic-choice-help" disabled>
                         <option value="">Choose a program</option>
                         <!-- CLINIC_PROGRAM_OPTIONS_START -->
                             <option value="knee-osteoarthritis-exercises" id="program=knee-osteoarthritis-exercises">Beginner Knee Osteoarthritis Home Exercise Program</option>
@@ -99,6 +99,7 @@
                             <option value="achilles-tendinopathy-return-to-sport-exercises" id="program=achilles-tendinopathy-return-to-sport-exercises">Achilles Tendinopathy Return-to-Sport Program</option>
                             <!-- CLINIC_PROGRAM_OPTIONS_END -->
                     </select>
+                    <p id="clinic-selected-title" class="clinic-selected-title" data-clinic-selection hidden></p>
                     <p id="clinic-choice-help" class="clinic-help">Select a program after a clinician has confirmed its fit. Athlete progressions start after the matching foundation stage.</p>
                     <div class="clinic-actions" data-clinic-actions hidden>
                         <a class="btn btn-primary" data-clinic-open href="../home-exercise-programs/" target="_blank" rel="noopener noreferrer">Open program<span class="sr-only"> (opens in a new tab)</span></a>
@@ -136,6 +137,6 @@
     <!-- CLINIC_PROGRAM_DATA_END -->
     <script src="../script.js?v=20261007-audit1" onerror="document.documentElement.classList.add('nav-load-failed')"></script>
     <script src="vendor/qrcodegen-v1.8.0.js?v=1.8.0" defer></script>
-    <script src="share-program.js?v=20261008-clinic3" defer></script>
+    <script src="share-program.js?v=20261009-text1" defer></script>
 </body>
 </html>

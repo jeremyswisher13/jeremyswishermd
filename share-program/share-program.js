@@ -27,6 +27,7 @@
     const openLink = workspace.querySelector('[data-clinic-open]');
     const cardLink = workspace.querySelector('[data-clinic-card-url]');
     const cardTitle = workspace.querySelector('[data-clinic-title]');
+    const selectedTitle = workspace.querySelector('[data-clinic-selection]');
     const qrContainer = workspace.querySelector('[data-clinic-qr]');
     const scan = workspace.querySelector('[data-clinic-scan]');
     const qrFallback = workspace.querySelector('[data-clinic-qr-fallback]');
@@ -86,6 +87,8 @@
         card.hidden = !program;
         actions.hidden = !program;
         empty.hidden = Boolean(program);
+        selectedTitle.textContent = program?.title || '';
+        selectedTitle.hidden = !program;
         if (!program) {
             cardTitle.textContent = '';
             cardLink.textContent = '';

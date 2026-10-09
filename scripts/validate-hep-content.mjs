@@ -253,7 +253,7 @@ for (const program of programs) {
             }
         }
         assert(page.includes('data-hep-session hidden'), `${slug}: guided session must start hidden until initialized`);
-        assert(page.includes('src="../hep-session.js?v=20261009-timer1"'), `${slug}: guided-session module is missing`);
+        assert(page.includes('src="../hep-session.js?v=20261009-text1"'), `${slug}: guided-session module is missing`);
         assert(page.includes('href="../hep-session.css?v=20261008-workout1"'), `${slug}: guided-session stylesheet is missing`);
     } else {
         assert(!sessionPayload && !page.includes('hep-session.js') && !page.includes('hep-session.css'), `${slug}: non-guided page includes guided-session assets`);

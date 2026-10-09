@@ -37,10 +37,13 @@ test('clinic tool starts with an explicit choice and shares every maintained can
     await expect(select).toHaveValue('');
     await expect(select.locator('option')).toHaveCount(programs.length + 1);
     await expect(page.locator('[data-clinic-card]')).toBeHidden();
+    await expect(page.locator('[data-clinic-selection]')).toBeHidden();
     await expect(page.getByRole('button', { name: 'Print program card', exact: true })).toBeHidden();
     for (const program of programs) {
         await select.selectOption(program.slug);
         await expect(page.locator('[data-clinic-title]')).toHaveText(program.title);
+        await expect(page.locator('[data-clinic-selection]')).toBeVisible();
+        await expect(page.locator('[data-clinic-selection]')).toHaveText(program.title);
         await expect(page.getByLabel('Program link', { exact: true })).toHaveValue(canonical(program));
         await expect(page.locator('[data-clinic-open]')).toHaveAttribute('href', canonical(program));
         await expect(page.locator('[data-clinic-card-url]')).toHaveText(canonical(program));
@@ -66,6 +69,8 @@ test('clinic tool starts with an explicit choice and shares every maintained can
     }
     await select.selectOption('');
     await expect(page.locator('[data-clinic-card]')).toBeHidden();
+    await expect(page.locator('[data-clinic-selection]')).toBeHidden();
+    await expect(page.locator('[data-clinic-selection]')).toHaveText('');
     await expect(page.locator('[data-clinic-status]')).toHaveText('Choose a program to create its card.');
     expect(externalRequests).toEqual([]);
     expect(await page.evaluate(() => [localStorage.length, sessionStorage.length])).toEqual([0, 0]);

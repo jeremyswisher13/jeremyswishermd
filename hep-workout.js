@@ -68,7 +68,7 @@ export function describeSet(set, measure, label) {
     const parts = [];
     if (set.amount !== null) parts.push(label ? `${label}: ${set.amount}` : `${set.amount} ${measure}`);
     if (set.holdSeconds !== null) parts.push(set.amount === null
-        ? `Timed variation: ${set.holdSeconds} seconds` : `${set.holdSeconds}-second holds`);
+        ? `Timed variation: ${set.holdSeconds} ${set.holdSeconds === 1 ? 'second' : 'seconds'}` : `${set.holdSeconds}-second holds`);
     if (['lb', 'kg'].includes(set.unit)) parts.push(set.load === null ? `${set.unit} (weight not entered)` : `${set.load} ${set.unit}`);
     if (set.unit === 'bodyweight') parts.push('body weight');
     if (set.unit === 'band') parts.push(set.resistance ? `Band: ${set.resistance}` : 'Band (not described)');
