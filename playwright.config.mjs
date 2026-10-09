@@ -5,6 +5,8 @@ const siteTestURL = `http://127.0.0.1:${siteTestPort}`;
 
 export default defineConfig({
   testDir: './tests',
+  // Text geometry and its screenshot evidence run in a separate CI job.
+  testIgnore: 'visual-text.spec.mjs',
   fullyParallel: false,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 1 : 0,

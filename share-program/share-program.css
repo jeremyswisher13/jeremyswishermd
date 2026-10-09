@@ -24,6 +24,7 @@
 .clinic-controls label { display: block; margin-bottom: 8px; color: var(--color-dark); font-size: .82rem; font-weight: 600; }
 .clinic-controls select, .clinic-controls textarea { display: block; width: 100%; min-width: 0; max-width: 100%; border: 1px solid #a69e91; border-radius: 4px; background: #fffdf9; font: inherit; color: var(--color-dark); }
 .clinic-controls select { min-height: 50px; padding: 12px 10px; font-size: .9rem; text-overflow: ellipsis; }
+.clinic-selected-title { margin-top: 12px; font-size: .9rem; font-weight: 600; line-height: 1.55; overflow-wrap: anywhere; }
 .clinic-help { color: var(--color-text-light); font-size: .78rem; line-height: 1.6; }
 .clinic-controls > .clinic-help { margin-top: 12px; }
 .clinic-actions { display: grid; gap: 10px; margin-top: 26px; }

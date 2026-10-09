@@ -50,6 +50,7 @@ test('time-only variations retain the existing set schema and survive validation
   const restoredEntry = restored.records[0].workout[0];
   assert.equal(describeSet(restoredEntry.sets[0], restoredEntry.measure, restoredEntry.label), 'Timed variation: 30 seconds · Carry');
   assert.equal(describeSet(restoredEntry.sets[1], restoredEntry.measure, restoredEntry.label), 'Timed variation: 20 seconds · Static hold');
+  assert.equal(describeSet({ ...restoredEntry.sets[1], holdSeconds: 1 }, restoredEntry.measure, restoredEntry.label), 'Timed variation: 1 second · Static hold');
   assert.equal(describeSet(restoredEntry.sets[2], restoredEntry.measure, restoredEntry.label), 'Reps per side: 12 · 5-second holds');
   assert.deepEqual(drafts, before);
 });

@@ -1,6 +1,6 @@
 // Optional patient session tools. Clinical instructions come from the page's
 // generated program data; personal entries stay in memory or opted-in storage.
-import { MAX_PROGRESS_BYTES, appendWorkoutDetails, blankSet, mountWorkout, recordedSets, validateWorkoutEntries, validateWorkoutOptions } from './hep-workout.js?v=20261009-timer1';
+import { MAX_PROGRESS_BYTES, appendWorkoutDetails, blankSet, mountWorkout, recordedSets, validateWorkoutEntries, validateWorkoutOptions } from './hep-workout.js?v=20261009-text1';
 export const SESSION_STORAGE_VERSION = 1;
 export const MAX_RECORDS = 30;
 export const NEXT_MORNING_RESPONSES = Object.freeze([
@@ -797,7 +797,8 @@ function initializeGuidedSession(root, program) {
         report.append(element('h1', '', 'Exercise follow-up summary'));
         paragraph(report, 'Patient-recorded', 'hep-summary-meta');
         report.append(element('h2', '', program.title));
-        paragraph(report, `Prepared ${displayDate(localDateString())} · Latest ${Math.min(state.records.length, 6)} entries`, 'hep-summary-meta');
+        const entryCount = Math.min(state.records.length, 6);
+        paragraph(report, `Prepared ${displayDate(localDateString())} · Latest ${entryCount} ${entryCount === 1 ? 'entry' : 'entries'}`, 'hep-summary-meta');
         if (state.goal) paragraph(report, `Current activity goal: ${state.goal}`, 'hep-summary-goal');
         const table = element('table', 'hep-summary-table');
         const caption = element('caption', '', 'Patient-recorded sessions and next-morning responses');

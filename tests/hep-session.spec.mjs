@@ -442,6 +442,7 @@ test('program printing excludes interactive progress and summary printing exclud
   await page.waitForTimeout(1100);
   await expect(page.locator('.hep-summary-printout')).toBeVisible();
   await expect(page.locator('.hep-summary-printout')).toContainText('SUMMARY_PRINT_SENTINEL');
+  await expect(page.locator('.hep-summary-printout')).toContainText('Latest 1 entry');
   for (const selector of ['#program', '#response', '#progress', '.print-progress-tracker', '.print-program-header', '[data-hep-session]']) {
     await expect(page.locator(selector)).toBeHidden();
   }
