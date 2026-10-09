@@ -272,11 +272,11 @@
       "description": "A visual overview of patellofemoral pain, load management, and common hip and knee exercise progressions.",
       "caution": "The examples include later, higher-stress options. Do not add them all or jump directly to deeper or higher-volume versions. Chondromalacia is a structural cartilage term and is not required for a clinical diagnosis of patellofemoral pain; imaging findings do not independently identify the pain source. Follow this page’s pain limit, next-morning rule, and three-day strength dose."
     },
-    "metaDescription": "Printable patellofemoral pain syndrome (PFPS) exercises for front-of-knee pain, with hip and knee strengthening, symptom rules, and clear progression.",
+    "metaDescription": "Patellofemoral pain syndrome exercises with knee and hip strengthening and symptom checks. Follow a guided session or print and save the plan as a PDF.",
     "breadcrumb": "Patellofemoral pain",
     "kicker": "Front-of-knee pain · Home exercise plan",
     "h1": "Patellofemoral Pain Syndrome (PFPS) Exercises",
-    "summary": "Patellofemoral pain care should pair education with progressive knee-targeted exercise. Hip-targeted exercise can be added when it matches symptoms, impairments, preferences, or early knee-loading tolerance.",
+    "summary": "A starter home program for patellofemoral pain, pairing education with progressive knee strengthening. Hip exercises can be added when they match your symptoms, impairments, preferences, or early knee-loading tolerance. Start a guided session or print and save the plan as a PDF.",
     "authorityTitle": "Knee strength. Hip strength. Load control.",
     "authorityItems": [
       { "icon": "exercise", "text": "Knee-targeted strengthening, with hip exercise when indicated" },
@@ -360,7 +360,7 @@
       { "href": "https://bjsm.bmj.com/content/58/24/1486", "label": "British Journal of Sports Medicine: Best Practice Guide for Patellofemoral Pain, 2024" }
     ],
     "related": [
-      { "href": "../patellofemoral-pain-return-to-running-exercises/", "eyebrow": "Athlete progression", "title": "Return to running and jumping" },
+      { "href": "../patellofemoral-pain-return-to-running-exercises/", "eyebrow": "Athlete progression", "title": "Patellofemoral return to running and jumping" },
       { "href": "../sports-injuries/", "eyebrow": "Training decisions", "title": "Sports injury evaluation" },
       { "href": "../patellar-tendinopathy-exercises/", "eyebrow": "Athlete tendon loading", "title": "Patellar tendinopathy exercises" }
     ]
@@ -486,7 +486,7 @@
     "slug": "achilles-tendinopathy-exercises",
     "guidedSession": true,
     "title": "Midportion Achilles Tendinopathy Home Exercise Program",
-    "seoTitle": "Achilles Tendinopathy Exercises & Plan",
+    "seoTitle": "Midportion Achilles Tendinopathy Exercises",
     "shortTitle": "Midportion Achilles exercises",
     "conditionName": "Midportion Achilles tendinopathy",
     "reviewedDate": "2026-08-28",
@@ -497,11 +497,11 @@
       "description": "A visual overview of Achilles tendinopathy, load monitoring, calf strengthening, and staged return to faster activity.",
       "caution": "The video discusses both midportion and insertional Achilles tendinopathy. This page is specifically for midportion pain. Keep early loading on a flat floor, and do not add step-deficit raises or hopping before slow strength and daily activity are stable."
     },
-    "metaDescription": "Printable midportion Achilles tendinopathy exercises with progressive calf loading and next-morning pain and stiffness rules to guide progression.",
+    "metaDescription": "Midportion Achilles tendinopathy exercises with calf loading, morning symptom checks, and progression. Follow a guided session or print and save as a PDF.",
     "breadcrumb": "Midportion Achilles tendinopathy",
     "kicker": "Achilles tendon · Home exercise plan",
     "h1": "Midportion Achilles Tendinopathy Exercises",
-    "summary": "Progressive tendon loading is first-line care for midportion Achilles tendinopathy. This plan uses straight-knee and bent-knee calf work, gradual resistance, and morning stiffness as a load signal.",
+    "summary": "A starter home program using progressive tendon loading, the first-line approach for midportion Achilles tendinopathy. Use straight-knee and bent-knee calf work, gradual resistance, and morning stiffness as a load signal. Start a guided session or print and save the plan as a PDF.",
     "authorityTitle": "Load. Recover. Progress.",
     "authorityItems": [
       { "icon": "fitness_center", "text": "Progressive calf strengthening at least three days per week" },
@@ -598,7 +598,7 @@
       { "href": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=888dc7f9-ad9c-4c00-8d50-8ddfd9bd27c0", "label": "FDA-Approved Ciprofloxacin Label and Medication Guide, Current DailyMed Label" }
     ],
     "related": [
-      { "href": "../achilles-tendinopathy-return-to-sport-exercises/", "eyebrow": "Athlete progression", "title": "Return to running, jumping, and basketball" },
+      { "href": "../achilles-tendinopathy-return-to-sport-exercises/", "eyebrow": "Athlete progression", "title": "Achilles return to running, jumping, and basketball" },
       { "href": "../sports-injuries/", "eyebrow": "Return to sport", "title": "Sports injury evaluation" },
       { "href": "../plantar-fasciitis-exercises/", "eyebrow": "Different heel pattern", "title": "Plantar heel pain exercises" }
     ]
@@ -607,7 +607,7 @@
     "slug": "gluteal-tendinopathy-exercises",
     "guidedSession": true,
     "title": "Gluteal Tendinopathy Home Exercise Program",
-    "seoTitle": "Gluteal Tendinopathy Exercises",
+    "seoTitle": "Gluteal Tendinopathy Exercises (Printable)",
     "shortTitle": "Gluteal tendinopathy exercises",
     "conditionName": "Gluteal tendinopathy and lateral hip pain",
     "reviewedDate": "2026-08-28",
@@ -618,11 +618,11 @@
       "description": "A visual overview of lateral hip pain, compressive positions, load management, and progressive hip strengthening.",
       "caution": "The title includes bursitis, but this page is written for a diagnosed gluteal tendinopathy pattern rather than assuming isolated bursal inflammation. Treat the exercise examples as a menu, not extra volume. Delay step-ups, prolonged single-leg work, hills, running, or advanced options if night pain or next-day walking pain worsens."
     },
-    "metaDescription": "Printable gluteal tendinopathy exercises for lateral hip pain, with load management, hip strengthening, symptom rules, and clear progression.",
+    "metaDescription": "Gluteal tendinopathy exercises for lateral hip pain, with hip strengthening and load-management tips. Follow a guided session or print and save as a PDF.",
     "breadcrumb": "Gluteal tendinopathy",
     "kicker": "Lateral hip pain · Home exercise plan",
     "h1": "Gluteal Tendinopathy Exercises for Lateral Hip Pain",
-    "summary": "Education plus progressive exercise is first-line care for gluteal tendinopathy. This plan pairs practical position changes with hip and lower-limb strengthening.",
+    "summary": "A starter home program for gluteal tendinopathy using education and progressive exercise as first-line care. Pair practical position changes with hip and lower-limb strengthening. Start a guided session or print and save the plan as a PDF.",
     "authorityTitle": "Position. Load. Hip strength.",
     "authorityItems": [
       { "icon": "airline_seat_flat", "text": "Reduce sustained compression at the side of the hip" },
