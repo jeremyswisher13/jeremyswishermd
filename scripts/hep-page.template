@@ -259,6 +259,7 @@
                         <p>Keep the exercise dose, symptom rules, and progression markers together.</p>
                         <button class="btn btn-primary print-program-button" type="button" data-print-program data-analytics-event="exercise_program_print" aria-label="Print this program or save it as a PDF"><span class="material-symbols-outlined" aria-hidden="true" data-icon="print"></span><span data-print-label>Print this program</span></button>
                         <p class="print-helper">The print dialog also lets you save a PDF.</p>
+                        <a class="text-link" href="../share-program/#program={{SLUG}}">Share this program with a link or QR card</a>
                     </div>
                     <div class="sidebar-panel sidebar-panel-light">
                         <p class="section-label">Not sure of the diagnosis?</p>

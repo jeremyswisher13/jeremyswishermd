@@ -1,0 +1,82 @@
+/* A compact clinic tool using the site's editorial type and warm palette. */
+.clinic-share-page [hidden] { display: none !important; }
+.clinic-share-page .clinic-shell {
+    width: min(100%, 1200px);
+    margin-inline: auto;
+    padding: 0 var(--landing-gutter) 80px;
+}
+.clinic-share-page .breadcrumb { padding-inline: 0; }
+.clinic-intro { max-width: 760px; padding: 32px 0 40px; }
+.clinic-intro .landing-kicker { margin-bottom: 20px; }
+.clinic-intro h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 5.6vw, 4.9rem);
+    font-weight: 500;
+    letter-spacing: -.04em;
+    line-height: 1;
+}
+.clinic-intro > p:last-child { margin-top: 22px; max-width: 650px; color: var(--color-text-light); }
+.clinic-fallback { padding: 24px; border: 1px solid var(--color-border); }
+.clinic-workspace { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); border-top: 1px solid var(--color-border); }
+.clinic-controls { padding: 30px 40px 0 0; }
+.clinic-step { color: var(--color-accent-dark); font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.clinic-controls h2, .clinic-preview-heading h2 { font-family: var(--font-display); font-weight: 500; font-size: 1.9rem; line-height: 1.1; margin: 12px 0 24px; letter-spacing: -.025em; }
+.clinic-controls label { display: block; margin-bottom: 8px; color: var(--color-dark); font-size: .82rem; font-weight: 600; }
+.clinic-controls select, .clinic-controls textarea { display: block; width: 100%; min-width: 0; max-width: 100%; border: 1px solid #a69e91; border-radius: 4px; background: #fffdf9; font: inherit; color: var(--color-dark); }
+.clinic-controls select { min-height: 50px; padding: 12px 10px; font-size: .9rem; text-overflow: ellipsis; }
+.clinic-help { color: var(--color-text-light); font-size: .78rem; line-height: 1.6; }
+.clinic-controls > .clinic-help { margin-top: 12px; }
+.clinic-actions { display: grid; gap: 10px; margin-top: 26px; }
+.clinic-actions .btn { width: 100%; min-height: 48px; padding: 12px 14px; font-size: .83rem; white-space: normal; }
+.clinic-actions label { margin: 14px 0 -2px; }
+.clinic-controls textarea { padding: 12px; resize: vertical; font-size: .8rem; line-height: 1.6; overflow-wrap: anywhere; word-break: break-all; }
+.clinic-controls :is(select, textarea, button, a):focus-visible { outline: 3px solid var(--color-primary-dark); outline-offset: 4px; }
+.clinic-status { min-height: 3em; margin-top: 22px; font-size: .83rem; font-weight: 600; line-height: 1.55; }
+.clinic-privacy { padding-top: 20px; border-top: 1px solid var(--color-border); margin-top: 22px; font-size: .76rem; line-height: 1.65; color: var(--color-text-light); }
+.clinic-library-link { display: inline-block; margin-top: 16px; color: var(--color-primary-dark); font-size: .83rem; font-weight: 600; text-underline-offset: 4px; }
+.clinic-preview { padding: 30px 0 0 40px; border-left: 1px solid var(--color-border); }
+.clinic-empty { display: grid; justify-items: center; text-align: center; gap: 14px; padding: 54px 24px; border: 1px dashed #b7afa1; min-height: 380px; align-content: center; }
+.clinic-empty-mark { display: grid; place-items: center; width: 64px; height: 64px; border: 1px solid var(--color-border); border-radius: 50%; color: var(--color-primary-dark); font-size: 2rem; }
+.clinic-empty > p { max-width: 260px; }
+.clinic-card { padding: clamp(24px, 3vw, 34px); border: 1px solid #d5cec2; border-top: 3px solid var(--color-primary-dark); background: #fffdf9; box-shadow: 0 12px 32px rgba(16,36,56,.06); text-align: center; }
+.clinic-card-brand { display: flex; flex-direction: column; gap: 2px; border-bottom: 1px solid #ddd5c7; padding-bottom: 20px; }
+.clinic-card-brand strong { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; line-height: 1.2; color: var(--color-dark); }
+.clinic-card-brand span { color: var(--color-text-light); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; }
+.clinic-card-eyebrow { margin: 24px 0 10px; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--color-accent-dark); }
+.clinic-card h3 { font-family: var(--font-display); font-size: clamp(1.6rem, 2.2vw, 2rem); font-weight: 500; line-height: 1.15; letter-spacing: -.02em; }
+.clinic-card-qr { width: min(240px, 100%); margin: 20px auto 10px; line-height: 0; }
+.clinic-card-qr svg { display: block; width: 100%; height: auto; background: #fff; }
+.clinic-scan, .clinic-qr-fallback { max-width: 290px; margin: 0 auto 14px; font-size: .77rem; line-height: 1.55; color: var(--color-text-light); }
+.clinic-qr-fallback { margin-top: 28px; }
+.clinic-card-url { display: block; overflow-wrap: anywhere; word-break: break-word; color: var(--color-primary-dark); font-size: .8rem; line-height: 1.55; text-underline-offset: 3px; }
+.clinic-card-note { margin-top: 24px; padding: 19px 0; text-align: left; border-block: 1px solid #ddd5c7; font-size: .78rem; line-height: 1.65; }
+.clinic-card-note strong { display: block; margin-bottom: 5px; color: var(--color-dark); }
+.clinic-card-disclosure { margin-top: 14px; text-align: left; font-size: .65rem; line-height: 1.65; color: var(--color-text-light); }
+@media (max-width: 760px) {
+    .clinic-workspace { grid-template-columns: minmax(0, 1fr); }
+    .clinic-controls { padding-right: 0; }
+    .clinic-preview { margin-top: 34px; padding: 26px 0 0; border-left: 0; border-top: 1px solid var(--color-border); }
+    .clinic-intro { padding-top: 22px; }
+}
+@media print {
+    @page { size: auto; margin: .6in; }
+    html, body.clinic-share-page { background: #fff !important; overflow: visible; }
+    .clinic-share-page :is(.navbar, .skip-link, .breadcrumb, .clinic-intro, .clinic-controls, .clinic-preview-heading, .clinic-empty, .footer) { display: none !important; }
+    .clinic-share-page main { padding: 0 !important; }
+    .clinic-share-page .clinic-shell { width: 100%; max-width: none; padding: 0; }
+    .clinic-workspace { display: block; border: 0; }
+    .clinic-preview { padding: 0; margin: 0; border: 0; }
+    .clinic-card { width: min(100%, 5.8in); margin: 0 auto; padding: .26in; border: 1px solid #bbb; border-top: 3px solid #102438; background: #fff; color: #000; box-shadow: none; break-inside: avoid; page-break-inside: avoid; }
+    .clinic-card-brand { padding-bottom: .15in; }
+    .clinic-card-brand strong { font-size: 17pt; }
+    .clinic-card-brand span { font-size: 8pt; color: #333; }
+    .clinic-card-eyebrow { margin-top: .18in; font-size: 8pt; color: #333; }
+    .clinic-card h3 { font-size: 20pt; line-height: 1.12; }
+    .clinic-card-qr { width: 1.9in; height: 1.9in; margin: .15in auto .08in; }
+    .clinic-card-qr svg { width: 1.9in; height: 1.9in; }
+    .clinic-scan, .clinic-qr-fallback { font-size: 9pt; color: #333; margin-bottom: .1in; }
+    .clinic-card-url { font-size: 10pt; color: #000 !important; text-decoration: underline; }
+    .clinic-card-url::after { content: none !important; }
+    .clinic-card-note { font-size: 9pt; line-height: 1.5; margin-top: .18in; padding-block: .14in; }
+    .clinic-card-disclosure { font-size: 7.5pt; line-height: 1.45; color: #333; margin-top: .12in; }
+}

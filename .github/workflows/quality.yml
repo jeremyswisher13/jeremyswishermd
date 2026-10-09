@@ -92,7 +92,7 @@ jobs:
         run: npm run test:print-pdf
 
       - name: Upload printable-handout evidence
-        if: failure()
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: exercise-print-results
