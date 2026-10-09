@@ -297,6 +297,11 @@ def validate_pdf(path, paper, fixture, program):
         start = exercise_positions[index]
         end = exercise_positions[index + 1] if index + 1 < len(exercise_positions) else full.find(normalize(DISCLOSURE))
         block = full[start:end] if start >= 0 and end > start else ""
+        recorded = next(record for record in fixture["records"]
+                        if record["id"] == fixture["latestWorkoutId"])["workout"][index]
+        amount_count = sum(value["amount"] is not None for value in recorded["sets"])
+        if block.count(normalize(exercise["label"] + ":")) != amount_count:
+            issues.append(f"exercise {index + 1}: primary amounts are missing, duplicated, or fabricated on time-only sets")
         line_positions = []
         for set_index, line in enumerate(exercise["expectedLines"], 1):
             needle = normalize(line)
