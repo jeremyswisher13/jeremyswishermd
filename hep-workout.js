@@ -232,8 +232,15 @@ export function mountWorkout(parent, option, drafts, previous, announce) {
     const clear = () => { if (interval !== null) window.clearInterval(interval); interval = null; };
     const controls = node('div', 'hep-session-actions');
     const pause = makeButton('Pause', () => {
-        if (running) { paused = remainingSeconds(deadline, Date.now()); running = false; clear(); pause.textContent = 'Resume'; announce('Timer paused.'); }
-        else if (paused > 0) { deadline = Date.now() + paused * 1000; running = true; pause.textContent = 'Pause'; interval = window.setInterval(tick, 250); announce('Timer resumed.'); }
+        if (running) {
+            paused = remainingSeconds(deadline, Date.now());
+            // A click can arrive before a delayed interval reconciles expiry.
+            if (paused === 0) { tick(); return; }
+            running = false; clear(); pause.textContent = 'Resume'; tick(); announce('Timer paused.');
+        } else if (paused > 0) {
+            deadline = Date.now() + paused * 1000; running = true; pause.textContent = 'Pause';
+            interval = window.setInterval(tick, 250); tick(); announce('Timer resumed.');
+        }
     }, 'data-hep-timer-pause');
     const extend = makeButton('Add 15 seconds', () => {
         if (running) deadline = Math.max(deadline, Date.now()) + 15000;

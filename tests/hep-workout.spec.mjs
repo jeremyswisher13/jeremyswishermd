@@ -472,6 +472,49 @@ test('a user-entered timer pauses, extends, resumes, cancels, and finishes witho
   await expect(session(page).locator('[data-hep-status]')).toContainText('Timer cancelled');
 });
 
+test('pausing between countdown updates immediately displays the remaining time', async ({ context, page, baseURL }) => {
+  await clockVisit(context, page, baseURL);
+  await timer(page).locator('[data-hep-timer-duration]').fill('20');
+  await timer(page).locator('[data-hep-timer-start]').click();
+  const startedAt = await page.evaluate(() => Date.now());
+  // Change wall time while interval callbacks remain paused.
+  await page.clock.setSystemTime(new Date(startedAt + 1050));
+  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:20');
+  await timer(page).locator('[data-hep-timer-pause]').click();
+  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:19');
+  await expect(timer(page).getByRole('button', { name: 'Resume', exact: true })).toBeEnabled();
+  await page.clock.setSystemTime(new Date(startedAt + 11050));
+  await timer(page).getByRole('button', { name: 'Resume', exact: true }).click();
+  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:19');
+  await page.clock.runFor(1000);
+  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:18');
+  await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[0].name);
+  await expect(session(page).locator('progress')).toHaveJSProperty('value', 0);
+});
+
+test('pausing just after expiry before an interval callback finishes the timer and enables a fresh timer', async ({ context, page, baseURL }) => {
+  await clockVisit(context, page, baseURL);
+  await timer(page).locator('[data-hep-timer-duration]').fill('1');
+  await timer(page).locator('[data-hep-timer-start]').click();
+  const startedAt = await page.evaluate(() => Date.now());
+  await page.clock.setSystemTime(new Date(startedAt + 1001));
+  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:01');
+  await timer(page).locator('[data-hep-timer-pause]').click();
+  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:00');
+  await expect(session(page).locator('[data-hep-status]')).toContainText('Timer finished');
+  for (const control of ['pause', 'extend', 'cancel']) {
+    await expect(timer(page).locator(`[data-hep-timer-${control}]`)).toBeDisabled();
+  }
+  await expect(timer(page).locator('[data-hep-timer-start]')).toBeEnabled();
+  await expect(timer(page).locator('[data-hep-timer-duration]')).toBeEnabled();
+  await expect(timer(page).getByLabel('Timer', { exact: true })).toBeEnabled();
+  await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[0].name);
+  await expect(session(page).locator('progress')).toHaveJSProperty('value', 0);
+  await timer(page).locator('[data-hep-timer-duration]').fill('5');
+  await timer(page).locator('[data-hep-timer-start]').click();
+  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:05');
+});
+
 test('returning from a hidden page uses the wall-clock deadline instead of losing time to delayed ticks', async ({ context, page, baseURL }) => {
   await clockVisit(context, page, baseURL);
   await timer(page).locator('[data-hep-timer-duration]').fill('30');

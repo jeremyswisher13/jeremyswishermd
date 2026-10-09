@@ -1,6 +1,6 @@
 // Optional patient session tools. Clinical instructions come from the page's
 // generated program data; personal entries stay in memory or opted-in storage.
-import { MAX_PROGRESS_BYTES, appendWorkoutDetails, blankSet, mountWorkout, recordedSets, validateWorkoutEntries, validateWorkoutOptions } from './hep-workout.js?v=20261008-workout2';
+import { MAX_PROGRESS_BYTES, appendWorkoutDetails, blankSet, mountWorkout, recordedSets, validateWorkoutEntries, validateWorkoutOptions } from './hep-workout.js?v=20261009-timer1';
 export const SESSION_STORAGE_VERSION = 1;
 export const MAX_RECORDS = 30;
 export const NEXT_MORNING_RESPONSES = Object.freeze([
