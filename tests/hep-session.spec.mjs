@@ -259,6 +259,67 @@ test('progress is off by default and private session details never enter request
   await expect(session(page).locator('[data-hep-history]')).not.toContainText(privateNote);
 });
 
+for (const keep of [false, true]) {
+  test(`reload ${keep ? 'restores opted-in completed entries' : 'clears unsaved completed entries'} and never restores an in-progress workout`, async ({ context, page, baseURL }) => {
+    await localOnly(context, baseURL);
+    await visit(page);
+    const storageHelp = session(page).locator('#hep-session-storage-help');
+    await expect(session(page).locator('[data-hep-storage]')).not.toBeChecked();
+    await expect(storageHelp).toHaveText('Saving is off. Unsaved entries can be lost if you refresh, leave this page, or close the tab.');
+    await expect(session(page)).toContainText('In-progress exercise steps, set drafts, and timers are not saved');
+    await expect(session(page)).toContainText('even when saving is on.');
+    await addRecord(page, { notes: 'COMPLETED_ENTRY_RELOAD_SENTINEL' });
+    if (keep) {
+      await session(page).locator('[data-hep-storage]').check();
+      await expect(storageHelp).toContainText('Up to 30 completed log entries and your activity goal are kept.');
+    } else {
+      await expect(session(page).locator('[data-hep-status]')).toContainText('Unsaved entries can be lost if you refresh, leave this page, or close the tab.');
+    }
+    await session(page).locator('[data-hep-mode="workout"]').check();
+    await start(page);
+    await session(page).locator('[data-hep-set-amount]').first().fill('11');
+    await session(page).locator('[data-hep-done]').click();
+    await session(page).locator('[data-hep-set-amount]').first().fill('13');
+    await session(page).locator('[data-hep-timer-duration]').fill('60');
+    await session(page).locator('[data-hep-timer-start]').click();
+    await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[1].name);
+    await expect(session(page).locator('[data-hep-timer-pause]')).toBeEnabled();
+    const saved = await page.evaluate(key => JSON.parse(localStorage.getItem(key)), storageKey(knee.slug));
+    if (keep) {
+      expect(saved.records).toHaveLength(1);
+      expect(saved.records[0].notes).toBe('COMPLETED_ENTRY_RELOAD_SENTINEL');
+      expect(saved.records[0].workout).toBeUndefined();
+    } else {
+      expect(saved).toBeNull();
+    }
+
+    await page.reload();
+    await expect(session(page).getByRole('heading', { name: 'Your next session', exact: true })).toBeVisible();
+    await expect(session(page).locator('[data-hep-storage]')).toBeChecked({ checked: keep });
+    await session(page).locator('[data-hep-log]').click();
+    await expect(session(page).locator('[data-hep-entry]')).toHaveCount(keep ? 1 : 0);
+    if (keep) await expect(session(page).locator('[data-hep-history]')).toContainText('COMPLETED_ENTRY_RELOAD_SENTINEL');
+    await expect(session(page).locator('[data-hep-resume]')).toHaveCount(0);
+    await session(page).locator('[data-hep-mode="workout"]').check();
+    await start(page);
+    await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[0].name);
+    await expect(session(page).locator('[data-hep-set-amount]').first()).toHaveValue('');
+    await expect(session(page).locator('[data-hep-timer-duration]')).toHaveValue('');
+    await expect(session(page).locator('[data-hep-timer-clock]')).toHaveText('00:00');
+    await expect(session(page).locator('[data-hep-timer-pause]')).toBeDisabled();
+  });
+}
+
+test('exercise privacy explains opt-in saving and the loss of unfinished sessions', async ({ context, page, baseURL }) => {
+  await localOnly(context, baseURL);
+  await page.goto('/privacy/#exercise-progress');
+  const privacy = page.locator('#exercise-progress');
+  await expect(privacy).toContainText('Saving is off by default.');
+  await expect(privacy).toContainText('Unsaved entries can be lost if you refresh, leave the program page, or close the tab.');
+  await expect(privacy).toContainText('To retain a completed session, select Add to progress log and turn on Keep my progress on this device.');
+  await expect(privacy).toContainText('In-progress exercise steps, set drafts, and timers are not saved. Refreshing, leaving the program page, or closing the tab can erase them, even when saving is on.');
+});
+
 test('opting in saves and restores progress; opting out removes only this program key', async ({ context, page, baseURL }) => {
   await localOnly(context, baseURL);
   const otherKey = storageKey(rotatorCuff.slug);

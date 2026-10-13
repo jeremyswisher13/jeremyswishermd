@@ -405,8 +405,11 @@ function navTargetForSection(sectionId) {
     return sectionId === 'procedures' ? 'expertise' : sectionId;
 }
 
-const trackedSections = Array.from(document.querySelectorAll('section[id]'))
-    .filter(section => inPageTargetIds.has(navTargetForSection(section.id)));
+// Include sections without a matching navigation item so leaving a linked
+// section clears its current state instead of carrying it through later content.
+const trackedSections = inPageTargetIds.size
+    ? Array.from(document.querySelectorAll('main > section[id]'))
+    : [];
 
 function highlightNav() {
     if (!inPageNavLinks.length || !trackedSections.length) return;
@@ -870,6 +873,28 @@ const programSearchStopWords = new Set([
     'physical', 'program', 'programs', 'pt', 'rehab', 'rehabilitation', 'routine', 'routines',
     'the', 'therapy', 'to', 'treatment', 'treatments'
 ]);
+// Keep this vocabulary explicit: spelling and word-form alternatives help
+// visitors find existing programs without inferring a diagnosis from symptoms.
+// Qualifiers such as "rupture", "postoperative", and "child" still must match.
+const programSearchAlternatives = new Map([
+    ['ankles', ['ankle']],
+    ['elbows', ['elbow']],
+    ['feet', ['foot']],
+    ['hands', ['hand']],
+    ['hips', ['hip']],
+    ['knees', ['knee']],
+    ['shoulders', ['shoulder']],
+    ['wrists', ['wrist']],
+    ['sprained', ['sprain']],
+    ['sprains', ['sprain']],
+    ['strained', ['strain']],
+    ['strains', ['strain']],
+    ['torn', ['tear']],
+    ['tears', ['tear']],
+    ['tendinosis', ['tendinopathy', 'tendonitis']],
+    ['planter', ['plantar']],
+    ['rotater', ['rotator']]
+]);
 const normalizeProgramSearch = value => String(value || '')
     .normalize('NFKD')
     .replace(/[\u0300-\u036f]/g, '')
@@ -920,7 +945,10 @@ if (hasCompleteProgramDiscovery) {
                 || (card.dataset.programAudience || '').split(/\s+/).includes('athlete');
             const searchEntry = programSearchIndex.get(card) || { text: '', words: new Set() };
             const matchesSearch = !searchIsActive || searchTokens.every(token => (
-                token.length <= 2 ? searchEntry.words.has(token) : searchEntry.text.includes(token)
+                (token.length <= 2 ? searchEntry.words.has(token) : searchEntry.text.includes(token))
+                || (programSearchAlternatives.get(token) || []).some(alternative => (
+                    searchEntry.words.has(alternative)
+                ))
             ));
             const isVisible = matchesRegion && matchesAudience && matchesSearch;
             card.hidden = !isVisible;
