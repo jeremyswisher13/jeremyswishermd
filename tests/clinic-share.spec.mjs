@@ -263,9 +263,14 @@ test('keyboard controls, mobile layout, and accessibility remain usable for a lo
     await page.setViewportSize({ width: 320, height: 812 });
     await page.goto('/share-program/');
     const select = page.getByLabel('Home exercise program', { exact: true });
+    await expect(select).toBeEnabled();
+    await expect(select).toHaveValue('');
     await select.focus();
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
+    // Exercise native type-ahead and commit with Tab. Popup arrow handling
+    // differs across operating systems in headless Chromium.
+    await page.keyboard.press('b');
+    await page.keyboard.press('Tab');
+    await expect(select).toHaveValue(programs[0].slug);
     await expect(page.locator('[data-clinic-card]')).toBeVisible();
     await select.selectOption('advanced-meniscus-rehabilitation-exercises');
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
