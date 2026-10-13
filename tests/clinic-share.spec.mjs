@@ -25,6 +25,41 @@ async function localOnly(context, baseURL) {
     return externalRequests;
 }
 
+for (const width of [320, 390, 820, 1280]) {
+    test(`exercise library exposes one usable sharing link beside program discovery at ${width}px`, async ({ context, page, baseURL }) => {
+        await localOnly(context, baseURL);
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto('/home-exercise-programs/');
+        const share = page.getByRole('link', { name: 'Share a program', exact: true });
+        await expect(share).toHaveCount(1);
+        await expect(page.locator('#programs').getByRole('link', { name: 'Share a program', exact: true })).toBeVisible();
+        await share.scrollIntoViewIfNeeded();
+        await expect(share).toBeInViewport();
+        const bounds = await share.boundingBox();
+        expect(bounds.height).toBeGreaterThanOrEqual(44);
+        expect(bounds.width).toBeGreaterThanOrEqual(44);
+        expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+        await share.focus();
+        await page.keyboard.press('Enter');
+        await expect(page).toHaveURL(/\/share-program\/$/);
+        await expect(page.getByLabel('Home exercise program', { exact: true })).toBeEnabled();
+    });
+}
+
+test('mobile library sharing link works without JavaScript', async ({ browser, baseURL }) => {
+    const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
+    try {
+        await localOnly(context, baseURL);
+        const page = await context.newPage();
+        await page.goto(new URL('/home-exercise-programs/', baseURL).href);
+        await page.getByRole('link', { name: 'Share a program', exact: true }).click();
+        await expect(page).toHaveURL(/\/share-program\/$/);
+        await expect(page.locator('[data-clinic-fallback]')).toBeVisible();
+    } finally {
+        await context.close();
+    }
+});
+
 test('clinic tool starts with an explicit choice and shares every maintained canonical program', async ({ context, page, baseURL }) => {
     const externalRequests = await localOnly(context, baseURL);
     // Record the input to the actual bundled encoder, before the sharing tool runs.

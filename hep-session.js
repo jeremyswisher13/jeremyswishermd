@@ -39,6 +39,8 @@ export const GUIDED_PROGRAM_SLUGS = Object.freeze([
 ]);
 const SUPPORTED_PROGRAM_SLUGS = new Set(GUIDED_PROGRAM_SLUGS);
 const RESPONSE_VALUES = new Set(NEXT_MORNING_RESPONSES.map(response => response.value));
+const UNSAVED_ENTRIES_HELP = 'Unsaved entries can be lost if you refresh, leave this page, or close the tab.';
+const DRAFT_PROGRESS_HELP = 'In-progress exercise steps, set drafts, and timers are not saved. Refreshing, leaving this page, or closing the tab can erase them, even when saving is on.';
 const PROGRAM_FIELDS = [
     'title', 'fitIntro', 'programIntro', 'frequency', 'equipment', 'checkpoint', 'goal',
     'responseIntro', 'green', 'yellow', 'red'
@@ -197,12 +199,12 @@ function initializeGuidedSession(root, program) {
                 state.keep = true;
                 state.generation = restored.generation;
             } else {
-                restorationMessage = 'Saved progress could not be read. New entries stay in this open tab unless you choose to save them.';
+                restorationMessage = `Saved progress could not be read. Saving is off. ${UNSAVED_ENTRIES_HELP}`;
             }
         }
     } catch {
         state.storageAvailable = false;
-        restorationMessage = 'Browser storage is unavailable. You can still use the session and keep entries in this open tab.';
+        restorationMessage = `Browser storage is unavailable. You can still use the session. ${UNSAVED_ENTRIES_HELP}`;
     }
 
     const element = (tag, className = '', text = '') => {
@@ -271,6 +273,7 @@ function initializeGuidedSession(root, program) {
     storageHelp.id = 'hep-session-storage-help';
     storageCheckbox.setAttribute('aria-describedby', storageHelp.id);
     storage.append(storageLabel, storageHelp);
+    paragraph(storage, DRAFT_PROGRESS_HELP);
     paragraph(storage, 'Your entries are optional and stay in this browser. Anyone using this browser may see saved entries. Clearing browser data can erase them. Printing or saving a summary does not send it to your doctor.');
     const privacyLink = element('a', '', 'Privacy and device storage');
     privacyLink.href = '../privacy/#exercise-progress';
@@ -291,11 +294,11 @@ function initializeGuidedSession(root, program) {
     }
     function updateStorageHelp() {
         if (!state.storageAvailable) {
-            storageHelp.textContent = 'Browser storage is unavailable. Entries last only while this tab stays open.';
+            storageHelp.textContent = `Browser storage is unavailable. ${UNSAVED_ENTRIES_HELP}`;
         } else if (state.keep) {
-            storageHelp.textContent = 'Saving is on for this program in this browser. Up to 30 entries are kept.';
+            storageHelp.textContent = 'Saving is on for this program in this browser. Up to 30 completed log entries and your activity goal are kept.';
         } else {
-            storageHelp.textContent = 'Saving is off. Entries last only while this tab stays open.';
+            storageHelp.textContent = `Saving is off. ${UNSAVED_ENTRIES_HELP}`;
         }
     }
     function decodeStoredProgress(raw) {
@@ -320,7 +323,7 @@ function initializeGuidedSession(root, program) {
             // session save or response edit. Only a fresh checkbox opt-in can
             // start saving again after removal in another tab.
             if (!explicitOptIn && (raw === null || !stored || stored.generation !== state.generation)) {
-                turnSavingOff('Device saving changed in another tab. Saving is now off here; your current entries remain in this open tab.', raw !== null);
+                turnSavingOff(`Device saving changed in another tab. Saving is now off here. ${UNSAVED_ENTRIES_HELP}`, raw !== null);
                 return false;
             }
             if (explicitOptIn) state.generation = stored?.generation || newRecordId();
@@ -348,23 +351,23 @@ function initializeGuidedSession(root, program) {
             storageCheckbox.disabled = true;
             updateStorageHelp();
             updateClearButton();
-            announce('Progress could not be saved on this device. Your entries remain in this open tab. Previously saved entries may still exist in this browser.');
+            announce(`Progress could not be saved on this device. ${UNSAVED_ENTRIES_HELP} Previously saved entries may still exist in this browser.`);
             return false;
         }
     }
     storageCheckbox.addEventListener('change', () => {
         if (storageCheckbox.checked) {
             state.keep = true;
-            if (persistProgress({ explicitOptIn: true })) announce('Saving is on for this program in this browser.');
+            if (persistProgress({ explicitOptIn: true })) announce(`Saving is on for completed log entries in this browser. ${DRAFT_PROGRESS_HELP}`);
         } else {
             state.keep = false;
             try {
                 window.localStorage.removeItem(key);
                 state.hasStoredData = false;
                 state.generation = undefined;
-                announce('Saved progress was removed from this browser. Your current entries remain in this tab and will not be retained when it closes.');
+                announce(`Saved progress was removed from this browser. Your current entries are now unsaved. ${UNSAVED_ENTRIES_HELP}`);
             } catch {
-                announce('Saving is off, but this browser could not remove previously saved progress. Your current entries remain in this tab.');
+                announce(`Saving is off, but this browser could not remove previously saved progress. ${UNSAVED_ENTRIES_HELP}`);
             }
         }
         updateStorageHelp();
@@ -405,12 +408,12 @@ function initializeGuidedSession(root, program) {
                 const current = decodeStoredProgress(window.localStorage.getItem(key));
                 if (current && current.generation === state.generation) window.localStorage.removeItem(key);
             } catch { /* Keep the memory log usable when storage is blocked. */ }
-            turnSavingOff('Saved progress was removed in another tab. Saving is now off here; your current entries remain in this open tab.');
+            turnSavingOff(`Saved progress was removed in another tab. Saving is now off here. ${UNSAVED_ENTRIES_HELP}`);
             return;
         }
         const stored = decodeStoredProgress(event.newValue);
         if (!stored || stored.generation !== state.generation) {
-            turnSavingOff('Device saving changed in another tab. Saving is now off here; your current entries remain in this open tab.', true);
+            turnSavingOff(`Device saving changed in another tab. Saving is now off here. ${UNSAVED_ENTRIES_HELP}`, true);
             return;
         }
         const merged = mergeProgressRecords(state.records, stored.records, state.changedIds);
@@ -484,6 +487,7 @@ function initializeGuidedSession(root, program) {
             ['Checkpoint', program.checkpoint], ['Program goal', program.goal]
         ]));
         sessionMode();
+        paragraph(panel, 'To keep a completed session after leaving this page, add it to the progress log and turn on “Keep my progress on this device.” Sessions in progress are not saved.');
         const actions = element('div', 'hep-session-actions');
         actions.append(button('Start session', startSession, 'data-hep-start'), button('Progress log', () => renderHistory(true), 'data-hep-log', false, true));
         panel.append(actions);
@@ -635,7 +639,7 @@ function initializeGuidedSession(root, program) {
             appendWorkoutDetails(preview, sessionWorkout(), program.exercises);
             panel.append(preview);
         }
-        paragraph(panel, 'Adding a log entry is optional. Check your next-morning response later in the progress log.');
+        paragraph(panel, 'Adding a log entry is optional. To keep it after refreshing or leaving this page, turn on “Keep my progress on this device.” Then you can check your next-morning response later in the progress log.');
         const form = element('form', 'hep-session-form');
         form.setAttribute('data-hep-review', '');
         const dateField = textField('Session date', 'hep-session-date', 'date', state.date, null, value => { state.date = value; });
@@ -680,7 +684,7 @@ function initializeGuidedSession(root, program) {
             state.started = false;
             const saved = persistProgress();
             renderHistory(true);
-            if (saved) announce(state.keep ? 'Session added to your progress log and saved in this browser.' : 'Session added to your progress log in this open tab. Device saving is off.');
+            if (saved) announce(state.keep ? 'Session added to your progress log and saved in this browser.' : `Session added to your progress log. Device saving is off. ${UNSAVED_ENTRIES_HELP}`);
         });
         panel.append(form);
         if (moveFocus) focusHeading(heading);
@@ -731,7 +735,7 @@ function initializeGuidedSession(root, program) {
                     current.response = response.select.value;
                     current.updatedAt = Date.now();
                     state.changedIds.add(current.id);
-                    if (persistProgress()) announce(state.keep ? 'Next-morning response updated and saved in this browser.' : 'Next-morning response updated for this open tab.');
+                    if (persistProgress()) announce(state.keep ? 'Next-morning response updated and saved in this browser.' : `Next-morning response updated. Device saving is off. ${UNSAVED_ENTRIES_HELP}`);
                 });
                 entry.append(response.wrapper);
                 history.append(entry);

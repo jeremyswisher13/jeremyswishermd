@@ -74,27 +74,55 @@ test('missing nested pages retain root-relative patient navigation', async ({ co
   ]);
 });
 
-test('delayed navigation enhancement does not move the page content', async ({ context, page, baseURL }) => {
-  await localOnly(context, baseURL);
-  await page.setViewportSize({ width: 390, height: 844 });
-  let releaseScript;
-  const scriptGate = new Promise(resolve => { releaseScript = resolve; });
-  await context.route('**/script.js?*', async route => {
-    await scriptGate;
-    await route.continue();
-  });
-  await page.goto('/knee-osteoarthritis-exercises/', { waitUntil: 'commit' });
-  try {
-    await expect(page.locator('main')).toBeVisible();
-    await page.waitForFunction(() => document.querySelector('.navbar')
-      && getComputedStyle(document.querySelector('.navbar')).position === 'fixed');
-    await expect(page.locator('html')).not.toHaveClass(/nav-ready/);
-    const before = await page.locator('main').boundingBox();
-    releaseScript();
-    await expect(page.locator('html')).toHaveClass(/nav-ready/);
-    const after = await page.locator('main').boundingBox();
-    expect(Math.abs(after.y - before.y)).toBeLessThanOrEqual(1);
-  } finally {
-    releaseScript();
+for (const width of [390, 820, 1280]) {
+  for (const path of ['/', '/knee-osteoarthritis-exercises/']) {
+    test(`pending navigation stays usable without obstructing or shifting content: ${path} at ${width}px`, async ({ context, page, baseURL }) => {
+      await localOnly(context, baseURL);
+      await page.setViewportSize({ width, height: 844 });
+      let releaseScript;
+      const scriptGate = new Promise(resolve => { releaseScript = resolve; });
+      await context.route('**/script.js?*', async route => {
+        await scriptGate;
+        await route.continue();
+      });
+      await page.goto(path, { waitUntil: 'commit' });
+      try {
+        await expect(page.locator('h1')).toBeVisible();
+        await expect(page.locator('.navbar')).toHaveCSS('position', 'fixed');
+        await expect(page.locator('html')).not.toHaveClass(/nav-ready/);
+        await expect(page.locator('#navToggle')).toBeHidden();
+        await page.evaluate(() => document.fonts.ready);
+        const before = await page.locator('h1').boundingBox();
+        const navigation = await page.locator('#navLinks').boundingBox();
+        const header = await page.locator('.navbar').boundingBox();
+        expect(navigation.y + navigation.height).toBeLessThanOrEqual(header.y + header.height + 1);
+        expect(navigation.y + navigation.height).toBeLessThanOrEqual(before.y);
+        expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+
+        // Tab through the native overflow row while enhancement is pending.
+        // Each focused link must intersect the visible header, not be hidden
+        // below it or trapped in an offscreen expanded menu.
+        const links = page.locator('#navLinks a');
+        await links.first().focus();
+        for (let index = 0; index < await links.count(); index += 1) {
+          if (index > 0) await page.keyboard.press('Tab');
+          await expect(links.nth(index)).toBeFocused();
+          const bounds = await links.nth(index).boundingBox();
+          expect(bounds.x + bounds.width).toBeGreaterThan(navigation.x);
+          expect(bounds.x).toBeLessThan(navigation.x + navigation.width);
+          expect(bounds.y).toBeGreaterThanOrEqual(header.y);
+          expect(bounds.y + bounds.height).toBeLessThanOrEqual(header.y + header.height);
+        }
+        await page.locator('.nav-logo').focus();
+        releaseScript();
+        await expect(page.locator('html')).toHaveClass(/nav-ready/);
+        await expect(page.locator('#navLinks')).toBeHidden();
+        await expect(page.locator('#navToggle')).toBeVisible();
+        const after = await page.locator('h1').boundingBox();
+        expect(Math.abs(after.y - before.y)).toBeLessThanOrEqual(1);
+      } finally {
+        releaseScript();
+      }
+    });
   }
-});
+}

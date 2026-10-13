@@ -3161,24 +3161,24 @@ html.mobile-nav-open body {
         display: flex;
     }
 
-    /* A failed shared-script request keeps the expanded navigation in flow.
-       The normal loading path retains its existing compact-menu layout. */
-    .nav-load-failed .navbar {
+    /* An unenhanced menu stays in flow, including browsers without support
+       for the scripting media query used by the compact loading state below. */
+    html:not(.nav-ready) .navbar {
         position: relative;
         height: auto;
     }
 
-    .nav-load-failed .nav-container {
+    html:not(.nav-ready) .nav-container {
         flex-wrap: wrap;
         height: auto;
         min-height: 78px;
     }
 
-    .nav-load-failed .nav-logo {
+    html:not(.nav-ready) .nav-logo {
         min-height: 78px;
     }
 
-    .nav-load-failed .nav-links {
+    html:not(.nav-ready) .nav-links {
         position: static;
         flex-basis: 100%;
         max-height: none;
@@ -3190,6 +3190,48 @@ html.mobile-nav-open body {
         min-height: 46px;
         justify-content: center;
         text-align: center;
+    }
+}
+
+/* While the shared script is pending, keep native links inside the header.
+   A horizontal scroller avoids covering the hero or moving it on enhancement.
+   No-JS and failed requests retain the expanded menu in normal document flow. */
+@media (max-width: 1280px) and (scripting: enabled) {
+    html:not(.nav-ready):not(.nav-load-failed) .navbar {
+        position: fixed;
+        height: 78px;
+    }
+
+    html:not(.nav-ready):not(.nav-load-failed) .nav-container {
+        flex-wrap: nowrap;
+        height: 78px;
+    }
+
+    html:not(.nav-ready):not(.nav-load-failed) .nav-logo {
+        flex-shrink: 0;
+    }
+
+    html:not(.nav-ready):not(.nav-load-failed) .nav-links {
+        flex: 1 1 auto;
+        flex-direction: row;
+        align-items: center;
+        gap: 18px;
+        min-width: 0;
+        height: 78px;
+        padding: 6px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        scrollbar-width: thin;
+    }
+
+    html:not(.nav-ready):not(.nav-load-failed) .nav-links > a {
+        flex: 0 0 auto;
+        width: auto;
+        min-height: 44px;
+        white-space: nowrap;
     }
 }
 

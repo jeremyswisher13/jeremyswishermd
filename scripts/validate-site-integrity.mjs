@@ -17,9 +17,9 @@ const ignoredHtmlDirectories = new Set([
     'test-results'
 ]);
 const analyticsEventCounts = new Map();
-const expectedAssetCacheKey = '20261009-audit1';
-const expectedLandingStyleCacheKey = '20261009-text1';
-const expectedScriptCacheKey = '20261007-audit1';
+const expectedAssetCacheKey = '20261012-reliability1';
+const expectedLandingStyleCacheKey = '20261012-reliability1';
+const expectedScriptCacheKey = '20261012-reliability1';
 const expectedPrimaryNavigationLabels = [
     'Conditions &amp; Care',
     'Appointments &amp; Insurance',
@@ -635,7 +635,7 @@ if (
     errors.push('Locations scheduling must tell callers to ask for Jeremy Swisher, MD');
 }
 
-const expectedWestHillsMapHref = 'https://www.google.com/maps/search/?api=1&amp;query=UCLA+Health+West+Hills+Orthopedic+Surgery%2C+7230+Medical+Center+Drive%2C+Suite+604%2C+West+Hills%2C+CA+91307';
+const expectedWestHillsMapHref = 'https://www.google.com/maps/search/?api=1&amp;query=UCLA+Health+West+Hills+Orthopedic+Surgery+and+Sports+Medicine%2C+7230+Medical+Center+Drive%2C+Suite+604%2C+West+Hills%2C+CA+91307';
 for (const [label, page] of [
     ['Homepage', homePage],
     ['Locations page', locationsPage]

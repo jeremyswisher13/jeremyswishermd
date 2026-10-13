@@ -58,7 +58,7 @@ story += [contact, p("When to refer", "heading"),
 ]
 clinics = Table([[
     p("<b>Westwood</b><br/>Orthopedics &amp; Sports Medicine<br/>100 UCLA Medical Plaza, Suite 170<br/>Los Angeles, CA 90095"),
-    p("<b>West Hills</b><br/>West Hills Orthopedic Surgery<br/>7230 Medical Center Drive, Suite 604<br/>West Hills, CA 91307"),
+    p("<b>West Hills</b><br/>West Hills Orthopedic Surgery and Sports Medicine<br/>7230 Medical Center Drive, Suite 604<br/>West Hills, CA 91307"),
 ]], colWidths=[266,266])
 clinics.setStyle(TableStyle([("VALIGN",(0,0),(-1,-1),"TOP"), ("LEFTPADDING",(0,0),(-1,-1),0), ("RIGHTPADDING",(0,0),(-1,-1),14), ("TOPPADDING",(0,0),(-1,-1),0), ("BOTTOMPADDING",(0,0),(-1,-1),0)]))
 story += [clinics,
@@ -79,7 +79,7 @@ def footer(canvas, doc):
     canvas.setFillColor(MUTED)
     canvas.setFont("Helvetica", 8)
     tagger.footer_text(canvas, 40, 40, "Independent professional website guide; not an official UCLA form. UCLA manages clinical care.")
-    tagger.footer_text(canvas, 40, 28, "Contact and location information checked September 4, 2026. Verify current details with UCLA.")
+    tagger.footer_text(canvas, 40, 28, "Contact and location information checked October 12, 2026. Verify current details with UCLA.")
 
 OUTPUT.parent.mkdir(parents=True, exist_ok=True)
 SimpleDocTemplate(str(OUTPUT), pagesize=(612,792), rightMargin=40, leftMargin=40,

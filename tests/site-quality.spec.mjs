@@ -198,6 +198,67 @@ test('exercise library remains complete without JavaScript', async ({ browser })
   await context.close();
 });
 
+test('exercise search finds maintained programs for common word forms and misspellings', async ({ page }) => {
+  await blockThirdPartyRequests(page);
+  await page.goto('/home-exercise-programs/');
+  const search = page.locator('input[data-program-search]');
+  const visibleCards = page.locator('#program-grid .program-card:not([hidden])');
+  const cases = [
+    ['sprained ankle', 'ankle sprain', 2],
+    ['torn meniscus', 'meniscus tear', 2],
+    ['knees', 'knee', 8],
+    ['tendinosis', ['tendinopathy', 'tendonitis'], 9],
+    ['planter fasciitis', 'plantar fasciitis', 1],
+    ['rotater cuff', 'rotator cuff', 1],
+    ['strained hamstring', 'hamstring strain', 1],
+  ];
+
+  for (const [query, canonicalQuery, count] of cases) {
+    const canonicalQueries = Array.isArray(canonicalQuery) ? canonicalQuery : [canonicalQuery];
+    const expectedPaths = new Set();
+    for (const canonical of canonicalQueries) {
+      await search.fill(canonical);
+      for (const path of await visibleCards.evaluateAll(cards => cards.map(card => card.getAttribute('href')))) {
+        expectedPaths.add(path);
+      }
+    }
+    expect(expectedPaths.size, String(canonicalQuery)).toBe(count);
+    await search.fill(query);
+    await expect(visibleCards, query).toHaveCount(count);
+    expect(await visibleCards.evaluateAll(cards => cards.map(card => card.getAttribute('href')).sort()), query)
+      .toEqual([...expectedPaths].sort());
+  }
+
+  await search.fill('sprained ankle');
+  await page.locator('label[for="hep-athlete-only"]').click();
+  await expect(visibleCards).toHaveCount(1);
+  await expect(visibleCards).toHaveAttribute('href', '../ankle-sprain-return-to-sport-exercises/');
+  await page.locator('label[for="hep-filter-shoulder"]').click();
+  await expect(visibleCards).toHaveCount(0);
+  await expect(page.locator('[data-program-empty]')).toBeVisible();
+});
+
+test('exercise search retains specific injury and patient qualifiers', async ({ page }) => {
+  await blockThirdPartyRequests(page);
+  await page.goto('/home-exercise-programs/');
+  const search = page.locator('input[data-program-search]');
+  const visibleCards = page.locator('#program-grid .program-card:not([hidden])');
+  for (const query of [
+    'torn rotator cuff', 'Achilles rupture', 'postoperative meniscus', 'child knee pain',
+    'numb knee', 'twisted ankle', 'unknowncondition',
+  ]) {
+    await search.fill(query);
+    await expect(visibleCards, query).toHaveCount(0);
+    await expect(page.locator('[data-program-empty]')).toBeVisible();
+  }
+  // Existing short clinical abbreviations and partial searches still work.
+  await search.fill('IT');
+  await expect(visibleCards).toHaveCount(1);
+  await expect(visibleCards).toHaveAttribute('href', '../iliotibial-band-syndrome-exercises/');
+  await search.fill('patell');
+  await expect(visibleCards).toHaveCount(3);
+});
+
 for (const program of exerciseProgramsWithVideo) {
   const path = `/${program.slug}/`;
 
@@ -596,6 +657,27 @@ test('mobile navigation isolates the page and keeps keyboard focus inside the me
   expect(await backgroundIsRestored(main)).toBe(true);
   expect(await backgroundIsRestored(footer)).toBe(true);
   expect(await backgroundIsRestored(logo)).toBe(true);
+});
+
+test('homepage current navigation follows linked sections and clears for other sections', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await blockThirdPartyRequests(page);
+  await page.goto('/#contact');
+  const currentLinks = page.locator('#navLinks .nav-link[aria-current]');
+  await expect(currentLinks).toHaveCount(0);
+  for (const [sectionId, targetId] of [
+    ['home', null], ['referrals', null], ['expertise', 'expertise'], ['about', 'about'],
+    ['exercise-programs', null], ['procedures', 'expertise'], ['publications', 'publications'],
+    ['media', null], ['coverage', null], ['contact', null], ['about', 'about'],
+  ]) {
+    await page.locator(`#${sectionId}`).evaluate(section => {
+      window.scrollTo({ top: section.getBoundingClientRect().top + window.scrollY - 100, behavior: 'instant' });
+    });
+    await expect.poll(() => currentLinks.evaluateAll(links => links.map(link => link.getAttribute('href'))), {
+      message: `current section at #${sectionId}`,
+    }).toEqual(targetId ? [`#${targetId}`] : []);
+    await expect(page.locator('#navLinks .nav-link.active')).toHaveCount(targetId ? 1 : 0);
+  }
 });
 
 for (const viewport of [

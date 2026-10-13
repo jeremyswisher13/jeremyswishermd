@@ -16,9 +16,12 @@
     "test": "npm run test:rendered",
     "test:source": "node --test scripts/tests/*.test.mjs",
     "test:rendered": "playwright test",
+    "test:webkit": "playwright test --config=playwright.webkit.config.mjs",
+    "test:visual-text": "playwright test --config=playwright.visual-text.config.mjs",
+    "build:pages": "node scripts/package-site.mjs",
     "test:print-pdf": "node scripts/export-hep-pdfs.mjs && python3 -B scripts/validate-hep-pdfs.py .quality-results/print && node scripts/export-workout-pdfs.mjs .quality-results/print && python3 -B scripts/validate-workout-pdfs.py .quality-results/print",
     "test:lighthouse": "node scripts/run-lighthouse.mjs",
-    "test:quality": "npm run validate && npm run test:rendered && npm run test:print-pdf && npm run test:lighthouse"
+    "test:quality": "npm run validate && npm run test:rendered && npm run test:webkit && npm run test:print-pdf && npm run test:visual-text && npm run test:lighthouse"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

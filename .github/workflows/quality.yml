@@ -35,6 +35,9 @@ jobs:
       - name: Run source validators
         run: npm run validate
 
+      - name: Verify the public Pages artifact can be packaged
+        run: npm run build:pages
+
   referral-pdf:
     name: Referral PDF structure and regeneration
     runs-on: ubuntu-latest
@@ -109,6 +112,38 @@ jobs:
           if-no-files-found: ignore
           retention-days: 7
 
+  webkit:
+    name: Mobile WebKit smoke checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the website
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install WebKit
+        run: npx playwright install --with-deps webkit
+
+      - name: Check mobile navigation, search, progress storage, and sharing
+        run: npm run test:webkit
+
+      - name: Upload WebKit failure evidence
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: webkit-results
+          path: .quality-results/webkit/
+          if-no-files-found: ignore
+          retention-days: 7
+
   visual-text:
     name: Rendered text clipping and visual evidence
     runs-on: ubuntu-latest
@@ -140,6 +175,64 @@ jobs:
           path: .quality-results/visual-text/
           if-no-files-found: error
           retention-days: 14
+
+  deploy:
+    name: Deploy validated website
+    # All checks must succeed for this exact workflow commit. Pull requests and
+    # dispatches on other branches can run checks but cannot publish anything.
+    needs: [validate, referral-pdf, rendered, webkit, visual-text, lighthouse]
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages-deployment
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out the exact validated commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Package only public website files
+        run: npm run build:pages
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload this commit's public website
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: github-pages-${{ github.sha }}
+          path: .quality-results/pages
+
+      - name: Refuse an outdated main commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          current_sha="$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq '.object.sha')"
+          if [ "$current_sha" != "$EXPECTED_SHA" ]; then
+            echo 'Main has changed since these checks began. The newer commit must pass its own checks.'
+            exit 1
+          fi
+
+      - name: Deploy the validated artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.sha }}
 
   lighthouse:
     name: Lighthouse budgets
