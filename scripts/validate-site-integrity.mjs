@@ -18,7 +18,7 @@ const ignoredHtmlDirectories = new Set([
 ]);
 const analyticsEventCounts = new Map();
 const expectedAssetCacheKey = '20261012-reliability1';
-const expectedLandingStyleCacheKey = '20261012-reliability1';
+const expectedLandingStyleCacheKey = '20261015-library-prp1';
 const expectedScriptCacheKey = '20261012-reliability1';
 const expectedPrimaryNavigationLabels = [
     'Conditions &amp; Care',
@@ -79,15 +79,15 @@ const guideExperienceExpectations = new Map([
         handoffTarget: '../orthobiologics/',
         jumpTargets: [
             '#start-here',
-            '#evidence',
-            '#dose',
             '#candidacy',
+            '#cost',
             '#process',
             '#medications-supplements',
             '#safety',
-            '#guidelines',
-            '#cost',
             '#locations',
+            '#evidence',
+            '#dose',
+            '#guidelines',
             '#prp-faq-title'
         ]
     }]
