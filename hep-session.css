@@ -457,11 +457,7 @@
 }
 
 .hep-session .hep-session-entry-summary {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 6px 20px;
+    display: block;
     margin-bottom: 10px;
     color: var(--color-dark);
     font-weight: 600;
@@ -526,10 +522,6 @@
         flex: 0 1 auto;
     }
 
-    .hep-session .hep-session-entry-summary {
-        display: grid;
-        gap: 4px;
-    }
 }
 
 @media (prefers-reduced-motion: reduce) {
