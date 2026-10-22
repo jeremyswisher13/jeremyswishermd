@@ -2240,7 +2240,7 @@ html.mobile-nav-open body {
 
 /* Shared editorial sections */
 .section {
-    padding: 112px 0;
+    padding: 72px 0;
     background: var(--color-bg);
 }
 
@@ -2250,7 +2250,7 @@ html.mobile-nav-open body {
 
 .section-header {
     max-width: 860px;
-    margin: 0 0 58px;
+    margin: 0 0 36px;
     text-align: left;
 }
 
@@ -2310,7 +2310,7 @@ html.mobile-nav-open body {
 
 /* Audience paths */
 .audience-section {
-    padding: 78px 0 88px;
+    padding: 56px 0;
     border-bottom: 1px solid var(--color-border);
     background: var(--color-bg);
 }
@@ -2394,8 +2394,8 @@ html.mobile-nav-open body {
 .audience-card p {
     margin-bottom: 18px;
     color: var(--color-text-light);
-    font-size: 0.88rem;
-    line-height: 1.7;
+    font-size: 1rem;
+    line-height: 1.65;
 }
 
 /* About */
@@ -2409,10 +2409,10 @@ html.mobile-nav-open body {
 }
 
 .about-text p {
-    margin-bottom: 26px;
+    margin-bottom: 20px;
     color: var(--color-text);
     font-size: 1.04rem;
-    line-height: 1.9;
+    line-height: 1.7;
 }
 
 .about-text p:first-child::first-letter {
@@ -2425,7 +2425,7 @@ html.mobile-nav-open body {
 }
 
 .about-sidebar {
-    gap: 36px;
+    gap: 28px;
 }
 
 .profile-card {
@@ -2499,7 +2499,7 @@ html.mobile-nav-open body {
 }
 
 .hep-home-library-link {
-    margin-top: 40px;
+    margin-top: 28px;
 }
 
 .hep-home-library-link .text-link {
@@ -2592,8 +2592,8 @@ html.mobile-nav-open body {
 
 .procedure-card p {
     max-width: 480px;
-    font-size: 0.88rem;
-    line-height: 1.75;
+    font-size: 1rem;
+    line-height: 1.65;
 }
 
 /* Research */
@@ -2606,7 +2606,7 @@ html.mobile-nav-open body {
 .pub-filters {
     justify-content: flex-start;
     gap: 28px;
-    margin-bottom: 46px;
+    margin-bottom: 28px;
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -2781,7 +2781,7 @@ html.mobile-nav-open body {
 
 /* Experience */
 .coverage-gallery {
-    margin-bottom: 64px;
+    margin-bottom: 40px;
     border-radius: 0;
 }
 
@@ -2819,7 +2819,7 @@ html.mobile-nav-open body {
 }
 
 .coverage-grid {
-    gap: 54px;
+    gap: 36px;
 }
 
 .coverage-label {
@@ -2870,7 +2870,7 @@ html.mobile-nav-open body {
 }
 
 .contact-info {
-    gap: 46px;
+    gap: 32px;
 }
 
 .contact-card {
@@ -3351,7 +3351,15 @@ html.mobile-nav-open body {
 
     .audience-section,
     .section {
-        padding-block: 82px;
+        padding-block: 48px;
+    }
+
+    .section-header {
+        margin-bottom: 28px;
+    }
+
+    .audience-header {
+        margin-bottom: 0;
     }
 
     .audience-grid,
@@ -3370,7 +3378,7 @@ html.mobile-nav-open body {
 
     .about-grid,
     .contact-grid {
-        gap: 62px;
+        gap: 40px;
     }
 
     .treat-grid,
