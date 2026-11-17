@@ -198,7 +198,39 @@ test('exercise library remains complete without JavaScript', async ({ browser })
   await context.close();
 });
 
-test('exercise search finds maintained programs for common word forms and misspellings', async ({ page }) => {
+test('mobile exercise library links to programs and safety without JavaScript', async ({ browser }) => {
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    viewport: { width: 320, height: 844 },
+  });
+  const page = await context.newPage();
+  await blockThirdPartyRequests(page);
+  await page.goto('/home-exercise-programs/');
+  const jump = page.getByRole('navigation', { name: 'On this page' });
+  await expect(jump).toBeVisible();
+  const summary = jump.locator('summary');
+  await summary.focus();
+  await page.keyboard.press('Enter');
+
+  for (const [name, target] of [
+    ['Find a program', '#programs'],
+    ['Symptom rules', '#symptoms'],
+    ['Safety', '#safety'],
+  ]) {
+    const link = jump.getByRole('link', { name, exact: true });
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute('href', target);
+  }
+
+  await page.keyboard.press('Tab');
+  await expect(jump.getByRole('link', { name: 'Find a program' })).toBeFocused();
+  await jump.getByRole('link', { name: 'Safety' }).click();
+  await expect(page).toHaveURL(/#safety$/);
+  await expect(page.locator('#safety h2')).toBeInViewport();
+  await context.close();
+});
+
+test('exercise search finds maintained programs for common phrasing and word forms', async ({ page }) => {
   await blockThirdPartyRequests(page);
   await page.goto('/home-exercise-programs/');
   const search = page.locator('input[data-program-search]');
@@ -211,6 +243,10 @@ test('exercise search finds maintained programs for common word forms and misspe
     ['planter fasciitis', 'plantar fasciitis', 1],
     ['rotater cuff', 'rotator cuff', 1],
     ['strained hamstring', 'hamstring strain', 1],
+    ['pain in my heel', 'heel pain', 2],
+    ['pain on the outside of my knee', 'outside knee pain', 1],
+    ['O.A.', 'OA', 3],
+    ['I.T. band', 'IT band', 1],
   ];
 
   for (const [query, canonicalQuery, count] of cases) {
@@ -245,7 +281,7 @@ test('exercise search retains specific injury and patient qualifiers', async ({ 
   const visibleCards = page.locator('#program-grid .program-card:not([hidden])');
   for (const query of [
     'torn rotator cuff', 'Achilles rupture', 'postoperative meniscus', 'child knee pain',
-    'numb knee', 'twisted ankle', 'unknowncondition',
+    'post-op pain in my knee', 'numb knee', 'twisted ankle', 'unknowncondition',
   ]) {
     await search.fill(query);
     await expect(visibleCards, query).toHaveCount(0);
@@ -257,6 +293,34 @@ test('exercise search retains specific injury and patient qualifiers', async ({ 
   await expect(visibleCards).toHaveAttribute('href', '../iliotibial-band-syndrome-exercises/');
   await search.fill('patell');
   await expect(visibleCards).toHaveCount(3);
+});
+
+test('printing the exercise library keeps a complete directory without the search empty state', async ({ page }) => {
+  await blockThirdPartyRequests(page);
+  await page.goto('/home-exercise-programs/');
+  const search = page.locator('input[data-program-search]');
+  const cards = page.locator('#program-grid .program-card:visible');
+  const emptyState = page.locator('[data-program-empty]');
+
+  await search.fill('pain in my heel');
+  await expect(cards).toHaveCount(2);
+  await page.emulateMedia({ media: 'print' });
+  await expect(cards).toHaveCount(exercisePrograms.length);
+  await expect(search).toBeHidden();
+
+  await page.emulateMedia({ media: 'screen' });
+  await search.fill('doesnotmatchanyprogram');
+  await expect(cards).toHaveCount(0);
+  await expect(emptyState).toBeVisible();
+
+  await page.emulateMedia({ media: 'print' });
+  await expect(cards).toHaveCount(exercisePrograms.length);
+  await expect(emptyState).toBeHidden();
+
+  await page.emulateMedia({ media: 'screen' });
+  await expect(search).toHaveValue('doesnotmatchanyprogram');
+  await expect(cards).toHaveCount(0);
+  await expect(emptyState).toBeVisible();
 });
 
 for (const program of exerciseProgramsWithVideo) {
