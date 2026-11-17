@@ -61,6 +61,24 @@ for (const [slug, instructions] of urgentWarningCases) {
   });
 }
 
+const evaluationUrgencyCases = [
+  ['rotator-cuff-pain-exercises', /^Seek same-day urgent assessment for immediate weakness after an injury or rapidly progressive weakness\. Schedule a visit/],
+  ['achilles-tendinopathy-exercises', /^Seek same-day urgent assessment for signs of an Achilles tendon rupture\. Schedule a visit/],
+  ['achilles-tendinopathy-return-to-sport-exercises', /^Seek same-day urgent assessment for new one-sided calf warmth or swelling\. Schedule a reassessment/],
+];
+
+for (const [slug, guidance] of evaluationUrgencyCases) {
+  test(`${slug} puts same-day guidance before routine scheduling on screen and in print`, async ({ page }) => {
+    await page.goto(`/${slug}/`);
+    const evaluation = page.locator('#progress .clinician-panel p');
+    for (const media of ['screen', 'print']) {
+      await page.emulateMedia({ media });
+      await expect(evaluation).toBeVisible();
+      await expect(evaluation).toHaveText(guidance);
+    }
+  });
+}
+
 test('orthobiologics overview explicitly directs same-day post-injection assessment', async ({ page }) => {
   await page.goto('/orthobiologics/');
   const warning = page.locator('.note-panel').filter({ hasText: 'Autologous does not mean risk-free.' });
