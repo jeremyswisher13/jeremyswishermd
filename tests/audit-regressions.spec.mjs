@@ -216,3 +216,43 @@ test('the exercise guide section menu works without JavaScript or a video compan
   await expect(page.locator('#progress h2')).toBeInViewport({ ratio: 1 });
   await context.close();
 });
+
+test('the knee injection guide shows its Call button on the first small-phone screen', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 568 });
+  await page.goto('/knee-osteoarthritis-injection-comparison/');
+  await waitForEnhancement(page);
+
+  const call = page.locator('.landing-hero').getByRole('link', { name: 'Call 310-319-1234' });
+  await expect(call).toBeInViewport({ ratio: 1 });
+  expect((await call.boundingBox()).height).toBeGreaterThanOrEqual(48);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
+});
+
+test('the knee injection guide exposes cost and FAQ shortcuts in the mobile section menu', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 664 });
+  await page.goto('/knee-osteoarthritis-injection-comparison/');
+  await waitForEnhancement(page);
+
+  const menu = page.getByRole('navigation', { name: 'On this page' });
+  const summary = menu.locator('summary');
+  const cost = menu.getByRole('link', { name: 'Cost & coverage' });
+  const faqs = menu.getByRole('link', { name: 'FAQs' });
+  await expect(menu).toHaveCount(1);
+  await expect(summary).toBeVisible();
+  await expect(cost).toBeHidden();
+
+  await summary.press('Enter');
+  await expect(menu.getByRole('link')).toHaveCount(7);
+  await expect(cost).toBeVisible();
+  await expect(faqs).toBeVisible();
+  expect(await menu.evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true);
+
+  await cost.press('Enter');
+  await expect(page).toHaveURL(/#cost$/);
+  await expect(page.locator('#cost h2')).toBeInViewport({ ratio: 1 });
+
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await expect(menu).toHaveCount(1);
+  await expect(summary).toBeHidden();
+  await expect(faqs).toBeVisible();
+});
