@@ -714,6 +714,36 @@ function loadVideoResource(resource) {
     if (resource.dataset.videoLoading === 'true') return;
 
     const facade = stage.firstElementChild?.cloneNode(true);
+    let needsFocusRecovery = false;
+    let focusRecoveryFrame = 0;
+
+    const cancelFocusRecovery = () => {
+        needsFocusRecovery = false;
+    };
+
+    const preserveFocusWithin = element => {
+        if (!element?.contains(document.activeElement)) return;
+        needsFocusRecovery = true;
+        document.addEventListener('focusin', cancelFocusRecovery, { capture: true, once: true });
+    };
+
+    const recoverFocus = getTarget => {
+        window.cancelAnimationFrame(focusRecoveryFrame);
+        if (!needsFocusRecovery) return;
+
+        focusRecoveryFrame = window.requestAnimationFrame(() => {
+            document.removeEventListener('focusin', cancelFocusRecovery, true);
+            if (!needsFocusRecovery) return;
+            needsFocusRecovery = false;
+
+            if (document.activeElement !== document.body || !document.hasFocus()) return;
+            const target = getTarget();
+            if (target?.isConnected) target.focus({ preventScroll: true });
+        });
+    };
+
+    // Replacing the load button drops its focus. A subsequent focus change ends recovery.
+    preserveFocusWithin(loadButton);
     resource.dataset.videoLoading = 'true';
     resource.classList.add('is-loading');
     stage.setAttribute('aria-busy', 'true');
@@ -759,27 +789,27 @@ function loadVideoResource(resource) {
     iframe.allow = 'encrypted-media; picture-in-picture; web-share';
     iframe.allowFullscreen = true;
 
-    let loadFinished = false;
+    let loadState = 'loading';
     let loadTimeout;
     let player;
 
     const finishLoad = () => {
-        if (loadFinished) return;
-        loadFinished = true;
+        if (loadState !== 'loading') return;
+        loadState = 'ready';
         window.clearTimeout(loadTimeout);
         delete resource.dataset.videoLoading;
         resource.classList.remove('is-loading');
         resource.classList.add('is-loaded');
         stage.removeAttribute('aria-busy');
         if (status) status.textContent = 'YouTube video player loaded.';
-        const playerIframe = player?.getIframe?.() || iframe;
-        window.requestAnimationFrame(() => playerIframe.focus());
+        recoverFocus(() => player?.getIframe?.() || iframe);
     };
 
-    const restoreFacade = (allowAfterReady = false) => {
-        if (loadFinished && !allowAfterReady) return;
-        loadFinished = true;
+    const restoreFacade = () => {
+        if (loadState === 'failed') return;
+        loadState = 'failed';
         window.clearTimeout(loadTimeout);
+        preserveFocusWithin(stage);
         try {
             player?.destroy();
         } catch {
@@ -793,16 +823,16 @@ function loadVideoResource(resource) {
         resource.classList.remove('is-loading', 'is-loaded');
         stage.removeAttribute('aria-busy');
 
+        let retryButton;
         if (facade) {
             stage.replaceChildren(facade);
-            const retryButton = resource.querySelector('[data-load-video]');
+            retryButton = resource.querySelector('[data-load-video]');
             if (retryButton) {
                 const retryLabel = retryButton.querySelector('span:last-child');
                 if (retryLabel) retryLabel.textContent = 'Retry video player';
                 retryButton.disabled = false;
                 retryButton.removeAttribute('aria-disabled');
                 retryButton.addEventListener('click', () => loadVideoResource(resource));
-                window.requestAnimationFrame(() => retryButton.focus());
             }
         } else {
             stage.replaceChildren();
@@ -811,6 +841,7 @@ function loadVideoResource(resource) {
         if (status) {
             status.textContent = 'The embedded player could not load. Retry or use the Watch on YouTube link below.';
         }
+        recoverFocus(() => retryButton);
     };
 
     stage.replaceChildren(iframe);
@@ -818,11 +849,11 @@ function loadVideoResource(resource) {
 
     loadYoutubeIframeApi()
         .then(YT => {
-            if (loadFinished) return;
+            if (loadState !== 'loading') return;
             player = new YT.Player(iframe, {
                 events: {
                     onReady: finishLoad,
-                    onError: () => restoreFacade(true)
+                    onError: restoreFacade
                 }
             });
         })

@@ -160,8 +160,17 @@ function validateVideo(video, slug) {
     }
 }
 
-function renderVideoJump(video) {
-    return video ? '                <a href="#video">Video</a>' : '';
+function renderJumpLinks(program, indentation) {
+    const links = [
+        '<a href="#fit">Is this for me?</a>',
+        program.guidedSession === true && '<a href="#guided-session" data-hep-launch hidden>Guided session</a>',
+        '<a href="#program">The program</a>',
+        program.video && '<a href="#video">Video</a>',
+        '<a href="#response">Symptom rules</a>',
+        '<a href="#progress">Progression</a>',
+        '<a href="#sources">Evidence</a>'
+    ];
+    return links.filter(Boolean).map(link => indentation + link).join('\n');
 }
 
 function renderVideoSection(video) {
@@ -306,7 +315,6 @@ for (const program of programs) {
         SESSION_NOJS: guidedSession ? ',[data-hep-launch]' : '',
         SESSION_STYLES: guidedSession ? '    <link rel="stylesheet" href="../hep-session.css?v=20261008-workout1">' : '',
         SESSION_LAUNCH: guidedSession ? '                            <a href="#guided-session" class="btn btn-primary" data-hep-launch data-hep-launch-start hidden>Start a guided session</a>' : '',
-        SESSION_JUMP: guidedSession ? '                <a href="#guided-session" data-hep-launch hidden>Guided session</a>' : '',
         SESSION_SECTION: guidedSession ? renderGuidedSessionData(program, canonical) : '',
         SESSION_SCRIPT: guidedSession ? '    <script type="module" src="../hep-session.js?v=20261012-reliability1"></script>' : '',
         TITLE: program.title,
@@ -338,7 +346,8 @@ for (const program of programs) {
         CHECKPOINT: program.checkpoint,
         GOAL: program.goal,
         EXERCISES: renderExercises(program.exercises),
-        VIDEO_JUMP: renderVideoJump(program.video),
+        MOBILE_JUMP_LINKS: renderJumpLinks(program, '                                '),
+        DESKTOP_JUMP_LINKS: renderJumpLinks(program, '                '),
         VIDEO_SECTION: renderVideoSection(program.video),
         VIDEO_PRINT_NOTE: renderVideoPrintNote(program.video),
         RESPONSE_INTRO: program.responseIntro,
@@ -365,14 +374,14 @@ for (const program of programs) {
     const htmlTokens = [
         'SESSION_STYLES',
         'SESSION_LAUNCH',
-        'SESSION_JUMP',
         'SESSION_SECTION',
         'SESSION_SCRIPT',
         'SCHEMA',
         'AUTHORITY_ITEMS',
         'PROOF_ITEMS',
         'EXERCISES',
-        'VIDEO_JUMP',
+        'MOBILE_JUMP_LINKS',
+        'DESKTOP_JUMP_LINKS',
         'VIDEO_SECTION',
         'VIDEO_PRINT_NOTE',
         'PROGRESSION',

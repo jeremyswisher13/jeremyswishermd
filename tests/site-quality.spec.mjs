@@ -461,10 +461,13 @@ test('a failed E3 companion restores a focused retry button and can then load', 
       Player: class {
         constructor(iframe, options) {
           this.iframe = iframe;
-          this.options = options;
           queueMicrotask(() => {
-            if (window.__e3PlayerShouldFail) options.events.onError();
-            else options.events.onReady();
+            if (window.__e3PlayerShouldFail) {
+              window.__e3FailedPlayerEvents = options.events;
+              options.events.onError();
+            } else {
+              options.events.onReady();
+            }
           });
         }
 
@@ -501,7 +504,56 @@ test('a failed E3 companion restores a focused retry button and can then load', 
   await expect(resource).toHaveClass(/\bis-loaded\b/);
   await expect(status).toHaveText('YouTube video player loaded.');
   await expect(resource.locator('iframe')).toBeFocused();
+
+  await page.evaluate(() => window.__e3FailedPlayerEvents.onError());
+  await expect(resource).toHaveClass(/\bis-loaded\b/);
+  await expect(resource.locator('iframe')).toBeFocused();
 });
+
+for (const { event, outcome, message } of [
+  { event: 'onReady', outcome: 'success', message: 'YouTube video player loaded.' },
+  {
+    event: 'onError',
+    outcome: 'failure',
+    message: 'The embedded player could not load. Retry or use the Watch on YouTube link below.',
+  },
+]) {
+  test(`delayed E3 player ${outcome} preserves focus on the YouTube link`, async ({ page }) => {
+    await blockThirdPartyRequests(page);
+    const { promise: requestedApi, resolve: captureApiRoute } = Promise.withResolvers();
+    await page.route('https://www.youtube.com/iframe_api', captureApiRoute);
+    await page.goto(`/${exerciseProgramsWithVideo[0].slug}/`, { waitUntil: 'domcontentloaded' });
+
+    const resource = page.locator('[data-video-resource]');
+    const status = page.locator('[data-video-status]');
+    const fallback = resource.getByRole('link', { name: /Watch on YouTube/ });
+    await resource.locator('[data-load-video]').press('Enter');
+    await expect(status).toHaveText('Loading the YouTube video player.');
+    const apiRoute = await requestedApi;
+
+    await fallback.focus();
+    await expect(fallback).toBeFocused();
+
+    await apiRoute.fulfill({
+      contentType: 'application/javascript',
+      body: `
+        window.YT = { Player: class {
+          constructor(iframe, { events }) {
+            this.iframe = iframe;
+            queueMicrotask(events.${event});
+          }
+          getIframe() { return this.iframe; }
+          destroy() {}
+        } };
+        window.onYouTubeIframeAPIReady();
+      `,
+    });
+
+    await expect(status).toHaveText(message);
+    await page.evaluate(() => new Promise(requestAnimationFrame));
+    await expect(fallback).toBeFocused();
+  });
+}
 
 for (const program of exercisePrograms) {
   const path = `/${program.slug}/`;
