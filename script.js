@@ -899,6 +899,7 @@ const programRegionLabels = new Map([
 ]);
 const expectedProgramRegions = new Set(programRegionLabels.keys());
 const inputRegions = new Set(programFilterInputs.map(input => input.value));
+// Exercise-search helpers shared with the static validators.
 const programSearchStopWords = new Set([
     'a', 'an', 'and', 'exercise', 'exercises', 'for', 'home', 'in', 'my', 'of', 'on', 'plan', 'plans',
     'physical', 'program', 'programs', 'pt', 'rehab', 'rehabilitation', 'routine', 'routines',
@@ -923,6 +924,7 @@ const programSearchAlternatives = new Map([
     ['torn', ['tear']],
     ['tears', ['tear']],
     ['tendinosis', ['tendinopathy', 'tendonitis']],
+    ['quervains', ['quervain']],
     ['planter', ['plantar']],
     ['rotater', ['rotator']]
 ]);
@@ -933,11 +935,23 @@ const normalizeProgramSearch = value => String(value || '')
     .toLowerCase()
     .replace(/\b(?:o\.\s*a|i\.\s*t)\b/g, abbreviation => abbreviation.replace(/[.\s]/g, ''))
     .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\bnon (operative|specific)\b/g, 'non$1')
+    .replace(/\bpost ?op(?:erative)?\b/g, 'postoperative')
     .trim();
+const createProgramSearchEntry = value => normalizeProgramSearch(value).split(' ');
+const getProgramSearchTokens = value => createProgramSearchEntry(value)
+    .filter(token => token && !programSearchStopWords.has(token));
+// Match longer terms from the start of a word so clinical qualifiers such as
+// "operative" and "nonoperative" remain distinct while visitors type.
+const programSearchEntryMatches = (words, searchTokens) => searchTokens.every(token => (
+    (token.length <= 2 ? words.includes(token) : words.some(word => word.startsWith(token)))
+    || programSearchAlternatives.get(token)?.some(alternative => words.includes(alternative))
+));
+// End exercise-search helpers.
+
 const programSearchIndex = new Map(programCards.map(card => {
     const programTitle = card.querySelector('h3')?.textContent || '';
-    const text = normalizeProgramSearch(`${programTitle} ${card.dataset.programSearch || ''}`);
-    return [card, { text, words: new Set(text.split(' ')) }];
+    return [card, createProgramSearchEntry(`${programTitle} ${card.dataset.programSearch || ''}`)];
 }));
 const hasCompleteProgramDiscovery = (
     programFilter instanceof HTMLFieldSetElement
@@ -962,11 +976,7 @@ if (hasCompleteProgramDiscovery) {
     const updateProgramFilter = () => {
         const selectedInput = programFilterInputs.find(input => input.checked);
         const selectedRegion = selectedInput?.value || 'all';
-        const rawSearchValue = programSearchInput.value.trim();
-        const normalizedSearchValue = normalizeProgramSearch(rawSearchValue);
-        const searchTokens = normalizedSearchValue
-            ? normalizedSearchValue.split(' ').filter(token => !programSearchStopWords.has(token))
-            : [];
+        const searchTokens = getProgramSearchTokens(programSearchInput.value);
         const searchIsActive = searchTokens.length > 0;
         const athleteOnly = programAudienceFilter.checked;
         let visibleCount = 0;
@@ -975,13 +985,7 @@ if (hasCompleteProgramDiscovery) {
             const matchesRegion = selectedRegion === 'all' || card.dataset.programRegion === selectedRegion;
             const matchesAudience = !athleteOnly
                 || (card.dataset.programAudience || '').split(/\s+/).includes('athlete');
-            const searchEntry = programSearchIndex.get(card) || { text: '', words: new Set() };
-            const matchesSearch = !searchIsActive || searchTokens.every(token => (
-                (token.length <= 2 ? searchEntry.words.has(token) : searchEntry.text.includes(token))
-                || (programSearchAlternatives.get(token) || []).some(alternative => (
-                    searchEntry.words.has(alternative)
-                ))
-            ));
+            const matchesSearch = programSearchEntryMatches(programSearchIndex.get(card), searchTokens);
             const isVisible = matchesRegion && matchesAudience && matchesSearch;
             card.hidden = !isVisible;
             if (isVisible) visibleCount += 1;

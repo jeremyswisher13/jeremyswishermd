@@ -160,9 +160,14 @@ def load_fixtures(directory, programs_path, options_path):
                 require(isinstance(record[key], str) and record[key].startswith("Synthetic QA ")
                         and 0 < len(record[key]) <= limit, f"invalid synthetic entry {key}")
             require(record["marker"] in record["notes"], "missing synthetic row marker")
-            require(("workout" in record) == (index in (latest_index, 7)), "unexpected workout on a simple fixture record")
+            has_blank_workout = fixture["id"] == "common-extensor-standard" and index == 0
+            require(("workout" in record) == (index in (latest_index, 7) or has_blank_workout),
+                    "unexpected workout on a simple fixture record")
             if "workout" in record:
                 validate_workout(record, options)
+            if has_blank_workout:
+                require(all(not entry["sets"] for entry in record["workout"]),
+                        "the newer blank workout must have no recorded sets")
         latest = records[latest_index]
         require(fixture["latestWorkoutId"] == latest["id"], "latest-workout selector differs from the fixture")
         if fixture["id"] == "common-extensor-standard":
@@ -252,7 +257,7 @@ def validate_pdf(path, paper, fixture, program):
             issues.append(f"page {index}: original guide page-number footer leaked into the summary")
 
     latest = fixture["records"][fixture["latestWorkoutIndex"]]
-    detail_heading = f"Set details · Most recent workout entry: {latest['displayDate']}"
+    detail_heading = f"Set details · Most recent workout with recorded sets: {latest['displayDate']}"
     required = {
         "summary title": TITLE, "patient-recorded label": "Patient-recorded", "program title": fixture["title"],
         "latest six count": "Latest 6 entries", "current goal": f"Current activity goal: {fixture['goal']}",
