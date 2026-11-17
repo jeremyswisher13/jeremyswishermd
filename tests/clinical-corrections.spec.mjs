@@ -65,10 +65,20 @@ const evaluationUrgencyCases = [
   ['rotator-cuff-pain-exercises', /^Seek same-day urgent assessment for immediate weakness after an injury or rapidly progressive weakness\. Schedule a visit/],
   ['achilles-tendinopathy-exercises', /^Seek same-day urgent assessment for signs of an Achilles tendon rupture\. Schedule a visit/],
   ['achilles-tendinopathy-return-to-sport-exercises', /^Seek same-day urgent assessment for new one-sided calf warmth or swelling\. Schedule a reassessment/],
+  ['knee-osteoarthritis-advanced-exercises', /^Seek same-day urgent assessment for true locking.*new or rapidly worsening painful, hot, red, or swollen joint.*Arrange a prompt evaluation for unexplained persistent rest or night pain\. Schedule a visit.*six to eight weeks/],
+  ['advanced-meniscus-rehabilitation-exercises', /^Seek same-day urgent assessment for a newly locked knee.*Stop and seek assessment for other new loss of full extension, rapid or recurrent swelling, or repeated giving way\. Reassess before adding load.*two to four weeks/],
+  ['patellofemoral-pain-exercises', /^Seek same-day urgent assessment for true locking, loss of knee extension, or traumatic or rapidly increasing swelling.*Schedule a visit.*six to eight weeks/],
+  ['patellofemoral-pain-return-to-running-exercises', /^Seek same-day urgent assessment for true locking or inability to straighten the knee, rapid traumatic swelling.*Stop and seek assessment for other rapid swelling, recurrent kneecap instability, or focal bone pain\. Schedule a reassessment.*several weeks/],
+  ['ankle-sprain-return-to-sport-exercises', /^Seek emergency care now for a newly cold, pale, blue, or numb foot\. Seek same-day urgent assessment for pain above the ankle, locking, severe or rapidly increasing swelling.*Arrange prompt reassessment for other new sharp pain or repeated giving way\. Schedule a reassessment for other persistent swelling/],
+  ['gluteal-tendinopathy-exercises', /^Seek same-day urgent assessment for rapidly progressive hip weakness, a new or rapidly worsening pronounced hip drop or limp, sudden or severe deep groin pain with major loss of motion, new neurologic symptoms.*Arrange a prompt evaluation for chronic deep groin pain with major stiffness.*Schedule a visit.*eight weeks/],
+  ['lateral-elbow-tendinopathy-exercises', /^Seek same-day urgent assessment for rapidly increasing pain or marked or progressive weakness, including progressively declining grip strength\..*Stop and seek prompt assessment for new numbness.*loss of motion.*Schedule a visit.*four to six weeks/],
+  ['medial-elbow-tendinopathy-exercises', /^Seek same-day urgent assessment for marked or progressive hand weakness, acute throwing-related instability.*Stop and seek prompt assessment for ring-finger or small-finger numbness, other hand weakness, snapping, or other throwing-related pain or instability\. Schedule a visit.*four to six weeks.*before beginning an interval throwing program/],
+  ['thumb-cmc-osteoarthritis-exercises', /^Remove the brace immediately for numbness or color change\. Seek emergency care now if the hand or fingers stay cold, pale, or blue.*Contact a clinician now for same-day assessment of numbness or weakness that persists after brace removal.*new numbness or sudden weakness that persists even without a brace.*Keep the brace off until its fit and your symptoms have been assessed\. Schedule a hand or sports medicine visit for brace pressure, numbness or color change that resolves after removal.*six to eight weeks/],
+  ['plantar-fasciitis-exercises', /^Seek emergency care now for a cold, pale, blue, or newly numb foot\. Seek same-day urgent assessment for rapidly worsening neurologic symptoms.*Arrange earlier clinician reassessment for other worsening, atypical, or ongoing neurologic symptoms\..*four to six weeks.*after eight to twelve weeks/],
 ];
 
 for (const [slug, guidance] of evaluationUrgencyCases) {
-  test(`${slug} puts same-day guidance before routine scheduling on screen and in print`, async ({ page }) => {
+  test(`${slug} puts urgent guidance before routine follow-up on screen and in print`, async ({ page }) => {
     await page.goto(`/${slug}/`);
     const evaluation = page.locator('#progress .clinician-panel p');
     for (const media of ['screen', 'print']) {
