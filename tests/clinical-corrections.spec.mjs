@@ -79,6 +79,36 @@ for (const [slug, guidance] of evaluationUrgencyCases) {
   });
 }
 
+test('meniscus follow-up puts a newly locked knee ahead of routine reassessment on screen and in print', async ({ page }) => {
+  await page.goto('/meniscus-tear-rehabilitation-exercises/');
+  const evaluation = page.locator('#progress .clinician-panel p');
+  for (const media of ['screen', 'print']) {
+    await page.emulateMedia({ media });
+    await expect(evaluation).toBeVisible();
+    await expect(evaluation).toHaveText(/^Seek same-day urgent assessment for a newly locked knee \(a hard block that prevents full straightening\)\. Schedule a reassessment/);
+    await expect(evaluation).toContainText('the knee repeatedly gives way, swelling keeps returning');
+    await expect(evaluation).toContainText('six to eight weeks');
+    await expect(evaluation).toContainText('eight- to twelve-week exercise trial');
+  }
+});
+
+test('low-back follow-up preserves the warning tiers ahead of routine scheduling on screen and in print', async ({ page }) => {
+  await page.goto('/low-back-pain-exercises/');
+  const evaluation = page.locator('#progress .clinician-panel p');
+  const stopBox = page.locator('#response .symptom-red');
+  const urgentLegSymptoms = /severe or rapidly progressive leg weakness.*Seek same-day urgent assessment for .*new leg or foot weakness.*worsening walking.*Stop the current exercise and arrange prompt assessment for other new or progressively worsening leg pain, numbness, or tingling\./;
+  for (const media of ['screen', 'print']) {
+    await page.emulateMedia({ media });
+    await expect(evaluation).toBeVisible();
+    await expect(evaluation).toHaveText(/^Seek emergency care now for severe or rapidly progressive leg weakness\./);
+    await expect(evaluation).toHaveText(urgentLegSymptoms);
+    await expect(evaluation).toContainText('tingling. Schedule an evaluation');
+    await expect(evaluation).toContainText('after about six weeks of consistent activity and exercise');
+    await expect(stopBox).toBeVisible();
+    await expect(stopBox).toHaveText(urgentLegSymptoms);
+  }
+});
+
 test('orthobiologics overview explicitly directs same-day post-injection assessment', async ({ page }) => {
   await page.goto('/orthobiologics/');
   const warning = page.locator('.note-panel').filter({ hasText: 'Autologous does not mean risk-free.' });

@@ -316,7 +316,7 @@ for (const program of programs) {
         SESSION_STYLES: guidedSession ? '    <link rel="stylesheet" href="../hep-session.css?v=20261008-workout1">' : '',
         SESSION_LAUNCH: guidedSession ? '                            <a href="#guided-session" class="btn btn-primary" data-hep-launch data-hep-launch-start hidden>Start a guided session</a>' : '',
         SESSION_SECTION: guidedSession ? renderGuidedSessionData(program, canonical) : '',
-        SESSION_SCRIPT: guidedSession ? '    <script type="module" src="../hep-session.js?v=20261012-reliability1"></script>' : '',
+        SESSION_SCRIPT: guidedSession ? '    <script type="module" src="../hep-session.js?v=20261117-exercise-reliability1"></script>' : '',
         TITLE: program.title,
         SEO_TITLE: program.seoTitle,
         SHORT_TITLE: program.shortTitle,

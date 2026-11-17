@@ -360,11 +360,17 @@ test('legacy v1 records and workout records restore together; response edits pre
   await expect(sets(page).first().locator('[data-hep-set-load]')).toHaveValue('');
 });
 
-test('summary prints the latest six session counts and the most recent workout details even after newer simple sessions', async ({ context, page, baseURL }) => {
+test('summary prints the latest six sessions and takes set details from the newest workout with a recorded set', async ({ context, page, baseURL }) => {
   await localOnly(context, baseURL);
+  const blankWorkout = recordedWorkout('blank-workout', '', 100);
+  blankWorkout.notes = 'LATEST_SIX_0';
+  blankWorkout.workout[0].sets = [blankRecordedSet()];
+  const zeroWorkout = recordedWorkout('recent-workout', '', 90);
+  zeroWorkout.workout[0].sets = [blankRecordedSet(), { ...blankRecordedSet(), amount: 0 }];
   const records = [
-    ...Array.from({ length: 6 }, (_, index) => legacyRecord(`simple-${index}`, `LATEST_SIX_${index}`, 100 - index)),
-    recordedWorkout('recent-workout', 'MOST_RECENT_WORKOUT_DETAIL', 90),
+    blankWorkout,
+    ...Array.from({ length: 5 }, (_, index) => legacyRecord(`simple-${index}`, `LATEST_SIX_${index + 1}`, 99 - index)),
+    zeroWorkout,
     recordedWorkout('older-workout', 'OLDER_WORKOUT_DETAIL', 80),
   ];
   await seed(context, records);
@@ -377,6 +383,7 @@ test('summary prints the latest six session counts and the most recent workout d
         text: summary.textContent,
         rows: [...summary.querySelectorAll('.hep-summary-table tbody tr')].map(row => [...row.children].map(cell => cell.textContent)),
         exerciseNames: [...summary.querySelectorAll('.hep-workout-record-exercise h4')].map(heading => heading.textContent),
+        recordedSets: [...summary.querySelectorAll('.hep-workout-record-exercise li')].map(item => item.textContent),
         controls: summary.querySelectorAll('input, select, textarea, button').length,
       };
     };
@@ -386,13 +393,50 @@ test('summary prints the latest six session counts and the most recent workout d
   expect(printed.rows).toHaveLength(6);
   expect(printed.rows.map(row => row.slice(1, 3))).toEqual(Array.from({ length: 6 }, () => ['5', '0']));
   for (let index = 0; index < 6; index += 1) expect(printed.rows[index][4]).toContain(`LATEST_SIX_${index}`);
-  expect(printed.text).toContain('MOST_RECENT_WORKOUT_DETAIL');
+  expect(printed.text).toContain('Most recent workout with recorded sets');
   expect(printed.text).not.toContain('OLDER_WORKOUT_DETAIL');
+  expect(printed.recordedSets).toEqual(['0 reps']);
   expect(printed.exerciseNames).toEqual(guidedExercises(knee).map(exercise => exercise.name));
   expect(printed.controls).toBe(0);
   await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
   await expect(page.locator('.hep-summary-printout')).toHaveCount(0);
   await expect(session(page).locator('[data-hep-print-summary]')).toBeEnabled();
+});
+
+test('clear keeps drafts and exercise decisions in both tabs and lets the peer timer keep running', async ({ context, page, baseURL }) => {
+  await localOnly(context, baseURL);
+  await seed(context, [recordedWorkout('saved-workout', 'CLEARED_SET_REFERENCE')]);
+  await visit(page);
+  await start(page);
+  await sets(page).first().locator('[data-hep-set-amount]').fill('12');
+  await session(page).locator('[data-hep-done]').click();
+  await sets(page).first().locator('[data-hep-set-amount]').fill('8');
+  await session(page).locator('[data-hep-skip]').click();
+
+  const peer = await context.newPage();
+  await clockVisit(context, peer, baseURL);
+  await expect(session(peer).locator('[data-hep-previous-sets]')).toContainText('CLEARED_SET_REFERENCE');
+  await sets(peer).first().locator('[data-hep-set-amount]').fill('9');
+  await timer(peer).locator('[data-hep-timer-duration]').fill('20');
+  await timer(peer).locator('[data-hep-timer-start]').click();
+
+  await session(page).locator('[data-hep-log]').click();
+  await session(page).locator('[data-hep-clear]').click();
+  await session(page).locator('[data-hep-confirm-clear]').click();
+  await expect(session(peer).locator('[data-hep-storage]')).not.toBeChecked();
+  await expect(session(peer).locator('[data-hep-previous-sets]')).toHaveCount(0);
+  await expect(sets(peer).first().locator('[data-hep-set-amount]')).toHaveValue('9');
+  await peer.clock.runFor(3000);
+  await expect(timer(peer).locator('[data-hep-timer-clock]')).toHaveText('00:17');
+
+  await session(page).locator('[data-hep-resume]').click();
+  await expect(session(page).locator('progress')).toHaveJSProperty('value', 2);
+  await session(page).locator('[data-hep-back]').click();
+  await expect(session(page).locator('[data-hep-exercise]')).toContainText('Previously marked skipped');
+  await expect(sets(page).first().locator('[data-hep-set-amount]')).toHaveValue('8');
+  await session(page).locator('[data-hep-back]').click();
+  await expect(session(page).locator('[data-hep-exercise]')).toContainText('Previously marked done');
+  await expect(sets(page).first().locator('[data-hep-set-amount]')).toHaveValue('12');
 });
 
 test('workout fields stay in the open tab with saving off and never enter production analytics, links, or network requests', async ({ context, page }) => {

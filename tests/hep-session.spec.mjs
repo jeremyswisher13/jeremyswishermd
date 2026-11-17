@@ -474,11 +474,98 @@ test('clearing progress requires confirmation, cancel preserves it, and unrelate
   expect(await page.evaluate(key => localStorage.getItem(key), storageKey(knee.slug))).toBeNull();
   expect(await page.evaluate(() => localStorage.getItem('unrelated-setting'))).toBe('keep-me');
   await expect(session(peer).locator('[data-hep-storage]')).not.toBeChecked();
-  if (await session(peer).locator('[data-hep-next-response]').count()) {
-    await session(peer).locator('[data-hep-next-response]').selectOption('baseline');
-  }
+  await expect(session(peer).locator('[data-hep-entry]')).toHaveCount(0);
+  await expect(session(peer).locator('[data-hep-print-summary]')).toBeDisabled();
   expect(await page.evaluate(key => localStorage.getItem(key), storageKey(knee.slug))).toBeNull();
+  await session(peer).locator('[data-hep-storage]').check();
+  expect(await page.evaluate(key => JSON.parse(localStorage.getItem(key)), storageKey(knee.slug))).toMatchObject({ goal: '', records: [] });
   await peer.close();
+});
+
+test('clear reaches open tabs with only unsaved entries and preserves the peer review draft', async ({ context, page, baseURL }) => {
+  await localOnly(context, baseURL);
+  await visit(page);
+  await addRecord(page, { notes: 'UNSAVED_LOCAL_ENTRY' });
+  const peer = await context.newPage();
+  await visit(peer);
+  await addRecord(peer, { notes: 'UNSAVED_PEER_ENTRY', goal: 'UNSAVED_PEER_GOAL' });
+  await start(peer);
+  await finish(peer, knee, { skip: true });
+  const peerGoal = session(peer).getByLabel('Activity goal (optional)', { exact: true });
+  const peerNotes = session(peer).getByLabel('Notes (optional)', { exact: true });
+  await expect(peerGoal).toHaveValue('UNSAVED_PEER_GOAL');
+  await peerNotes.fill('IN_PROGRESS_PEER_NOTE');
+  expect(await page.evaluate(key => localStorage.getItem(key), storageKey(knee.slug))).toBeNull();
+
+  await session(page).locator('[data-hep-clear]').click();
+  await session(page).locator('[data-hep-confirm-clear]').click();
+  await expect(peerGoal).toHaveValue('');
+  await expect(peerNotes).toHaveValue('IN_PROGRESS_PEER_NOTE');
+  await expect(session(peer).locator('[data-hep-skipped-count]')).toHaveText(`${knee.exercises.length} skipped`);
+  await session(peer).locator('[data-hep-storage]').check();
+  expect(await page.evaluate(key => JSON.parse(localStorage.getItem(key)), storageKey(knee.slug))).toMatchObject({ goal: '', records: [] });
+  await session(peer).locator('[data-hep-save]').click();
+  await expect(session(peer).locator('[data-hep-entry]')).toHaveCount(1);
+  await expect(session(peer).locator('[data-hep-history]')).toContainText('IN_PROGRESS_PEER_NOTE');
+  await expect(session(peer).locator('[data-hep-history]')).not.toContainText('UNSAVED_PEER_ENTRY');
+});
+
+test('an older write that races with a confirmed clear cannot restore deleted progress', async ({ context, page, baseURL }) => {
+  await localOnly(context, baseURL);
+  await visit(page);
+  await session(page).locator('[data-hep-storage]').check();
+  await addRecord(page, { notes: 'IN_FLIGHT_ENTRY' });
+  await page.evaluate(key => {
+    const setItem = Storage.prototype.setItem;
+    const removeItem = Storage.prototype.removeItem;
+    Storage.prototype.setItem = function (name, value) {
+      if (name === key) {
+        // Interleave another tab's clear after this tab read the old key.
+        removeItem.call(this, key);
+        setItem.call(this, `${key}:clear`, 'simulated-clear-revision');
+      }
+      setItem.call(this, name, value);
+    };
+    // A subsequent removal may be blocked even though writes are allowed.
+    Storage.prototype.removeItem = function (name) {
+      if (name === key) throw new DOMException('Storage unavailable', 'SecurityError');
+      removeItem.call(this, name);
+    };
+  }, storageKey(knee.slug));
+  await session(page).locator('[data-hep-next-response]').selectOption('baseline');
+  await expect(session(page).locator('[data-hep-entry]')).toHaveCount(0);
+  await expect(session(page).locator('[data-hep-storage]')).not.toBeChecked();
+
+  const peer = await context.newPage();
+  await visit(peer);
+  await expect(session(peer).locator('[data-hep-storage]')).not.toBeChecked();
+  await session(peer).locator('[data-hep-log]').click();
+  await expect(session(peer).locator('[data-hep-entry]')).toHaveCount(0);
+  await session(peer).locator('[data-hep-storage]').check();
+  expect(await peer.evaluate(key => JSON.parse(localStorage.getItem(key)), storageKey(knee.slug))).toMatchObject({ goal: '', records: [] });
+});
+
+test('clear still reaches open tabs if browser storage refuses the clear signal', async ({ context, page, baseURL }) => {
+  await localOnly(context, baseURL);
+  await visit(page);
+  await session(page).locator('[data-hep-storage]').check();
+  await addRecord(page, { notes: 'PEER_CLEAR_FALLBACK' });
+  const peer = await context.newPage();
+  await visit(peer);
+  await session(peer).locator('[data-hep-log]').click();
+  await expect(session(peer).locator('[data-hep-history]')).toContainText('PEER_CLEAR_FALLBACK');
+  await page.evaluate(key => {
+    const setItem = Storage.prototype.setItem;
+    Storage.prototype.setItem = function (name, value) {
+      if (name === `${key}:clear`) throw new DOMException('Storage unavailable', 'QuotaExceededError');
+      setItem.call(this, name, value);
+    };
+  }, storageKey(knee.slug));
+  await session(page).locator('[data-hep-clear]').click();
+  await session(page).locator('[data-hep-confirm-clear]').click();
+  await expect(session(peer).locator('[data-hep-entry]')).toHaveCount(0);
+  await expect(session(peer).locator('[data-hep-storage]')).not.toBeChecked();
+  expect(await page.evaluate(key => localStorage.getItem(key), storageKey(knee.slug))).toBeNull();
 });
 
 test('program printing excludes interactive progress and summary printing excludes the original guide', async ({ context, page, baseURL }) => {

@@ -3,6 +3,7 @@ import { validateWorkoutOptions } from '../hep-workout.js';
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createProgramSearchEntry, getProgramSearchTokens, programSearchEntryMatches } from './program-search-validation.mjs';
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const root = resolve(scriptDirectory, '..');
@@ -48,11 +49,6 @@ const retiredSourceUrls = new Set([
     'https://www.massgeneral.org/assets/mgh/pdf/orthopaedics/sports-medicine/physical-therapy/rehabilitation-protocol-for-iliotibial-band-syndrome.pdf',
     'https://www.dir.ca.gov/dwc/DWCPropRegs/2023/MTUS-Evidence-Based-Update-July/Hand-Wrist-Forearm-Disorders.pdf'
 ]);
-const programSearchStopWords = new Set([
-    'a', 'an', 'and', 'exercise', 'exercises', 'for', 'home', 'my', 'of', 'plan', 'plans',
-    'physical', 'program', 'programs', 'pt', 'rehab', 'rehabilitation', 'routine', 'routines',
-    'the', 'therapy', 'to', 'treatment', 'treatments'
-]);
 const errors = [];
 const slugs = new Set();
 
@@ -71,29 +67,6 @@ function escapeHtml(value) {
         .replaceAll('>', '&gt;')
         .replaceAll('"', '&quot;')
         .replaceAll("'", '&#39;');
-}
-
-function normalizeProgramSearch(value) {
-    return String(value || '')
-        .normalize('NFKD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .replace(/[’']s\b/gi, 's')
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, ' ')
-        .trim();
-}
-
-function getProgramSearchTokens(value) {
-    const normalizedValue = normalizeProgramSearch(value);
-    return normalizedValue
-        ? normalizedValue.split(' ').filter(token => !programSearchStopWords.has(token))
-        : [];
-}
-
-function programSearchEntryMatches(entry, query) {
-    return getProgramSearchTokens(query).every(token => (
-        token.length <= 2 ? entry.words.has(token) : entry.text.includes(token)
-    ));
 }
 
 function validateDate(value, field, slug) {
@@ -253,7 +226,7 @@ for (const program of programs) {
             }
         }
         assert(page.includes('data-hep-session hidden'), `${slug}: guided session must start hidden until initialized`);
-        assert(page.includes('src="../hep-session.js?v=20261012-reliability1"'), `${slug}: guided-session module is missing`);
+        assert(page.includes('src="../hep-session.js?v=20261117-exercise-reliability1"'), `${slug}: guided-session module is missing`);
         assert(page.includes('href="../hep-session.css?v=20261008-workout1"'), `${slug}: guided-session stylesheet is missing`);
     } else {
         assert(!sessionPayload && !page.includes('hep-session.js') && !page.includes('hep-session.css'), `${slug}: non-guided page includes guided-session assets`);
@@ -396,12 +369,11 @@ const programCardRecords = [...hub.matchAll(/<a class="program-card"([^>]*)>([\s
             .split(/\s+/)
             .filter(Boolean);
         const title = body.match(/<h3>([\s\S]*?)<\/h3>/)?.[1] || '';
-        const searchText = normalizeProgramSearch(`${title} ${aliases}`);
         return {
             aliases,
             audiences,
             body,
-            searchEntry: { text: searchText, words: new Set(searchText.split(' ')) },
+            searchEntry: createProgramSearchEntry(`${title} ${aliases}`),
             slug
         };
     });
@@ -449,9 +421,7 @@ for (const program of programs) {
     );
 
     for (const token of getProgramSearchTokens(program.shortTitle)) {
-        const tokenMatches = token.length <= 2
-            ? card.searchEntry.words.has(token)
-            : card.searchEntry.text.includes(token);
+        const tokenMatches = programSearchEntryMatches(card.searchEntry, [token]);
         assert(tokenMatches, `${program.slug}: search index is missing shortTitle token "${token}"`);
     }
 }
@@ -501,11 +471,12 @@ const broadSearchExpectations = [
 ];
 
 for (const [query, expectedSlugs] of broadSearchExpectations) {
+    const tokens = getProgramSearchTokens(query);
     for (const slug of expectedSlugs) {
         assert(slugs.has(slug), `Search expectation for "${query}" references unknown program ${slug}`);
         const card = programCardsBySlug.get(slug);
         assert(
-            Boolean(card) && programSearchEntryMatches(card.searchEntry, query),
+            Boolean(card) && programSearchEntryMatches(card.searchEntry, tokens),
             `${slug}: broad search "${query}" would under-return`
         );
     }
@@ -513,16 +484,24 @@ for (const [query, expectedSlugs] of broadSearchExpectations) {
 
 const exactSearchExpectations = [
     ['shoulder pain', ['rotator-cuff-pain-exercises', 'adhesive-capsulitis-exercises']],
-    ['back pain', ['low-back-pain-exercises']]
+    ['back pain', ['low-back-pain-exercises']],
+    ['operative meniscus rehab', []],
+    ['specific low back pain', []],
+    ['post-op meniscus rehab', []],
+    ['child knee pain', []],
+    ['nonoperative meniscus rehab', ['meniscus-tear-rehabilitation-exercises', 'advanced-meniscus-rehabilitation-exercises']],
+    ['non-operative meniscus rehab', ['meniscus-tear-rehabilitation-exercises', 'advanced-meniscus-rehabilitation-exercises']],
+    ['non specific low back pain', ['low-back-pain-exercises']]
 ];
 
 for (const [query, expectedSlugs] of exactSearchExpectations) {
+    const tokens = getProgramSearchTokens(query);
     const matchingSlugs = programCardRecords
-        .filter(card => programSearchEntryMatches(card.searchEntry, query))
+        .filter(card => programSearchEntryMatches(card.searchEntry, tokens))
         .map(card => card.slug);
     assert(
         matchingSlugs.join('|') === expectedSlugs.join('|'),
-        `Broad search "${query}" returned ${matchingSlugs.join(', ') || 'no programs'} instead of ${expectedSlugs.join(', ')}`
+        `Search "${query}" returned ${matchingSlugs.join(', ') || 'no programs'} instead of ${expectedSlugs.join(', ') || 'no programs'}`
     );
 }
 

@@ -1,6 +1,6 @@
 // Optional patient session tools. Clinical instructions come from the page's
 // generated program data; personal entries stay in memory or opted-in storage.
-import { MAX_PROGRESS_BYTES, appendWorkoutDetails, blankSet, mountWorkout, recordedSets, validateWorkoutEntries, validateWorkoutOptions } from './hep-workout.js?v=20261009-text1';
+import { MAX_PROGRESS_BYTES, appendWorkoutDetails, blankSet, hasRecordedSetDetails, mountWorkout, recordedSets, validateWorkoutEntries, validateWorkoutOptions } from './hep-workout.js?v=20261117-exercise-reliability1';
 export const SESSION_STORAGE_VERSION = 1;
 export const MAX_RECORDS = 30;
 export const NEXT_MORNING_RESPONSES = Object.freeze([
@@ -53,6 +53,10 @@ function isObject(value) {
 
 function isText(value, maximum, allowEmpty = false) {
     return typeof value === 'string' && value.length <= maximum && (allowEmpty || value.trim().length > 0);
+}
+
+function isStorageToken(value) {
+    return isText(value, 100) && /^[a-zA-Z0-9_-]+$/.test(value);
 }
 
 export function localDateString(date = new Date()) {
@@ -128,9 +132,10 @@ export function validateProgressStore(value, slug, exerciseCount) {
     const records = value.records.slice(0, MAX_RECORDS).map(record => createSessionRecord(record, exerciseCount));
     if (records.some(record => record === null) || new Set(records.map(record => record.id)).size !== records.length) return null;
     const store = { version: SESSION_STORAGE_VERSION, slug, goal: value.goal, records };
-    if (value.generation !== undefined) {
-        if (!isText(value.generation, 100) || !/^[a-zA-Z0-9_-]+$/.test(value.generation)) return null;
-        store.generation = value.generation;
+    for (const field of ['generation', 'clearRevision']) {
+        if (value[field] === undefined) continue;
+        if (!isStorageToken(value[field])) return null;
+        store[field] = value[field];
     }
     return store;
 }
@@ -173,8 +178,10 @@ function newRecordId() {
 
 function initializeGuidedSession(root, program) {
     const key = progressStorageKey(program.slug);
+    const clearKey = `${key}:clear`;
     const state = {
-        records: [], goal: '', keep: false, storageAvailable: true, hasStoredData: false, generation: undefined,
+        records: [], goal: '', keep: false, storageAvailable: true, hasStoredData: false,
+        generation: undefined, clearRevision: undefined,
         changedIds: new Set(), goalChanged: false, historyNeedsRefresh: false,
         steps: program.exercises.map(() => null), index: 0, started: false,
         workoutMode: false, usedWorkout: false, sets: program.exercises.map(() => [blankSet()]), workoutControls: null,
@@ -182,18 +189,16 @@ function initializeGuidedSession(root, program) {
         printout: null, printTimer: null, printing: false
     };
 
-    // Read only this program's key to restore a previous explicit opt-in. No
-    // storage enumeration or writing happens during initial page loading.
+    // Read only this program's data and clear revision. No enumeration or
+    // writing happens during initial page loading.
     let restorationMessage = '';
     try {
+        state.clearRevision = readClearRevision();
         const stored = window.localStorage.getItem(key);
         if (stored !== null) {
             state.hasStoredData = true;
-            let restored = null;
-            if (stored.length <= MAX_PROGRESS_BYTES) {
-                try { restored = validateProgressStore(JSON.parse(stored), program.slug, program.exercises.length); } catch { /* Ignore malformed local data. */ }
-            }
-            if (restored) {
+            const restored = decodeStoredProgress(stored);
+            if (restored && restored.clearRevision === state.clearRevision) {
                 state.records = restored.records;
                 state.goal = restored.goal;
                 state.keep = true;
@@ -288,9 +293,12 @@ function initializeGuidedSession(root, program) {
     root.replaceChildren(shell);
 
     function announce(message) { status.textContent = message; }
+    function canClearProgress() {
+        return Boolean(state.records.length || state.goal || state.keep || state.hasStoredData);
+    }
     function updateClearButton() {
         const clear = root.querySelector('[data-hep-clear]');
-        if (clear) clear.disabled = state.records.length === 0 && !state.keep && !state.hasStoredData;
+        if (clear) clear.disabled = !canClearProgress();
     }
     function updateStorageHelp() {
         if (!state.storageAvailable) {
@@ -305,6 +313,10 @@ function initializeGuidedSession(root, program) {
         if (typeof raw !== 'string' || raw.length > MAX_PROGRESS_BYTES) return null;
         try { return validateProgressStore(JSON.parse(raw), program.slug, program.exercises.length); } catch { return null; }
     }
+    function readClearRevision() {
+        const revision = window.localStorage.getItem(clearKey);
+        return isStorageToken(revision) ? revision : undefined;
+    }
     function turnSavingOff(message, hasStoredData = false) {
         state.keep = false;
         state.hasStoredData = hasStoredData;
@@ -314,11 +326,46 @@ function initializeGuidedSession(root, program) {
         updateClearButton();
         announce(message);
     }
+    function clearProgressInMemory(revision, hasStoredData = false, moveFocus = false) {
+        state.records = [];
+        state.goal = '';
+        state.changedIds.clear();
+        state.goalChanged = false;
+        state.historyNeedsRefresh = false;
+        state.keep = false;
+        state.hasStoredData = hasStoredData;
+        state.generation = undefined;
+        state.clearRevision = revision;
+        storageCheckbox.checked = false;
+        updateStorageHelp();
+        resetSummaryPrint();
+        // Remove references to the cleared log without rebuilding an active
+        // exercise or review, which would interrupt its timer or draft fields.
+        panel.querySelector('[data-hep-previous-sets]')?.remove();
+        const activeGoal = panel.querySelector('#hep-session-goal');
+        if (activeGoal) activeGoal.value = '';
+        if (state.view === 'history') renderHistory(moveFocus || panel.contains(document.activeElement));
+    }
+    function observeProgressClear(revision) {
+        if (revision === state.clearRevision) return false;
+        if (revision === undefined) {
+            state.clearRevision = undefined;
+            return false;
+        }
+        clearRemoteProgress(revision);
+        return true;
+    }
+    function clearRemoteProgress(revision) {
+        clearProgressInMemory(revision);
+        announce('Progress cleared for this program in another tab. Device saving is off.');
+    }
     function persistProgress({ explicitOptIn = false } = {}) {
         if (!state.keep) return true;
         try {
+            if (observeProgressClear(readClearRevision())) return false;
             const raw = window.localStorage.getItem(key);
-            const stored = decodeStoredProgress(raw);
+            const decoded = decodeStoredProgress(raw);
+            const stored = decoded?.clearRevision === state.clearRevision ? decoded : null;
             // A missing or replaced consent must never be recreated by a stale
             // session save or response edit. Only a fresh checkbox opt-in can
             // start saving again after removal in another tab.
@@ -337,8 +384,17 @@ function initializeGuidedSession(root, program) {
                 records: state.records.slice(0, MAX_RECORDS)
             };
             if (state.generation !== undefined) nextStore.generation = state.generation;
+            if (state.clearRevision !== undefined) nextStore.clearRevision = state.clearRevision;
             const serialized = JSON.stringify(nextStore);
-            if (serialized !== raw) window.localStorage.setItem(key, serialized);
+            if (serialized !== raw) {
+                window.localStorage.setItem(key, serialized);
+                // A clear can land in another tab between the read and write.
+                // Its revision makes this write ineligible for restoration.
+                if (observeProgressClear(readClearRevision())) {
+                    if (window.localStorage.getItem(key) === serialized) window.localStorage.removeItem(key);
+                    return false;
+                }
+            }
             state.hasStoredData = true;
             state.changedIds.clear();
             state.goalChanged = false;
@@ -362,6 +418,7 @@ function initializeGuidedSession(root, program) {
         } else {
             state.keep = false;
             try {
+                if (observeProgressClear(readClearRevision())) return;
                 window.localStorage.removeItem(key);
                 state.hasStoredData = false;
                 state.generation = undefined;
@@ -399,19 +456,44 @@ function initializeGuidedSession(root, program) {
             }
         }, 0);
     });
+    // The scoped revision contains no entries or goal. A channel can still
+    // notify open tabs when the browser refuses the revision write.
+    let clearChannel;
+    try {
+        if (typeof window.BroadcastChannel === 'function') {
+            clearChannel = new window.BroadcastChannel(clearKey);
+            clearChannel.addEventListener('message', event => {
+                if (event.data === 'clear') clearRemoteProgress(state.clearRevision);
+            });
+        }
+    } catch { /* Browser policy can block cross-tab communication. */ }
+
     window.addEventListener('storage', event => {
-        if ((event.key !== key && event.key !== null) || !state.keep) return;
+        if (event.key !== key && event.key !== clearKey && event.key !== null) return;
+        let revision = event.key === clearKey && isStorageToken(event.newValue) ? event.newValue : state.clearRevision;
+        try { revision = readClearRevision(); } catch { /* Use the event when storage cannot be read. */ }
+        if (observeProgressClear(revision) || event.key === clearKey) return;
+        if (!state.keep) {
+            state.hasStoredData = event.newValue !== null;
+            updateClearButton();
+            return;
+        }
         if (event.newValue === null) {
+            const removed = decodeStoredProgress(event.oldValue);
+            if (removed && (removed.generation !== state.generation || removed.clearRevision !== state.clearRevision)) return;
             // If a stale write raced with deletion, discard that old consent
             // generation too. A fresh opt-in has a different generation.
             try {
                 const current = decodeStoredProgress(window.localStorage.getItem(key));
-                if (current && current.generation === state.generation) window.localStorage.removeItem(key);
+                if (current && current.generation === state.generation && current.clearRevision === state.clearRevision) {
+                    window.localStorage.removeItem(key);
+                }
             } catch { /* Keep the memory log usable when storage is blocked. */ }
             turnSavingOff(`Saved progress was removed in another tab. Saving is now off here. ${UNSAVED_ENTRIES_HELP}`);
             return;
         }
         const stored = decodeStoredProgress(event.newValue);
+        if (stored && stored.clearRevision !== state.clearRevision) return;
         if (!stored || stored.generation !== state.generation) {
             turnSavingOff(`Device saving changed in another tab. Saving is now off here. ${UNSAVED_ENTRIES_HELP}`, true);
             return;
@@ -439,6 +521,9 @@ function initializeGuidedSession(root, program) {
     }
     window.addEventListener('pagehide', () => { state.workoutControls?.cleanup(); });
     window.addEventListener('pageshow', event => {
+        if (event.persisted) {
+            try { observeProgressClear(readClearRevision()); } catch { /* Keep the active session usable. */ }
+        }
         if (event.persisted && state.view === 'exercise') renderExercise(false);
     });
     function sessionMode() {
@@ -533,7 +618,7 @@ function initializeGuidedSession(root, program) {
             }, 'data-hep-workout-toggle', false, true);
             card.append(mode);
             if (state.workoutMode) {
-                const last = state.records.find(record => record.workout?.[state.index]?.sets.length);
+                const last = state.records.find(record => record.workout?.[state.index]?.sets.some(hasRecordedSetDetails));
                 state.workoutControls = mountWorkout(card, program.workoutOptions[state.index], state.sets[state.index],
                     last ? { date: displayDate(last.date), entry: last.workout[state.index] } : null, announce);
             }
@@ -708,7 +793,7 @@ function initializeGuidedSession(root, program) {
         printButton.disabled = state.records.length === 0;
         actions.append(printButton);
         const clearButton = button('Clear progress', () => showClearConfirmation(clearButton), 'data-hep-clear', false, true);
-        clearButton.disabled = state.records.length === 0 && !state.keep && !state.hasStoredData;
+        clearButton.disabled = !canClearProgress();
         actions.append(clearButton);
         panel.append(actions);
         const history = element('div', 'hep-session-history');
@@ -749,26 +834,31 @@ function initializeGuidedSession(root, program) {
         const confirmation = element('div', 'hep-session-inline-confirm');
         confirmation.setAttribute('data-hep-clear-confirmation', '');
         const heading = element('h4', '', 'Clear this program’s progress?');
-        paragraph(confirmation, 'This removes all entries and the activity goal for this program from this tab and this browser.');
+        paragraph(confirmation, 'This removes all entries and the activity goal for this program from this browser and its open tabs.');
         const actions = element('div', 'hep-session-actions');
         const confirm = button('Yes, clear progress', () => {
-            let removed = true;
+            const revision = newRecordId();
+            let revisionStored = false;
+            let removed = false;
             try {
                 window.localStorage.removeItem(key);
-                state.hasStoredData = false;
-                state.generation = undefined;
-            } catch { removed = false; }
-            state.records = [];
-            state.goal = '';
-            state.notes = '';
-            state.sets = program.exercises.map(() => [blankSet()]);
-            state.changedIds.clear();
-            state.goalChanged = false;
-            state.keep = false;
-            storageCheckbox.checked = false;
-            updateStorageHelp();
-            renderHistory(true);
-            announce(removed ? 'Progress cleared for this program. Device saving is off.' : 'Progress cleared from this tab. Browser storage is unavailable, so previously saved entries could not be removed.');
+                removed = true;
+            } catch { /* Keep clearing available so the visitor can retry. */ }
+            try {
+                window.localStorage.setItem(clearKey, revision);
+                revisionStored = true;
+            } catch { /* Notify other tabs through the channel below. */ }
+            let notified = revisionStored;
+            if (!notified && clearChannel) {
+                try {
+                    clearChannel.postMessage('clear');
+                    notified = true;
+                } catch { /* This tab can still clear its own entries. */ }
+            }
+            clearProgressInMemory(revisionStored ? revision : state.clearRevision, !removed, true);
+            if (!removed) announce('Progress cleared from this tab. Browser storage is unavailable, so previously saved entries could not be removed.');
+            else if (!notified) announce('Progress cleared from this tab and browser storage. Other open tabs could not be notified.');
+            else announce('Progress cleared for this program. Device saving is off.');
         }, 'data-hep-confirm-clear');
         const cancel = button('Cancel', () => {
             confirmation.remove();
@@ -828,9 +918,9 @@ function initializeGuidedSession(root, program) {
         });
         table.append(caption, head, body);
         report.append(table);
-        const latestWorkout = state.records.find(record => record.workout);
+        const latestWorkout = state.records.find(record => record.workout?.some(entry => entry.sets.some(hasRecordedSetDetails)));
         if (latestWorkout) {
-            paragraph(report, `Set details · Most recent workout entry: ${displayDate(latestWorkout.date)}`, 'hep-summary-meta hep-summary-workout-date');
+            paragraph(report, `Set details · Most recent workout with recorded sets: ${displayDate(latestWorkout.date)}`, 'hep-summary-meta hep-summary-workout-date');
             appendWorkoutDetails(report, latestWorkout.workout, program.exercises, true);
         }
         paragraph(report, 'These entries are patient-recorded and have not been reviewed by a clinician. Use the original program’s dose, frequency, and symptom rules.');

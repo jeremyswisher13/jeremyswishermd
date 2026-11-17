@@ -2,6 +2,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, extname, join, relative, resolve } from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
+import { createProgramSearchEntry, getProgramSearchTokens, programSearchEntryMatches } from './program-search-validation.mjs';
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const root = resolve(scriptDirectory, '..');
@@ -19,7 +20,7 @@ const ignoredHtmlDirectories = new Set([
 const analyticsEventCounts = new Map();
 const expectedAssetCacheKey = '20261012-reliability1';
 const expectedLandingStyleCacheKey = '20261117-injection-guide1';
-const expectedScriptCacheKey = '20261117-exercise-guides1';
+const expectedScriptCacheKey = '20261117-exercise-reliability1';
 const expectedPrimaryNavigationLabels = [
     'Conditions &amp; Care',
     'Appointments &amp; Insurance',
@@ -138,16 +139,6 @@ function decodeAttribute(value) {
         .replaceAll('&amp;', '&')
         .replaceAll('&#38;', '&')
         .replaceAll('&#x26;', '&');
-}
-
-function normalizeProgramSearchForValidation(value) {
-    return String(value || '')
-        .normalize('NFKD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .replace(/[’']s\b/gi, 's')
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, ' ')
-        .trim();
 }
 
 function splitLocalReference(value) {
@@ -867,8 +858,7 @@ const exerciseHubSearchCards = [...exerciseHubPage.matchAll(/<a class="program-c
         const title = /<h3>([^<]+)<\/h3>/.exec(match[2])?.[1] || '';
         const aliases = /\bdata-program-search="([^"]+)"/.exec(attributes)?.[1] || '';
         const href = /\bhref="([^"]+)"/.exec(attributes)?.[1] || '';
-        const text = normalizeProgramSearchForValidation(title + ' ' + aliases);
-        return { href, text, words: new Set(text.split(' ')) };
+        return { href, searchEntry: createProgramSearchEntry(title + ' ' + aliases) };
     });
 const exerciseHubFilters = [...exerciseHubPage.matchAll(/name="program-region"\s+value="([^"]+)"/g)]
     .map((match) => match[1]);
@@ -954,16 +944,14 @@ if (
     errors.push('Shared script does not fully implement exercise-library search and empty-state behavior');
 }
 
-const patientSearchStopWords = new Set([
-    'a', 'an', 'and', 'exercise', 'exercises', 'for', 'home', 'my', 'of', 'plan', 'plans',
-    'physical', 'program', 'programs', 'pt', 'rehab', 'rehabilitation', 'routine', 'routines',
-    'the', 'therapy', 'to', 'treatment', 'treatments'
-]);
 const patientSearchExpectations = new Map([
     ['OA', ['../hip-osteoarthritis-exercises/', '../knee-osteoarthritis-advanced-exercises/', '../knee-osteoarthritis-exercises/']],
+    ['O.A.', ['../hip-osteoarthritis-exercises/', '../knee-osteoarthritis-advanced-exercises/', '../knee-osteoarthritis-exercises/']],
     ['IT', ['../iliotibial-band-syndrome-exercises/']],
+    ['I.T. band', ['../iliotibial-band-syndrome-exercises/']],
     ['ITBS', ['../iliotibial-band-syndrome-exercises/']],
     ['PFPS', ['../patellofemoral-pain-exercises/', '../patellofemoral-pain-return-to-running-exercises/']],
+    ['patell', ['../patellofemoral-pain-exercises/', '../patellofemoral-pain-return-to-running-exercises/', '../patellar-tendinopathy-exercises/']],
     ["runner's knee exercises", ['../patellofemoral-pain-exercises/', '../patellofemoral-pain-return-to-running-exercises/']],
     ['frozen shoulder rehab', ['../adhesive-capsulitis-exercises/']],
     ['tennis elbow exercises', ['../lateral-elbow-tendinopathy-exercises/']],
@@ -974,22 +962,19 @@ const patientSearchExpectations = new Map([
     ['thumb CMC arthritis', ['../thumb-cmc-osteoarthritis-exercises/']],
     ["De Quervain's exercises", ['../de-quervain-tenosynovitis-exercises/']],
     ['heel pain exercises', ['../achilles-tendinopathy-exercises/', '../plantar-fasciitis-exercises/']],
+    ['pain in my heel', ['../achilles-tendinopathy-exercises/', '../plantar-fasciitis-exercises/']],
     ['low back pain program', ['../low-back-pain-exercises/']],
     ['hip pain', ['../gluteal-tendinopathy-exercises/', '../hip-osteoarthritis-exercises/']],
     ['knee arthritis exercises', ['../knee-osteoarthritis-advanced-exercises/', '../knee-osteoarthritis-exercises/']],
     ['ankle instability rehab', ['../ankle-sprain-return-to-sport-exercises/', '../lateral-ankle-sprain-exercises/']],
+    ['sprained ankle', ['../ankle-sprain-return-to-sport-exercises/', '../lateral-ankle-sprain-exercises/']],
     ['mommy thumb', ['../de-quervain-tenosynovitis-exercises/']]
 ]);
 
 for (const [query, expectedHrefs] of patientSearchExpectations) {
-    const normalizedQuery = normalizeProgramSearchForValidation(query);
-    const tokens = normalizedQuery
-        ? normalizedQuery.split(' ').filter((token) => !patientSearchStopWords.has(token))
-        : [];
+    const tokens = getProgramSearchTokens(query);
     const actualHrefs = exerciseHubSearchCards
-        .filter((card) => tokens.every((token) => (
-            token.length <= 2 ? card.words.has(token) : card.text.includes(token)
-        )))
+        .filter((card) => programSearchEntryMatches(card.searchEntry, tokens))
         .map((card) => card.href)
         .sort();
     const expected = [...expectedHrefs].sort();

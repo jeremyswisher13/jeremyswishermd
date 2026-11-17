@@ -243,6 +243,11 @@ test('exercise search finds maintained programs for common phrasing and word for
     ['planter fasciitis', 'plantar fasciitis', 1],
     ['rotater cuff', 'rotator cuff', 1],
     ['strained hamstring', 'hamstring strain', 1],
+    ['De Quervain’s exercises', 'De Quervain', 1],
+    ['non-operative meniscus rehab', 'nonoperative meniscus rehab', 2],
+    ['non operative meniscus rehab', 'nonoperative meniscus rehab', 2],
+    ['non-specific low back pain', 'nonspecific low back pain', 1],
+    ['non specific low back pain', 'nonspecific low back pain', 1],
     ['pain in my heel', 'heel pain', 2],
     ['pain on the outside of my knee', 'outside knee pain', 1],
     ['O.A.', 'OA', 3],
@@ -281,6 +286,7 @@ test('exercise search retains specific injury and patient qualifiers', async ({ 
   const visibleCards = page.locator('#program-grid .program-card:not([hidden])');
   for (const query of [
     'torn rotator cuff', 'Achilles rupture', 'postoperative meniscus', 'child knee pain',
+    'operative meniscus rehab', 'specific low back pain',
     'post-op pain in my knee', 'numb knee', 'twisted ankle', 'unknowncondition',
   ]) {
     await search.fill(query);

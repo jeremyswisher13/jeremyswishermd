@@ -100,6 +100,9 @@ function fixtureFor(definition) {
   latest.workout = workout;
   latest.completed = workout.filter(entry => entry.status === 'done').length;
   latest.skipped = workout.length - latest.completed;
+  if (definition.id === 'common-extensor-standard') {
+    records[0].workout = options.map(({ measure, label }) => ({ status: 'done', measure, label, sets: [] }));
+  }
   // These unique older sets must never enter the most-recent-workout detail block.
   const older = records[7];
   older.workout = options.map((option, index) => ({

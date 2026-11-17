@@ -52,6 +52,11 @@ export function blankSet() {
     return { amount: '', holdSeconds: '', load: '', unit: 'none', resistance: '', note: '' };
 }
 
+export function hasRecordedSetDetails(set) {
+    return set.amount !== null || set.holdSeconds !== null || set.load !== null
+        || set.unit !== 'none' || Boolean(set.resistance || set.note);
+}
+
 export function recordedSets(drafts, option) {
     return drafts.map(set => ({
         amount: set.amount === '' ? null : Number(set.amount),
@@ -60,8 +65,7 @@ export function recordedSets(drafts, option) {
         unit: option.resistance ? set.unit : 'none',
         resistance: option.resistance && ['band', 'other'].includes(set.unit) ? set.resistance : '',
         note: set.note
-    })).filter(set => set.amount !== null || set.holdSeconds !== null || set.load !== null
-        || set.unit !== 'none' || set.resistance || set.note);
+    })).filter(hasRecordedSetDetails);
 }
 
 export function describeSet(set, measure, label) {
@@ -98,11 +102,12 @@ export function appendWorkoutDetails(parent, workout, exercises, expanded = fals
     workout.forEach((entry, index) => {
         const section = node('section', 'hep-workout-record-exercise');
         section.append(node('h4', '', exercises[index].name));
+        const sets = entry.sets.filter(hasRecordedSetDetails);
         if (entry.status === 'skipped') section.append(node('p', '', 'Skipped'));
-        else if (!entry.sets.length) section.append(node('p', '', 'Done · No set details recorded'));
+        else if (!sets.length) section.append(node('p', '', 'Done · No set details recorded'));
         else {
             const list = node('ol');
-            entry.sets.forEach(set => list.append(node('li', '', describeSet(set, entry.measure, entry.label))));
+            sets.forEach(set => list.append(node('li', '', describeSet(set, entry.measure, entry.label))));
             section.append(list);
         }
         wrapper.append(section);
@@ -121,7 +126,7 @@ export function mountWorkout(parent, option, drafts, previous, announce) {
         reference.setAttribute('data-hep-previous-sets', '');
         reference.append(node('h5', '', `Last recorded · ${previous.date}`));
         const list = node('ol');
-        previous.entry.sets.forEach(set => list.append(node('li', '', describeSet(set, previous.entry.measure, previous.entry.label))));
+        previous.entry.sets.filter(hasRecordedSetDetails).forEach(set => list.append(node('li', '', describeSet(set, previous.entry.measure, previous.entry.label))));
         reference.append(list, node('p', '', 'A reference for your records. Follow the program’s progression criteria before changing the exercise or resistance.'));
         workout.append(reference);
     }
