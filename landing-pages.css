@@ -3790,6 +3790,36 @@
     }
 }
 
+@media screen and (max-width: 480px) {
+    .landing-page.hep-page:not(.hep-hub-page) .landing-hero-inner {
+        gap: 22px;
+        padding-block: 20px 30px;
+    }
+
+    .landing-page.hep-page:not(.hep-hub-page) .landing-hero .landing-kicker {
+        margin-bottom: 10px;
+        padding-bottom: 6px;
+        letter-spacing: 0.12em;
+        line-height: 1.35;
+    }
+
+    .landing-page.hep-page:not(.hep-hub-page) .landing-hero h1 {
+        font-size: clamp(2rem, 1rem + 5vw, 2.5rem);
+        letter-spacing: -0.035em;
+        line-height: 1.03;
+        overflow-wrap: anywhere;
+    }
+
+    .landing-page.hep-page:not(.hep-hub-page) .landing-hero .landing-summary {
+        margin-top: 12px;
+        line-height: 1.5;
+    }
+
+    .landing-page.hep-page:not(.hep-hub-page) .landing-hero .landing-actions {
+        margin-top: 16px;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .landing-page *,
     .landing-page *::before,
@@ -4741,7 +4771,8 @@
     text-transform: uppercase;
 }
 
-.hep-hub-page .page-jump.hep-mobile-page-jump {
+.hep-hub-page .page-jump.hep-mobile-page-jump,
+.hep-page .page-jump.hep-guide-mobile-jump {
     display: none;
 }
 
@@ -4818,12 +4849,28 @@
 }
 
 @media screen and (max-width: 820px) {
-    .hep-hub-page .page-jump:not(.hep-mobile-page-jump) {
+    .hep-hub-page .page-jump:not(.hep-mobile-page-jump),
+    .hep-page .page-jump.hep-guide-desktop-jump {
         display: none;
     }
 
-    .hep-hub-page .page-jump.hep-mobile-page-jump {
+    .hep-hub-page .page-jump.hep-mobile-page-jump,
+    .hep-page .page-jump.hep-guide-mobile-jump {
         display: block;
+    }
+
+    .hep-page .page-jump.hep-guide-mobile-jump {
+        border-top: 1px solid var(--color-border);
+    }
+
+    .hep-page .hep-guide-mobile-jump > details > summary,
+    .hep-page .hep-guide-mobile-jump > details[open] > .page-jump-inner {
+        padding-inline: 0;
+    }
+
+    .hep-page .hep-guide-mobile-jump .page-jump-inner {
+        letter-spacing: normal;
+        text-transform: none;
     }
 
     .hep-hub-page .hep-mobile-page-jump > details[open] > .page-jump-inner {

@@ -18,8 +18,8 @@ const ignoredHtmlDirectories = new Set([
 ]);
 const analyticsEventCounts = new Map();
 const expectedAssetCacheKey = '20261012-reliability1';
-const expectedLandingStyleCacheKey = '20261117-exercise-library1';
-const expectedScriptCacheKey = '20261117-exercise-library1';
+const expectedLandingStyleCacheKey = '20261117-exercise-guides1';
+const expectedScriptCacheKey = '20261117-exercise-guides1';
 const expectedPrimaryNavigationLabels = [
     'Conditions &amp; Care',
     'Appointments &amp; Insurance',

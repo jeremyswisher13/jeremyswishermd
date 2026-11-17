@@ -142,3 +142,77 @@ test('a numbered citation reveals its initially closed source and lands on it', 
   await expect(source).toBeVisible();
   await expect(source).toBeInViewport();
 });
+
+for (const { slug, width, height } of [
+  { slug: 'knee-osteoarthritis-exercises', width: 320, height: 568 },
+  { slug: 'achilles-tendinopathy-return-to-sport-exercises', width: 390, height: 664 },
+]) {
+  test(`${slug} shows Start a guided session on the first screen at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height });
+    await page.goto(`/${slug}/`);
+    await waitForEnhancement(page);
+    const start = page.getByRole('link', { name: 'Start a guided session', exact: true });
+    await expect(start).toBeInViewport({ ratio: 1 });
+    expect((await start.boundingBox()).height).toBeGreaterThanOrEqual(44);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+  });
+}
+
+test('exercise guides expose the section menu on small phones and keep its links visible on desktop', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 568 });
+  await page.goto('/knee-osteoarthritis-exercises/');
+  await waitForEnhancement(page);
+
+  const navigation = page.getByRole('navigation', { name: 'On this page' });
+  const disclosure = navigation.locator('details');
+  const summary = disclosure.locator('summary');
+  const symptoms = navigation.getByRole('link', { name: 'Symptom rules' });
+  const progression = navigation.getByRole('link', { name: 'Progression' });
+  await expect(summary).toBeVisible();
+  await expect(disclosure).toHaveJSProperty('open', false);
+  await expect(symptoms).toBeHidden();
+
+  await summary.press('Enter');
+  await expect(disclosure).toHaveJSProperty('open', true);
+  await expect(symptoms).toBeVisible();
+  await expect(progression).toBeVisible();
+  await expect(navigation.getByRole('link', { name: 'Guided session' })).toBeVisible();
+  await expect(navigation.getByRole('link', { name: 'Video' })).toBeVisible();
+  expect(await navigation.evaluate(element => element.scrollWidth)).toBeLessThanOrEqual(
+    await navigation.evaluate(element => element.clientWidth),
+  );
+  await summary.press('Tab');
+  await expect(navigation.getByRole('link', { name: 'Is this for me?' })).toBeFocused();
+  await symptoms.press('Enter');
+  await expect(page).toHaveURL(/#response$/);
+  await expect(page.locator('#response h2')).toBeInViewport({ ratio: 1 });
+
+  await page.setViewportSize({ width: 1024, height: 768 });
+  await expect(summary).toBeHidden();
+  await expect(progression).toBeVisible();
+  await page.emulateMedia({ media: 'print' });
+  await expect(navigation).toBeHidden();
+});
+
+test('the exercise guide section menu works without JavaScript or a video companion', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    reducedMotion: 'reduce',
+    viewport: { width: 320, height: 568 },
+  });
+  const origin = new URL(baseURL).origin;
+  await context.route('**/*', route => new URL(route.request().url()).origin === origin
+    ? route.continue() : route.abort());
+  const page = await context.newPage();
+  await page.goto(new URL('/thumb-cmc-osteoarthritis-exercises/', origin).href);
+
+  const navigation = page.getByRole('navigation', { name: 'On this page' });
+  const progression = navigation.getByRole('link', { name: 'Progression' });
+  await expect(progression).toBeVisible();
+  await expect(navigation.getByRole('link', { name: 'Guided session' })).toHaveCount(0);
+  await expect(navigation.getByRole('link', { name: 'Video' })).toHaveCount(0);
+  await progression.click();
+  await expect(page).toHaveURL(/#progress$/);
+  await expect(page.locator('#progress h2')).toBeInViewport({ ratio: 1 });
+  await context.close();
+});
