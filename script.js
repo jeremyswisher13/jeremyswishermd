@@ -869,7 +869,7 @@ const programRegionLabels = new Map([
 const expectedProgramRegions = new Set(programRegionLabels.keys());
 const inputRegions = new Set(programFilterInputs.map(input => input.value));
 const programSearchStopWords = new Set([
-    'a', 'an', 'and', 'exercise', 'exercises', 'for', 'home', 'my', 'of', 'plan', 'plans',
+    'a', 'an', 'and', 'exercise', 'exercises', 'for', 'home', 'in', 'my', 'of', 'on', 'plan', 'plans',
     'physical', 'program', 'programs', 'pt', 'rehab', 'rehabilitation', 'routine', 'routines',
     'the', 'therapy', 'to', 'treatment', 'treatments'
 ]);
@@ -900,6 +900,7 @@ const normalizeProgramSearch = value => String(value || '')
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/[’']s\b/gi, 's')
     .toLowerCase()
+    .replace(/\b(?:o\.\s*a|i\.\s*t)\b/g, abbreviation => abbreviation.replace(/[.\s]/g, ''))
     .replace(/[^a-z0-9]+/g, ' ')
     .trim();
 const programSearchIndex = new Map(programCards.map(card => {
