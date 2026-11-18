@@ -205,6 +205,43 @@ for (const program of programs) {
   });
 }
 
+for (const slug of [
+  'insertional-achilles-tendinopathy-exercises',
+  'proximal-hamstring-tendinopathy-exercises',
+  'rotator-cuff-return-to-throwing-exercises',
+]) {
+  test(`${slug}: mobile users can check later-stage criteria and stop signs from an active exercise`, async ({ context, page, baseURL }) => {
+    const program = programFor(slug);
+    await localOnly(context, baseURL);
+    await page.setViewportSize({ width: 390, height: 844 });
+    await visit(page, program);
+    await page.locator('[data-hep-launch-start]').click();
+    const card = session(page).locator('[data-hep-exercise]');
+    await expect(card.getByText(program.programIntro, { exact: true })).toBeVisible();
+    const exercises = guidedExercises(program);
+    for (let index = 1; index < exercises.length; index += 1) await card.locator('[data-hep-skip]').click();
+    const finalExercise = exercises.at(-1);
+    await expect(card.locator('[data-hep-exercise-title]')).toHaveText(finalExercise.name);
+    await expectExercisePrescription(card, finalExercise);
+    await card.locator('details summary').click();
+    await expect(card.getByText(finalExercise.harder, { exact: true })).toBeVisible();
+    await card.getByRole('link', { name: 'See progression & readiness criteria' }).click();
+    await expect(page).toHaveURL(new RegExp('/' + slug + '/#progress$'));
+    await expect(page.locator('#progress h2')).toBeInViewport();
+    await expect(page.locator('#progress .care-step p')).toHaveText(program.progression.map(stage => stage.text));
+    await expect(page.locator('#progress .readiness-block li')).toHaveText(program.readyItems);
+    await page.goBack();
+    await expect(card.locator('[data-hep-exercise-title]')).toHaveText(finalExercise.name);
+    const safety = session(page).locator('.hep-session-safety');
+    await safety.locator('summary').click();
+    await expect(safety.getByText(program.red, { exact: true })).toBeVisible();
+    await safety.getByRole('link', { name: 'Read the full program fit & safety guidance' }).click();
+    await expect(page.locator('#fit h2')).toBeInViewport();
+    await expect(page.locator('#fit .urgent-panel p')).toHaveText(program.redFlags);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+  });
+}
+
 test('done, skip, and previous exercise replace a decision without double-counting', async ({ context, page, baseURL }) => {
   await localOnly(context, baseURL);
   await visit(page);

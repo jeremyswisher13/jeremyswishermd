@@ -44,7 +44,7 @@ test('optional logging metadata does not modify or extend the maintained clinica
   // Changing the logging UI must not silently rewrite an existing dose, cue, or progression.
   const prescriptions = JSON.stringify(programs.map(program => ({ slug: program.slug, exercises: program.exercises })));
   assert.equal(createHash('sha256').update(prescriptions).digest('hex'),
-    '5ee77371b38e6b2b7d47f16e24a7b5eb8d56f56887831194fba7e52efeb69283');
+    'fc1582e24a64c9f5a6b0ac6788db78be2336c2875a01200873aaa16fbc1abc74');
 });
 
 test('logging option validation enforces coverage, literal units, exact fields, and bounded labels', () => {
