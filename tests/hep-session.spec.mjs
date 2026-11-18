@@ -88,8 +88,8 @@ async function start(page) {
 async function expectExercisePrescription(card, exercise) {
   await expect(card.locator('dl dt')).toHaveText(['Dose', 'Frequency']);
   await expect(card.locator('dl dd')).toHaveText([exercise.dose, exercise.frequency]);
-  await expect(card.locator('h4')).toHaveText(['How to do it', 'Easier option']);
-  await expect(card.locator('h4 + p')).toHaveText([exercise.how, exercise.easier]);
+  await expect(card.locator(':scope > h4')).toHaveText(['How to do it', 'Easier option']);
+  await expect(card.locator(':scope > h4 + p')).toHaveText([exercise.how, exercise.easier]);
 }
 
 async function finish(page, program = knee, { skip = false } = {}) {
