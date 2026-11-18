@@ -613,6 +613,8 @@ function initializeGuidedSession(root, program) {
             paragraph(card, 'Use the dose and frequency shown for each exercise. Skip exercises that are not due today, belong to a later stage you have not reached, or that your clinician has asked you to leave out.');
         }
         card.append(definitionList([['Dose', exercise.dose], ['Frequency', exercise.frequency]]));
+        const presets = program.timerOptions?.[exercise.name] || [];
+        if (!state.workoutMode && presets.length) state.exerciseTimer = mountExerciseTimer(card, presets);
         card.append(element('h4', '', 'How to do it'), element('p', '', exercise.how));
         card.append(element('h4', '', 'Easier option'), element('p', '', exercise.easier));
         const harder = element('details', 'hep-session-detail');
@@ -621,8 +623,6 @@ function initializeGuidedSession(root, program) {
         progressionLink.href = '#progress';
         harder.append(progressionLink);
         card.append(harder);
-        const presets = program.timerOptions?.[exercise.name] || [];
-        if (!state.workoutMode && presets.length) state.exerciseTimer = mountExerciseTimer(card, presets);
         if (program.workoutOptions) {
             const mode = button(state.workoutMode ? 'Use simple done / skip' : 'Record sets & use a custom timer', () => {
                 if (state.workoutMode && state.workoutControls && !state.workoutControls.valid()) return;
