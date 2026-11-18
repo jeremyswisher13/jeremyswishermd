@@ -12,8 +12,8 @@ const measures = new Set(['reps', 'seconds', 'minutes', 'contacts']);
 const firstProgram = programs[0];
 const firstOptions = optionsBySlug[firstProgram.slug];
 
-test('the manually maintained logging sidecar covers all 25 programs and 134 exercises in source order', () => {
-  assert.equal(programs.length, 25);
+test('the manually maintained logging sidecar covers all 28 programs and 146 exercises in source order', () => {
+  assert.equal(programs.length, 28);
   assert.deepEqual(Object.keys(optionsBySlug).sort(), programs.map(program => program.slug).sort());
   let exerciseCount = 0;
   for (const program of programs) {
@@ -32,7 +32,7 @@ test('the manually maintained logging sidecar covers all 25 programs and 134 exe
       assert.ok(!/[<>\r\n\u0000-\u001f]/.test(option.label), context);
     }
   }
-  assert.equal(exerciseCount, 134);
+  assert.equal(exerciseCount, 146);
 });
 
 test('optional logging metadata does not modify or extend the maintained clinical prescriptions', () => {
@@ -44,7 +44,7 @@ test('optional logging metadata does not modify or extend the maintained clinica
   // Changing the logging UI must not silently rewrite an existing dose, cue, or progression.
   const prescriptions = JSON.stringify(programs.map(program => ({ slug: program.slug, exercises: program.exercises })));
   assert.equal(createHash('sha256').update(prescriptions).digest('hex'),
-    '4bfa05bfc871dbd6e716d77df8d6c3d7a0b4f159f6610d387500074d918cf02a');
+    '5ee77371b38e6b2b7d47f16e24a7b5eb8d56f56887831194fba7e52efeb69283');
 });
 
 test('logging option validation enforces coverage, literal units, exact fields, and bounded labels', () => {

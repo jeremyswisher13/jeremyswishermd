@@ -8,10 +8,10 @@ import { startSiteServer } from './serve-site.mjs';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const output = resolve(process.argv[2] || join(root, '.quality-results/print'));
 const programs = JSON.parse(await readFile(join(root, 'scripts/hep-programs.json'), 'utf8'));
-if (!Array.isArray(programs) || programs.length !== 25
-  || new Set(programs.map(program => program.slug)).size !== 25
+if (!Array.isArray(programs) || programs.length !== 28
+  || new Set(programs.map(program => program.slug)).size !== programs.length
   || programs.some(program => program.guidedSession !== true)) {
-  throw new Error('Print QA requires all 25 unique maintained programs with guided sessions enabled');
+  throw new Error('Print QA requires all 28 unique maintained programs with guided sessions enabled');
 }
 await mkdir(output, { recursive: true });
 const server = await startSiteServer({ port: 0 });

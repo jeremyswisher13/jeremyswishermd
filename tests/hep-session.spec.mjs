@@ -88,8 +88,8 @@ async function start(page) {
 async function expectExercisePrescription(card, exercise) {
   await expect(card.locator('dl dt')).toHaveText(['Dose', 'Frequency']);
   await expect(card.locator('dl dd')).toHaveText([exercise.dose, exercise.frequency]);
-  await expect(card.locator('h4')).toHaveText(['How to do it', 'Easier option']);
-  await expect(card.locator('h4 + p')).toHaveText([exercise.how, exercise.easier]);
+  await expect(card.locator(':scope > h4')).toHaveText(['How to do it', 'Easier option']);
+  await expect(card.locator(':scope > h4 + p')).toHaveText([exercise.how, exercise.easier]);
 }
 
 async function finish(page, program = knee, { skip = false } = {}) {
@@ -110,9 +110,9 @@ async function addRecord(page, { notes = 'A short session felt manageable.', goa
   await expect(session(page).locator('[data-hep-history]')).toContainText(notes);
 }
 
-test('all 25 maintained programs have unique routes and enable guided sessions', () => {
-  expect(programs).toHaveLength(25);
-  expect(new Set(programs.map(program => program.slug)).size).toBe(25);
+test('all 28 maintained programs have unique routes and enable guided sessions', () => {
+  expect(programs).toHaveLength(28);
+  expect(new Set(programs.map(program => program.slug)).size).toBe(programs.length);
   expect(programs.every(program => program.guidedSession === true)).toBe(true);
   expect(advancedMeniscus.guidedExerciseOrder).toEqual([3, 4, 5, 0, 1, 2]);
   expect(advancedMeniscus.programIntro).toContain('Perform impact work before heavy strength when both occur in one session.');

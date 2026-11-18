@@ -55,8 +55,8 @@ test('program validation preserves the published clinical prescription and rejec
   assert.equal(validateProgramData({ ...validProgram, frequency: null }), null);
 });
 
-test('all 25 maintained programs preserve their prescriptions and use isolated valid progress stores', () => {
-  assert.equal(programs.length, 25);
+test('all 28 maintained programs preserve their prescriptions and use isolated valid progress stores', () => {
+  assert.equal(programs.length, 28);
   assert.deepEqual(new Set(GUIDED_PROGRAM_SLUGS), new Set(programs.map(item => item.slug)));
   const keys = new Set();
   for (const maintained of programs) {
@@ -69,7 +69,7 @@ test('all 25 maintained programs preserve their prescriptions and use isolated v
     assert.equal(validateProgressStore(store, 'unsupported-exercise-program', maintained.exercises.length), null);
     keys.add(progressStorageKey(maintained.slug));
   }
-  assert.equal(keys.size, 25);
+  assert.equal(keys.size, programs.length);
 });
 
 test('program data rejects unsafe canonical URLs and malformed exercise instructions', () => {

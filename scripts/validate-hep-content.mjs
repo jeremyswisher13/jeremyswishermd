@@ -1,4 +1,5 @@
 import { GUIDED_PROGRAM_SLUGS } from '../hep-session.js';
+import { prescribedTimerOptions } from './hep-timer-presets.mjs';
 import { validateWorkoutOptions } from '../hep-workout.js';
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -18,7 +19,6 @@ const requiredProgramFields = [
     'seoTitle',
     'shortTitle',
     'conditionName',
-    'reviewedDate',
     'metaDescription',
     'breadcrumb',
     'kicker',
@@ -114,10 +114,14 @@ for (const program of programs) {
     const publishedDate = program.publishedDate || '2026-07-17';
     const modifiedDate = program.modifiedDate || program.reviewedDate;
     validateDate(publishedDate, 'publishedDate', slug);
-    validateDate(program.reviewedDate, 'reviewedDate', slug);
+    if (program.reviewStatus === 'pending') {
+        assert(!program.reviewedDate && Boolean(program.publishedDate), `${slug}: pending reviews need a publication date and no review date`);
+    } else {
+        validateDate(program.reviewedDate, 'reviewedDate', slug);
+        assert(program.reviewedDate <= modifiedDate, `${slug}: reviewedDate is after modifiedDate`);
+    }
     validateDate(modifiedDate, 'modifiedDate', slug);
     assert(publishedDate <= modifiedDate, `${slug}: publishedDate is after modifiedDate`);
-    assert(program.reviewedDate <= modifiedDate, `${slug}: reviewedDate is after modifiedDate`);
 
     assert(Array.isArray(program.authorityItems) && program.authorityItems.length === 3, `${slug}: expected three authority items`);
     assert(Array.isArray(program.proof) && program.proof.length === 3, `${slug}: expected three proof items`);
@@ -217,6 +221,11 @@ for (const program of programs) {
                 const expected = Object.fromEntries(guidedSessionFields.map(field => [field, program[field]]));
                 if (program.guidedExerciseOrder) expected.exercises = program.guidedExerciseOrder.map(index => program.exercises[index]);
                 expected.canonical = canonical;
+                const timers = prescribedTimerOptions(program);
+                if (Object.keys(timers).length) expected.timerOptions = timers;
+                const writtenTimers = [...page.matchAll(/ data-hep-card-timer="([^"]+)"/g)].map(match => match[1]);
+                const expectedTimers = program.exercises.filter(exercise => timers[exercise.name]).map(exercise => escapeHtml(exercise.name));
+                assert(JSON.stringify(writtenTimers) === JSON.stringify(expectedTimers), `${slug}: written exercise timer placement differs from the prescribed options`);
                 const options = JSON.parse(readFileSync(join(scriptDirectory, 'hep-workout-options.json'), 'utf8'))[slug];
                 assert(Boolean(validateWorkoutOptions(options, program.exercises.length)), `${slug}: workout metadata is invalid`);
                 expected.workoutOptions = program.guidedExerciseOrder ? program.guidedExerciseOrder.map(index => options[index]) : options;
@@ -226,8 +235,8 @@ for (const program of programs) {
             }
         }
         assert(page.includes('data-hep-session hidden'), `${slug}: guided session must start hidden until initialized`);
-        assert(page.includes('src="../hep-session.js?v=20261117-exercise-reliability1"'), `${slug}: guided-session module is missing`);
-        assert(page.includes('href="../hep-session.css?v=20261008-workout1"'), `${slug}: guided-session stylesheet is missing`);
+        assert(page.includes('src="../hep-session.js?v=20261117-card-timers1"'), `${slug}: guided-session module is missing`);
+        assert(page.includes('href="../hep-session.css?v=20261117-card-timers1"'), `${slug}: guided-session stylesheet is missing`);
     } else {
         assert(!sessionPayload && !page.includes('hep-session.js') && !page.includes('hep-session.css'), `${slug}: non-guided page includes guided-session assets`);
     }
@@ -236,7 +245,11 @@ for (const program of programs) {
     assert(page.includes(`<link rel="canonical" href="${canonical}">`), `${slug}: canonical is incorrect`);
     assert(page.includes(`"datePublished": "${publishedDate}"`), `${slug}: schema published date is incorrect`);
     assert(page.includes(`"dateModified": "${modifiedDate}"`), `${slug}: schema modified date is incorrect`);
-    assert(page.includes(`"lastReviewed": "${program.reviewedDate}"`), `${slug}: schema reviewed date is incorrect`);
+    if (program.reviewedDate) {
+        assert(page.includes(`"lastReviewed": "${program.reviewedDate}"`), `${slug}: schema reviewed date is incorrect`);
+    } else {
+        assert(!/lastReviewed|reviewedBy|clinically reviewed|name="author"/i.test(page), `${slug}: attributes an unconfirmed clinical review or author`);
+    }
     assert(!page.includes('{{'), `${slug}: unresolved template token`);
     assert(!page.includes('\u2014'), `${slug}: contains an em dash`);
 
@@ -317,7 +330,8 @@ for (const field of ['seoTitle', 'h1', 'metaDescription']) {
 const athleteContinuationPairs = new Map([
     ['ankle-sprain-return-to-sport-exercises', 'lateral-ankle-sprain-exercises'],
     ['patellofemoral-pain-return-to-running-exercises', 'patellofemoral-pain-exercises'],
-    ['achilles-tendinopathy-return-to-sport-exercises', 'achilles-tendinopathy-exercises']
+    ['achilles-tendinopathy-return-to-sport-exercises', 'achilles-tendinopathy-exercises'],
+    ['rotator-cuff-return-to-throwing-exercises', 'rotator-cuff-pain-exercises']
 ]);
 const verifiedAthleteVideoIds = new Map([
     ['ankle-sprain-return-to-sport-exercises', 'ga_OAPf6IOI'],
@@ -343,10 +357,10 @@ for (const [continuationSlug, foundationSlug] of athleteContinuationPairs) {
             .some(value => /does not independently|not independent|does not.*clear/i.test(value || '')),
         `${continuationSlug}: must distinguish progression from independent medical clearance`
     );
-    assert(
-        continuation?.video?.id === verifiedAthleteVideoIds.get(continuationSlug),
-        `${continuationSlug}: missing its verified diagnosis-specific E3 Rehab video`
-    );
+    if (verifiedAthleteVideoIds.has(continuationSlug)) {
+        assert(continuation?.video?.id === verifiedAthleteVideoIds.get(continuationSlug),
+            `${continuationSlug}: missing its verified diagnosis-specific E3 Rehab video`);
+    }
 }
 
 assert(!hub.includes('\u2014'), 'Home exercise library contains an em dash');
@@ -427,12 +441,12 @@ for (const program of programs) {
 }
 
 const athletePrograms = programs.filter(program => program.audiences?.includes('athlete'));
-assert(athletePrograms.length === 7, 'Expected seven athlete programs');
+assert(athletePrograms.length === 8, 'Expected eight athlete programs');
 assert(
     programCardRecords.filter(card => card.audiences.includes('athlete')).length === athletePrograms.length,
     'Athlete filter count does not match athlete program metadata'
 );
-assert(hub.includes('Show 7 programs for running, jumping, cutting, and return to practice'), 'Library athlete-filter count is stale');
+assert(hub.includes('Show 8 programs for running, jumping, cutting, throwing, and return to practice'), 'Library athlete-filter count is stale');
 
 const expectedVideoCueCount = programs.filter(program => Boolean(program.video)).length;
 assert(
@@ -452,13 +466,13 @@ const broadSearchExpectations = [
         'iliotibial-band-syndrome-exercises'
     ]],
     ['front knee pain', ['patellofemoral-pain-exercises', 'patellofemoral-pain-return-to-running-exercises', 'patellar-tendinopathy-exercises']],
-    ['hamstring pain', ['hamstring-strain-exercises']],
+    ['hamstring pain', ['hamstring-strain-exercises', 'proximal-hamstring-tendinopathy-exercises']],
     ['meniscus pain', ['meniscus-tear-rehabilitation-exercises', 'advanced-meniscus-rehabilitation-exercises']],
-    ['shoulder pain', ['rotator-cuff-pain-exercises', 'adhesive-capsulitis-exercises']],
+    ['shoulder pain', ['rotator-cuff-pain-exercises', 'rotator-cuff-return-to-throwing-exercises', 'adhesive-capsulitis-exercises']],
     ['elbow pain', ['lateral-elbow-tendinopathy-exercises', 'medial-elbow-tendinopathy-exercises']],
     ['hip pain', ['gluteal-tendinopathy-exercises', 'hip-osteoarthritis-exercises']],
     ['thumb pain', ['thumb-cmc-osteoarthritis-exercises', 'de-quervain-tenosynovitis-exercises']],
-    ['heel pain', ['achilles-tendinopathy-exercises', 'plantar-fasciitis-exercises']],
+    ['heel pain', ['achilles-tendinopathy-exercises', 'insertional-achilles-tendinopathy-exercises', 'plantar-fasciitis-exercises']],
     ['ankle pain', [
         'achilles-tendinopathy-exercises',
         'lateral-ankle-sprain-exercises',
@@ -483,7 +497,11 @@ for (const [query, expectedSlugs] of broadSearchExpectations) {
 }
 
 const exactSearchExpectations = [
-    ['shoulder pain', ['rotator-cuff-pain-exercises', 'adhesive-capsulitis-exercises']],
+    ['insertional achilles', ['insertional-achilles-tendinopathy-exercises']],
+    ['proximal hamstring', ['proximal-hamstring-tendinopathy-exercises']],
+    ['return to throwing', ['rotator-cuff-return-to-throwing-exercises']],
+    ['hamstring strain', ['hamstring-strain-exercises']],
+    ['shoulder pain', ['rotator-cuff-pain-exercises', 'rotator-cuff-return-to-throwing-exercises', 'adhesive-capsulitis-exercises']],
     ['back pain', ['low-back-pain-exercises']],
     ['operative meniscus rehab', []],
     ['specific low back pain', []],
