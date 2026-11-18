@@ -483,6 +483,47 @@ async function clockVisit(context, page, baseURL) {
   await start(page);
 }
 
+test('wall-sit hold and rest timers work on the written card and in a simple session without logging', async ({ context, page, baseURL }) => {
+  await localOnly(context, baseURL);
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.clock.install({ time: new Date('2026-11-17T12:00:00Z') });
+  const program = programFor('patellar-tendinopathy-exercises');
+  await visit(page, program);
+  await page.clock.pauseAt(new Date('2026-11-17T12:01:00Z'));
+  const written = page.locator('[data-hep-card-timer]').first();
+  const labels = ['Hold 30 sec', 'Hold 45 sec', 'Rest 1 min', 'Rest 2 min'];
+  await expect(written.locator('[data-hep-timer-preset]')).toHaveText(labels);
+  const hold = written.getByRole('button', { name: labels[0], exact: true });
+  await hold.focus();
+  await page.keyboard.press('Enter');
+  await expect(written.getByRole('timer')).toHaveText('00:30');
+  await expect(written.getByRole('button', { name: 'Pause' })).toBeFocused();
+  await page.clock.fastForward(30000);
+  await expect(written.getByRole('status')).toContainText('Hold 30 sec timer finished');
+  await expect(hold).toBeFocused();
+  await written.getByRole('button', { name: 'Rest 2 min' }).click();
+  await expect(written.getByRole('timer')).toHaveText('02:00');
+  await start(page, false);
+  await expect(timer(page).locator('[data-hep-timer-preset]')).toHaveText(labels);
+  await timer(page).getByRole('button', { name: 'Hold 45 sec' }).click();
+  await expect(written.getByRole('timer')).toHaveCount(0);
+  await expect(timer(page).getByRole('timer')).toHaveText('00:45');
+  await page.clock.fastForward(45000);
+  await expect(session(page).locator('progress')).toHaveJSProperty('value', 0);
+  await expect(session(page).locator('[data-hep-workout]')).toHaveCount(0);
+  await timer(page).getByRole('button', { name: 'Rest 1 min' }).click();
+  await expect(timer(page).getByRole('timer')).toHaveText('01:00');
+  await session(page).locator('[data-hep-skip]').click();
+  await expect(timer(page)).toHaveCount(0);
+  expect(await readStore(page, program)).toBeNull();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
+  await page.clock.resume();
+  const audit = await new AxeBuilder({ page }).include('[data-hep-card-timer]').withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+  expect(audit.violations).toEqual([]);
+  await page.emulateMedia({ media: 'print' });
+  await expect(written).toBeHidden();
+});
+
 test('a user-entered timer pauses, extends, resumes, cancels, and finishes without marking or advancing an exercise', async ({ context, page, baseURL }) => {
   await clockVisit(context, page, baseURL);
   await expect(timer(page).locator('[data-hep-timer-duration]')).toHaveValue('');

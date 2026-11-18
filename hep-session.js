@@ -1,6 +1,6 @@
 // Optional patient session tools. Clinical instructions come from the page's
 // generated program data; personal entries stay in memory or opted-in storage.
-import { MAX_PROGRESS_BYTES, appendWorkoutDetails, blankSet, hasRecordedSetDetails, mountWorkout, recordedSets, validateWorkoutEntries, validateWorkoutOptions } from './hep-workout.js?v=20261117-exercise-reliability1';
+import { MAX_PROGRESS_BYTES, appendWorkoutDetails, blankSet, hasRecordedSetDetails, mountExerciseTimer, mountWorkout, recordedSets, stopActiveTimer, validateWorkoutEntries, validateWorkoutOptions } from './hep-workout.js?v=20261117-card-timers1';
 export const SESSION_STORAGE_VERSION = 1;
 export const MAX_RECORDS = 30;
 export const NEXT_MORNING_RESPONSES = Object.freeze([
@@ -35,7 +35,10 @@ export const GUIDED_PROGRAM_SLUGS = Object.freeze([
     'de-quervain-tenosynovitis-exercises',
     'ankle-sprain-return-to-sport-exercises',
     'patellofemoral-pain-return-to-running-exercises',
-    'achilles-tendinopathy-return-to-sport-exercises'
+    'achilles-tendinopathy-return-to-sport-exercises',
+    'insertional-achilles-tendinopathy-exercises',
+    'proximal-hamstring-tendinopathy-exercises',
+    'rotator-cuff-return-to-throwing-exercises'
 ]);
 const SUPPORTED_PROGRAM_SLUGS = new Set(GUIDED_PROGRAM_SLUGS);
 const RESPONSE_VALUES = new Set(NEXT_MORNING_RESPONSES.map(response => response.value));
@@ -91,6 +94,15 @@ export function validateProgramData(value) {
     const result = { slug: value.slug, canonical: value.canonical };
     PROGRAM_FIELDS.forEach(field => { result[field] = value[field]; });
     result.exercises = value.exercises.map(exercise => Object.fromEntries(EXERCISE_FIELDS.map(field => [field, exercise[field]])));
+    if (isObject(value.timerOptions)) {
+        result.timerOptions = Object.fromEntries(result.exercises.flatMap(({ name }) => {
+            const choices = value.timerOptions[name];
+            if (!Array.isArray(choices) || !choices.length || choices.length > 12
+                || !choices.every(choice => isObject(choice) && isText(choice.label, 60)
+                    && Number.isInteger(choice.seconds) && choice.seconds > 0 && choice.seconds <= 3600)) return [];
+            return [[name, choices.map(({ label, seconds }) => ({ label, seconds }))]];
+        }));
+    }
     const options = validateWorkoutOptions(value.workoutOptions, result.exercises.length);
     if (options) result.workoutOptions = options;
     return result;
@@ -184,7 +196,7 @@ function initializeGuidedSession(root, program) {
         generation: undefined, clearRevision: undefined,
         changedIds: new Set(), goalChanged: false, historyNeedsRefresh: false,
         steps: program.exercises.map(() => null), index: 0, started: false,
-        workoutMode: false, usedWorkout: false, sets: program.exercises.map(() => [blankSet()]), workoutControls: null,
+        workoutMode: false, usedWorkout: false, sets: program.exercises.map(() => [blankSet()]), workoutControls: null, exerciseTimer: null,
         date: localDateString(), notes: '', response: 'not-checked', view: 'welcome', resumeView: 'exercise',
         printout: null, printTimer: null, printing: false
     };
@@ -517,9 +529,11 @@ function initializeGuidedSession(root, program) {
     function resetPanel() {
         state.workoutControls?.cleanup();
         state.workoutControls = null;
+        state.exerciseTimer?.cleanup();
+        state.exerciseTimer = null;
         panel.replaceChildren();
     }
-    window.addEventListener('pagehide', () => { state.workoutControls?.cleanup(); });
+    window.addEventListener('pagehide', stopActiveTimer);
     window.addEventListener('pageshow', event => {
         if (event.persisted) {
             try { observeProgressClear(readClearRevision()); } catch { /* Keep the active session usable. */ }
@@ -530,7 +544,7 @@ function initializeGuidedSession(root, program) {
         if (!program.workoutOptions) return;
         const fieldset = element('fieldset', 'hep-session-mode');
         fieldset.append(element('legend', '', 'How would you like to follow your program?'));
-        [['simple', 'Simple session', 'Mark exercises done or skip them.'], ['workout', 'Workout log', 'Optional sets, resistance, and hold or rest timers.']].forEach(([value, text, help]) => {
+        [['simple', 'Simple session', 'Mark exercises done or skip them.'], ['workout', 'Workout log', 'Record sets and resistance, or enter a custom timer.']].forEach(([value, text, help]) => {
             const label = element('label', 'hep-session-mode-choice');
             const radio = element('input');
             radio.type = 'radio'; radio.name = 'hep-session-mode'; radio.value = value;
@@ -607,8 +621,10 @@ function initializeGuidedSession(root, program) {
         progressionLink.href = '#progress';
         harder.append(progressionLink);
         card.append(harder);
+        const presets = program.timerOptions?.[exercise.name] || [];
+        if (!state.workoutMode && presets.length) state.exerciseTimer = mountExerciseTimer(card, presets);
         if (program.workoutOptions) {
-            const mode = button(state.workoutMode ? 'Use simple done / skip' : 'Record sets & use a timer', () => {
+            const mode = button(state.workoutMode ? 'Use simple done / skip' : 'Record sets & use a custom timer', () => {
                 if (state.workoutMode && state.workoutControls && !state.workoutControls.valid()) return;
                 state.workoutMode = !state.workoutMode;
                 if (state.workoutMode) state.usedWorkout = true;
@@ -620,7 +636,7 @@ function initializeGuidedSession(root, program) {
             if (state.workoutMode) {
                 const last = state.records.find(record => record.workout?.[state.index]?.sets.some(hasRecordedSetDetails));
                 state.workoutControls = mountWorkout(card, program.workoutOptions[state.index], state.sets[state.index],
-                    last ? { date: displayDate(last.date), entry: last.workout[state.index] } : null, announce);
+                    last ? { date: displayDate(last.date), entry: last.workout[state.index] } : null, announce, presets);
             }
         }
         if (state.steps[state.index]) paragraph(card, `Previously marked ${state.steps[state.index] === 'done' ? 'done' : 'skipped'}. You can change this below.`, 'hep-session-entry-meta');
@@ -1005,6 +1021,10 @@ export function initGuidedSession() {
     if (!program) return false;
     try {
         initializeGuidedSession(root, program);
+        document.querySelectorAll('[data-hep-card-timer]').forEach(card => {
+            const presets = program.timerOptions?.[card.dataset.hepCardTimer];
+            if (presets?.length) mountExerciseTimer(card, presets);
+        });
         root.dataset.hepSessionReady = 'true';
         return true;
     } catch {

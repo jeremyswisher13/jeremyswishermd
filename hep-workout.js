@@ -115,9 +115,17 @@ export function appendWorkoutDetails(parent, workout, exercises, expanded = fals
     parent.append(wrapper);
 }
 
+function makeButton(label, action, data, quiet = false) {
+    const button = node('button', `hep-session-button${quiet ? ' is-quiet' : ' is-secondary'}`, label);
+    button.type = 'button';
+    if (data) button.setAttribute(data, '');
+    button.addEventListener('click', action);
+    return button;
+}
+
 // Recreating an exercise card cancels its timer. Draft sets belong to the
 // session, so back/forward navigation can retain entries without a live timer.
-export function mountWorkout(parent, option, drafts, previous, announce) {
+export function mountWorkout(parent, option, drafts, previous, announce, presets = []) {
     const workout = node('section', 'hep-workout');
     workout.setAttribute('data-hep-workout', '');
     workout.append(node('h4', '', 'Your sets'), node('p', 'hep-workout-help', 'Record what you completed. All fields are optional; use the dose and frequency above. For different sides or exercise variants, add a note.'));
@@ -132,13 +140,6 @@ export function mountWorkout(parent, option, drafts, previous, announce) {
     }
     const rows = node('div', 'hep-workout-sets');
     workout.append(rows);
-    const makeButton = (label, action, data, quiet = false) => {
-        const button = node('button', `hep-session-button${quiet ? ' is-quiet' : ' is-secondary'}`, label);
-        button.type = 'button';
-        if (data) button.setAttribute(data, '');
-        button.addEventListener('click', action);
-        return button;
-    };
     const add = makeButton('Add set', () => {
         if (drafts.length >= MAX_SETS) return;
         drafts.push(blankSet());
@@ -217,23 +218,75 @@ export function mountWorkout(parent, option, drafts, previous, announce) {
     }
     renderRows();
 
-    const timer = node('section', 'hep-workout-timer');
-    timer.setAttribute('data-hep-timer', '');
-    timer.append(node('h4', '', 'Hold or rest timer'), node('p', 'hep-workout-help', 'Choose the duration you need. For holds, follow the time in your program. A rest time you enter is your choice, not a prescribed rest interval.'));
+    const timer = mountExerciseTimer(workout, presets, announce, true);
+    parent.append(workout);
+    return {
+        valid() {
+            for (const input of rows.querySelectorAll('input')) {
+                if (input.checkValidity()) continue;
+                const details = input.closest('details');
+                if (details) details.open = true;
+                input.reportValidity();
+                return false;
+            }
+            return true;
+        },
+        cleanup: timer.cleanup
+    };
+}
+
+function customTimerForm(begin) {
     const form = node('form', 'hep-workout-timer-form');
     const kindLabel = node('label', '', 'Timer');
     const kind = node('select'); kind.id = 'hep-timer-kind'; kindLabel.htmlFor = kind.id;
-    [['rest', 'Rest'], ['hold', 'Hold']].forEach(([value, text]) => { const choice = node('option', '', text); choice.value = value; kind.append(choice); });
+    [['rest', 'Rest'], ['hold', 'Hold']].forEach(([value, text]) => {
+        const choice = node('option', '', text); choice.value = value; kind.append(choice);
+    });
     const durationLabel = node('label', '', 'Seconds');
     const duration = node('input'); duration.id = 'hep-timer-duration'; durationLabel.htmlFor = duration.id;
     duration.type = 'number'; duration.min = '1'; duration.max = '3600'; duration.step = '1'; duration.required = true; duration.inputMode = 'numeric';
     duration.setAttribute('data-hep-timer-duration', '');
     const kindField = node('div', 'hep-session-field'); kindField.append(kindLabel, kind);
     const durationField = node('div', 'hep-session-field'); durationField.append(durationLabel, duration);
-    const start = node('button', 'hep-session-button is-secondary', 'Start timer'); start.type = 'submit'; start.setAttribute('data-hep-timer-start', '');
+    const start = node('button', 'hep-session-button is-secondary', 'Start timer');
+    start.type = 'submit'; start.setAttribute('data-hep-timer-start', '');
     form.append(kindField, durationField, start);
-    const output = node('p', 'hep-workout-clock', '00:00'); output.setAttribute('role', 'timer'); output.setAttribute('aria-live', 'off'); output.setAttribute('aria-label', 'Time remaining'); output.setAttribute('data-hep-timer-clock', '');
-    let interval = null, deadline = 0, paused = 0, running = false;
+    form.addEventListener('submit', event => {
+        event.preventDefault();
+        if (form.reportValidity()) begin(Number(duration.value), kind.value === 'hold' ? 'Hold' : 'Rest', start);
+    });
+    return { form, inputs: [kind, duration, start] };
+}
+
+// A single page may show a written card and its guided counterpart. Starting
+// another countdown releases the previous one, including a paused countdown.
+let activeTimerStop = null;
+export function stopActiveTimer() { activeTimerStop?.(); }
+
+export function mountExerciseTimer(parent, presets, announce, custom = false) {
+    const timer = node('section', 'hep-workout-timer');
+    timer.setAttribute('data-hep-timer', '');
+    timer.append(node('h4', '', custom && !presets.length ? 'Hold or rest timer' : 'Optional timer'));
+    const starts = [];
+    if (presets.length) {
+        const choices = node('div', 'hep-timer-choices');
+        for (const { label, seconds } of presets) {
+            const button = makeButton(label, () => begin(seconds, label, button), 'data-hep-timer-preset');
+            starts.push(button);
+            choices.append(button);
+        }
+        timer.append(choices);
+    }
+    if (custom) {
+        timer.append(node('p', 'hep-workout-help', 'For a custom timer, enter seconds. Follow any hold or rest interval in the written dose.'));
+        const { form, inputs } = customTimerForm(begin);
+        starts.push(...inputs);
+        timer.append(form);
+    }
+    const output = node('p', 'hep-workout-clock', '00:00');
+    output.setAttribute('role', 'timer'); output.setAttribute('aria-live', 'off');
+    output.setAttribute('aria-label', 'Time remaining'); output.setAttribute('data-hep-timer-clock', '');
+    let interval = null, deadline = 0, paused = 0, running = false, trigger = null, phase = '';
     const clear = () => { if (interval !== null) window.clearInterval(interval); interval = null; };
     const controls = node('div', 'hep-session-actions');
     const pause = makeButton('Pause', () => {
@@ -241,53 +294,66 @@ export function mountWorkout(parent, option, drafts, previous, announce) {
             paused = remainingSeconds(deadline, Date.now());
             // A click can arrive before a delayed interval reconciles expiry.
             if (paused === 0) { tick(); return; }
-            running = false; clear(); pause.textContent = 'Resume'; tick(); announce('Timer paused.');
+            running = false; clear(); pause.textContent = 'Resume'; tick(); report('Timer paused.');
         } else if (paused > 0) {
             deadline = Date.now() + paused * 1000; running = true; pause.textContent = 'Pause';
-            interval = window.setInterval(tick, 250); tick(); announce('Timer resumed.');
+            interval = window.setInterval(tick, 250); tick(); report('Timer resumed.');
         }
     }, 'data-hep-timer-pause');
     const extend = makeButton('Add 15 seconds', () => {
         if (running) deadline = Math.max(deadline, Date.now()) + 15000;
         else paused += 15;
-        tick(); announce('15 seconds added to the timer.');
+        tick(); report('15 seconds added to the timer.');
     }, 'data-hep-timer-extend', true);
-    const cancel = makeButton('Cancel timer', () => { clear(); running = false; paused = 0; tick(); announce('Timer cancelled.'); }, 'data-hep-timer-cancel', true);
-    controls.append(pause, extend, cancel);
+    const cancel = makeButton('Cancel timer', () => {
+        stop(); trigger?.focus?.(); report('Timer cancelled.');
+    }, 'data-hep-timer-cancel', true);
+    controls.append(pause);
+    if (custom) controls.append(extend);
+    controls.append(cancel);
+    const status = node('p', 'hep-timer-status');
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-atomic', 'true');
+    // The workout log already has a live region used by all its controls.
+    const report = announce || (message => { status.textContent = message; });
+    function display(seconds) {
+        const active = seconds > 0;
+        output.textContent = timerText(seconds);
+        pause.disabled = extend.disabled = cancel.disabled = !active;
+        starts.forEach(button => { button.disabled = active; });
+        controls.hidden = output.hidden = !custom && !active;
+    }
+    function onVisible() { if (!document.hidden && running) tick(); }
+    function stop() {
+        clear(); running = false; paused = 0;
+        if (activeTimerStop === stop) activeTimerStop = null;
+        document.removeEventListener('visibilitychange', onVisible);
+        display(0);
+        status.textContent = '';
+    }
     function tick() {
         const seconds = running ? remainingSeconds(deadline, Date.now()) : paused;
-        output.textContent = timerText(seconds);
-        if (running && seconds === 0) { clear(); running = false; paused = 0; announce('Timer finished. Continue when ready. No exercise was marked done.'); }
-        pause.disabled = seconds === 0;
-        extend.disabled = seconds === 0;
-        cancel.disabled = seconds === 0;
-        start.disabled = seconds > 0;
-        kind.disabled = seconds > 0;
-        duration.disabled = seconds > 0;
+        if (running && seconds === 0) {
+            const returnFocus = document.activeElement && controls.contains(document.activeElement);
+            stop();
+            if (returnFocus) trigger?.focus?.({ preventScroll: true });
+            report(custom ? 'Timer finished. Continue when ready. No exercise was marked done.' : `${phase} timer finished.`);
+        } else display(seconds);
     }
-    form.addEventListener('submit', event => {
-        event.preventDefault();
-        if (!form.reportValidity()) return;
-        deadline = Date.now() + Number(duration.value) * 1000;
-        paused = 0; running = true; pause.textContent = 'Pause'; clear();
+    function begin(seconds, label, button) {
+        stopActiveTimer();
+        activeTimerStop = stop;
+        trigger = button; phase = label;
+        deadline = Date.now() + seconds * 1000;
+        paused = 0; running = true; pause.textContent = 'Pause';
+        document.addEventListener('visibilitychange', onVisible);
         interval = window.setInterval(tick, 250); tick();
-        announce(`${kind.value === 'hold' ? 'Hold' : 'Rest'} timer started. You can pause or cancel it.`);
-    });
-    tick();
-    timer.append(form, output, controls);
-    workout.append(timer);
-    parent.append(workout);
-    const onVisible = () => { if (!document.hidden && running) tick(); };
-    document.addEventListener('visibilitychange', onVisible);
-    return { valid: () => {
-        for (const input of rows.querySelectorAll('input')) {
-            if (input.checkValidity()) continue;
-            const details = input.closest('details');
-            if (details) details.open = true;
-            input.reportValidity();
-            return false;
-        }
-        return true;
-    },
-        cleanup: () => { clear(); running = false; paused = 0; tick(); document.removeEventListener('visibilitychange', onVisible); } };
+        pause.focus?.({ preventScroll: true });
+        report(`${label} timer started. You can pause or cancel it.`);
+    }
+    display(0);
+    timer.append(output, controls);
+    if (!announce) timer.append(status);
+    parent.append(timer);
+    return { cleanup: stop };
 }

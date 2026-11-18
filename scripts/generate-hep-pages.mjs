@@ -1,4 +1,5 @@
 import { GUIDED_PROGRAM_SLUGS } from '../hep-session.js';
+import { prescribedTimerOptions } from './hep-timer-presets.mjs';
 import { validateWorkoutOptions } from '../hep-workout.js';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -13,11 +14,12 @@ const siteRoot = 'https://jeremyswishermd.com';
 const youtubeIdPattern = /^[A-Za-z0-9_-]{11}$/;
 const guidedSessionSlugs = new Set(GUIDED_PROGRAM_SLUGS);
 
-function renderGuidedSessionData(program, canonical) {
+function renderGuidedSessionData(program, canonical, timerOptions) {
     const fields = ['slug', 'title', 'fitIntro', 'programIntro', 'frequency', 'equipment', 'checkpoint', 'goal', 'responseIntro', 'green', 'yellow', 'red', 'exercises'];
     const data = Object.fromEntries(fields.map(field => [field, program[field]]));
     if (program.guidedExerciseOrder) data.exercises = program.guidedExerciseOrder.map(index => program.exercises[index]);
     data.canonical = canonical;
+    if (Object.keys(timerOptions).length) data.timerOptions = timerOptions;
     const options = validateWorkoutOptions(workoutOptions[program.slug], program.exercises.length);
     if (!options) throw new Error('Invalid workout options for ' + program.slug);
     data.workoutOptions = program.guidedExerciseOrder ? program.guidedExerciseOrder.map(index => options[index]) : options;
@@ -69,7 +71,7 @@ function renderProofItems(items) {
     ).join('\n');
 }
 
-function renderExercises(items) {
+function renderExercises(items, timerOptions) {
     return items.map((item, index) => [
         '                            <li class="exercise-item">',
         '                                <span class="exercise-number" aria-hidden="true">' + String(index + 1).padStart(2, '0') + '</span>',
@@ -80,6 +82,7 @@ function renderExercises(items) {
         '                                    </div>',
         '                                    <p class="exercise-dose"><strong>Dose</strong><span>' + escapeHtml(item.dose) + '</span></p>',
         '                                    <p>' + escapeHtml(item.how) + '</p>',
+        ...(timerOptions[item.name] ? ['                                    <div class="no-print" data-hep-card-timer="' + escapeHtml(item.name) + '"></div>'] : []),
         '                                    <div class="exercise-cues">',
         '                                        <div><strong>Make it easier</strong><p>' + escapeHtml(item.easier) + '</p></div>',
         '                                        <div><strong>Progress it</strong><p>' + escapeHtml(item.harder) + '</p></div>',
@@ -239,8 +242,10 @@ function buildSchema(program) {
                 datePublished: program.publishedDate || '2026-07-17',
                 dateModified: program.modifiedDate || program.reviewedDate,
                 lastReviewed: program.reviewedDate,
-                author: { '@id': siteRoot + '/#jeremy-swisher' },
-                reviewedBy: { '@id': siteRoot + '/#jeremy-swisher' },
+                ...(program.reviewedDate && {
+                    author: { '@id': siteRoot + '/#jeremy-swisher' },
+                    reviewedBy: { '@id': siteRoot + '/#jeremy-swisher' }
+                }),
                 medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
                 about: { '@id': canonical + '#condition' },
                 mainEntity: { '@id': canonical + '#exercise-plan' },
@@ -304,7 +309,9 @@ for (const program of programs) {
     }
     const canonical = siteRoot + '/' + program.slug + '/';
     const guidedSession = program.guidedSession === true;
-    const reviewedDate = formatDate(program.reviewedDate, program.slug, 'reviewedDate');
+    const timerOptions = prescribedTimerOptions(program);
+    const reviewedDate = program.reviewedDate && formatDate(program.reviewedDate, program.slug, 'reviewedDate');
+    const displayDate = reviewedDate || formatDate(program.publishedDate, program.slug, 'publishedDate');
     const modifiedDate = program.modifiedDate || program.reviewedDate;
     formatDate(modifiedDate, program.slug, 'modifiedDate');
     formatDate(program.publishedDate || '2026-07-17', program.slug, 'publishedDate');
@@ -313,19 +320,22 @@ for (const program of programs) {
         PAGE_CLASS: 'hep-program-' + program.slug,
         PRINT_BUTTON_CLASS: guidedSession ? 'btn-outline' : 'btn-primary',
         SESSION_NOJS: guidedSession ? ',[data-hep-launch]' : '',
-        SESSION_STYLES: guidedSession ? '    <link rel="stylesheet" href="../hep-session.css?v=20261008-workout1">' : '',
+        SESSION_STYLES: guidedSession ? '    <link rel="stylesheet" href="../hep-session.css?v=20261117-card-timers1">' : '',
         SESSION_LAUNCH: guidedSession ? '                            <a href="#guided-session" class="btn btn-primary" data-hep-launch data-hep-launch-start hidden>Start a guided session</a>' : '',
-        SESSION_SECTION: guidedSession ? renderGuidedSessionData(program, canonical) : '',
-        SESSION_SCRIPT: guidedSession ? '    <script type="module" src="../hep-session.js?v=20261117-exercise-reliability1"></script>' : '',
+        SESSION_SECTION: guidedSession ? renderGuidedSessionData(program, canonical, timerOptions) : '',
+        SESSION_SCRIPT: guidedSession ? '    <script type="module" src="../hep-session.js?v=20261117-card-timers1"></script>' : '',
         TITLE: program.title,
         SEO_TITLE: program.seoTitle,
         SHORT_TITLE: program.shortTitle,
         SLUG: program.slug,
         META_DESCRIPTION: program.metaDescription,
         CANONICAL: canonical,
-        REVIEWED_DATE_ISO: program.reviewedDate,
+        DATE_LINE: reviewedDate ? 'Clinically reviewed ' + displayDate : 'Published ' + displayDate,
+        DATE_LABEL: reviewedDate ? 'Clinical review' : 'Published',
+        DISPLAY_DATE: displayDate,
+        SOURCE_DATE_LINE: reviewedDate ? 'Last clinical review: ' + displayDate : 'Published ' + displayDate,
         MODIFIED_DATE_ISO: modifiedDate,
-        REVIEWED_DATE: reviewedDate,
+        REVIEWED_DATE: reviewedDate || '',
         SCHEMA: JSON.stringify(buildSchema(program), null, 2).split('\n').map((line) => '    ' + line).join('\n'),
         BREADCRUMB: program.breadcrumb,
         KICKER: program.kicker,
@@ -345,7 +355,7 @@ for (const program of programs) {
         EQUIPMENT: program.equipment,
         CHECKPOINT: program.checkpoint,
         GOAL: program.goal,
-        EXERCISES: renderExercises(program.exercises),
+        EXERCISES: renderExercises(program.exercises, timerOptions),
         MOBILE_JUMP_LINKS: renderJumpLinks(program, '                                '),
         DESKTOP_JUMP_LINKS: renderJumpLinks(program, '                '),
         VIDEO_SECTION: renderVideoSection(program.video),
@@ -362,7 +372,8 @@ for (const program of programs) {
         RELATED: renderRelated(program.related)
     };
 
-    let output = template;
+    let output = template.replace(/^[ \t]*\{\{#REVIEWED\}\}\r?\n([\s\S]*?)^[ \t]*\{\{\/REVIEWED\}\}\r?\n/gm,
+        (_, section) => reviewedDate ? section : '');
     for (const [token, value] of Object.entries(replacements)) {
         if (value === '' && token.startsWith('SESSION_')) {
             if (token === 'SESSION_SECTION') output = output.replace('{{SESSION_SECTION}}\n\n', '');

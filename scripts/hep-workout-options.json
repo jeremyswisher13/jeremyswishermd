@@ -182,5 +182,23 @@
     { "measure": "contacts", "label": "Contacts", "resistance": false },
     { "measure": "minutes", "label": "Minutes", "resistance": false },
     { "measure": "minutes", "label": "Court minutes", "resistance": false }
+  ],
+  "insertional-achilles-tendinopathy-exercises": [
+    { "measure": "seconds", "label": "Seconds held", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "minutes", "label": "Walking minutes", "resistance": false }
+  ],
+  "proximal-hamstring-tendinopathy-exercises": [
+    { "measure": "seconds", "label": "Seconds held", "resistance": false },
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps per side", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": true }
+  ],
+  "rotator-cuff-return-to-throwing-exercises": [
+    { "measure": "reps", "label": "Reps", "resistance": true },
+    { "measure": "reps", "label": "Reps", "resistance": false },
+    { "measure": "reps", "label": "Rehearsals", "resistance": false },
+    { "measure": "reps", "label": "Throws", "resistance": false }
   ]
 }

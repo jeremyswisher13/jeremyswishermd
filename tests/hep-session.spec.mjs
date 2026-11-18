@@ -110,9 +110,9 @@ async function addRecord(page, { notes = 'A short session felt manageable.', goa
   await expect(session(page).locator('[data-hep-history]')).toContainText(notes);
 }
 
-test('all 25 maintained programs have unique routes and enable guided sessions', () => {
-  expect(programs).toHaveLength(25);
-  expect(new Set(programs.map(program => program.slug)).size).toBe(25);
+test('all 28 maintained programs have unique routes and enable guided sessions', () => {
+  expect(programs).toHaveLength(28);
+  expect(new Set(programs.map(program => program.slug)).size).toBe(programs.length);
   expect(programs.every(program => program.guidedSession === true)).toBe(true);
   expect(advancedMeniscus.guidedExerciseOrder).toEqual([3, 4, 5, 0, 1, 2]);
   expect(advancedMeniscus.programIntro).toContain('Perform impact work before heavy strength when both occur in one session.');

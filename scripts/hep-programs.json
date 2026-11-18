@@ -478,7 +478,7 @@
     ],
     "related": [
       { "href": "../knee-hip-shoulder-pain/", "eyebrow": "Shoulder evaluation", "title": "Knee, hip, and shoulder pain" },
-      { "href": "../tendon-pain/", "eyebrow": "Tendon principles", "title": "Evidence-based tendon care" },
+      { "href": "../rotator-cuff-return-to-throwing-exercises/", "eyebrow": "Athlete progression", "title": "Return to throwing after rotator cuff pain" },
       { "href": "../adhesive-capsulitis-exercises/", "eyebrow": "Different shoulder pattern", "title": "Adhesive capsulitis exercises" }
     ]
   },
@@ -599,7 +599,7 @@
     ],
     "related": [
       { "href": "../achilles-tendinopathy-return-to-sport-exercises/", "eyebrow": "Athlete progression", "title": "Achilles return to running, jumping, and basketball" },
-      { "href": "../sports-injuries/", "eyebrow": "Return to sport", "title": "Sports injury evaluation" },
+      { "href": "../insertional-achilles-tendinopathy-exercises/", "eyebrow": "Pain at the heel attachment", "title": "Insertional Achilles tendinopathy exercises" },
       { "href": "../plantar-fasciitis-exercises/", "eyebrow": "Different heel pattern", "title": "Plantar heel pain exercises" }
     ]
   },
@@ -1751,7 +1751,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-10-09",
+    "modifiedDate": "2026-11-17",
     "video": {
       "id": "7D50I7sdlXg",
       "title": "Hamstring Strain Rehab & Exercises (Strength | Running | Return to Sport)",
@@ -1878,7 +1878,7 @@
     ],
     "related": [
       { "href": "../sports-injuries/", "eyebrow": "Diagnosis and return", "title": "Sports injury evaluation" },
-      { "href": "../iliotibial-band-syndrome-exercises/", "eyebrow": "Runner program", "title": "Iliotibial band syndrome exercises" },
+      { "href": "../proximal-hamstring-tendinopathy-exercises/", "eyebrow": "Gradual pain at the sit bone", "title": "Proximal hamstring tendinopathy exercises" },
       { "href": "../home-exercise-programs/", "eyebrow": "All programs", "title": "Home exercise library" }
     ]
   },
@@ -3385,7 +3385,519 @@
     "related": [
       { "href": "../achilles-tendinopathy-exercises/", "eyebrow": "Build the base first", "title": "Starter midportion Achilles program" },
       { "href": "../sports-injuries/#athlete-programs", "eyebrow": "All athlete pathways", "title": "Sports injury return-to-sport hub" },
-      { "href": "../patellar-tendinopathy-exercises/", "eyebrow": "Other basketball tendon plan", "title": "Patellar tendinopathy for athletes" }
+      { "href": "../insertional-achilles-tendinopathy-exercises/", "eyebrow": "Pain at the heel attachment", "title": "Insertional Achilles tendinopathy exercises" }
     ]
+  },
+  {
+    "slug": "insertional-achilles-tendinopathy-exercises",
+    "title": "Insertional Achilles Tendinopathy Home Exercise Program",
+    "seoTitle": "Insertional Achilles Tendinopathy Exercises for Back-of-Heel Pain",
+    "shortTitle": "Insertional Achilles exercises",
+    "conditionName": "Insertional Achilles tendinopathy",
+    "publishedDate": "2026-11-17",
+    "modifiedDate": "2026-11-17",
+    "reviewStatus": "pending",
+    "metaDescription": "Start calf raises on level ground for diagnosed insertional Achilles pain. Use your first steps each morning to adjust exercise and walking.",
+    "breadcrumb": "Insertional Achilles exercises",
+    "kicker": "Foot and ankle · Starter home exercise plan",
+    "h1": "Insertional Achilles Tendinopathy Exercises",
+    "summary": "When the Achilles tendon is sore where it attaches to the back of the heel, the bottom of a heel drop can pinch. This plan starts with calf work on a flat floor and builds toward walking as your morning symptoms allow.",
+    "programLevel": "Starter program",
+    "authorityTitle": "Start on level ground",
+    "authorityItems": [
+      {
+        "icon": "footprint",
+        "text": "Keep the heel at or above floor level during raises"
+      },
+      {
+        "icon": "wb_sunny",
+        "text": "Check the first few steps each morning"
+      },
+      {
+        "icon": "directions_walk",
+        "text": "Build level walking before hills"
+      }
+    ],
+    "proof": [
+      {
+        "strong": "Flat floor",
+        "span": "for all starting calf exercises"
+      },
+      {
+        "strong": "2 to 3 days",
+        "span": "of strength work per week"
+      },
+      {
+        "strong": "12 weeks or longer",
+        "span": "to build calf capacity"
+      }
+    ],
+    "fitIntro": "Use this starter plan if you are an adult and your clinician has diagnosed insertional Achilles tendinopathy. Follow your treating team's separate instructions after a tear, fracture, or operation.",
+    "fit": "The tender spot is at the back of the heel, within about 2 cm (three-quarters of an inch) of the tendon attachment. Symptoms came on gradually. The first steps after rest, a shoe pressing on the heel, or an uphill walk may bring on familiar pain.",
+    "assessFirst": "Have the location checked if the main pain is underneath the heel, farther up the tendon, or deep in the bone. Ask for an exam if pain occurs at rest, swelling is increasing, or walking is getting harder.",
+    "redFlags": "Get same-day urgent care for a sudden pop or kick-like feeling behind the ankle, sudden loss of push-off, or inability to bear weight after injury. A tear can still allow some walking. A newly hot, swollen, painful calf or spreading redness with fever also needs same-day care. Call 911 for sudden shortness of breath, chest pain, or fainting.",
+    "programHeading": "Raise the heel from a flat floor",
+    "programIntro": "Pick one calf exercise that you can control. Start seated if standing hurts. Over several sessions, work toward standing raises. Keep both feet on a flat surface and skip heel drops off a step and deep calf stretches while the attachment is sore. Add a comfortable amount of level walking.",
+    "frequency": "Strength on 2 to 3 nonconsecutive days per week. Walk on days your heel tolerates it.",
+    "equipment": "Firm chair, stable counter, flat floor, and comfortable walking shoes",
+    "checkpoint": "Compare first-step stiffness and walking time weekly. Allow at least 12 weeks for progressive strengthening.",
+    "goal": "Walk with a comfortable push-off and rebuild calf strength for stairs or hills.",
+    "exercises": [
+      {
+        "name": "Seated heel lift and hold",
+        "dose": "3 holds of 15 to 30 seconds, with 45 to 60 seconds of rest",
+        "frequency": "2 to 3 nonconsecutive days per week as a starting option",
+        "how": "Sit on a firm chair with both feet flat and knees bent. Press the balls of your feet into the floor. Lift your heels a little, hold steady, then lower gently. Breathe throughout.",
+        "easier": "Use a lower lift or hold for 5 to 10 seconds.",
+        "harder": "Build toward the longer hold, then try seated raises at the next strength session."
+      },
+      {
+        "name": "Slow seated calf raise",
+        "dose": "2 sets of 8 to 12, with about 1 minute of rest",
+        "frequency": "2 to 3 nonconsecutive days per week",
+        "how": "Sit tall, knees bent and feet under the knees. Keep your toes relaxed. Take about two seconds to lift both heels and three seconds to return them to the floor.",
+        "easier": "Start with one set, or use a smaller motion.",
+        "harder": "Press down lightly with your hands on your thighs to add resistance. When two sets feel easy and the next morning is stable, try the standing version."
+      },
+      {
+        "name": "Supported standing calf raise",
+        "dose": "2 sets of 6 to 10, with 1 to 2 minutes of rest",
+        "frequency": "2 to 3 nonconsecutive days per week once seated raises feel easy",
+        "how": "Stand facing a stable counter with your feet hip-width apart on the floor. Hold the counter. Keep knees straight but relaxed. Rise evenly on both forefeet, pause, and lower slowly until both heels touch the floor.",
+        "easier": "Take more weight through your hands or use the seated calf raise.",
+        "harder": "Build to 12 even raises per set. Then shift a little more weight to the sore side while the other foot stays down. Work toward a supported one-leg raise over several sessions."
+      },
+      {
+        "name": "Level walking",
+        "dose": "One easy walk, starting below the time that usually increases heel pain",
+        "frequency": "Most days if the first steps the following morning stay near usual",
+        "how": "Pick an even route close to home and wear shoes that let the heel move comfortably. Five minutes is a possible starting point if that already feels easy. Use a natural stride and turn back before pain changes how you walk.",
+        "easier": "Shorten the route or split it into two brief walks with a break.",
+        "harder": "After several comfortable walks, extend the time by a few minutes. Keep the route flat while testing the longer walk. Add inclines only after level walking stays comfortable."
+      }
+    ],
+    "responseIntro": "Before you start, note how the first few steps feel in the morning and how long stiffness lasts. Compare those same steps after each change in exercise or walking.",
+    "green": "A mild, familiar heel ache stays steady as you exercise. You walk normally afterward. Your first steps and the duration of stiffness are back to their usual level the next morning.",
+    "yellow": "If pain builds, you limp, or the next morning is clearly worse, pause the increase. Return to the last comfortable heel-raise dose or walking time. Shorten the range if the back of the heel feels pinched.",
+    "red": "Stop and seek same-day care for a sudden pop or loss of push-off, inability to bear weight after injury, a newly hot and swollen painful calf, or spreading redness with fever. Call 911 for sudden shortness of breath, chest pain, or fainting.",
+    "progression": [
+      {
+        "title": "Find a comfortable starting load",
+        "text": "Use one seated calf exercise and a tolerable level walk. Temporarily shorten steep routes. If the back of a shoe rubs, try a comfortable pair that relieves that pressure."
+      },
+      {
+        "title": "Move from seated to standing",
+        "text": "When seated raises feel easy and first-step symptoms stay steady for several sessions, replace the seated exercise with a short set of supported standing raises. Build the repetitions before shifting more weight to one leg."
+      },
+      {
+        "title": "Rebuild the walking you need",
+        "text": "Once level walking and repeated standing raises feel comfortable, try a short gentle incline. Keep pace and duration familiar on the first hill day. Runners and jumping athletes should plan impact progression with their clinician."
+      }
+    ],
+    "readyItems": [
+      "The next morning's first steps feel much the same after several sessions.",
+      "You can lower each heel smoothly to the floor without a pinch or loss of control.",
+      "A level walk at your usual pace leaves your stride comfortable that day and the next.",
+      "Before adding hills, you can do repeated standing raises with steady height and comfortable push-off."
+    ],
+    "evaluation": "Arrange follow-up for increasing pain at rest, worsening walking, or little improvement after several weeks. Get same-day urgent care for a sudden pop or kick-like feeling behind the ankle, sudden loss of push-off, or inability to bear weight after injury. A tear can still allow some walking. A newly hot, swollen, painful calf or spreading redness with fever also needs same-day care. Call 911 for sudden shortness of breath, chest pain, or fainting.",
+    "faqs": [
+      {
+        "q": "Why keep my heels on floor level at the bottom?",
+        "a": "When the heel drops below the forefoot, the tendon bends more sharply around the heel bone. Starting on the floor lets the calf work while limiting pressure at the sore attachment."
+      },
+      {
+        "q": "Would a heel lift help?",
+        "a": "Ask your clinician if a temporary lift fits your shoes and walking pattern. A trial in 42 sport-active adults with longstanding insertional pain found better outcomes at 12 and 24 weeks with a program combining heel lifts, limited ankle bend, and progressive exercise. The trial tested those changes together."
+      },
+      {
+        "q": "Should I stretch my calf?",
+        "a": "Skip prolonged wall stretches and off-step heel drops during the sore early stage. If ankle motion later limits an activity you need, your clinician can help you reintroduce it gradually."
+      },
+      {
+        "q": "Can I start running again?",
+        "a": "First build comfortable level walking and repeated calf raises. A clinician can check strength and how you tolerate impact, then help you choose a starting walk-jog dose. A better day alone does not establish readiness."
+      }
+    ],
+    "sources": [
+      {
+        "href": "https://pubmed.ncbi.nlm.nih.gov/40011018/",
+        "label": "Pringels and colleagues, 2025. Randomized trial of lower-compression rehabilitation for insertional Achilles pain"
+      },
+      {
+        "href": "https://pubmed.ncbi.nlm.nih.gov/34187784/",
+        "label": "de Vos and colleagues, 2021. Dutch multidisciplinary guideline on Achilles tendinopathy"
+      },
+      {
+        "href": "https://www.orthoinfo.org/bodypart/foot-ankle/achilles-tendon-rupture-tear/",
+        "label": "American Academy of Orthopaedic Surgeons. Recognizing an Achilles tendon tear"
+      }
+    ],
+    "related": [
+      {
+        "href": "../achilles-tendinopathy-exercises/",
+        "eyebrow": "Pain higher in the tendon",
+        "title": "Midportion Achilles exercises"
+      },
+      {
+        "href": "../plantar-fasciitis-exercises/",
+        "eyebrow": "Pain underneath the heel",
+        "title": "Plantar heel pain exercises"
+      },
+      {
+        "href": "../tendon-pain/",
+        "eyebrow": "Tendon care",
+        "title": "How tendon pain is evaluated and treated"
+      }
+    ],
+    "guidedSession": true
+  },
+  {
+    "slug": "proximal-hamstring-tendinopathy-exercises",
+    "title": "Proximal Hamstring Tendinopathy Home Exercise Program",
+    "seoTitle": "Proximal Hamstring Tendinopathy Exercises for Sit-Bone Pain",
+    "shortTitle": "Proximal hamstring exercises",
+    "conditionName": "Proximal hamstring tendinopathy",
+    "publishedDate": "2026-11-17",
+    "modifiedDate": "2026-11-17",
+    "reviewStatus": "pending",
+    "metaDescription": "Exercises for diagnosed proximal hamstring tendinopathy. Adjust sitting pressure, build hamstring strength, and gradually return to bending and walking uphill.",
+    "breadcrumb": "Proximal hamstring exercises",
+    "kicker": "Hip and thigh · Starter home exercise plan",
+    "h1": "Proximal Hamstring Tendinopathy Exercises",
+    "summary": "The upper hamstring tendon attaches to the bony point you sit on. Long periods on a hard chair, running uphill, and bending deeply at the hips can make it sore. This plan starts with a heel press on your back and gradually builds strength for those positions.",
+    "programLevel": "Starter program",
+    "authorityTitle": "Ease sitting pressure while rebuilding strength",
+    "authorityItems": [
+      {
+        "icon": "chair",
+        "text": "Break up sitting before the ache builds"
+      },
+      {
+        "icon": "fitness_center",
+        "text": "Build from heel presses to slow bridges"
+      },
+      {
+        "icon": "monitoring",
+        "text": "Check sitting and walking again the next day"
+      }
+    ],
+    "proof": [
+      {
+        "strong": "2 to 3 days",
+        "span": "of strengthening each week"
+      },
+      {
+        "strong": "One change",
+        "span": "to exercise load or range at a time"
+      },
+      {
+        "strong": "Next day",
+        "span": "compare the same sitting or walking task"
+      }
+    ],
+    "fitIntro": "Use this plan if you are an adult with clinician-diagnosed proximal hamstring tendinopathy. It is designed for gradual pain where the hamstring joins the sit bone. A sudden injury, diagnosed tear, or recent operation requires a separate plan.",
+    "fit": "You can point to a familiar ache low in one buttock near the sit bone. It came on gradually and is brought on by sitting, hills, faster running, or deep bending. You can walk without marked weakness.",
+    "assessFirst": "Arrange an exam for pain traveling below the knee, numbness or tingling, back pain with leg symptoms, or deep buttock pain at rest or at night. A teenager with pain after sprinting or kicking needs assessment for a growth-plate injury.",
+    "redFlags": "Get same-day assessment for sudden severe pain or a pop after a slip, split, kick, or sprint, especially with weakness, trouble walking, or bruising down the thigh. Bruising can appear later. Go to an emergency department now for new numbness around the genitals or anus, difficulty starting or emptying your bladder, loss of bladder or bowel control, or rapidly worsening leg weakness.",
+    "programHeading": "Build strength before increasing how far you bend",
+    "programIntro": "Begin with the heel press. Once it feels comfortable, replace it with the moving bridge. Add the supported step when the bridge is manageable. Save the hip hinge for later. Early on, take breaks from hard seats, skip long hamstring stretches, and keep hills or fast running below the level that triggers symptoms.",
+    "frequency": "Strength on 2 to 3 nonconsecutive days per week. Use comfortable level walks between sessions.",
+    "equipment": "Exercise mat or firm bed, stable counter or rail, and a secure low step",
+    "checkpoint": "Track sitting and walking each week. Building strength for running or deep bending can take several months.",
+    "goal": "Sit, walk uphill, and bend at the hips with less pain at the sit bone.",
+    "exercises": [
+      {
+        "name": "Lying heel press",
+        "dose": "3 holds of 15 to 30 seconds, resting 45 to 60 seconds between holds",
+        "frequency": "2 to 3 nonconsecutive days per week as a starting option",
+        "how": "Lie on your back with both knees bent and heels on a firm surface. Keep your hips down. Press both heels down as if trying to drag them toward you without moving them. Aim to feel the backs of the thighs working and keep breathing.",
+        "easier": "Press more lightly or begin with 5- to 10-second holds.",
+        "harder": "After several comfortable sessions, lift your hips an inch during a hold. Try the moving bridge when your sitting and walking feel usual the next day."
+      },
+      {
+        "name": "Slow two-leg bridge",
+        "dose": "2 sets of 6 to 10 repetitions, with 1 to 2 minutes of rest",
+        "frequency": "2 to 3 nonconsecutive days per week after heel presses are comfortable",
+        "how": "Lie on your back with knees bent and feet hip-width apart. Push your heels down and raise your hips until your trunk and thighs form a comfortable line. Take two seconds to lift and three seconds to lower. Keep your pelvis level.",
+        "easier": "Lift a shorter distance, or return to heel presses if lying bridges make sitting worse later.",
+        "harder": "Build to 12 smooth repetitions. Then move the heels an inch farther from your hips or shift a little weight to the affected leg. Try one change at a time."
+      },
+      {
+        "name": "Supported low step-up",
+        "dose": "2 sets of 6 to 10 repetitions on each side, with about 1 minute of rest",
+        "frequency": "2 to 3 nonconsecutive days per week once bridges are manageable",
+        "how": "Use a secure low step with a handrail or counter alongside. Place the whole working foot on the step. Stand tall as you press through that foot, touch the other foot to the step, then lower it slowly to the floor. Finish one side before switching.",
+        "easier": "Choose a lower step or use more hand support.",
+        "harder": "Build repetitions first. Try a slightly higher step only after level walking, sitting, and the current step feel usual the next day."
+      },
+      {
+        "name": "Shallow hip hinge",
+        "dose": "Start with 2 sets of 4 to 6 repetitions, resting about 1 minute between sets",
+        "frequency": "2 nonconsecutive days per week after several well-tolerated bridge and step sessions",
+        "how": "Stand a few inches in front of a wall with your back toward it, feet hip-width apart. Soften the knees and send the hips back toward the wall as your trunk tips forward a little. Stand tall again. Start shallow and stop before a strong pull at the sit bone.",
+        "easier": "Stand nearer the wall and shorten the bend. Delay this move if the sit bone still hurts more the next day.",
+        "harder": "After several stable sessions, move slightly farther from the wall for a deeper hinge. Once the needed range is comfortable, add a light weight held close to the body."
+      }
+    ],
+    "responseIntro": "Choose a repeatable check, such as how long you sit on your usual chair before the ache starts or how the first few minutes of walking feel. Compare that same task later and the following day.",
+    "green": "You feel only a mild, familiar ache that stays steady. Movement remains smooth. The next day, you can sit or walk about as long as usual without extra pain.",
+    "yellow": "If pain increases through a set or your usual chair is clearly less comfortable the next day, shorten the exercise range, reduce repetitions, or return to the previous exercise. Restart at the last dose your daily activities tolerated.",
+    "red": "Stop and get same-day care for sudden severe pain or a pop after injury, marked weakness, trouble walking, or spreading bruising. Go to the emergency department now for new numbness around the genitals or anus, new trouble emptying the bladder, loss of bladder or bowel control, or rapidly worsening leg weakness.",
+    "progression": [
+      {
+        "title": "Settle pressure from sitting",
+        "text": "Try a pressure-relieving cushion or change chairs. Stand up before the ache builds on longer trips or at your desk. Use heel presses and tolerable level walking while reducing deep bends and hills."
+      },
+      {
+        "title": "Restore strength on two legs",
+        "text": "Replace the heel press with moving bridges, then add low step-ups. Increase one exercise at a time and keep the new dose only if sitting and walking stay steady the next day."
+      },
+      {
+        "title": "Practice the bend you need",
+        "text": "Add a shallow hinge and gradually deepen it over several sessions. Then test one daily task, such as picking up a light object or walking a short incline. Keep the rest of the day's load familiar."
+      },
+      {
+        "title": "Return to faster activity if needed",
+        "text": "If running is a goal, have your clinician check strength and tolerance for faster movement. Start with easy run-walk intervals on level ground and allow a recovery day. Save speed, long strides, and steep hills for later."
+      }
+    ],
+    "readyItems": [
+      "The time you can spend in your usual chair is stable or increasing across the week.",
+      "Bridges and low step-ups feel controlled without a worse response the following day.",
+      "You can reach the depth of bend needed for your daily tasks without sharp pain or a next-day flare.",
+      "A comfortable level walk leaves your stride and sitting tolerance unchanged the next day. Discuss running and sport-specific demands with your clinician."
+    ],
+    "evaluation": "Arrange follow-up for worsening sitting tolerance, spreading leg pain, or little improvement after several weeks. Get same-day assessment for sudden severe pain or a pop after a slip, split, kick, or sprint, especially with weakness, trouble walking, or bruising down the thigh. Bruising can appear later. Go to an emergency department now for new numbness around the genitals or anus, difficulty starting or emptying your bladder, loss of bladder or bowel control, or rapidly worsening leg weakness.",
+    "faqs": [
+      {
+        "q": "How can I make sitting easier?",
+        "a": "Try a cushion that takes pressure off the sore spot, adjust the seat angle, or alternate sitting with standing. Take a short break before the usual onset of pain. Gradually lengthen sitting time as it becomes comfortable."
+      },
+      {
+        "q": "Should I stretch the back of my thigh?",
+        "a": "A long stretch with a straight knee and deeply bent hip can press the sore tendon against the sit bone. Early on, use a comfortable range. Reintroduce deeper bends with a slow hinge when easier strength work is going well."
+      },
+      {
+        "q": "Do I have to stop all walking or running?",
+        "a": "Comfortable level walking can continue. Shorten the route or remove hills if pain builds. If easy running still causes a limp or worsens sitting the next day, switch to a tolerable activity and work with your clinician on the return to running."
+      },
+      {
+        "q": "Is one treatment proven best?",
+        "a": "A 100-person trial compared individualized physiotherapy with shockwave therapy. Both groups also received education. The trial found no significant difference in the main measures of function or overall improvement. Your clinician can adapt exercise to the activities you want to regain."
+      }
+    ],
+    "sources": [
+      {
+        "href": "https://pubmed.ncbi.nlm.nih.gov/40469642/",
+        "label": "Rich and colleagues, 2025. Clinical commentary describing staged physiotherapy for proximal hamstring tendinopathy"
+      },
+      {
+        "href": "https://pubmed.ncbi.nlm.nih.gov/41243328/",
+        "label": "Rich and colleagues, 2025. Randomized trial comparing individualized physiotherapy and shockwave therapy"
+      },
+      {
+        "href": "https://www.uofmhealth.org/our-care/specialties-services/proximal-hamstring-injury",
+        "label": "University of Michigan Health. Proximal hamstring injuries and signs of a tendon tear"
+      },
+      {
+        "href": "https://ukhealthcare.uky.edu/comprehensive-spine-center/conditions/cauda-equina-syndrome",
+        "label": "University of Kentucky HealthCare. Emergency symptoms of cauda equina syndrome"
+      }
+    ],
+    "related": [
+      {
+        "href": "../hamstring-strain-exercises/",
+        "eyebrow": "Separate injury",
+        "title": "Rehabilitation after a diagnosed hamstring strain"
+      },
+      {
+        "href": "../gluteal-tendinopathy-exercises/",
+        "eyebrow": "Pain at the outer hip",
+        "title": "Gluteal tendinopathy exercises"
+      },
+      {
+        "href": "../tendon-pain/",
+        "eyebrow": "Tendon care",
+        "title": "How tendon pain is evaluated and treated"
+      }
+    ],
+    "guidedSession": true
+  },
+  {
+    "slug": "rotator-cuff-return-to-throwing-exercises",
+    "title": "Return to Throwing After Rotator Cuff-Related Shoulder Pain",
+    "seoTitle": "Return to Throwing After Rotator Cuff Pain",
+    "shortTitle": "Return to throwing",
+    "conditionName": "Rotator cuff-related shoulder pain in adult throwing athletes",
+    "audiences": [
+      "athlete"
+    ],
+    "publishedDate": "2026-11-17",
+    "modifiedDate": "2026-11-17",
+    "metaDescription": "A staged return to throwing for adults after rotator cuff-related shoulder pain. Check readiness, plan flat-ground catch, and track the next-day response.",
+    "breadcrumb": "Return to throwing",
+    "kicker": "Shoulder rehabilitation · Athlete progression",
+    "h1": "Return to Throwing After Rotator Cuff-Related Shoulder Pain",
+    "summary": "For adults returning to overhand throwing after nonsurgical shoulder rehabilitation. Start with easy catch on level ground, then build toward the throws your position requires. Completing the guide does not independently clear you to pitch or compete.",
+    "programLevel": "Athlete progression after shoulder rehabilitation",
+    "authorityTitle": "Before the first throw",
+    "authorityItems": [
+      {
+        "icon": "accessibility_new",
+        "text": "Reach overhead and move through your throwing range without pain"
+      },
+      {
+        "icon": "fitness_center",
+        "text": "Have your clinician check shoulder strength, endurance and control"
+      },
+      {
+        "icon": "route",
+        "text": "Agree on the distance, throw count and effort for your first session"
+      }
+    ],
+    "proof": [
+      {
+        "strong": "Flat ground",
+        "span": "for the first catch sessions"
+      },
+      {
+        "strong": "Rest day",
+        "span": "between early throwing sessions"
+      },
+      {
+        "strong": "Every throw",
+        "span": "counts toward the day's total"
+      }
+    ],
+    "fitIntro": "For adult baseball or softball players and other overhand throwers with a clinician-confirmed diagnosis of rotator cuff-related shoulder pain. You have completed the starter shoulder program or equivalent rehabilitation, and your treating clinician agrees you can begin a throwing progression.",
+    "fit": "Reaching, dressing and sleeping are comfortable. You can move through the throwing range you normally use without pain or a feeling of slipping. Your clinician has checked shoulder strength, repeated effort and control of your arm and trunk.",
+    "assessFirst": "A recent fall, collision or painful pop, a suspected full-thickness tear, previous dislocation with ongoing instability, or pain or tingling traveling down the arm needs assessment. Children and teens, athletes recovering from surgery and windmill pitchers need a separate plan.",
+    "redFlags": "Call 911 for chest pain, trouble breathing or fainting. Go to the emergency department now for a shoulder that looks out of place, a cold, pale or blue hand, or a hot, very painful swollen shoulder with fever or chills. Seek same-day urgent assessment for sudden weakness or inability to raise the arm after injury, or new persistent numbness.",
+    "programHeading": "Build from shoulder control to easy catch",
+    "programIntro": "Choose the drills for your current stage with your clinician. The strength drills support the throwing plan. Before catch, warm up with a brisk walk and comfortable arm movements. Set your throw limit before starting and include every warm-up throw in that total.",
+    "frequency": "Strength on 2 nonconsecutive days a week. Leave at least one full day without throwing between early catch sessions.",
+    "equipment": "Light resistance band, towel, stable wall, regulation ball, throwing partner and level open space",
+    "checkpoint": "Record the distance, total throws, effort, symptoms that evening and how your arm feels the next morning.",
+    "goal": "Tolerate the throws your position requires in a full practice and recover by the next morning.",
+    "exercises": [
+      {
+        "name": "Band rotation with elbow at your side",
+        "dose": "Start with 1 to 2 sets of 8 to 12 slow repetitions.",
+        "frequency": "2 nonconsecutive days a week",
+        "how": "Secure a light band at elbow height on the side opposite the working arm. Bend the elbow and tuck a towel between it and your ribs. Keeping the towel still, turn your forearm outward, then control the return.",
+        "easier": "Step closer to the anchor or use a lighter band.",
+        "harder": "Increase resistance a little once the full set stays smooth and your shoulder feels usual the next morning."
+      },
+      {
+        "name": "Wall push-up with a forward reach",
+        "dose": "Start with 1 to 2 sets of 8 to 12 repetitions.",
+        "frequency": "2 nonconsecutive days a week",
+        "how": "Place your hands on a wall at shoulder height. Bend your elbows to bring your chest toward the wall. Straighten them, then gently push the wall away a little farther so your shoulder blades slide around your ribs. Keep your neck relaxed.",
+        "easier": "Stand closer to the wall or shorten the lowering movement.",
+        "harder": "Move to a stable countertop once the wall version stays comfortable and controlled."
+      },
+      {
+        "name": "Step and turn without a ball",
+        "dose": "One set of 5 slow rehearsals, stopping sooner if movement changes.",
+        "frequency": "During throwing preparation",
+        "how": "Stand sideways to your partner. Step toward them with the foot opposite your throwing arm. Let your hips and chest turn as your arm follows slowly through a comfortable throwing motion. Finish balanced on the lead leg.",
+        "easier": "Shorten the step and use a smaller arm movement.",
+        "harder": "Link the step, turn and follow-through smoothly while keeping the rehearsal relaxed."
+      },
+      {
+        "name": "Short, easy catch on flat ground",
+        "dose": "Use the total and distance agreed with your clinician. An example to discuss is 10 easy throws from about 30 feet, including warm-up throws.",
+        "frequency": "After your clinician approves starting, with at least one full day off throwing between early sessions",
+        "how": "Stand close enough for the ball to reach your partner with an easy arc. Step to the target and allow a relaxed follow-through. Pause between throws. End the session at your planned total or sooner for shoulder or elbow pain, fatigue that alters your throw, or loss of control.",
+        "easier": "If the distance requires force, move closer. If throwing hurts, stop for the day and use the symptom rules below.",
+        "harder": "After repeated comfortable sessions with normal next mornings, change one agreed variable. For example, add a few easy throws while keeping distance and effort the same."
+      }
+    ],
+    "responseIntro": "Throwing should be pain-free. Check for pain, stiffness, night waking or loss of motion that evening and the next morning. Count practice, warm-up and recreational throws together when planning your next session.",
+    "green": "You throw comfortably with your usual arm action to the planned count. The shoulder and elbow feel usual that evening and the next morning. Repeat the dose before increasing it.",
+    "yellow": "Stop throwing for the day for shoulder or elbow pain, unusual arm heaviness, or a change in arm action or accuracy. If pain lasts into the evening, take a full day off. If soreness or stiffness persists the next morning, wait until you feel usual again. Repeat the last comfortable dose. Contact your clinician if this recurs.",
+    "red": "Stop throwing. Call 911 for chest pain, trouble breathing or fainting. Go to the emergency department now for a shoulder that looks out of place, a cold, pale or blue hand, or a hot, very painful swollen shoulder with fever or chills. Seek same-day urgent assessment for sudden weakness or inability to raise the arm after injury, or new persistent numbness.",
+    "progression": [
+      {
+        "title": "Prepare the shoulder",
+        "text": "Continue comfortable cuff and shoulder-blade strengthening. Rehearse the step and turn without a ball. Before adding throws, review motion, strength, endurance and your starting dose with your clinician."
+      },
+      {
+        "title": "Repeat easy flat-ground catch",
+        "text": "Stay at your agreed short distance and easy effort. Keep a record of every throw, including warm-ups. Repeat on nonconsecutive days until you can reproduce a comfortable session with your usual next-morning motion."
+      },
+      {
+        "title": "Build toward your position",
+        "text": "Choose a single increase in total throws, distance, effort or days per week. A longer throw can already take more effort. If you have to force it, shorten the distance. Fielders can introduce planned throws from their position before adding quicker or reactive plays."
+      },
+      {
+        "title": "Rejoin practice, then competition",
+        "text": "Agree on a modified practice workload, then rehearse your full role in practice and check recovery the next day. Baseball pitchers need a separate clinician-guided flat-ground pitching, bullpen and simulated-game progression before competition. Decide on unrestricted play with your treating clinician and team."
+      }
+    ],
+    "readyItems": [
+      "Daily use and sleep are comfortable, and you can use your usual throwing range without pain.",
+      "Your clinician has checked shoulder strength, endurance and repeated arm control for your next task.",
+      "You can transfer weight, turn and follow through without guarding or changing your arm action.",
+      "At your current distance and workload, repeated sessions are pain-free, with usual motion and comfort the next morning.",
+      "Before competition, you feel confident and have tolerated a full position-specific practice. You and your treating clinician have discussed your role, workload and recovery."
+    ],
+    "evaluation": "Contact your clinician before resuming if pain recurs, the arm gives way, or strength or motion declines. Call 911 for chest pain, trouble breathing or fainting. Go to the emergency department now for a shoulder that looks out of place, a cold, pale or blue hand, or a hot, very painful swollen shoulder with fever or chills. Seek same-day urgent assessment for sudden weakness or inability to raise the arm after injury, or new persistent numbness.",
+    "faqs": [
+      {
+        "q": "When can I start playing catch?",
+        "a": "Discuss starting once everyday activities are pain-free, your usual throwing range is comfortable, and your clinician has assessed strength, endurance and arm control. Agree on your first distance and total throws before you start."
+      },
+      {
+        "q": "Which throws should I count?",
+        "a": "Count every throw you make, including warm-ups, casual catch, fielding drills, bullpen work and practice throws. Record how far and how hard you threw. Ten short tosses and ten hard throws across the diamond ask different things of your shoulder."
+      },
+      {
+        "q": "What if my shoulder hurts only the next morning?",
+        "a": "Skip throwing until reaching and moving your arm feel usual again. Go back to the last comfortable workload. If the same response returns, review your plan with your clinician before increasing it."
+      },
+      {
+        "q": "When can I pitch from a mound or play a game?",
+        "a": "Comfortable catch prepares you for a separate pitching progression. Your clinician and coaching staff can plan flat-ground pitching, bullpen work, simulated innings and competition around your role, recovery and prior workload. Completing this guide does not provide medical clearance."
+      }
+    ],
+    "sources": [
+      {
+        "href": "https://pubmed.ncbi.nlm.nih.gov/40165544/",
+        "label": "Desmeules and colleagues, 2025 clinical practice guideline on nonsurgical rotator cuff tendinopathy rehabilitation and return to sport"
+      },
+      {
+        "href": "https://pubmed.ncbi.nlm.nih.gov/34972489/",
+        "label": "2022 Bern consensus statement on rehabilitation and return to sport after shoulder injury"
+      },
+      {
+        "href": "https://www.ortho.ufl.edu/protocols/interval-throwing-program",
+        "label": "University of Florida interval throwing program and next-day soreness rules"
+      },
+      {
+        "href": "https://pubmed.ncbi.nlm.nih.gov/38439773/",
+        "label": "Reinold and colleagues, 2024 workload-based interval throwing program for baseball pitchers"
+      }
+    ],
+    "related": [
+      {
+        "href": "../rotator-cuff-pain-exercises/",
+        "eyebrow": "Build shoulder strength",
+        "title": "Starter rotator cuff pain exercises"
+      },
+      {
+        "href": "../sports-injuries/#athlete-programs",
+        "eyebrow": "Athlete rehabilitation",
+        "title": "Return-to-sport programs"
+      },
+      {
+        "href": "../knee-hip-shoulder-pain/",
+        "eyebrow": "Clinical evaluation",
+        "title": "Shoulder pain assessment and care"
+      }
+    ],
+    "guidedSession": true,
+    "reviewStatus": "pending"
   }
 ]

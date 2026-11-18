@@ -12,10 +12,10 @@ import { startSiteServer } from './serve-site.mjs';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const outputDirectory = join(root, '.quality-results', 'lighthouse');
 const programs = JSON.parse(await readFile(join(root, 'scripts/hep-programs.json'), 'utf8'));
-if (!Array.isArray(programs) || programs.length !== 25
-  || new Set(programs.map(program => program.slug)).size !== 25
+if (!Array.isArray(programs) || programs.length !== 28
+  || new Set(programs.map(program => program.slug)).size !== programs.length
   || programs.some(program => program.guidedSession !== true)) {
-  throw new Error('Lighthouse QA requires all 25 unique maintained programs with guided sessions enabled');
+  throw new Error('Lighthouse QA requires all 28 unique maintained programs with guided sessions enabled');
 }
 const thresholds = { performance: 0.8, accessibility: 0.95, 'best-practices': 0.9, seo: 0.9 };
 const routes = [

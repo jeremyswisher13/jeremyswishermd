@@ -32,7 +32,7 @@ EMERGENCY_DISCLOSURE = (
     "General education only, not individualized medical advice. "
     "For a medical emergency, call 911."
 )
-EXPECTED_PROGRAM_COUNT = 25
+EXPECTED_PROGRAM_COUNT = 28
 SUMMARY_TITLE = "Exercise follow-up summary"
 SUMMARY_CAPTION = "Patient-recorded sessions and next-morning responses"
 SUMMARY_HEADERS = ("Date", "Done", "Skipped", "Next-morning response", "Notes / activity goal")
@@ -283,7 +283,7 @@ def main():
     try:
         programs = json.loads(args.programs.read_text(encoding="utf-8"))
         if not isinstance(programs, list) or len(programs) != EXPECTED_PROGRAM_COUNT:
-            raise ValueError("expected exactly 25 maintained exercise programs")
+            raise ValueError("expected exactly 28 maintained exercise programs")
         sources = []
         slugs = set()
         for program in programs:

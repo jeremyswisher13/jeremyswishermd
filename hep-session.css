@@ -50,8 +50,14 @@
 .hep-session .hep-workout-timer { margin: 24px 0 0; padding: 22px 0 0; border-top: 1px solid var(--color-border); }
 .hep-session .hep-workout-timer-form .hep-session-field { margin: 0; }
 .hep-session .hep-workout-timer-form button { grid-column: 1 / -1; justify-self: start; }
-.hep-session .hep-workout-clock { margin: 18px 0 0; color: var(--color-dark); font-size: 2.8rem; line-height: 1.2; font-variant-numeric: tabular-nums; }
-.hep-session .hep-workout-timer .hep-session-actions { margin-top: 12px; }
+:is(.hep-session, [data-hep-card-timer]) .hep-workout-clock { margin: 18px 0 0; color: var(--color-dark); font-size: 2.8rem; line-height: 1.2; font-variant-numeric: tabular-nums; }
+:is(.hep-session, [data-hep-card-timer]) .hep-workout-timer .hep-session-actions { margin-top: 12px; }
+[data-hep-card-timer] .hep-workout-timer { margin: 20px 0; }
+[data-hep-card-timer] h4 { margin: 0 0 8px; color: var(--color-dark); font: 650 .95rem/1.4 var(--font-family); }
+.hep-timer-choices { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; }
+.hep-timer-choices .hep-session-button { min-height: 44px; padding: 8px 13px; font-size: .9rem; }
+.hep-timer-status { margin: 8px 0 0; color: var(--color-dark); font-size: .9rem; }
+.hep-timer-status:empty { margin: 0; }
 .hep-session .hep-workout-record { margin: 16px 0; overflow-wrap: anywhere; }
 .hep-session .hep-workout-record summary { padding: 10px 0; font-weight: 600; cursor: pointer; }
 .hep-session .hep-workout-record-exercise { margin: 14px 0; }
@@ -74,7 +80,8 @@
 
 [data-hep-launch][hidden],
 .hep-session[hidden],
-.hep-session [hidden] {
+.hep-session [hidden],
+[data-hep-card-timer] [hidden] {
     display: none !important;
 }
 
@@ -232,7 +239,7 @@
     margin-bottom: 0;
 }
 
-.hep-session .hep-session-actions {
+:is(.hep-session, [data-hep-card-timer]) .hep-session-actions {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -240,7 +247,7 @@
     margin-top: 25px;
 }
 
-.hep-session .hep-session-button {
+:is(.hep-session, [data-hep-card-timer]) .hep-session-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -260,23 +267,23 @@
     transition: background-color 150ms ease, border-color 150ms ease;
 }
 
-.hep-session .hep-session-button:hover {
+:is(.hep-session, [data-hep-card-timer]) .hep-session-button:hover {
     border-color: var(--color-dark);
     background: var(--color-dark);
 }
 
-.hep-session .hep-session-button.is-secondary {
+:is(.hep-session, [data-hep-card-timer]) .hep-session-button.is-secondary {
     border-color: var(--color-border);
     background: transparent;
     color: var(--color-primary-dark);
 }
 
-.hep-session .hep-session-button.is-secondary:hover {
+:is(.hep-session, [data-hep-card-timer]) .hep-session-button.is-secondary:hover {
     border-color: var(--color-primary-dark);
     background: rgba(31, 108, 164, 0.06);
 }
 
-.hep-session .hep-session-button.is-quiet {
+:is(.hep-session, [data-hep-card-timer]) .hep-session-button.is-quiet {
     min-height: 44px;
     padding: 9px 8px;
     border-color: transparent;
@@ -288,17 +295,17 @@
     text-underline-offset: 4px;
 }
 
-.hep-session .hep-session-button.is-quiet:hover {
+:is(.hep-session, [data-hep-card-timer]) .hep-session-button.is-quiet:hover {
     background: rgba(31, 108, 164, 0.06);
     text-decoration-color: currentColor;
 }
 
-.hep-session .hep-session-button:disabled {
+:is(.hep-session, [data-hep-card-timer]) .hep-session-button:disabled {
     opacity: 0.55;
     cursor: default;
 }
 
-.hep-session :where(button, a, input, select, textarea, summary, [tabindex]):focus-visible {
+:is(.hep-session, [data-hep-card-timer]) :where(button, a, input, select, textarea, summary, [tabindex]):focus-visible {
     outline: 3px solid var(--color-primary-dark);
     outline-offset: 4px;
     box-shadow: 0 0 0 2px var(--color-bg);
@@ -509,16 +516,16 @@
         gap: 15px;
     }
 
-    .hep-session .hep-session-actions {
+    :is(.hep-session, [data-hep-card-timer]) .hep-session-actions {
         align-items: stretch;
         gap: 10px;
     }
 
-    .hep-session .hep-session-actions > .hep-session-button:not(.is-quiet) {
+    :is(.hep-session, [data-hep-card-timer]) .hep-session-actions > .hep-session-button:not(.is-quiet) {
         flex: 1 1 100%;
     }
 
-    .hep-session .hep-session-actions > .hep-session-button.is-quiet {
+    :is(.hep-session, [data-hep-card-timer]) .hep-session-actions > .hep-session-button.is-quiet {
         flex: 0 1 auto;
     }
 

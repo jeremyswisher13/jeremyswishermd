@@ -838,10 +838,10 @@ if (!/<meta name="robots" content="noindex, follow">/.test(notFoundPage)) {
 
 const expectedProgramRegionCounts = new Map([
     ['knee-thigh', 9],
-    ['shoulder', 2],
+    ['shoulder', 3],
     ['elbow', 2],
-    ['hip', 2],
-    ['foot-ankle', 7],
+    ['hip', 3],
+    ['foot-ankle', 8],
     ['hand-wrist', 2],
     ['back', 1]
 ]);
@@ -895,8 +895,8 @@ for (const [region, expectedCount] of expectedProgramRegionCounts) {
 if (!exerciseHubFilters.includes('all')) {
     errors.push('Exercise library is missing the all-programs filter');
 }
-if (exerciseHubAthleteCardCount !== 7) {
-    errors.push('Exercise library expected seven athlete progressions, found ' + exerciseHubAthleteCardCount);
+if (exerciseHubAthleteCardCount !== 8) {
+    errors.push('Exercise library expected eight athlete progressions, found ' + exerciseHubAthleteCardCount);
 }
 if (!/<input type="checkbox"[^>]*\bdata-program-audience-filter\b/.test(exerciseHubPage)) {
     errors.push('Exercise library is missing the athlete-progression filter');
@@ -961,10 +961,10 @@ const patientSearchExpectations = new Map([
     ['posterior tibial tendonitis exercises', ['../tibialis-posterior-tendinopathy-exercises/']],
     ['thumb CMC arthritis', ['../thumb-cmc-osteoarthritis-exercises/']],
     ["De Quervain's exercises", ['../de-quervain-tenosynovitis-exercises/']],
-    ['heel pain exercises', ['../achilles-tendinopathy-exercises/', '../plantar-fasciitis-exercises/']],
-    ['pain in my heel', ['../achilles-tendinopathy-exercises/', '../plantar-fasciitis-exercises/']],
+    ['heel pain exercises', ['../achilles-tendinopathy-exercises/', '../insertional-achilles-tendinopathy-exercises/', '../plantar-fasciitis-exercises/']],
+    ['pain in my heel', ['../achilles-tendinopathy-exercises/', '../insertional-achilles-tendinopathy-exercises/', '../plantar-fasciitis-exercises/']],
     ['low back pain program', ['../low-back-pain-exercises/']],
-    ['hip pain', ['../gluteal-tendinopathy-exercises/', '../hip-osteoarthritis-exercises/']],
+    ['hip pain', ['../gluteal-tendinopathy-exercises/', '../hip-osteoarthritis-exercises/', '../proximal-hamstring-tendinopathy-exercises/']],
     ['knee arthritis exercises', ['../knee-osteoarthritis-advanced-exercises/', '../knee-osteoarthritis-exercises/']],
     ['ankle instability rehab', ['../ankle-sprain-return-to-sport-exercises/', '../lateral-ankle-sprain-exercises/']],
     ['sprained ankle', ['../ankle-sprain-return-to-sport-exercises/', '../lateral-ankle-sprain-exercises/']],

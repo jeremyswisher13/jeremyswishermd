@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{SEO_TITLE}} | Jeremy Swisher, MD</title>
     <meta name="description" content="{{META_DESCRIPTION}}">
+{{#REVIEWED}}
     <meta name="author" content="Jeremy Swisher, MD">
+{{/REVIEWED}}
     <meta name="theme-color" content="#f5f1e9">
     <link rel="canonical" href="{{CANONICAL}}">
     <link rel="icon" type="image/png" sizes="64x64" href="../images/favicon-64.png">
@@ -80,7 +82,7 @@
                             <a href="tel:310-319-1234" class="btn btn-outline">Call 310-319-1234</a>
                         </div>
                         <p class="sr-only" id="printStatus" role="status" aria-live="polite"></p>
-                        <p class="page-update">Clinically reviewed {{REVIEWED_DATE}}</p>
+                        <p class="page-update">{{DATE_LINE}}</p>
                     </div>
                     <nav class="page-jump page-jump-disclosure hep-guide-mobile-jump" aria-label="On this page">
                         <details open data-page-jump>
@@ -104,6 +106,7 @@
 {{PROOF_ITEMS}}
             </ul>
 
+{{#REVIEWED}}
             <div class="clinical-review-box no-print" role="group" aria-label="Author and clinical review information">
                 <span class="material-symbols-outlined" aria-hidden="true" data-icon="verified"></span>
                 <div>
@@ -113,6 +116,7 @@
                 <a href="https://www.uclahealth.org/providers/jeremy-swisher" target="_blank" rel="noopener noreferrer">View official UCLA profile<span class="sr-only"> (opens in a new tab)</span></a>
             </div>
 
+{{/REVIEWED}}
             <nav class="page-jump hep-guide-desktop-jump" aria-label="On this page">
                 <span>On this page</span>
 {{DESKTOP_JUMP_LINKS}}
@@ -231,7 +235,7 @@
                     <div class="print-only print-program-footer">
                         <p><strong>Questions?</strong> Call UCLA Orthopedics at <a href="tel:310-319-1234">310-319-1234</a>.</p>
                         <p><strong>Full guide and references:</strong> <a href="{{CANONICAL}}">{{CANONICAL}}</a></p>
-                        <p><strong>Clinical review:</strong> {{REVIEWED_DATE}}. Independent professional site; not an official UCLA Health website. UCLA Health manages appointments and clinical communication.</p>
+                        <p><strong>{{DATE_LABEL}}:</strong> {{DISPLAY_DATE}}. Independent professional site; not an official UCLA Health website. UCLA Health manages appointments and clinical communication.</p>
 {{VIDEO_PRINT_NOTE}}
                         <p>General education only, not individualized medical advice. For a medical emergency, call 911.</p>
                     </div>
@@ -250,7 +254,7 @@
                         <ul class="source-list">
 {{SOURCES}}
                         </ul>
-                        <p class="source-note">Evidence and recommendations can change. Last clinical review: {{REVIEWED_DATE}}.</p>
+                        <p class="source-note">Evidence and recommendations can change. {{SOURCE_DATE_LINE}}.</p>
                     </section>
                 </article>
 

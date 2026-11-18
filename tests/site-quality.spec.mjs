@@ -143,32 +143,32 @@ test('exercise library combines athlete, region, and search filters and resets c
   await expect(controls).toBeVisible();
   await page.locator('label[for="hep-athlete-only"]').click();
   await expect(athleteFilter).toBeChecked();
-  await expect(visibleCards).toHaveCount(7);
-  await expect(status).toHaveText('Showing 7 of 7 athlete progressions.');
+  await expect(visibleCards).toHaveCount(8);
+  await expect(status).toHaveText('Showing 8 of 8 athlete progressions.');
 
   await page.locator('label[for="hep-filter-foot-ankle"]').click();
   await expect(page.locator('#hep-filter-foot-ankle')).toBeChecked();
   await expect(visibleCards).toHaveCount(2);
-  await expect(status).toHaveText('Showing 2 of 7 athlete progressions for foot and ankle.');
+  await expect(status).toHaveText('Showing 2 of 8 athlete progressions for foot and ankle.');
 
   await search.fill('cutting');
   await expect(visibleCards).toHaveCount(1);
   await expect(visibleCards).toHaveAttribute('href', '../ankle-sprain-return-to-sport-exercises/');
-  await expect(status).toHaveText('Showing 1 of 7 athlete progressions for foot and ankle matching your search.');
+  await expect(status).toHaveText('Showing 1 of 8 athlete progressions for foot and ankle matching your search.');
 
   await search.fill('patellofemoral');
   await expect(visibleCards).toHaveCount(0);
   await expect(page.locator('[data-program-empty]')).toBeVisible();
-  await expect(status).toHaveText('Showing 0 of 7 athlete progressions for foot and ankle matching your search.');
+  await expect(status).toHaveText('Showing 0 of 8 athlete progressions for foot and ankle matching your search.');
 
   await page.locator('label[for="hep-filter-all"]').click();
   await search.fill('achilles');
   await expect(visibleCards).toHaveCount(1);
-  await expect(status).toHaveText('Showing 1 of 7 athlete progressions matching your search.');
+  await expect(status).toHaveText('Showing 1 of 8 athlete progressions matching your search.');
 
   await page.locator('label[for="hep-athlete-only"]').click();
-  await expect(visibleCards).toHaveCount(2);
-  await expect(status).toHaveText('Showing 2 of 25 programs matching your search.');
+  await expect(visibleCards).toHaveCount(3);
+  await expect(status).toHaveText('Showing 3 of 28 programs matching your search.');
   await page.locator('label[for="hep-athlete-only"]').click();
   await search.fill('doesnotmatchanyprogram');
   await expect(visibleCards).toHaveCount(0);
@@ -179,8 +179,8 @@ test('exercise library combines athlete, region, and search filters and resets c
   await expect(page.locator('#hep-filter-all')).toBeChecked();
   await expect(search).toHaveValue('');
   await expect(search).toBeFocused();
-  await expect(visibleCards).toHaveCount(25);
-  await expect(status).toHaveText('Showing all 25 programs.');
+  await expect(visibleCards).toHaveCount(28);
+  await expect(status).toHaveText('Showing all 28 programs.');
 });
 
 test('exercise library remains complete without JavaScript', async ({ browser }) => {
@@ -190,7 +190,7 @@ test('exercise library remains complete without JavaScript', async ({ browser })
   await page.goto('/home-exercise-programs/', { waitUntil: 'domcontentloaded' });
 
   await expect(page.locator('[data-program-filter]')).toBeHidden();
-  await expect(page.locator('#program-grid .program-card')).toHaveCount(25);
+  await expect(page.locator('#program-grid .program-card')).toHaveCount(28);
   expect(await page.locator('#program-grid .program-card').evaluateAll((cards) => (
     cards.every((card) => !card.hidden)
   ))).toBe(true);
@@ -239,16 +239,16 @@ test('exercise search finds maintained programs for common phrasing and word for
     ['sprained ankle', 'ankle sprain', 2],
     ['torn meniscus', 'meniscus tear', 2],
     ['knees', 'knee', 8],
-    ['tendinosis', ['tendinopathy', 'tendonitis'], 9],
+    ['tendinosis', ['tendinopathy', 'tendonitis'], 11],
     ['planter fasciitis', 'plantar fasciitis', 1],
-    ['rotater cuff', 'rotator cuff', 1],
+    ['rotater cuff', 'rotator cuff', 2],
     ['strained hamstring', 'hamstring strain', 1],
     ['De Quervain’s exercises', 'De Quervain', 1],
     ['non-operative meniscus rehab', 'nonoperative meniscus rehab', 2],
     ['non operative meniscus rehab', 'nonoperative meniscus rehab', 2],
     ['non-specific low back pain', 'nonspecific low back pain', 1],
     ['non specific low back pain', 'nonspecific low back pain', 1],
-    ['pain in my heel', 'heel pain', 2],
+    ['pain in my heel', 'heel pain', 3],
     ['pain on the outside of my knee', 'outside knee pain', 1],
     ['O.A.', 'OA', 3],
     ['I.T. band', 'IT band', 1],
@@ -309,7 +309,7 @@ test('printing the exercise library keeps a complete directory without the searc
   const emptyState = page.locator('[data-program-empty]');
 
   await search.fill('pain in my heel');
-  await expect(cards).toHaveCount(2);
+  await expect(cards).toHaveCount(3);
   await page.emulateMedia({ media: 'print' });
   await expect(cards).toHaveCount(exercisePrograms.length);
   await expect(search).toBeHidden();
