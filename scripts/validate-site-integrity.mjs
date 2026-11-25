@@ -585,13 +585,13 @@ const homeHeroTitleText = homeHeroTitleMarkup
     .replace(/<[^>]+>/g, '')
     .replace(/\s+/g, ' ')
     .trim();
-if (homeHeroTitleText !== 'Nonsurgical care for joint pain and sports injuries in Los Angeles.') {
+if (homeHeroTitleText !== 'Nonsurgical sports injury care in West Hills and Westwood.') {
     errors.push('Homepage hero H1 source text must retain literal whitespace between its visual lines');
 }
 
 // Keep the approved patient and referring-office pathways intact.
 const hero = /<div class="hero-text">([\s\S]*?)<\/div>\s*<figure/i.exec(homePage)?.[1] || '';
-for (const required of ['Westwood and West Hills', 'Jeremy Swisher, MD', 'locations/#insurance', 'locations/#referrals']) {
+for (const required of ['West Hills and Westwood', 'Jeremy Swisher, MD', 'locations/#insurance', 'locations/#referrals']) {
     if (!hero.includes(required)) errors.push('Homepage hero is missing patient-pathway detail: ' + required);
 }
 if (homePage.indexOf('id="expertise"') > homePage.indexOf('id="about"')) {
