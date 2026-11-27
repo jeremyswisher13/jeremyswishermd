@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import {
-  GUIDED_PROGRAM_SLUGS, MAX_RECORDS, SESSION_STORAGE_VERSION, createSessionRecord, isValidSessionDate,
+  GUIDED_PROGRAM_SLUGS, MAX_RECORDS, SESSION_STORAGE_VERSION, createSessionRecord, doseSetRange, isValidSessionDate,
   localDateString, mergeProgressRecords, progressStorageKey, validateProgramData, validateProgressStore,
 } from '../../hep-session.js';
 
@@ -152,3 +152,33 @@ test('restored records and programs retain only supported fields', () => {
   assert.equal(Object.hasOwn(validated, 'unexpected'), false);
   assert.deepEqual(validated.exercises, program.exercises);
 });
+
+test('set circles follow the written set range and never invent sets for holds or timed doses', () => {
+  assert.deepEqual(doseSetRange('1 to 3 sets of 5 to 10 repetitions'), { minimum: 1, maximum: 3 });
+  assert.deepEqual(doseSetRange('3 sets of 15 slow repetitions'), { minimum: 3, maximum: 3 });
+  assert.deepEqual(doseSetRange('2 or 3 sets of 8 per side'), { minimum: 2, maximum: 3 });
+  for (const dose of ['Start with 5 to 10 minutes', '4 holds of 20 to 30 seconds', '3 rounds of 30 to 60 seconds per side',
+    '10 repetitions with a 10-second hold', '0 sets', '2 to 12 sets', '', null]) {
+    assert.equal(doseSetRange(dose), null, String(dose));
+  }
+  // Every written dose either yields a usable range or no circles at all.
+  for (const item of programs) {
+    for (const exercise of item.exercises) {
+      const range = doseSetRange(exercise.dose);
+      if (range) assert.ok(range.minimum >= 1 && range.maximum <= 8 && range.minimum <= range.maximum, exercise.dose);
+    }
+  }
+});
+
+test('records keep tapped set counts only as whole numbers for every exercise', () => {
+  const setCounts = [3, 2, 0, 1, 0];
+  assert.deepEqual(createSessionRecord({ ...validRecord, setCounts }, exerciseCount).setCounts, setCounts);
+  const restored = createSessionRecord({ ...validRecord, setCounts }, exerciseCount);
+  assert.notEqual(restored.setCounts, setCounts);
+  for (const changes of [
+    { setCounts: [3, 2, 0] }, { setCounts: [3, 2, 0, 1, 9] }, { setCounts: [3, 2, 0, 1, -1] },
+    { setCounts: [3, 2, 0, 1, 1.5] }, { setCounts: '3,2,0,1,0' },
+  ]) assert.equal(createSessionRecord({ ...validRecord, ...changes }, exerciseCount), null, JSON.stringify(changes));
+  assert.equal(createSessionRecord(validRecord, exerciseCount).setCounts, undefined);
+});
+

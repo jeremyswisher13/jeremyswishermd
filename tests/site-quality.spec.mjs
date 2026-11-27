@@ -129,7 +129,8 @@ test('a failed shared script leaves the written HEP, browser print guidance, and
   await expect(page.locator('[data-hep-session]')).toBeVisible();
   await page.locator('[data-hep-launch-start]').click();
   await expect(page.locator('[data-hep-session]')).toHaveAttribute('data-hep-session-ready', 'true');
-  await expect(page.locator('[data-hep-session] [data-hep-done]')).toBeVisible();
+  await page.locator('[data-hep-focus] [data-hep-begin]').click();
+  await expect(page.locator('[data-hep-focus] [data-hep-done]')).toBeVisible();
 });
 
 test('exercise library combines athlete, region, and search filters and resets cleanly', async ({ page }) => {

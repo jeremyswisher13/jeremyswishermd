@@ -37,7 +37,7 @@
 
     <link rel="stylesheet" href="../styles.css?v=20261012-reliability1">
     <noscript><link rel="stylesheet" href="../navigation-nojs.css?v=20261007-audit1"></noscript>
-    <link rel="stylesheet" href="../landing-pages.css?v=20261117-injection-guide1">
+    <link rel="stylesheet" href="../landing-pages.css?v=20261127-compact-library1">
 {{SESSION_STYLES}}
     <noscript><style>.print-program-button,.video-load-button,.video-privacy-note,.print-dialog-guidance{{SESSION_NOJS}}{display:none!important}.print-fallback-guidance{display:inline}</style></noscript>
 
@@ -162,6 +162,8 @@
 
 {{SESSION_SECTION}}
 
+{{VIDEO_SECTION}}
+
                     <section class="content-section" id="program">
                         <div class="print-heading-group">
                         <p class="section-label">Your home program</p>
@@ -178,8 +180,6 @@
 {{EXERCISES}}
                         </ol>
                     </section>
-
-{{VIDEO_SECTION}}
 
                     <section class="content-section" id="response">
                         <div class="print-heading-group">
@@ -258,10 +258,13 @@
                         <p class="section-label">Evidence</p>
                         <h2 id="sources-title">Guidelines, reviews, and clinical studies</h2>
                         <p>This plan translates current clinical guidance into a practical home program. The cited sources support the treatment principles, but they do not establish one universal exercise recipe for every patient.</p>
-                        <ul class="source-list">
+                        <details class="hep-source-details">
+                            <summary>Show the {{SOURCE_COUNT}} sources</summary>
+                            <ul class="source-list">
 {{SOURCES}}
-                        </ul>
-                        <p class="source-note">Evidence and recommendations can change. {{SOURCE_DATE_LINE}}.</p>
+                            </ul>
+                            <p class="source-note">Evidence and recommendations can change. {{SOURCE_DATE_LINE}}.</p>
+                        </details>
                     </section>
                 </article>
 

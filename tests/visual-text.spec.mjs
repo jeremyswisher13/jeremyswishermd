@@ -269,7 +269,7 @@ test.beforeAll(() => {
       expectedUnsavedReviewAudits: exercisePrograms.length * widths.length,
       programExercises: exercisePrograms.map(program => ({ slug: program.slug, exercises: guidedExercises(program).map(exercise => exercise.name) })),
     },
-    states: ['default', 'expanded-content when present', 'each publication filter when present', 'longest clinic program selected when present', 'every guided exercise with harder option and workout fields expanded', 'unsaved guided-session review', 'open mobile navigation when present'],
+    states: ['default', 'expanded-content when present', 'each publication filter when present', 'longest clinic program selected when present', 'guided-session start screen', 'every guided exercise with the harder version, weight box, and stop signs shown', 'unsaved guided-session finish screen', 'open mobile navigation when present'],
     results: routes.flatMap(route => widths.map(width => `${route.name}-${width}.audit.json`)),
   });
 });
@@ -383,48 +383,55 @@ for (const route of routes) {
       }
       if (program) {
         const session = page.locator('[data-hep-session]');
+        const view = page.locator('[data-hep-focus]');
         const exercises = guidedExercises(program);
         const generated = JSON.parse(await page.locator('#hep-session-data').textContent());
         expect(generated.exercises.map(exercise => exercise.name)).toEqual(exercises.map(exercise => exercise.name));
         await expect(session).toHaveAttribute('data-hep-session-ready', 'true');
         await expect(session.locator('[data-hep-storage]')).not.toBeChecked();
-        await session.locator('[data-hep-mode="workout"]').check();
-        await session.locator('[data-hep-start]').click();
+        await session.locator('.hep-session-panel [data-hep-start]').click();
+        await expect(view.locator('[data-hep-begin]')).toBeVisible();
+        await view.locator('details').evaluateAll(details => { details.forEach(detail => { detail.open = true; }); });
+        await settle(page, { scrollToTop: false });
+        await capture('guided-session-start', { scopeSelector: '[data-hep-focus]', sectionSelector: '[data-hep-focus]' });
+        await view.locator('[data-hep-begin]').click();
+        // Show the longest version of each exercise: the optional weight box,
+        // the harder version, and the stop signs.
+        const settings = view.locator('[data-hep-settings]');
+        if (await settings.count()) {
+          await settings.click();
+          await view.locator('[data-hep-record-load]').check();
+        }
         for (const [index, exercise] of exercises.entries()) {
-          const card = session.locator('[data-hep-exercise]');
+          const card = view.locator('[data-hep-exercise]');
           await expect(card.locator('[data-hep-exercise-title]')).toHaveText(exercise.name);
-          await expect(card.locator('[data-hep-workout]')).toBeVisible();
-          const addSet = card.locator('[data-hep-add-set]');
-          if (await addSet.isEnabled()) await addSet.click();
-          const sets = card.locator('[data-hep-set]');
-          await expect(sets).toHaveCount(2);
-          // Empty drafts expose both numeric and descriptive resistance labels
-          // without fabricating completed work or saving personal information.
-          const units = card.locator('[data-hep-set-unit]');
-          if (await units.count()) {
-            await units.nth(0).selectOption('kg');
-            await units.nth(1).selectOption('band');
-          }
+          await card.locator('[data-hep-harder]').click();
+          await expect(card.locator('#hep-session-modifier p')).toHaveText(exercise.harder);
           const expandedDisclosures = await card.locator('details').evaluateAll(details => {
             details.forEach(detail => { detail.open = true; });
             return details.length;
           });
           await settle(page, { scrollToTop: false });
           await capture(`guided-exercise-${String(index + 1).padStart(2, '0')}`, {
-            scopeSelector: '[data-hep-session]', sectionSelector: '[data-hep-session]',
-            guidedExercise: { index: index + 1, name: exercise.name, expandedDisclosures, emptySets: await sets.count() },
+            scopeSelector: '[data-hep-focus]', sectionSelector: '[data-hep-focus]',
+            guidedExercise: {
+              index: index + 1, name: exercise.name, expandedDisclosures,
+              setCircles: await card.locator('[data-hep-set-count]').count(),
+              weightBox: await card.locator('[data-hep-load]').count(),
+            },
           });
-          await card.locator('[data-hep-skip]').click();
+          await view.locator('[data-hep-skip]').click();
         }
-        await expect(session.locator('[data-hep-completed-count]')).toHaveText('0 done');
-        await expect(session.locator('[data-hep-skipped-count]')).toHaveText(`${exercises.length} skipped`);
-        await session.locator('details').evaluateAll(details => { details.forEach(detail => { detail.open = true; }); });
+        await expect(view.locator('[data-hep-completed-count]')).toHaveText('0 done');
+        await expect(view.locator('[data-hep-skipped-count]')).toHaveText(`${exercises.length} skipped`);
+        await view.locator('details').evaluateAll(details => { details.forEach(detail => { detail.open = true; }); });
         await settle(page, { scrollToTop: false });
-        await capture('guided-session-review', { scopeSelector: '[data-hep-session]', sectionSelector: '[data-hep-session]' });
+        await capture('guided-session-finish', { scopeSelector: '[data-hep-focus]', sectionSelector: '[data-hep-focus]' });
         expect(reports.filter(report => report.guidedExercise)).toHaveLength(exercises.length);
         await expect(session.locator('[data-hep-storage]')).not.toBeChecked();
         expect(await page.evaluate(key => localStorage.getItem(key), `swishermd:hep-progress:v1:${program.slug}`)).toBeNull();
-        await session.locator('[data-hep-finish]').click();
+        await view.locator('[data-hep-finish]').click();
+        await expect(view).toBeHidden();
       }
       const navToggle = page.locator('#navToggle');
       if (await navToggle.isVisible()) {

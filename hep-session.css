@@ -44,57 +44,7 @@
     color: var(--color-dark);
 }
 .hep-session [data-hep-strength-start] { margin-bottom: 18px; }
-.hep-session .hep-session-mode {
-    display: grid;
-    gap: 10px;
-    margin: 22px 0;
-    padding: 0;
-    border: 0;
-    min-width: 0;
-}
-.hep-session .hep-session-mode legend { margin-bottom: 12px; font-weight: 650; }
-.hep-session .hep-session-mode-choice {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 16px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-}
-.hep-session .hep-session-mode-choice:has(input:checked) { border-color: var(--color-primary-dark); background: rgba(255,255,255,.55); }
-.hep-session .hep-session-mode-choice input { flex: 0 0 auto; margin: 5px 0 0; accent-color: var(--color-primary-dark); }
-.hep-session .hep-session-mode-choice strong,
-.hep-session .hep-session-mode-choice span span { display: block; }
-.hep-session .hep-session-mode-choice span span { color: var(--color-text-light); font-size: .88rem; }
-.hep-session .hep-workout { margin: 24px 0; padding-top: 24px; border-top: 1px solid var(--color-border); }
-.hep-session .hep-workout-help { color: var(--color-text-light); font-size: .88rem; }
-.hep-session .hep-workout-set {
-    min-width: 0;
-    margin: 20px 0;
-    padding: 16px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    background: rgba(255,255,255,.4);
-}
-.hep-session .hep-workout-set legend { padding: 0 7px; font-weight: 650; font-size: .88rem; }
-.hep-session .hep-workout-grid,
-.hep-session .hep-workout-timer-form { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
-.hep-session .hep-workout-grid .hep-session-field { margin: 0; min-width: 0; }
-.hep-session .hep-workout-grid input,
-.hep-session .hep-workout-grid select,
-.hep-session .hep-workout-timer-form input,
-.hep-session .hep-workout-timer-form select { width: 100%; min-width: 0; }
-.hep-session .hep-workout-extra { margin-top: 12px; font-size: .88rem; }
-.hep-session .hep-workout-extra summary { padding: 9px 0; cursor: pointer; }
-.hep-session .hep-workout-extra .hep-session-field { margin: 12px 0; }
-.hep-session .hep-workout-previous { padding: 16px; background: var(--color-border-light); border-radius: var(--radius-sm); overflow-wrap: anywhere; }
-.hep-session .hep-workout-previous h5 { font-size: .88rem; margin: 0 0 8px; }
-.hep-session .hep-workout-previous ol { margin: 0 0 10px; padding-left: 20px; font-size: .88rem; }
-.hep-session .hep-workout-previous p { margin: 0; font-size: .8rem; }
 .hep-session .hep-workout-timer { margin: 24px 0 0; padding: 22px 0 0; border-top: 1px solid var(--color-border); }
-.hep-session .hep-workout-timer-form .hep-session-field { margin: 0; }
-.hep-session .hep-workout-timer-form button { grid-column: 1 / -1; justify-self: start; }
 :is(.hep-session, [data-hep-card-timer]) .hep-workout-clock { margin: 18px 0 0; color: var(--color-dark); font-size: 2.8rem; line-height: 1.2; font-variant-numeric: tabular-nums; }
 :is(.hep-session, [data-hep-card-timer]) .hep-workout-timer .hep-session-actions { margin-top: 12px; }
 [data-hep-card-timer] .hep-workout-timer { margin: 20px 0; }
@@ -109,10 +59,6 @@
 .hep-session .hep-workout-record-exercise p,
 .hep-session .hep-workout-record-exercise ol { margin: 0; font-size: .88rem; }
 .hep-session .hep-workout-record-exercise ol { padding-left: 20px; }
-@media (max-width: 480px) {
-    .hep-session .hep-workout-grid { grid-template-columns: minmax(0,1fr); }
-    .hep-session .hep-workout-set { padding: 12px; }
-}
 .hep-session {
     max-width: 700px;
     margin: clamp(40px, 5vw, 64px) 0;
@@ -847,4 +793,362 @@
         padding-left: 5mm;
         font: 9pt/1.35 Arial, sans-serif;
     }
+}
+
+/* ===== Focused session view =====
+   The active session opens as a modal: the full screen on a phone and a
+   centered panel on larger screens. Done, Skip and Previous stay fixed at
+   the bottom so they never scroll out of reach. */
+html.hep-focus-open,
+html.hep-focus-open body {
+    overflow: hidden;
+}
+
+.hep-session .hep-session-dialog {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: var(--color-bg);
+    color: var(--color-text);
+    overscroll-behavior: contain;
+    z-index: 1000;
+}
+
+@supports (height: 100dvh) {
+    .hep-session .hep-session-dialog { height: 100dvh; }
+}
+
+.hep-session .hep-session-dialog:not([open]) {
+    display: none;
+}
+
+.hep-session .hep-session-dialog::backdrop {
+    background: rgba(16, 36, 56, 0.55);
+}
+
+@media (min-width: 760px) {
+    .hep-session .hep-session-dialog {
+        width: min(680px, calc(100% - 64px));
+        height: min(880px, calc(100% - 64px));
+        margin: auto;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-xl);
+    }
+}
+
+.hep-session .hep-focus {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+}
+
+.hep-session .hep-focus-head {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: calc(10px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px));
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg);
+}
+
+.hep-session .hep-focus-head .hep-session-progress {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+}
+
+.hep-session .hep-focus-label {
+    flex: 1 1 auto;
+    margin: 0;
+    color: var(--color-dark);
+    font-weight: 600;
+}
+
+.hep-session .hep-focus-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    padding: 22px max(20px, env(safe-area-inset-right, 0px)) 28px max(20px, env(safe-area-inset-left, 0px));
+}
+
+.hep-session .hep-focus-body h3 {
+    margin: 0 0 16px;
+    font-size: clamp(1.9rem, 6vw, 2.45rem);
+    line-height: 1.1;
+    scroll-margin-top: 0;
+}
+
+.hep-session .hep-focus-foot {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg);
+}
+
+.hep-session .hep-focus-foot .hep-session-button {
+    min-height: 54px;
+}
+
+.hep-session .hep-focus-foot :is([data-hep-done], [data-hep-begin], [data-hep-finish-done]) {
+    flex: 1 1 auto;
+}
+
+.hep-session .hep-focus-foot :is([data-hep-skip], [data-hep-finish]) {
+    flex: 0 1 auto;
+}
+
+.hep-session .hep-focus-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+.hep-session .hep-session-icon-button {
+    flex: none;
+    display: inline-grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--color-dark);
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.hep-session .hep-session-icon-button svg,
+.hep-session .hep-session-set svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.hep-session .hep-session-icon-button:hover {
+    border-color: var(--color-primary-dark);
+}
+
+.hep-session .hep-session-icon-button[aria-expanded="true"] {
+    border-color: var(--color-dark);
+    background: var(--color-dark);
+    color: var(--color-text-inverse);
+}
+
+/* Keep Skip and Done in the same place on the first exercise. */
+.hep-session .hep-session-icon-button:disabled {
+    visibility: hidden;
+}
+
+.hep-session .hep-session-settings {
+    margin: 0 0 20px;
+    padding: 4px 16px 2px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+}
+
+.hep-session .hep-session-settings .hep-session-entry-meta {
+    margin: 0 0 12px;
+}
+
+/* Set circles */
+.hep-session .hep-session-sets {
+    margin: 0 0 22px;
+}
+
+.hep-session .hep-session-sets-label {
+    margin: 0 0 9px;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+}
+
+.hep-session .hep-session-set-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.hep-session .hep-session-set {
+    display: inline-grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    padding: 0;
+    border: 2px solid var(--color-primary-dark);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--color-primary-dark);
+    font: 700 1.05rem/1 var(--font-family);
+    font-variant-numeric: tabular-nums;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.hep-session .hep-session-set.is-optional {
+    border-style: dashed;
+}
+
+.hep-session .hep-session-set[aria-pressed="true"] {
+    border-style: solid;
+    background: var(--color-primary-dark);
+    color: var(--color-text-inverse);
+}
+
+.hep-session .hep-session-set svg {
+    stroke-width: 2.6;
+}
+
+/* Easier and harder versions */
+.hep-session .hep-session-modifier-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 4px 0 14px;
+}
+
+.hep-session .hep-session-modifier-buttons .hep-session-button {
+    min-height: 44px;
+    padding: 8px 14px;
+    font-size: 0.95rem;
+}
+
+.hep-session .hep-session-modifier-buttons [aria-expanded="true"] {
+    border-color: var(--color-primary-dark);
+    background: #e7eff3;
+}
+
+.hep-session .hep-session-modifier {
+    margin: 0 0 18px;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+}
+
+.hep-session .hep-session-modifier.is-easier { background: #e2ede3; }
+.hep-session .hep-session-modifier.is-harder { background: #f2e8d2; }
+.hep-session .hep-session-modifier p { margin: 0 0 4px; }
+.hep-session .hep-session-modifier p:last-child { margin: 0; }
+
+.hep-session :is(.hep-session-modifier, .hep-session-stop) > a,
+.hep-session .hep-session-video-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--color-primary-dark);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.hep-session .hep-session-stop {
+    margin-top: 8px;
+    border-top: 1px solid var(--color-border);
+}
+
+.hep-session .hep-session-stop p {
+    margin: 0 0 6px;
+    font-size: 0.94rem;
+}
+
+/* Session plan on the first screen */
+.hep-session .hep-session-plan {
+    margin: 0 0 18px;
+    padding: 0;
+    list-style: none;
+    counter-reset: hep-plan;
+    border-top: 1px solid var(--color-border);
+}
+
+.hep-session .hep-session-plan li {
+    display: flex;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-dark);
+    font-weight: 600;
+    counter-increment: hep-plan;
+}
+
+.hep-session .hep-session-plan li::before {
+    content: counter(hep-plan);
+    flex: none;
+    display: inline-grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #e7eff3;
+    color: var(--color-primary-dark);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.hep-session .hep-focus-body > .hep-session-prescription {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    margin-bottom: 18px;
+}
+
+/* Finish screen */
+.hep-session .hep-session-save {
+    margin: 0 0 22px;
+    padding: 18px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.hep-session .hep-session-save > p:last-of-type {
+    margin-bottom: 0;
+}
+
+.hep-session .hep-session-save .hep-session-form {
+    margin-top: 6px;
+}
+
+.hep-session .hep-session-save .hep-session-actions {
+    margin-top: 14px;
+}
+
+.hep-session .hep-session-saved {
+    margin: 0 0 6px;
+    color: #2e6a3d;
+    font-weight: 650;
+}
+
+.hep-session .hep-session-rules h5 {
+    margin: 0 0 6px;
+    color: var(--color-dark);
+    font: 650 1rem/1.4 var(--font-family);
+}
+
+.hep-session .hep-focus-body .hep-session-check-in {
+    margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hep-session .hep-session-dialog::backdrop { transition: none; }
+}
+
+@media print {
+    .hep-session .hep-session-dialog { display: none !important; }
 }

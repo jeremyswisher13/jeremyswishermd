@@ -236,8 +236,8 @@ for (const program of programs) {
             }
         }
         assert(page.includes('data-hep-session hidden'), `${slug}: guided session must start hidden until initialized`);
-        assert(page.includes('src="../hep-session.js?v=20261127-guided-session2"'), `${slug}: guided-session module is missing`);
-        assert(page.includes('href="../hep-session.css?v=20261127-guided-session2"'), `${slug}: guided-session stylesheet is missing`);
+        assert(page.includes('src="../hep-session.js?v=20261127-focus-session1"'), `${slug}: guided-session module is missing`);
+        assert(page.includes('href="../hep-session.css?v=20261127-focus-session1"'), `${slug}: guided-session stylesheet is missing`);
     } else {
         assert(!sessionPayload && !page.includes('hep-session.js') && !page.includes('hep-session.css'), `${slug}: non-guided page includes guided-session assets`);
     }
@@ -447,7 +447,7 @@ assert(
     programCardRecords.filter(card => card.audiences.includes('athlete')).length === athletePrograms.length,
     'Athlete filter count does not match athlete program metadata'
 );
-assert(hub.includes('Show 8 programs for running, jumping, cutting, throwing, and return to practice'), 'Library athlete-filter count is stale');
+assert(hub.includes('Only athlete and return-to-sport programs (8)'), 'Library athlete-filter count is stale');
 
 const expectedVideoCueCount = programs.filter(program => Boolean(program.video)).length;
 assert(

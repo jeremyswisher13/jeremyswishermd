@@ -10,14 +10,17 @@ const programs = JSON.parse(readFileSync(new URL('../scripts/hep-programs.json',
 const optionsBySlug = JSON.parse(readFileSync(new URL('../scripts/hep-workout-options.json', import.meta.url), 'utf8'));
 const programFor = slug => programs.find(program => program.slug === slug);
 const knee = programFor('knee-osteoarthritis-exercises');
+const patellar = programFor('patellar-tendinopathy-exercises');
+const meniscus = programFor('meniscus-tear-rehabilitation-exercises');
 const guidedOrder = program => program.guidedExerciseOrder || program.exercises.map((_, index) => index);
 const guidedExercises = program => guidedOrder(program).map(index => program.exercises[index]);
 const guidedOptions = program => guidedOrder(program).map(index => optionsBySlug[program.slug][index]);
 const storageKey = slug => `swishermd:hep-progress:v1:${slug}`;
 const session = page => page.locator('[data-hep-session]');
-const sets = page => session(page).locator('[data-hep-set]');
-const timer = page => session(page).locator('[data-hep-timer]');
+const focusView = page => page.locator('[data-hep-focus]');
+const timer = page => focusView(page).locator('[data-hep-timer]');
 const contentTypes = { '.html': 'text/html', '.css': 'text/css', '.js': 'application/javascript', '.woff2': 'font/woff2', '.png': 'image/png', '.jpg': 'image/jpeg', '.avif': 'image/avif', '.webp': 'image/webp', '.svg': 'image/svg+xml' };
+const wcag = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
 
 // These browser tests are committed for the existing CI Playwright job.
 test.use({ reducedMotion: 'reduce', serviceWorkers: 'block' });
@@ -56,25 +59,41 @@ async function visit(page, program = knee, origin = '') {
   await expect(session(page)).toBeVisible();
 }
 
-async function start(page, workout = true) {
-  await session(page).locator(`[data-hep-mode="${workout ? 'workout' : 'simple'}"]`).check();
-  await session(page).locator('[data-hep-start]').click();
-  await expect(session(page).locator('[data-hep-exercise]')).toBeVisible();
+async function start(page) {
+  await session(page).locator('.hep-session-panel [data-hep-start]').click();
+  await focusView(page).locator('[data-hep-begin]').click();
+  await expect(focusView(page).locator('[data-hep-exercise]')).toBeVisible();
+}
+
+async function openLog(page) {
+  await session(page).locator('.hep-session-panel [data-hep-log]').click();
+  await expect(session(page).locator('[data-hep-history]')).toBeVisible();
+}
+
+async function recordLoads(page) {
+  const settings = focusView(page).locator('[data-hep-settings]');
+  await expect(settings).toHaveAttribute('aria-expanded', 'false');
+  await settings.click();
+  await expect(settings).toHaveAttribute('aria-expanded', 'true');
+  await focusView(page).locator('[data-hep-record-load]').check();
 }
 
 async function finishFrom(page, program = knee, index = 0, choice = 'done') {
   for (let current = index; current < program.exercises.length; current += 1) {
-    await session(page).locator(`[data-hep-${choice}]`).click();
+    await focusView(page).locator(`[data-hep-${choice}]`).click();
   }
-  await expect(session(page).locator('[data-hep-save]')).toBeVisible();
+  await expect(focusView(page).locator('[data-hep-completed-count]')).toBeVisible();
 }
 
+// Saves the finished session (answering the save question) and opens the log.
 async function save(page, notes = '') {
-  const logDetails = session(page).locator('.hep-session-log-details');
+  const logDetails = focusView(page).locator('.hep-session-log-details');
   if (!(await logDetails.evaluate(details => details.open))) await logDetails.locator('summary').click();
-  await session(page).getByLabel('Session date', { exact: true }).fill('2026-10-08');
-  await session(page).getByLabel('Notes (optional)', { exact: true }).fill(notes);
-  await session(page).locator('[data-hep-save]').click();
+  await focusView(page).getByLabel('Session date', { exact: true }).fill('2026-10-08');
+  await focusView(page).getByLabel('Notes (optional)', { exact: true }).fill(notes);
+  if (await focusView(page).locator('[data-hep-save]').count()) await focusView(page).locator('[data-hep-save]').click();
+  else await focusView(page).locator('[data-hep-update-entry]').click();
+  await focusView(page).locator('[data-hep-log]').click();
   await expect(session(page).locator('[data-hep-history]')).toBeVisible();
 }
 
@@ -92,274 +111,103 @@ async function seed(context, records) {
   }, { key: storageKey(knee.slug), records });
 }
 
-test('simple is the default; workout drafts survive view changes and previous navigation, but skipped sets are not saved', async ({ context, page, baseURL }) => {
+test('tapped sets follow the written range, are saved only for completed exercises, and appear in the log and summary', async ({ context, page, baseURL }) => {
   await localOnly(context, baseURL);
   await visit(page);
-  await expect(session(page).locator('[data-hep-mode="simple"]')).toBeChecked();
-  await expect(session(page).locator('[data-hep-mode="workout"]')).not.toBeChecked();
-  await session(page).locator('[data-hep-storage]').check();
-  await start(page, false);
-  await expect(session(page).locator('[data-hep-workout]')).toHaveCount(0);
-  await session(page).locator('[data-hep-workout-toggle]').click();
-  await expect(sets(page).first().locator('[data-hep-set-amount]')).toHaveValue('');
-  await sets(page).first().locator('[data-hep-set-amount]').fill('11');
-  await session(page).locator('[data-hep-workout-toggle]').click();
-  await expect(session(page).locator('[data-hep-workout]')).toHaveCount(0);
-  await session(page).locator('[data-hep-workout-toggle]').click();
-  await expect(sets(page).first().locator('[data-hep-set-amount]')).toHaveValue('11');
-  await expect(session(page).locator('[data-hep-exercise] dl dd')).toHaveText([knee.exercises[0].dose, knee.exercises[0].frequency]);
-  await expect(session(page).locator('[data-hep-exercise] h4 + p').first()).toHaveText(knee.exercises[0].how);
-  await session(page).locator('[data-hep-done]').click();
-  await sets(page).first().locator('[data-hep-set-amount]').fill('13');
-  await sets(page).first().locator('summary').click();
-  await sets(page).first().locator('[data-hep-set-note]').fill('SKIPPED_SET_PRIVATE_DRAFT');
-  await session(page).locator('[data-hep-skip]').click();
-  await session(page).locator('[data-hep-back]').click();
-  await expect(sets(page).first().locator('[data-hep-set-amount]')).toHaveValue('13');
-  await session(page).locator('[data-hep-back]').click();
-  await expect(sets(page).first().locator('[data-hep-set-amount]')).toHaveValue('11');
-  await session(page).locator('[data-hep-done]').click();
-  await session(page).locator('[data-hep-skip]').click();
-  await finishFrom(page, knee, 2);
-  await expect(session(page).locator('[data-hep-completed-count]')).toHaveText('4 done');
-  await expect(session(page).locator('[data-hep-skipped-count]')).toHaveText('1 skipped');
-  const preview = session(page).locator('[data-hep-review-workout] details');
-  await expect(preview).toHaveJSProperty('open', false);
-  await preview.locator('summary').click();
-  await expect(preview.locator('.hep-workout-record-exercise').first()).toContainText('Reps: 11');
-  await expect(preview.locator('.hep-workout-record-exercise').nth(1)).toContainText('Skipped');
-  await expect(preview).not.toContainText('SKIPPED_SET_PRIVATE_DRAFT');
-  await save(page);
+  await start(page);
+  const view = focusView(page);
+  const circles = view.locator('[data-hep-set-count]');
+  await expect(view.locator('.hep-session-sets-label')).toHaveText('Tap a circle after each set. Sets 2 to 3 are optional.');
+  await expect(circles).toHaveCount(3);
+  await expect(view.locator('.hep-session-set.is-optional')).toHaveCount(2);
+  await expect(view.locator('[data-hep-set-count][aria-pressed="true"]')).toHaveCount(0);
+  await view.locator('[data-hep-set-count="3"]').click();
+  await expect(view.locator('[data-hep-set-count][aria-pressed="true"]')).toHaveCount(3);
+  await expect(view.locator('.hep-focus-status')).toHaveText('3 sets marked.');
+  await view.locator('[data-hep-set-count="3"]').click();
+  await expect(view.locator('[data-hep-set-count][aria-pressed="true"]')).toHaveCount(2);
+  await expect(view.locator('[data-hep-exercise] dl dd')).toHaveText([knee.exercises[0].dose, knee.exercises[0].frequency]);
+  await view.locator('[data-hep-done]').click();
+  await view.locator('[data-hep-set-count="1"]').click();
+  await view.locator('[data-hep-skip]').click();
+  await view.locator('[data-hep-done]').click();
+  await view.locator('[data-hep-done]').click();
+  await expect(view.locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[4].name);
+  await expect(view.locator('[data-hep-set-count]')).toHaveCount(0);
+  await view.locator('[data-hep-done]').click();
+  await expect(view.locator('[data-hep-completed-count]')).toHaveText('4 done');
+  await save(page, 'SET_COUNT_SESSION');
   const [record] = (await readStore(page)).records;
-  expect(record.workout[0].sets).toEqual([{ ...blankRecordedSet(), amount: 11 }]);
-  expect(record.workout[1]).toEqual({ status: 'skipped', measure: 'reps', label: 'Reps per side', sets: [] });
-  expect(JSON.stringify(record)).not.toContain('SKIPPED_SET_PRIVATE_DRAFT');
-});
-
-test('rep sets record holds, lb, kg, and descriptive bands; add/remove enforces eight sets without converting resistance', async ({ context, page, baseURL }) => {
-  await localOnly(context, baseURL);
-  await visit(page);
-  await session(page).locator('[data-hep-storage]').check();
-  await start(page);
-  const first = sets(page).nth(0);
-  await first.locator('[data-hep-set-amount]').fill('12');
-  await first.locator('[data-hep-set-unit]').selectOption('lb');
-  await first.getByLabel('Weight (lb)', { exact: true }).fill('10');
-  await first.locator('summary').click();
-  await first.getByLabel('Hold / timed variation (seconds, optional)', { exact: true }).fill('5');
-  await first.getByLabel('Side or variation (optional)', { exact: true }).fill('Left side');
-  await session(page).locator('[data-hep-add-set]').click();
-  await sets(page).nth(1).locator('[data-hep-set-amount]').fill('10');
-  await sets(page).nth(1).locator('[data-hep-set-unit]').selectOption('kg');
-  await sets(page).nth(1).getByLabel('Weight (kg)', { exact: true }).fill('4.5');
-  await session(page).locator('[data-hep-add-set]').click();
-  const third = sets(page).nth(2);
-  await third.locator('[data-hep-set-amount]').fill('8');
-  await third.locator('[data-hep-set-unit]').selectOption('lb');
-  await third.locator('[data-hep-set-load]').fill('99');
-  await third.locator('[data-hep-set-unit]').selectOption('band');
-  await third.getByLabel('Band / resistance description', { exact: true }).fill('Light blue band');
-  await expect(third.locator('[data-hep-set-load]')).toBeHidden();
-  await expect(third.locator('[data-hep-set-load]')).toBeDisabled();
-  for (let index = 3; index < 8; index += 1) await session(page).locator('[data-hep-add-set]').click();
-  await expect(sets(page)).toHaveCount(8);
-  await expect(session(page).locator('[data-hep-add-set]')).toBeDisabled();
-  for (let index = 8; index > 3; index -= 1) await sets(page).last().locator('[data-hep-remove-set]').click();
-  await expect(sets(page)).toHaveCount(3);
-  await expect(session(page).locator('[data-hep-add-set]')).toBeEnabled();
-  await finishFrom(page);
-  await save(page);
-  const [record] = (await readStore(page)).records;
-  expect(record.workout[0].sets).toEqual([
-    { amount: 12, holdSeconds: 5, load: 10, unit: 'lb', resistance: '', note: 'Left side' },
-    { ...blankRecordedSet(), amount: 10, load: 4.5, unit: 'kg' },
-    { ...blankRecordedSet(), amount: 8, unit: 'band', resistance: 'Light blue band' },
-  ]);
-  await session(page).locator('.hep-workout-record > summary').click();
-  await expect(session(page).locator('.hep-workout-record-exercise').first()).toContainText('Reps: 12 · 5-second holds · 10 lb · Left side');
-  await expect(session(page).locator('.hep-workout-record-exercise').first()).toContainText('Reps: 10 · 4.5 kg');
-  await expect(session(page).locator('.hep-workout-record-exercise').first()).toContainText('Reps: 8 · Band: Light blue band');
-});
-
-for (const { slug, index, measure, amount } of [
-  { slug: 'achilles-tendinopathy-exercises', index: 0, measure: 'seconds', amount: '30' },
-  { slug: 'low-back-pain-exercises', index: 0, measure: 'minutes', amount: '12.5' },
-  { slug: 'advanced-meniscus-rehabilitation-exercises', index: 1, measure: 'contacts', amount: '24' },
-]) {
-  test(`${measure}: actual amounts follow reviewed guided metadata and exclude inapplicable hold/resistance fields`, async ({ context, page, baseURL }) => {
-    const program = programFor(slug);
-    await localOnly(context, baseURL);
-    await visit(page, program);
-    const payload = JSON.parse(await page.locator('#hep-session-data').textContent());
-    expect(payload.exercises).toEqual(guidedExercises(program));
-    expect(payload.workoutOptions).toEqual(guidedOptions(program));
-    await session(page).locator('[data-hep-storage]').check();
-    await start(page);
-    for (let current = 0; current < index; current += 1) await session(page).locator('[data-hep-skip]').click();
-    await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(guidedExercises(program)[index].name);
-    await expect(session(page).locator('[data-hep-exercise] dl dd')).toHaveText([guidedExercises(program)[index].dose, guidedExercises(program)[index].frequency]);
-    await sets(page).first().getByLabel(guidedOptions(program)[index].label, { exact: true }).fill(amount);
-    await expect(sets(page).locator('[data-hep-set-holdSeconds], [data-hep-set-unit], [data-hep-set-load]')).toHaveCount(0);
-    await session(page).locator('[data-hep-done]').click();
-    await finishFrom(page, program, index + 1, 'skip');
-    await save(page);
-    const [record] = (await readStore(page, program)).records;
-    expect(record).toMatchObject({ completed: 1, skipped: program.exercises.length - 1 });
-    expect(record.workout[index]).toEqual({ status: 'done', measure, label: guidedOptions(program)[index].label, sets: [{ ...blankRecordedSet(), amount: Number(amount) }] });
-  });
-}
-
-test('an invalid hidden hold cannot be bypassed by changing mode or marking done', async ({ context, page, baseURL }) => {
-  await localOnly(context, baseURL);
-  await visit(page);
-  await start(page);
-  const extra = sets(page).first().locator('details');
-  await extra.locator('summary').click();
-  await sets(page).first().locator('[data-hep-set-holdSeconds]').fill('3601');
-  await extra.locator('summary').click();
-  await session(page).locator('[data-hep-workout-toggle]').click();
-  await expect(session(page).locator('[data-hep-workout]')).toBeVisible();
-  await expect(extra).toHaveJSProperty('open', true);
-  await session(page).locator('[data-hep-done]').click();
-  await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[0].name);
-  await session(page).locator('[data-hep-skip]').click();
-  await session(page).locator('[data-hep-workout-toggle]').click();
-  await session(page).locator('[data-hep-back]').click();
-  await expect(session(page).locator('[data-hep-workout]')).toHaveCount(0);
-  await session(page).locator('[data-hep-done]').click();
-  await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[0].name);
-  await expect(session(page).locator('[data-hep-workout]')).toBeVisible();
-  await expect(sets(page).first().locator('details')).toHaveJSProperty('open', true);
-  await sets(page).first().locator('[data-hep-set-holdSeconds]').fill('8');
-  await session(page).locator('[data-hep-workout-toggle]').click();
-  await expect(session(page).locator('[data-hep-workout]')).toHaveCount(0);
-  await finishFrom(page);
-  await save(page);
-  await session(page).locator('.hep-workout-record > summary').click();
-  await expect(session(page).locator('.hep-workout-record-exercise').first()).toContainText('Timed variation: 8 seconds');
-});
-
-test('a completed exercise edited to an invalid value resumes at that exercise and saves only after correction', async ({ context, page, baseURL }) => {
-  await localOnly(context, baseURL);
-  await visit(page);
-  await session(page).locator('[data-hep-storage]').check();
-  await start(page);
-  await finishFrom(page);
-  await session(page).locator('[data-hep-back]').click();
-  await sets(page).first().locator('[data-hep-set-amount]').fill('10001');
-  await session(page).locator('[data-hep-log]').click();
-  await session(page).locator('[data-hep-resume]').click();
-  await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(knee.exercises.at(-1).name);
-  await expect(sets(page).first().locator('[data-hep-set-amount]')).toHaveValue('10001');
-  await session(page).locator('[data-hep-done]').click();
-  await expect(sets(page).first().locator('[data-hep-set-amount]')).toBeFocused();
-  await expect(session(page).locator('[data-hep-save]')).toHaveCount(0);
-  expect((await readStore(page)).records).toHaveLength(0);
-  await sets(page).first().locator('[data-hep-set-amount]').fill('12');
-  await session(page).locator('[data-hep-done]').click();
-  await save(page, 'Corrected completed exercise');
-  const [record] = (await readStore(page)).records;
-  expect(record).toMatchObject({ completed: knee.exercises.length, skipped: 0 });
-  expect(record.workout.at(-1).sets).toEqual([{ ...blankRecordedSet(), amount: 12 }]);
-});
-
-test('final save revalidates earlier completed sets and focuses an invalid hidden field while retaining review entries', async ({ context, page, baseURL }) => {
-  await localOnly(context, baseURL);
-  await visit(page);
-  await session(page).locator('[data-hep-storage]').check();
-  await start(page);
-  await sets(page).first().locator('summary').click();
-  await sets(page).first().locator('[data-hep-set-holdSeconds]').fill('5');
-  // Retain the real input to model a late draft update after per-exercise validation.
-  await page.evaluate(() => { window.__lateWorkoutInput = document.querySelector('[data-hep-set-holdSeconds]'); });
-  await finishFrom(page);
-  await session(page).getByLabel('Session date', { exact: true }).fill('2026-10-07');
-  await session(page).getByLabel('Activity goal (optional)', { exact: true }).fill('Keep this review goal');
-  await session(page).getByLabel('Notes (optional)', { exact: true }).fill('Keep this review note');
-  await session(page).getByLabel('Next-morning response', { exact: true }).selectOption('baseline');
-  await page.evaluate(() => {
-    window.__lateWorkoutInput.value = '3601';
-    window.__lateWorkoutInput.dispatchEvent(new Event('input', { bubbles: true }));
-    delete window.__lateWorkoutInput;
-  });
-  await session(page).locator('[data-hep-save]').click();
-  await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[0].name);
-  await expect(sets(page).first().locator('details')).toHaveJSProperty('open', true);
-  await expect(sets(page).first().locator('[data-hep-set-holdSeconds]')).toBeFocused();
-  await expect(session(page).locator('[data-hep-status]')).toContainText(`Check the recorded set values for ${knee.exercises[0].name}`);
-  expect((await readStore(page)).records).toHaveLength(0);
-  await sets(page).first().locator('[data-hep-set-holdSeconds]').fill('5');
-  await finishFrom(page);
-  await expect(session(page).getByLabel('Session date', { exact: true })).toHaveValue('2026-10-07');
-  await expect(session(page).getByLabel('Activity goal (optional)', { exact: true })).toHaveValue('Keep this review goal');
-  await expect(session(page).getByLabel('Notes (optional)', { exact: true })).toHaveValue('Keep this review note');
-  await expect(session(page).getByLabel('Next-morning response', { exact: true })).toHaveValue('baseline');
-  await session(page).locator('[data-hep-save]').click();
-  await expect(session(page).locator('[data-hep-entry]')).toHaveCount(1);
-  expect((await readStore(page)).records[0].workout[0].sets).toEqual([{ ...blankRecordedSet(), holdSeconds: 5 }]);
-});
-
-test('a timed carry records time-only details in review, restored history, and the follow-up summary', async ({ context, page, baseURL }) => {
-  const program = programFor('low-back-pain-exercises');
-  const index = program.exercises.length - 1;
-  await localOnly(context, baseURL);
-  await visit(page, program);
-  await session(page).locator('[data-hep-storage]').check();
-  await start(page);
-  for (let current = 0; current < index; current += 1) await session(page).locator('[data-hep-skip]').click();
-  await sets(page).first().locator('summary').click();
-  await expect(sets(page).first()).toContainText('leave the rep count blank, enter seconds, and name the variation below');
-  await sets(page).first().getByLabel('Hold / timed variation (seconds, optional)', { exact: true }).fill('30');
-  await sets(page).first().getByLabel('Side or variation (optional)', { exact: true }).fill('Carry');
-  await session(page).locator('[data-hep-done]').click();
-  const preview = session(page).locator('[data-hep-review-workout] details');
-  await expect(preview).toHaveJSProperty('open', false);
-  await preview.locator('summary').click();
-  await expect(preview.locator('.hep-workout-record-exercise').last()).toContainText('Timed variation: 30 seconds · Carry');
-  await save(page);
-  const [record] = (await readStore(page, program)).records;
-  expect(record.workout[index].sets).toEqual([{ ...blankRecordedSet(), holdSeconds: 30, note: 'Carry' }]);
-  await page.reload();
-  await session(page).locator('[data-hep-log]').click();
-  await session(page).locator('.hep-workout-record > summary').click();
-  await expect(session(page).locator('.hep-workout-record-exercise').last()).toContainText('Timed variation: 30 seconds · Carry');
-  await page.evaluate(() => { window.print = () => { window.__timedSummary = document.querySelector('.hep-summary-printout').textContent; }; });
+  expect(record.setCounts).toEqual([2, 0, 0, 0, 0]);
+  expect(record.workout).toBeUndefined();
+  await expect(session(page).locator('[data-hep-entry]')).toContainText(`Sets: ${knee.exercises[0].name} 2`);
+  await page.evaluate(() => { window.print = () => { window.__setSummary = document.querySelector('.hep-summary-printout').textContent; }; });
   await session(page).locator('[data-hep-print-summary]').click();
-  expect(await page.evaluate(() => window.__timedSummary)).toContain('Timed variation: 30 seconds · Carry');
+  expect(await page.evaluate(() => window.__setSummary)).toContain(`Sets: ${knee.exercises[0].name} 2`);
   await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
 });
 
-test('legacy v1 records and workout records restore together; response edits preserve sets and previous sets remain a blank-field reference', async ({ context, page, baseURL }) => {
+test('weight or band boxes appear only when turned on and only for exercises that use resistance', async ({ context, page, baseURL }) => {
   await localOnly(context, baseURL);
-  await seed(context, [legacyRecord('legacy-simple')]);
   await visit(page);
-  await expect(session(page).locator('[data-hep-storage]')).toBeChecked();
   await start(page);
-  await expect(session(page).locator('[data-hep-previous-sets]')).toHaveCount(0);
-  await sets(page).first().locator('[data-hep-set-amount]').fill('7');
-  await sets(page).first().locator('[data-hep-set-unit]').selectOption('kg');
-  await sets(page).first().locator('[data-hep-set-load]').fill('5');
-  await finishFrom(page);
-  await save(page, 'New workout');
+  const view = focusView(page);
+  await expect(view.locator('[data-hep-load]')).toHaveCount(0);
+  await recordLoads(page);
+  await expect(view.locator('[data-hep-record-load]')).toBeFocused();
+  await view.locator('[data-hep-load]').fill('10 lb');
+  await view.locator('[data-hep-done]').click();
+  await view.locator('[data-hep-load]').fill('SKIPPED_BAND_PRIVATE_DRAFT');
+  await view.locator('[data-hep-skip]').click();
+  await view.locator('[data-hep-back]').click();
+  await expect(view.locator('[data-hep-load]')).toHaveValue('SKIPPED_BAND_PRIVATE_DRAFT');
+  await view.locator('[data-hep-back]').click();
+  await expect(view.locator('[data-hep-load]')).toHaveValue('10 lb');
+  await view.locator('[data-hep-done]').click();
+  await view.locator('[data-hep-skip]').click();
+  await view.locator('[data-hep-done]').click();
+  await view.locator('[data-hep-done]').click();
+  expect(guidedOptions(knee)[4].resistance).toBe(false);
+  await expect(view.locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[4].name);
+  await expect(view.locator('[data-hep-load]')).toHaveCount(0);
+  await view.locator('[data-hep-done]').click();
+  await save(page, 'LOAD_SESSION');
+  const [record] = (await readStore(page)).records;
+  expect(record.workout[0].sets).toEqual([{ ...blankRecordedSet(), unit: 'other', resistance: '10 lb' }]);
+  expect(record.workout[1]).toEqual({ status: 'skipped', measure: 'reps', label: 'Reps per side', sets: [] });
+  expect(record.workout[2].sets).toEqual([]);
+  expect(JSON.stringify(record)).not.toContain('SKIPPED_BAND_PRIVATE_DRAFT');
+  await session(page).locator('.hep-workout-record > summary').click();
+  await expect(session(page).locator('.hep-workout-record-exercise').first()).toContainText('Resistance: 10 lb');
+  // The setting stays on for later sessions during this visit.
+  await start(page);
+  await expect(view.locator('[data-hep-previous-sets]')).toContainText(/^Last recorded .+: Resistance: 10 lb$/);
+  await expect(view.locator('[data-hep-load]')).toHaveValue('');
+});
+
+test('legacy v1 records and earlier workout records restore together; response edits preserve sets', async ({ context, page, baseURL }) => {
+  await localOnly(context, baseURL);
+  await seed(context, [legacyRecord('legacy-simple'), recordedWorkout('legacy-workout', 'LEGACY_SET_NOTE', 50)]);
+  await visit(page);
+  await openLog(page);
+  await expect(session(page).locator('[data-hep-storage]')).toBeChecked();
+  await expect(session(page).locator('[data-hep-entry]')).toHaveCount(2);
   const before = await readStore(page);
-  expect(before.version).toBe(1);
-  expect(before.records).toHaveLength(2);
   const originalWorkout = before.records.find(record => record.workout).workout;
-  expect(before.records.find(record => record.id === 'legacy-simple')).not.toHaveProperty('workout');
-  await session(page).locator('[data-hep-entry]').filter({ hasText: 'New workout' }).locator('[data-hep-next-response]').selectOption('baseline');
+  await session(page).locator('[data-hep-entry="legacy-workout"] .hep-workout-record > summary').click();
+  await expect(session(page).locator('[data-hep-entry="legacy-workout"]')).toContainText('7 reps · 5 kg · LEGACY_SET_NOTE');
+  await session(page).locator('[data-hep-entry="legacy-workout"] [data-hep-next-response]').selectOption('baseline');
   await session(page).locator('[data-hep-entry="legacy-simple"] [data-hep-next-response]').selectOption('more-symptomatic');
   await page.reload();
-  await session(page).locator('[data-hep-log]').click();
-  await expect(session(page).locator('[data-hep-entry]')).toHaveCount(2);
+  await openLog(page);
   await expect(session(page).locator('[data-hep-entry="legacy-simple"] [data-hep-next-response]')).toHaveValue('more-symptomatic');
-  await expect(session(page).locator('[data-hep-entry]').filter({ hasText: 'New workout' }).locator('[data-hep-next-response]')).toHaveValue('baseline');
+  await expect(session(page).locator('[data-hep-entry="legacy-workout"] [data-hep-next-response]')).toHaveValue('baseline');
   const restored = await readStore(page);
   expect(restored.records.find(record => record.workout).workout).toEqual(originalWorkout);
   await start(page);
-  await expect(session(page).locator('[data-hep-previous-sets]')).toContainText('Reps: 7 · 5 kg');
-  await expect(sets(page).first().locator('[data-hep-set-amount]')).toHaveValue('');
-  await expect(sets(page).first().locator('[data-hep-set-unit]')).toHaveValue('none');
-  await expect(sets(page).first().locator('[data-hep-set-load]')).toHaveValue('');
+  await recordLoads(page);
+  await expect(focusView(page).locator('[data-hep-previous-sets]')).toContainText('7 reps · 5 kg · LEGACY_SET_NOTE');
+  await expect(focusView(page).locator('[data-hep-load]')).toHaveValue('');
 });
 
 test('summary prints the latest six sessions and takes set details from the newest workout with a recorded set', async ({ context, page, baseURL }) => {
@@ -377,7 +225,7 @@ test('summary prints the latest six sessions and takes set details from the newe
   ];
   await seed(context, records);
   await visit(page);
-  await session(page).locator('[data-hep-log]').click();
+  await openLog(page);
   await page.evaluate(() => {
     window.print = () => {
       const summary = document.querySelector('.hep-summary-printout');
@@ -405,57 +253,83 @@ test('summary prints the latest six sessions and takes set details from the newe
   await expect(session(page).locator('[data-hep-print-summary]')).toBeEnabled();
 });
 
-test('clear keeps drafts and exercise decisions in both tabs and lets the peer timer keep running', async ({ context, page, baseURL }) => {
+async function clockVisit(context, page, baseURL, program = knee) {
+  await localOnly(context, baseURL);
+  await page.clock.install({ time: new Date('2026-10-08T12:00:00Z') });
+  await visit(page, program);
+  await page.clock.pauseAt(new Date('2026-10-08T12:01:00Z'));
+  await start(page);
+}
+
+test('clear keeps decisions, tapped sets, and typed weights in both tabs', async ({ context, page, baseURL }) => {
   await localOnly(context, baseURL);
   await seed(context, [recordedWorkout('saved-workout', 'CLEARED_SET_REFERENCE')]);
   await visit(page);
   await start(page);
-  await sets(page).first().locator('[data-hep-set-amount]').fill('12');
-  await session(page).locator('[data-hep-done]').click();
-  await sets(page).first().locator('[data-hep-set-amount]').fill('8');
-  await session(page).locator('[data-hep-skip]').click();
+  await focusView(page).locator('[data-hep-set-count="2"]').click();
+  await focusView(page).locator('[data-hep-done]').click();
+  await focusView(page).locator('[data-hep-skip]').click();
+  await page.keyboard.press('Escape');
 
   const peer = await context.newPage();
-  await clockVisit(context, peer, baseURL);
-  await expect(session(peer).locator('[data-hep-previous-sets]')).toContainText('CLEARED_SET_REFERENCE');
-  await sets(peer).first().locator('[data-hep-set-amount]').fill('9');
-  await timer(peer).locator('[data-hep-timer-duration]').fill('20');
-  await timer(peer).locator('[data-hep-timer-start]').click();
+  await visit(peer);
+  await start(peer);
+  await recordLoads(peer);
+  await expect(focusView(peer).locator('[data-hep-previous-sets]')).toContainText('CLEARED_SET_REFERENCE');
+  await focusView(peer).locator('[data-hep-load]').fill('9 lb');
 
-  await session(page).locator('[data-hep-log]').click();
+  await openLog(page);
   await session(page).locator('[data-hep-clear]').click();
   await session(page).locator('[data-hep-confirm-clear]').click();
-  await expect(session(peer).locator('[data-hep-storage]')).not.toBeChecked();
-  await expect(session(peer).locator('[data-hep-previous-sets]')).toHaveCount(0);
-  await expect(sets(peer).first().locator('[data-hep-set-amount]')).toHaveValue('9');
-  await peer.clock.runFor(3000);
-  await expect(timer(peer).locator('[data-hep-timer-clock]')).toHaveText('00:17');
+  await expect(focusView(peer).locator('[data-hep-previous-sets]')).toHaveCount(0);
+  await expect(focusView(peer).locator('[data-hep-load]')).toHaveValue('9 lb');
 
   await session(page).locator('[data-hep-resume]').click();
-  await expect(session(page).locator('progress')).toHaveJSProperty('value', 2);
-  await session(page).locator('[data-hep-back]').click();
-  await expect(session(page).locator('[data-hep-exercise]')).toContainText('Previously marked skipped');
-  await expect(sets(page).first().locator('[data-hep-set-amount]')).toHaveValue('8');
-  await session(page).locator('[data-hep-back]').click();
-  await expect(session(page).locator('[data-hep-exercise]')).toContainText('Previously marked done');
-  await expect(sets(page).first().locator('[data-hep-set-amount]')).toHaveValue('12');
+  await expect(focusView(page).getByRole('progressbar')).toHaveJSProperty('value', 2);
+  await focusView(page).locator('[data-hep-back]').click();
+  await expect(focusView(page).locator('[data-hep-exercise]')).toContainText('Previously marked skipped');
+  await focusView(page).locator('[data-hep-back]').click();
+  await expect(focusView(page).locator('[data-hep-exercise]')).toContainText('Previously marked done');
+  await expect(focusView(page).locator('[data-hep-set-count="2"]')).toHaveAttribute('aria-pressed', 'true');
 });
 
-test('workout fields stay in the open tab with saving off and never enter production analytics, links, or network requests', async ({ context, page }) => {
+test('a running timer survives a clear in another tab', async ({ context, page, baseURL }) => {
+  await localOnly(context, baseURL);
+  await seed(context, [legacyRecord('saved-entry')]);
+  await visit(page);
+  await openLog(page);
+  const peer = await context.newPage();
+  await clockVisit(context, peer, baseURL);
+  for (let index = 0; index < knee.exercises.length - 1; index += 1) await focusView(peer).locator('[data-hep-done]').click();
+  await timer(peer).getByRole('button', { name: 'Activity 5 min', exact: true }).click();
+  await session(page).locator('[data-hep-clear]').click();
+  await session(page).locator('[data-hep-confirm-clear]').click();
+  await expect(session(page).locator('[data-hep-entry]')).toHaveCount(0);
+  await peer.clock.runFor(3000);
+  await expect(timer(peer).getByRole('timer')).toHaveText('04:57');
+});
+
+test('weight, band, and notes never enter production analytics, links, or network requests', async ({ context, page }) => {
   const { origin, requests } = await offlineProduction(context);
-  const privateValues = ['PRIVATE_WORKOUT_BAND_481', 'PRIVATE_WORKOUT_SIDE_792', 'PRIVATE_WORKOUT_SESSION_153'];
+  const privateValues = ['PRIVATE_WORKOUT_BAND_481', 'PRIVATE_WORKOUT_SESSION_153'];
   await visit(page, knee, origin);
   await page.waitForLoadState('networkidle');
   const initialRequests = requests.length;
-  await expect(session(page).locator('[data-hep-storage]')).not.toBeChecked();
   await start(page);
-  await sets(page).first().locator('[data-hep-set-amount]').fill('17');
-  await sets(page).first().locator('[data-hep-set-unit]').selectOption('band');
-  await sets(page).first().locator('[data-hep-set-resistance]').fill(privateValues[0]);
-  await sets(page).first().locator('summary').click();
-  await sets(page).first().locator('[data-hep-set-note]').fill(privateValues[1]);
+  await recordLoads(page);
+  await focusView(page).locator('[data-hep-set-count="1"]').click();
+  await focusView(page).locator('[data-hep-load]').fill(privateValues[0]);
   await finishFrom(page);
-  await save(page, privateValues[2]);
+  const logDetails = focusView(page).locator('.hep-session-log-details');
+  await logDetails.locator('summary').click();
+  await focusView(page).getByLabel('Notes (optional)', { exact: true }).fill(privateValues[1]);
+  await focusView(page).locator('[data-hep-finish]').click();
+  expect(await page.evaluate(key => localStorage.getItem(key), storageKey(knee.slug))).toBeNull();
+  await start(page);
+  await recordLoads(page);
+  await focusView(page).locator('[data-hep-load]').fill(privateValues[0]);
+  await finishFrom(page);
+  await save(page, privateValues[1]);
   await session(page).locator('.hep-workout-record > summary').click();
   for (const value of privateValues) await expect(session(page).locator('[data-hep-entry]')).toContainText(value);
   await page.evaluate(() => { window.print = () => {}; });
@@ -465,32 +339,18 @@ test('workout fields stay in the open tab with saving off and never enter produc
   expect(events).toEqual([{ name: 'page_view', metadata: { page: `/${knee.slug}/`, cta_location: 'page' } }]);
   expect(requests).toHaveLength(initialRequests);
   expect(requests.every(request => request.method === 'GET' && request.body === null)).toBe(true);
-  expect(await page.evaluate(key => localStorage.getItem(key), storageKey(knee.slug))).toBeNull();
   const destinations = await page.locator('a[href]').evaluateAll(links => links.map(link => link.href));
-  const storage = await page.evaluate(() => ({ local: Object.entries(localStorage), session: Object.entries(sessionStorage) }));
   for (const value of privateValues) {
-    for (const output of [requests, events, destinations, storage]) expect(JSON.stringify(output)).not.toContain(value);
+    for (const output of [requests, events, destinations]) expect(JSON.stringify(output)).not.toContain(value);
     expect(page.url()).not.toContain(value);
   }
-  await page.reload();
-  await session(page).locator('[data-hep-log]').click();
-  await expect(session(page).locator('[data-hep-entry]')).toHaveCount(0);
 });
 
-async function clockVisit(context, page, baseURL) {
-  await localOnly(context, baseURL);
-  await page.clock.install({ time: new Date('2026-10-08T12:00:00Z') });
-  await visit(page);
-  await page.clock.pauseAt(new Date('2026-10-08T12:01:00Z'));
-  await start(page);
-}
-
-test('wall-sit hold and rest timers work on the written card and in a simple session without logging', async ({ context, page, baseURL }) => {
+test('wall-sit hold and rest timers work on the written card and in a session without logging', async ({ context, page, baseURL }) => {
   await localOnly(context, baseURL);
   await page.setViewportSize({ width: 375, height: 812 });
   await page.clock.install({ time: new Date('2026-11-17T12:00:00Z') });
-  const program = programFor('patellar-tendinopathy-exercises');
-  await visit(page, program);
+  await visit(page, patellar);
   await page.clock.pauseAt(new Date('2026-11-17T12:01:00Z'));
   const written = page.locator('.exercise-instructions + [data-hep-card-timer]').first();
   const labels = ['Hold 30 sec', 'Hold 45 sec', 'Rest 1 min', 'Rest 2 min'];
@@ -505,107 +365,99 @@ test('wall-sit hold and rest timers work on the written card and in a simple ses
   await expect(hold).toBeFocused();
   await written.getByRole('button', { name: 'Rest 2 min' }).click();
   await expect(written.getByRole('timer')).toHaveText('02:00');
-  await start(page, false);
+  await start(page);
   await expect(timer(page).locator('[data-hep-timer-preset]')).toHaveText(labels);
   await timer(page).getByRole('button', { name: 'Hold 45 sec' }).click();
   await expect(written.getByRole('timer')).toHaveCount(0);
   await expect(timer(page).getByRole('timer')).toHaveText('00:45');
   await page.clock.fastForward(45000);
-  await expect(session(page).locator('progress')).toHaveJSProperty('value', 0);
-  await expect(session(page).locator('[data-hep-workout]')).toHaveCount(0);
+  await expect(timer(page).getByRole('status')).toContainText('Hold 45 sec timer finished');
+  await expect(focusView(page).getByRole('progressbar')).toHaveJSProperty('value', 0);
   await timer(page).getByRole('button', { name: 'Rest 1 min' }).click();
   await expect(timer(page).getByRole('timer')).toHaveText('01:00');
-  await session(page).locator('[data-hep-skip]').click();
+  await focusView(page).locator('[data-hep-skip]').click();
   await expect(timer(page)).toHaveCount(0);
-  expect(await readStore(page, program)).toBeNull();
+  expect(await readStore(page, patellar)).toBeNull();
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
+  await page.keyboard.press('Escape');
   await page.clock.resume();
-  const audit = await new AxeBuilder({ page }).include('[data-hep-card-timer]').withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+  const audit = await new AxeBuilder({ page }).include('[data-hep-card-timer]').withTags(wcag).analyze();
   expect(audit.violations).toEqual([]);
   await page.emulateMedia({ media: 'print' });
   await expect(written).toBeHidden();
 });
 
-test('a user-entered timer pauses, extends, resumes, cancels, and finishes without marking or advancing an exercise', async ({ context, page, baseURL }) => {
-  await clockVisit(context, page, baseURL);
-  await expect(timer(page).locator('[data-hep-timer-duration]')).toHaveValue('');
-  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:00');
-  await expect(timer(page).locator('[data-hep-timer-pause]')).toBeDisabled();
-  await timer(page).locator('[data-hep-timer-start]').click();
-  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:00');
-  await timer(page).getByLabel('Timer', { exact: true }).selectOption('hold');
-  await timer(page).locator('[data-hep-timer-duration]').fill('20');
-  await timer(page).locator('[data-hep-timer-start]').click();
+test('a session timer pauses, resumes, cancels, and finishes without marking or advancing an exercise', async ({ context, page, baseURL }) => {
+  await clockVisit(context, page, baseURL, patellar);
+  const clock = timer(page).locator('[data-hep-timer-clock]');
+  const status = timer(page).getByRole('status');
+  await expect(clock).toBeHidden();
+  await timer(page).getByRole('button', { name: 'Hold 30 sec', exact: true }).click();
   await page.clock.runFor(3000);
   await timer(page).locator('[data-hep-timer-pause]').click();
-  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:17');
+  await expect(clock).toHaveText('00:27');
+  await expect(timer(page).locator('[data-hep-timer-preset]').first()).toBeDisabled();
   await page.clock.fastForward(60000);
-  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:17');
-  await timer(page).locator('[data-hep-timer-extend]').click();
-  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:32');
+  await expect(clock).toHaveText('00:27');
   await timer(page).getByRole('button', { name: 'Resume', exact: true }).click();
-  await page.clock.fastForward(32000);
-  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:00');
-  await expect(session(page).locator('[data-hep-status]')).toContainText('Timer finished');
-  await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[0].name);
-  await expect(session(page).locator('progress')).toHaveJSProperty('value', 0);
-  await timer(page).locator('[data-hep-timer-start]').click();
-  await timer(page).locator('[data-hep-timer-extend]').click();
-  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:35');
+  await page.clock.fastForward(27000);
+  await expect(clock).toBeHidden();
+  await expect(status).toHaveText('Hold 30 sec timer finished.');
+  await expect(focusView(page).locator('[data-hep-exercise-title]')).toHaveText(patellar.exercises[0].name);
+  await expect(focusView(page).getByRole('progressbar')).toHaveJSProperty('value', 0);
+  await timer(page).getByRole('button', { name: 'Rest 1 min', exact: true }).click();
+  await expect(clock).toHaveText('01:00');
   await timer(page).locator('[data-hep-timer-cancel]').click();
-  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:00');
-  await expect(timer(page).locator('[data-hep-timer-start]')).toBeEnabled();
+  await expect(clock).toBeHidden();
+  await expect(timer(page).locator('[data-hep-timer-preset]').first()).toBeEnabled();
   await page.clock.fastForward(60000);
-  await expect(session(page).locator('[data-hep-status]')).toContainText('Timer cancelled');
+  await expect(status).toHaveText('Timer cancelled.');
 });
 
 test('pausing between countdown updates immediately displays the remaining time', async ({ context, page, baseURL }) => {
-  await clockVisit(context, page, baseURL);
-  await timer(page).locator('[data-hep-timer-duration]').fill('20');
-  await timer(page).locator('[data-hep-timer-start]').click();
+  await clockVisit(context, page, baseURL, patellar);
+  const clock = timer(page).locator('[data-hep-timer-clock]');
+  await timer(page).getByRole('button', { name: 'Hold 30 sec', exact: true }).click();
   const startedAt = await page.evaluate(() => Date.now());
   // Change wall time while interval callbacks remain paused.
   await page.clock.setSystemTime(new Date(startedAt + 1050));
-  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:20');
+  await expect(clock).toHaveText('00:30');
   await timer(page).locator('[data-hep-timer-pause]').click();
-  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:19');
+  await expect(clock).toHaveText('00:29');
   await expect(timer(page).getByRole('button', { name: 'Resume', exact: true })).toBeEnabled();
   await page.clock.setSystemTime(new Date(startedAt + 11050));
   await timer(page).getByRole('button', { name: 'Resume', exact: true }).click();
-  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:19');
+  await expect(clock).toHaveText('00:29');
   await page.clock.runFor(1000);
-  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:18');
-  await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[0].name);
-  await expect(session(page).locator('progress')).toHaveJSProperty('value', 0);
+  await expect(clock).toHaveText('00:28');
+  await expect(focusView(page).locator('[data-hep-exercise-title]')).toHaveText(patellar.exercises[0].name);
+  await expect(focusView(page).getByRole('progressbar')).toHaveJSProperty('value', 0);
 });
 
 test('pausing just after expiry before an interval callback finishes the timer and enables a fresh timer', async ({ context, page, baseURL }) => {
-  await clockVisit(context, page, baseURL);
-  await timer(page).locator('[data-hep-timer-duration]').fill('1');
-  await timer(page).locator('[data-hep-timer-start]').click();
+  await clockVisit(context, page, baseURL, meniscus);
+  const clock = timer(page).locator('[data-hep-timer-clock]');
+  const preset = timer(page).getByRole('button', { name: 'Hold 5 sec', exact: true });
+  await preset.click();
   const startedAt = await page.evaluate(() => Date.now());
-  await page.clock.setSystemTime(new Date(startedAt + 1001));
-  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:01');
+  await page.clock.setSystemTime(new Date(startedAt + 5001));
+  await expect(clock).toHaveText('00:05');
   await timer(page).locator('[data-hep-timer-pause]').click();
-  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:00');
-  await expect(session(page).locator('[data-hep-status]')).toContainText('Timer finished');
-  for (const control of ['pause', 'extend', 'cancel']) {
+  await expect(clock).toBeHidden();
+  await expect(timer(page).getByRole('status')).toHaveText('Hold 5 sec timer finished.');
+  for (const control of ['pause', 'cancel']) {
     await expect(timer(page).locator(`[data-hep-timer-${control}]`)).toBeDisabled();
   }
-  await expect(timer(page).locator('[data-hep-timer-start]')).toBeEnabled();
-  await expect(timer(page).locator('[data-hep-timer-duration]')).toBeEnabled();
-  await expect(timer(page).getByLabel('Timer', { exact: true })).toBeEnabled();
-  await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[0].name);
-  await expect(session(page).locator('progress')).toHaveJSProperty('value', 0);
-  await timer(page).locator('[data-hep-timer-duration]').fill('5');
-  await timer(page).locator('[data-hep-timer-start]').click();
-  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:05');
+  await expect(preset).toBeEnabled();
+  await expect(focusView(page).locator('[data-hep-exercise-title]')).toHaveText(meniscus.exercises[0].name);
+  await expect(focusView(page).getByRole('progressbar')).toHaveJSProperty('value', 0);
+  await preset.click();
+  await expect(clock).toHaveText('00:05');
 });
 
 test('returning from a hidden page uses the wall-clock deadline instead of losing time to delayed ticks', async ({ context, page, baseURL }) => {
-  await clockVisit(context, page, baseURL);
-  await timer(page).locator('[data-hep-timer-duration]').fill('30');
-  await timer(page).locator('[data-hep-timer-start]').click();
+  await clockVisit(context, page, baseURL, patellar);
+  await timer(page).getByRole('button', { name: 'Hold 30 sec', exact: true }).click();
   await page.evaluate(() => {
     Object.defineProperty(document, 'hidden', { configurable: true, value: true });
     document.dispatchEvent(new Event('visibilitychange'));
@@ -617,74 +469,69 @@ test('returning from a hidden page uses the wall-clock deadline instead of losin
     Object.defineProperty(document, 'hidden', { configurable: true, value: false });
     document.dispatchEvent(new Event('visibilitychange'));
   });
-  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:00');
-  await expect(session(page).locator('[data-hep-status]')).toContainText('Timer finished');
-  await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[0].name);
-  await expect(session(page).locator('progress')).toHaveJSProperty('value', 0);
+  await expect(timer(page).locator('[data-hep-timer-clock]')).toBeHidden();
+  await expect(timer(page).getByRole('status')).toHaveText('Hold 30 sec timer finished.');
+  await expect(focusView(page).locator('[data-hep-exercise-title]')).toHaveText(patellar.exercises[0].name);
+  await expect(focusView(page).getByRole('progressbar')).toHaveJSProperty('value', 0);
 });
 
-test('changing exercise, opening history, changing mode, and cached-page navigation cancel a running timer', async ({ context, page, baseURL }) => {
-  await clockVisit(context, page, baseURL);
+test('changing exercise, closing the session, and cached-page navigation cancel a running timer', async ({ context, page, baseURL }) => {
+  await clockVisit(context, page, baseURL, patellar);
   const startTimer = async () => {
-    await timer(page).locator('[data-hep-timer-duration]').fill('30');
-    await timer(page).locator('[data-hep-timer-start]').click();
+    await timer(page).getByRole('button', { name: 'Hold 30 sec', exact: true }).click();
+    await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:30');
   };
   const expectCancelled = async () => {
     await page.clock.fastForward(60000);
-    await expect(session(page).locator('[data-hep-status]')).not.toContainText('Timer finished');
-    if (await timer(page).count()) await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:00');
+    if (await timer(page).count()) {
+      await expect(timer(page).getByRole('status')).not.toContainText('timer finished');
+      await expect(timer(page).locator('[data-hep-timer-clock]')).toBeHidden();
+    }
   };
   await startTimer();
-  await session(page).locator('[data-hep-done]').click();
+  await focusView(page).locator('[data-hep-done]').click();
   await expectCancelled();
+  await focusView(page).locator('[data-hep-back]').click();
   await startTimer();
-  await session(page).locator('[data-hep-log]').click();
-  await expectCancelled();
+  await page.keyboard.press('Escape');
+  await expect(focusView(page)).toBeHidden();
+  await page.clock.fastForward(60000);
   await session(page).locator('[data-hep-resume]').click();
-  await expect(timer(page).locator('[data-hep-timer-duration]')).toHaveValue('');
-  await startTimer();
-  await session(page).locator('[data-hep-workout-toggle]').click();
-  await expectCancelled();
-  await session(page).locator('[data-hep-workout-toggle]').click();
+  await expect(timer(page).locator('[data-hep-timer-clock]')).toBeHidden();
+  await expect(timer(page).getByRole('status')).toHaveText('');
   await startTimer();
   await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pagehide', { persisted: true })));
   await page.clock.fastForward(60000);
-  await expect(session(page).locator('[data-hep-status]')).not.toContainText('Timer finished');
   await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true })));
-  await expect(timer(page).locator('[data-hep-timer-clock]')).toHaveText('00:00');
-  await expect(timer(page).locator('[data-hep-timer-start]')).toBeEnabled();
+  await expect(timer(page).locator('[data-hep-timer-clock]')).toBeHidden();
+  await expect(timer(page).locator('[data-hep-timer-preset]').first()).toBeEnabled();
 });
 
-test('mobile workout fields, review, and expanded recorded details remain keyboard accessible, pass axe, and avoid overflow', async ({ context, page, baseURL }) => {
+test('mobile set circles, weight boxes, finish screen, and recorded details remain keyboard accessible, pass axe, and avoid overflow', async ({ context, page, baseURL }) => {
   await localOnly(context, baseURL);
   await page.setViewportSize({ width: 390, height: 844 });
   await visit(page);
   await page.evaluate(async () => { await document.fonts?.ready; });
   const accessible = async () => {
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
-    const results = await new AxeBuilder({ page }).include('[data-hep-session]').withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+    const results = await new AxeBuilder({ page }).include('[data-hep-session]').withTags(wcag).analyze();
     expect(results.violations, JSON.stringify(results.violations, null, 2)).toEqual([]);
   };
   await accessible();
   await start(page);
-  await expect(session(page).locator('[data-hep-exercise-title]')).toBeFocused();
-  await session(page).locator('.hep-session-detail > summary').focus();
+  await expect(focusView(page).locator('[data-hep-exercise-title]')).toBeFocused();
+  await focusView(page).locator('[data-hep-set-count="1"]').focus();
   await page.keyboard.press('Enter');
-  await sets(page).first().locator('[data-hep-set-amount]').fill('10');
-  await sets(page).first().locator('[data-hep-set-unit]').selectOption('band');
-  await sets(page).first().locator('[data-hep-set-resistance]').fill('Light blue band with a comfortable grip');
-  await sets(page).first().locator('summary').focus();
+  await expect(focusView(page).locator('[data-hep-set-count="1"]')).toHaveAttribute('aria-pressed', 'true');
+  await expect(focusView(page).locator('[data-hep-set-count="1"]')).toBeFocused();
+  await focusView(page).locator('[data-hep-settings]').focus();
   await page.keyboard.press('Enter');
-  await expect(sets(page).first().locator('details')).toHaveJSProperty('open', true);
-  await sets(page).first().locator('[data-hep-set-note]').fill('Left side, supported variation');
-  await session(page).locator('[data-hep-add-set]').click();
-  await expect(sets(page).nth(1).locator('[data-hep-set-amount]')).toBeFocused();
-  await sets(page).nth(1).locator('[data-hep-set-amount]').fill('8');
-  await sets(page).nth(1).locator('[data-hep-set-unit]').selectOption('kg');
-  await sets(page).nth(1).locator('[data-hep-set-load]').fill('4.5');
+  await focusView(page).locator('[data-hep-record-load]').focus();
+  await page.keyboard.press('Space');
+  await focusView(page).locator('[data-hep-load]').fill('Light blue band with a comfortable grip');
   await accessible();
   await finishFrom(page);
-  await expect(session(page).getByRole('heading', { name: 'Session review', exact: true })).toBeFocused();
+  await expect(focusView(page).getByRole('heading', { name: 'Session complete', exact: true })).toBeFocused();
   await accessible();
   await save(page, 'MOBILE_WORKOUT_DETAILS');
   const disclosure = session(page).locator('.hep-workout-record');
@@ -693,7 +540,6 @@ test('mobile workout fields, review, and expanded recorded details remain keyboa
   await disclosure.locator('summary').focus();
   await page.keyboard.press('Enter');
   await expect(disclosure).toHaveJSProperty('open', true);
-  await expect(disclosure).toContainText('Light blue band with a comfortable grip');
-  await expect(disclosure).toContainText('Reps: 8 · 4.5 kg');
+  await expect(disclosure).toContainText('Resistance: Light blue band with a comfortable grip');
   await accessible();
 });

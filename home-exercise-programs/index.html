@@ -33,7 +33,7 @@
 
     <link rel="stylesheet" href="../styles.css?v=20261012-reliability1">
     <noscript><link rel="stylesheet" href="../navigation-nojs.css?v=20261007-audit1"></noscript>
-    <link rel="stylesheet" href="../landing-pages.css?v=20261117-injection-guide1">
+    <link rel="stylesheet" href="../landing-pages.css?v=20261127-compact-library1">
 
     <script type="application/ld+json">
     {
@@ -153,7 +153,7 @@
                         <ul class="authority-list">
                             <li><span class="material-symbols-outlined" aria-hidden="true" data-icon="exercise"></span><span>Four to six exercises with easier and harder options</span></li>
                             <li><span class="material-symbols-outlined" aria-hidden="true" data-icon="traffic"></span><span>When to continue, adjust, or stop</span></li>
-                            <li><span class="material-symbols-outlined" aria-hidden="true" data-icon="fitness_center"></span><span>Optional timers and a workout log</span></li>
+                            <li><span class="material-symbols-outlined" aria-hidden="true" data-icon="fitness_center"></span><span>Guided sessions with set tracking and an optional log</span></li>
                         </ul>
                     </aside>
                 </div>
@@ -184,9 +184,6 @@
                     <section class="content-section" id="programs">
                         <h2>Choose by diagnosis</h2>
                         <p>Look for the condition your clinician identified. If you’re unsure which plan fits, <a href="../locations/#scheduling">ask for an evaluation</a>.</p>
-                        <div class="hep-library-actions">
-                            <a href="../share-program/" class="text-link" title="Copy a program link or print a QR card">Share a program <span class="material-symbols-outlined" aria-hidden="true" data-icon="arrow_forward"></span></a>
-                        </div>
                         <fieldset class="hep-filter-controls" data-program-filter hidden>
                             <legend class="sr-only">Find a program</legend>
                             <div class="hep-search-field" role="search">
@@ -200,14 +197,7 @@
                                     <button type="button" class="btn btn-outline btn-sm" data-program-results-jump aria-controls="program-grid">View matching programs</button>
                                 </div>
                             </div>
-                            <div class="hep-athlete-toggle" id="athlete-programs">
-                                <input type="checkbox" id="hep-athlete-only" value="athlete" data-program-audience-filter>
-                                <label for="hep-athlete-only">
-                                    <span class="material-symbols-outlined" aria-hidden="true" data-icon="sports_basketball"></span>
-                                    <span><strong>Athlete progressions</strong><small>Show 8 programs for running, jumping, cutting, throwing, and return to practice. Begin advanced stages after foundation rehab and follow your clinician’s return-to-sport guidance.</small></span>
-                                </label>
-                            </div>
-                            <p class="hep-filter-label" id="hep-region-filter-label">Or filter by body region</p>
+                            <p class="hep-filter-label" id="hep-region-filter-label">Filter by body area</p>
                             <div class="hep-filter-list" role="radiogroup" aria-labelledby="hep-region-filter-label">
                                 <input type="radio" id="hep-filter-all" name="program-region" value="all" checked>
                                 <label for="hep-filter-all">All <span>28</span></label>
@@ -225,6 +215,13 @@
                                 <label for="hep-filter-hand-wrist">Hand &amp; wrist <span>2</span></label>
                                 <input type="radio" id="hep-filter-back" name="program-region" value="back">
                                 <label for="hep-filter-back">Low back <span>1</span></label>
+                            </div>
+                            <div class="hep-athlete-toggle" id="athlete-programs">
+                                <input type="checkbox" id="hep-athlete-only" value="athlete" data-program-audience-filter>
+                                <label for="hep-athlete-only">
+                                    <span class="material-symbols-outlined" aria-hidden="true" data-icon="sports_basketball"></span>
+                                    <span><strong>Only athlete and return-to-sport programs (8)</strong><small>For running, jumping, cutting, throwing, and return to practice. Begin these after foundation rehab and follow your clinician’s return-to-sport guidance.</small></span>
+                                </label>
                             </div>
                             <p class="hep-filter-status" data-program-filter-status role="status" aria-live="polite" aria-atomic="true">Showing all 28 programs.</p>
                         </fieldset>
@@ -458,6 +455,9 @@
                             <h3>No matching program</h3>
                             <p>Try the diagnosis your clinician gave you, or clear the filters to browse all plans. If you’re unsure what’s causing the pain, <a href="../locations/#scheduling">request an evaluation</a>.</p>
                             <button type="button" class="btn btn-outline" data-program-reset>Show all programs</button>
+                        </div>
+                        <div class="hep-library-actions">
+                            <a href="../share-program/" class="text-link" title="Copy a program link or print a QR card">Share a program <span class="material-symbols-outlined" aria-hidden="true" data-icon="arrow_forward"></span></a>
                         </div>
                         <div class="note-panel"><span class="material-symbols-outlined" aria-hidden="true" data-icon="info"></span><div><h3>The videos are optional and diagnosis-specific</h3><p>When a matching E3 Rehab companion is available, use it for education and visual technique, not as a second program. The written exercise dose, symptom rules, and progression on Dr. Swisher's page remain the plan. A generic video is not substituted when no close match exists.</p></div></div>
                     </section>
