@@ -269,8 +269,10 @@ function initializeGuidedSession(root, program) {
         target.focus({ preventScroll: true });
         const bounds = focusBody.getBoundingClientRect();
         const rect = target.getBoundingClientRect();
-        if (rect.top < bounds.top || rect.bottom > bounds.bottom) {
-            focusBody.scrollTop += rect.top - bounds.top;
+        // Leave room for the focus outline and fractional scroll rounding.
+        const inset = Math.min(8, Math.max(0, (focusBody.clientHeight - rect.height) / 2));
+        if (rect.top < bounds.top + inset || rect.bottom > bounds.bottom - inset) {
+            focusBody.scrollTop += rect.top - bounds.top - inset;
         }
     };
     const focusHeading = heading => {
