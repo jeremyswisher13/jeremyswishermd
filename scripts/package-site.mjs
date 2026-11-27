@@ -10,6 +10,7 @@ const repositoryRoot = resolve(dirname(scriptPath), '..');
 const fixedPublicFiles = [
   'index.html', '404.html', 'CNAME', 'robots.txt', 'sitemap.xml',
   'styles.css', 'landing-pages.css', 'navigation-nojs.css', 'script.js',
+  'court-medicine-home.css', 'court-medicine.css',
   'hep-session.css', 'hep-session.js', 'hep-workout.js',
   'resources/jeremy-swisher-referral-guide.pdf',
   'share-program/share-program.css', 'share-program/share-program.js',

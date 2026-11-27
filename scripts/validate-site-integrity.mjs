@@ -42,6 +42,8 @@ const expectedPrimaryNavigationTargets = [
 const hepProgramFiles = new Set(hepPrograms.map((program) => program.slug + '/index.html'));
 const expectedPrimaryNavigationCurrent = new Map([
     ['sports-injuries/index.html', { index: 0, value: 'location' }],
+    ['basketball-medicine/index.html', { index: 0, value: 'location' }],
+    ['pickleball-medicine/index.html', { index: 0, value: 'location' }],
     ['tendon-pain/index.html', { index: 0, value: 'location' }],
     ['knee-hip-shoulder-pain/index.html', { index: 0, value: 'location' }],
     ['osteoarthritis-care/index.html', { index: 0, value: 'location' }],

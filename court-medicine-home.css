@@ -1,0 +1,90 @@
+.court-heading {
+    margin: 0 0 clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.court-features {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.court-feature {
+    display: block;
+    break-inside: avoid;
+}
+
+.court-feature-photo {
+    position: relative;
+    margin: 0;
+}
+
+.court-feature img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    background: var(--color-bg-alt);
+}
+
+.court-feature-photo figcaption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 0.2rem 0.5rem;
+    background: rgb(16 36 56 / 85%);
+    color: white;
+    font-size: 0.75rem;
+    line-height: 1.4;
+}
+
+.court-feature-caption {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.375rem 1rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.court-feature h3 {
+    color: var(--color-dark);
+    font: 500 clamp(2rem, 3vw, 2.85rem)/1.06 var(--font-display);
+    letter-spacing: -0.03em;
+}
+
+.court-feature .material-symbols-outlined {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    color: var(--color-primary-dark);
+    font-size: 1.125rem;
+}
+
+.court-feature p {
+    grid-column: 1 / -1;
+    color: var(--color-text);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+}
+
+.court-feature:is(:hover, :focus-visible) h3 {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.12em;
+}
+
+.court-feature:is(:hover, :focus-visible) .material-symbols-outlined {
+    background: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    color: white;
+}
+
+@media (max-width: 680px) {
+    .court-features {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
