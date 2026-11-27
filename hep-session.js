@@ -220,7 +220,7 @@ function initializeGuidedSession(root, program) {
     // Only exercises the program marks as using resistance offer the optional box.
     const canRecordLoad = Boolean(program.workoutOptions?.some(option => option.resistance));
     const state = {
-        records: [], goal: '', draftGoal: '', keep: false, storageAvailable: true, hasStoredData: false,
+        records: [], goal: '', draftGoal: null, keep: false, storageAvailable: true, hasStoredData: false,
         generation: undefined, clearRevision: undefined,
         changedIds: new Set(), goalChanged: false, historyNeedsRefresh: false,
         steps: perExercise(null), setCounts: perExercise(0), loads: perExercise(''), shown: perExercise(''),
@@ -436,7 +436,7 @@ function initializeGuidedSession(root, program) {
     function clearProgressInMemory(revision, hasStoredData = false, moveFocus = false) {
         state.records = [];
         state.goal = '';
-        state.draftGoal = '';
+        state.draftGoal = null;
         state.changedIds.clear();
         state.goalChanged = false;
         state.historyNeedsRefresh = false;
@@ -614,6 +614,10 @@ function initializeGuidedSession(root, program) {
         const merged = mergeProgressRecords(state.records, stored.records, state.changedIds);
         state.records = merged;
         if (!state.goalChanged) state.goal = stored.goal;
+        if (!state.savedId && state.draftGoal === null) {
+            const goalInput = focusBody.querySelector('#hep-session-goal');
+            if (goalInput) goalInput.value = state.goal;
+        }
         // A simultaneous addition may have been absent from the other tab's
         // snapshot. Re-read the scoped key before reconciling either record.
         if (JSON.stringify(merged) !== JSON.stringify(stored.records) && !persistProgress()) return;
@@ -740,7 +744,7 @@ function initializeGuidedSession(root, program) {
         state.savedId = null;
         state.settingsOpen = false;
         state.date = localDateString();
-        state.draftGoal = state.goal;
+        state.draftGoal = null;
         state.notes = '';
         state.response = 'not-checked';
         renderExercise(true);
@@ -1073,18 +1077,25 @@ function initializeGuidedSession(root, program) {
         dateField.input.required = true;
         dateField.input.min = '1000-01-01';
         dateField.input.max = '9999-12-31';
-        const goalField = textField('Activity goal (optional)', 'hep-session-goal', 'text', state.draftGoal, 140, value => { state.draftGoal = value; });
+        const savedGoal = state.records.find(record => record.id === state.savedId)?.goal ?? state.goal;
+        const goalField = textField('Activity goal (optional)', 'hep-session-goal', 'text', state.draftGoal ?? savedGoal, 140, value => { state.draftGoal = value; });
         goalField.input.placeholder = 'For example: walk to the park comfortably';
         const notesField = textField('Notes (optional)', 'hep-session-notes', 'textarea', state.notes, 200, value => { state.notes = value; });
         notesField.input.placeholder = 'How it felt, what you changed, or anything to discuss at follow-up';
         details.append(dateField.wrapper, goalField.wrapper, notesField.wrapper);
         return { details, dateInput: dateField.input };
     }
+    function commitDraftGoal() {
+        if (state.draftGoal === null) return;
+        state.goal = state.draftGoal;
+        state.goalChanged = true;
+        state.draftGoal = null;
+    }
     function saveSession(optIn, dateInput, focusTarget = 'saved') {
         const now = Date.now();
         const record = createSessionRecord({
             ...exerciseResults(), id: newRecordId(), date: state.date, response: state.response,
-            notes: state.notes, goal: state.draftGoal, createdAt: now, updatedAt: now
+            notes: state.notes, goal: state.draftGoal ?? state.goal, createdAt: now, updatedAt: now
         }, exerciseCount);
         if (!record) {
             announce('Check the session date and field lengths before saving.');
@@ -1100,8 +1111,7 @@ function initializeGuidedSession(root, program) {
         }
         state.records = [record, ...state.records].slice(0, MAX_RECORDS);
         state.changedIds.add(record.id);
-        state.goal = record.goal;
-        state.goalChanged = true;
+        commitDraftGoal();
         state.savedId = record.id;
         const saved = persistProgress({ explicitOptIn: optIn });
         updateStorageHelp();
@@ -1118,7 +1128,7 @@ function initializeGuidedSession(root, program) {
     function updateSavedEntry(dateInput) {
         const current = state.records.find(record => record.id === state.savedId);
         if (!current) return;
-        const updated = createSessionRecord({ ...current, date: state.date, notes: state.notes, goal: state.draftGoal, updatedAt: Date.now() }, exerciseCount);
+        const updated = createSessionRecord({ ...current, date: state.date, notes: state.notes, goal: state.draftGoal ?? current.goal, updatedAt: Date.now() }, exerciseCount);
         if (!updated) {
             announce('Check the session date and field lengths before updating this entry.');
             dateInput.focus();
@@ -1126,8 +1136,7 @@ function initializeGuidedSession(root, program) {
         }
         Object.assign(current, updated);
         state.changedIds.add(current.id);
-        state.goal = updated.goal;
-        state.goalChanged = true;
+        commitDraftGoal();
         if (persistProgress()) announce(state.keep ? 'Entry updated and saved in this browser.' : `Entry updated. Device saving is off. ${UNSAVED_ENTRIES_HELP}`);
     }
     function savedEntryMessage() {

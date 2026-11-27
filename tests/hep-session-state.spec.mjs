@@ -148,3 +148,20 @@ test('pause and back describe the actual progress after the strength shortcut', 
   await player.locator('[data-hep-back]').click();
   await expect(player.locator('[data-hep-exercise-title]')).toHaveAccessibleDescription('Exercise 3 of 6');
 });
+
+test('a session without a goal edit keeps the new activity goal saved in another tab', async ({ page }) => {
+  await begin(page);
+  await completeKnee(page);
+  const player = view(page);
+  await player.locator('[data-hep-save]').click();
+  const peer = await page.context().newPage();
+  await begin(peer);
+  await player.locator('.hep-session-log-details summary').click();
+  await player.locator('#hep-session-goal').fill('Walk to the park');
+  await player.locator('[data-hep-update-entry]').click();
+  await expect(peer.locator('[data-hep-status]')).toContainText('updated from another tab');
+  await completeKnee(peer);
+  const saved = await store(page);
+  expect(saved.goal).toBe('Walk to the park');
+  expect(saved.records.map(entry => entry.goal)).toEqual(['Walk to the park', 'Walk to the park']);
+});
