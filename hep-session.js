@@ -194,7 +194,6 @@ function newRecordId() {
 function initializeGuidedSession(root, program) {
     const key = progressStorageKey(program.slug);
     const clearKey = `${key}:clear`;
-    const startGuide = document.querySelector('.landing-hero .hep-start-guide');
     const firstStage = document.querySelector('#progress .care-step p')?.textContent;
     const state = {
         records: [], goal: '', keep: false, storageAvailable: true, hasStoredData: false,
@@ -245,7 +244,8 @@ function initializeGuidedSession(root, program) {
     const focusHeading = heading => {
         heading.tabIndex = -1;
         heading.focus({ preventScroll: true });
-        heading.scrollIntoView({ block: 'start', behavior: 'instant' });
+        const scrollTarget = heading.closest('.hep-session-step-header') || heading;
+        scrollTarget.scrollIntoView({ block: 'start', behavior: 'instant' });
     };
     const paragraph = (parent, text, className = '') => parent.append(element('p', className, text));
     const definitionList = pairs => {
@@ -260,16 +260,19 @@ function initializeGuidedSession(root, program) {
 
     const shell = element('div', 'hep-session-shell');
     const header = element('header', 'hep-session-header');
-    paragraph(header, 'YOUR PROGRAM, STEP BY STEP', 'hep-session-eyebrow');
-    const title = element('h2', '', 'Guided session & progress log');
+    const title = element('h2', '', 'Guided session');
     title.id = 'hep-session-title';
     header.append(title);
-    paragraph(header, 'Follow the exercises at your own pace. Record a session if it helps you prepare for follow-up.', 'hep-session-intro');
     root.setAttribute('aria-labelledby', title.id);
     const panel = element('div', 'hep-session-panel');
 
     const safety = element('details', 'hep-session-safety');
-    safety.append(element('summary', '', 'Before you start: program fit & symptom rules'));
+    safety.append(element('summary', '', 'Plan today’s session & check symptoms'));
+    safety.append(element('h3', '', 'Which exercises should I do today?'));
+    paragraph(safety, program.programIntro);
+    const stageLink = element('a', '', 'When to move to the next stage');
+    stageLink.href = '#progress';
+    safety.append(stageLink, element('h3', '', 'Program fit and warning signs'));
     paragraph(safety, program.fitIntro);
     const safetyLink = element('a', '', 'Read the full program fit & safety guidance');
     safetyLink.href = '#fit';
@@ -293,20 +296,24 @@ function initializeGuidedSession(root, program) {
     storageLabel.append(storageCheckbox, element('span', '', 'Keep my progress on this device'));
     const storageHelp = element('p');
     storageHelp.id = 'hep-session-storage-help';
-    storageCheckbox.setAttribute('aria-describedby', storageHelp.id);
-    storage.append(storageLabel, storageHelp);
-    paragraph(storage, DRAFT_PROGRESS_HELP);
-    paragraph(storage, 'Your entries are optional and stay in this browser. Anyone using this browser may see saved entries. Clearing browser data can erase them. Printing or saving a summary does not send it to your doctor.');
+    const sharedDevice = element('p', '', 'Anyone using this browser may see saved entries.');
+    sharedDevice.id = 'hep-session-shared-device';
+    storageCheckbox.setAttribute('aria-describedby', storageHelp.id + ' ' + sharedDevice.id);
+    storage.append(storageLabel, storageHelp, sharedDevice);
+    const storageDetails = element('details', 'hep-session-options');
+    storageDetails.append(element('summary', '', 'What gets saved?'));
+    paragraph(storageDetails, DRAFT_PROGRESS_HELP);
+    paragraph(storageDetails, 'Entries stay in this browser. Clearing browser data can erase them. Printing a summary does not send it to your doctor.');
     const privacyLink = element('a', '', 'Privacy and device storage');
     privacyLink.href = '../privacy/#exercise-progress';
-    storage.append(privacyLink);
+    storageDetails.append(privacyLink);
+    storage.append(storageDetails);
     const status = element('p', 'hep-session-status');
     status.setAttribute('role', 'status');
     status.setAttribute('aria-live', 'polite');
     status.setAttribute('aria-atomic', 'true');
     status.setAttribute('data-hep-status', '');
-    const responseIntro = element('p', 'hep-session-response-intro', program.responseIntro);
-    shell.append(header, panel, responseIntro, safety, storage, status);
+    shell.append(header, panel, safety, storage, status);
     root.replaceChildren(shell);
 
     function announce(message) { status.textContent = message; }
@@ -583,55 +590,58 @@ function initializeGuidedSession(root, program) {
         state.view = 'welcome';
         resetPanel();
         const heading = panelHeading('Your next session');
-        paragraph(panel, program.title);
-        paragraph(panel, program.programIntro);
-        paragraph(panel, 'Use the dose and frequency shown for each exercise. Skip exercises that are not due today, belong to a later stage you have not reached, or that your clinician has asked you to leave out.');
-        panel.append(definitionList([
-            ['Program frequency', program.frequency], ['Equipment', program.equipment],
-            ['Checkpoint', program.checkpoint], ['Program goal', program.goal]
-        ]));
-        sessionMode();
-        paragraph(panel, 'To keep a completed session after leaving this page, add it to the progress log and turn on “Keep my progress on this device.” Sessions in progress are not saved.');
+        paragraph(panel, document.getElementById('page-title')?.textContent.trim() || program.title);
         const actions = element('div', 'hep-session-actions');
         actions.append(button('Start session', startSession, 'data-hep-start'), button('Progress log', () => renderHistory(true), 'data-hep-log', false, true));
-        panel.append(actions);
+        panel.append(actions, definitionList([['How often', program.frequency], ['Equipment', program.equipment]]));
+        sessionMode();
+        const goals = element('details', 'hep-session-options');
+        goals.append(element('summary', '', 'Program goal and checkpoint'),
+            definitionList([['Program goal', program.goal], ['Checkpoint', program.checkpoint]]));
+        panel.append(goals);
         if (moveFocus) focusHeading(heading);
     }
     function renderExercise(moveFocus = false) {
         state.view = 'exercise';
         resetPanel();
         const exercise = program.exercises[state.index];
+        const exerciseCount = program.exercises.length;
+        const { completed, skipped } = counts();
+        const markedCount = completed + skipped;
+        const reviewNext = state.index === exerciseCount - 1 ||
+            (markedCount === exerciseCount - 1 && state.steps[state.index] === null);
         const progressGroup = element('div', 'hep-session-progress');
-        paragraph(progressGroup, `Exercise ${state.index + 1} of ${program.exercises.length}`);
+        const position = element('p', '', `Exercise ${state.index + 1} of ${exerciseCount}`);
+        position.id = 'hep-exercise-position';
         const progress = element('progress');
-        progress.max = program.exercises.length;
-        progress.value = counts().completed + counts().skipped;
+        progress.max = exerciseCount;
+        progress.value = markedCount;
         progress.setAttribute('aria-label', 'Exercises marked done or skipped');
-        progressGroup.append(progress);
+        progress.setAttribute('aria-valuetext', `${markedCount} of ${exerciseCount} exercises marked`);
+        progressGroup.append(position, progress);
         const card = element('article', 'hep-session-exercise');
         card.setAttribute('data-hep-exercise', '');
+        const stepHeader = element('header', 'hep-session-step-header');
         const heading = element('h3', '', exercise.name);
         heading.setAttribute('data-hep-exercise-title', '');
-        card.append(heading);
+        heading.setAttribute('aria-describedby', position.id);
+        stepHeader.append(progressGroup, heading);
+        card.append(stepHeader);
+        const prescription = definitionList([['How much', exercise.dose], ['How often', exercise.frequency]]);
+        card.append(prescription);
         if (state.index === 0) {
-            if (startGuide && firstStage) {
-                const startingCue = element('p', 'hep-first-stage');
-                startingCue.append(element('strong', '', 'Where to start'), document.createTextNode(firstStage));
-                card.append(startingCue);
-                const guide = startGuide.cloneNode(true);
-                guide.open = false;
-                card.append(guide);
-            } else {
-                paragraph(card, program.programIntro);
-            }
+            const startingCue = element('p', 'hep-first-stage');
+            startingCue.append(element('strong', '', 'Where to start'), document.createTextNode(firstStage || program.programIntro));
             if (program.strengthStartIndex !== undefined) {
-                card.append(button('Go to strength exercises', () => {
+                // The first impact drill requires clearance. Put this choice before its running dose.
+                prescription.before(startingCue, button('Go to strength exercises', () => {
                     state.index = program.strengthStartIndex;
                     renderExercise(true);
                 }, 'data-hep-strength-start', true));
+            } else {
+                card.append(startingCue);
             }
         }
-        card.append(definitionList([['How much', exercise.dose], ['How often', exercise.frequency]]));
         card.append(element('h4', '', 'How to do it'), element('p', '', exercise.how));
         const presets = program.timerOptions?.[exercise.name] || [];
         if (!state.workoutMode && presets.length) state.exerciseTimer = mountExerciseTimer(card, presets);
@@ -641,18 +651,18 @@ function initializeGuidedSession(root, program) {
         const progressionLink = element('a', '', 'When to move to the next stage');
         progressionLink.href = '#progress';
         harder.append(progressionLink);
-        card.append(harder);
+        let mode;
         if (program.workoutOptions) {
-            const mode = button(state.workoutMode ? 'Use simple done / skip' : 'Record sets & use a custom timer', () => {
+            mode = button(state.workoutMode ? 'Use simple done / skip' : 'Record sets & use a custom timer', () => {
                 if (state.workoutMode && state.workoutControls && !state.workoutControls.valid()) return;
                 state.workoutMode = !state.workoutMode;
                 if (state.workoutMode) state.usedWorkout = true;
                 renderExercise(false);
-                root.querySelector('[data-hep-workout-toggle]')?.focus({ preventScroll: true });
+                root.querySelector('[data-hep-workout-toggle]')?.focus();
                 announce(state.workoutMode ? 'Workout logging is on. Record only the work you completed.' : 'Simple view is on. Any set entries already made stay with this session.');
             }, 'data-hep-workout-toggle', false, true);
-            card.append(mode);
             if (state.workoutMode) {
+                card.append(mode);
                 const last = state.records.find(record => record.workout?.[state.index]?.sets.some(hasRecordedSetDetails));
                 state.workoutControls = mountWorkout(card, program.workoutOptions[state.index], state.sets[state.index],
                     last ? { date: displayDate(last.date), entry: last.workout[state.index] } : null, announce, presets);
@@ -671,27 +681,27 @@ function initializeGuidedSession(root, program) {
                 announce('Check the recorded set values before marking this exercise done. You can also skip the exercise without recording its sets.');
                 return;
             }
-            const wasUnmarked = state.steps[state.index] === null;
             state.steps[state.index] = choice;
-            const resolvedLastUnmarked = wasUnmarked && !state.steps.includes(null);
-            if (state.index < program.exercises.length - 1 && !resolvedLastUnmarked) {
+            if (reviewNext) {
+                renderReview(true);
+            } else {
                 state.index += 1;
                 renderExercise(true);
-            } else {
-                renderReview(true);
             }
         };
         if (state.index === 0) paragraph(card, 'Skip an exercise if it is for another day or a later stage, or if your clinician told you to leave it out.', 'hep-session-entry-meta');
-        const actions = element('div', 'hep-session-actions');
-        actions.append(button('Mark done & next', () => advance('done'), 'data-hep-done'), button('Skip & next', () => advance('skipped'), 'data-hep-skip', true));
+        const actions = element('div', 'hep-session-actions hep-session-step-actions');
+        actions.append(button(reviewNext ? 'Done & review' : 'Done & next', () => advance('done'), 'data-hep-done'),
+            button(reviewNext ? 'Skip & review' : 'Skip & next', () => advance('skipped'), 'data-hep-skip', true));
         const previous = button('Previous exercise', () => {
             state.index -= 1;
             renderExercise(true);
         }, 'data-hep-back', false, true);
         previous.disabled = state.index === 0;
         actions.append(previous);
-        card.append(actions);
-        panel.append(progressGroup, card);
+        card.append(actions, harder);
+        if (mode && !state.workoutMode) card.append(mode);
+        panel.append(card);
         panel.append(button('Progress log', () => renderHistory(true), 'data-hep-log', false, true));
         if (moveFocus) focusHeading(heading);
     }
@@ -755,12 +765,26 @@ function initializeGuidedSession(root, program) {
         skipped.setAttribute('data-hep-skipped-count', '');
         summary.append(completed, document.createTextNode(' · '), skipped);
         panel.append(summary);
-        const finish = button('Finish without a log entry', () => {
-            state.started = false;
-            renderWelcome(true);
-            announce('Session finished without a log entry.');
-        }, 'data-hep-finish', true);
         const unmarked = state.steps.length - totals.completed - totals.skipped;
+        const finish = button('Finish without logging', () => {
+            state.started = false;
+            state.view = 'finished';
+            resetPanel();
+            const finishedHeading = panelHeading('Session finished');
+            panel.append(summary);
+            if (unmarked) paragraph(panel, `${unmarked} unmarked`, 'hep-session-entry-meta');
+            const checkIn = element('div', 'hep-session-check-in');
+            checkIn.append(element('h4', '', 'After your session'), element('p', '', program.responseIntro));
+            const symptomLink = element('a', '', 'Check your symptoms');
+            symptomLink.href = '#response';
+            checkIn.append(symptomLink);
+            const actions = element('div', 'hep-session-actions');
+            actions.append(button('Start another session', startSession, 'data-hep-start', true),
+                button('Progress log', () => renderHistory(true), 'data-hep-log', false, true));
+            panel.append(checkIn, actions);
+            focusHeading(finishedHeading);
+            announce('Session finished without a log entry.');
+        }, 'data-hep-finish', state.usedWorkout || unmarked > 0);
         if (unmarked) {
             paragraph(panel, unmarked === 1 ? 'One exercise is still unmarked.' : `${unmarked} exercises are still unmarked.`);
             const actions = element('div', 'hep-session-actions');
@@ -782,9 +806,11 @@ function initializeGuidedSession(root, program) {
             appendWorkoutDetails(preview, sessionWorkout(), program.exercises);
             panel.append(preview);
         }
-        paragraph(panel, 'Adding a log entry is optional. To keep it after refreshing or leaving this page, turn on “Keep my progress on this device.” Then you can check your next-morning response later in the progress log.');
         const form = element('form', 'hep-session-form');
         form.setAttribute('data-hep-review', '');
+        const logDetails = element('details', 'hep-session-options hep-session-log-details');
+        logDetails.open = state.usedWorkout || Boolean(state.notes) || state.response !== 'not-checked';
+        logDetails.append(element('summary', '', 'Date, notes and next-morning response'));
         const dateField = textField('Session date', 'hep-session-date', 'date', state.date, null, value => { state.date = value; });
         dateField.input.required = true;
         const goalField = textField('Activity goal (optional)', 'hep-session-goal', 'text', state.goal, 140, value => { state.goal = value; state.goalChanged = true; });
@@ -793,16 +819,22 @@ function initializeGuidedSession(root, program) {
         notesField.input.placeholder = 'Resistance, activity, or anything to discuss at follow-up';
         const response = responseSelect('Next-morning response', 'hep-session-response', state.response);
         response.select.addEventListener('change', () => { state.response = response.select.value; });
-        form.append(dateField.wrapper, goalField.wrapper, notesField.wrapper, response.wrapper);
-        const actions = element('div', 'hep-session-actions');
-        const save = element('button', 'hep-session-button', 'Add to progress log');
+        logDetails.append(dateField.wrapper, goalField.wrapper, notesField.wrapper, response.wrapper);
+        const actions = element('div', 'hep-session-actions hep-session-review-actions');
+        const save = element('button', state.usedWorkout ? 'hep-session-button' : 'hep-session-button is-secondary', 'Add to progress log');
         save.type = 'submit';
         save.setAttribute('data-hep-save', '');
-        actions.append(save, button('Previous exercise', () => {
+        if (state.usedWorkout) actions.append(save, finish);
+        else actions.append(finish, save);
+        const back = button('Previous exercise', () => {
             state.index = program.exercises.length - 1;
             renderExercise(true);
-        }, 'data-hep-back', false, true), finish);
-        form.append(actions);
+        }, 'data-hep-back', false, true);
+        if (state.usedWorkout) form.append(logDetails, actions);
+        else form.append(actions, logDetails);
+        paragraph(form, 'To keep a log entry after leaving this page, turn on “Keep my progress on this device.”', 'hep-session-entry-meta');
+        form.append(back);
+        form.addEventListener('invalid', () => { logDetails.open = true; }, true);
         form.addEventListener('submit', event => {
             event.preventDefault();
             if (!validateWorkoutBeforeSave()) return;
@@ -814,6 +846,7 @@ function initializeGuidedSession(root, program) {
             }, program.exercises.length);
             if (!record) {
                 announce('Check the session date and field lengths before adding your entry.');
+                logDetails.open = true;
                 dateField.input.focus();
                 return;
             }

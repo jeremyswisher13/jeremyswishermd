@@ -31,16 +31,19 @@
     text-decoration: underline;
     text-underline-offset: 3px;
 }
-.hep-session .hep-first-stage { margin-bottom: 0; }
-.hep-session .hep-session-exercise .hep-start-guide {
-    margin: 0 0 14px;
-    border: 0;
+.hep-session .hep-first-stage {
+    margin: 0 0 18px;
+    padding-left: 13px;
+    border-left: 2px solid var(--color-accent);
+    font-size: .95rem;
+    line-height: 1.55;
 }
 .hep-session .hep-first-stage strong {
     display: block;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
+    color: var(--color-dark);
 }
-.hep-session [data-hep-strength-start] { margin-bottom: 12px; }
+.hep-session [data-hep-strength-start] { margin-bottom: 18px; }
 .hep-session .hep-session-mode {
     display: grid;
     gap: 10px;
@@ -140,22 +143,13 @@
     margin-bottom: 26px;
 }
 
-.hep-session .hep-session-eyebrow {
-    margin: 0 0 10px;
-    color: var(--color-primary-dark);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    line-height: 1.4;
-    text-transform: uppercase;
-}
-
 .hep-session h2,
 .hep-session h3 {
     color: var(--color-dark);
     font-family: var(--font-display);
     font-weight: 500;
     letter-spacing: -0.025em;
+    overflow-wrap: anywhere;
 }
 
 .hep-session h2 {
@@ -183,21 +177,19 @@
     margin: 0 0 16px;
 }
 
-.hep-session .hep-session-intro {
-    max-width: 58ch;
-    margin: 0;
-    color: var(--color-text-light);
-    line-height: 1.65;
-}
-
 .hep-session .hep-session-panel {
     min-width: 0;
 }
 
+.hep-session .hep-session-panel > h3 {
+    scroll-margin-top: 18px;
+}
+
 .hep-session .hep-session-progress {
-    margin-bottom: 24px;
-    padding-bottom: 18px;
-    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
     color: var(--color-primary-dark);
     font-size: 0.88rem;
     font-weight: 600;
@@ -205,14 +197,16 @@
 }
 
 .hep-session .hep-session-progress p {
-    margin-bottom: 10px;
+    flex: 0 1 auto;
+    margin: 0;
+    font-variant-numeric: tabular-nums;
 }
 
 .hep-session progress {
     display: block;
-    width: 100%;
-    height: 5px;
-    margin-top: 10px;
+    flex: 1 1 3rem;
+    min-width: 0;
+    height: 6px;
     overflow: hidden;
     border: 0;
     border-radius: 3px;
@@ -238,6 +232,17 @@
 
 .hep-session .hep-session-exercise {
     min-width: 0;
+}
+
+.hep-session .hep-session-step-header {
+    margin-bottom: 16px;
+    scroll-margin-top: 18px;
+}
+
+.hep-session .hep-session-step-header h3 {
+    margin: 0;
+    font-size: clamp(2rem, 3vw, 2.55rem);
+    line-height: 1.08;
 }
 
 .hep-session .hep-session-prescription {
@@ -271,21 +276,39 @@
 }
 
 .hep-session .hep-session-exercise .hep-session-prescription {
-    row-gap: 10px;
-    padding: 12px 14px;
-    border: 1px solid var(--color-border);
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 0;
+    margin-bottom: 20px;
+    padding: 15px 18px;
+    border: 0;
     border-radius: var(--radius-sm);
-    background: var(--color-bg);
+    background: #e7eff3;
+}
+
+.hep-session-exercise .hep-session-prescription > div + div {
+    margin-left: 16px;
+    padding-left: 16px;
+    border-left: 1px solid #b6cbd8;
 }
 
 .hep-session .hep-session-exercise .hep-session-prescription dt {
-    margin-bottom: 2px;
+    margin-bottom: 4px;
+    color: var(--color-primary-dark);
+    font-size: .84rem;
+}
+
+.hep-session .hep-session-exercise .hep-session-prescription dd {
+    font-size: 1.08rem;
+    line-height: 1.38;
+    overflow-wrap: anywhere;
+}
+
+.hep-session .hep-session-step-actions [data-hep-back]:disabled {
+    display: none;
 }
 
 .hep-session .hep-session-detail {
-    margin: 18px 0 0;
-    padding-top: 16px;
-    border-top: 1px solid var(--color-border-light);
+    margin: 0;
 }
 
 .hep-session .hep-session-detail p:last-child,
@@ -299,6 +322,16 @@
     align-items: center;
     gap: 10px 12px;
     margin-top: 25px;
+}
+
+.hep-session .hep-session-step-actions {
+    margin: 18px 0 12px;
+}
+
+.hep-session-exercise > .hep-workout-timer {
+    margin: 16px 0;
+    padding: 0;
+    border: 0;
 }
 
 :is(.hep-session, [data-hep-card-timer]) .hep-session-button {
@@ -337,6 +370,19 @@
     background: rgba(31, 108, 164, 0.06);
 }
 
+.hep-session-exercise .hep-timer-choices .hep-session-button {
+    min-height: 44px;
+    padding: 8px 13px;
+    border-color: var(--color-primary-dark);
+    background: transparent;
+    color: var(--color-primary-dark);
+    font-size: .9rem;
+}
+
+.hep-session-exercise .hep-timer-choices .hep-session-button:enabled:hover {
+    background: #e7eff3;
+}
+
 :is(.hep-session, [data-hep-card-timer]) .hep-session-button.is-quiet {
     min-height: 44px;
     padding: 9px 8px;
@@ -372,6 +418,40 @@
 
 .hep-session .hep-session-form {
     margin-top: 22px;
+}
+
+.hep-session .hep-session-options {
+    margin-block: 16px;
+    border-block: 1px solid var(--color-border);
+}
+
+.hep-session .hep-session-options > summary {
+    padding-block: 12px;
+}
+
+.hep-session .hep-session-options[open] > summary {
+    margin-bottom: 10px;
+}
+
+.hep-session .hep-session-check-in {
+    margin: 20px 0;
+    padding: 16px 18px;
+    border-left: 2px solid var(--color-primary);
+    background: rgba(255, 255, 255, .55);
+}
+
+.hep-session .hep-session-check-in p {
+    margin-bottom: 0;
+}
+
+.hep-session :is(.hep-session-check-in, .hep-session-detail, .hep-session-safety, .hep-session-storage) > a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--color-primary-dark);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
 .hep-session .hep-session-field {
@@ -473,13 +553,18 @@
     border-top: 1px solid var(--color-border-light);
 }
 
-.hep-session .hep-session-rules h3 {
+.hep-session .hep-session-rules h3,
+.hep-session .hep-session-safety > h3 {
     margin-bottom: 8px;
     font-family: var(--font-family);
     font-size: 1rem;
     font-weight: 650;
     letter-spacing: 0;
     line-height: 1.4;
+}
+
+.hep-session .hep-session-safety > h3 {
+    margin-top: 16px;
 }
 
 .hep-session .hep-session-rules p {
@@ -570,6 +655,35 @@
         gap: 15px;
     }
 
+    .hep-session .hep-session-exercise .hep-session-prescription {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+        padding: 12px 14px;
+    }
+
+    .hep-session-exercise .hep-session-prescription > div {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 2px 8px;
+    }
+
+    .hep-session-exercise .hep-session-prescription > div + div {
+        margin: 0;
+        padding: 10px 0 0;
+        border: 0;
+        border-top: 1px solid #b6cbd8;
+    }
+
+    .hep-session .hep-session-exercise .hep-session-prescription dt {
+        flex: 0 1 5rem;
+        margin: 0;
+    }
+
+    .hep-session .hep-session-exercise .hep-session-prescription dd {
+        flex: 1 1 10rem;
+    }
+
     :is(.hep-session, [data-hep-card-timer]) .hep-session-actions {
         align-items: stretch;
         gap: 10px;
@@ -583,6 +697,10 @@
         flex: 0 1 auto;
     }
 
+    .hep-session .hep-session-step-actions > .hep-session-button:not(.is-quiet) {
+        flex: 1 1 auto;
+        padding-inline: 12px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {

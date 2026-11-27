@@ -70,6 +70,8 @@ async function finishFrom(page, program = knee, index = 0, choice = 'done') {
 }
 
 async function save(page, notes = '') {
+  const logDetails = session(page).locator('.hep-session-log-details');
+  if (!(await logDetails.evaluate(details => details.open))) await logDetails.locator('summary').click();
   await session(page).getByLabel('Session date', { exact: true }).fill('2026-10-08');
   await session(page).getByLabel('Notes (optional)', { exact: true }).fill(notes);
   await session(page).locator('[data-hep-save]').click();

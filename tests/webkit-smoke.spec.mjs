@@ -120,6 +120,7 @@ test('opted-in exercise progress survives a reload in WebKit', async ({ page }) 
   for (let index = 0; index < knee.exercises.length; index += 1) {
     await session(page).locator('[data-hep-done]').click();
   }
+  await session(page).locator('.hep-session-log-details > summary').click();
   await session(page).getByLabel('Notes (optional)', { exact: true }).fill('WebKit progress smoke check');
   await session(page).locator('[data-hep-save]').click();
   await expect(session(page).locator('[data-hep-history]')).toContainText('WebKit progress smoke check');

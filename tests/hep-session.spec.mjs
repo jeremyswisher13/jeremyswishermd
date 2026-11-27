@@ -102,6 +102,7 @@ async function finish(page, program = knee, { skip = false } = {}) {
 async function addRecord(page, { notes = 'A short session felt manageable.', goal = 'Walk to the park.', response = 'not-checked' } = {}) {
   await start(page);
   await finish(page);
+  await session(page).locator('.hep-session-log-details > summary').click();
   await session(page).getByLabel('Session date', { exact: true }).fill('2026-10-07');
   await session(page).getByLabel('Activity goal (optional)', { exact: true }).fill(goal);
   await session(page).getByLabel('Notes (optional)', { exact: true }).fill(notes);
@@ -109,6 +110,24 @@ async function addRecord(page, { notes = 'A short session felt manageable.', goa
   await session(page).locator('[data-hep-save]').click();
   await expect(session(page).locator('[data-hep-history]')).toContainText(notes);
 }
+
+test('a phone user can finish a simple session without opening the log or recording an entry', async ({ context, page, baseURL }) => {
+  await localOnly(context, baseURL);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await visit(page);
+  await page.locator('[data-hep-launch-start]').click();
+  await finish(page);
+
+  const panel = session(page);
+  await expect(panel.locator('.hep-session-log-details')).toHaveJSProperty('open', false);
+  const finishWithoutLogging = panel.locator('[data-hep-finish]');
+  await expect(finishWithoutLogging).toBeInViewport({ ratio: 1 });
+  await finishWithoutLogging.click();
+  await expect(panel.getByRole('heading', { name: 'Session finished', exact: true })).toBeFocused();
+  expect(await page.evaluate(key => localStorage.getItem(key), storageKey(knee.slug))).toBeNull();
+  await panel.locator('[data-hep-log]').click();
+  await expect(panel.locator('[data-hep-history]')).toContainText('No entries yet');
+});
 
 test('all 28 maintained programs have unique routes and enable guided sessions', () => {
   expect(programs).toHaveLength(28);
@@ -168,6 +187,22 @@ test('advanced meniscus strength shortcut leaves impact drills unmarked until th
   expect(record.workout[3].sets[0].amount).toBe(6);
 });
 
+test('the final unmarked exercise offers review even when it is in the middle of the program', async ({ context, page, baseURL }) => {
+  await localOnly(context, baseURL);
+  await visit(page, advancedMeniscus);
+  await start(page);
+  const panel = session(page);
+  await panel.locator('[data-hep-strength-start]').click();
+  for (let index = 0; index < 3; index++) await panel.locator('[data-hep-done]').click();
+  await panel.getByRole('button', { name: 'Return to unmarked exercises' }).click();
+  await panel.locator('[data-hep-skip]').click();
+  await panel.locator('[data-hep-skip]').click();
+  await expect(panel.locator('[data-hep-exercise-title]')).toHaveAccessibleDescription('Exercise 3 of 6');
+  await expect(panel.locator('[data-hep-done]')).toHaveText('Done & review');
+  await panel.getByRole('button', { name: 'Skip & review' }).click();
+  await expect(panel.getByRole('heading', { name: 'Session review' })).toBeFocused();
+});
+
 for (const program of programs) {
   test(`${program.slug}: the guided session preserves every original exercise prescription in the maintained guided order`, async ({ context, page, baseURL }) => {
     await localOnly(context, baseURL);
@@ -188,12 +223,23 @@ for (const program of programs) {
     await start(page);
     const first = session(page).locator('[data-hep-exercise]');
     await expect(first.locator('.hep-first-stage')).toContainText(program.progression[0].text);
-    await expect(first.locator('.hep-start-guide')).toHaveJSProperty('open', false);
-    await first.locator('.hep-start-guide summary').click();
-    await expect(first.locator('.hep-start-guide p')).toHaveText(program.programIntro);
-    for (const exercise of exercises) {
+    if (program.firstStrengthExercise !== undefined) {
+      await expect(first.locator('.hep-first-stage + [data-hep-strength-start] + dl')).toHaveCount(1);
+    } else {
+      await expect(first.locator('dl + .hep-first-stage')).toHaveCount(1);
+    }
+    const plan = session(page).locator('.hep-session-safety');
+    await expect(plan).toHaveJSProperty('open', false);
+    await plan.locator('summary').click();
+    await expect(plan.getByText(program.programIntro, { exact: true })).toBeVisible();
+    await expect(plan.getByRole('link', { name: 'When to move to the next stage' })).toHaveAttribute('href', '#progress');
+    await plan.locator('summary').click();
+    for (const [index, exercise] of exercises.entries()) {
       const card = session(page).locator('[data-hep-exercise]');
       await expect(card.locator('[data-hep-exercise-title]')).toHaveText(exercise.name);
+      await expect(card.locator('[data-hep-exercise-title]')).toHaveAccessibleDescription(`Exercise ${index + 1} of ${exercises.length}`);
+      await expect(card.locator('[data-hep-done]')).toHaveText(index === exercises.length - 1 ? 'Done & review' : 'Done & next');
+      await expect(card.locator('[data-hep-skip]')).toHaveText(index === exercises.length - 1 ? 'Skip & review' : 'Skip & next');
       await expectExercisePrescription(card, exercise);
       if (data.timerOptions?.[exercise.name]?.length) {
         await expect(card.locator('h4:text-is("How to do it") + p + [data-hep-timer]')).toHaveCount(1);
@@ -279,8 +325,10 @@ for (const slug of [
     await page.locator('[data-hep-launch-start]').click();
     const card = session(page).locator('[data-hep-exercise]');
     await expect(card.locator('.hep-first-stage')).toContainText(program.progression[0].text);
-    await card.locator('.hep-start-guide summary').click();
-    await expect(card.getByText(program.programIntro, { exact: true })).toBeVisible();
+    const safety = session(page).locator('.hep-session-safety');
+    await safety.locator('summary').click();
+    await expect(safety.getByText(program.programIntro, { exact: true })).toBeVisible();
+    await safety.locator('summary').click();
     const exercises = guidedExercises(program);
     for (let index = 1; index < exercises.length; index += 1) await card.locator('[data-hep-skip]').click();
     const finalExercise = exercises.at(-1);
@@ -295,7 +343,6 @@ for (const slug of [
     await expect(page.locator('#progress .readiness-block li')).toHaveText(program.readyItems);
     await page.goBack();
     await expect(card.locator('[data-hep-exercise-title]')).toHaveText(finalExercise.name);
-    const safety = session(page).locator('.hep-session-safety');
     await safety.locator('summary').click();
     await expect(safety.getByText(program.red, { exact: true })).toBeVisible();
     await safety.getByRole('link', { name: 'Read the full program fit & safety guidance' }).click();
@@ -442,6 +489,7 @@ test('opting in saves and restores progress; opting out removes only this progra
   await addRecord(peer, { notes: 'SECOND_TAB_PROGRESS_SENTINEL' });
   await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[0].name);
   await finish(page);
+  await session(page).locator('.hep-session-log-details > summary').click();
   await session(page).getByLabel('Notes (optional)', { exact: true }).fill('ACTIVE_FIRST_TAB_SENTINEL');
   await session(page).locator('[data-hep-save]').click();
   await expect(session(page).locator('[data-hep-entry]')).toHaveCount(3);
@@ -591,6 +639,7 @@ test('clear reaches open tabs with only unsaved entries and preserves the peer r
   await addRecord(peer, { notes: 'UNSAVED_PEER_ENTRY', goal: 'UNSAVED_PEER_GOAL' });
   await start(peer);
   await finish(peer, knee, { skip: true });
+  await session(peer).locator('.hep-session-log-details > summary').click();
   const peerGoal = session(peer).getByLabel('Activity goal (optional)', { exact: true });
   const peerNotes = session(peer).getByLabel('Notes (optional)', { exact: true });
   await expect(peerGoal).toHaveValue('UNSAVED_PEER_GOAL');
@@ -761,15 +810,27 @@ for (const program of mobilePrograms) {
       return active?.matches('[data-hep-start], [data-hep-exercise-title]');
     })).toBe(true);
     if (await session(page).locator('[data-hep-start]').isVisible()) await page.keyboard.press('Enter');
-    await expect(session(page).locator('[data-hep-exercise-title]')).toBeFocused();
+    const stepHeader = session(page).locator('.hep-session-step-header');
+    const exerciseTitle = stepHeader.locator('[data-hep-exercise-title]');
+    const assertStepIsInView = async index => {
+      await expect(exerciseTitle).toBeFocused();
+      await expect(exerciseTitle).toHaveAccessibleDescription(`Exercise ${index + 1} of ${program.exercises.length}`);
+      await expect(stepHeader).toBeInViewport({ ratio: 1 });
+      const header = await stepHeader.boundingBox();
+      const navigation = await page.locator('#navbar').boundingBox();
+      expect(header.y).toBeGreaterThanOrEqual(navigation.y + navigation.height);
+      expect(header.y).toBeLessThan(navigation.y + navigation.height + 50);
+    };
+    await assertStepIsInView(0);
     await page.keyboard.press('Tab');
     const focus = await page.evaluate(() => ({ tag: document.activeElement.tagName, inside: Boolean(document.activeElement.closest('[data-hep-session]')) }));
     expect(focus.inside).toBe(true);
     expect(['BUTTON', 'SUMMARY']).toContain(focus.tag);
-    const startGuide = session(page).locator('[data-hep-exercise] .hep-start-guide');
+    const startGuide = session(page).locator('.hep-session-safety');
     await startGuide.locator('summary').focus();
     await page.keyboard.press('Enter');
-    await expect(startGuide.locator('p')).toBeVisible();
+    await expect(startGuide.getByText(program.programIntro, { exact: true })).toBeVisible();
+    await expect(startGuide.getByText(program.red, { exact: true })).toBeVisible();
     const harder = session(page).locator('[data-hep-exercise] .hep-session-detail');
     const harderToggle = harder.locator('summary');
     await harderToggle.focus();
@@ -782,10 +843,7 @@ for (const program of mobilePrograms) {
     const activeResults = await new AxeBuilder({ page }).include('[data-hep-session]').withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
     expect(activeResults.violations, JSON.stringify(activeResults.violations, null, 2)).toEqual([]);
     await session(page).locator('[data-hep-done]').click();
-    await expect(session(page).locator('[data-hep-exercise-title]')).toBeFocused();
-    const heading = await session(page).locator('[data-hep-exercise-title]').boundingBox();
-    const navigation = await page.locator('#navbar').boundingBox();
-    expect(heading.y).toBeGreaterThanOrEqual(navigation.y + navigation.height);
+    await assertStepIsInView(1);
     for (let index = 1; index < program.exercises.length; index += 1) await session(page).locator('[data-hep-done]').click();
     await expect(session(page).getByRole('heading', { name: 'Session review', exact: true })).toBeFocused();
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
