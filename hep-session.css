@@ -1,4 +1,46 @@
 /* Guided sessions and optional workout logging for maintained home programs. */
+.hep-page .hep-start-guide {
+    max-width: 66ch;
+    margin: 12px 0;
+    border-block: 1px solid var(--color-border);
+}
+.hep-page .landing-actions .hep-start-guide { margin: 0; }
+.hep-page .landing-actions .hep-start-guide[open] { width: 100%; }
+.hep-page .hep-start-guide summary {
+    min-height: 44px;
+    padding: 11px 0;
+    color: var(--color-primary-dark);
+    font: 600 1rem/1.5 var(--font-family);
+    cursor: pointer;
+}
+.hep-page .hep-start-guide p {
+    margin: 4px 0 8px;
+    line-height: 1.6;
+}
+.hep-page .hep-start-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 20px;
+    padding-bottom: 6px;
+}
+.hep-page .hep-start-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.hep-session .hep-first-stage { margin-bottom: 0; }
+.hep-session .hep-session-exercise .hep-start-guide {
+    margin: 0 0 14px;
+    border: 0;
+}
+.hep-session .hep-first-stage strong {
+    display: block;
+    margin-bottom: 3px;
+}
+.hep-session [data-hep-strength-start] { margin-bottom: 12px; }
 .hep-session .hep-session-mode {
     display: grid;
     gap: 10px;
@@ -226,6 +268,18 @@
     font-size: 1rem;
     font-weight: 650;
     line-height: 1.5;
+}
+
+.hep-session .hep-session-exercise .hep-session-prescription {
+    row-gap: 10px;
+    padding: 12px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg);
+}
+
+.hep-session .hep-session-exercise .hep-session-prescription dt {
+    margin-bottom: 2px;
 }
 
 .hep-session .hep-session-detail {

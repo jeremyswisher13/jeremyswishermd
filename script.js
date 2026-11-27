@@ -877,6 +877,7 @@ const programFilterStatus = programFilter?.querySelector('[data-program-filter-s
 const programSearchInput = programFilter?.querySelector('[data-program-search]');
 const programSearchInputWrap = programSearchInput?.closest('.hep-search-input-wrap');
 const programSearchClear = programFilter?.querySelector('[data-program-search-clear]');
+const programResultsJump = programFilter?.querySelector('[data-program-results-jump]');
 const programAudienceFilter = programFilter?.querySelector('[data-program-audience-filter]');
 const programResetButton = document.querySelector('[data-program-reset]');
 const programEmptyState = document.querySelector('[data-program-empty]');
@@ -1012,8 +1013,20 @@ if (hasCompleteProgramDiscovery) {
         programSearchClear.hidden = programSearchInput.value.length === 0;
         programSearchInputWrap.classList.toggle('has-search-value', programSearchInput.value.length > 0);
         programEmptyState.hidden = visibleCount !== 0;
+        if (programResultsJump) {
+            programResultsJump.parentElement.hidden = !searchIsActive || visibleCount === 0;
+            programResultsJump.textContent = `View ${visibleCount} matching program${visibleCount === 1 ? '' : 's'}`;
+        }
     };
 
+    const focusFirstProgramResult = () => {
+        const firstResult = programCards.find(card => !card.hidden);
+        if (!firstResult) return;
+        firstResult.focus({ preventScroll: true });
+        firstResult.scrollIntoView({ block: 'center' });
+    };
+
+    programResultsJump?.addEventListener('click', focusFirstProgramResult);
     programFilterInputs.forEach(input => {
         input.addEventListener('change', updateProgramFilter);
     });
@@ -1021,6 +1034,11 @@ if (hasCompleteProgramDiscovery) {
     programSearchInput.addEventListener('input', updateProgramFilter);
     programSearchInput.addEventListener('search', updateProgramFilter);
     programSearchInput.addEventListener('keydown', event => {
+        if (event.key === 'Enter' && !event.isComposing && programResultsJump && !programResultsJump.parentElement.hidden) {
+            event.preventDefault();
+            focusFirstProgramResult();
+            return;
+        }
         if (event.key !== 'Escape' || !programSearchInput.value) return;
         event.preventDefault();
         programSearchInput.value = '';

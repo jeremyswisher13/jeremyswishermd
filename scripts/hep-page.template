@@ -78,8 +78,16 @@
                         <p class="landing-summary">{{SUMMARY}}</p>
                         <div class="landing-actions">
 {{SESSION_LAUNCH}}
+                            <a href="#program" class="btn btn-outline">View written exercises</a>
+                            <details class="hep-start-guide no-print">
+                                <summary>Which exercises should I do today?</summary>
+                                <p>{{PROGRAM_INTRO}}</p>
+                                <div class="hep-start-links">
+                                    <a href="#fit">Check fit and warning signs</a>
+                                    <a href="#progress">When to move to the next stage</a>
+                                </div>
+                            </details>
                             <button class="btn {{PRINT_BUTTON_CLASS}} print-program-button" type="button" data-print-program data-analytics-event="exercise_program_print" aria-label="Print this program or save it as a PDF"><span class="material-symbols-outlined" aria-hidden="true" data-icon="print"></span><span data-print-label>Print this program</span></button>
-                            <a href="tel:310-319-1234" class="btn btn-outline">Call 310-319-1234</a>
                         </div>
                         <p class="sr-only" id="printStatus" role="status" aria-live="polite"></p>
                         <p class="page-update">{{DATE_LINE}}</p>
@@ -242,7 +250,6 @@
                     </div>
 
                     <section class="content-section print-secondary" aria-labelledby="faq-title">
-                        <p class="section-label">Common questions</p>
                         <h2 id="faq-title">Questions about this program</h2>
 {{FAQS}}
                     </section>
@@ -260,16 +267,14 @@
 
                 <aside class="landing-sidebar no-print" aria-label="Program tools and appointment information">
                     <div class="sidebar-panel">
-                        <p class="section-label">Use this at home</p>
-                        <h2>Print the plan</h2>
-                        <p>Keep the exercise dose, symptom rules, and progression markers together.</p>
+                        <h2>Print or share</h2>
                         <button class="btn btn-primary print-program-button" type="button" data-print-program data-analytics-event="exercise_program_print" aria-label="Print this program or save it as a PDF"><span class="material-symbols-outlined" aria-hidden="true" data-icon="print"></span><span data-print-label>Print this program</span></button>
                         <p class="print-helper"><span class="print-dialog-guidance">The print dialog also lets you save a PDF.</span><span class="print-fallback-guidance">Use the browser menu and choose Print to print this program or save a PDF.</span></p>
                         <a class="text-link" href="../share-program/#program={{SLUG}}">Share this program with a link or QR card</a>
                     </div>
                     <div class="sidebar-panel sidebar-panel-light">
                         <p class="section-label">Not sure of the diagnosis?</p>
-                        <p>Calling UCLA Orthopedics is the most direct path to request an evaluation with Dr. Swisher in Westwood or West Hills.</p>
+                        <p>Call UCLA Orthopedics for an evaluation with Dr. Swisher in Westwood or West Hills.</p>
                         <a href="tel:310-319-1234" class="sidebar-phone">310-319-1234</a>
                         <a href="../locations/" class="text-link">Compare locations <span class="material-symbols-outlined" aria-hidden="true" data-icon="arrow_forward"></span></a>
                     </div>
@@ -283,7 +288,7 @@
 
         <section class="related-care no-print" aria-labelledby="related-title">
             <div class="landing-shell">
-                <p class="section-label">Related care</p><h2 id="related-title">Choose the next useful step</h2>
+                <h2 id="related-title">Related programs and care</h2>
                 <div class="related-grid">
 {{RELATED}}
                 </div>

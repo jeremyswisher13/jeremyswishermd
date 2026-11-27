@@ -7,7 +7,7 @@
     "shortTitle": "Beginner knee arthritis exercises",
     "conditionName": "Knee osteoarthritis",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-10-09",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "sLCahUJl8jk",
       "title": "Knee Osteoarthritis (OA) Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -132,7 +132,7 @@
     "shortTitle": "Advanced knee arthritis exercises",
     "conditionName": "Knee osteoarthritis",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "sLCahUJl8jk",
       "title": "Knee Osteoarthritis (OA) Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -265,7 +265,7 @@
     "shortTitle": "Patellofemoral pain exercises",
     "conditionName": "Patellofemoral pain",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "K3HxB6rAeDo",
       "title": "Patellofemoral Pain | Chondromalacia Patellae | Runner’s Knee (Education | Myths | Exercises)",
@@ -275,8 +275,8 @@
     "metaDescription": "Patellofemoral pain syndrome exercises with knee and hip strengthening and symptom checks. Follow a guided session or print and save the plan as a PDF.",
     "breadcrumb": "Patellofemoral pain",
     "kicker": "Front-of-knee pain · Home exercise plan",
-    "h1": "Patellofemoral Pain Syndrome (PFPS) Exercises",
-    "summary": "A starter home program for patellofemoral pain, pairing education with progressive knee strengthening. Hip exercises can be added when they match your symptoms, impairments, preferences, or early knee-loading tolerance. Start a guided session or print and save the plan as a PDF.",
+    "h1": "Patellofemoral Pain Exercises",
+    "summary": "A starter home program for patellofemoral pain, pairing education with progressive knee strengthening. Hip exercises can be added when they match your symptoms, impairments, preferences, or early knee-loading tolerance.",
     "authorityTitle": "Knee strength. Hip strength. Load control.",
     "authorityItems": [
       { "icon": "exercise", "text": "Knee-targeted strengthening, with hip exercise when indicated" },
@@ -373,7 +373,7 @@
     "shortTitle": "Rotator cuff-related shoulder exercises",
     "conditionName": "Rotator cuff-related shoulder pain",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "1Wy8jh4QQH8",
       "title": "Rotator Cuff Tear Rehab & Exercises (Shoulder Pain, Tendinitis, Impingement)",
@@ -383,7 +383,7 @@
     "metaDescription": "Printable rotator cuff pain exercises for shoulder mobility and strength, with symptom rules, progression, and guidance on when to seek care.",
     "breadcrumb": "Rotator cuff-related shoulder pain",
     "kicker": "Shoulder pain · Home exercise plan",
-    "h1": "Rotator Cuff Pain Exercises for Shoulder Strength and Motion",
+    "h1": "Exercises for Rotator Cuff Pain",
     "summary": "Controlled movement and resistance exercises are first-line care for rotator cuff-related shoulder pain. Start with two or three movements when the shoulder is especially painful, then progress range and resistance.",
     "authorityTitle": "Range. Control. Strength.",
     "authorityItems": [
@@ -490,7 +490,7 @@
     "shortTitle": "Midportion Achilles exercises",
     "conditionName": "Midportion Achilles tendinopathy",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "DnxahqgsAEw",
       "title": "Achilles Tendinopathy / Tendinitis / Tendinosis | Heel Pain Rehab (Education, Myths, Exercises)",
@@ -501,7 +501,7 @@
     "breadcrumb": "Midportion Achilles tendinopathy",
     "kicker": "Achilles tendon · Home exercise plan",
     "h1": "Midportion Achilles Tendinopathy Exercises",
-    "summary": "A starter home program using progressive tendon loading, the first-line approach for midportion Achilles tendinopathy. Use straight-knee and bent-knee calf work, gradual resistance, and morning stiffness as a load signal. Start a guided session or print and save the plan as a PDF.",
+    "summary": "A starter home program using progressive tendon loading, the first-line approach for midportion Achilles tendinopathy. Use straight-knee and bent-knee calf work, gradual resistance, and morning stiffness as a load signal.",
     "authorityTitle": "Load. Recover. Progress.",
     "authorityItems": [
       { "icon": "fitness_center", "text": "Progressive calf strengthening at least three days per week" },
@@ -611,7 +611,7 @@
     "shortTitle": "Gluteal tendinopathy exercises",
     "conditionName": "Gluteal tendinopathy and lateral hip pain",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "e_Kk-XqPWZo",
       "title": "Gluteal Tendinopathy / Greater Trochanteric Hip Bursitis (Education | Myths | Exercises)",
@@ -621,8 +621,8 @@
     "metaDescription": "Gluteal tendinopathy exercises for lateral hip pain, with hip strengthening and load-management tips. Follow a guided session or print and save as a PDF.",
     "breadcrumb": "Gluteal tendinopathy",
     "kicker": "Lateral hip pain · Home exercise plan",
-    "h1": "Gluteal Tendinopathy Exercises for Lateral Hip Pain",
-    "summary": "A starter home program for gluteal tendinopathy using education and progressive exercise as first-line care. Pair practical position changes with hip and lower-limb strengthening. Start a guided session or print and save the plan as a PDF.",
+    "h1": "Gluteal Tendinopathy Exercises",
+    "summary": "A starter home program for gluteal tendinopathy using education and progressive exercise as first-line care. Pair practical position changes with hip and lower-limb strengthening.",
     "authorityTitle": "Position. Load. Hip strength.",
     "authorityItems": [
       { "icon": "airline_seat_flat", "text": "Reduce sustained compression at the side of the hip" },
@@ -727,7 +727,7 @@
     "shortTitle": "Lateral ankle sprain exercises",
     "conditionName": "Lateral ankle sprain",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-10-09",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "ga_OAPf6IOI",
       "title": "How to Rehab a Sprained Ankle (Start to Finish)",
@@ -842,7 +842,7 @@
     "shortTitle": "Tennis elbow and common extensor exercises",
     "conditionName": "Lateral elbow tendinopathy and common extensor tendinopathy",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "aOueY1l_X0U",
       "title": "Tennis Elbow Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -852,8 +852,8 @@
     "metaDescription": "Printable tennis elbow exercises for common extensor tendinopathy, with progressive wrist loading, grip work, symptom rules, and return guidance.",
     "breadcrumb": "Common extensor tendinopathy",
     "kicker": "Lateral elbow pain · Home exercise plan",
-    "h1": "Tennis Elbow Exercises for Common Extensor Tendinopathy",
-    "summary": "Activity adjustment and progressive wrist-extensor loading are commonly used first-line strategies. Average exercise benefits are modest and evidence certainty is low, so recovery and response vary.",
+    "h1": "Tennis Elbow Exercises",
+    "summary": "Adjust activities that hurt and gradually strengthen the muscles that lift your wrist. Research suggests modest benefits on average, and individual results vary.",
     "authorityTitle": "Settle symptoms. Build strength. Restore grip.",
     "authorityItems": [
       {
@@ -1020,9 +1020,11 @@
         "title": "Common flexor tendinopathy exercises"
       },
       {
-        "href": "../rotator-cuff-pain-exercises/",
-        "eyebrow": "Shoulder program",
-        "title": "Rotator cuff-related pain exercises"
+        "href": "../pickleball-medicine/",
+        "eyebrow": "For pickleball players",
+        "title": "Pickleball injury care in Los Angeles",
+        "description": "See Dr. Swisher for elbow pain that limits your grip or keeps you from playing.",
+        "linkLabel": "Pickleball Medicine"
       }
     ],
     "guidedSession": true
@@ -1034,7 +1036,7 @@
     "shortTitle": "Golfer's elbow and common flexor exercises",
     "conditionName": "Medial elbow tendinopathy and common flexor tendinopathy",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "3CJMz0HoGXk",
       "title": "Golfer’s Elbow Rehab (Education | Myths | Stretching & Strengthening Exercises)",
@@ -1044,8 +1046,8 @@
     "metaDescription": "Printable golfer's elbow exercises for common flexor tendinopathy, with wrist-flexor and pronator loading, grip work, and symptom guidance.",
     "breadcrumb": "Common flexor tendinopathy",
     "kicker": "Medial elbow pain · Home exercise plan",
-    "h1": "Golfer's Elbow Exercises for Common Flexor Tendinopathy",
-    "summary": "Common flexor tendinopathy can improve with activity adjustment and progressive loading of the wrist flexors and pronators. Because medial-elbow exercise research is limited, this plan uses a conservative dose and clear reasons to seek assessment.",
+    "h1": "Golfer’s Elbow Exercises",
+    "summary": "This plan starts gently with the muscles that bend your wrist and turn your palm down. Research on golfer’s elbow is limited. The guide also explains when to get an evaluation.",
     "authorityTitle": "Strength. Rotation. Grip.",
     "authorityItems": [
       {
@@ -1227,7 +1229,7 @@
     "shortTitle": "Frozen shoulder and adhesive capsulitis exercises",
     "conditionName": "Adhesive capsulitis and frozen shoulder",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-10-09",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "SV7exHYLVHU",
       "title": "BEST Exercises for Frozen Shoulder | Adhesive Capsulitis (Mobility, Stretches, Strength)",
@@ -1237,7 +1239,7 @@
     "metaDescription": "Printable frozen shoulder exercises for adhesive capsulitis, with mobility matched to pain and stiffness, symptom rules, and safe progression.",
     "breadcrumb": "Adhesive capsulitis",
     "kicker": "Frozen shoulder · Mobility matched to pain and stiffness",
-    "h1": "Frozen Shoulder Exercises for Adhesive Capsulitis",
+    "h1": "Frozen Shoulder Exercises",
     "summary": "Frozen shoulder needs a different dose at different stages. Begin with brief, comfortable motion while pain and night symptoms dominate, then increase stretching time, active range, and strength as symptoms settle.",
     "authorityTitle": "Calm pain. Restore motion. Rebuild function.",
     "authorityItems": [
@@ -1348,7 +1350,7 @@
     "conditionName": "Patellar tendinopathy in athletes",
     "audiences": ["athlete"],
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-10-09",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "e7oGNVUQi2I",
       "title": "Patellar Tendinopathy / Tendinitis / Tendinosis | Jumper’s Knee Rehab (Education, Myths, Exercises)",
@@ -1469,7 +1471,13 @@
     "related": [
       { "href": "../tendon-pain/", "eyebrow": "Tendon principles", "title": "Evidence-based tendon care" },
       { "href": "../patellofemoral-pain-exercises/", "eyebrow": "Different front-knee pattern", "title": "Patellofemoral pain exercises" },
-      { "href": "../sports-injuries/", "eyebrow": "Return to sport", "title": "Sports injury evaluation" }
+      {
+        "href": "../basketball-medicine/",
+        "eyebrow": "For basketball players",
+        "title": "Basketball injury care in Los Angeles",
+        "description": "Talk with Dr. Swisher about returning to jumping, practice and game minutes.",
+        "linkLabel": "Basketball Medicine"
+      }
     ]
   },
   {
@@ -1481,7 +1489,7 @@
     "conditionName": "Persistent or recurrent nonspecific low back pain",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "x71Y5ijW4DU",
       "title": "Lower Back Pain Rehab (Exercises | Education | Myths | Prevention)",
@@ -1613,7 +1621,7 @@
     "conditionName": "Hip osteoarthritis",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-10-09",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "x-O-m_WCtWw",
       "title": "Doctor of Physical Therapy Answers Your 10 Most Common Questions About Hip Osteoarthritis",
@@ -1751,7 +1759,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "7D50I7sdlXg",
       "title": "Hamstring Strain Rehab & Exercises (Strength | Running | Return to Sport)",
@@ -1891,7 +1899,7 @@
     "conditionName": "Plantar fasciopathy, commonly called plantar fasciitis, a common cause of plantar heel pain",
     "publishedDate": "2026-07-29",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "5D86b45yJzU",
       "title": "Plantar Fasciitis (Education | Myths | Stretching & Strengthening Exercises)",
@@ -2019,7 +2027,7 @@
     "conditionName": "Meniscus tear",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "Rr0g_b8Neq4",
       "title": "Meniscus Tear Rehab & Exercises (Stretching | Strength | Plyometrics)",
@@ -2147,6 +2155,7 @@
     "slug": "advanced-meniscus-rehabilitation-exercises",
     "guidedSession": true,
     "guidedExerciseOrder": [3, 4, 5, 0, 1, 2],
+    "firstStrengthExercise": 0,
     "title": "Advanced Nonoperative Meniscus Rehabilitation Program for Athletes",
     "seoTitle": "Advanced Nonoperative Meniscus Rehab for Athletes",
     "shortTitle": "Advanced nonoperative meniscus rehabilitation",
@@ -2154,7 +2163,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "sKZcTjlxk-Q",
       "title": "How To Return Back To Sport After An Injury (ACL, Meniscus, MCL, Ankle Sprain)",
@@ -2375,7 +2384,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-10-09",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "qJ1mrNXXjSo",
       "title": "IT Band Pain / Iliotibial Band Friction Syndrome (Myth Busting | Exercises | Rehab)",
@@ -2387,7 +2396,7 @@
     "metaDescription": "Printable iliotibial band syndrome exercises for runners, with hip strength, step control, symptom rules, load management, and a graded run-walk plan.",
     "breadcrumb": "Iliotibial band syndrome for runners",
     "kicker": "Lateral knee pain · Runner home exercise plan",
-    "h1": "Iliotibial Band Syndrome Exercises for Runners",
+    "h1": "IT Band Exercises for Runners",
     "summary": "Iliotibial band syndrome usually improves by adjusting the provoking running load and building hip and single-leg capacity. This plan is for runners who have been evaluated and told IT band syndrome is the likely cause of their lateral knee pain.",
     "programLevel": "Runner program",
     "authorityTitle": "Manage. Strengthen. Rebuild.",
@@ -2499,7 +2508,7 @@
     "conditionName": "Peroneal tendinopathy",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-10-09",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "0fsR5-oqcVU",
       "title": "Peroneal Tendinopathy / Tendinitis: Causes & Treatment (Education | Strengthening | Stretching)",
@@ -2624,7 +2633,7 @@
     "conditionName": "Tibialis posterior tendinopathy",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-10-09",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "NKeQHV85QLc",
       "title": "Tibialis Posterior Tendinopathy | Tendinitis | Dysfunction | Pain (Exercises, Rehab, Strengthening)",
@@ -2751,7 +2760,7 @@
     "conditionName": "Thumb carpometacarpal osteoarthritis",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "video": null,
     "metaDescription": "Printable thumb CMC osteoarthritis exercises and brace guidance, with joint protection, gentle strength, symptom rules, and clear progression.",
     "breadcrumb": "Thumb CMC osteoarthritis",
@@ -2872,7 +2881,7 @@
     "conditionName": "De Quervain tenosynovitis",
     "publishedDate": "2026-07-30",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-10-09",
+    "modifiedDate": "2026-11-27",
     "video": null,
     "metaDescription": "De Quervain exercises, thumb-spica brace guidance, activity changes, symptom rules, and evidence-informed options for thumb-side wrist pain.",
     "breadcrumb": "De Quervain tenosynovitis",
@@ -2994,7 +3003,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-08-28",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "ga_OAPf6IOI",
       "title": "How to Rehab a Sprained Ankle (Start to Finish)",
@@ -3114,7 +3123,13 @@
     "related": [
       { "href": "../lateral-ankle-sprain-exercises/", "eyebrow": "Build the base first", "title": "Starter lateral ankle sprain program" },
       { "href": "../sports-injuries/#athlete-programs", "eyebrow": "All athlete pathways", "title": "Sports injury return-to-sport hub" },
-      { "href": "../achilles-tendinopathy-return-to-sport-exercises/", "eyebrow": "Other lower-leg progression", "title": "Achilles return to sport" }
+      {
+        "href": "../basketball-medicine/",
+        "eyebrow": "For basketball players",
+        "title": "Back to basketball after an ankle sprain",
+        "description": "Talk with Dr. Swisher in Westwood or West Hills about cutting, landing and getting back to full practice.",
+        "linkLabel": "Basketball Medicine"
+      }
     ]
   },
   {
@@ -3127,7 +3142,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-08-28",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "K3HxB6rAeDo",
       "title": "Patellofemoral Pain | Chondromalacia Patellae | Runner’s Knee (Education | Myths | Exercises)",
@@ -3261,7 +3276,7 @@
     "audiences": ["athlete"],
     "publishedDate": "2026-08-28",
     "reviewedDate": "2026-08-28",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "video": {
       "id": "DnxahqgsAEw",
       "title": "Achilles Tendinopathy / Tendinitis / Tendinosis | Heel Pain Rehab (Education, Myths, Exercises)",
@@ -3395,7 +3410,7 @@
     "shortTitle": "Insertional Achilles exercises",
     "conditionName": "Insertional Achilles tendinopathy",
     "publishedDate": "2026-11-17",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "reviewStatus": "pending",
     "metaDescription": "Start calf raises on level ground for diagnosed insertional Achilles pain. Use your first steps each morning to adjust exercise and walking.",
     "breadcrumb": "Insertional Achilles exercises",
@@ -3567,7 +3582,7 @@
     "shortTitle": "Proximal hamstring exercises",
     "conditionName": "Proximal hamstring tendinopathy",
     "publishedDate": "2026-11-17",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "reviewStatus": "pending",
     "metaDescription": "Exercises for diagnosed proximal hamstring tendinopathy. Adjust sitting pressure, build hamstring strength, and gradually return to bending and walking uphill.",
     "breadcrumb": "Proximal hamstring exercises",
@@ -3746,7 +3761,7 @@
       "athlete"
     ],
     "publishedDate": "2026-11-17",
-    "modifiedDate": "2026-11-17",
+    "modifiedDate": "2026-11-27",
     "metaDescription": "Plan a return to overhand throwing after rotator cuff pain. Set the throw count and distance with your clinician and know when soreness means you need a rest day.",
     "breadcrumb": "Return to throwing",
     "kicker": "Shoulder rehabilitation · Athlete progression",

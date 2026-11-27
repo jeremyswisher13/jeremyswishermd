@@ -490,7 +490,7 @@ test('wall-sit hold and rest timers work on the written card and in a simple ses
   const program = programFor('patellar-tendinopathy-exercises');
   await visit(page, program);
   await page.clock.pauseAt(new Date('2026-11-17T12:01:00Z'));
-  const written = page.locator('.exercise-dose + [data-hep-card-timer]').first();
+  const written = page.locator('.exercise-instructions + [data-hep-card-timer]').first();
   const labels = ['Hold 30 sec', 'Hold 45 sec', 'Rest 1 min', 'Rest 2 min'];
   await expect(written.locator('[data-hep-timer-preset]')).toHaveText(labels);
   const hold = written.getByRole('button', { name: labels[0], exact: true });

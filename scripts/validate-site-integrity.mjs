@@ -20,7 +20,7 @@ const ignoredHtmlDirectories = new Set([
 const analyticsEventCounts = new Map();
 const expectedAssetCacheKey = '20261012-reliability1';
 const expectedLandingStyleCacheKey = '20261117-injection-guide1';
-const expectedScriptCacheKey = '20261117-exercise-reliability1';
+const sharedScriptCacheKey = '20261117-exercise-reliability1';
 const expectedPrimaryNavigationLabels = [
     'Conditions &amp; Care',
     'Appointments &amp; Insurance',
@@ -229,6 +229,8 @@ for (const file of htmlFiles) {
         errors.push(displayFile + ': missing the local Material Symbols preload');
     }
 
+    const expectedScriptCacheKey = displayFile === 'home-exercise-programs/index.html'
+        ? '20261127-exercise-results1' : sharedScriptCacheKey;
     const sharedScriptReferences = [...html.matchAll(/<script\b[^>]*\bsrc="[^"]*script\.js\?v=([^"]+)"/gi)];
     if (sharedScriptReferences.length !== 1) {
         errors.push(displayFile + ': expected exactly one versioned shared script reference');

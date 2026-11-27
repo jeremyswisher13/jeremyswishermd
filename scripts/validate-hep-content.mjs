@@ -220,6 +220,7 @@ for (const program of programs) {
             try {
                 const expected = Object.fromEntries(guidedSessionFields.map(field => [field, program[field]]));
                 if (program.guidedExerciseOrder) expected.exercises = program.guidedExerciseOrder.map(index => program.exercises[index]);
+                if (program.firstStrengthExercise !== undefined) expected.strengthStartIndex = program.guidedExerciseOrder.indexOf(program.firstStrengthExercise);
                 expected.canonical = canonical;
                 const timers = prescribedTimerOptions(program);
                 if (Object.keys(timers).length) expected.timerOptions = timers;
@@ -235,8 +236,8 @@ for (const program of programs) {
             }
         }
         assert(page.includes('data-hep-session hidden'), `${slug}: guided session must start hidden until initialized`);
-        assert(page.includes('src="../hep-session.js?v=20261117-card-timers1"'), `${slug}: guided-session module is missing`);
-        assert(page.includes('href="../hep-session.css?v=20261117-card-timers1"'), `${slug}: guided-session stylesheet is missing`);
+        assert(page.includes('src="../hep-session.js?v=20261127-start-guide1"'), `${slug}: guided-session module is missing`);
+        assert(page.includes('href="../hep-session.css?v=20261127-start-guide1"'), `${slug}: guided-session stylesheet is missing`);
     } else {
         assert(!sessionPayload && !page.includes('hep-session.js') && !page.includes('hep-session.css'), `${slug}: non-guided page includes guided-session assets`);
     }

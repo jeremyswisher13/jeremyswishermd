@@ -94,6 +94,9 @@ export function validateProgramData(value) {
     const result = { slug: value.slug, canonical: value.canonical };
     PROGRAM_FIELDS.forEach(field => { result[field] = value[field]; });
     result.exercises = value.exercises.map(exercise => Object.fromEntries(EXERCISE_FIELDS.map(field => [field, exercise[field]])));
+    if (Number.isInteger(value.strengthStartIndex) && value.strengthStartIndex > 0 && value.strengthStartIndex < result.exercises.length) {
+        result.strengthStartIndex = value.strengthStartIndex;
+    }
     if (isObject(value.timerOptions)) {
         result.timerOptions = Object.fromEntries(result.exercises.flatMap(({ name }) => {
             const choices = value.timerOptions[name];
@@ -191,6 +194,8 @@ function newRecordId() {
 function initializeGuidedSession(root, program) {
     const key = progressStorageKey(program.slug);
     const clearKey = `${key}:clear`;
+    const startGuide = document.querySelector('.landing-hero .hep-start-guide');
+    const firstStage = document.querySelector('#progress .care-step p')?.textContent;
     const state = {
         records: [], goal: '', keep: false, storageAvailable: true, hasStoredData: false,
         generation: undefined, clearRevision: undefined,
@@ -572,7 +577,7 @@ function initializeGuidedSession(root, program) {
         state.notes = '';
         state.response = 'not-checked';
         renderExercise(true);
-        announce('Session started. Use each exercise’s original dose and frequency, and skip work that is not due today.');
+        announce('Session started. Follow the instructions for each exercise due today.');
     }
     function renderWelcome(moveFocus = false) {
         state.view = 'welcome';
@@ -609,17 +614,31 @@ function initializeGuidedSession(root, program) {
         heading.setAttribute('data-hep-exercise-title', '');
         card.append(heading);
         if (state.index === 0) {
-            paragraph(card, program.programIntro, 'hep-session-response-intro');
-            paragraph(card, 'Use the dose and frequency shown for each exercise. Skip exercises that are not due today, belong to a later stage you have not reached, or that your clinician has asked you to leave out.');
+            if (startGuide && firstStage) {
+                const startingCue = element('p', 'hep-first-stage');
+                startingCue.append(element('strong', '', 'Where to start'), document.createTextNode(firstStage));
+                card.append(startingCue);
+                const guide = startGuide.cloneNode(true);
+                guide.open = false;
+                card.append(guide);
+            } else {
+                paragraph(card, program.programIntro);
+            }
+            if (program.strengthStartIndex !== undefined) {
+                card.append(button('Go to strength exercises', () => {
+                    state.index = program.strengthStartIndex;
+                    renderExercise(true);
+                }, 'data-hep-strength-start', true));
+            }
         }
-        card.append(definitionList([['Dose', exercise.dose], ['Frequency', exercise.frequency]]));
+        card.append(definitionList([['How much', exercise.dose], ['How often', exercise.frequency]]));
+        card.append(element('h4', '', 'How to do it'), element('p', '', exercise.how));
         const presets = program.timerOptions?.[exercise.name] || [];
         if (!state.workoutMode && presets.length) state.exerciseTimer = mountExerciseTimer(card, presets);
-        card.append(element('h4', '', 'How to do it'), element('p', '', exercise.how));
         card.append(element('h4', '', 'Easier option'), element('p', '', exercise.easier));
         const harder = element('details', 'hep-session-detail');
-        harder.append(element('summary', '', 'Harder option from this program'), element('p', '', exercise.harder));
-        const progressionLink = element('a', '', 'See progression & readiness criteria');
+        harder.append(element('summary', '', 'Harder option'), element('p', '', exercise.harder));
+        const progressionLink = element('a', '', 'When to move to the next stage');
         progressionLink.href = '#progress';
         harder.append(progressionLink);
         card.append(harder);
@@ -652,14 +671,17 @@ function initializeGuidedSession(root, program) {
                 announce('Check the recorded set values before marking this exercise done. You can also skip the exercise without recording its sets.');
                 return;
             }
+            const wasUnmarked = state.steps[state.index] === null;
             state.steps[state.index] = choice;
-            if (state.index < program.exercises.length - 1) {
+            const resolvedLastUnmarked = wasUnmarked && !state.steps.includes(null);
+            if (state.index < program.exercises.length - 1 && !resolvedLastUnmarked) {
                 state.index += 1;
                 renderExercise(true);
             } else {
                 renderReview(true);
             }
         };
+        if (state.index === 0) paragraph(card, 'Skip an exercise if it is for another day or a later stage, or if your clinician told you to leave it out.', 'hep-session-entry-meta');
         const actions = element('div', 'hep-session-actions');
         actions.append(button('Mark done & next', () => advance('done'), 'data-hep-done'), button('Skip & next', () => advance('skipped'), 'data-hep-skip', true));
         const previous = button('Previous exercise', () => {
@@ -733,6 +755,26 @@ function initializeGuidedSession(root, program) {
         skipped.setAttribute('data-hep-skipped-count', '');
         summary.append(completed, document.createTextNode(' · '), skipped);
         panel.append(summary);
+        const finish = button('Finish without a log entry', () => {
+            state.started = false;
+            renderWelcome(true);
+            announce('Session finished without a log entry.');
+        }, 'data-hep-finish', true);
+        const unmarked = state.steps.length - totals.completed - totals.skipped;
+        if (unmarked) {
+            paragraph(panel, unmarked === 1 ? 'One exercise is still unmarked.' : `${unmarked} exercises are still unmarked.`);
+            const actions = element('div', 'hep-session-actions');
+            actions.append(button(`Mark ${unmarked} as skipped`, () => {
+                state.steps = state.steps.map(step => step === null ? 'skipped' : step);
+                renderReview(true);
+            }, 'data-hep-skip-unmarked'), button('Return to unmarked exercises', () => {
+                state.index = state.steps.indexOf(null);
+                renderExercise(true);
+            }, 'data-hep-return-unmarked', true), finish);
+            panel.append(actions);
+            if (moveFocus) focusHeading(heading);
+            return;
+        }
         if (state.usedWorkout) {
             paragraph(panel, 'Your recorded set details will be included in this entry. Skipped exercises have no recorded sets.');
             const preview = element('div');
@@ -759,11 +801,7 @@ function initializeGuidedSession(root, program) {
         actions.append(save, button('Previous exercise', () => {
             state.index = program.exercises.length - 1;
             renderExercise(true);
-        }, 'data-hep-back', false, true), button('Finish without a log entry', () => {
-            state.started = false;
-            renderWelcome(true);
-            announce('Session finished without a log entry.');
-        }, 'data-hep-finish', true));
+        }, 'data-hep-back', false, true), finish);
         form.append(actions);
         form.addEventListener('submit', event => {
             event.preventDefault();

@@ -18,6 +18,11 @@ function renderGuidedSessionData(program, canonical, timerOptions) {
     const fields = ['slug', 'title', 'fitIntro', 'programIntro', 'frequency', 'equipment', 'checkpoint', 'goal', 'responseIntro', 'green', 'yellow', 'red', 'exercises'];
     const data = Object.fromEntries(fields.map(field => [field, program[field]]));
     if (program.guidedExerciseOrder) data.exercises = program.guidedExerciseOrder.map(index => program.exercises[index]);
+    if (program.firstStrengthExercise !== undefined) {
+        const index = program.guidedExerciseOrder?.indexOf(program.firstStrengthExercise);
+        if (!(index > 0)) throw new Error('Invalid strength shortcut for ' + program.slug);
+        data.strengthStartIndex = index;
+    }
     data.canonical = canonical;
     if (Object.keys(timerOptions).length) data.timerOptions = timerOptions;
     const options = validateWorkoutOptions(workoutOptions[program.slug], program.exercises.length);
@@ -77,12 +82,12 @@ function renderExercises(items, timerOptions) {
         '                                <span class="exercise-number" aria-hidden="true">' + String(index + 1).padStart(2, '0') + '</span>',
         '                                <div class="exercise-content">',
         '                                    <div class="exercise-heading">',
-        '                                        <div><span class="exercise-label">Exercise ' + (index + 1) + '</span><h3>' + escapeHtml(item.name) + '</h3></div>',
+        '                                        <div><span class="sr-only">Exercise ' + (index + 1) + '</span><h3>' + escapeHtml(item.name) + '</h3></div>',
         '                                        <span class="exercise-frequency">' + escapeHtml(item.frequency) + '</span>',
         '                                    </div>',
         '                                    <p class="exercise-dose"><strong>Dose</strong><span>' + escapeHtml(item.dose) + '</span></p>',
+        '                                    <p class="exercise-instructions">' + escapeHtml(item.how) + '</p>',
         ...(timerOptions[item.name] ? ['                                    <div class="no-print" data-hep-card-timer="' + escapeHtml(item.name) + '"></div>'] : []),
-        '                                    <p>' + escapeHtml(item.how) + '</p>',
         '                                    <div class="exercise-cues">',
         '                                        <div><strong>Make it easier</strong><p>' + escapeHtml(item.easier) + '</p></div>',
         '                                        <div><strong>Progress it</strong><p>' + escapeHtml(item.harder) + '</p></div>',
@@ -320,10 +325,10 @@ for (const program of programs) {
         PAGE_CLASS: 'hep-program-' + program.slug,
         PRINT_BUTTON_CLASS: guidedSession ? 'btn-outline' : 'btn-primary',
         SESSION_NOJS: guidedSession ? ',[data-hep-launch]' : '',
-        SESSION_STYLES: guidedSession ? '    <link rel="stylesheet" href="../hep-session.css?v=20261117-card-timers1">' : '',
+        SESSION_STYLES: guidedSession ? '    <link rel="stylesheet" href="../hep-session.css?v=20261127-start-guide1">' : '',
         SESSION_LAUNCH: guidedSession ? '                            <a href="#guided-session" class="btn btn-primary" data-hep-launch data-hep-launch-start hidden>Start a guided session</a>' : '',
         SESSION_SECTION: guidedSession ? renderGuidedSessionData(program, canonical, timerOptions) : '',
-        SESSION_SCRIPT: guidedSession ? '    <script type="module" src="../hep-session.js?v=20261117-card-timers1"></script>' : '',
+        SESSION_SCRIPT: guidedSession ? '    <script type="module" src="../hep-session.js?v=20261127-start-guide1"></script>' : '',
         TITLE: program.title,
         SEO_TITLE: program.seoTitle,
         SHORT_TITLE: program.shortTitle,

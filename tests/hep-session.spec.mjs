@@ -86,7 +86,7 @@ async function start(page) {
 }
 
 async function expectExercisePrescription(card, exercise) {
-  await expect(card.locator('dl dt')).toHaveText(['Dose', 'Frequency']);
+  await expect(card.locator('dl dt')).toHaveText(['How much', 'How often']);
   await expect(card.locator('dl dd')).toHaveText([exercise.dose, exercise.frequency]);
   await expect(card.locator(':scope > h4')).toHaveText(['How to do it', 'Easier option']);
   await expect(card.locator(':scope > h4 + p')).toHaveText([exercise.how, exercise.easier]);
@@ -115,10 +115,57 @@ test('all 28 maintained programs have unique routes and enable guided sessions',
   expect(new Set(programs.map(program => program.slug)).size).toBe(programs.length);
   expect(programs.every(program => program.guidedSession === true)).toBe(true);
   expect(advancedMeniscus.guidedExerciseOrder).toEqual([3, 4, 5, 0, 1, 2]);
+  expect(advancedMeniscus.firstStrengthExercise).toBe(0);
   expect(advancedMeniscus.programIntro).toContain('Perform impact work before heavy strength when both occur in one session.');
   for (const program of programs.filter(program => program.slug !== advancedMeniscus.slug)) {
     expect(program.guidedExerciseOrder).toBeUndefined();
+    expect(program.firstStrengthExercise).toBeUndefined();
   }
+});
+
+test('advanced meniscus strength shortcut leaves impact drills unmarked until the patient chooses how to log them', async ({ context, page, baseURL }) => {
+  await localOnly(context, baseURL);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await visit(page, advancedMeniscus);
+  const panel = session(page);
+  const title = panel.locator('[data-hep-exercise-title]');
+  const progress = panel.getByRole('progressbar');
+  const jump = panel.getByRole('button', { name: 'Go to strength exercises' });
+  await panel.locator('[data-hep-storage]').check();
+  await panel.locator('[data-hep-mode="workout"]').check();
+  await start(page);
+  await expect(title).toHaveText(guidedExercises(advancedMeniscus)[0].name);
+  await jump.press('Enter');
+  await expect(title).toBeFocused();
+  await expect(title).toHaveText(advancedMeniscus.exercises[0].name);
+  await expect(progress).toHaveJSProperty('value', 0);
+  await panel.locator('[data-hep-set-amount]').first().fill('6');
+  for (const exercise of advancedMeniscus.exercises.slice(0, 3)) {
+    await expect(title).toHaveText(exercise.name);
+    await panel.locator('[data-hep-done]').click();
+  }
+  await expect(panel.locator('[data-hep-completed-count]')).toHaveText('3 done');
+  await expect(panel.locator('[data-hep-skipped-count]')).toHaveText('0 skipped');
+  await expect(panel.locator('[data-hep-save]')).toHaveCount(0);
+  await panel.getByRole('button', { name: 'Return to unmarked exercises' }).click();
+  await expect(title).toHaveText(guidedExercises(advancedMeniscus)[0].name);
+  await expect(progress).toHaveJSProperty('value', 3);
+  await panel.locator('[data-hep-skip]').click();
+  await panel.locator('[data-hep-back]').click();
+  await jump.click();
+  await expect(panel.locator('[data-hep-set-amount]').first()).toHaveValue('6');
+  for (let i = 0; i < 3; i++) await panel.locator('[data-hep-done]').click();
+  await expect(panel.locator('[data-hep-skipped-count]')).toHaveText('1 skipped');
+  await panel.getByRole('button', { name: 'Mark 2 as skipped' }).click();
+  await expect(panel.locator('[data-hep-completed-count]')).toHaveText('3 done');
+  await expect(panel.locator('[data-hep-skipped-count]')).toHaveText('3 skipped');
+  await panel.locator('[data-hep-save]').click();
+  await page.reload();
+  await panel.locator('[data-hep-log]').click();
+  await expect(panel.locator('[data-hep-history]')).toContainText('3 done · 3 skipped');
+  const [record] = await page.evaluate(key => JSON.parse(localStorage.getItem(key)).records, storageKey(advancedMeniscus.slug));
+  expect(record.workout.map(entry => entry.status)).toEqual(['skipped', 'skipped', 'skipped', 'done', 'done', 'done']);
+  expect(record.workout[3].sets[0].amount).toBe(6);
 });
 
 for (const program of programs) {
@@ -131,12 +178,26 @@ for (const program of programs) {
     expect(data.exercises).toEqual(exercises);
     expect(data.frequency).toBe(program.frequency);
     await expect(session(page)).toContainText(program.frequency);
+    const heroGuide = page.locator('.landing-hero .hep-start-guide');
+    await expect(heroGuide).toHaveJSProperty('open', false);
+    await heroGuide.locator('summary').click();
+    await expect(heroGuide.locator('p')).toHaveText(program.programIntro);
+    await expect(heroGuide.locator('a')).toHaveCount(2);
+    await expect(heroGuide.locator('a').first()).toHaveAttribute('href', '#fit');
+    await expect(heroGuide.locator('a').last()).toHaveAttribute('href', '#progress');
     await start(page);
-    await expect(session(page).locator('[data-hep-exercise]')).toContainText(program.programIntro);
+    const first = session(page).locator('[data-hep-exercise]');
+    await expect(first.locator('.hep-first-stage')).toContainText(program.progression[0].text);
+    await expect(first.locator('.hep-start-guide')).toHaveJSProperty('open', false);
+    await first.locator('.hep-start-guide summary').click();
+    await expect(first.locator('.hep-start-guide p')).toHaveText(program.programIntro);
     for (const exercise of exercises) {
       const card = session(page).locator('[data-hep-exercise]');
       await expect(card.locator('[data-hep-exercise-title]')).toHaveText(exercise.name);
       await expectExercisePrescription(card, exercise);
+      if (data.timerOptions?.[exercise.name]?.length) {
+        await expect(card.locator('h4:text-is("How to do it") + p + [data-hep-timer]')).toHaveCount(1);
+      }
       for (const instruction of Object.values(exercise)) await expect(card).toContainText(instruction);
       await card.locator('[data-hep-done]').click();
     }
@@ -161,13 +222,13 @@ for (const program of programs) {
     await start(page);
     for (const exercise of guidedExercises(program)) {
       const card = session(page).locator('[data-hep-exercise]');
-      const disclosure = card.locator('details');
+      const disclosure = card.locator('.hep-session-detail');
       const toggle = disclosure.locator('summary');
       const harder = disclosure.locator('p');
-      const readinessLink = disclosure.getByRole('link', { name: 'See progression & readiness criteria', exact: true, includeHidden: true });
+      const readinessLink = disclosure.getByRole('link', { name: 'When to move to the next stage', exact: true, includeHidden: true });
       await expect(card.locator('[data-hep-exercise-title]')).toHaveText(exercise.name);
       await expect(disclosure).toHaveCount(1);
-      await expect(toggle).toHaveText('Harder option from this program');
+      await expect(toggle).toHaveText('Harder option');
       await expect(disclosure).toHaveJSProperty('open', false);
       await expect(harder).toBeHidden();
       await expect(readinessLink).toHaveCount(1);
@@ -217,15 +278,17 @@ for (const slug of [
     await visit(page, program);
     await page.locator('[data-hep-launch-start]').click();
     const card = session(page).locator('[data-hep-exercise]');
+    await expect(card.locator('.hep-first-stage')).toContainText(program.progression[0].text);
+    await card.locator('.hep-start-guide summary').click();
     await expect(card.getByText(program.programIntro, { exact: true })).toBeVisible();
     const exercises = guidedExercises(program);
     for (let index = 1; index < exercises.length; index += 1) await card.locator('[data-hep-skip]').click();
     const finalExercise = exercises.at(-1);
     await expect(card.locator('[data-hep-exercise-title]')).toHaveText(finalExercise.name);
     await expectExercisePrescription(card, finalExercise);
-    await card.locator('details summary').click();
+    await card.locator('.hep-session-detail summary').click();
     await expect(card.getByText(finalExercise.harder, { exact: true })).toBeVisible();
-    await card.getByRole('link', { name: 'See progression & readiness criteria' }).click();
+    await card.getByRole('link', { name: 'When to move to the next stage' }).click();
     await expect(page).toHaveURL(new RegExp('/' + slug + '/#progress$'));
     await expect(page.locator('#progress h2')).toBeInViewport();
     await expect(page.locator('#progress .care-step p')).toHaveText(program.progression.map(stage => stage.text));
@@ -703,12 +766,17 @@ for (const program of mobilePrograms) {
     const focus = await page.evaluate(() => ({ tag: document.activeElement.tagName, inside: Boolean(document.activeElement.closest('[data-hep-session]')) }));
     expect(focus.inside).toBe(true);
     expect(['BUTTON', 'SUMMARY']).toContain(focus.tag);
-    const harderToggle = session(page).locator('[data-hep-exercise] details summary');
+    const startGuide = session(page).locator('[data-hep-exercise] .hep-start-guide');
+    await startGuide.locator('summary').focus();
+    await page.keyboard.press('Enter');
+    await expect(startGuide.locator('p')).toBeVisible();
+    const harder = session(page).locator('[data-hep-exercise] .hep-session-detail');
+    const harderToggle = harder.locator('summary');
     await harderToggle.focus();
     await page.keyboard.press('Enter');
     await expect(harderToggle).toBeFocused();
-    await expect(session(page).locator('[data-hep-exercise] details p')).toBeVisible();
-    await expect(session(page).locator('[data-hep-exercise] details p')).toHaveText(guidedExercises(program)[0].harder);
+    await expect(harder.locator('p')).toBeVisible();
+    await expect(harder.locator('p')).toHaveText(guidedExercises(program)[0].harder);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
     await page.evaluate(async () => { await document.fonts?.ready; });
     const activeResults = await new AxeBuilder({ page }).include('[data-hep-session]').withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();

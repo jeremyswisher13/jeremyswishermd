@@ -162,6 +162,8 @@ test('exercise library combines athlete, region, and search filters and resets c
   await expect(visibleCards).toHaveCount(0);
   await expect(page.locator('[data-program-empty]')).toBeVisible();
   await expect(status).toHaveText('Showing 0 of 8 athlete progressions for foot and ankle matching your search.');
+  await expect(page.locator('[data-program-empty]').getByRole('link', { name: 'request an evaluation' }))
+    .toHaveAttribute('href', '../locations/#scheduling');
 
   await page.locator('label[for="hep-filter-all"]').click();
   await search.fill('achilles');
@@ -252,6 +254,10 @@ test('exercise search finds maintained programs for common phrasing and word for
     ['non specific low back pain', 'nonspecific low back pain', 1],
     ['pain in my heel', 'heel pain', 3],
     ['pain on the outside of my knee', 'outside knee pain', 1],
+    ['pain below the kneecap', "jumper's knee", 1],
+    ['paddle-side elbow pain', 'elbow pain', 2],
+    ['pickleball elbow', 'elbow pain', 2],
+    ['pickleball outside elbow', 'tennis elbow', 1],
     ['O.A.', 'OA', 3],
     ['I.T. band', 'IT band', 1],
   ];
@@ -301,6 +307,48 @@ test('exercise search retains specific injury and patient qualifiers', async ({ 
   await expect(visibleCards).toHaveAttribute('href', '../iliotibial-band-syndrome-exercises/');
   await search.fill('patell');
   await expect(visibleCards).toHaveCount(3);
+});
+
+test.describe('mobile exercise search shortcuts', () => {
+  test.use({ isMobile: true, hasTouch: true, reducedMotion: 'reduce' });
+
+  for (const width of [320, 390]) {
+    test(`reach the first matching program by keyboard or touch at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 664 });
+      await blockThirdPartyRequests(page);
+      await page.goto('/home-exercise-programs/');
+      const search = page.getByRole('searchbox');
+      const jump = page.locator('[data-program-results-jump]');
+      const firstResult = page.locator('#program-grid .program-card:visible').first();
+      await expect(jump).toBeHidden();
+      await search.tap();
+      await search.pressSequentially('pickleball elbow');
+      await expect(jump).toHaveText('View 2 matching programs');
+      await search.press('Tab');
+      await expect(page.getByRole('button', { name: 'Clear exercise program search' })).toBeFocused();
+      await page.keyboard.press('Tab');
+      await expect(jump).toBeFocused();
+      await page.keyboard.press('Enter');
+      await expect(firstResult).toBeFocused();
+      await expect(firstResult).toBeInViewport({ ratio: 1 });
+      await expect(firstResult).toHaveAttribute('href', '../lateral-elbow-tendinopathy-exercises/');
+
+      await search.fill('pickleball inside elbow');
+      await expect(jump).toHaveText('View 1 matching program');
+      await jump.tap();
+      await expect(firstResult).toBeFocused();
+      await expect(firstResult).toHaveAttribute('href', '../medial-elbow-tendinopathy-exercises/');
+      await search.press('Enter');
+      await expect(firstResult).toBeFocused();
+      await expect(page).toHaveURL(/\/home-exercise-programs\/$/);
+
+      await page.locator('label[for="hep-athlete-only"]').tap();
+      await expect(jump).toBeHidden();
+      await page.locator('[data-program-reset]').tap();
+      await expect(jump).toBeHidden();
+      await expect(search).toBeFocused();
+    });
+  }
 });
 
 test('printing the exercise library keeps a complete directory without the search empty state', async ({ page }) => {
