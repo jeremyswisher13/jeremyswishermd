@@ -115,18 +115,21 @@ test('opted-in exercise progress survives a reload in WebKit', async ({ page }) 
   await page.goto(`/${knee.slug}/`);
   await expect(session(page)).toBeVisible();
   expect(await page.evaluate(key => localStorage.getItem(key), storageKey)).toBeNull();
-  await session(page).locator('[data-hep-storage]').check();
+  const view = page.locator('[data-hep-focus]');
   await session(page).locator('[data-hep-start]').click();
+  await view.locator('[data-hep-begin]').click();
   for (let index = 0; index < knee.exercises.length; index += 1) {
-    await session(page).locator('[data-hep-done]').click();
+    await expect(view.locator('[data-hep-done]')).toBeInViewport({ ratio: 1 });
+    await view.locator('[data-hep-done]').click();
   }
-  await session(page).locator('.hep-session-log-details > summary').click();
-  await session(page).getByLabel('Notes (optional)', { exact: true }).fill('WebKit progress smoke check');
-  await session(page).locator('[data-hep-save]').click();
+  await view.locator('.hep-session-log-details > summary').click();
+  await view.getByLabel('Notes (optional)', { exact: true }).fill('WebKit progress smoke check');
+  await view.locator('[data-hep-save]').click();
+  await view.locator('[data-hep-log]').click();
   await expect(session(page).locator('[data-hep-history]')).toContainText('WebKit progress smoke check');
   await page.reload();
+  await session(page).locator('.hep-session-panel [data-hep-log]').click();
   await expect(session(page).locator('[data-hep-storage]')).toBeChecked();
-  await session(page).locator('[data-hep-log]').click();
   await expect(session(page).locator('[data-hep-history]')).toContainText('WebKit progress smoke check');
 });
 
@@ -140,6 +143,7 @@ test('blocked device storage still permits a guided session', async ({ context, 
   page.on('pageerror', error => errors.push(error.message));
   await page.goto(`/${knee.slug}/`);
   await session(page).locator('[data-hep-start]').click();
+  await page.locator('[data-hep-focus] [data-hep-begin]').click();
   await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[0].name);
   await session(page).locator('[data-hep-done]').click();
   await expect(session(page).locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[1].name);

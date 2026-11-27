@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { blankSet, mountWorkout } from '../../hep-workout.js';
+import { mountExerciseTimer } from '../../hep-workout.js';
 
 class NodeStub {
   constructor(tag) {
@@ -52,8 +52,8 @@ function timerHarness(t) {
   };
   t.mock.method(Date, 'now', () => now);
   const parent = new NodeStub('article');
-  const mounted = mountWorkout(parent, { measure: 'minutes', label: 'Minutes', resistance: false },
-    [blankSet()], null, message => announcements.push(message));
+  const presets = [1, 5, 30].map(seconds => ({ label: `Hold ${seconds} sec`, seconds }));
+  const mounted = mountExerciseTimer(parent, presets, message => announcements.push(message));
   t.after(() => {
     mounted.cleanup();
     if (savedDocument === undefined) delete globalThis.document;
@@ -67,9 +67,9 @@ function timerHarness(t) {
     control, announcements, intervals,
     advanceWithoutTick(milliseconds) { now += milliseconds; },
     tick() { for (const callback of [...intervals.values()]) callback(); },
+    presets: () => timer.querySelectorAll('[data-hep-timer-preset]'),
     start(seconds) {
-      control('duration').value = String(seconds);
-      timer.querySelector('form').dispatch('submit');
+      timer.querySelectorAll('[data-hep-timer-preset]').find(button => button.textContent === `Hold ${seconds} sec`).dispatch('click');
     },
   };
 }
@@ -83,7 +83,7 @@ test('pause immediately refreshes a countdown after a delayed callback and resum
   assert.equal(timer.control('clock').textContent, '00:29');
   assert.equal(timer.control('pause').textContent, 'Resume');
   assert.equal(timer.intervals.size, 0);
-  assert.equal(timer.control('start').disabled, true);
+  assert.ok(timer.presets().every(button => button.disabled));
   assert.equal(timer.announcements.at(-1), 'Timer paused.');
   timer.advanceWithoutTick(10000);
   timer.control('pause').dispatch('click');
@@ -101,9 +101,9 @@ test('pause after the deadline before a delayed callback finishes the timer and 
   timer.control('pause').dispatch('click');
   assert.equal(timer.control('clock').textContent, '00:00');
   assert.equal(timer.intervals.size, 0);
-  assert.match(timer.announcements.at(-1), /^Timer finished\./);
-  for (const name of ['pause', 'extend', 'cancel']) assert.equal(timer.control(name).disabled, true, name);
-  for (const name of ['start', 'duration']) assert.equal(timer.control(name).disabled, false, name);
+  assert.equal(timer.announcements.at(-1), 'Hold 1 sec timer finished.');
+  for (const name of ['pause', 'cancel']) assert.equal(timer.control(name).disabled, true, name);
+  assert.ok(timer.presets().every(button => !button.disabled));
   timer.start(5);
   assert.equal(timer.control('clock').textContent, '00:05');
   assert.equal(timer.intervals.size, 1);

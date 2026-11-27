@@ -4937,3 +4937,134 @@
         transition: none;
     }
 }
+
+/* Exercise library: a compact, scannable list on screen. Each program is one
+   row (stage label, name, one-line purpose) instead of a tall card, and the
+   body-area filters sit in a single scrolling row. Print keeps the directory. */
+@media screen {
+    .hep-hub-page .hep-filter-controls {
+        margin-top: 22px;
+    }
+
+    .hep-hub-page .hep-filter-label {
+        margin: 20px 0 8px;
+    }
+
+    .hep-hub-page .hep-filter-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .hep-hub-page .hep-filter-list label {
+        flex: none;
+        width: auto;
+        min-height: 44px;
+        padding: 9px 13px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+
+    .hep-hub-page .hep-athlete-toggle {
+        margin-top: 12px;
+    }
+
+    .hep-hub-page .hep-athlete-toggle label {
+        grid-template-columns: 24px minmax(0, 1fr);
+        gap: 10px;
+        min-height: 48px;
+        padding: 10px 14px;
+    }
+
+    .hep-hub-page .hep-athlete-toggle .material-symbols-outlined {
+        font-size: 22px;
+    }
+
+    .hep-hub-page .hep-athlete-toggle small {
+        display: none;
+    }
+
+    .hep-hub-page .hep-athlete-toggle input:checked + label small {
+        display: block;
+    }
+
+    .hep-hub-page .program-card-grid {
+        display: block;
+        margin-top: 18px;
+        border-top: 1px solid var(--color-border);
+    }
+
+    .hep-hub-page .program-card,
+    .hep-hub-page .program-card + .program-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas: "label arrow" "title arrow" "summary arrow";
+        column-gap: 16px;
+        align-items: center;
+        min-height: 0;
+        margin: 0;
+        padding: 15px 6px 15px 0;
+        border: 0;
+        border-bottom: 1px solid var(--color-border);
+        background: transparent;
+        transform: none;
+    }
+
+    .hep-hub-page .program-card:hover {
+        border-color: var(--color-border);
+        background: rgba(255, 255, 255, 0.45);
+        transform: none;
+    }
+
+    .hep-hub-page .program-card-icon,
+    .hep-hub-page .program-card-meta {
+        display: none;
+    }
+
+    .hep-hub-page .program-card-label {
+        grid-area: label;
+        margin: 0 0 3px;
+    }
+
+    .hep-hub-page .program-card h3 {
+        grid-area: title;
+        max-width: none;
+        margin: 0;
+        font-size: 1.32rem;
+        line-height: 1.2;
+    }
+
+    .hep-hub-page .program-card p {
+        grid-area: summary;
+        margin: 4px 0 0;
+        font-size: 0.86rem;
+        line-height: 1.5;
+    }
+
+    .hep-hub-page .program-card-arrow {
+        grid-area: arrow;
+        position: static;
+    }
+
+    .hep-hub-page .hep-library-actions {
+        margin-top: 22px;
+    }
+}
+
+/* On phones the body-area filters scroll sideways in one row. */
+@media screen and (max-width: 759px) {
+    .hep-hub-page .hep-filter-list {
+        position: relative;
+        flex-wrap: nowrap;
+        margin: 0 calc(-1 * var(--landing-gutter, 22px)) 0 -4px;
+        padding: 4px var(--landing-gutter, 22px) 4px 4px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .hep-hub-page .hep-filter-list::-webkit-scrollbar {
+        display: none;
+    }
+}
