@@ -238,3 +238,4 @@
     .court-spread, .court-guides, .court-research-layout, .court-visit-grid { display: block; padding: 12pt 0; }
     .court-paper { margin-top: 12pt; padding: 12pt 0; }
 }
+.court-guides-list > .court-link { margin-top: 18px; }
