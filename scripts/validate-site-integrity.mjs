@@ -19,7 +19,7 @@ const ignoredHtmlDirectories = new Set([
 ]);
 const analyticsEventCounts = new Map();
 const expectedAssetCacheKey = '20261012-reliability1';
-const expectedLandingStyleCacheKey = '20261127-compact-library1';
+const expectedLandingStyleCacheKey = '20261127-compact-library2';
 const sharedScriptCacheKey = '20261117-exercise-reliability1';
 const expectedPrimaryNavigationLabels = [
     'Conditions &amp; Care',
@@ -230,7 +230,7 @@ for (const file of htmlFiles) {
     }
 
     const expectedScriptCacheKey = displayFile === 'home-exercise-programs/index.html'
-        ? '20261127-exercise-results1' : sharedScriptCacheKey;
+        ? '20261127-exercise-results2' : sharedScriptCacheKey;
     const sharedScriptReferences = [...html.matchAll(/<script\b[^>]*\bsrc="[^"]*script\.js\?v=([^"]+)"/gi)];
     if (sharedScriptReferences.length !== 1) {
         errors.push(displayFile + ': expected exactly one versioned shared script reference');

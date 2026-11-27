@@ -182,3 +182,16 @@ test('records keep tapped set counts only as whole numbers for every exercise', 
   assert.equal(createSessionRecord(validRecord, exerciseCount).setCounts, undefined);
 });
 
+test('a single set tracker only appears when it can describe the written dose', () => {
+  for (const name of ['Loaded straight-knee and bent-knee calf pair', 'Hip hinge and carry progression']) {
+    const exercise = programs.flatMap(program => program.exercises).find(exercise => exercise.name === name);
+    assert.equal(doseSetRange(exercise.dose), null, exercise.dose);
+  }
+  const splitSquat = programs.find(program => program.slug === 'iliotibial-band-syndrome-exercises')
+    .exercises.find(exercise => exercise.name === 'Supported split squat');
+  assert.equal(doseSetRange(splitSquat.dose), null, splitSquat.dose);
+  for (const dose of ['2 sets of 8 repetitions with a 5-second hold', 'Start with 2 sets of 4 to 6 repetitions, resting about 1 minute between sets']) {
+    assert.deepEqual(doseSetRange(dose), { minimum: 2, maximum: 2 });
+  }
+});
+

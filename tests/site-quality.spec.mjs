@@ -188,6 +188,27 @@ test('exercise library combines athlete, region, and search filters and resets c
   await expect(status).toHaveText('Showing all 28 programs.');
 });
 
+test('phone body-area filters keep the focused choice visible during keyboard navigation', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await blockThirdPartyRequests(page);
+  await page.goto('/home-exercise-programs/');
+  const choices = page.getByRole('radiogroup').getByRole('radio');
+  await choices.first().focus();
+  for (let index = 1; index < await choices.count(); index++) {
+    await page.keyboard.press('ArrowRight');
+    await expect(choices.nth(index)).toBeFocused();
+    await expect(page.locator('.hep-filter-list label').nth(index)).toBeInViewport({ ratio: 1 });
+  }
+  await expect(page.locator('#hep-filter-back')).toBeChecked();
+  await expect(page.locator('#program-grid .program-card:visible')).toHaveCount(1);
+  for (let index = await choices.count() - 2; index >= 0; index--) {
+    await page.keyboard.press('ArrowLeft');
+    await expect(page.locator('.hep-filter-list label').nth(index)).toBeInViewport({ ratio: 1 });
+  }
+  await expect(choices.first()).toBeChecked();
+  await expect(page.locator('#program-grid .program-card:visible')).toHaveCount(28);
+});
+
 test('exercise library remains complete without JavaScript', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
