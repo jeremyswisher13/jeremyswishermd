@@ -118,7 +118,7 @@ function renderFaqs(items) {
 
 function renderSources(items) {
     return items.map((item) =>
-        '                            <li><a href="' + escapeHtml(item.href) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(item.label) + '<span class="sr-only"> (opens in a new tab)</span></a></li>'
+        '                                <li><a href="' + escapeHtml(item.href) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(item.label) + '<span class="sr-only"> (opens in a new tab)</span></a></li>'
     ).join('\n');
 }
 
@@ -374,6 +374,7 @@ for (const program of programs) {
         EVALUATION: program.evaluation,
         FAQS: renderFaqs(program.faqs),
         SOURCES: renderSources(program.sources),
+        SOURCE_COUNT: String(program.sources.length),
         RELATED: renderRelated(program.related)
     };
 

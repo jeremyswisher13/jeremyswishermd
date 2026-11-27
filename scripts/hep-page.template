@@ -258,10 +258,13 @@
                         <p class="section-label">Evidence</p>
                         <h2 id="sources-title">Guidelines, reviews, and clinical studies</h2>
                         <p>This plan translates current clinical guidance into a practical home program. The cited sources support the treatment principles, but they do not establish one universal exercise recipe for every patient.</p>
-                        <ul class="source-list">
+                        <details class="hep-source-details">
+                            <summary>Show the {{SOURCE_COUNT}} sources</summary>
+                            <ul class="source-list">
 {{SOURCES}}
-                        </ul>
-                        <p class="source-note">Evidence and recommendations can change. {{SOURCE_DATE_LINE}}.</p>
+                            </ul>
+                            <p class="source-note">Evidence and recommendations can change. {{SOURCE_DATE_LINE}}.</p>
+                        </details>
                     </section>
                 </article>
 
