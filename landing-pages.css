@@ -5057,8 +5057,8 @@
     .hep-hub-page .hep-filter-list {
         position: relative;
         flex-wrap: nowrap;
-        margin: 0 calc(-1 * var(--landing-gutter, 22px)) 0 -4px;
-        padding: 4px var(--landing-gutter, 22px) 4px 4px;
+        margin: 0 calc(-1 * var(--landing-gutter, 22px)) 0 -6px;
+        padding: 6px var(--landing-gutter, 22px) 6px 6px;
         overflow-x: auto;
         scrollbar-width: none;
         -webkit-overflow-scrolling: touch;
@@ -5066,6 +5066,10 @@
 
     .hep-hub-page .hep-filter-list::-webkit-scrollbar {
         display: none;
+    }
+
+    .hep-hub-page .hep-filter-list label {
+        scroll-margin-inline: 6px;
     }
 }
 

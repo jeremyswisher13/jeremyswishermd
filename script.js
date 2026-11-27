@@ -1029,6 +1029,16 @@ if (hasCompleteProgramDiscovery) {
     programResultsJump?.addEventListener('click', focusFirstProgramResult);
     programFilterInputs.forEach(input => {
         input.addEventListener('change', updateProgramFilter);
+        input.addEventListener('focus', () => {
+            const row = input.parentElement;
+            if (row.scrollWidth <= row.clientWidth) return;
+            // The browser scrolls to the clipped radio first. Reveal its visible label afterward.
+            requestAnimationFrame(() => {
+                if (document.activeElement === input) {
+                    input.labels[0]?.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
+                }
+            });
+        });
     });
     programAudienceFilter.addEventListener('change', updateProgramFilter);
     programSearchInput.addEventListener('input', updateProgramFilter);

@@ -145,6 +145,7 @@
 .hep-session .hep-session-progress p {
     flex: 0 1 auto;
     margin: 0;
+    overflow-wrap: normal;
     font-variant-numeric: tabular-nums;
 }
 
@@ -832,7 +833,7 @@ html.hep-focus-open body {
     background: rgba(16, 36, 56, 0.55);
 }
 
-@media (min-width: 760px) {
+@media (min-width: 760px) and (min-height: 500px) {
     .hep-session .hep-session-dialog {
         width: min(680px, calc(100% - 64px));
         height: min(880px, calc(100% - 64px));

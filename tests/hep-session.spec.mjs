@@ -397,6 +397,22 @@ for (const slug of [
   });
 }
 
+test('browser Back from the guided session reveals the previous section and keeps the current exercise', async ({ context, page, baseURL }) => {
+  await localOnly(context, baseURL);
+  await page.goto(`/${knee.slug}/#fit`);
+  await page.locator('[data-hep-launch-start]').click();
+  const view = focusView(page);
+  await view.locator('[data-hep-begin]').click();
+  await view.locator('[data-hep-done]').click();
+  await page.goBack();
+  await expect(page).toHaveURL(/#fit$/);
+  await expect(view).toBeHidden();
+  await expect(page.locator('#fit h2')).toBeFocused();
+  await expect(page.locator('#fit h2')).toBeInViewport();
+  await session(page).locator('[data-hep-resume]').click();
+  await expect(view.locator('[data-hep-exercise-title]')).toHaveText(knee.exercises[1].name);
+});
+
 test('closing the session pauses it; Return to session continues where the patient left off', async ({ context, page, baseURL }) => {
   await localOnly(context, baseURL);
   await visit(page);
